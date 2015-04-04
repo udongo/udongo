@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe Udongo::Admin do
+describe Admin do
   let(:model) { described_class }
-  let(:klass) { model.to_s.underscore.gsub('/', '_').to_sym }
+  let(:klass) { model.to_s.underscore.to_sym }
 
   # it_behaves_like :person
   # it_behaves_like :loggable

@@ -4,7 +4,7 @@ describe Admin do
   let(:model) { described_class }
   let(:klass) { model.to_s.underscore.to_sym }
 
-  # it_behaves_like :person
+  it_behaves_like :person
   # it_behaves_like :loggable
 
   describe 'validations' do

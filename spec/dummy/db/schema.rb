@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404203648) do
+ActiveRecord::Schema.define(version: 20150405202002) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "first_name"
@@ -21,5 +21,17 @@ ActiveRecord::Schema.define(version: 20150404203648) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "logs", force: :cascade do |t|
+    t.string   "category"
+    t.integer  "loggable_id"
+    t.string   "loggable_type"
+    t.text     "content"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "logs", ["loggable_id"], name: "index_logs_on_loggable_id"
+  add_index "logs", ["loggable_type"], name: "index_logs_on_loggable_type"
 
 end

@@ -17,41 +17,36 @@ describe Comment do
       it(:message) { expect(build(klass, message: nil)).not_to be_valid }
     end
 
-    describe 'format' do
-      describe 'email' do
-        it(:valid) { expect(build(klass, email: 'dave@blimp.be')).to be_valid }
-        it(:invalid) { expect(build(klass, email: 'dave@blimp')).not_to be_valid }
-      end
+    describe 'email' do
+      it(:valid) { expect(build(klass, email: 'dave@blimp.be')).to be_valid }
+      it(:invalid) { expect(build(klass, email: 'dave@blimp')).not_to be_valid }
     end
 
-    describe 'url' do
-      describe 'website' do
-        it(:http) { expect(build(klass, website: 'http://google.be')).to be_valid }
-        it(:https) { expect(build(klass, website: 'https://google.be')).to be_valid }
-        it(:localhost) { expect(build(klass, website: 'http://localhost')).to be_valid }
-        it(:ip) { expect(build(klass, website: 'http://127.0.0.1')).to be_valid }
-        it(:invalid) { expect(build(klass, website: 'http//localhost')).not_to be_valid }
-      end
+    describe 'website' do
+      it(:http) { expect(build(klass, website: 'http://google.be')).to be_valid }
+      it(:https) { expect(build(klass, website: 'https://google.be')).to be_valid }
+      it(:localhost) { expect(build(klass, website: 'http://localhost')).to be_valid }
+      it(:ip) { expect(build(klass, website: 'http://127.0.0.1')).to be_valid }
+      it(:invalid) { expect(build(klass, website: 'http//localhost')).not_to be_valid }
     end
 
-    describe 'custom' do
-      describe 'parent_id' do
-        describe 'exists' do
-          it :true do
-            parent = create(:comment)
-            expect(build(klass, parent_id: parent.id)).to be_valid
-          end
+    describe 'parent_id' do
+      describe 'exists' do
+        it :true do
+          parent = create(:comment)
+          expect(build(klass, parent_id: parent.id)).to be_valid
+        end
 
-          it :false do
-            expect(build(klass, parent_id: nil)).to be_valid
-            expect(build(klass, parent_id: 10)).not_to be_valid
-          end
+        it :false do
+          expect(build(klass, parent_id: nil)).to be_valid
+          expect(build(klass, parent_id: 10)).not_to be_valid
         end
       end
     end
   end
 
   describe 'defaults' do
+    # TODO also check when the status is provided.
     it(:status) { expect(model.new.status).to eq 'pending_moderation' }
   end
 
@@ -67,7 +62,7 @@ describe Comment do
 
   it '#respond_to?' do
     expect(model.new).to respond_to(:commentable)
-    # TODO add some methods published?
+    # TODO add some methods published?, ...
   end
 
   it '.respond_to?' do

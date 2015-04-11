@@ -21,9 +21,9 @@ module Concerns
       def flat_tree(parent_id: nil, list: [])
         children = name.constantize.where(parent_id: parent_id)
 
-        children.each do |p|
-          list << p
-          list = self.flat_tree(parent_id: p.id, list: list) if p.children.any?
+        children.each do |c|
+          list << c
+          list = self.flat_tree(parent_id: c.id, list: list) if c.children.any?
         end
 
         list

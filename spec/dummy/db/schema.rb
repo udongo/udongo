@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411152042) do
+ActiveRecord::Schema.define(version: 20150411152619) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id"
@@ -37,6 +37,24 @@ ActiveRecord::Schema.define(version: 20150411152042) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "locale"
+    t.integer  "parent_id"
+    t.string   "author"
+    t.string   "email"
+    t.string   "website"
+    t.text     "message"
+    t.string   "status"
+    t.boolean  "marked_as_spam"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
 
   create_table "logs", force: :cascade do |t|
     t.string   "category"

@@ -16,7 +16,7 @@ shared_examples_for :spammable do
   end
 
   describe 'defaults' do
-    describe 'not set' do
+    it 'not set' do
       expect(build(klass)).not_to be_marked_as_spam
     end
 

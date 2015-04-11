@@ -6,7 +6,7 @@ describe Comment do
   let(:instance) { build(klass) }
 
   it_behaves_like :parentable
-  # it_behaves_like :spammable
+  it_behaves_like :spammable
 
   describe 'validations' do
     describe 'presence' do

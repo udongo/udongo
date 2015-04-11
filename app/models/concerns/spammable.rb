@@ -7,7 +7,7 @@ module Concerns
     included do
       include Rakismet::Model
 
-      scope :spam, ->{ unscoped.where(marked_as_spam: true) }
+      scope :spam, ->{ where(marked_as_spam: true) }
       scope :not_spam, -> { where('marked_as_spam = 0 OR marked_as_spam IS NULL') }
 
       after_initialize :spam_defaults

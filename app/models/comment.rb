@@ -4,7 +4,6 @@ class Comment < ActiveRecord::Base
 
   # spammable author_email: :email, content: :message
 
-  # TODO test these statuses
   STATUSES = %w(pending_moderation published)
 
   after_initialize :default_values
@@ -12,10 +11,10 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
 
   validates :commentable_id, :commentable_type, :author, :message, presence: true
+  validates :status, inclusion: { in: STATUSES }
   validates :email, presence: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :website, url: true, allow_blank: true
-  # TODO validate the status...
   validate :parent_exists?
 
   scope :by_locale, ->(l) { where(locale: l) }

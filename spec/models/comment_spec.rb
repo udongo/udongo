@@ -17,6 +17,19 @@ describe Comment do
       it(:message) { expect(build(klass, message: nil)).not_to be_valid }
     end
 
+    describe 'status' do
+      it(:invalid) { expect(build(klass, status: 'foo')).not_to be_valid }
+
+      it :valid do
+        comment = build(klass)
+
+        ::Comment::STATUSES.each do |status|
+          comment.status = status
+          expect(comment).to be_valid
+        end
+      end
+    end
+
     describe 'email' do
       it(:valid) { expect(build(klass, email: 'dave@blimp.be')).to be_valid }
       it(:invalid) { expect(build(klass, email: 'dave@blimp')).not_to be_valid }

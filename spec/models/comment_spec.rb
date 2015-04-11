@@ -59,8 +59,13 @@ describe Comment do
   end
 
   describe 'defaults' do
-    # TODO also check when the status is provided.
-    it(:status) { expect(model.new.status).to eq 'pending_moderation' }
+    it 'no status provided' do
+      expect(model.new.status).to eq 'pending_moderation'
+    end
+
+    it 'status provided' do
+      expect(model.new(status: 'published').status).to eq 'published'
+    end
   end
 
   it '#publish!' do

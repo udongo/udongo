@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
   include Concerns::Parentable
-  # include Concerns::Spammable
+  include Concerns::Spammable
 
-  # spammable author_email: :email, content: :message
+  spammable author_email: :email, content: :message
 
   STATUSES = %w(pending_moderation published)
 
@@ -15,7 +15,6 @@ class Comment < ActiveRecord::Base
   validates :email, presence: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :website, url: true, allow_blank: true
-  validate :parent_exists?
 
   scope :by_locale, ->(l) { where(locale: l) }
 
@@ -32,12 +31,6 @@ class Comment < ActiveRecord::Base
   end
 
   private
-
-  def parent_exists?
-    if parent_id.present? && !self.class.exists?(parent_id)
-      errors.add(:parent_id, :blank)
-    end
-  end
 
   def default_values
     if self.new_record?

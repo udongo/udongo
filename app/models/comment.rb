@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  # include Concerns::Parentable
+  include Concerns::Parentable
   # include Concerns::Spammable
 
   # spammable author_email: :email, content: :message

@@ -5,7 +5,7 @@ describe Comment do
   let(:klass) { model.to_s.underscore.to_sym }
   let(:instance) { build(klass) }
 
-  # it_behaves_like :parentable
+  it_behaves_like :parentable
   # it_behaves_like :spammable
 
   describe 'validations' do

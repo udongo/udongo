@@ -79,8 +79,7 @@ describe Comment do
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:commentable)
-    # TODO add some methods published?, ...
+    expect(model.new).to respond_to(:commentable, :published?, :publish!, :unpublish!)
   end
 
   it '.respond_to?' do

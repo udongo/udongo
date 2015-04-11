@@ -3,23 +3,22 @@ require 'rails_helper'
 shared_examples_for :spammable do
   let(:model) { described_class }
   let(:klass) { model.to_s.underscore.to_sym }
-  let(:zotten_instance) { build(klass) }
+  let(:instance) { build(klass) }
 
   describe 'scopes' do
     before(:each) do
-      # TODO include nil
-      @a = create(klass, marked_as_spam: true)
+      @a = create(klass, marked_as_spam: nil)
       @b = create(klass, marked_as_spam: false)
       @c = create(klass, marked_as_spam: true)
     end
 
-    it(:spam) { expect(model.spam).to eq [@a, @c] }
-    it(:not_spam) { expect(model.not_spam).to eq [@b] }
+    it(:spam) { expect(model.spam).to eq [@c] }
+    it(:not_spam) { expect(model.not_spam).to eq [@a, @b] }
   end
 
   describe 'defaults' do
     describe 'not set' do
-      expect(zotten_instance.marked_as_spam).to be false
+      expect(instance).not_to be_marked_as_spam
     end
 
     describe 'set' do
@@ -34,14 +33,14 @@ shared_examples_for :spammable do
   end
 
   it '#mark_as_spam!' do
-    zotten_instance.mark_as_spam!
-    expect(zotten_instance).to be_marked_as_spam
+    instance.mark_as_spam!
+    expect(instance).to be_marked_as_spam
   end
 
   it '#unmark_as_spam!' do
-    zotten_instance.marked_as_spam = true
-    zotten_instance.unmark_as_spam!
-    expect(zotten_instance).to_not be_marked_as_spam
+    instance.marked_as_spam = true
+    instance.unmark_as_spam!
+    expect(instance).not_to be_marked_as_spam
   end
 
   it '.respond_to?' do

@@ -10,8 +10,6 @@ describe Comment do
 
   describe 'validations' do
     describe 'presence' do
-      it(:commentable_id) { expect(build(klass, commentable_id: nil)).not_to be_valid }
-      it(:commentable_type) { expect(build(klass, commentable_type: nil)).not_to be_valid }
       it(:author) { expect(build(klass, author: nil)).not_to be_valid }
       it(:email) { expect(build(klass, email: nil)).not_to be_valid }
       it(:message) { expect(build(klass, message: nil)).not_to be_valid }

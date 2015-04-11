@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, polymorphic: true
 
-  validates :commentable_id, :commentable_type, :author, :message, presence: true
+  validates :author, :message, presence: true
   validates :status, inclusion: { in: STATUSES }
   validates :email, presence: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }

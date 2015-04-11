@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411152619) do
+ActiveRecord::Schema.define(version: 20150411200227) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id"
@@ -67,5 +67,16 @@ ActiveRecord::Schema.define(version: 20150411152619) do
 
   add_index "logs", ["loggable_id"], name: "index_logs_on_loggable_id"
   add_index "logs", ["loggable_type"], name: "index_logs_on_loggable_type"
+
+  create_table "notes", force: :cascade do |t|
+    t.integer  "notable_id"
+    t.string   "notable_type"
+    t.string   "content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "notes", ["notable_id"], name: "index_notes_on_notable_id"
+  add_index "notes", ["notable_type"], name: "index_notes_on_notable_type"
 
 end

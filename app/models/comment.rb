@@ -34,8 +34,7 @@ class Comment < ActiveRecord::Base
   private
 
   def parent_exists?
-    # TODO is the first self actually needed?
-    if self.parent_id.present? && !self.class.exists?(self.parent_id)
+    if parent_id.present? && !self.class.exists?(parent_id)
       errors.add(:parent_id, :blank)
     end
   end

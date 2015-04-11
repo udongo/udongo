@@ -3,7 +3,6 @@ require 'rails_helper'
 shared_examples_for :spammable do
   let(:model) { described_class }
   let(:klass) { model.to_s.underscore.to_sym }
-  let(:instance) { build(klass) }
 
   describe 'scopes' do
     before(:each) do
@@ -18,7 +17,7 @@ shared_examples_for :spammable do
 
   describe 'defaults' do
     describe 'not set' do
-      expect(instance).not_to be_marked_as_spam
+      expect(build(klass)).not_to be_marked_as_spam
     end
 
     describe 'set' do
@@ -33,14 +32,15 @@ shared_examples_for :spammable do
   end
 
   it '#mark_as_spam!' do
-    instance.mark_as_spam!
-    expect(instance).to be_marked_as_spam
+    object = build(klass)
+    object.mark_as_spam!
+    expect(object).to be_marked_as_spam
   end
 
   it '#unmark_as_spam!' do
-    instance.marked_as_spam = true
-    instance.unmark_as_spam!
-    expect(instance).not_to be_marked_as_spam
+    object = build(klass, marked_as_spam: true)
+    object.unmark_as_spam!
+    expect(object).not_to be_marked_as_spam
   end
 
   it '.respond_to?' do

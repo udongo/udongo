@@ -11,69 +11,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411200227) do
+ActiveRecord::Schema.define(version: 20150412094419) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "addressable_id"
-    t.string   "addressable_type"
-    t.string   "street"
-    t.string   "number"
-    t.string   "box"
-    t.string   "postal"
-    t.string   "city"
-    t.string   "country"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "addressable_id",   limit: 4
+    t.string   "addressable_type", limit: 255
+    t.string   "street",           limit: 255
+    t.string   "number",           limit: 255
+    t.string   "box",              limit: 255
+    t.string   "postal",           limit: 255
+    t.string   "city",             limit: 255
+    t.string   "country",          limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
-  add_index "addresses", ["addressable_id"], name: "index_addresses_on_addressable_id"
-  add_index "addresses", ["addressable_type"], name: "index_addresses_on_addressable_type"
+  add_index "addresses", ["addressable_id"], name: "index_addresses_on_addressable_id", using: :btree
+  add_index "addresses", ["addressable_type"], name: "index_addresses_on_addressable_type", using: :btree
 
   create_table "admins", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "first_name",      limit: 255
+    t.string   "last_name",       limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.string   "locale"
-    t.integer  "parent_id"
-    t.string   "author"
-    t.string   "email"
-    t.string   "website"
-    t.text     "message"
-    t.string   "status"
-    t.boolean  "marked_as_spam"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "commentable_id",   limit: 4
+    t.string   "commentable_type", limit: 255
+    t.string   "locale",           limit: 255
+    t.integer  "parent_id",        limit: 4
+    t.string   "author",           limit: 255
+    t.string   "email",            limit: 255
+    t.string   "website",          limit: 255
+    t.text     "message",          limit: 65535
+    t.string   "status",           limit: 255
+    t.boolean  "marked_as_spam",   limit: 1
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
 
   create_table "logs", force: :cascade do |t|
-    t.string   "category"
-    t.integer  "loggable_id"
-    t.string   "loggable_type"
-    t.text     "content"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "category",      limit: 255
+    t.integer  "loggable_id",   limit: 4
+    t.string   "loggable_type", limit: 255
+    t.text     "content",       limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  add_index "logs", ["loggable_id"], name: "index_logs_on_loggable_id"
-  add_index "logs", ["loggable_type"], name: "index_logs_on_loggable_type"
+  add_index "logs", ["loggable_id"], name: "index_logs_on_loggable_id", using: :btree
+  add_index "logs", ["loggable_type"], name: "index_logs_on_loggable_type", using: :btree
 
   create_table "notes", force: :cascade do |t|
-    t.integer  "notable_id"
-    t.string   "notable_type"
-    t.string   "content"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "notable_id",   limit: 4
+    t.string   "notable_type", limit: 255
+    t.string   "content",      limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "notes", ["notable_id"], name: "index_notes_on_notable_id"

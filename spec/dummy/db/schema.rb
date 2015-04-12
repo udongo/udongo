@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412094419) do
+ActiveRecord::Schema.define(version: 20150412095257) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -67,6 +67,24 @@ ActiveRecord::Schema.define(version: 20150412094419) do
 
   add_index "logs", ["loggable_id"], name: "index_logs_on_loggable_id", using: :btree
   add_index "logs", ["loggable_type"], name: "index_logs_on_loggable_type", using: :btree
+
+  create_table "meta", force: :cascade do |t|
+    t.string   "locale",         limit: 255
+    t.integer  "sluggable_id",   limit: 4
+    t.string   "sluggable_type", limit: 255
+    t.string   "slug",           limit: 255
+    t.string   "title",          limit: 255
+    t.string   "keywords",       limit: 255
+    t.text     "description",    limit: 65535
+    t.text     "custom",         limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "meta", ["locale"], name: "index_meta_on_locale", using: :btree
+  add_index "meta", ["slug"], name: "index_meta_on_slug", using: :btree
+  add_index "meta", ["sluggable_id"], name: "index_meta_on_sluggable_id", using: :btree
+  add_index "meta", ["sluggable_type"], name: "index_meta_on_sluggable_type", using: :btree
 
   create_table "notes", force: :cascade do |t|
     t.integer  "notable_id",   limit: 4

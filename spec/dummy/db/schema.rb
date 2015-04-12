@@ -76,7 +76,17 @@ ActiveRecord::Schema.define(version: 20150412094419) do
     t.datetime "updated_at",               null: false
   end
 
-  add_index "notes", ["notable_id"], name: "index_notes_on_notable_id"
-  add_index "notes", ["notable_type"], name: "index_notes_on_notable_type"
+  add_index "notes", ["notable_id"], name: "index_notes_on_notable_id", using: :btree
+  add_index "notes", ["notable_type"], name: "index_notes_on_notable_type", using: :btree
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "value",       limit: 65535
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "settings", ["name"], name: "index_settings_on_name", using: :btree
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412095257) do
+ActiveRecord::Schema.define(version: 20150413190019) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -106,5 +106,17 @@ ActiveRecord::Schema.define(version: 20150412095257) do
   end
 
   add_index "settings", ["name"], name: "index_settings_on_name", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "locale",     limit: 255
+    t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "tags", ["locale"], name: "index_tags_on_locale", using: :btree
+  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
+  add_index "tags", ["slug"], name: "index_tags_on_slug", using: :btree
 
 end

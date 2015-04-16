@@ -1,0 +1,8 @@
+nl:
+  b:
+    email: E-mail
+    login: Inloggen
+    password: Wachtwoord
+
+    msg:
+      incorrect_login: Ongeldige login gegevens.

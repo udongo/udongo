@@ -35,7 +35,7 @@ describe TaggedItem do
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:taggable)
+    expect(model.new).to respond_to(:taggable, :tag)
   end
 end
 

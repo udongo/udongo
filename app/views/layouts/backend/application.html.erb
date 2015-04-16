@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Admin panel</title>
+
+  <%= stylesheet_link_tag 'backend/application', media: 'all' %>
+  <%= javascript_include_tag 'backend/application' %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div>
+    Ingelogd als <%= current_admin.full_name %><br>
+    <%= link_to 'Uitloggen', backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %>
+  </div>
+  <hr>
+
+  <%= yield %>
+</body>
+</html>

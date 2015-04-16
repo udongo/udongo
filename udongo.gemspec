@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   # Use SCSS for stylesheets
   s.add_dependency 'sass-rails', '~> 4.0.3'
   s.add_dependency 'compass-rails'
+  s.add_dependency 'foundation-rails'
 
   # Other
   s.add_dependency 'bcrypt', '~> 3.1.7'

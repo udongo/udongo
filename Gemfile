@@ -10,17 +10,9 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# Active Record
-gem 'mysql2'
-
 # Javascript related
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+# TODO is this gem needed?
 gem 'marked-rails'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-gem 'compass-rails'
 
 group :test do
   gem 'thor'
@@ -42,5 +34,4 @@ group :development do
   gem 'binding_of_caller'
 end
 
-gem 'bcrypt', '~> 3.1.7'
 gem 'rakismet'

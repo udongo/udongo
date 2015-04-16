@@ -12,8 +12,8 @@ describe Tag do
     end
 
     it :unique do
-      create klass, slug: 'foo'
-      expect(build(klass, slug: 'FOO')).not_to be_valid
+      create(klass, slug: 'foo', locale: 'nl')
+      expect(build(klass, slug: 'FOO', locale: 'nl')).not_to be_valid
     end
   end
 end

@@ -3,35 +3,21 @@ require 'rails_helper'
 describe Concerns::Translatable::Config do
   let(:config) { Concerns::Translatable::Config.new }
 
-  it('default config is blank') { expect(config.fields).to eq [] }
-
   describe '#fields' do
-    before(:each) { config.add(:foo) }
-
-    it(:adds) { expect(config.fields).to eq [:foo] }
-
-    it 'adding twice overwrites the type' do
-      config.add(:foo, type: :text)
-      expect(config.type(:foo)).to eq :text
+    it :default do
+      expect(config.fields).to eq []
     end
   end
 
-  describe '#type' do
-    before(:each) do
-      config.add(:foo, type: :string)
-      config.add(:bar, type: :text)
+  describe '#add' do
+    it 'adds field' do
+      config.add(:foo)
+      expect(config.fields).to eq [:foo]
     end
 
-    it :string do
-      expect(config.type(:foo)).to eq :string
-    end
-
-    it :text do
-      expect(config.type(:bar)).to eq :text
-    end
-
-    it :exception do
-      expect { config.type(:baz) }.to raise_exception
+    it 'adds only once' do
+      2.times { config.add(:foo) }
+      expect(config.fields).to eq [:foo]
     end
   end
 
@@ -45,6 +31,6 @@ describe Concerns::Translatable::Config do
   end
 
   it '#respond_to?' do
-    expect(config).to respond_to(:add, :fields, :allowed?, :type)
+    expect(config).to respond_to(:add, :fields, :allowed?)
   end
 end

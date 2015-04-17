@@ -1,34 +1,18 @@
 module Concerns
   module Translatable
-    # A hash is used to hold all the fields. This looks something like this:
-    # {
-    #   title: {
-    #     type: :string
-    #   },
-    #   content: {
-    #     type: :text
-    #   }
-    # }
     class Config
+      attr_reader :fields
+
       def initialize
-        @fields = {}
+        @fields = []
       end
 
-      def add(field, type: :string)
-        @fields[field.to_sym] = { type: type.to_sym }
+      def add(field)
+        @fields << field.to_sym unless @fields.include?(field.to_sym)
       end
 
       def allowed?(field)
-        @fields.key?(field.to_sym)
-      end
-
-      def fields
-        @fields.keys
-      end
-
-      def type(field)
-        raise "No such field (#{field})" unless allowed?(field)
-        @fields[field.to_sym][:type]
+        @fields.include?(field.to_sym)
       end
     end
   end

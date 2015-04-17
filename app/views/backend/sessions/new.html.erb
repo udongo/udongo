@@ -1,5 +1,5 @@
 <div class="login-form row">
-  <div class="columns small-centered small-10 medium-5 large-3">
+  <div class="columns small-centered small-10 medium-5 large-4">
     <% if flash[:alert] %>
       <div class="alert-box alert radius" data-alert>
         <%= flash[:alert] %>
@@ -8,9 +8,17 @@
     <% end %>
 
     <%= simple_form_for :session, url: backend_sessions_path do |f| %>
-      <%= f.input :email, placeholder: t('b.email'), label: false %>
-      <%= f.input :password, as: :password, placeholder: t('b.password'), label: false %>
-      <button type="submit"><%= t 'b.login' %></button>
+      <fieldset>
+        <legend><%= t 'b.login' %></legend>
+        <%= f.input :email, placeholder: t('b.email'), label: false %>
+        <%= f.input :password, as: :password, placeholder: t('b.password'), label: false %>
+        <%= f.button :submit, t('b.login'), class: 'small' %>
+        <p class="right">
+          <small>
+            <%= link_to t('b.msg.forgot_password'), '#' %>
+          </small>
+        </p>
+      </fieldset>
     <% end %>
   </div>
 </div>

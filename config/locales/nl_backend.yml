@@ -6,4 +6,5 @@ nl:
 
     msg:
       confirm: Ben je zeker?
+      forgot_password: Wachtwoord vergeten?
       incorrect_login: Ongeldige login gegevens.

@@ -3,9 +3,9 @@ class Backend::SessionsController < BackendController
   layout 'backend/login'
 
   def create
-    admin = ::Admin.find_by(email: params[:email])
+    admin = ::Admin.find_by(email: params[:session][:email])
 
-    if admin && admin.authenticate(params[:password])
+    if admin && admin.authenticate(params[:session][:password])
       session[:admin_id] = admin.id
 
       redirect_to session[:backend_redirect] ? session[:backend_redirect] : backend_path

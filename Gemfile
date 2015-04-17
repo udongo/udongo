@@ -15,7 +15,6 @@ gemspec
 gem 'marked-rails'
 
 group :test do
-  gem 'thor'
   gem 'guard-rspec'
   gem 'launchy'
   gem 'database_cleaner'

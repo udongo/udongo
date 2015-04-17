@@ -1,0 +1,19 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Udongo', '#' %></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="has-dropdown">
+        <%= link_to t('b.msg.logged_in_as') % current_admin.full_name, '#' %>
+        <ul class="dropdown">
+          <li><%= link_to icon_and_label(:power, 'b.logout'), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</nav>
+

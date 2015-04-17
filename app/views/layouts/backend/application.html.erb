@@ -12,11 +12,7 @@
 </head>
 
 <body>
-  <div>
-    Ingelogd als <%= current_admin.full_name %><br>
-    <%= link_to 'Uitloggen', backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %>
-  </div>
-  <hr>
+  <%= render 'backend/navigation' %>
 
   <%= yield %>
 </body>

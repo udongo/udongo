@@ -4,12 +4,14 @@ PATH
     udongo (0.0.1)
       bcrypt (~> 3.1.7)
       compass-rails
+      country_select
       foundation-rails
       jquery-rails
       jquery-ui-rails
       mysql2
       rails (~> 4.2.1)
       sass-rails (~> 4.0.3)
+      simple_form
 
 GEM
   remote: https://rubygems.org/
@@ -233,7 +235,6 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  country_select
   database_cleaner
   factory_girl_rails
   guard-rspec
@@ -242,9 +243,7 @@ DEPENDENCIES
   rakismet
   rb-fsevent
   rspec-rails
-  simple_form
   spring
   spring-commands-rspec
   sqlite3
-  thor
   udongo!

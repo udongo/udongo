@@ -7,6 +7,12 @@
 
   <section class="top-bar-section">
     <ul class="right">
+      <li class="has-form">
+        <form>
+          <input type="text" placeholder="<%= t 'b.search' %>" class="radius">
+        </form>
+      </li>
+      <li class="divider"></li>
       <li class="has-dropdown">
         <%= link_to t('b.msg.logged_in_as') % current_admin.full_name, '#' %>
         <ul class="dropdown">

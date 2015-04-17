@@ -8,16 +8,13 @@ module Concerns
     end
 
     module ClassMethods
-      def translatable_field(name, *args)
+      def translatable_field(name)
         delegate name, to: :translation
-        translation_config.add(name, *args)
+        translation_config.add(name)
       end
 
       def translatable_fields(*args)
-        args.each do |arg|
-          delegate arg, to: :translation
-          translation_config.add(arg)
-        end
+        args.each { |name| translatable_field(name) }
       end
 
       def translation_config

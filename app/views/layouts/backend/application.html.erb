@@ -12,9 +12,32 @@
 </head>
 
 <body>
-  <%= render 'backend/navigation' %>
 
-  <%= yield %>
+  <section class="content">
+    <div class="row">
+      <div class="large-12 columns">
+        <%= render 'backend/navigation' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-3 columns">
+        <div class="panel radius">
+          <ul class="side-nav" role="navigation" title="Link List">
+            <li role="menuitem"><a href="#">Link 1</a></li>
+            <li role="menuitem"><a href="#">Link 2</a></li>
+            <li role="menuitem"><a href="#">Link 3</a></li>
+            <li role="menuitem"><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="large-9 columns">
+        <div class="panel radius">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <%= javascript_include_tag 'backend/application' %>
 </body>
 </html>

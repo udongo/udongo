@@ -1,7 +1,7 @@
 class CreateTaggedItems < ActiveRecord::Migration
   def change
     create_table :tagged_items do |t|
-      t.references :tag, index: true, foreign_key: true
+      t.references :tag, index: true
       t.integer :taggable_id
       t.string :taggable_type
 

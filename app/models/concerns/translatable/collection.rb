@@ -8,10 +8,6 @@ module Concerns
         @translations = {}
       end
 
-      def save
-        @translations.map { |field,object| object.save }
-      end
-
       def method_missing(method_sym, *arguments, &block)
         ascii_name = method_sym.to_s.gsub('=', '').to_sym
 
@@ -34,6 +30,10 @@ module Concerns
       def write(field, value)
         init_field(field.to_sym)
         @translations[field.to_sym].value = value
+      end
+
+      def save
+        @translations.map { |field,object| object.save }
       end
 
       private

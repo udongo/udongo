@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-# TODO Davy refactor tests so it works as a shared example
-# (see: spec/support/storable)
-class TestArticle
+class TestCollection
   def id
     1
   end
@@ -18,11 +16,11 @@ describe Concerns::Translatable::Collection do
     config.add(:description)
 
     @collection = model.new(
-      TestArticle.new, config, :nl
+      TestCollection.new, config, :nl
     )
   end
 
-  describe 'read fields' do
+  describe '#read' do
     it 'cannot read when not in config' do
       expect { @collection.foo_bar_baz }.to raise_error(NoMethodError)
     end
@@ -33,7 +31,7 @@ describe Concerns::Translatable::Collection do
 
     it 'reads if translation exists' do
       Translation.create!(
-        translatable_type: 'TestArticle',
+        translatable_type: 'TestCollection',
         translatable_id: 1,
         locale: :nl,
         name: 'title',
@@ -44,7 +42,7 @@ describe Concerns::Translatable::Collection do
     end
   end
 
-  describe 'assign fields' do
+  describe '#write' do
     it 'cannot write fields in the config' do
       expect { @collection.foo_bar == 'baz' }.to raise_error(NoMethodError)
     end
@@ -56,7 +54,7 @@ describe Concerns::Translatable::Collection do
 
     it 'writes if translation exists' do
       Translation.create!(
-        translatable_type: 'TestArticle',
+        translatable_type: 'TestCollection',
         translatable_id: 1,
         locale: 'nl',
         name: 'title',
@@ -68,7 +66,7 @@ describe Concerns::Translatable::Collection do
     end
   end
 
-  it :saves do
+  it '#save' do
     @collection.title = 'foo'
     @collection.description = 'bar'
     @collection.save
@@ -77,7 +75,7 @@ describe Concerns::Translatable::Collection do
     config.add(:title)
     config.add(:description)
 
-    new_collection = Concerns::Translatable::Collection.new(TestArticle.new, config, :nl)
+    new_collection = Concerns::Translatable::Collection.new(TestCollection.new, config, :nl)
     expect(new_collection.title).to eq 'foo'
     expect(new_collection.description).to eq 'bar'
   end

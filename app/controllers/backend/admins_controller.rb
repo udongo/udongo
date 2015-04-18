@@ -34,6 +34,8 @@ class Backend::AdminsController < BackendController
   end
 
   def destroy
+    @admin.destroy
+    redirect_to backend_admins_path, notice: t('b.msg.admins.deleted')
   end
 
   private

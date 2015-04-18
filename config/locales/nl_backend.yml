@@ -2,8 +2,11 @@ nl:
   b:
     email: E-mail
     login: Inloggen
+    logout: Uitloggen
     password: Wachtwoord
+    search: Zoeken
 
     msg:
       confirm: Ben je zeker?
+      forgot_password: Wachtwoord vergeten?
       incorrect_login: Ongeldige login gegevens.

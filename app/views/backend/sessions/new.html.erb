@@ -1,17 +1,24 @@
-<% if flash[:alert] %>
-  <p><%= flash[:alert] %></p>
-<% end %>
+<div class="login-form row">
+  <div class="columns small-centered small-10 medium-5 large-4">
+    <% if flash[:alert] %>
+      <div class="alert-box alert radius" data-alert>
+        <%= flash[:alert] %>
+        <%= link_to '&times;'.html_safe, '#', class: 'close' %>
+      </div>
+    <% end %>
 
-<%= simple_form_for :session, url: backend_sessions_path do |f| %>
-  <div>
-    <%= f.input :email, placeholder: t('b.email'), label: false %>
-  </div>
+    <%= simple_form_for :session, url: backend_sessions_path do |f| %>
+      <fieldset>
+        <legend><%= t 'b.login' %></legend>
+        <%= f.input :email, placeholder: t('b.email'), label: false %>
+        <%= f.input :password, as: :password, placeholder: t('b.password'), label: false %>
+        <%= f.button :submit, t('b.login'), class: 'small' %>
 
-  <div>
-    <%= f.input :password, as: :password, placeholder: t('b.password'), label: false %>
+        <p class="right">
+          <small><%= link_to t('b.msg.forgot_password'), '#' %></small>
+        </p>
+      </fieldset>
+    <% end %>
   </div>
+</div>
 
-  <div>
-    <button type="submit"><%= t 'b.login' %></button>
-  </div>
-<% end %>

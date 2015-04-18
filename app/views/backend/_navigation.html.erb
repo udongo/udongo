@@ -1,0 +1,26 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Udongo', '#' %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="has-form">
+        <form>
+          <input type="text" placeholder="<%= t 'b.search' %>" class="radius">
+        </form>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <%= link_to current_admin.full_name, '#' %>
+        <ul class="dropdown">
+          <li><%= link_to icon(:power, t('b.logout')), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</nav>
+

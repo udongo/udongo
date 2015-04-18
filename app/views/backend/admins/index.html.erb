@@ -1,0 +1,27 @@
+<p>
+  <%= link_to icon(:plus, t('b.add')), new_backend_admin_path, class: 'button small' %>
+</p>
+
+<% if @admins.any? %>
+  <table>
+    <tr>
+      <th><%= t 'b.name' %></th>
+      <th><%= t 'b.email' %></th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @admins.each do |a| %>
+      <tr>
+        <td><%= a.full_name %></td>
+        <td><%= mail_to a.email %></td>
+        <td>
+          <%= link_to icon(:pencil), edit_backend_admin_path(a) %>
+          <%= link_to icon(:trash), backend_admin_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

@@ -17,7 +17,7 @@
       <li class="has-dropdown">
         <%= link_to current_admin.full_name, '#' %>
         <ul class="dropdown">
-          <li><%= link_to icon_and_label(:power, 'b.logout'), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
+          <li><%= link_to icon(:power, t('b.logout')), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
         </ul>
       </li>
     </ul>

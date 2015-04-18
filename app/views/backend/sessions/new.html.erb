@@ -13,10 +13,9 @@
         <%= f.input :email, placeholder: t('b.email'), label: false %>
         <%= f.input :password, as: :password, placeholder: t('b.password'), label: false %>
         <%= f.button :submit, t('b.login'), class: 'small' %>
+
         <p class="right">
-          <small>
-            <%= link_to t('b.msg.forgot_password'), '#' %>
-          </small>
+          <small><%= link_to t('b.msg.forgot_password'), '#' %></small>
         </p>
       </fieldset>
     <% end %>

@@ -13,7 +13,9 @@ nl:
 
     msg:
       admins:
+        account_details: Accountgegevens
         added: De admin werd toegevoegd.
+        personal_details: Persoonlijke gegevens
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
       forgot_password: Wachtwoord vergeten?

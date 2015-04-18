@@ -1,4 +1,6 @@
 class Backend::AdminsController < BackendController
+  before_action :find_admin, only: [:edit, :update, :destroy]
+
   def index
     @admins = ::Admin.all
   end
@@ -18,15 +20,27 @@ class Backend::AdminsController < BackendController
   end
 
   def edit
+    @admin = ::Admin.find params[:id]
   end
 
   def update
+    @admin = ::Admin.find params[:id]
+
+    if @admin.update_attributes allowed_params
+      redirect_to backend_admins_path, notice: t('b.msg.changes_saved')
+    else
+      render :edit
+    end
   end
 
   def destroy
   end
 
   private
+
+  def find_admin
+    @admin = ::Admin.find params[:id]
+  end
 
   def allowed_params
     params[:admin].permit(

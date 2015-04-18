@@ -1,0 +1,27 @@
+<%= simple_form_for [:backend, @admin] do |f| %>
+  <div class="row">
+    <div class="large-6 columns">
+      <fieldset>
+        <legend><%= t 'b.msg.admins.personal_details' %></legend>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :email, required: true %>
+      </fieldset>
+    </div>
+
+    <div class="large-6 columns">
+      <fieldset>
+        <legend><%= t 'b.msg.admins.account_details' %></legend>
+        <%= f.input :password, required: @admin.new_record? %>
+        <%= f.input :password_confirmation, required: @admin.new_record? %>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit t('b.save'), class: 'button' %>
+      <%= link_to t('b.cancel'), backend_admins_path %>
+    </div>
+  </div>
+<% end %>

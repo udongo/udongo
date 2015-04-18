@@ -25,12 +25,14 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-ui-rails'
 
   # Use SCSS for stylesheets
-  s.add_dependency 'sass-rails', '~> 4.0.3'
+  s.add_dependency 'sass-rails', '~> 5.0.3'
   s.add_dependency 'compass-rails'
-  s.add_dependency 'foundation-rails'
+  s.add_dependency 'foundation-rails', '~> 5.4.5'
 
   # Other
   s.add_dependency 'bcrypt', '~> 3.1.7'
+  s.add_dependency 'simple_form'
+  s.add_dependency 'country_select'
 
   # Development dependencies
   s.add_development_dependency 'sqlite3'

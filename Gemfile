@@ -34,5 +34,3 @@ group :development do
 end
 
 gem 'rakismet'
-gem 'simple_form'
-gem 'country_select'

@@ -1,12 +1,21 @@
 nl:
   b:
+    add: Toevoegen
+    admins: Beheerders
+    cancel: Annuleren
     email: E-mail
     login: Inloggen
     logout: Uitloggen
+    name: Naam
     password: Wachtwoord
+    save: Opslaan
     search: Zoeken
 
     msg:
+      admins:
+        added: De admin werd toegevoegd.
+      changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
       forgot_password: Wachtwoord vergeten?
       incorrect_login: Ongeldige login gegevens.
+      no_items: Er zijn geen items.

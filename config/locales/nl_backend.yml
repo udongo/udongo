@@ -10,4 +10,3 @@ nl:
       confirm: Ben je zeker?
       forgot_password: Wachtwoord vergeten?
       incorrect_login: Ongeldige login gegevens.
-      logged_in_as: Ingelogd als %s

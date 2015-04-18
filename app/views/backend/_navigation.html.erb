@@ -15,7 +15,7 @@
       </li>
       <li class="divider"></li>
       <li class="has-dropdown">
-        <%= link_to t('b.msg.logged_in_as') % current_admin.full_name, '#' %>
+        <%= link_to current_admin.full_name, '#' %>
         <ul class="dropdown">
           <li><%= link_to icon_and_label(:power, 'b.logout'), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
         </ul>

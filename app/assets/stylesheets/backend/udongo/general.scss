@@ -1,5 +1,9 @@
 fieldset {
   background-color: #f9f9f9;
+
+  &.radius {
+    border-radius:  3px;
+  }
 }
 
 .alert-box.alert {

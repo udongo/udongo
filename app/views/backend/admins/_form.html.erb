@@ -1,7 +1,7 @@
 <%= simple_form_for [:backend, @admin] do |f| %>
   <div class="row">
     <div class="large-6 columns">
-      <fieldset>
+      <fieldset class="radius">
         <legend><%= t 'b.msg.admins.personal_details' %></legend>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="large-6 columns">
-      <fieldset>
+      <fieldset class="radius">
         <legend><%= t 'b.msg.admins.account_details' %></legend>
         <%= f.input :password, required: @admin.new_record? %>
         <%= f.input :password_confirmation, required: @admin.new_record? %>

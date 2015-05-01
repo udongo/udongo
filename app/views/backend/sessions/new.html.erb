@@ -8,7 +8,7 @@
     <% end %>
 
     <%= simple_form_for :session, url: backend_sessions_path do |f| %>
-      <fieldset>
+      <fieldset class="radius">
         <legend><%= t 'b.login' %></legend>
         <%= f.input :email, placeholder: t('b.email'), label: false %>
         <%= f.input :password, as: :password, placeholder: t('b.password'), label: false %>

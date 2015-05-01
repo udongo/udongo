@@ -1,5 +1,6 @@
 require 'udongo/engine'
 require 'udongo/config'
+require 'udongo/breadcrumb'
 require 'jquery-rails'
 require 'jquery-ui-rails'
 require 'foundation-rails'

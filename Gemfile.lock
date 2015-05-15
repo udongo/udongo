@@ -9,9 +9,11 @@ PATH
       foundation-rails (~> 5.5.1)
       jquery-rails
       jquery-ui-rails
+      marked-rails
       mini_magick
       mysql2
       rails (~> 4.2.1)
+      rakismet
       rmagick
       sass-rails (~> 5.0.3)
       simple_form
@@ -245,8 +247,6 @@ DEPENDENCIES
   factory_girl_rails
   guard-rspec
   launchy
-  marked-rails
-  rakismet
   rb-fsevent
   rspec-rails
   spring

@@ -10,10 +10,6 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# Javascript related
-# TODO is this gem needed?
-gem 'marked-rails'
-
 group :test do
   gem 'guard-rspec'
   gem 'launchy'
@@ -32,5 +28,3 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
-
-gem 'rakismet'

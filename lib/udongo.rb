@@ -7,6 +7,7 @@ require 'foundation-rails'
 require 'simple_form'
 require 'acts_as_list'
 require 'carrierwave'
+require 'reform'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

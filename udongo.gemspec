@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   # Other
   s.add_dependency 'bcrypt', '~> 3.1.7'
   s.add_dependency 'simple_form'
+  s.add_dependency 'acts_as_list'
   s.add_dependency 'country_select'
 
   # Development dependencies

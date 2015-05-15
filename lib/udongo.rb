@@ -5,6 +5,7 @@ require 'jquery-rails'
 require 'jquery-ui-rails'
 require 'foundation-rails'
 require 'simple_form'
+require 'acts_as_list'
 
 module Udongo
   class << self

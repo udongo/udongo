@@ -6,6 +6,7 @@ require 'jquery-ui-rails'
 require 'foundation-rails'
 require 'simple_form'
 require 'acts_as_list'
+require 'carrierwave'
 
 module Udongo
   class << self

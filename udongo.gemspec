@@ -33,6 +33,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form'
   s.add_dependency 'acts_as_list'
   s.add_dependency 'country_select'
+  s.add_dependency 'rmagick'
+  s.add_dependency 'mini_magick'
+  s.add_dependency 'carrierwave'
 
   # Development dependencies
   s.add_development_dependency 'sqlite3'

@@ -9,6 +9,8 @@ require 'acts_as_list'
 require 'carrierwave'
 
 module Udongo
+  PATH = File.expand_path('../../', __FILE__)
+
   class << self
     attr_writer :config
   end

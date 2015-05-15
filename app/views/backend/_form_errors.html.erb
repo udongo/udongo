@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
   <div class="alert-box alert radius" data-alert>
     <% if object.errors.many? %>
-      <ul class="form-errors" style="margin-bottom: 0">
+      <ul>
         <% object.errors.full_messages.each do |error| %>
           <li><%= error %></li>
         <% end %>

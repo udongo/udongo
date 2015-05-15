@@ -1,0 +1,15 @@
+<% if object.errors.any? %>
+  <div class="alert-box alert radius" data-alert>
+    <% if object.errors.many? %>
+      <ul class="form-errors" style="margin-bottom: 0">
+        <% object.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= object.errors.full_messages.first %>
+    <% end %>
+
+    <%= link_to '&times;'.html_safe, '#', class: 'close' %>
+  </div>
+<% end %>

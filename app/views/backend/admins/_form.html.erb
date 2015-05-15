@@ -12,6 +12,7 @@
     <div class="large-6 columns">
       <fieldset class="radius">
         <legend><%= t 'b.msg.admins.account_details' %></legend>
+        <!-- TODO cleanup -->
         <%= f.input :password, required: @admin.new_record? %>
         <%= f.input :password_confirmation, required: @admin.new_record? %>
       </fieldset>

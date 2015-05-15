@@ -1,5 +1,6 @@
 class Backend::AdminsController < BackendController
   before_action :find_admin, only: [:edit, :update, :destroy]
+  before_action -> { breadcrumb.add t('b.admins'), backend_admins_path }
 
   def index
     @admins = ::Admin.all

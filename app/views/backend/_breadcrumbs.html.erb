@@ -1,0 +1,11 @@
+<% if breadcrumb.any? %>
+  <ul class="breadcrumbs">
+
+    <% breadcrumb.each do |item| %>
+      <% klass = (item == breadcrumb.all.last) ? 'current' : '' %>
+      <li class="<%= klass %>">
+        <%= link_to item[:name].to_s.html_safe, item[:link] %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -19,4 +19,15 @@ class BackendController < ActionController::Base
       redirect_to new_backend_session_path
     end
   end
+
+  def breadcrumb
+    unless @breadcrumb
+      @breadcrumb = Udongo::Breadcrumb.new
+      # TODO don't use the <i> tag. Presenter?
+      @breadcrumb.add '<i class="fi-home"></i>'.html_safe, backend_path
+    end
+
+    @breadcrumb
+  end
+  helper_method :breadcrumb
 end

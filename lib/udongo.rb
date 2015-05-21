@@ -11,6 +11,8 @@ require 'reform'
 require 'rakismet'
 
 module Udongo
+  PATH = File.expand_path('../../', __FILE__)
+
   class << self
     attr_writer :config
   end

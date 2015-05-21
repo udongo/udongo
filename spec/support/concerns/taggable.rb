@@ -9,7 +9,6 @@ shared_examples_for :taggable do
     tag = create(:tag, locale: :nl, name: 'foo', slug: 'foo')
     instance.tagged_items.create!(tag: tag)
     expect(instance.tags).to eq [tag]
-    pending
   end
 
   it '#tags_string' do
@@ -18,7 +17,6 @@ shared_examples_for :taggable do
     instance.tagged_items.create!(tag: tag1)
     instance.tagged_items.create!(tag: tag2)
     expect(instance.tags_string).to eq 'foo,bar'
-    pending
   end
 
   describe '#related' do
@@ -30,7 +28,6 @@ shared_examples_for :taggable do
       instance.tagged_items.create!(tag: tag1)
       instance2.tagged_items.create!(tag: tag2)
       expect(instance.related).to eq []
-      pending
     end
 
     it :results do
@@ -40,7 +37,6 @@ shared_examples_for :taggable do
       instance2.tagged_items.create!(tag: tag2)
       expect(instance.related).to eq [instance2]
       expect(instance2.related).to eq [instance]
-      pending
     end
   end
 

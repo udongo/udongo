@@ -5,4 +5,3 @@ FactoryGirl.define do
     sequence(:slug) { |n| "tag-#{n}" }
   end
 end
-

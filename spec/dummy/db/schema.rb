@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417113400) do
+ActiveRecord::Schema.define(version: 20150515113332) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -55,6 +55,45 @@ ActiveRecord::Schema.define(version: 20150417113400) do
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+
+  create_table "content_columns", force: :cascade do |t|
+    t.integer  "row_id",       limit: 4
+    t.integer  "width",        limit: 4
+    t.integer  "position",     limit: 4
+    t.string   "content_type", limit: 255
+    t.integer  "content_id",   limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "content_columns", ["content_id"], name: "idx_content_columns_on_content_id", using: :btree
+  add_index "content_columns", ["content_type"], name: "idx_content_columns_on_content_type", using: :btree
+
+  create_table "content_images", force: :cascade do |t|
+    t.string   "file",       limit: 255
+    t.text     "caption",    limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "url",        limit: 65535
+  end
+
+  create_table "content_rows", force: :cascade do |t|
+    t.string   "locale",       limit: 255
+    t.string   "rowable_type", limit: 255
+    t.integer  "rowable_id",   limit: 4
+    t.integer  "position",     limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "content_rows", ["rowable_id"], name: "idx_content_rows_on_rowable_id", using: :btree
+  add_index "content_rows", ["rowable_type"], name: "idx_content_rows_on_rowable_type", using: :btree
+
+  create_table "content_texts", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "logs", force: :cascade do |t|
     t.string   "category",      limit: 255

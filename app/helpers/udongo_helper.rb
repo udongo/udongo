@@ -3,7 +3,7 @@ module UdongoHelper
   def javascript(file, order = :late)
     target = :javascripts
     target = "javascripts_#{order}".to_sym if [:early, :head].include?(order.to_sym)
-    content_for(target) { javascript_include_tag(file) } unless content_for?(target)
+    content_for(target) { javascript_include_tag(file) }
   end
 
   def present(object, klass = nil)

@@ -14,6 +14,9 @@ module Udongo
       Dir.glob("#{Udongo::PATH}/vendor/assets/javascripts/**/*.js").each do |f|
         app.config.assets.precompile += [f.split('javascripts/').last]
       end
+      Dir.glob("#{Udongo::PATH}/vendor/assets/stylesheets/**/*.{css,scss}").each do |f|
+        app.config.assets.precompile += [f.split('stylesheets/').last]
+      end
     end
   end
 end

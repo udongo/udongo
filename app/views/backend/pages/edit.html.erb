@@ -1,0 +1,49 @@
+<% present @model do |p| %>
+  <% breadcrumb.add @model.description, edit_backend_page_path(@model) %>
+  <% breadcrumb.add t('b.edit'), edit_backend_page_path(@model) %>
+  <%= render 'backend/breadcrumbs' %>
+
+  <%= render 'backend/form_errors', object: @model %>
+
+  <%= simple_form_for([:backend, @model]) do |f| %>
+    <ul class="nav nav-tabs with-margin">
+      <li class="active">
+        <%= link_to t('b.general'), '#' %>
+      </li>
+      <% Udongo.config.locales.each do |locale| %>
+        <li><%= link_to locale.upcase, edit_translation_backend_page_path(@model, locale) %></li>
+      <% end %>
+    </ul>
+
+    <div class="row tab-content">
+      <div class="tab-pane active" id="general">
+        <div class="col-lg-8">
+          <div class="panel panel-default">
+            <div class="panel-heading"><%= t 'b.headings.page.info' %></div>
+            <div class="panel-body centered">
+              <%= f.text_field :description %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="panel panel-default">
+            <div class="panel-heading"><%= t 'b.headings.page.parent' %></div>
+            <div class="panel-body centered">
+              <%= f.select :parent_id, p.options_for_parents(selected: @model.parent_id, disabled: @model.id), include_blank: true, hide_label: true %>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading"><%= t 'b.headings.status' %></div>
+            <div class="panel-body">
+              <%= f.check_box :visible %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render 'backend/form_actions', cancel_url: backend_pages_path %>
+  <% end %>
+<% end %>

@@ -1,0 +1,20 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= t 'b.page' %></th>
+      <th class="icons">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% list.items.each do |i| %>
+      <tr data-update-position="<%= update_position_backend_navigation_item_path(i) %>">
+        <td><%= link_to i.page.translation.title, edit_backend_page_path(i.page) %></td>
+        <td>
+          <ul class="list-unstyled list-inline">
+            <li><%= link_to_delete(i) %></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

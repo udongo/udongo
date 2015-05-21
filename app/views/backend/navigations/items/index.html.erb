@@ -1,0 +1,23 @@
+<ol class="breadcrumb">
+  <li><%= link_to bs_icon(:home), backend_path %></li>
+  <li class="active"><%= t 'b.navigations' %></li>
+</ol>
+
+<% @lists.each do |list| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong><%= list.description %></strong>
+        <div class="pull-right">
+          <%= link_to t('b.nav.navigations.items.add'), new_backend_navigation_item_path(list_id: list.id), class: 'btn-sm btn-success' %>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <% if list.items.any? %>
+          <%= render 'backend/navigations/items/table', list: list %>
+        <% else %>
+          <p><%= t 'b.msg.no_results' %></p>
+        <% end %>
+      </div>
+    </div>
+<% end %>

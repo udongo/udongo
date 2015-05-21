@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ['Davy Hellemans', 'Dave Lens']
   s.email       = %w(udongo@bauffman.be udongo@davelens.be)
   s.homepage    = 'http://udongo.be'
-  s.summary     = 'Modular CMS'
-  s.description = 'Module CMS'
+  s.summary     = 'Blimp CMS'
+  s.description = 'Blimp CMS'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']

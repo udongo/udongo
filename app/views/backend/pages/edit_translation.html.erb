@@ -1,40 +1,38 @@
-<ol class="breadcrumb">
-  <li><%= link_to bs_icon(:home), backend_path %></li>
-  <li><%= link_to t('b.pages'), backend_pages_path %></li>
-  <li><%= @model.description %></li>
-</ol>
-
+<% breadcrumb.add @model.description, edit_backend_page_path(@model) %>
+<% breadcrumb.add t('b.edit'), edit_backend_page_path(@model) %>
+<%= render 'backend/breadcrumbs' %>
 <%= render 'backend/form_errors', object: @translation %>
 
-<ul class="nav nav-tabs with-margin">
-  <li>
-    <%= link_to t('b.general'), edit_backend_page_path %>
-  </li>
-  <% locales.each do |locale| %>
-    <li class="<%= 'active' if params[:translation_locale] == locale %>">
-      <%= link_to locale.upcase, edit_translation_backend_page_path(@translation, locale) %>
+<%= simple_form_for([:backend, @translation], url: edit_translation_backend_page_path) do |f| %>
+  <ul class="tabs">
+    <li class="tab-title">
+      <%= link_to t('b.general'), edit_backend_page_path %>
     </li>
-  <% end %>
-</ul>
+    <% Udongo.config.locales.each do |locale| %>
+      <li class="tab-title <%= 'active' if params[:translation_locale] == locale %>">
+        <%= link_to locale.upcase, edit_translation_backend_page_path(@translation, locale) %>
+      </li>
+    <% end %>
+  </ul>
 
-<%= bootstrap_form_for([:backend, @translation], url: edit_translation_backend_page_path, layout: :horizontal) do |f| %>
-  <div class="row tab-content">
-    <div class="tab-pane active" id="general">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><%= t 'b.headings.content' %></div>
-          <div class="panel-body centered">
-            <%= f.text_field :title %>
-            <%= f.text_field :subtitle %>
-            <%= f.text_area :content, class: 'form-control markdown', rows: 10 %>
-            <%= render 'backend/markdown_preview', form: f, name: :content %>
-          </div>
-        </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <fieldset class="radius">
+        <legend><%= t 'b.headings.content' %></legend>
 
-        <%= render 'backend/tags', model: @model %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
 
-        <%= render 'backend/seo_form', f: f %>
-      </div>
+        <%= f.label :subtitle %>
+        <%= f.text_field :subtitle %>
+
+        <%= f.label :content %>
+        <%= f.text_area :content, class: 'form-control markdown', rows: 10 %>
+        <%# render 'backend/markdown_preview', form: f, name: :content %>
+
+        <%# render 'backend/tags', model: @model %>
+        <%# render 'backend/seo_form', f: f %>
+      </fieldset>
     </div>
   </div>
 

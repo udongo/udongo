@@ -4,18 +4,17 @@
 <%= stylesheet 'jstree/default/style.min' %>
 <%= render 'backend/breadcrumbs' %>
 
-<div class="panel panel-default">
+<div class="panel">
   <div class="panel-heading">
     <strong><%= t 'b.pages' %></strong>
-    <div class="pull-right">
-      <%= link_to t('b.add'), new_backend_page_path %>
+    <div class="right">
+      <%= link_to t('b.add'), new_backend_page_path, class: 'button small' %>
     </div>
   </div>
+
   <% if @pages.any? %>
     <div id="pages-tree" data-source="<%= backend_pages_path(format: :json) %>"></div>
   <% else %>
-    <div class="panel-body">
-      <p><%= t 'b.msg.no_results' %></p>
-    </div>
+    <p><%= t 'b.msg.no_results' %></p>
   <% end %>
 </div>

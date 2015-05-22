@@ -1,0 +1,29 @@
+<%= javascript 'backend/seo' %>
+
+<% slug_trigger_id ||= "#{f.object_name}_title" %>
+<% slugify_path ||= backend_seo_slugify_path %>
+<% model ||= @model if instance_variable_defined?(:@model) %>
+<% full_host = "#{seo_base_path(request, f, params[:translation_locale])}/" %>
+
+<fieldset class="radius">
+  <legend><%= t 'b.headings.seo.info' %></legend>
+  <%= f.label :seo_slug %>
+  <%= f.text_field :seo_slug, data: { slugify_path: backend_seo_slugify_path, trigger: slug_trigger_id, host_url: full_host } %>
+  <p class="help host"><%= full_host %></p>
+
+  <%= f.label :seo_title %>
+  <%= f.text_field :seo_title %>
+  <p class="help"><%= t('b.help.seo.title') %></p>
+
+  <%= f.label :seo_description %>
+  <%= f.text_area :seo_description %>
+  <p class="help"><%= t('b.help.seo.description') %></p>
+
+  <%= f.label :seo_keywords %>
+  <%= f.text_field :seo_keywords %>
+  <p class="help"><%= t('b.help.seo.keywords') %></p>
+
+  <%= f.label :seo_custom %>
+  <%= f.text_area :seo_custom %>
+</fieldset>
+

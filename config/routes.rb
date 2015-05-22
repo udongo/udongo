@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'dashboard#show'
+    post 'seo/slugify' => 'seo#slugify'
+
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins, except: [:show]
 

@@ -45,12 +45,12 @@ var tree = {
   types: function() {
     return {
       default: {
-        icon: 'glyphicon glyphicon-folder-close',
+        icon: 'fi-folder',
         children: true,
         valid_children: ['default', 'file']
       },
       file: {
-        icon: 'glyphicon glyphicon-file',
+        icon: 'fi-page',
         valid_children: ['file']
       }
     };
@@ -72,7 +72,7 @@ var tree = {
         separator_before: false,
         separator_after: false,
         label: 'Verwijderen',
-        icon: 'glyphicon glyphicon-trash',
+        icon: 'fi-trash',
         action: tree.contextmenu_remove_listener,
         _disabled: !node.data.deletable
       }
@@ -121,12 +121,12 @@ var tree = {
       type: 'POST'
     }).done(function(data){
       if(data.moved) {
-        instance.set_icon(moved_node, 'glyphicon glyphicon-ok');
+        instance.set_icon(moved_node, 'fi-check');
         tree.change_icon_color(moved_node, '#66aa66');
 
         setTimeout(function(){
           tree.change_icon_color(moved_node, 'inherit');
-          instance.set_icon(moved_node, 'glyphicon glyphicon-file');
+          instance.set_icon(moved_node, 'fi-page');
         }, 2000);
       }
     });

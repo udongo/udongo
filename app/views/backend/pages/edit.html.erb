@@ -5,16 +5,18 @@
   <%= render 'backend/form_errors', object: @model %>
 
   <%= simple_form_for([:backend, @model]) do |f| %>
-    <ul class="nav nav-tabs with-margin">
-      <li class="active">
+    <ul class="tabs">
+      <li class="tab-title active">
         <%= link_to t('b.general'), '#' %>
       </li>
       <% Udongo.config.locales.each do |locale| %>
-        <li><%= link_to locale.upcase, edit_translation_backend_page_path(@model, locale) %></li>
+        <li class="tab-title"><%= link_to locale.upcase, edit_translation_backend_page_path(@model, locale) %></li>
       <% end %>
     </ul>
 
-    <%= render 'backend/pages/form_fields', f: f, presenter: p %>
+    <div class="tabs-content">
+      <%= render 'backend/pages/form_fields', f: f, presenter: p %>
+    </div>
     <%= render 'backend/form_actions', cancel_url: backend_pages_path %>
   <% end %>
 <% end %>

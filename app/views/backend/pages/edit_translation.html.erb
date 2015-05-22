@@ -30,9 +30,10 @@
         <%= f.text_area :content, class: 'form-control markdown', rows: 10 %>
         <%# render 'backend/markdown_preview', form: f, name: :content %>
 
-        <%# render 'backend/tags', model: @model %>
         <%# render 'backend/seo_form', f: f %>
       </fieldset>
+
+      <%= render 'backend/tags', model: @model %>
     </div>
   </div>
 

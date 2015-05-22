@@ -25,5 +25,9 @@ Rails.application.routes.draw do
         concerns :positionable
       end
     end
+
+    resources :tags, only: [:index, :create] do
+      collection { delete '/', action: :destroy }
+    end
   end
 end

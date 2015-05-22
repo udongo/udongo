@@ -5,6 +5,7 @@ nl:
     cancel: Annuleren
     edit: Bewerken
     email: E-mail
+    general: Algemeen
     login: Inloggen
     logout: Uitloggen
     name: Naam
@@ -39,6 +40,7 @@ nl:
         info: Welke snippet is dit?
 
     msg:
+      added: '%s werd toegevoegd.'
       admins:
         account_details: Accountgegevens
         added: De admin werd toegevoegd.
@@ -46,6 +48,9 @@ nl:
         personal_details: Persoonlijke gegevens
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
+      deleted: '%s werd verwijderd.'
+      edited: '%s werd gewijzigd.'
       forgot_password: Wachtwoord vergeten?
       incorrect_login: Ongeldige login gegevens.
       no_items: Er zijn geen items.
+      saved: '%s werd bewaard.'

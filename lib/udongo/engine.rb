@@ -8,8 +8,8 @@ module Udongo
     end
 
     initializer 'udongo.assets.precompile' do |app|
-      Dir.glob("#{Udongo::PATH}/app/assets/javascripts/backend/*.js").each do |f|
-        app.config.assets.precompile += ["backend/#{f.split('backend/').last}"]
+      Dir.glob("#{Udongo::PATH}/app/assets/javascripts/**/*.js").each do |f|
+        app.config.assets.precompile += [f.split('javascripts/').last]
       end
     end
 

@@ -20,8 +20,12 @@ module Udongo
       Dir.glob("#{Udongo::PATH}/vendor/assets/images/**/*").each do |f|
         app.config.assets.precompile += [f.split('images/').last]
       end
-      Dir.glob("#{Udongo::PATH}/vendor/assets/stylesheets/**/*.{css,scss}").each do |f|
-        app.config.assets.precompile += [f.split('stylesheets/').last]
+      Dir.glob("#{Udongo::PATH}/vendor/assets/stylesheets/**/*").each do |f|
+        filename = f.split('stylesheets/').last.split('.')
+        extension = filename.slice!(-1)
+        filename = filename.join('.')
+        app.config.assets.precompile += ["#{filename}.css"] if extension == 'scss'
+        app.config.assets.precompile += ["#{filename}.scss"] if extension == 'css'
       end
     end
   end

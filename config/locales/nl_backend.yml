@@ -14,6 +14,30 @@ nl:
     save: Opslaan
     search: Zoeken
 
+    headings:
+      content: Inhoud
+      info: Informatie
+      login_data: Logingegevens
+      personal_data: Persoonlijke gegevens
+      status: Status(sen)
+      tags: Tags
+
+      comment:
+        for: 'Reacties voor %s: “%s”'
+
+      note:
+        edit: Nota's bewerken
+
+      page:
+        info: Welke pagina is dit?
+        parent: Onder welke hoofdpagina hoort deze pagina?
+
+      seo:
+        info: SEO
+
+      snippet:
+        info: Welke snippet is dit?
+
     msg:
       admins:
         account_details: Accountgegevens

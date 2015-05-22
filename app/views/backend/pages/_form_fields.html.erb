@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="large-8 columns">
+    <fieldset class="radius">
+      <legend><%= t 'b.headings.content' %></legend>
+      <%= f.label :description %>
+      <%= f.text_field :description, required: true %>
+    </fieldset>
+
+    <fieldset class="radius">
+      <legend><%= t 'b.headings.page.parent' %></legend>
+      <%= f.select :parent_id, presenter.options_for_parents(selected: @model.parent_id), include_blank: true, hide_label: true %>
+    </fieldset>
+  </div>
+
+  <div class="large-4 columns">
+    <fieldset class="radius">
+      <legend><%= t 'b.headings.status' %></legend>
+      <%= f.check_box :visible %>
+      <%= f.label :visible %>
+    </fieldset>
+  </div>
+</div>

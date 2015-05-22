@@ -1,33 +1,10 @@
 <% present @model do |p| %>
   <% breadcrumb.add t('b.add'), new_backend_page_path %>
   <%= render 'backend/breadcrumbs' %>
-
   <%= render 'backend/form_errors', object: @model %>
 
   <%= simple_form_for([:backend, @model]) do |f| %>
-    <div class="row">
-      <div class="large-8 columns">
-        <fieldset class="radius">
-          <legend><%= t 'b.msg.admins.personal_details' %></legend>
-          <%= f.label :description %>
-          <%= f.text_field :description, required: true %>
-        </fieldset>
-      </div>
-
-      <div class="large-4 columns">
-        <fieldset class="radius">
-          <legend><%= t 'b.headings.page.parent' %></legend>
-          <%= f.select :parent_id, p.options_for_parents(selected: @model.parent_id), include_blank: true, hide_label: true %>
-        </fieldset>
-
-        <fieldset class="radius">
-          <legend><%= t 'b.headings.status' %></legend>
-          <%= f.check_box :visible %>
-          <%= f.label :visible %>
-        </fieldset>
-      </div>
-    </div>
-
+    <%= render 'backend/pages/form_fields', f: f, presenter: p %>
     <%= render 'backend/form_actions', cancel_url: backend_pages_path %>
   <% end %>
 <% end %>

@@ -2,10 +2,6 @@ machine:
   ruby:
     version: 2.2.2
 
-database:
-  override:
-    - cp config/database.yml.ci spec/dummy/config/database.yml
-
 dependencies:
   pre:
     - cp spec/dummy/config/secrets.dist.yml spec/dummy/config/secrets.yml

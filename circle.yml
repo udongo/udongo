@@ -4,7 +4,7 @@ machine:
 
 database:
   override:
-    - mv spec/dummy/config/database.dist.yml spec/dummy/config/database.yml
+    - mv circle.database.yml spec/dummy/config/database.yml
 
 dependencies:
   pre:

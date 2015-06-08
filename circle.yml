@@ -2,10 +2,13 @@ machine:
   ruby:
     version: 2.2.2
 
-database:
-  override:
-    - mv circle.database.yml spec/dummy/config/database.yml
+#database:
+#  override:
+#    - mv circle.database.yml spec/dummy/config/database.yml
 
 dependencies:
   pre:
     - cp spec/dummy/config/secrets.dist.yml spec/dummy/config/secrets.yml
+
+general:
+  build_dir: spec/dummy

@@ -5,7 +5,7 @@ machine:
 dependencies:
   pre:
     - cp config/secrets.dist.yml config/secrets.yml
-    - mv circle.database.yml spec/dummy/config/database.yml
+    - mv ../../circle.database.yml config/database.yml
 
 general:
   build_dir: spec/dummy

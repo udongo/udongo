@@ -12,4 +12,4 @@ general:
 
 test:
   override:
-    - cd ../../ && bundle exec rspec --color --format documentation spec/dummy
+    - cd ../../ && rspec --color --format documentation spec/dummy

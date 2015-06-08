@@ -4,7 +4,7 @@ machine:
 
 database:
   override:
-    - mv spec/dummy/config/database.dist.yml spec/dummy/config/database.yml
+    - cp config/database.yml.ci spec/dummy/config/database.yml
 
 dependencies:
   pre:

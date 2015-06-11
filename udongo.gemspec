@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rakismet'
   s.add_dependency 'marked-rails'
   s.add_dependency 'reform'
+  s.add_dependency 'redcarpet', '~> 3.3'
 
   # Development dependencies
   s.add_development_dependency 'sqlite3'

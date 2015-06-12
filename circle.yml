@@ -1,3 +1,7 @@
 machine:
   ruby:
     version: 2.2.2
+
+dependencies:
+  pre:
+    - mv spec/dummy/config/circle.database.yml config/database.yml

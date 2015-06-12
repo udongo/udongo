@@ -30,15 +30,15 @@ Gem::Specification.new do |s|
 
   # Other
   s.add_dependency 'bcrypt', '~> 3.1.7'
-  s.add_dependency 'simple_form'
-  s.add_dependency 'acts_as_list'
-  s.add_dependency 'country_select'
-  s.add_dependency 'rmagick'
-  s.add_dependency 'mini_magick'
-  s.add_dependency 'carrierwave'
-  s.add_dependency 'rakismet'
-  s.add_dependency 'marked-rails'
-  s.add_dependency 'reform'
+  s.add_dependency 'simple_form', '~> 3.1'
+  s.add_dependency 'acts_as_list', '~> 0.7'
+  s.add_dependency 'country_select', '~> 2.2'
+  s.add_dependency 'rmagick', '~> 2.15'
+  s.add_dependency 'mini_magick', '~> 4.2'
+  s.add_dependency 'carrierwave', '~> 0.10'
+  s.add_dependency 'rakismet', '~> 1.5'
+  s.add_dependency 'marked-rails', '~> 0.3'
+  s.add_dependency 'reform', '~> 1.2'
   s.add_dependency 'redcarpet', '~> 3.3'
 
   # Development dependencies

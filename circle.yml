@@ -4,4 +4,4 @@ machine:
 
 dependencies:
   pre:
-    - mv spec/dummy/config/circle.database.yml config/database.yml
+    - mv circle.database.yml config/database.yml

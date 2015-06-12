@@ -1,0 +1,15 @@
+machine:
+  ruby:
+    version: 2.2.2
+
+dependencies:
+  pre:
+    - cp config/secrets.dist.yml config/secrets.yml
+    - mv ../../circle.database.yml config/database.yml
+
+general:
+  build_dir: spec/dummy
+
+test:
+  override:
+    - bundle exec rspec --color --format documentation ../../spec

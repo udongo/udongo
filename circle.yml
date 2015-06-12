@@ -2,7 +2,6 @@ machine:
   ruby:
     version: 2.2.2
 
-#dependencies:
-#  pre:
-#    - cp config/secrets.dist.yml config/secrets.yml
-#    - mv ../../circle.database.yml config/database.yml
+dependencies:
+  pre:
+    - cp circle.database.yml spec/dummy/config/database.yml

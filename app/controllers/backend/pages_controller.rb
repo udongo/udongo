@@ -23,7 +23,7 @@ class Backend::PagesController < BackendController
     @model = Page.new params.require('page').permit(:description, :visible, :parent_id)
 
     if @model.save
-      redirect_to backend_pages_path, notice: translate_notice(:added, :page)
+      redirect_to edit_backend_page_path(@model), notice: translate_notice(:added, :page)
     else
       render :new
     end

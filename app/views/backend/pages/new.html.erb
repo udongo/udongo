@@ -1,10 +1,7 @@
-<% present @model do |p| %>
-  <% breadcrumb.add t('b.add'), new_backend_page_path %>
-  <%= render 'backend/breadcrumbs' %>
-  <%= render 'backend/form_errors', object: @model %>
+<% breadcrumb.add t('b.add'), new_backend_page_path %>
+<%= render 'backend/breadcrumbs' %>
 
-  <%= simple_form_for([:backend, @model]) do |f| %>
-    <%= render 'backend/pages/form_fields', f: f, presenter: p %>
-    <%= render 'backend/form_actions', cancel_url: backend_pages_path %>
-  <% end %>
+<%= simple_form_for [:backend, @model] do |f| %>
+  <%= render 'backend/pages/form_fields', form: f %>
+  <%= render 'backend/form_actions', cancel_url: backend_pages_path %>
 <% end %>

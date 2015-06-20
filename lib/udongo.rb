@@ -9,6 +9,7 @@ require 'acts_as_list'
 require 'carrierwave'
 require 'reform'
 require 'rakismet'
+require 'draper'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

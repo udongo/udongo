@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'marked-rails', '~> 0.3'
   s.add_dependency 'reform', '~> 1.2'
   s.add_dependency 'redcarpet', '~> 3.3'
+  s.add_dependency 'draper', '~> 1.3'
 
   # Development dependencies
   s.add_development_dependency 'sqlite3'

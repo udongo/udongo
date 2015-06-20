@@ -8,8 +8,37 @@ module Udongo
     end
 
     initializer 'udongo.assets.precompile' do |app|
-      Dir.glob("#{Rails.root}/../../app/assets/javascripts/backend/*.js").each do |f|
-        app.config.assets.precompile += ["backend/#{f.split('backend/').last}"]
+      Dir.glob("#{Udongo::PATH}/app/assets/javascripts/**/*.js").each do |f|
+        next if File.directory?(f)
+        app.config.assets.precompile += [f.split('javascripts/').last]
+      end
+    end
+
+    initializer 'vendor.assets.precompile' do |app|
+      Dir.glob("#{Udongo::PATH}/vendor/assets/javascripts/**/*.js").each do |f|
+        next if File.directory?(f)
+        app.config.assets.precompile += [f.split('javascripts/').last]
+      end
+
+      Dir.glob("#{Udongo::PATH}/vendor/assets/images/**/*").each do |f|
+        next if File.directory?(f)
+        app.config.assets.precompile += [f.split('images/').last]
+      end
+
+      #raise Dir.glob("#{Udongo::PATH}/vendor/assets/stylesheets/**/*").inspect
+      Dir.glob("#{Udongo::PATH}/vendor/assets/stylesheets/**/*").each do |f|
+        next if File.directory?(f)
+
+        filepath = f.split('stylesheets/').last
+        filename = filepath.split('.')
+        extension = filename.slice!(-1)
+        filename = filename.join('.')
+
+        if extension == 'scss'
+          app.config.assets.precompile += ["#{filename}.css"]
+        else
+          app.config.assets.precompile += [filepath]
+        end
       end
     end
   end

@@ -1,0 +1,20 @@
+<%= stylesheet 'backend/jstree/default/style.min' %>
+<%= javascript 'backend/jstree/jstree.min' %>
+<%= javascript 'backend/tree' %>
+<%= javascript 'backend/pages' %>
+<%= render 'backend/breadcrumbs' %>
+
+<div class="panel">
+  <div class="panel-heading">
+    <strong><%= t 'b.pages' %></strong>
+    <div class="right">
+      <%= link_to t('b.add'), new_backend_page_path, class: 'button small' %>
+    </div>
+  </div>
+
+  <% if @pages.any? %>
+    <div id="pages-tree" data-source="<%= backend_pages_path(format: :json) %>"></div>
+  <% else %>
+    <p><%= t 'b.msg.no_results' %></p>
+  <% end %>
+</div>

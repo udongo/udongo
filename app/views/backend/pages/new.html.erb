@@ -1,0 +1,7 @@
+<% breadcrumb.add t('b.add'), new_backend_page_path %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= simple_form_for [:backend, @model] do |f| %>
+  <%= render 'backend/pages/form_fields', form: f %>
+  <%= render 'backend/form_actions', cancel_url: backend_pages_path %>
+<% end %>

@@ -8,12 +8,10 @@ shared_examples_for :deletable do
     context 'new record' do
       it :true do
         expect(build(klass).deletable).to be true
-        pending
       end
 
       it :false do
         expect(build(klass, deletable: false)).to be false
-        pending
       end
     end
 
@@ -21,16 +19,14 @@ shared_examples_for :deletable do
       it :false do
         instance = create(klass, deletable: false)
         expect(instance.deletable).to be false
-        pending
       end
     end
 
     context 'existing record after save' do
       it :false do
-        instance = create klass
+        instance = create(klass)
         instance.update_attribute :deletable, false
         expect(instance.deletable).to be false
-        pending
       end
     end
   end

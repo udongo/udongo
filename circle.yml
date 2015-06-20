@@ -5,4 +5,4 @@ machine:
 dependencies:
   pre:
     - cp circle.database.yml spec/dummy/config/database.yml
-    - cp spec/dummy/config/secrest.dist.yml spec/dummy/config/secrets.yml
+    - cp spec/dummy/config/secrets.dist.yml spec/dummy/config/secrets.yml

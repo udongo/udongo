@@ -1,13 +1,13 @@
 <% breadcrumb.add @model.description, edit_backend_page_path(@model) %>
 <% breadcrumb.add t('b.edit'), edit_backend_page_path(@model) %>
 <%= render 'backend/breadcrumbs' %>
-<%= render 'backend/form_errors', object: @translation %>
 
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_page_path) do |f| %>
   <ul class="tabs">
     <li class="tab-title">
       <%= link_to t('b.general'), edit_backend_page_path %>
     </li>
+
     <% Udongo.config.locales.each do |locale| %>
       <li class="tab-title <%= 'active' if params[:translation_locale] == locale %>">
         <%= link_to locale.upcase, edit_translation_backend_page_path(@translation, locale) %>
@@ -20,15 +20,10 @@
       <fieldset class="radius">
         <legend><%= t 'b.msg.pages.content' %></legend>
 
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= f.input :title %>
+        <%= f.input :subtitle %>
 
-        <%= f.label :subtitle %>
-        <%= f.text_field :subtitle %>
-
-        <%= f.label :content %>
-        <%= f.text_area :content, class: 'form-control markdown', rows: 10 %>
-        <%# render 'backend/markdown_preview', form: f, name: :content %>
+        <!-- TODO add the content rows/columns -->
       </fieldset>
 
       <%= render 'backend/tags', model: @model %>

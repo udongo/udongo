@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
 
   sortable scope: [:parent_id]
 
-  translatable_fields :title, :subtitle, :content
+  translatable_fields :title, :subtitle
 
   validates :description, presence: true
   validates :identifier, uniqueness: { case_sensitive: false }, allow_blank: true

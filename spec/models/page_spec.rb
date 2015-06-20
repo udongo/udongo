@@ -26,4 +26,8 @@ describe Page do
       end
     end
   end
+
+  it 'translatable' do
+    expect(model.translation_config.fields).to eq [:title, :subtitle]
+  end
 end

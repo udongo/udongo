@@ -7,11 +7,9 @@ describe Page do
   it_behaves_like :translatable
   it_behaves_like :taggable
   it_behaves_like :loggable
-  it_behaves_like :cacheable
   it_behaves_like :parentable
   it_behaves_like :visible
   it_behaves_like :seo
-  it_behaves_like :trashable
   it_behaves_like :deletable
   it_behaves_like :sortable
   it_behaves_like :draggable

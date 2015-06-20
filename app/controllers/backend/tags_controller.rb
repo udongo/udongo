@@ -1,8 +1,6 @@
-require 'backend/polymorphic_helper'
-
 class Backend::TagsController < BackendController
   def index
-    tags = Tag.where(locale: locale).map do |t|
+    tags = ::Tag.where(locale: locale).map do |t|
       { label: t.name, value: t.name }
     end
 
@@ -26,7 +24,7 @@ class Backend::TagsController < BackendController
   private
 
   def create_tag
-    Tag.create(
+    ::Tag.create(
       locale: params[:locale],
       name: params[:tag],
       slug: params[:tag].parameterize
@@ -42,7 +40,7 @@ class Backend::TagsController < BackendController
   end
 
   def find_tag
-    Tag.find_by locale: params[:locale], name: params[:tag]
+    ::Tag.find_by locale: params[:locale], name: params[:tag]
   end
 
   def handle_request(&block)
@@ -67,6 +65,10 @@ class Backend::TagsController < BackendController
   end
 
   def tag_exists?
-    Tag.exists?(locale: params[:locale], name: params[:tag], slug: params[:tag].parameterize)
+    ::Tag.exists?(
+      locale: params[:locale],
+      name: params[:tag],
+      slug: params[:tag].parameterize
+    )
   end
 end

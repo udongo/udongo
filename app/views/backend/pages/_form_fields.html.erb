@@ -1,19 +1,19 @@
 <div class="row">
   <div class="large-8 columns">
     <fieldset class="radius">
-      <legend><%= t 'b.headings.content' %></legend>
+      <legend><%= t 'b.msg.pages.content' %></legend>
       <%= form.input :description %>
     </fieldset>
 
     <fieldset class="radius">
-      <legend><%= t 'b.headings.page.parent' %></legend>
+      <legend><%= t 'b.msg.pages.parent' %></legend>
       <%= form.select :parent_id, @model.options_for_parents(selected: @model.parent_id), include_blank: true, hide_label: true %>
     </fieldset>
   </div>
 
   <div class="large-4 columns">
     <fieldset class="radius">
-      <legend><%= t 'b.headings.status' %></legend>
+      <legend><%= t 'b.status' %></legend>
       <%= form.input :visible %>
     </fieldset>
   </div>

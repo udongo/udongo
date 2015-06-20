@@ -14,30 +14,8 @@ nl:
     password: Wachtwoord
     save: Opslaan
     search: Zoeken
-
-    headings:
-      content: Inhoud
-      info: Informatie
-      login_data: Logingegevens
-      personal_data: Persoonlijke gegevens
-      status: Status(sen)
-      tags: Tags
-
-      comment:
-        for: 'Reacties voor %s: “%s”'
-
-      note:
-        edit: Nota's bewerken
-
-      page:
-        info: Welke pagina is dit?
-        parent: Onder welke hoofdpagina hoort deze pagina?
-
-      seo:
-        info: SEO
-
-      snippet:
-        info: Welke snippet is dit?
+    status: Status
+    tags: Tags
 
     msg:
       added: '%s werd toegevoegd.'
@@ -53,4 +31,11 @@ nl:
       forgot_password: Wachtwoord vergeten?
       incorrect_login: Ongeldige login gegevens.
       no_items: Er zijn geen items.
+      pages:
+        content: Inhoud
+        info: Welke pagina is dit?
+        parent: Onder welke hoofdpagina hoort deze pagina?
+
       saved: '%s werd bewaard.'
+      seo:
+        info: SEO

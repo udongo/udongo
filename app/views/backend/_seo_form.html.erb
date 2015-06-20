@@ -6,7 +6,7 @@
 <% full_host = "#{seo_base_path(request, f, params[:translation_locale])}/" %>
 
 <fieldset class="radius">
-  <legend><%= t 'b.headings.seo.info' %></legend>
+  <legend><%= t 'b.msg.seo.info' %></legend>
 
   <%= f.input :seo_slug, data: { slugify_path: slugify_path, trigger: slug_trigger_id, host_url: full_host }, hint: full_host %>
   <%= f.input :seo_title %>

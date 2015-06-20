@@ -1,0 +1,35 @@
+nl:
+  simple_form:
+    "yes": 'Ja'
+    "no": 'Nee'
+    required:
+      text: 'verplicht'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: 'Gelieve onderstaande fouten te controleren:'
+
+    labels:
+      defaults:
+        category: Categorie
+        content: Inhoud
+        description: Beschrijving
+        email: E-mail
+        first_name: Voornaam
+        last_name: Achternaam
+        message: Bericht
+        name: Naam
+        password: Wachtwoord
+        password_confirmation: Wachtwoord bevestiging
+        phone: Telefoonnummer
+        seo_title: Paginatitel
+        seo_slug: Aangepaste URL
+        seo_description: Beschrijving
+        seo_keywords: Sleutelwoorden
+        seo_custom: Extra meta-tags
+        subtitle: Subtitel
+        summary: Korte inhoud
+        title: Titel
+        visible: Zichtbaar?

@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   include Concerns::Sortable
   include Concerns::Draggable
 
-  sortable scope: [:parent_id, :trashed]
+  sortable scope: [:parent_id]
 
   translatable_fields :title, :subtitle, :content
 

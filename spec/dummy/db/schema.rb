@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515134044) do
+ActiveRecord::Schema.define(version: 20150620121834) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(version: 20150515134044) do
     t.boolean  "visible",     limit: 1
     t.boolean  "deletable",   limit: 1
     t.boolean  "draggable",   limit: 1
-    t.boolean  "trashed",     limit: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -13,8 +13,6 @@ class Page < ActiveRecord::Base
 
   translatable_fields :title, :subtitle, :content
 
-  has_many :navigation_items
-
   validates :description, presence: true
   validates :identifier, uniqueness: { case_sensitive: false }, allow_blank: true
 end

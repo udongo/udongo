@@ -39,14 +39,6 @@ nl:
       snippet:
         info: Welke snippet is dit?
 
-    help:
-      seo:
-        title: De titel in het browservenster (<title>).
-        description: Vat de inhoud kort samen. Deze samenvatting wordt getoond bij de resultaten van de zoekmachine.
-        keywords_html: |
-          Kies een aantal goed doordachte termen die de inhoud beschrijven.<br />
-          <strong>Let wel</strong>: Vanuit een SEO-standpunt bieden deze niet langer meerwaarde.
-
     msg:
       added: '%s werd toegevoegd.'
       admins:

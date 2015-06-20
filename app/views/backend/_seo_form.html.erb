@@ -7,23 +7,10 @@
 
 <fieldset class="radius">
   <legend><%= t 'b.headings.seo.info' %></legend>
-  <%= f.label :seo_slug %>
-  <%= f.text_field :seo_slug, data: { slugify_path: backend_seo_slugify_path, trigger: slug_trigger_id, host_url: full_host } %>
-  <p class="help host"><%= full_host %></p>
 
-  <%= f.label :seo_title %>
-  <%= f.text_field :seo_title %>
-  <p class="help"><%= t('b.help.seo.title') %></p>
-
-  <%= f.label :seo_description %>
-  <%= f.text_area :seo_description %>
-  <p class="help"><%= t('b.help.seo.description') %></p>
-
-  <%= f.label :seo_keywords %>
-  <%= f.text_field :seo_keywords %>
-  <p class="help"><%= t('b.help.seo.keywords') %></p>
-
-  <%= f.label :seo_custom %>
-  <%= f.text_area :seo_custom %>
+  <%= f.input :seo_slug, data: { slugify_path: slugify_path, trigger: slug_trigger_id, host_url: full_host }, hint: full_host %>
+  <%= f.input :seo_title %>
+  <%= f.input :seo_description, as: :text%>
+  <%= f.input :seo_keywords %>
+  <%= f.input :seo_custom, as: :text %>
 </fieldset>
-

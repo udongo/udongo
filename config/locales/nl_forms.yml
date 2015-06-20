@@ -33,3 +33,10 @@ nl:
         summary: Korte inhoud
         title: Titel
         visible: Zichtbaar?
+    hints:
+      defaults:
+        seo_description: Vat de inhoud kort samen. Deze samenvatting wordt getoond bij de resultaten van de zoekmachine.
+        seo_keywords_html: |
+          Kies een aantal goed doordachte termen die de inhoud beschrijven.<br />
+          <strong>Let wel</strong>: Vanuit een SEO-standpunt bieden deze niet langer meerwaarde.
+        seo_title: De titel in het browservenster (&lt;title&gt;).

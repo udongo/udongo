@@ -70,4 +70,3 @@ describe Comment do
     expect(model).to respond_to(:by_locale)
   end
 end
-

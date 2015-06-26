@@ -7,4 +7,7 @@ class ContentRow < ActiveRecord::Base
   validates :locale, :rowable_type, :rowable_id, presence: true
 
   sortable scope: [:locale, :rowable_type, :rowable_id]
+
+  # TODO move to concern 'Concerns::Locale'
+  scope :by_locale, ->(l) { where(locale: l) }
 end

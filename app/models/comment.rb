@@ -16,6 +16,8 @@ class Comment < ActiveRecord::Base
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :website, url: true, allow_blank: true
 
+  # TODO move to concern 'Concerns::Locale'
+  # TODO add to spec
   scope :by_locale, ->(l) { where(locale: l) }
 
   def published?

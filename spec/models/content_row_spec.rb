@@ -15,7 +15,22 @@ describe ContentRow do
     end
   end
 
+  describe 'scopes' do
+    it '.by_locale' do
+      a = create(klass, locale: 'nl')
+      b = create(klass, locale: 'fr')
+      c = create(klass, locale: 'en')
+
+      expect(model.by_locale(:nl)).to eq [a]
+      expect(model.by_locale(%w(nl fr))).to eq [a, b]
+    end
+  end
+
   it '#respond_to?' do
     expect(build(klass)).to respond_to(:rowable, :columns)
+  end
+
+  it '.respond_to?' do
+    expect(model).to respond_to(:by_locale)
   end
 end

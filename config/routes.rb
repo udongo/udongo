@@ -26,17 +26,6 @@ Rails.application.routes.draw do
       collection { delete '/', action: :destroy }
     end
 
-
-    # TODO check this out
-    # Ik wil propere urls dus liefst.
-    # /backend/content/rows/new?rowable_type=Page&rowable_id=1&translation=nl
-
-    # > Door de '1' in de URL weten we reeds aan welk object dit hangt. Het rij
-    #   object bevat ook de locale.
-    # /backend/content/rows/1/columns/new
-
-    # Alles verhuist dus onder de namespace content
-
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
         concerns :positionable

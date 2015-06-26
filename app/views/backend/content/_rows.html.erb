@@ -2,12 +2,10 @@
   <div class="row" id="content-row-<%= row.id %>">
     <div class="large-12 columns">
       <p>
-        <%= row.id %> / <%= link_to 'move', '#' %> /  <%= link_to 'add', '#' %><br>
+        <%= link_to icon(:list_bullet), '#' %>
         <%= link_to icon(:plus), new_backend_content_row_column_path(row) %>
         <%= link_to icon(:trash), backend_content_row_path(row), method: :delete, data: { confirm: t('b.msg.confirm') } %>
       </p>
-
-      <hr>
 
       <div class="row">
         <% row.columns.each do |column| %>
@@ -17,14 +15,13 @@
             <%= render 'backend/content/text', text: content if content.text? %>
             <%= render 'backend/content/image', text: content if content.image? %>
 
-            <%= link_to 'trash', '#' %>
+            <%= link_to icon(:trash), backend_content_row_column_path(row, column), method: :delete, data: { confirm: t('b.msg.confirm') } %>
           </div>
         <% end %>
       </div>
+      <hr>
     </div>
   </div>
 <% end %>
-
-<hr>
 
 <%= link_to icon(:plus, t('b.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button radius' %>

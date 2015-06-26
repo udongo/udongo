@@ -1,8 +1,9 @@
-<% rows.each do |row| %>
+<% rows.where(locale: locale).each do |row| %>
   <div class="row" id="content-row-<%= row.id %>">
     <div class="large-12 columns">
       <p>
-        <%= row.id %> / <%= link_to 'move', '#' %> / <%= link_to 'trash', '#' %> / <%= link_to 'add', '#' %>
+        <%= row.id %> / <%= link_to 'move', '#' %> /  <%= link_to 'add', '#' %><br>
+        <%= link_to icon(:trash), backend_content_row_path(row), method: :delete, data: { confirm: t('b.msg.confirm') } %>
       </p>
 
       <hr>

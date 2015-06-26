@@ -1,5 +1,6 @@
 class Backend::Content::Rows::ColumnsController < BackendController
   before_action :find_row
+  before_action :find_column, only: [:edit, :destroy]
   layout 'backend/lightbox'
 
   def new
@@ -24,10 +25,21 @@ class Backend::Content::Rows::ColumnsController < BackendController
     raise 'foo'
   end
 
+  def destroy
+    @column.destroy
+
+    path = "edit_translation_backend_#{@column.row.rowable.class.to_s.downcase}_path"
+    redirect_to send(path, @column.row.rowable, @column.row.locale, anchor: "content-row-#{@column.row.id}")
+  end
+
   private
 
   def find_row
     @row = ::ContentRow.find params[:row_id]
+  end
+
+  def find_column
+    @column = ::ContentColumn.find params[:id]
   end
 
   def allowed_params

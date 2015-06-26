@@ -1,0 +1,8 @@
+<%= simple_form_for(@text, url: backend_content_text_path(@text)) do |f| %>
+  <fieldset>
+    <%= f.input :content %>
+  </fieldset>
+
+  <!-- TODO fix me -->
+  <%= render 'backend/form_actions', cancel_url: 'foemp' %>
+<% end %>

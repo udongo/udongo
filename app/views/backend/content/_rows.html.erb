@@ -3,6 +3,7 @@
     <div class="large-12 columns">
       <p>
         <%= row.id %> / <%= link_to 'move', '#' %> /  <%= link_to 'add', '#' %><br>
+        <%= link_to icon(:plus), new_backend_content_row_column_path(row) %>
         <%= link_to icon(:trash), backend_content_row_path(row), method: :delete, data: { confirm: t('b.msg.confirm') } %>
       </p>
 
@@ -11,10 +12,12 @@
       <div class="row">
         <% row.columns.each do |column| %>
           <div class="large-<%= column.width %> columns">
+            <!-- TODO move to method  -->
             <% if column.content.is_a?(ContentText) %>
               <p>Text.</p>
             <% end %>
 
+            <!-- TODO move to separate method -->
             <% if column.content.is_a?(ContentImage) %>
               <p>Image.</p>
             <% end %>

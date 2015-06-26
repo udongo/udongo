@@ -27,6 +27,9 @@ nl:
         personal_details: Persoonlijke gegevens
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
+      content_types:
+        image: Afbeelding
+        text: Tekst
       deleted: '%s werd verwijderd.'
       edited: '%s werd gewijzigd.'
       forgot_password: Wachtwoord vergeten?

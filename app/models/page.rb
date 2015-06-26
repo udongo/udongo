@@ -9,6 +9,9 @@ class Page < ActiveRecord::Base
   include Concerns::Sortable
   include Concerns::Draggable
 
+  # TODO move me to concern
+  has_many :content_rows, as: :rowable, dependent: :destroy
+
   sortable scope: [:parent_id]
 
   translatable_fields :title, :subtitle

@@ -1,0 +1,5 @@
+<% if text.present? && text.content.present? %>
+  <%= text.content.to_s.html_safe %>
+<% end %>
+
+<%= link_to bs_icon(:edit), edit_backend_content_text_path(text), data: { colorbox: true, colorbox_height: '600px', colorbox_width: '800px', colorbox_iframe: true }  %>

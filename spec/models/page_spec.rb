@@ -30,4 +30,8 @@ describe Page do
   it 'translatable' do
     expect(model.translation_config.fields).to eq [:title, :subtitle]
   end
+
+  it '#respond_to?' do
+    expect(build(klass)).to respond_to(:content_rows)
+  end
 end

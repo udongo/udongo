@@ -5,7 +5,6 @@ class Backend::PageTranslationForm < Reform::Form
 
   property :title, on: :translation
   property :subtitle, on: :translation
-  property :content, on: :translation
 
   property :seo_title, on: :seo
   property :seo_keywords, on: :seo

@@ -1,0 +1,32 @@
+<% rows.each do |row| %>
+  <div class="row">
+    <div class="large-12 columns">
+      <p>
+        <%= row.id %> / <%= link_to 'move', '#' %> / <%= link_to 'trash', '#' %> / <%= link_to 'add', '#' %>
+      </p>
+
+      <hr>
+
+      <div class="row">
+        <% row.columns.each do |column| %>
+          <div class="large-<%= column.width %> columns">
+            <% if column.content.is_a?(ContentText) %>
+              <p>Text.</p>
+            <% end %>
+
+            <% if column.content.is_a?(ContentImage) %>
+              <p>Image.</p>
+            <% end %>
+
+            <%= link_to 'trash', '#' %>
+            <%= link_to 'edit', '#' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<hr>
+
+<%= link_to 'add row', '#' %>

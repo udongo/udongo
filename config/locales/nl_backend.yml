@@ -1,6 +1,7 @@
 nl:
   b:
     add: Toevoegen
+    add_row: Rij toevoegen
     admins: Beheerders
     cancel: Annuleren
     edit: Bewerken

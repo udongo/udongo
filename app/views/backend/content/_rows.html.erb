@@ -1,5 +1,5 @@
 <% rows.each do |row| %>
-  <div class="row">
+  <div class="row" id="content-row-<%= row.id %>">
     <div class="large-12 columns">
       <p>
         <%= row.id %> / <%= link_to 'move', '#' %> / <%= link_to 'trash', '#' %> / <%= link_to 'add', '#' %>
@@ -29,4 +29,4 @@
 
 <hr>
 
-<%= link_to 'add row', '#' %>
+<%= link_to icon(:plus, t('b.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale) %>

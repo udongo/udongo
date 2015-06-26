@@ -23,7 +23,7 @@
         <%= f.input :title %>
         <%= f.input :subtitle %>
 
-        <%= render 'backend/content/rows', rows: @model.content_rows %>
+        <%= render 'backend/content/rows', rows: @model.content_rows, model: @model, locale: params[:translation_locale] %>
       </fieldset>
 
       <%= render 'backend/tags', model: @model %>

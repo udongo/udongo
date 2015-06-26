@@ -12,18 +12,12 @@
       <div class="row">
         <% row.columns.each do |column| %>
           <div class="large-<%= column.width %> columns">
-            <!-- TODO move to method  -->
-            <% if column.content.is_a?(ContentText) %>
-              <p>Text.</p>
-            <% end %>
+            <% content = column.content.decorate %>
 
-            <!-- TODO move to separate method -->
-            <% if column.content.is_a?(ContentImage) %>
-              <p>Image.</p>
-            <% end %>
+            <%= render 'backend/content/text', text: content if content.text? %>
+            <%= render 'backend/content/image', text: content if content.image? %>
 
             <%= link_to 'trash', '#' %>
-            <%= link_to 'edit', '#' %>
           </div>
         <% end %>
       </div>

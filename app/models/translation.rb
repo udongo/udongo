@@ -1,5 +1,6 @@
 class Translation < ActiveRecord::Base
   include Concerns::Loggable
+  include Concerns::Locale
 
   belongs_to :translatable, polymorphic: true
 

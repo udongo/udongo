@@ -7,6 +7,7 @@ describe Comment do
 
   it_behaves_like :parentable
   it_behaves_like :spammable
+  it_behaves_like :locale
 
   describe 'validations' do
     describe 'presence' do
@@ -64,9 +65,5 @@ describe Comment do
 
   it '#respond_to?' do
     expect(model.new).to respond_to(:commentable, :published?, :publish!, :unpublish!)
-  end
-
-  it '.respond_to?' do
-    expect(model).to respond_to(:by_locale)
   end
 end

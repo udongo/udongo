@@ -1,6 +1,13 @@
+# To use this module you need to add a text column to your model. This will be
+# used to determine in which locales the translations exist.
 module Concerns
   module Translatable
     extend ActiveSupport::Concern
+
+    included do
+      serialize :locales, Array
+      has_many :translations, as: :translatable, dependent: :destroy
+    end
 
     def translation(locale = I18n.locale)
       @collections = {} unless @collections

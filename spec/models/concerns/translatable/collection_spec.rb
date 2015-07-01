@@ -1,11 +1,5 @@
 require 'rails_helper'
 
-class TestCollection
-  def id
-    1
-  end
-end
-
 describe Concerns::Translatable::Collection do
   let(:model) { described_class }
   let(:klass) { model.to_s.underscore.to_sym }
@@ -13,10 +7,10 @@ describe Concerns::Translatable::Collection do
   before(:each) do
     config = Concerns::Translatable::Config.new
     config.add(:title)
-    config.add(:description)
+    config.add(:subtitle)
 
     @collection = model.new(
-      TestCollection.new, config, :nl
+      ::Page.new, config, :nl
     )
   end
 
@@ -30,14 +24,7 @@ describe Concerns::Translatable::Collection do
     end
 
     it 'reads if translation exists' do
-      Translation.create!(
-        translatable_type: 'TestCollection',
-        translatable_id: 1,
-        locale: :nl,
-        name: 'title',
-        value: 'foo'
-      )
-
+      @collection.title = 'foo'
       expect(@collection.title).to eq 'foo'
     end
   end
@@ -54,7 +41,7 @@ describe Concerns::Translatable::Collection do
 
     it 'writes if translation exists' do
       Translation.create!(
-        translatable_type: 'TestCollection',
+        translatable_type: 'Page',
         translatable_id: 1,
         locale: 'nl',
         name: 'title',
@@ -68,16 +55,16 @@ describe Concerns::Translatable::Collection do
 
   it '#save' do
     @collection.title = 'foo'
-    @collection.description = 'bar'
+    @collection.subtitle = 'bar'
     @collection.save
 
     config = Concerns::Translatable::Config.new
     config.add(:title)
-    config.add(:description)
+    config.add(:subtitle)
 
-    new_collection = Concerns::Translatable::Collection.new(TestCollection.new, config, :nl)
+    new_collection = Concerns::Translatable::Collection.new(::Page.new, config, :nl)
     expect(new_collection.title).to eq 'foo'
-    expect(new_collection.description).to eq 'bar'
+    expect(new_collection.subtitle).to eq 'bar'
   end
 
   it '#respond_to?' do

@@ -7,6 +7,7 @@ module Concerns
     included do
       serialize :locales, Array
       has_many :translations, as: :translatable, dependent: :destroy
+      scope :within_locale, ->(locale) { where('locales LIKE ?', "%#{locale}%")}
     end
 
     def translation(locale = I18n.locale)

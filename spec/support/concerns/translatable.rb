@@ -19,13 +19,32 @@ shared_examples_for :translatable do
     end
   end
 
+  describe 'scopes' do
+    describe '.within_locale' do
+      it 'no results' do
+        expect(model.within_locale(:nl)).to eq []
+      end
+
+      it 'dutch only' do
+        object = create(klass, locales: %w(nl))
+        expect(model.within_locale(:nl)).to eq [object]
+      end
+
+      it 'dutch and english' do
+        object = create(klass, locales: %w(nl en))
+        expect(model.within_locale(:nl)).to eq [object]
+      end
+    end
+  end
+
   it '#respond_to?' do
     expect(build(klass)).to respond_to(:translation)
   end
 
   it '.respond_to?' do
     expect(model).to respond_to(
-      :translatable_field, :translatable_fields, :translation_config
+      :translatable_field, :translatable_fields, :translation_config,
+      :within_locale
     )
   end
 end

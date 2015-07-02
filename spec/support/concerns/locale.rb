@@ -11,7 +11,7 @@ shared_examples_for :locale do
       c = create(klass, locale: 'en')
 
       expect(model.by_locale(:nl)).to eq [a]
-      expect(model.by_locale(%w(nl fr))).to eq [a, b]
+      expect(model.unscoped.by_locale(%w(nl fr)).order(:id)).to eq [a, b]
     end
   end
 

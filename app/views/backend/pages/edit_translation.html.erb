@@ -5,12 +5,12 @@
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_page_path) do |f| %>
   <ul class="tabs">
     <li class="tab-title">
-      <%= link_to t('b.general'), edit_backend_page_path %>
+      <%= link_to t('b.general'), edit_backend_page_path(@model) %>
     </li>
 
     <% Udongo.config.locales.each do |locale| %>
       <li class="tab-title <%= 'active' if params[:translation_locale] == locale %>">
-        <%= link_to locale.upcase, edit_translation_backend_page_path(@translation, locale) %>
+        <%= link_to locale.upcase, edit_translation_backend_page_path(@model, locale) %>
       </li>
     <% end %>
   </ul>
@@ -22,9 +22,9 @@
 
         <%= f.input :title %>
         <%= f.input :subtitle %>
-
-        <!-- TODO add the content rows/columns -->
       </fieldset>
+
+      <%= render 'backend/content/rows', model: @model, locale: params[:translation_locale] %>
 
       <%= render 'backend/tags', model: @model %>
       <%= render 'backend/seo_form', f: f %>

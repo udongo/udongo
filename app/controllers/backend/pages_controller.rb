@@ -47,6 +47,9 @@ class Backend::PagesController < BackendController
     render json: { moved: @model.set_position(params[:position], params[:parent_id]) }
   end
 
+  def edit_translation
+  end
+
   def destroy
     render json: { trashed: @model.destroy }
   end

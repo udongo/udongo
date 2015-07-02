@@ -1,5 +1,6 @@
 class ContentRow < ActiveRecord::Base
   include Concerns::Sortable
+  include Concerns::Locale
 
   belongs_to :rowable, polymorphic: true
   has_many :columns, class_name: 'ContentColumn', foreign_key: :row_id, dependent: :destroy

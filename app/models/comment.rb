@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   include Concerns::Parentable
   include Concerns::Spammable
+  include Concerns::Locale
 
   spammable author_email: :email, content: :message
 
@@ -15,8 +16,6 @@ class Comment < ActiveRecord::Base
   validates :email, presence: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :website, url: true, allow_blank: true
-
-  scope :by_locale, ->(l) { where(locale: l) }
 
   def published?
     status.to_s == 'published'

@@ -34,6 +34,11 @@ module Concerns
 
       def save
         @translations.map { |field,object| object.save }
+
+        @parent.update_attribute(
+          :locales,
+          @parent.translations.where.not(value: nil).pluck(:locale).uniq.sort
+        )
       end
 
       private

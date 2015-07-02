@@ -1,0 +1,7 @@
+<%= simple_form_for(@text, url: backend_content_text_path(@text)) do |f| %>
+  <fieldset class="radius">
+    <%= f.input :content %>
+  </fieldset>
+
+  <%= render 'backend/form_actions', cancel_url: content_path %>
+<% end %>

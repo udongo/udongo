@@ -6,6 +6,7 @@ describe ContentRow do
   let(:klass) { model.to_s.underscore.to_sym }
 
   it_behaves_like :sortable
+  it_behaves_like :locale
 
   describe 'validations' do
     describe 'presence' do

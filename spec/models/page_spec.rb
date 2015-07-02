@@ -13,6 +13,7 @@ describe Page do
   it_behaves_like :deletable
   it_behaves_like :sortable
   it_behaves_like :draggable
+  it_behaves_like :flexible_content
 
   describe 'validations' do
     describe 'presence' do
@@ -25,5 +26,9 @@ describe Page do
         expect(build(klass, identifier: 'FOO')).to_not be_valid
       end
     end
+  end
+
+  it 'translatable' do
+    expect(model.translation_config.fields).to eq [:title, :subtitle]
   end
 end

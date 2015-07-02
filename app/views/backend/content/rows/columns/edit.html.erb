@@ -1,0 +1,7 @@
+<%= simple_form_for @column, url: backend_content_row_column_path(@row, @column) do |f| %>
+  <fieldset class="radius">
+    <%= f.input :width, as: :integer %>
+  </fieldset>
+
+  <%= render 'backend/form_actions', cancel_url: cancel_url %>
+<% end %>

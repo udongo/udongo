@@ -1,0 +1,20 @@
+<% if @image.file.present? %>
+  <div class="row">
+    <div class="large-7 large-centered columns">
+      <div class="panel radius">
+        <%= image_tag(@image.file.url, alt: '', class: 'radius') %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= simple_form_for [:backend, @image] do |f| %>
+  <fieldset class="radius">
+    <%= f.input :file, as: :file %>
+    <%= f.input :url, as: :string %>
+    <%= f.input :caption, as: :text %>
+  </fieldset>
+
+  <!-- TODO add cancel url -->
+  <%= render 'backend/form_actions', cancel_url: content_path %>
+<% end %>

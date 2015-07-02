@@ -22,14 +22,23 @@ Rails.application.routes.draw do
       member { post :tree_drag_and_drop }
     end
 
-    scope :navigations, as: :navigation do
-      resources :items, except: [:edit, :update, :show], controller: 'navigations/items' do
-        concerns :positionable
-      end
-    end
-
     resources :tags, only: [:index, :create] do
       collection { delete '/', action: :destroy }
+    end
+
+    namespace :content do
+      resources :rows, only: [:index, :new, :destroy] do
+        concerns :positionable
+
+        scope module: 'rows' do
+          resources :columns
+        end
+      end
+
+      scope module: 'rows' do
+        resources :texts, only: [:edit, :update]
+        resources :images, only: [:edit, :update]
+      end
     end
   end
 end

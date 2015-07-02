@@ -7,7 +7,7 @@
 
     <fieldset class="radius">
       <legend><%= t 'b.msg.pages.parent' %></legend>
-      <%= form.select :parent_id, @model.options_for_parents(selected: @model.parent_id), include_blank: true, hide_label: true %>
+      <%= form.select :parent_id, @model.options_for_parents, include_blank: true, hide_label: true %>
     </fieldset>
   </div>
 

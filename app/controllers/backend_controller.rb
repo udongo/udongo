@@ -3,13 +3,7 @@ class BackendController < ActionController::Base
   before_action :default_locale, :check_login
 
   def breadcrumb
-    unless @breadcrumb
-      @breadcrumb = Udongo::Breadcrumb.new
-      # TODO don't use the <i> tag. Presenter?
-      @breadcrumb.add '<i class="fi-home"></i>'.html_safe, backend_path
-    end
-
-    @breadcrumb
+    @breadcrumb ||= Udongo::Breadcrumb.new
   end
   helper_method :breadcrumb
 

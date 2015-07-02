@@ -4,7 +4,7 @@ class ContentImageUploader < CarrierWave::Uploader::Base
   storage :file
 
   def filename
-    @name ||= "#{secure_token}.#{file.extension.downcase}" if original_filename
+    @name ||= "#{secure_token}-#{model.id}.#{file.extension.downcase}" if original_filename
   end
 
   private
@@ -16,7 +16,8 @@ class ContentImageUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore.pluralize}/#{mounted_as}/#{model.id}"
+    main_dir = Digest::MD5.hexdigest(model.id.to_s)[0,2]
+    "uploads/flexible_content/images/#{main_dir}"
   end
 
   def extension_white_list

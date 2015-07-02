@@ -50,4 +50,9 @@ class Backend::AdminsController < BackendController
       :first_name, :last_name, :email, :password, :password_confirmation
     )
   end
+
+  def password_required?
+    @admin.new_record?
+  end
+  helper_method :password_required?
 end

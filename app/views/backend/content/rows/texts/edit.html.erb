@@ -3,6 +3,5 @@
     <%= f.input :content %>
   </fieldset>
 
-  <!-- TODO fix me -->
-  <%= render 'backend/form_actions', cancel_url: 'foemp' %>
+  <%= render 'backend/form_actions', cancel_url: content_path %>
 <% end %>

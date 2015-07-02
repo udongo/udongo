@@ -25,4 +25,5 @@ class Backend::Content::Rows::TextsController < BackendController
     path = "edit_translation_backend_#{column.row.rowable.class.to_s.downcase}_path"
     send(path, column.row.rowable, locale, anchor: "content-row-#{column.row.id}")
   end
+  helper_method :content_path
 end

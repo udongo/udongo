@@ -10,10 +10,6 @@ class Backend::Content::Rows::ImagesController < BackendController
     end
   end
 
-  def destroy
-    raise 'foo'
-  end
-
   def find_image
     @image = ::ContentImage.find params[:id]
   end

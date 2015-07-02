@@ -10,10 +10,6 @@ class Backend::Content::Rows::TextsController < BackendController
     end
   end
 
-  def destroy
-    raise 'foo'
-  end
-
   private
 
   def find_text

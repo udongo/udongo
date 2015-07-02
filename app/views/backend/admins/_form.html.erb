@@ -19,10 +19,5 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="large-12 columns">
-      <%= f.submit t('b.save'), class: 'button' %>
-      <%= link_to t('b.cancel'), backend_admins_path %>
-    </div>
-  </div>
+  <%= render 'backend/form_actions', cancel_url: backend_admins_path %>
 <% end %>

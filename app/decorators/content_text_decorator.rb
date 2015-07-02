@@ -1,4 +1,3 @@
-# TODO write spec for this class
 class ContentTextDecorator < Draper::Decorator
   delegate_all
 

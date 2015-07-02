@@ -1,10 +1,12 @@
-<div class="row">
-  <div class="large-7 large-centered columns">
-    <div class="panel radius">
-      <%= image_tag(@image.file.url, alt: '', class: 'radius') %>
+<% if @image.file.present? %>
+  <div class="row">
+    <div class="large-7 large-centered columns">
+      <div class="panel radius">
+        <%= image_tag(@image.file.url, alt: '', class: 'radius') %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <%= simple_form_for [:backend, @image] do |f| %>
   <fieldset class="radius">

@@ -1,6 +1,6 @@
 class Backend::Content::Rows::ColumnsController < BackendController
   before_action :find_row
-  before_action :find_column, only: [:edit, :destroy]
+  before_action :find_column, only: [:edit, :update, :destroy]
   layout 'backend/lightbox'
 
   def new
@@ -21,9 +21,12 @@ class Backend::Content::Rows::ColumnsController < BackendController
     end
   end
 
-  # TODO make it possible to edit the column settings (only the width)
-  def edit
-    raise 'foo'
+  def update
+    if @column.update_attributes allowed_params
+      redirect_to cancel_url
+    else
+      render :edit
+    end
   end
 
   def destroy

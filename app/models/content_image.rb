@@ -1,8 +1,5 @@
 class ContentImage < ActiveRecord::Base
-  mount_uploader :file, ContentImageUploader
+  include Concerns::ContentType
 
-  # TODO move to ContentType concern
-  def column
-    ::ContentColumn.where(content_type: self.class.name, content_id: id).take
-  end
+  mount_uploader :file, ContentImageUploader
 end

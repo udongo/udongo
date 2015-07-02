@@ -1,27 +1,31 @@
-<% rows.where(locale: locale).each do |row| %>
-  <div class="row" id="content-row-<%= row.id %>">
-    <div class="large-12 columns">
-      <p>
-        <%= link_to icon(:list_bullet), '#' %>
-        <%= link_to icon(:plus), new_backend_content_row_column_path(row) %>
-        <%= link_to icon(:trash), backend_content_row_path(row), method: :delete, data: { confirm: t('b.msg.confirm') } %>
-      </p>
+<fieldset id="content-rows">
+  <legend><%= t 'b.flexible_content' %></legend>
 
-      <div class="row">
-        <% row.columns.each do |column| %>
-          <div class="large-<%= column.width %> columns">
-            <% content = column.content.decorate %>
+  <% rows.where(locale: locale).each do |row| %>
+    <div class="row" id="content-row-<%= row.id %>">
+      <div class="large-12 columns">
+        <p>
+          <%= link_to icon(:list_bullet), '#' %>
+          <%= link_to icon(:plus), new_backend_content_row_column_path(row) %>
+          <%= link_to icon(:trash), backend_content_row_path(row), method: :delete, data: { confirm: t('b.msg.confirm') } %>
+        </p>
 
-            <%= render 'backend/content/text', text: content if content.text? %>
-            <%= render 'backend/content/image', text: content if content.image? %>
+        <div class="row">
+          <% row.columns.each do |column| %>
+            <div class="large-<%= column.width %> columns">
+              <% content = column.content.decorate %>
 
-            <%= link_to icon(:trash), backend_content_row_column_path(row, column), method: :delete, data: { confirm: t('b.msg.confirm') } %>
-          </div>
-        <% end %>
+              <%= render 'backend/content/text', text: content if content.text? %>
+              <%= render 'backend/content/image', text: content if content.image? %>
+
+              <%= link_to icon(:trash), backend_content_row_column_path(row, column), method: :delete, data: { confirm: t('b.msg.confirm') } %>
+            </div>
+          <% end %>
+        </div>
+        <hr>
       </div>
-      <hr>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<%= link_to icon(:plus, t('b.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button radius' %>
+  <%= link_to icon(:plus, t('b.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button radius' %>
+</fieldset>

@@ -22,9 +22,10 @@
 
         <%= f.input :title %>
         <%= f.input :subtitle %>
-
-        <%= render 'backend/content/rows', rows: @model.content_rows, model: @model, locale: params[:translation_locale] %>
       </fieldset>
+
+      <!-- TODO don't make this use this many params. -->
+      <%= render 'backend/content/rows', rows: @model.content_rows, model: @model, locale: params[:translation_locale] %>
 
       <%= render 'backend/tags', model: @model %>
       <%= render 'backend/seo_form', f: f %>

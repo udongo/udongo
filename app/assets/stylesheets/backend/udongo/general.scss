@@ -4,6 +4,10 @@ fieldset {
   &.radius {
     border-radius:  3px;
   }
+
+  &.form-actions {
+    padding-bottom: 0;
+  }
 }
 
 .alert-box.alert {

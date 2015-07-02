@@ -1,5 +1,10 @@
 <% if breadcrumb.any? %>
   <ul class="breadcrumbs">
+    <li>
+      <%= link_to backend_path do %>
+        <i class="fi-home"></i>
+      <% end %>
+    </li>
 
     <% breadcrumb.each do |item| %>
       <% klass = (item == breadcrumb.all.last) ? 'current' : '' %>

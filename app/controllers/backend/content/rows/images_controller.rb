@@ -10,6 +10,8 @@ class Backend::Content::Rows::ImagesController < BackendController
     end
   end
 
+  private
+
   def find_image
     @image = ::ContentImage.find params[:id]
   end

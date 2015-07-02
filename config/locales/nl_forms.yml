@@ -13,6 +13,7 @@ nl:
 
     labels:
       defaults:
+        caption: Beschrijving
         category: Categorie
         content: Inhoud
         description: Beschrijving
@@ -34,6 +35,7 @@ nl:
         title: Titel
         visible: Zichtbaar?
         width: Breedte
+        url: URL
 
       content_column:
         content_type: Type

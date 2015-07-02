@@ -1,17 +1,7 @@
 <% if image.present? && image.file.present? %>
-  <div class="thumbnail">
-    <% if image.url.present? %><a href="<%= image.url %>"><% end %>
-
-    <%= image_tag image.file, alt: '', class: 'img-responsive' %>
-
-    <% if image.url.present? %></a><% end %>
-
-    <% if image.caption.present? %>
-      <div class="caption">
-        <%= image.caption.html_safe %>
-      </div>
-    <% end %>
-  </div>
+  <%= link_to edit_backend_content_image_path(image), class: 'th radius' do%>
+    <%= image_tag image.file.url %>
+  <% end %>
 <% end %>
 
-<%= link_to bs_icon(:edit), edit_backend_content_image_path(image), data: { colorbox: true, colorbox_height: '550px', colorbox_width: '600px', colorbox_iframe: true }  %>
+<%= link_to icon(:pencil), edit_backend_content_image_path(image) %>

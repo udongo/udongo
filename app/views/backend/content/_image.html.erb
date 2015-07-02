@@ -1,6 +1,16 @@
 <% if image.present? && image.file.present? %>
-  <%= link_to edit_backend_content_image_path(image), class: 'th radius' do%>
-    <%= image_tag image.file.url %>
+
+  <% if image.url.present? %>
+    <%= link_to image.url, class: 'th radius' do %>
+      <%= image_tag image.file.url, alt: '' %>
+    <% end %>
+
+  <% else %>
+    <%= image_tag image.file.url, alt: '' %>
+  <% end %>
+
+  <% if image.caption.present? %>
+    <%= image.caption.html_safe %>
   <% end %>
 <% end %>
 

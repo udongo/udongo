@@ -1,6 +1,6 @@
 <%= simple_form_for(@column, url: backend_content_row_columns_path(@row)) do |f| %>
 
-  <fieldset>
+  <fieldset class="radius">
     <%= f.input :width, as: :integer %>
     <%= f.input :content_type, required: true, collection: options_for_content_types %>
   </fieldset>

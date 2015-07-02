@@ -5,6 +5,5 @@
     <%= f.input :content_type, required: true, collection: options_for_content_types %>
   </fieldset>
 
-  <!-- TODO fix cancel url -->
-  <%= render 'backend/form_actions', cancel_url: 'foemp' %>
+  <%= render 'backend/form_actions', cancel_url: cancel_url %>
 <% end %>

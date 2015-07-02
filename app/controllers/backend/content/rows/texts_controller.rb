@@ -21,7 +21,7 @@ class Backend::Content::Rows::TextsController < BackendController
   end
 
   def content_path
-    column = ::ContentColumn.find_by(content_type: 'ContentText', content_id: @text.id)
+    column = @text.column
     path = "edit_translation_backend_#{column.row.rowable.class.to_s.downcase}_path"
     send(path, column.row.rowable, locale, anchor: "content-row-#{column.row.id}")
   end

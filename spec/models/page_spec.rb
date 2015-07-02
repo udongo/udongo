@@ -13,6 +13,7 @@ describe Page do
   it_behaves_like :deletable
   it_behaves_like :sortable
   it_behaves_like :draggable
+  it_behaves_like :flexible_content
 
   describe 'validations' do
     describe 'presence' do
@@ -29,9 +30,5 @@ describe Page do
 
   it 'translatable' do
     expect(model.translation_config.fields).to eq [:title, :subtitle]
-  end
-
-  it '#respond_to?' do
-    expect(build(klass)).to respond_to(:content_rows)
   end
 end

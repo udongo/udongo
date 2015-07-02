@@ -5,12 +5,12 @@
   <% rows.where(locale: locale).each do |row| %>
     <div class="row" id="content-row-<%= row.id %>">
       <div class="large-12 columns">
-        <p>
+        <ul class="button-group radius">
           <!-- TODO make rows draggable -->
-          <%= link_to icon(:list_bullet), '#' %>
-          <%= link_to icon(:plus), new_backend_content_row_column_path(row) %>
-          <%= link_to icon(:trash), backend_content_row_path(row), method: :delete, data: { confirm: t('b.msg.confirm') } %>
-        </p>
+          <li><%= link_to icon(:list_bullet, t('b.move')), '#', class: 'button small secondary' %></li>
+          <li><%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'button small secondary' %></li>
+          <li><%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
+        </ul>
 
         <div class="row">
           <% row.columns.each do |column| %>
@@ -29,5 +29,5 @@
     </div>
   <% end %>
 
-  <%= link_to icon(:plus, t('b.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button radius' %>
+  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>
 </fieldset>

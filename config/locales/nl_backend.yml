@@ -1,7 +1,6 @@
 nl:
   b:
     add: Toevoegen
-    add_row: Rij toevoegen
     admins: Beheerders
     cancel: Annuleren
     edit: Bewerken
@@ -10,6 +9,7 @@ nl:
     general: Algemeen
     login: Inloggen
     logout: Uitloggen
+    move: Verplaatsen
     name: Naam
     page: Pagina
     pages: Pagina's
@@ -33,6 +33,10 @@ nl:
         text: Tekst
       deleted: '%s werd verwijderd.'
       edited: '%s werd gewijzigd.'
+      flexible_content:
+        add_column: Kolom toevoegen
+        add_row: Rij toevoegen
+        delete_row: Rij verwijderen
       forgot_password: Wachtwoord vergeten?
       incorrect_login: Ongeldige login gegevens.
       no_items: Er zijn geen items.

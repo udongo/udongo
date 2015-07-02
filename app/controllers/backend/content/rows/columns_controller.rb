@@ -21,6 +21,7 @@ class Backend::Content::Rows::ColumnsController < BackendController
     end
   end
 
+  # TODO make it possible to edit the column settings (only the width)
   def edit
     raise 'foo'
   end

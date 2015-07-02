@@ -1,14 +1,14 @@
-<% if @image.file.present? %>
+<% if @model.file.present? %>
   <div class="row">
     <div class="large-7 large-centered columns">
       <div class="panel radius">
-        <%= image_tag(@image.file.url, alt: '', class: 'radius') %>
+        <%= image_tag(@model.file.url, alt: '', class: 'radius') %>
       </div>
     </div>
   </div>
 <% end %>
 
-<%= simple_form_for [:backend, @image] do |f| %>
+<%= simple_form_for [:backend, @model] do |f| %>
   <fieldset class="radius">
     <%= f.input :file, as: :file %>
     <%= f.input :url, as: :string %>

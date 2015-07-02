@@ -1,9 +1,9 @@
 class Backend::Content::Rows::TextsController < BackendController
-  before_action :find_text
+  before_action :find_model
   layout 'backend/lightbox'
 
   def update
-    if @text.update_attributes allowed_params
+    if @model.update_attributes allowed_params
       redirect_to content_path
     else
       render :edit
@@ -12,8 +12,8 @@ class Backend::Content::Rows::TextsController < BackendController
 
   private
 
-  def find_text
-    @text = ::ContentText.find params[:id]
+  def find_model
+    @model = ::ContentText.find params[:id]
   end
 
   def allowed_params
@@ -21,7 +21,7 @@ class Backend::Content::Rows::TextsController < BackendController
   end
 
   def content_path
-    column = @text.column
+    column = @model.column
     path = "edit_translation_backend_#{column.row.rowable.class.to_s.downcase}_path"
     send(path, column.row.rowable, locale, anchor: "content-row-#{column.row.id}")
   end

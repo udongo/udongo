@@ -6,6 +6,7 @@
     <div class="row" id="content-row-<%= row.id %>">
       <div class="large-12 columns">
         <p>
+          <!-- TODO make rows draggable -->
           <%= link_to icon(:list_bullet), '#' %>
           <%= link_to icon(:plus), new_backend_content_row_column_path(row) %>
           <%= link_to icon(:trash), backend_content_row_path(row), method: :delete, data: { confirm: t('b.msg.confirm') } %>

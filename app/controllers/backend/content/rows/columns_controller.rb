@@ -14,7 +14,6 @@ class Backend::Content::Rows::ColumnsController < BackendController
       @column.content = @column.content_type.constantize.create!
       @column.save!
 
-
       redirect_to_edit @column
     else
       render :new

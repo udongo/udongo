@@ -1,6 +1,6 @@
 class BackendController < ActionController::Base
   layout 'backend/application'
-  before_action :default_locale, :check_login
+  before_action :check_login
 
   def breadcrumb
     @breadcrumb ||= Udongo::Breadcrumb.new
@@ -12,13 +12,14 @@ class BackendController < ActionController::Base
   end
   helper_method :current_admin
 
-  def default_locale
-    I18n.locale = :nl
-  end
-
   def translate_notice(notice, actor)
     I18n.t("b.msg.#{notice}") % I18n.t("b.#{actor}")
   end
+
+  def default_locale
+    Udongo.config.default_locale
+  end
+  helper_method :default_locale
 
   private
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706084145) do
+ActiveRecord::Schema.define(version: 20150706085213) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20150706084145) do
 
   create_table "snippets", force: :cascade do |t|
     t.string   "identifier",   limit: 255
+    t.text     "description",  limit: 65535
     t.boolean  "html_title",   limit: 1
     t.boolean  "html_content", limit: 1
     t.text     "locales",      limit: 65535

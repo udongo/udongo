@@ -7,9 +7,12 @@ describe Snippet do
   it_behaves_like :translatable
 
   describe 'validations' do
-    describe 'identifier' do
-      it(:presence) { expect(build(klass, identifier: nil)).not_to be_valid }
+    describe 'presence' do
+      it(:identifier) { expect(build(klass, identifier: nil)).not_to be_valid }
+      it(:description) { expect(build(klass, description: nil)).not_to be_valid }
+    end
 
+    describe 'identifier' do
       it :unique do
         create(klass, identifier: 'foo')
         expect(build(klass, identifier: 'FOO')).not_to be_valid

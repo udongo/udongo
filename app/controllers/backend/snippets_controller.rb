@@ -1,7 +1,7 @@
 class Backend::SnippetsController < BackendController
   include Concerns::Backend::TranslatableController
 
-  before_action :find_model, only: [:edit, :update, :destroy]
+  before_action :find_model, only: [:edit, :update]
   before_action -> { breadcrumb.add t('b.snippets'), backend_snippets_path }
 
   def index
@@ -28,11 +28,6 @@ class Backend::SnippetsController < BackendController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @model.destroy
-    redirect_to backend_snippets_path, notice: translate_notice(:deleted, :snippet)
   end
 
   private

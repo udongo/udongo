@@ -12,7 +12,6 @@
         <td><%= a.description %></td>
         <td>
           <%= link_to icon(:pencil), edit_translation_backend_snippet_path(a, translation_locale: default_locale) %>
-          <%= link_to icon(:trash), backend_snippet_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
         </td>
       </tr>
     <% end %>

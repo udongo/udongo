@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       member { post :tree_drag_and_drop }
     end
 
-    resources :snippets, except: [:show] do
+    resources :snippets, except: [:show, :destroy] do
       concerns :translatable
     end
 

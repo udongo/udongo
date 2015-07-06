@@ -25,9 +25,10 @@
     <div class="row">
       <div class="large-3 columns">
         <div class="panel radius">
-          <ul class="side-nav" role="navigation" title="Link List">
+          <ul class="side-nav" role="navigation">
             <li role="menuitem"><%= link_to t('b.admins'), backend_admins_path %></li>
-            <li role="menuitem"><%= link_to "Pagina's", '/backend/pages' %></li>
+            <li role="menuitem"><%= link_to t('b.pages'), backend_pages_path %></li>
+            <li role="menuitem"><%= link_to t('b.snippets'), backend_snippets_path %></li>
           </ul>
         </div>
       </div>

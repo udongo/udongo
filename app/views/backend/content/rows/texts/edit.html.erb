@@ -1,6 +1,6 @@
 <%= simple_form_for [:backend, @model] do |f| %>
   <fieldset class="radius">
-    <%= f.input :content %>
+    <%= f.input :content, as: :ckeditor, label: false %>
   </fieldset>
 
   <%= render 'backend/form_actions', cancel_url: content_path %>

@@ -19,6 +19,7 @@ nl:
         description: Beschrijving
         email: E-mail
         first_name: Voornaam
+        identifier: Interne naam
         last_name: Achternaam
         message: Bericht
         name: Naam

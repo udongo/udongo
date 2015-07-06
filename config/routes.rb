@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   namespace :backend do
     concern :translatable do
       member do
@@ -20,6 +22,10 @@ Rails.application.routes.draw do
     resources :pages, except: [:show] do
       concerns :translatable
       member { post :tree_drag_and_drop }
+    end
+
+    resources :snippets, except: [:show, :destroy] do
+      concerns :translatable
     end
 
     resources :tags, only: [:index, :create] do

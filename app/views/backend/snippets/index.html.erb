@@ -1,0 +1,22 @@
+<%= render 'backend/breadcrumbs' %>
+
+<% if @snippets.any? %>
+  <table>
+    <tr>
+      <th><%= t 'b.description' %></th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @snippets.each do |a| %>
+      <tr>
+        <td><%= a.description %></td>
+        <td>
+          <%= link_to icon(:pencil), edit_translation_backend_snippet_path(a, translation_locale: default_locale) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

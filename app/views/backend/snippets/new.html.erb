@@ -1,0 +1,12 @@
+<% breadcrumb.add t('b.add'), new_backend_snippet_path %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= simple_form_for [:backend, @model] do |f| %>
+  <fieldset class="radius">
+    <legend><%= t 'b.general' %></legend>
+    <%= f.input :identifier %>
+    <%= f.input :description, as: :string %>
+  </fieldset>
+
+  <%= render 'backend/form_actions', cancel_url: backend_snippets_path %>
+<% end %>

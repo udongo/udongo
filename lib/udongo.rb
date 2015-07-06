@@ -11,6 +11,7 @@ require 'reform'
 require 'rakismet'
 require 'draper'
 require 'ckeditor'
+require 'responders'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

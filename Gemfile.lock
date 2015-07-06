@@ -18,6 +18,7 @@ PATH
       rakismet (~> 1.5)
       redcarpet (~> 3.3)
       reform (~> 1.2)
+      responders (~> 2.0)
       rmagick (~> 2.15)
       sass-rails (~> 5.0.3)
       simple_form (~> 3.1)
@@ -211,6 +212,8 @@ GEM
       nokogiri
       uber (~> 0.0.7)
     request_store (1.1.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rmagick (2.15.2)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)

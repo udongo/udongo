@@ -4,6 +4,7 @@ nl:
     admins: Beheerders
     cancel: Annuleren
     current_image: Huidige afbeelding
+    description: Beschrijving
     edit: Bewerken
     email: E-mail
     flexible_content: Flexibele inhoud
@@ -17,6 +18,8 @@ nl:
     password: Wachtwoord
     save: Opslaan
     search: Zoeken
+    snippet: Snippet
+    snippets: Snippets
     status: Status
     tags: Tags
 

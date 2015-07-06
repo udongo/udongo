@@ -22,6 +22,10 @@ Rails.application.routes.draw do
       member { post :tree_drag_and_drop }
     end
 
+    resources :snippets, except: [:show] do
+      concerns :translatable
+    end
+
     resources :tags, only: [:index, :create] do
       collection { delete '/', action: :destroy }
     end

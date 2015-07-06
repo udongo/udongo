@@ -10,6 +10,7 @@ require 'carrierwave'
 require 'reform'
 require 'rakismet'
 require 'draper'
+require 'ckeditor'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

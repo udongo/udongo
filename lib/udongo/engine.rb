@@ -8,27 +8,21 @@ module Udongo
     end
 
     initializer 'udongo.assets.precompile' do |app|
-      Dir.glob("#{Udongo::PATH}/app/assets/javascripts/**/*.js").each do |f|
-        next if File.directory?(f)
+      glob_files("#{Udongo::PATH}/app/assets/javascripts/**/*.js") do |f|
         app.config.assets.precompile += [f.split('javascripts/').last]
       end
     end
 
     initializer 'vendor.assets.precompile' do |app|
-      Dir.glob("#{Udongo::PATH}/vendor/assets/javascripts/**/*.js").each do |f|
-        next if File.directory?(f)
+      glob_files("#{Udongo::PATH}/vendor/assets/javascripts/**/*.js") do |f|
         app.config.assets.precompile += [f.split('javascripts/').last]
       end
 
-      Dir.glob("#{Udongo::PATH}/vendor/assets/images/**/*").each do |f|
-        next if File.directory?(f)
+      glob_files("#{Udongo::PATH}/vendor/assets/images/**/*") do |f|
         app.config.assets.precompile += [f.split('images/').last]
       end
 
-      #raise Dir.glob("#{Udongo::PATH}/vendor/assets/stylesheets/**/*").inspect
-      Dir.glob("#{Udongo::PATH}/vendor/assets/stylesheets/**/*").each do |f|
-        next if File.directory?(f)
-
+      glob_files("#{Udongo::PATH}/vendor/assets/stylesheets/**/*") do |f|
         filepath = f.split('stylesheets/').last
         filename = filepath.split('.')
         extension = filename.slice!(-1)
@@ -41,5 +35,13 @@ module Udongo
         end
       end
     end
+
+    def glob_files(path, &block)
+      Dir.glob(path).each do |f|
+        next if File.directory?(f)
+        yield f
+      end
+    end
+
   end
 end

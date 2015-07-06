@@ -20,10 +20,10 @@
       <fieldset class="radius">
         <legend><%= t 'b.general' %></legend>
 
-        <%= f.input :title %>
+        <%= f.input :title, as: :text %>
 
-        <!-- TODO use ckeditor if html is allowed -->
-        <%= f.input :content, as: :text %>
+        <% content_type = @model.html_content? ? :ckeditor : :text%>
+        <%= f.input :content, as: content_type %>
       </fieldset>
     </div>
   </div>

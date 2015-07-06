@@ -9,4 +9,5 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # TODO make sure we don't have to this!
-Rails.application.config.assets.precompile += %w( backend/tree.js )
+Rails.application.config.assets.precompile += %w(ckeditor/* backend/tree.js )
+Rails.application.config.assets.precompile += Ckeditor.assets

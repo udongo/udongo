@@ -24,11 +24,7 @@ class Backend::TagsController < BackendController
   private
 
   def create_tag
-    ::Tag.create(
-      locale: params[:locale],
-      name: params[:tag],
-      slug: params[:tag].parameterize
-    )
+    ::Tag.create(tag_params)
   end
 
   def filtered_type
@@ -57,6 +53,14 @@ class Backend::TagsController < BackendController
     filtered_type.constantize.find params[:taggable_id]
   end
 
+  def tag_params
+    {
+      locale: params[:locale],
+      name: params[:tag],
+      slug: params[:tag].parameterize
+    }
+  end
+
   def polymorphic
     @polymorphic ||= Backend::PolymorphicHelper.new(
       type: params[:taggable_type],
@@ -65,10 +69,6 @@ class Backend::TagsController < BackendController
   end
 
   def tag_exists?
-    ::Tag.exists?(
-      locale: params[:locale],
-      name: params[:tag],
-      slug: params[:tag].parameterize
-    )
+    ::Tag.exists?(tag_params)
   end
 end

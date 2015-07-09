@@ -7,7 +7,8 @@ describe Udongo::Assets::Precompiler do
 
   it '#respond_to?' do
     expect(instance).to respond_to(
-      :add_images, :add_javascript, :add_stylesheets
+      :add, :add_images_to_precompile_list, :add_javascripts_to_precompile_list,
+      :add_stylesheets_to_precompile_list, :glob_files
     )
   end
 end

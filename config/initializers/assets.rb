@@ -1,5 +1,6 @@
 #Rails.application.config.assets.precompile += Ckeditor.assets
 require 'udongo/assets/precompiler'
+require 'udongo/assets/loader'
 
 precompiler = Udongo::Assets::Precompiler.new Rails.application
 precompiler.add_javascript 'app/assets/javascripts/**/*.js'

@@ -28,8 +28,7 @@ module Udongo
       def add_stylesheets_to_precompile_list(path)
         glob_files(path) do |f|
           filepath = f.split('stylesheets/').last
-          filename = filepath.split('.')
-          filename = filename.join('.')
+          filename = filepath.split('.').join('.')
 
           if File.extname(filename) == 'scss'
             app.config.assets.precompile += ["#{filename}.css"]

@@ -31,7 +31,7 @@ module Udongo
           filename = filepath.split('.').join('.')
 
           if File.extname(filename) == '.scss'
-            app.config.assets.precompile += ["#{filename}.css"]
+            app.config.assets.precompile += ["#{filename.gsub('.scss', '.css')}"]
           else
             app.config.assets.precompile += [filepath]
           end

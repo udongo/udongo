@@ -1,5 +1,7 @@
-0.0.5 - xxxx-xx-xx
+0.0.5 - 2015-07-30
 --
+* Add will_paginate gem.
+* Add custom will_paginate renderer for the backend using foundation.
 
 
 0.0.4 - 2015-07-30

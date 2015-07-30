@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    udongo (0.0.2)
+    udongo (0.0.5)
       acts_as_list (~> 0.7)
       bcrypt (~> 3.1.7)
       carrierwave (~> 0.10)
@@ -22,6 +22,7 @@ PATH
       rmagick (~> 2.15)
       sass-rails (~> 5.0.3)
       simple_form (~> 3.1)
+      will_paginate (~> 3.0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -64,7 +65,7 @@ GEM
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
     addressable (2.3.8)
-    arel (6.0.0)
+    arel (6.0.2)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -80,15 +81,15 @@ GEM
       mime-types (>= 1.16)
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    ckeditor (4.1.1)
+    ckeditor (4.1.2)
       cocaine
       orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.5)
+    cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
-    countries (0.11.4)
+    countries (0.11.5)
       currencies (~> 0.4.2)
       i18n_data (~> 0.7.0)
     country_select (2.2.0)
@@ -161,7 +162,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.11.2)
-    mysql2 (0.3.18)
+    mysql2 (0.3.19)
     nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -215,10 +216,10 @@ GEM
       multi_json
       nokogiri
       uber (~> 0.0.7)
-    request_store (1.1.0)
+    request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rmagick (2.15.2)
+    rmagick (2.15.3)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -239,7 +240,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.1)
-    sass (3.4.15)
+    sass (3.4.16)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -272,6 +273,7 @@ GEM
       thread_safe (~> 0.1)
     uber (0.0.13)
     unicode_utils (1.4.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby

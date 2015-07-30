@@ -43,6 +43,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'draper', '~> 1.3'
   s.add_dependency 'responders', '~> 2.0'
   s.add_dependency 'ckeditor', '~> 4.1'
+  s.add_dependency 'will_paginate', '~> 3.0.6'
 
   # Development dependencies
   s.add_development_dependency 'sqlite3'

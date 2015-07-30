@@ -12,6 +12,7 @@ require 'rakismet'
 require 'draper'
 require 'ckeditor'
 require 'responders'
+require 'will_paginate'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

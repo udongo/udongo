@@ -1,3 +1,7 @@
+0.0.5 - xxxx-xx-xx
+--
+
+
 0.0.4 - 2015-07-30
 --
 * Fix issue with precompiler not loading .scss files

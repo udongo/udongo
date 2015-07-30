@@ -8,7 +8,7 @@
 <fieldset class="radius">
   <legend><%= t 'b.msg.seo.info' %></legend>
 
-  <%= f.input :seo_slug, data: { slugify_path: slugify_path, trigger: slug_trigger_id, host_url: full_host }, hint: full_host %>
+  <%= f.input :seo_slug, hint: full_host, input_html: { data: { slugify_path: slugify_path, trigger: slug_trigger_id, host_url: full_host } } %>
   <%= f.input :seo_title %>
   <%= f.input :seo_description, as: :text%>
   <%= f.input :seo_keywords %>

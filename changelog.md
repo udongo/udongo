@@ -6,7 +6,8 @@
 --
 * Fix issue with precompiler not loading .scss files
 * Fix issue with backend/seo.js pointing to the wrong help text span
-* Fix <%= %> output calls used with javascript/stylesheet view helpers resulting in "true" in the templates
+* Fix <%= %> output calls used with javascript/stylesheet view helpers resulting
+  in "true" in the templates
 * Fix issue with simple_form_for#input not loading data attributes
 
 

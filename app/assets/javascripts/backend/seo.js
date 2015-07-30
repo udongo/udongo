@@ -44,7 +44,7 @@ var seo = {
   // Helpers
 
   help_block: function(input) {
-    return input.siblings('.help.host');
+    return input.siblings('.hint');
   }
 };
 

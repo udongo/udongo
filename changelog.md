@@ -1,3 +1,7 @@
+0.0.6 - xxxx-xx-xx
+--
+
+
 0.0.5 - 2015-07-30
 --
 * Add will_paginate gem.

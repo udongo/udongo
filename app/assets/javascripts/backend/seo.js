@@ -13,17 +13,17 @@ var seo = {
   },
 
   slug_key_listener: function(e) {
-    var self = $(this);
+    var input = $(this);
 
-    if(self.val() == '') {
-      seo.help_block(self).text(seo.vars.slug_input.data('host-url'));
+    if(input.val() == '') {
+      seo.help_block(input).text(seo.vars.slug_input.data('host-url'));
     }
 
-    if(self.val().match(/^[a-z0-9-\/:]+$/)) {
-      seo.help_block(self).text(self.data('host-url') + self.val());
+    if(input.val().match(/^[a-z0-9-\/:]+$/)) {
+      seo.help_block(input).text(input.data('host-url') + input.val());
     } else {
-      if(self.val().slice(-1) == '/') {
-        self.val(self.val().slice(0, -1));
+      if(input.val().slice(-1) == '/') {
+        input.val(input.val().slice(0, -1));
       }
     }
   },

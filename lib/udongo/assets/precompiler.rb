@@ -29,6 +29,7 @@ module Udongo
         glob_files(path) do |f|
           filepath = f.split('stylesheets/').last
           filename = filepath.split('.').join('.')
+          next if filename.split('/').last[0] == '_'
 
           if File.extname(filename) == '.scss'
             app.config.assets.precompile += ["#{filename.gsub('.scss', '.css')}"]

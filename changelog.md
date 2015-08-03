@@ -1,3 +1,7 @@
+0.0.7 - xxxx-xx-xx
+--
+
+
 0.0.6 - 2015-08-03
 --
 * Filter out all (s)css to-precompiled-files beginning with an underscore.

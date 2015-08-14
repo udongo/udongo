@@ -47,12 +47,14 @@ module Concerns
         unless @translations[field.to_sym]
           raise "The field '#{field.to_s}' is not allowed." unless @config.allowed?(field)
 
-          @translations[field] = Translation.find_or_create_by!(
-            translatable_type: @parent.class.name,
-            translatable_id: @parent.id,
-            locale: @locale,
-            name: field
-          )
+          @translations[field] = Rails.cache.fetch([:translation, @parent.class.name, @parent.id, @locale, field]) do
+            Translation.find_or_create_by!(
+              translatable_type: @parent.class.name,
+              translatable_id: @parent.id,
+              locale: @locale,
+              name: field
+            )
+          end
         end
       end
     end

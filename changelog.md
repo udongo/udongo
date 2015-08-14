@@ -1,5 +1,6 @@
-0.0.7 - xxxx-xx-xx
+0.0.7 - 2015-08-14
 --
+* Provide elegant caching mechanism for translations.
 
 
 0.0.6 - 2015-08-03

@@ -1,3 +1,7 @@
+0.0.9 - xxxx-xx-xx
+--
+
+
 0.0.8 - 2015-08-17
 --
 * Revert the apparently not so elegant caching mechnism for translations.

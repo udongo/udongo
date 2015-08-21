@@ -2,6 +2,8 @@
 --
 * Introduce the configurable caching concern.
 * Update backend/sortable.js for Foundation
+* Add missing Concerns::Backend::PositionableController
+* Add udongo:sortable:generate_positions_for_model rake task
 
 
 0.0.8 - 2015-08-17

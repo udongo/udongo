@@ -1,5 +1,7 @@
 class Snippet < ActiveRecord::Base
   include Concerns::Translatable
+  include Concerns::Cacheable
+  cache_by :identifier
 
   translatable_fields :title, :content
 

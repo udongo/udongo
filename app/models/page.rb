@@ -9,6 +9,8 @@ class Page < ActiveRecord::Base
   include Concerns::Sortable
   include Concerns::Draggable
   include Concerns::FlexibleContent
+  include Concerns::Cacheable
+  cache_by :identifier
 
   sortable scope: [:parent_id]
 

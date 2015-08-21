@@ -5,6 +5,7 @@ describe Snippet do
   let(:klass) { model.to_s.underscore.to_sym }
 
   it_behaves_like :translatable
+  it_behaves_like :cacheable
 
   describe 'validations' do
     describe 'presence' do

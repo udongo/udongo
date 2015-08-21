@@ -1,5 +1,6 @@
 0.0.9 - xxxx-xx-xx
 --
+* Introduce the configurable caching concern.
 
 
 0.0.8 - 2015-08-17

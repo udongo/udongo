@@ -14,6 +14,7 @@ describe Page do
   it_behaves_like :sortable
   it_behaves_like :draggable
   it_behaves_like :flexible_content
+  it_behaves_like :cacheable
 
   describe 'validations' do
     describe 'presence' do

@@ -1,6 +1,7 @@
 0.0.9 - xxxx-xx-xx
 --
 * Introduce the configurable caching concern.
+* Update backend/sortable.js for Foundation
 
 
 0.0.8 - 2015-08-17

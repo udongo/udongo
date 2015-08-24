@@ -1,5 +1,6 @@
 0.0.10 - xxxx-xx-xx
 --
+* Stop using a sidebar for the navigation.
 
 
 0.0.9 - 2015-08-21

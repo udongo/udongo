@@ -19,7 +19,7 @@ var sortable = {
   },
 
   generate_handle: function(tbody) {
-    tbody.siblings('thead').find('tr th:first').before('<th class="col-sm-1"></th>');
+    tbody.siblings('thead').find('tr th:first').before('<th class="small-1"></th>');
     tbody.find('tr[data-update-position]').each(function(){
       $(this).find('td:first').before(sortable.handle_html());
     });
@@ -37,7 +37,7 @@ var sortable = {
 
   handle_html: function() {
     html = '<td class="handle">';
-    html += '  <a href="#"><span class="glyphicon glyphicon-move"></span></a>';
+    html += '  <a href="#"><span class="fi-arrows-out"></span></a>';
     html += '</td>';
     return $(html);
   }

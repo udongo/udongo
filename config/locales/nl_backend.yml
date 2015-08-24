@@ -3,6 +3,7 @@ nl:
     add: Toevoegen
     admins: Beheerders
     cancel: Annuleren
+    content: Inhoud
     current_image: Huidige afbeelding
     description: Beschrijving
     edit: Bewerken
@@ -18,6 +19,7 @@ nl:
     password: Wachtwoord
     save: Opslaan
     search: Zoeken
+    settings: Instellingen
     snippet: Snippet
     snippets: Snippets
     status: Status

@@ -17,23 +17,13 @@
 <body>
   <section class="content">
     <div class="row">
-      <div class="large-12 columns">
+      <div class="large-10 large-offset-1 columns">
         <%= render 'backend/navigation' %>
       </div>
     </div>
 
     <div class="row">
-      <div class="large-3 columns">
-        <div class="panel radius">
-          <ul class="side-nav" role="navigation">
-            <li role="menuitem"><%= link_to t('b.admins'), backend_admins_path %></li>
-            <li role="menuitem"><%= link_to t('b.pages'), backend_pages_path %></li>
-            <li role="menuitem"><%= link_to t('b.snippets'), backend_snippets_path %></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="large-9 columns">
+      <div class="large-10 large-offset-1 columns">
         <%= render 'backend/flash_messages' %>
         <%= yield %>
       </div>

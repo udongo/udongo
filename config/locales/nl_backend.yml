@@ -8,6 +8,7 @@ nl:
     edit: Bewerken
     email: E-mail
     flexible_content: Flexibele inhoud
+    from: Van
     general: Algemeen
     login: Inloggen
     logout: Uitloggen
@@ -29,6 +30,7 @@ nl:
       '303': 303 (See Other)
       '307': 307 (Temporary Redirect)
     tags: Tags
+    to: Naar
 
     msg:
       added: '%s werd toegevoegd.'

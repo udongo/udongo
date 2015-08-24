@@ -6,4 +6,8 @@ class RedirectDecorator < Draper::Decorator
       [I18n.t("b.status_codes.#{code}"), code]
     end
   end
+
+  def summary
+    "#{I18n.t('b.from')} #{object.source_uri} #{I18n.t('b.to')} #{object.destination_uri}"
+  end
 end

@@ -1,4 +1,4 @@
-<% breadcrumb.add "#{t('b.from')} #{@redirect.source} #{t('b.to')} #{@redirect.destination}" %>
+<% breadcrumb.add @redirect.summary %>
 <% breadcrumb.add t('b.edit'), '#' %>
 <%= render 'backend/breadcrumbs' %>
 <%= render 'backend/redirects/form', model: @redirect %>

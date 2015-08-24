@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824090457) do
+ActiveRecord::Schema.define(version: 20150824113723) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -168,12 +168,12 @@ ActiveRecord::Schema.define(version: 20150824090457) do
   add_index "pages", ["parent_id"], name: "index_page_parent_id", using: :btree
 
   create_table "redirects", force: :cascade do |t|
-    t.string   "source",      limit: 255
-    t.string   "destination", limit: 255
-    t.integer  "status_code", limit: 4
-    t.boolean  "disabled",    limit: 1
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "source_uri",      limit: 255
+    t.string   "destination_uri", limit: 255
+    t.integer  "status_code",     limit: 4
+    t.boolean  "disabled",        limit: 1
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "settings", force: :cascade do |t|

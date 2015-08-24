@@ -17,7 +17,6 @@ nl:
         category: Categorie
         content: Inhoud
         description: Beschrijving
-        destination: Bestemming
         email: E-mail
         first_name: Voornaam
         identifier: Interne naam
@@ -32,7 +31,6 @@ nl:
         seo_description: Beschrijving
         seo_keywords: Sleutelwoorden
         seo_custom: Extra meta-tags
-        source: Bron
         subtitle: Subtitel
         summary: Korte inhoud
         title: Titel
@@ -42,6 +40,10 @@ nl:
 
       content_column:
         content_type: Type
+
+      redirect:
+        source_uri: Bron
+        destination_uri: Bestemming
 
     hints:
       defaults:

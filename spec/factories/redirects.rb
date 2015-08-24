@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :redirect do
-    source '/nl/foo'
-    destination '/nl/bar'
+    source_uri '/nl/foo'
+    destination_uri '/nl/bar'
     status_code 303
   end
 end

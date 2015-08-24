@@ -5,8 +5,8 @@
   <div class="row">
     <div class="large-12 columns">
       <fieldset class="radius">
-        <%= f.input :source %>
-        <%= f.input :destination %>
+        <%= f.input :source_uri %>
+        <%= f.input :destination_uri %>
         <%= f.input :status_code, collection: @redirect.status_code_collection_for_dropdown %>
       </fieldset>
     </div>

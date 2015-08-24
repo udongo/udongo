@@ -3,11 +3,11 @@
 <%= link_to t('b.add'), new_backend_redirect_path, class: 'button' %>
 
 <% if @redirects.any? %>
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th><%= t 'b.source' %></th>
-        <th><%= t 'b.destination' %></th>
+        <th class="small-4"><%= t 'b.source' %></th>
+        <th class="small-4"><%= t 'b.destination' %></th>
         <th><%= t 'b.status_code' %></th>
       </tr>
     </thead>
@@ -15,10 +15,9 @@
     <tbody>
       <% @redirects.each do |r| %>
         <tr>
-          <td><%= r.source %></td>
-          <td><%= r.destination %></td>
-          <td><%= link_to t(r.visible?.to_s), backend_redirect_path(r) %></td>
-          <td><%= link_to t(r.searchable?.to_s), backend_redirect_path(r) %></td>
+          <td><%= r.source_uri %></td>
+          <td><%= r.destination_uri %></td>
+          <td><%= r.status_code %></td>
         </tr>
       <% end %>
     </tbody>

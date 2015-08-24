@@ -1,16 +1,3 @@
 <% breadcrumb.add t('b.new'), '#' %>
 <%= render 'backend/breadcrumbs' %>
-
-<%= simple_form_for([:backend, @redirect]) do |f| %>
-  <div class="row">
-    <div class="large-12 columns">
-      <fieldset class="radius">
-        <%= f.input :source_uri %>
-        <%= f.input :destination_uri %>
-        <%= f.input :status_code, collection: @redirect.status_code_collection_for_dropdown %>
-      </fieldset>
-    </div>
-  </div>
-
-  <%= render 'backend/form_actions', cancel_url: backend_redirects_path %>
-<% end %>
+<%= render 'backend/redirects/form', model: @redirect %>

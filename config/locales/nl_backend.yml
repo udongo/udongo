@@ -23,6 +23,10 @@ nl:
     snippet: Snippet
     snippets: Snippets
     status: Status
+    status_codes:
+      '301': 301 (Moved Permanently)
+      '303': 303 (See Other)
+      '307': 307 (Temporary Redirect)
     tags: Tags
 
     msg:

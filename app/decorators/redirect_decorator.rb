@@ -1,0 +1,9 @@
+class RedirectDecorator < Draper::Decorator
+  delegate_all
+
+  def status_code_collection_for_dropdown
+    %w(301 303 307).map do |code|
+      [I18n.t("b.status_codes.#{code}"), code]
+    end
+  end
+end

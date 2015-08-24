@@ -3,6 +3,7 @@ nl:
     add: Toevoegen
     admins: Beheerders
     cancel: Annuleren
+    content: Inhoud
     current_image: Huidige afbeelding
     delete: Verwijder
     description: Beschrijving
@@ -23,6 +24,7 @@ nl:
     redirects: Redirects
     save: Opslaan
     search: Zoeken
+    settings: Instellingen
     snippet: Snippet
     snippets: Snippets
     status: Status

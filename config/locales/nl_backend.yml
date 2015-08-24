@@ -4,8 +4,9 @@ nl:
     admins: Beheerders
     cancel: Annuleren
     current_image: Huidige afbeelding
+    delete: Verwijder
     description: Beschrijving
-    edit: Bewerken
+    edit: Bewerk
     email: E-mail
     flexible_content: Flexibele inhoud
     from: Van

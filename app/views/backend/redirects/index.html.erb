@@ -8,7 +8,8 @@
       <tr>
         <th class="small-4"><%= t 'b.source' %></th>
         <th class="small-4"><%= t 'b.destination' %></th>
-        <th><%= t 'b.status_code' %></th>
+        <th class="small-2"><%= t 'b.status_code' %></th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
 
@@ -18,6 +19,12 @@
           <td><%= r.source_uri %></td>
           <td><%= r.destination_uri %></td>
           <td><%= r.status_code %></td>
+          <td class="icons">
+            <ul class="inline-list">
+              <li><%= link_to icon(:page_edit), edit_backend_redirect_path(r) %></li>
+              <li><%= link_to icon(:trash), backend_redirect_path(r), method: 'delete', data: { confirm: t('b.msg.confirm') } %></li>
+            </ul>
+          </td>
         </tr>
       <% end %>
     </tbody>

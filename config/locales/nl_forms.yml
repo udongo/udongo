@@ -17,6 +17,7 @@ nl:
         category: Categorie
         content: Inhoud
         description: Beschrijving
+        destination: Bestemming
         email: E-mail
         first_name: Voornaam
         identifier: Interne naam
@@ -31,6 +32,7 @@ nl:
         seo_description: Beschrijving
         seo_keywords: Sleutelwoorden
         seo_custom: Extra meta-tags
+        source: Bron
         subtitle: Subtitel
         summary: Korte inhoud
         title: Titel
@@ -40,6 +42,7 @@ nl:
 
       content_column:
         content_type: Type
+
     hints:
       defaults:
         seo_description: Vat de inhoud kort samen. Deze samenvatting wordt getoond bij de resultaten van de zoekmachine.

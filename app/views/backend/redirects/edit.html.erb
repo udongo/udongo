@@ -1,0 +1,16 @@
+<% breadcrumb.add "#{t('b.from')} #{@redirect.source} #{t('b.to')} #{@redirect.destination}" %>
+<% breadcrumb.add t('b.edit'), '#' %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= simple_form_for([:backend, @redirect]) do |f| %>
+  <div class="row">
+    <div class="large-12 columns">
+      <fieldset class="radius">
+        <legend><%= t 'b.heading' %></legend>
+
+      </fieldset>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_redirects_path %>
+<% end %>

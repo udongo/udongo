@@ -13,9 +13,11 @@ nl:
     logout: Uitloggen
     move: Verplaatsen
     name: Naam
+    new: Nieuw
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
+    redirects: Redirects
     save: Opslaan
     search: Zoeken
     snippet: Snippet

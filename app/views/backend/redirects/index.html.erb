@@ -1,0 +1,29 @@
+<%= render 'backend/breadcrumbs' %>
+
+<%= link_to t('b.add'), new_backend_redirect_path, class: 'button' %>
+
+<% if @redirects.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t 'b.source' %></th>
+        <th><%= t 'b.destination' %></th>
+        <th><%= t 'b.status_code' %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @redirects.each do |r| %>
+        <tr>
+          <td><%= r.source %></td>
+          <td><%= r.destination %></td>
+          <td><%= link_to t(r.visible?.to_s), backend_redirect_path(r) %></td>
+          <td><%= link_to t(r.searchable?.to_s), backend_redirect_path(r) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

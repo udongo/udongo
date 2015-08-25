@@ -41,7 +41,7 @@ class Backend::RedirectsController < BackendController
 
   def allowed_params
     params.require(:redirect).permit(
-      :source_uri, :destination_uri, :status_code
+      :source_uri, :destination_uri, :status_code, :disabled
     )
   end
 

@@ -1,22 +1,33 @@
 table {
   width: 100%;
-}
 
-table tr td.icons {
-  max-width: 1%;
-  white-space: nowrap;
+  tfoot {
+    background-color: #fafafa;
 
-  ul.inline-list {
-    padding: 0;
-    margin: 0;
+    tr td {
+      border-top: 1px solid #eee;
+      font-weight: normal;
+      padding: 0.3em 0.6em;
+    }
+  }
 
-    li {
-      margin: 0 20px 0 0;
-      text-align: right;
+  tr td.icons {
+    max-width: 1%;
+    white-space: nowrap;
 
-      &:last-child {
-        margin: 0;
+    ul.inline-list {
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin: 0 20px 0 0;
+        text-align: right;
+
+        &:last-child {
+          margin: 0;
+        }
       }
     }
   }
 }
+

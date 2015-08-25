@@ -17,6 +17,7 @@ nl:
         category: Categorie
         content: Inhoud
         description: Beschrijving
+        disabled: Uitgeschakeld
         email: E-mail
         first_name: Voornaam
         identifier: Interne naam

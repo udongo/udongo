@@ -29,9 +29,10 @@
   <table class="table">
     <thead>
       <tr>
+        <th class="small-1"><%= t 'b.enabled?' %></th>
         <th class="small-4"><%= t 'b.source' %></th>
         <th class="small-4"><%= t 'b.destination' %></th>
-        <th class="small-2"><%= t 'b.status_code' %></th>
+        <th class="small-1"><%= t 'b.status_code' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -39,6 +40,7 @@
     <tbody>
       <% @redirects.each do |r| %>
         <tr>
+          <td><%= t r.enabled?.to_s %></td>
           <td><%= r.source_uri %></td>
           <td><%= r.destination_uri %></td>
           <td><%= r.status_code %></td>

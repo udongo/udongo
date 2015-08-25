@@ -1,4 +1,6 @@
 nl:
+  'true': Ja
+  'false': Nee
   will_paginate:
     previous_label: Vorige
     next_label: Volgende

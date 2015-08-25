@@ -6,7 +6,8 @@ class Backend::RedirectsController < BackendController
   before_action :find_model, only: [:edit, :update, :destroy]
 
   def index
-    @redirects = ::Redirect.all
+    @search = ::Redirect.ransack params[:q]
+    @redirects = @search.result distinct: true
   end
 
   def new

@@ -1,6 +1,29 @@
 <%= render 'backend/breadcrumbs' %>
 
-<%= link_to t('b.add'), new_backend_redirect_path, class: 'button' %>
+<strong><%= t 'b.redirects' %></strong>
+<div class="right">
+  <%= link_to icon(:plus, t('b.add')), new_backend_redirect_path, class: 'button small' %>
+</div>
+
+<hr />
+
+<div class="alert-box secondary">
+  <%= search_form_for [:backend, @search] do |f| %>
+    <div class="row">
+      <div class="small-3 columns">
+        <%= f.search_field :source_uri_cont, placeholder: t('b.source'), class: 'string small' %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.search_field :destination_uri_cont, placeholder: t('b.destination'), class: 'string small' %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.submit class: 'button small' %>
+      </div>
+      <div class="small-offset-3 columns">
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <% if @redirects.any? %>
   <table class="table">
@@ -29,7 +52,6 @@
       <% end %>
     </tbody>
   </table>
-
 <% else %>
   <p><%= t 'b.msg.no_items' %></p>
 <% end %>

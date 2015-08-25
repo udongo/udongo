@@ -18,4 +18,13 @@ describe Redirect do
       end
     end
   end
+
+  describe '#enabled?' do
+    it(:true) { expect(build(klass, disabled: false).enabled?).to be true }
+    it(:false) { expect(build(klass, disabled: true).enabled?).to be false }
+  end
+
+  it '#respond_to?' do
+    expect(model.new).to respond_to(:enabled?)
+  end
 end

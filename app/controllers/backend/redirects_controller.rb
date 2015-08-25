@@ -10,7 +10,7 @@ class Backend::RedirectsController < BackendController
   end
 
   def new
-    @redirect = ::Redirect.new.decorate
+    @redirect = ::Redirect.new(status_code: 301).decorate
   end
 
   def create

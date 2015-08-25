@@ -57,6 +57,8 @@ nl:
         add_row: Rij toevoegen
         delete_row: Rij verwijderen
       forgot_password: Wachtwoord vergeten?
+      help_texts:
+        status_code: Meer info over het gebruik van status codes
       incorrect_login: Ongeldige login gegevens.
       no_items: Er zijn geen items.
       pages:

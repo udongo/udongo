@@ -1,10 +1,19 @@
 <%= simple_form_for([:backend, model]) do |f| %>
   <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
       <fieldset class="radius">
         <%= f.input :source_uri %>
         <%= f.input :destination_uri %>
+      </fieldset>
+    </div>
+    <div class="large-6 columns">
+      <fieldset class="radius">
         <%= f.input :status_code, collection: model.status_code_collection_for_dropdown %>
+        <div data-alert class="alert-box info radius">
+          <%= t 'b.msg.help_texts.status_code' %>:
+          <%= link_to 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection', target: '_blank' %>
+          <%# t('b.msg.help_texts.status_code', link: 'https://en.wikipedia.org/wiki/URL_redirection#HTTP_status_codes_3xx').html_safe %>
+        </div>
       </fieldset>
     </div>
   </div>

@@ -50,7 +50,12 @@ Rails.application.routes.draw do
     end
   end
 
-  ::Redirect.enabled.each do |r|
-    get r.source_uri => r.destination_uri
+  begin
+    # TODO: This won't work with custom status codes. We probably need
+    # to define a controller and redirect from there.
+    ::Redirect.enabled.each do |r|
+      get r.source_uri => redirect(r.destination_uri)
+    end
+  rescue
   end
 end

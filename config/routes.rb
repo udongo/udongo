@@ -49,4 +49,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  ::Redirect.enabled.each do |r|
+    get r.source_uri => r.destination_uri
+  end
 end

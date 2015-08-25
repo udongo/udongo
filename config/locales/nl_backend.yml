@@ -7,6 +7,7 @@ nl:
     current_image: Huidige afbeelding
     delete: Verwijder
     description: Beschrijving
+    destination: Bestemming
     edit: Bewerk
     email: E-mail
     flexible_content: Flexibele inhoud
@@ -27,7 +28,9 @@ nl:
     settings: Instellingen
     snippet: Snippet
     snippets: Snippets
+    source: Bron
     status: Status
+    status_code: Statuscode
     status_codes:
       '301': 301 (Moved Permanently)
       '303': 303 (See Other)

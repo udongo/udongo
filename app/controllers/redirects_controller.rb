@@ -5,7 +5,7 @@ class RedirectsController < ActionController::Base
     if redirect
       redirect_to redirect.destination_uri, status: redirect.status_code
     else
-      # TODO: 404 redirect
+      redirect_to page_not_found_path
     end
   end
 

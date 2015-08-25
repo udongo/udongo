@@ -50,12 +50,6 @@ Rails.application.routes.draw do
     end
   end
 
-  begin
-    # TODO: This won't work with custom status codes. We probably need
-    # to define a controller and redirect from there.
-    ::Redirect.enabled.each do |r|
-      get r.source_uri => redirect(r.destination_uri)
-    end
-  rescue
-  end
+
+  get '*path' => 'redirects#catch_all', constraints: { path: /(?!.*?backend).*/ }
 end

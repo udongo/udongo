@@ -1,4 +1,5 @@
 class Backend::RedirectsController < BackendController
+  include Concerns::PaginationController
   include Concerns::Backend::PositionableController
   include Concerns::Backend::TranslatableController
 
@@ -7,7 +8,7 @@ class Backend::RedirectsController < BackendController
 
   def index
     @search = ::Redirect.ransack params[:q]
-    @redirects = @search.result distinct: true
+    @redirects = @search.result(distinct: true).page(page_number).per_page(per_page)
   end
 
   def new

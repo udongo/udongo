@@ -53,9 +53,17 @@
         </tr>
       <% end %>
     </tbody>
-  </table>
 
-  <%= will_paginate %>
+    <% if will_paginate %>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <%= will_paginate %>
+          </td>
+        </tr>
+      </tfoot>
+    <% end  %>
+  </table>
 <% else %>
   <p><%= t 'b.msg.no_items' %></p>
 <% end %>

@@ -24,6 +24,32 @@ describe Redirect do
     it(:false) { expect(build(klass, disabled: true).enabled?).to be false }
   end
 
+  describe '.enabled' do
+    it :default do
+      expect(model.enabled).to eq []
+    end
+
+    it :result do
+      redirect = create(klass, disabled: false)
+      expect(model.enabled).to eq [redirect]
+    end
+  end
+
+  describe '.disabled' do
+    it :default do
+      expect(model.disabled).to eq []
+    end
+
+    it :result do
+      redirect = create(klass, disabled: true)
+      expect(model.disabled).to eq [redirect]
+    end
+  end
+
+  it '.respond_to?' do
+    expect(model).to respond_to(:disabled, :enabled)
+  end
+
   it '#respond_to?' do
     expect(model.new).to respond_to(:enabled?)
   end

@@ -1,6 +1,6 @@
 class RedirectsController < ActionController::Base
   def catch_all
-    redirect = Redirect.find_by(source_uri: source_uri)
+    redirect = ::Redirect.find_by(source_uri: source_uri)
 
     if redirect
       redirect_to redirect.destination_uri, status: redirect.status_code

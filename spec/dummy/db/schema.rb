@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826084234) do
+ActiveRecord::Schema.define(version: 20150826134153) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20150826084234) do
   end
 
   add_index "pages", ["parent_id"], name: "index_page_parent_id", using: :btree
+  add_index "pages", ["visible"], name: "index_pages_on_visible", using: :btree
 
   create_table "redirects", force: :cascade do |t|
     t.string   "source_uri",      limit: 255

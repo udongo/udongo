@@ -6,43 +6,45 @@ describe Redirect do
 
   describe 'validations' do
     describe 'presence' do
-      it(:source_uri) { expect(build(klass, source_uri: nil)).to_not be_valid }
-      it(:destination_uri) { expect(build(klass, destination_uri: nil)).to_not be_valid }
-      it(:status_code) { expect(build(klass, status_code: nil)).to_not be_valid }
+      it(:source_uri) { expect(build(klass, source_uri: nil)).not_to be_valid }
+      it(:destination_uri) { expect(build(klass, destination_uri: nil)).not_to be_valid }
+      it(:status_code) { expect(build(klass, status_code: nil)).not_to be_valid }
     end
 
     describe 'uniqueness' do
-      it(:source_uri) do
+      it :source_uri do
         create(klass, source_uri: 'foo')
-        expect(build(klass, source_uri: 'FOo')).to_not be_valid
+        expect(build(klass, source_uri: 'FOo')).not_to be_valid
       end
     end
   end
 
   describe '#enabled?' do
-    it(:true) { expect(build(klass, disabled: false).enabled?).to be true }
-    it(:false) { expect(build(klass, disabled: true).enabled?).to be false }
+    it(:true) { expect(build(klass, disabled: false)).to be_enabled }
+    it(:false) { expect(build(klass, disabled: true)).not_to be_enabled }
   end
 
-  describe '.enabled' do
-    it :default do
-      expect(model.enabled).to eq []
+  describe 'scopes' do
+    describe '.enabled' do
+      it :default do
+        expect(model.enabled).to eq []
+      end
+
+      it :result do
+        redirect = create(klass, disabled: false)
+        expect(model.enabled).to eq [redirect]
+      end
     end
 
-    it :result do
-      redirect = create(klass, disabled: false)
-      expect(model.enabled).to eq [redirect]
-    end
-  end
+    describe '.disabled' do
+      it :default do
+        expect(model.disabled).to eq []
+      end
 
-  describe '.disabled' do
-    it :default do
-      expect(model.disabled).to eq []
-    end
-
-    it :result do
-      redirect = create(klass, disabled: true)
-      expect(model.disabled).to eq [redirect]
+      it :result do
+        redirect = create(klass, disabled: true)
+        expect(model.disabled).to eq [redirect]
+      end
     end
   end
 

@@ -16,7 +16,7 @@ class Backend::RedirectsController < BackendController
   end
 
   def create
-    @redirect = ::Redirect.new allowed_params
+    @redirect = ::Redirect.new(allowed_params).decorate
 
     if @redirect.save
       redirect_to backend_redirects_path, notice: translate_notice(:added, :redirect)

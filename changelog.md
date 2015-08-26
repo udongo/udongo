@@ -1,6 +1,7 @@
 0.0.10 - xxxx-xx-xx
 --
 * Stop using a sidebar for the navigation.
+* Introduce the redirects module with support for short URLs /go/foo
 
 
 0.0.9 - 2015-08-21

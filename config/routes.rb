@@ -50,7 +50,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '404' => 'pages#not_found', as: :page_not_found
-
-  get '*path' => 'redirects#catch_all', constraints: { path: /(?!.*?backend).*/ }
+  get 'go/:slug' => 'redirects#go'
 end

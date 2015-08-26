@@ -24,6 +24,13 @@ describe Redirect do
     it(:false) { expect(build(klass, disabled: true)).not_to be_enabled }
   end
 
+  it '#used!' do
+    redirect = build(klass)
+    redirect.used!
+
+    expect(redirect.times_used).to eq 1
+  end
+
   describe 'scopes' do
     describe '.enabled' do
       it :default do
@@ -53,6 +60,6 @@ describe Redirect do
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:enabled?)
+    expect(model.new).to respond_to(:enabled?, :used!)
   end
 end

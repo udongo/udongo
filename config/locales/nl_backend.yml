@@ -35,6 +35,7 @@ nl:
     status_code: Statuscode
     tags: Tags
     to: Naar
+    used: Gebruikt
 
     msg:
       added: '%s werd toegevoegd.'

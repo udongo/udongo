@@ -8,4 +8,9 @@ class Redirect < ActiveRecord::Base
   def enabled?
     !disabled?
   end
+
+  def used!
+    count = self.times_used.nil? ? 1 : times_used + 1
+    update_attribute :times_used, count
+  end
 end

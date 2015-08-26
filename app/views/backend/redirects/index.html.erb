@@ -29,10 +29,11 @@
   <table class="table">
     <thead>
       <tr>
-        <th><%= t 'b.enabled?' %></th>
-        <th class="small-4"><%= t 'b.source' %></th>
-        <th class="small-4"><%= t 'b.destination' %></th>
+        <th><%= t 'b.source' %></th>
+        <th><%= t 'b.destination' %></th>
         <th><%= t 'b.status_code' %></th>
+        <th><%= t 'b.enabled?' %></th>
+        <th><%= t 'b.used' %></th>
         <th><%= t 'b.actions' %></th>
       </tr>
     </thead>
@@ -40,10 +41,11 @@
     <tbody>
       <% @redirects.each do |r| %>
         <tr>
-          <td><%= t r.enabled?.to_s %></td>
           <td><%= r.source_uri %></td>
           <td><%= r.destination_uri %></td>
           <td><%= r.status_code %></td>
+          <td><%= t r.enabled?.to_s %></td>
+          <td><%= r.times_used.to_i %></td>
           <td class="icons">
             <ul class="inline-list">
               <li><%= link_to icon(:page_edit), edit_backend_redirect_path(r) %></li>
@@ -57,7 +59,7 @@
     <% if will_paginate %>
       <tfoot>
         <tr>
-          <td colspan="5">
+          <td colspan="6">
             <%= will_paginate %>
           </td>
         </tr>

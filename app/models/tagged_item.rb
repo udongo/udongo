@@ -10,4 +10,3 @@ class TaggedItem < ActiveRecord::Base
             presence: true,
             uniqueness: { case_sensitive: false, scope: [:taggable_type, :taggable_id] }
 end
-

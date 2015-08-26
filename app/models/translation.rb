@@ -9,4 +9,3 @@ class Translation < ActiveRecord::Base
             uniqueness: { case_sensitive: false,
                           scope: [:translatable_type, :translatable_id, :locale] }
 end
-

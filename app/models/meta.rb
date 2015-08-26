@@ -9,4 +9,3 @@ class Meta < ActiveRecord::Base
     alias_attribute "seo_#{field}".to_sym, field
   end
 end
-

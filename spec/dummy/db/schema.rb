@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825094254) do
+ActiveRecord::Schema.define(version: 20150826084004) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -185,14 +185,6 @@ ActiveRecord::Schema.define(version: 20150825094254) do
   end
 
   add_index "settings", ["name"], name: "index_settings_on_name", using: :btree
-
-  create_table "shortened_urls", force: :cascade do |t|
-    t.string   "code",       limit: 255
-    t.string   "url",        limit: 255
-    t.integer  "times_used", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
 
   create_table "snippets", force: :cascade do |t|
     t.string   "identifier",   limit: 255

@@ -1,6 +1,5 @@
 class Backend::RedirectsController < BackendController
   include Concerns::PaginationController
-  include Concerns::Backend::PositionableController
 
   before_action -> { breadcrumb.add t('b.redirects'), backend_redirects_path }
   before_action :find_model, only: [:edit, :update, :destroy]

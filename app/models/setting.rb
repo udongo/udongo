@@ -11,4 +11,3 @@ class Setting < ActiveRecord::Base
     write_attribute :value, value.to_yaml
   end
 end
-

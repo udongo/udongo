@@ -1,0 +1,4 @@
+<% breadcrumb.add @redirect.summary %>
+<% breadcrumb.add t('b.edit'), '#' %>
+<%= render 'backend/breadcrumbs' %>
+<%= render 'backend/redirects/form', model: @redirect %>

@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       collection { delete '/', action: :destroy }
     end
 
+    resources :redirects, except: :show
+
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
         concerns :positionable
@@ -47,4 +49,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get 'go/:slug' => 'redirects#go'
 end

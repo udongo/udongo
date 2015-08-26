@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+
+  tfoot {
+    background-color: #fafafa;
+
+    tr td {
+      border-top: 1px solid #eee;
+      font-weight: normal;
+      padding: 0.3em 0.6em;
+    }
+  }
+
+  tr td.icons {
+    max-width: 1%;
+    white-space: nowrap;
+
+    ul.inline-list {
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin: 0 20px 0 0;
+        text-align: right;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+

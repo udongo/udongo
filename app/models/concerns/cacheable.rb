@@ -5,7 +5,9 @@ module Concerns
     included do
       after_save :flush_cache
 
-      scope :find_in_cache, ->(value) { Rails.cache.fetch([name, value]) { find_by(@cache_field => value) }}
+      scope :find_in_cache, ->(value) do
+        Rails.cache.fetch([name, value]) { find_by(@cache_field => value) }
+      end
     end
 
     module ClassMethods

@@ -17,6 +17,7 @@ nl:
         category: Categorie
         content: Inhoud
         description: Beschrijving
+        disabled: Uitgeschakeld
         email: E-mail
         first_name: Voornaam
         identifier: Interne naam
@@ -40,6 +41,11 @@ nl:
 
       content_column:
         content_type: Type
+
+      redirect:
+        source_uri: Bron
+        destination_uri: Bestemming
+
     hints:
       defaults:
         seo_description: Vat de inhoud kort samen. Deze samenvatting wordt getoond bij de resultaten van de zoekmachine.

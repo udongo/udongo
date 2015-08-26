@@ -1,29 +1,41 @@
 nl:
   b:
+    actions: Acties
     add: Toevoegen
     admins: Beheerders
     cancel: Annuleren
     content: Inhoud
     current_image: Huidige afbeelding
+    delete: Verwijder
     description: Beschrijving
-    edit: Bewerken
+    destination: Bestemming
+    edit: Bewerk
     email: E-mail
+    enabled?: Ingeschakeld?
     flexible_content: Flexibele inhoud
+    from: Van
     general: Algemeen
     login: Inloggen
     logout: Uitloggen
     move: Verplaatsen
     name: Naam
+    new: Nieuw
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
+    redirect: Redirect
+    redirects: Redirects
     save: Opslaan
     search: Zoeken
     settings: Instellingen
     snippet: Snippet
     snippets: Snippets
+    source: Bron
     status: Status
+    status_code: Statuscode
     tags: Tags
+    to: Naar
+    used: Gebruikt
 
     msg:
       added: '%s werd toegevoegd.'
@@ -44,6 +56,8 @@ nl:
         add_row: Rij toevoegen
         delete_row: Rij verwijderen
       forgot_password: Wachtwoord vergeten?
+      help_texts:
+        status_code: Meer info over het gebruik van status codes
       incorrect_login: Ongeldige login gegevens.
       no_items: Er zijn geen items.
       pages:
@@ -54,3 +68,7 @@ nl:
       saved: '%s werd bewaard.'
       seo:
         info: SEO
+      status_codes:
+        '301': 301 (Moved Permanently)
+        '303': 303 (See Other)
+        '307': 307 (Temporary Redirect)

@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'reform', '~> 1.2'
   s.add_dependency 'redcarpet', '~> 3.3'
   s.add_dependency 'draper', '~> 1.3'
+  s.add_dependency 'ransack', '~> 1.7'
   s.add_dependency 'responders', '~> 2.0'
   s.add_dependency 'ckeditor', '~> 4.1'
   s.add_dependency 'will_paginate', '~> 3.0.6'

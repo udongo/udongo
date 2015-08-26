@@ -1,0 +1,71 @@
+<%= render 'backend/breadcrumbs' %>
+
+<strong><%= t 'b.redirects' %></strong>
+<div class="right">
+  <%= link_to icon(:plus, t('b.add')), new_backend_redirect_path, class: 'button small' %>
+</div>
+
+<hr />
+
+<div class="alert-box secondary">
+  <%= search_form_for [:backend, @search] do |f| %>
+    <div class="row">
+      <div class="small-12 medium-4 large-3 columns">
+        <%= f.search_field :source_uri_cont, placeholder: t('b.source'), class: 'string small' %>
+      </div>
+      <div class="small-12 medium-4 large-3 columns">
+        <%= f.search_field :destination_uri_cont, placeholder: t('b.destination'), class: 'string small' %>
+      </div>
+      <div class="small-12 medium-2 large-3 columns">
+        <%= f.submit class: 'button small' %>
+      </div>
+      <div class="small-12 medium-offset-2 large-offset-3 columns">
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if @redirects.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t 'b.source' %></th>
+        <th><%= t 'b.destination' %></th>
+        <th><%= t 'b.status_code' %></th>
+        <th><%= t 'b.enabled?' %></th>
+        <th><%= t 'b.used' %></th>
+        <th><%= t 'b.actions' %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @redirects.each do |r| %>
+        <tr>
+          <td><%= r.source_uri %></td>
+          <td><%= r.destination_uri %></td>
+          <td><%= r.status_code %></td>
+          <td><%= t r.enabled?.to_s %></td>
+          <td><%= r.times_used.to_i %></td>
+          <td class="icons">
+            <ul class="inline-list">
+              <li><%= link_to icon(:page_edit), edit_backend_redirect_path(r) %></li>
+              <li><%= link_to icon(:trash), backend_redirect_path(r), method: 'delete', data: { confirm: t('b.msg.confirm') } %></li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+
+    <% if will_paginate %>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <%= will_paginate %>
+          </td>
+        </tr>
+      </tfoot>
+    <% end  %>
+  </table>
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

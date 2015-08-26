@@ -22,10 +22,15 @@ fieldset {
   margin-top: 15px;
 }
 
-span.hint {
-  // TODO add some styles for the form field hints.
-}
-
-table {
-  width: 100%;
+%clearfix {
+  zoom:1;
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+  &:after {
+    clear: both;
+  }
 }

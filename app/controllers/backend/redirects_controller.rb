@@ -1,7 +1,6 @@
 class Backend::RedirectsController < BackendController
   include Concerns::PaginationController
   include Concerns::Backend::PositionableController
-  include Concerns::Backend::TranslatableController
 
   before_action -> { breadcrumb.add t('b.redirects'), backend_redirects_path }
   before_action :find_model, only: [:edit, :update, :destroy]
@@ -48,12 +47,5 @@ class Backend::RedirectsController < BackendController
 
   def find_model
     @redirect = ::Redirect.find(params[:id]).decorate
-  end
-
-  def translation_form
-    Backend::RedirectTranslationForm.new(
-      redirect: find_model,
-      translation: find_model.translation(params[:translation_locale])
-    )
   end
 end

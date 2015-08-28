@@ -8,9 +8,9 @@
 <fieldset class="radius">
   <legend><%= t 'b.msg.seo.info' %></legend>
 
-  <%= f.input :seo_slug, hint: full_host, input_html: { data: { slugify_path: slugify_path, trigger: slug_trigger_id, host_url: full_host } } %>
-  <%= f.input :seo_title %>
-  <%= f.input :seo_description, as: :text%>
-  <%= f.input :seo_keywords %>
+  <%= f.input :seo_slug, hint: full_host, input_html: { data: { slugify_path: slugify_path, trigger: slug_trigger_id, host_url: full_host } }, as: :string %>
+  <%= f.input :seo_title, as: :string %>
+  <%= f.input :seo_description, as: :string %>
+  <%= f.input :seo_keywords, as: :string %>
   <%= f.input :seo_custom, as: :text %>
 </fieldset>

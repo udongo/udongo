@@ -25,7 +25,7 @@ module Concerns
       end
 
       def model_name
-        @model.class.to_s.underscore
+        @model.class.to_s.underscore.gsub('_decorator', '')
       end
 
       def set_translatable_path(path)

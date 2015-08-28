@@ -29,13 +29,7 @@ class Backend::PagesController < BackendController
     end
   end
 
-  def edit
-    @model = @model.decorate
-  end
-
   def update
-    @model = @model.decorate
-
     if @model.update_attributes(params.require('page').permit(:description, :visible, :parent_id))
       redirect_to edit_backend_page_path(@model), notice: translate_notice(:edited, :page)
     else
@@ -65,7 +59,7 @@ class Backend::PagesController < BackendController
   private
 
   def find_model
-    @model = ::Page.find params[:id]
+    @model = ::Page.find(params[:id]).decorate
   end
 
   def translation_form

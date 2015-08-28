@@ -1,21 +1,23 @@
-class Udongo::ActiveModelSimulator
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
-  include ActiveModel::Validations
+module Udongo
+  class ActiveModelSimulator
+    extend ActiveModel::Naming
+    include ActiveModel::Conversion
+    include ActiveModel::Validations
 
-  def initialize(attributes = {})
-    attributes ||= {}
-    attributes.each do |name, value|
-      send("#{name}=", value)
+    def initialize(attributes = {})
+      attributes ||= {}
+      attributes.each do |name, value|
+        send("#{name}=", value)
+      end
     end
-  end
 
-  def persisted?
-    false
-  end
+    def persisted?
+      false
+    end
 
-  # This method exists so the related factory tests pass
-  def save!
-    valid?
+    # This method exists so the related factory tests pass
+    def save!
+      valid?
+    end
   end
 end

@@ -4,6 +4,7 @@
 * Introduce the redirects module with support for short URLs /go/foo
 * Snippet titles have changed from text to string type.
 * Make sure find_in_cache lets you know when something hasn't been found.
+* Order snippets by their description.
 
 
 0.0.9 - 2015-08-21

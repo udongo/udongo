@@ -5,7 +5,7 @@ class Backend::SnippetsController < BackendController
   before_action -> { breadcrumb.add t('b.snippets'), backend_snippets_path }
 
   def index
-    @snippets = ::Snippet.all
+    @snippets = ::Snippet.order(:description)
   end
 
   def new

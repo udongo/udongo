@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   # General
   s.add_dependency 'rails', '~> 4.2.1'
-  s.add_dependency 'mysql2'
+  s.add_dependency 'mysql2', '~> 0.3.20'
 
   # Javascript related
   s.add_dependency 'jquery-rails'

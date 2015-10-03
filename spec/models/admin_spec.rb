@@ -5,7 +5,6 @@ describe Admin do
   let(:klass) { model.to_s.underscore.to_sym }
 
   it_behaves_like :person
-  it_behaves_like :loggable
 
   describe 'validations' do
     it(:first_name) { expect(build(klass, first_name: nil)).not_to be_valid }

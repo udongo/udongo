@@ -1,6 +1,5 @@
 class Admin < ActiveRecord::Base
   include Concerns::Person
-  include Concerns::Loggable
   has_secure_password
 
   validates :first_name, :last_name, presence: true

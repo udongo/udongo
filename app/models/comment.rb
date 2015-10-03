@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
   include Concerns::Parentable
-  include Concerns::Spammable
   include Concerns::Locale
 
+  include Concerns::Spammable
   spammable author_email: :email, content: :message
 
   STATUSES = %w(pending_moderation published)

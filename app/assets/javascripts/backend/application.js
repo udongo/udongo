@@ -16,4 +16,5 @@
 //= require jquery-ui/sortable
 //= require ckeditor/init
 //= require foundation
+//= require backend/general
 $(document).foundation();

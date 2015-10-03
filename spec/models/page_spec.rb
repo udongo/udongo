@@ -6,7 +6,6 @@ describe Page do
 
   it_behaves_like :translatable
   it_behaves_like :taggable
-  it_behaves_like :loggable
   it_behaves_like :parentable
   it_behaves_like :visible
   it_behaves_like :seo

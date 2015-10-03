@@ -263,9 +263,6 @@ GEM
     slop (3.6.0)
     sort_alphabetical (1.0.2)
       unicode_utils (>= 1.2.2)
-    spring (1.3.3)
-    spring-commands-rspec (1.0.4)
-      spring (>= 0.9.1)
     sprockets (3.3.4)
       rack (~> 1.0)
     sprockets-rails (2.3.3)
@@ -296,7 +293,5 @@ DEPENDENCIES
   launchy
   rb-fsevent
   rspec-rails
-  spring
-  spring-commands-rspec
   sqlite3
   udongo!

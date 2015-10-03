@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826134153) do
+ActiveRecord::Schema.define(version: 20151003191846) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 20150826134153) do
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["locale"], name: "index_comments_on_locale", using: :btree
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
+  add_index "comments", ["status"], name: "index_comments_on_status", using: :btree
 
   create_table "content_columns", force: :cascade do |t|
     t.integer  "row_id",       limit: 4
@@ -84,6 +87,8 @@ ActiveRecord::Schema.define(version: 20150826134153) do
 
   add_index "content_columns", ["content_id"], name: "idx_content_columns_on_content_id", using: :btree
   add_index "content_columns", ["content_type"], name: "idx_content_columns_on_content_type", using: :btree
+  add_index "content_columns", ["position"], name: "index_content_columns_on_position", using: :btree
+  add_index "content_columns", ["row_id"], name: "index_content_columns_on_row_id", using: :btree
 
   create_table "content_images", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -102,6 +107,8 @@ ActiveRecord::Schema.define(version: 20150826134153) do
     t.datetime "updated_at"
   end
 
+  add_index "content_rows", ["locale"], name: "index_content_rows_on_locale", using: :btree
+  add_index "content_rows", ["position"], name: "index_content_rows_on_position", using: :btree
   add_index "content_rows", ["rowable_id"], name: "idx_content_rows_on_rowable_id", using: :btree
   add_index "content_rows", ["rowable_type"], name: "idx_content_rows_on_rowable_type", using: :btree
 
@@ -120,6 +127,7 @@ ActiveRecord::Schema.define(version: 20150826134153) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "logs", ["category"], name: "index_logs_on_category", using: :btree
   add_index "logs", ["loggable_id"], name: "index_logs_on_loggable_id", using: :btree
   add_index "logs", ["loggable_type"], name: "index_logs_on_loggable_type", using: :btree
 
@@ -165,7 +173,9 @@ ActiveRecord::Schema.define(version: 20150826134153) do
     t.datetime "updated_at"
   end
 
+  add_index "pages", ["identifier"], name: "index_pages_on_identifier", using: :btree
   add_index "pages", ["parent_id"], name: "index_page_parent_id", using: :btree
+  add_index "pages", ["position"], name: "index_pages_on_position", using: :btree
   add_index "pages", ["visible"], name: "index_pages_on_visible", using: :btree
 
   create_table "redirects", force: :cascade do |t|
@@ -177,6 +187,8 @@ ActiveRecord::Schema.define(version: 20150826134153) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  add_index "redirects", ["source_uri"], name: "index_redirects_on_source_uri", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.string   "name",        limit: 255

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003191846) do
+ActiveRecord::Schema.define(version: 20151006131720) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -161,14 +161,15 @@ ActiveRecord::Schema.define(version: 20151003191846) do
   add_index "notes", ["notable_type"], name: "index_notes_on_notable_type", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "identifier",  limit: 255
-    t.string   "description", limit: 255
-    t.integer  "parent_id",   limit: 4
-    t.integer  "position",    limit: 4
-    t.boolean  "visible",     limit: 1
-    t.boolean  "deletable",   limit: 1
-    t.boolean  "draggable",   limit: 1
-    t.text     "locales",     limit: 65535
+    t.string   "identifier",       limit: 255
+    t.string   "description",      limit: 255
+    t.integer  "parent_id",        limit: 4
+    t.integer  "position",         limit: 4
+    t.boolean  "visible",          limit: 1
+    t.boolean  "deletable",        limit: 1
+    t.boolean  "draggable",        limit: 1
+    t.boolean  "content_disabled", limit: 1
+    t.text     "locales",          limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end

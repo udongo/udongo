@@ -24,7 +24,7 @@
         <%= f.input :subtitle %>
       </fieldset>
 
-      <%= render 'backend/content/rows', model: @model, locale: params[:translation_locale] %>
+      <%= render('backend/content/rows', model: @model, locale: params[:translation_locale]) unless @model.content_disabled? %>
 
       <%= render 'backend/tags', model: @model %>
       <%= render 'backend/seo_form', f: f %>

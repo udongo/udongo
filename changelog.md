@@ -6,6 +6,7 @@
 * Make sure find_in_cache lets you know when something hasn't been found.
 * Order snippets by their description.
 * Get rid of FrontendController since it's content is not relevant.
+* Make it possible to disable the page content.
 
 
 0.0.9 - 2015-08-21

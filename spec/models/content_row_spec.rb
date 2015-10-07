@@ -10,9 +10,9 @@ describe ContentRow do
 
   describe 'validations' do
     describe 'presence' do
-      it(:locale) { expect(build(klass, locale: nil)).to_not be_valid }
-      it(:rowable_type) { expect(build(klass, rowable_type: nil)).to_not be_valid }
-      it(:rowable_id) { expect(build(klass, rowable_id: nil)).to_not be_valid }
+      it(:locale) { expect(build(klass, locale: nil)).not_to be_valid }
+      it(:rowable_type) { expect(build(klass, rowable_type: nil)).not_to be_valid }
+      it(:rowable_id) { expect(build(klass, rowable_id: nil)).not_to be_valid }
     end
   end
 

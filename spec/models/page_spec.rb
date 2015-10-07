@@ -17,13 +17,13 @@ describe Page do
 
   describe 'validations' do
     describe 'presence' do
-      it(:description) { expect(build(klass, description: nil)).to_not be_valid }
+      it(:description) { expect(build(klass, description: nil)).not_to be_valid }
     end
 
     describe 'identifier' do
       it :unique do
         create(klass, identifier: 'foo')
-        expect(build(klass, identifier: 'FOO')).to_not be_valid
+        expect(build(klass, identifier: 'FOO')).not_to be_valid
       end
     end
   end

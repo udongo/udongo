@@ -29,7 +29,19 @@ TEXT
     end
   end
 
+  describe '#path' do
+    it 'route set' do
+      page = create(:page, route: 'backend_path')
+      expect(page.decorate.path).to eq '/backend'
+    end
+
+    it 'no route set' do
+      page = create(:page)
+      expect(page.decorate.path).to eq '/'
+    end
+  end
+
   it '#respond_to?' do
-    expect(create(:page).decorate).to respond_to(:options_for_parents)
+    expect(create(:page).decorate).to respond_to(:options_for_parents, :path)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007093812) do
+ActiveRecord::Schema.define(version: 20151007173557) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(version: 20151007093812) do
     t.boolean  "draggable",        limit: 1
     t.boolean  "content_disabled", limit: 1
     t.text     "locales",          limit: 65535
+    t.string   "route",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

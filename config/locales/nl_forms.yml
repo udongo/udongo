@@ -21,6 +21,7 @@ nl:
         email: E-mail
         first_name: Voornaam
         identifier: Interne naam
+        label: Label
         last_name: Achternaam
         message: Bericht
         name: Naam

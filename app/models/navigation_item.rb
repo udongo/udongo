@@ -3,7 +3,7 @@ class NavigationItem < ActiveRecord::Base
   sortable :navigation_id
 
   include Concerns::Translatable
-  translatable_fields :title, :path
+  translatable_fields :label, :path
 
   belongs_to :navigation
   belongs_to :page

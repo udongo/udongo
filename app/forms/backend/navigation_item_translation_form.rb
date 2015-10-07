@@ -3,6 +3,6 @@ class Backend::NavigationItemTranslationForm < Reform::Form
 
   model :navigation_item
 
-  property :title, on: :translation
+  property :label, on: :translation
   property :path, on: :translation
 end

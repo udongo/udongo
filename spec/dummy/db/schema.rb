@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007090541) do
+ActiveRecord::Schema.define(version: 20151007092529) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -148,6 +148,19 @@ ActiveRecord::Schema.define(version: 20151007090541) do
   add_index "meta", ["slug"], name: "index_meta_on_slug", using: :btree
   add_index "meta", ["sluggable_id"], name: "index_meta_on_sluggable_id", using: :btree
   add_index "meta", ["sluggable_type"], name: "index_meta_on_sluggable_type", using: :btree
+
+  create_table "navigation_items", force: :cascade do |t|
+    t.integer  "navigation_id", limit: 4
+    t.integer  "page_id",       limit: 4
+    t.text     "locales",       limit: 65535
+    t.integer  "position",      limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "navigation_items", ["navigation_id"], name: "index_navigation_items_on_navigation_id", using: :btree
+  add_index "navigation_items", ["page_id"], name: "index_navigation_items_on_page_id", using: :btree
+  add_index "navigation_items", ["position"], name: "index_navigation_items_on_position", using: :btree
 
   create_table "navigations", force: :cascade do |t|
     t.string   "name",        limit: 255

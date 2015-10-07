@@ -16,6 +16,8 @@ class Page < ActiveRecord::Base
   include Concerns::Cacheable
   cache_by :identifier
 
+  has_many :navigation_items, dependent: :destroy
+
   validates :description, presence: true
   validates :identifier, uniqueness: { case_sensitive: false }, allow_blank: true
 end

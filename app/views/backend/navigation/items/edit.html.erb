@@ -1,7 +1,6 @@
 <% breadcrumb.add @navigation.description, backend_navigations_path %>
 <% breadcrumb.add t('b.edit'), edit_backend_navigation_item_path(@navigation, @model) %>
-<!-- TODO add breadcrumb for the current item. Maybe create decorator for fetching the label -->
-<!-- TODO this decorator method can also be used in the frontend nav_item.label nav_item.path -->
+<% breadcrumb.add @model.label %>
 <%= render 'backend/breadcrumbs' %>
 
 <%= simple_form_for @model, url: backend_navigation_item_path(@navigation, @model) do |f| %>

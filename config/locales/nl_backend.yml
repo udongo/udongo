@@ -6,6 +6,8 @@ nl:
     cancel: Annuleren
     content: Inhoud
     current_image: Huidige afbeelding
+    custom_title: Aangepaste titel
+    custom_url: Aangepaste URL
     delete: Verwijder
     description: Beschrijving
     destination: Bestemming
@@ -19,7 +21,9 @@ nl:
     logout: Uitloggen
     move: Verplaatsen
     name: Naam
+    navigation: Navigatie
     new: Nieuw
+    none: Geen
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
@@ -59,6 +63,9 @@ nl:
       help_texts:
         status_code: Meer info over het gebruik van status codes
       incorrect_login: Ongeldige login gegevens.
+      navigation:
+        added: Het navigatie item werd toegevoegd.
+        deleted: Het navigatie item werd verwijderd.
       no_items: Er zijn geen items.
       pages:
         content: Inhoud

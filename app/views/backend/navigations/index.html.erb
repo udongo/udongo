@@ -1,0 +1,55 @@
+<%= render 'backend/breadcrumbs' %>
+
+<% @navigations.each do |n| %>
+  <div class="panel">
+    <div class="panel-heading">
+      <strong><%= n.description %></strong>
+      <div class="right">
+        <%= link_to t('b.add'), new_backend_navigation_item_path(n), class: 'button small' %>
+      </div>
+    </div>
+    <div class="panel-body">
+      <% if n.items.any? %>
+        <table>
+          <tr>
+            <th><%= t 'b.page' %></th>
+            <th><%= t 'b.custom_title' %></th>
+            <th><%= t 'b.custom_url' %></th>
+            <th>&nbsp;</th>
+          </tr>
+
+          <% n.items.each do |i| %>
+            <tr>
+              <td>
+                <%= i.page ? i.page.description : t('b.none') %>
+              </td>
+              <td><%= i.translation.title %></td>
+              <td><%= i.translation.path %></td>
+              <td class="icons">
+                <ul class="inline-list">
+                  <li><%= link_to icon(:pencil), edit_backend_navigation_item_path(n, i) %></li>
+                  <li><%= link_to icon(:trash), backend_navigation_item_path(n, i), method: :delete, data: { confirm: t('b.msg.confirm') }%></li>
+                </ul>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+
+      <% else %>
+        <p><%= t 'b.msg.no_items' %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if @navigations.empty? %>
+  <div class="panel">
+    <div class="panel-heading">
+      <strong><%= t 'b.navigation' %></strong>
+    </div>
+
+    <div class="panel-body">
+      <%= t 'b.msg.no_items' %>
+    </div>
+  </div>
+<% end %>

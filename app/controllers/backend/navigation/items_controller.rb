@@ -3,16 +3,14 @@ class Backend::Navigation::ItemsController < BackendController
   before_action :find_model, only: [:edit, :update, :destroy]
   before_action { breadcrumb.add t('b.navigation'), backend_navigations_path }
 
-  # TODO use @model
   def new
-    @item = @navigation.items.new
+    @model = @navigation.items.new
   end
 
-  # TODO use @model
   def create
-    @item = @navigation.items.new allowed_params
+    @model = @navigation.items.new allowed_params
 
-    if @item.save
+    if @model.save
       redirect_to backend_navigations_path, notice: t('b.msg.navigation.added')
     else
       render :new

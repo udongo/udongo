@@ -1,5 +1,6 @@
 class NavigationItem < ActiveRecord::Base
   include Concerns::Sortable
+  sortable :navigation_id
 
   include Concerns::Translatable
   translatable_fields :title, :path

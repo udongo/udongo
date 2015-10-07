@@ -3,12 +3,14 @@ require 'rails_helper'
 describe NavigationItemDecorator do
   describe '#label' do
     context 'page set' do
-      it 'label set' do
-        page = create(:page)
-        page.translation(:nl).title = 'foo'
-        page.translation(:nl).save
+      before(:each) do
+        @page = create(:page)
+        @page.translation(:nl).title = 'foo'
+        @page.translation(:nl).save
+      end
 
-        item = create(:navigation_item, page: page)
+      it 'label set' do
+        item = create(:navigation_item, page: @page)
         item.translation(:nl).label = 'bar'
         item.translation(:nl).save
 
@@ -16,12 +18,7 @@ describe NavigationItemDecorator do
       end
 
       it 'no label set' do
-        page = create(:page)
-        page.translation(:nl).title = 'foo'
-        page.translation(:nl).save
-
-        item = create(:navigation_item, page: page)
-
+        item = create(:navigation_item, page: @page)
         expect(item.decorate.label).to eq 'foo'
       end
     end

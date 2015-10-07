@@ -1,4 +1,5 @@
-<!-- TODO breadcrumb -->
+<% breadcrumb.add t('b.add'), new_backend_navigation_item_path(@navigation, @model) %>
+<%= render 'backend/breadcrumbs' %>
 
 <%= simple_form_for(@model, url: backend_navigation_items_path) do |f| %>
   <%= f.input :page_id, collection: ::Page.order(:description).map { |p| [p.description, p.id] }, include_blank: true %>

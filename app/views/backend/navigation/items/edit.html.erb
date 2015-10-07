@@ -15,10 +15,7 @@
   </ul>
 
   <div class="tabs-content">
-    <fieldset class="radius">
-      <legend><%= t 'b.page' %></legend>
-      <%= f.input :page_id, collection: ::Page.order(:description).map { |p| [p.description, p.id] }, label: false, include_blank: true %>
-    </fieldset>
+    <%= render 'general_fields', form: f %>
   </div>
 
   <%= render 'backend/form_actions', cancel_url: backend_navigations_path %>

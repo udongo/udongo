@@ -1,0 +1,5 @@
+<fieldset class="radius">
+  <legend><%= t 'b.page' %></legend>
+  <!-- TODO move this so some method, maybe the navigation decorator? -->
+  <%= form.input :page_id, collection: ::Page.order(:description).map { |p| [p.description, p.id] }, label: false, include_blank: true %>
+</fieldset>

@@ -8,6 +8,16 @@ class NavigationItemDecorator < Draper::Decorator
     result
   end
 
-  def path
+  def path(options = {})
+    result = '/'
+
+    if object.translation.path.present?
+      result = object.translation.path
+
+    elsif object.page.present?
+      result = object.page.decorate.path(options)
+    end
+
+    result
   end
 end

@@ -5,11 +5,11 @@ class Backend::Navigation::ItemsController < BackendController
   before_action { breadcrumb.add t('b.navigation'), backend_navigations_path }
 
   def new
-    @model = @navigation.items.new
+    @model = @navigation.items.new.decorate
   end
 
   def create
-    @model = @navigation.items.new allowed_params
+    @model = @navigation.items.new(allowed_params).decorate
 
     if @model.save
       redirect_to backend_navigations_path, notice: t('b.msg.navigation.added')
@@ -38,7 +38,7 @@ class Backend::Navigation::ItemsController < BackendController
   end
 
   def find_model
-    @model = ::NavigationItem.find params[:id]
+    @model = ::NavigationItem.find(params[:id]).decorate
   end
 
   def allowed_params

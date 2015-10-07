@@ -20,4 +20,10 @@ class NavigationItemDecorator < Draper::Decorator
 
     result
   end
+
+  def options_for_page
+    ::Page.order(:description).map do |p|
+      [p.description, p.id]
+    end
+  end
 end

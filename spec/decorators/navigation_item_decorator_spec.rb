@@ -88,6 +88,6 @@ describe NavigationItemDecorator do
   end
 
   it '#respond_to?' do
-    expect(create(:navigation_item).decorate).to respond_to(:label, :path)
+    expect(create(:navigation_item).decorate).to respond_to(:label, :path, :options_for_page)
   end
 end

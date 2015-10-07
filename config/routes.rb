@@ -24,6 +24,15 @@ Rails.application.routes.draw do
       member { post :tree_drag_and_drop }
     end
 
+    resources :navigations, only: [:index] do
+      scope module: 'navigation' do
+        resources :items, except: [:index, :show] do
+          concerns :translatable
+          # TODO add positionable
+        end
+      end
+    end
+
     resources :snippets, except: [:show, :destroy] do
       concerns :translatable
     end

@@ -20,13 +20,7 @@ class Backend::AdminsController < BackendController
     end
   end
 
-  def edit
-    @admin = ::Admin.find params[:id]
-  end
-
   def update
-    @admin = ::Admin.find params[:id]
-
     if @admin.update_attributes allowed_params
       redirect_to backend_admins_path, notice: t('b.msg.changes_saved')
     else

@@ -1,0 +1,7 @@
+<% breadcrumb.add t('b.add'), new_backend_navigation_item_path(@navigation, @model) %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= simple_form_for(@model, url: backend_navigation_items_path) do |f| %>
+  <%= render 'general_fields', form: f %>
+  <%= render 'backend/form_actions', cancel_url: backend_navigations_path %>
+<% end %>

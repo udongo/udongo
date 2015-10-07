@@ -21,6 +21,7 @@ nl:
         email: E-mail
         first_name: Voornaam
         identifier: Interne naam
+        label: Label
         last_name: Achternaam
         message: Bericht
         name: Naam
@@ -41,6 +42,9 @@ nl:
 
       content_column:
         content_type: Type
+
+      navigation_item:
+        path: URL
 
       redirect:
         source_uri: Bron

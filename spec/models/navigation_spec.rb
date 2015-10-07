@@ -18,5 +18,9 @@ describe Navigation do
       end
     end
   end
+
+  it '#respond_to?' do
+    expect(build(klass)).to respond_to(:items)
+  end
 end
 

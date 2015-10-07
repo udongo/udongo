@@ -1,4 +1,5 @@
 class Backend::Navigation::ItemsController < BackendController
+  include Concerns::Backend::TranslatableController
   before_action :find_navigation
   before_action :find_model, only: [:edit, :update, :destroy]
   before_action { breadcrumb.add t('b.navigation'), backend_navigations_path }
@@ -37,10 +38,25 @@ class Backend::Navigation::ItemsController < BackendController
   end
 
   def find_model
-    @model = @navigation.items.find params[:id]
+    @model = ::NavigationItem.find params[:id]
   end
 
   def allowed_params
     params[:navigation_item].permit(:page_id)
+  end
+
+  def translation_form
+    Backend::NavigationItemTranslationForm.new(
+      navigation_item: @model,
+      translation: @model.translation(params[:translation_locale])
+    )
+  end
+
+  def translatable_path
+    edit_translation_backend_navigation_item_path(
+      @navigation,
+      @model,
+      params[:translation_locale]
+    )
   end
 end

@@ -42,6 +42,9 @@ nl:
       content_column:
         content_type: Type
 
+      navigation_item:
+        path: URL
+
       redirect:
         source_uri: Bron
         destination_uri: Bestemming

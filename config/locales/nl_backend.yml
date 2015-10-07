@@ -65,6 +65,7 @@ nl:
       incorrect_login: Ongeldige login gegevens.
       navigation:
         added: Het navigatie item werd toegevoegd.
+        custom: Op maat
         deleted: Het navigatie item werd verwijderd.
       no_items: Er zijn geen items.
       pages:

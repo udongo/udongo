@@ -2,15 +2,10 @@ class NavigationItemDecorator < Draper::Decorator
   delegate_all
 
   def label
-    if object.translation.label.present?
-      object.translation.label
-
-    elsif object.page.present?
-      object.page.translation.title
-
-    else
-      ''
-    end
+    result = ''
+    result = object.translation.label if object.translation.label
+    result = object.page.translation.title if object.page && result.blank?
+    result
   end
 
   def path

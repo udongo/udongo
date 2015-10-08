@@ -42,7 +42,7 @@ class Backend::Navigation::ItemsController < BackendController
   end
 
   def allowed_params
-    params[:navigation_item].permit(:page_id)
+    params[:navigation_item].permit(:page_id, :extra)
   end
 
   def translation_form

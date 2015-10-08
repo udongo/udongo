@@ -19,6 +19,7 @@ nl:
         description: Beschrijving
         disabled: Uitgeschakeld
         email: E-mail
+        extra: Extra
         first_name: Voornaam
         identifier: Interne naam
         label: Label

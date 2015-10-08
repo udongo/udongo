@@ -15,6 +15,7 @@
             <th><%= t 'b.page' %></th>
             <th><%= t 'b.custom_title' %></th>
             <th><%= t 'b.custom_url' %></th>
+            <th><%= t 'b.extra' %></th>
             <th>&nbsp;</th>
           </tr>
 
@@ -25,6 +26,7 @@
               </td>
               <td><%= i.translation.label %></td>
               <td><%= i.translation.path %></td>
+              <td><%= i.extra %></td>
               <td class="icons">
                 <ul class="inline-list">
                   <li><%= link_to icon(:pencil), edit_backend_navigation_item_path(n, i) %></li>

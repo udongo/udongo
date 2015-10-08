@@ -2,3 +2,8 @@
   <legend><%= t 'b.page' %></legend>
   <%= form.input :page_id, collection: @model.options_for_page, label: false, include_blank: true %>
 </fieldset>
+
+<fieldset class="radius">
+  <legend><%= t 'b.extra' %></legend>
+  <%= form.input :extra, label: false, as: :string %>
+</fieldset>

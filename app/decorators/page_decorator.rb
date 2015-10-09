@@ -24,11 +24,10 @@ class PageDecorator < Draper::Decorator
         end
       end
 
-      if Udongo.config.prefix_routes_with_locale?
-        "/#{locale}/#{slugs.reverse.join('/')}"
-      else
-        "/#{slugs.reverse.join('/')}"
-      end
+      str = ''
+      str << "/#{locale}" if Udongo.config.prefix_routes_with_locale?
+      str << "/#{slugs.reverse.join('/')}"
+      str
     end
   end
 end

@@ -1,3 +1,4 @@
+<% javascript 'backend/sortable' %>
 <%= render 'backend/breadcrumbs' %>
 
 <% @navigations.each do |n| %>
@@ -12,6 +13,7 @@
       <% if n.items.any? %>
         <table>
           <tr>
+            <th>&nbsp;</th>
             <th><%= t 'b.page' %></th>
             <th><%= t 'b.custom_title' %></th>
             <th><%= t 'b.custom_url' %></th>
@@ -20,7 +22,7 @@
           </tr>
 
           <% n.items.each do |i| %>
-            <tr>
+            <tr data-update-position="<%= update_position_backend_navigation_item_path(n, i) %>">
               <td>
                 <%= i.page ? i.page.description : t('b.none') %>
               </td>

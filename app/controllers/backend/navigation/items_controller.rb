@@ -1,5 +1,7 @@
 class Backend::Navigation::ItemsController < BackendController
   include Concerns::Backend::TranslatableController
+  include Concerns::Backend::PositionableController
+
   before_action :find_navigation
   before_action :find_model, only: [:edit, :update, :destroy]
   before_action { breadcrumb.add t('b.navigation'), backend_navigations_path }

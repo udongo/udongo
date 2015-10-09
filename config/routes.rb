@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       scope module: 'navigation' do
         resources :items, except: [:index, :show] do
           concerns :translatable
-          # TODO add positionable
+          concerns :positionable
         end
       end
     end

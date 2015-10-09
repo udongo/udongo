@@ -28,6 +28,16 @@ shared_examples_for :parentable do
     it(:true) { expect(a.parentable?).to be true }
   end
 
+  describe 'parents' do
+    it :basic do
+      expect(b.parents).to eq [b, a]
+    end
+
+    it :include_self do
+      expect(b.parents(include_self: false)).to eq [a]
+    end
+  end
+
   describe '.flat_tree' do
     context 'no records' do
       it :empty do
@@ -54,7 +64,7 @@ shared_examples_for :parentable do
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:children, :parent, :depth, :parentable?)
+    expect(model.new).to respond_to(:children, :parent, :depth, :parentable?, :parents)
   end
 
   it '.respond_to' do

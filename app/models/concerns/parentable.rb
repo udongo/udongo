@@ -17,6 +17,12 @@ module Concerns
       true
     end
 
+    def parents(instance: nil, list: [], include_self: true)
+      instance = self unless instance.present?
+      list << instance if include_self
+      instance.parent ? parents(instance: instance.parent, list: list) : list
+    end
+
     module ClassMethods
       def flat_tree(parent_id: nil, list: [])
         children = name.constantize.where(parent_id: parent_id)

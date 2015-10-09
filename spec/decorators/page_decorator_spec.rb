@@ -30,42 +30,103 @@ TEXT
   end
 
   describe '#path' do
-    it 'route set' do
-      page = create(:page, route: 'backend_path')
-      expect(page.decorate.path).to eq '/backend'
-    end
-
-    describe 'route set' do
+    context 'without routes' do
       before(:each) do
         @team = create(:page)
-        @team.seo(:nl).slug = 'team'
-        @team.seo(:nl).save
+        @team.seo.slug = 'team'
+        @team.seo.save
 
         @devs = create(:page, parent: @team)
-        @devs.seo(:nl).slug = 'devs'
-        @devs.seo(:nl).save
+        @devs.seo.slug = 'devs'
+        @devs.seo.save
 
-        @employee = create(:page, parent: @devs)
-        @employee.seo(:nl).slug = 'employee'
-        @employee.seo(:nl).save
+        @foo = create(:page, parent: @devs)
+        @foo.seo.slug = 'foo'
+        @foo.seo.save
       end
 
       it 'first level' do
-        @page = create(:page)
-        expect(@team.decorate.path(:nl)).to eq '/team'
+        expect(@team.decorate.path).to eq '/team'
       end
 
       it 'second level' do
-        expect(@devs.decorate.path(:nl)).to eq '/team/devs'
+        expect(@devs.decorate.path).to eq '/team/devs'
       end
 
       it 'third level' do
-        expect(@employee.decorate.path(:nl)).to eq '/team/devs/employee'
+        expect(@foo.decorate.path).to eq '/team/devs/foo'
       end
     end
-    it 'no route set' do
-      page = create(:page)
-      expect(page.decorate.path).to eq '/'
+
+    context 'with routes' do
+      it 'first level' do
+        page = create(:page, route: 'backend_path')
+        expect(page.decorate.path).to eq '/backend'
+      end
+
+      describe 'second level' do
+        it 'with route / without route' do
+          backend = create(:page, route: 'backend_path')
+
+          pages = create(:page, parent: backend)
+          pages.seo.slug = 'pages'
+          pages.seo.save
+
+          expect(pages.decorate.path).to eq '/backend/pages'
+        end
+
+        it 'without route / with route' do
+          backend = create(:page)
+          backend.seo.slug = 'does-not-matter'
+          backend.seo.save
+
+          pages = create(:page, parent: backend, route: 'backend_pages_path')
+          expect(pages.decorate.path).to eq '/backend/pages'
+        end
+      end
+
+      describe 'third level' do
+        it 'with route / without route / without route' do
+          backend = create(:page, route: 'backend_path')
+
+          pages = create(:page, parent: backend)
+          pages.seo.slug = 'pages'
+          pages.seo.save
+
+          subpage = create(:page, parent: pages)
+          subpage.seo.slug = 'subpage'
+          subpage.seo.save
+
+          expect(subpage.decorate.path).to eq '/backend/pages/subpage'
+        end
+
+        it 'without route / with route / without route' do
+          backend = create(:page)
+          backend.seo.slug = 'does-not-matter'
+          backend.seo.save
+
+          pages = create(:page, parent: backend, route: 'backend_pages_path')
+
+          subpage = create(:page, parent: pages)
+          subpage.seo.slug = 'subpage'
+          subpage.seo.save
+
+          expect(subpage.decorate.path).to eq '/backend/pages/subpage'
+        end
+
+        it 'without route / without route / with route' do
+          backend = create(:page)
+          backend.seo.slug = 'does-not-matter'
+          backend.seo.save
+
+          pages = create(:page, parent: backend)
+          pages.seo.slug = 'does-not-matter'
+          pages.seo.save
+
+          subpage = create(:page, parent: pages, route: 'backend_pages_path')
+          expect(subpage.decorate.path).to eq '/backend/pages'
+        end
+      end
     end
   end
 

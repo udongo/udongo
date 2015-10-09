@@ -1,5 +1,5 @@
 class FormSubmissionData < ActiveRecord::Base
-  belongs_to :form_submission
+  belongs_to :submission, class_name: 'FormSubmission'
 
-  validates :form_submission, presence: true
+  validates :submission, presence: true
 end

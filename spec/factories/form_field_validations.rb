@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :form_field_validation do
-    form_field
+    association :field, factory: :form_field
     validation_class "MyString"
   end
 end

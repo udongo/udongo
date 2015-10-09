@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009132657) do
+ActiveRecord::Schema.define(version: 20151009141123) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -119,14 +119,14 @@ ActiveRecord::Schema.define(version: 20151009132657) do
   end
 
   create_table "form_field_validations", force: :cascade do |t|
-    t.integer  "form_field_id",    limit: 4
+    t.integer  "field_id",         limit: 4
     t.string   "validation_class", limit: 255
     t.integer  "position",         limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "form_field_validations", ["form_field_id"], name: "index_form_field_validations_on_form_field_id", using: :btree
+  add_index "form_field_validations", ["field_id"], name: "index_form_field_validations_on_field_id", using: :btree
 
   create_table "form_fields", force: :cascade do |t|
     t.integer  "form_id",    limit: 4
@@ -140,14 +140,14 @@ ActiveRecord::Schema.define(version: 20151009132657) do
   add_index "form_fields", ["form_id"], name: "index_form_fields_on_form_id", using: :btree
 
   create_table "form_submission_data", force: :cascade do |t|
-    t.integer  "form_submission_id", limit: 4
-    t.string   "name",               limit: 255
-    t.text     "value",              limit: 65535
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "submission_id", limit: 4
+    t.string   "name",          limit: 255
+    t.text     "value",         limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  add_index "form_submission_data", ["form_submission_id"], name: "index_form_submission_data_on_form_submission_id", using: :btree
+  add_index "form_submission_data", ["submission_id"], name: "index_form_submission_data_on_submission_id", using: :btree
 
   create_table "form_submissions", force: :cascade do |t|
     t.integer  "form_id",    limit: 4
@@ -316,4 +316,5 @@ ActiveRecord::Schema.define(version: 20151009132657) do
   end
 
   add_index "translations", ["translatable_id", "translatable_type", "locale", "name"], name: "idx_translations_magic", using: :btree
+
 end

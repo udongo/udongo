@@ -6,11 +6,11 @@ describe FormSubmissionData do
 
   describe 'validations' do
     describe 'presence' do
-      it(:form_submission) { expect(build(klass, form_submission: nil)).not_to be_valid }
+      it(:submission) { expect(build(klass, submission: nil)).not_to be_valid }
     end
   end
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:form_submission)
+    expect(build(klass)).to respond_to(:submission)
   end
 end

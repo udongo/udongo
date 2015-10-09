@@ -8,12 +8,12 @@ describe FormFieldValidation do
 
   describe 'validations' do
     describe 'presence' do
-      it(:form_field) { expect(build(klass, form_field: nil)).not_to be_valid }
+      it(:field) { expect(build(klass, field: nil)).not_to be_valid }
       it(:validation_class) { expect(build(klass, validation_class: nil)).not_to be_valid }
     end
   end
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:form_field)
+    expect(build(klass)).to respond_to(:field)
   end
 end

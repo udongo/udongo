@@ -15,6 +15,6 @@ describe FormField do
   end
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:form)
+    expect(build(klass)).to respond_to(:form, :validations)
   end
 end

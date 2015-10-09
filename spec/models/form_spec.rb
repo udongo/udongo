@@ -5,6 +5,6 @@ describe Form do
   let(:klass) { model.to_s.underscore.to_sym }
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:form_fields)
+    expect(build(klass)).to respond_to(:fields)
   end
 end

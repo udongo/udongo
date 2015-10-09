@@ -1,6 +1,6 @@
 class FormFieldValidation < ActiveRecord::Base
   include Concerns::Sortable
-  belongs_to :form_field
+  belongs_to :field, class_name: 'FormField'
 
-  validates :form_field, :validation_class, :form_field, presence: true
+  validates :field, :validation_class, presence: true
 end

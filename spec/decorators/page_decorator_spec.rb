@@ -33,28 +33,28 @@ TEXT
     context 'without routes' do
       before(:each) do
         @team = create(:page)
-        @team.seo.slug = 'team'
-        @team.seo.save
+        @team.seo(:nl).slug = 'team'
+        @team.seo(:nl).save
 
         @devs = create(:page, parent: @team)
-        @devs.seo.slug = 'devs'
-        @devs.seo.save
+        @devs.seo(:nl).slug = 'devs'
+        @devs.seo(:nl).save
 
         @foo = create(:page, parent: @devs)
-        @foo.seo.slug = 'foo'
-        @foo.seo.save
+        @foo.seo(:nl).slug = 'foo'
+        @foo.seo(:nl).save
       end
 
       it 'first level' do
-        expect(@team.decorate.path).to eq '/team'
+        expect(@team.decorate.path(locale: :nl)).to eq '/nl/team'
       end
 
       it 'second level' do
-        expect(@devs.decorate.path).to eq '/team/devs'
+        expect(@devs.decorate.path(locale: :nl)).to eq '/nl/team/devs'
       end
 
       it 'third level' do
-        expect(@foo.decorate.path).to eq '/team/devs/foo'
+        expect(@foo.decorate.path(locale: :nl)).to eq '/nl/team/devs/foo'
       end
     end
 

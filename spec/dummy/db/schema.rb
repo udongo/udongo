@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009141822) do
+ActiveRecord::Schema.define(version: 20151009142242) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -120,10 +120,11 @@ ActiveRecord::Schema.define(version: 20151009141822) do
 
   create_table "form_field_validations", force: :cascade do |t|
     t.integer  "field_id",         limit: 4
+    t.text     "locales",          limit: 65535
     t.string   "validation_class", limit: 255
     t.integer  "position",         limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "form_field_validations", ["field_id"], name: "index_form_field_validations_on_field_id", using: :btree

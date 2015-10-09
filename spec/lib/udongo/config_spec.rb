@@ -4,19 +4,19 @@ describe Udongo::Config do
   let(:instance) { Udongo::Config.new }
 
   describe 'defaults' do
-    it 'default_locale' do
+    it :default_locale do
       expect(instance.default_locale).to eq :nl
     end
 
-    it 'locales' do
+    it :locales do
       expect(instance.locales).to eq %w(nl en fr de)
     end
 
-    it 'host' do
+    it :host do
       expect(instance.host).to eq 'udongo.dev'
     end
 
-    it 'time_zone' do
+    it :time_zone do
       expect(instance.time_zone).to eq 'Brussels'
     end
 

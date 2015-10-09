@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009115326) do
+ActiveRecord::Schema.define(version: 20151009115803) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -117,6 +117,16 @@ ActiveRecord::Schema.define(version: 20151009115326) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "form_field_validations", force: :cascade do |t|
+    t.integer  "form_field_id",    limit: 4
+    t.string   "validation_class", limit: 255
+    t.integer  "position",         limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "form_field_validations", ["form_field_id"], name: "index_form_field_validations_on_form_field_id", using: :btree
 
   create_table "form_fields", force: :cascade do |t|
     t.integer  "form_id",    limit: 4
@@ -287,6 +297,4 @@ ActiveRecord::Schema.define(version: 20151009115326) do
   end
 
   add_index "translations", ["translatable_id", "translatable_type", "locale", "name"], name: "idx_translations_magic", using: :btree
-
-  add_foreign_key "form_fields", "forms"
 end

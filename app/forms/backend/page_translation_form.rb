@@ -13,5 +13,5 @@ class Backend::PageTranslationForm < Reform::Form
   property :seo_slug, on: :seo
 
   validates :title, presence: true
-  validates :seo_slug, presence: true
+  validates :seo_slug, presence: true # TODO only if necessary!
 end

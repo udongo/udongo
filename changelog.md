@@ -7,6 +7,8 @@
 * Order snippets by their description.
 * Get rid of FrontendController since it's content is not relevant.
 * Make it possible to disable the page content.
+* Add setting 'prefix_routes_with_locale' which defaults to true.
+* Make the navigation items positionable.
 
 
 0.0.9 - 2015-08-21

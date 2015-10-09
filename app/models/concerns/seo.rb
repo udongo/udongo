@@ -13,7 +13,11 @@ module Concerns
     end
 
     def seo(locale = I18n.locale)
-      meta.where(locale: locale).first || meta.new(locale: locale)
+      @seo_collections = {} unless @seo_collections
+      return @seo_collections[locale.to_sym] if @seo_collections[locale.to_sym]
+
+      existing_meta = meta.find_by(locale: locale)
+      @seo_collections[locale.to_sym] = existing_meta ? existing_meta : meta.new(locale: locale)
     end
   end
 end

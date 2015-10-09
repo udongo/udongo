@@ -10,10 +10,15 @@ shared_examples_for :seo do
       expect(instance.seo(:nl).class).to eq Meta
     end
 
-    # TODO don't save yet
-    it 'fetch locale specific meta object' do
-      meta = instance.meta.create(locale: 'nl', slug: 'test')
-      expect(instance.seo(:nl)).to eq meta
+    describe 'fetch locale specific meta object' do
+      it 'new' do
+        instance.seo(:nl) == instance.seo(:nl)
+      end
+
+      it 'saved' do
+        meta = instance.meta.create(locale: 'nl', slug: 'test')
+        expect(instance.seo(:nl)).to eq meta
+      end
     end
   end
 

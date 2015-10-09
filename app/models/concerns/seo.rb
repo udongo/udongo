@@ -12,19 +12,11 @@ module Concerns
       end
     end
 
-    # TODO refactor me
     def seo(locale = I18n.locale)
       @seo_collections = {} unless @seo_collections
+      return @seo_collections[locale.to_sym] if @seo_collections[locale.to_sym]
 
-      if @seo_collections[locale.to_sym]
-
-      elsif meta.find_by(locale: locale)
-        @seo_collections[locale.to_sym] = meta.find_by(locale: locale)
-
-      else
-        @seo_collections[locale.to_sym] = meta.new(locale: locale)
-      end
-
+      @seo_collections[locale.to_sym] = meta.find_by(locale: locale) ? meta.find_by(locale: locale) : meta.new(locale: locale)
       @seo_collections[locale.to_sym]
     end
   end

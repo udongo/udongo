@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009131957) do
+ActiveRecord::Schema.define(version: 20151009132657) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -138,6 +138,16 @@ ActiveRecord::Schema.define(version: 20151009131957) do
   end
 
   add_index "form_fields", ["form_id"], name: "index_form_fields_on_form_id", using: :btree
+
+  create_table "form_submission_data", force: :cascade do |t|
+    t.integer  "form_submission_id", limit: 4
+    t.string   "name",               limit: 255
+    t.text     "value",              limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "form_submission_data", ["form_submission_id"], name: "index_form_submission_data_on_form_submission_id", using: :btree
 
   create_table "form_submissions", force: :cascade do |t|
     t.integer  "form_id",    limit: 4

@@ -16,5 +16,5 @@
 # end
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.uncountable 'meta'
+  inflect.uncountable 'meta', 'form_submission_data'
 end

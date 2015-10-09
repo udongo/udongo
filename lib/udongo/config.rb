@@ -10,5 +10,9 @@ module Udongo
       @host = 'udongo.dev'
       @time_zone = 'Brussels'
     end
+
+    def prefix_routes_with_locale?
+      prefix_routes_with_locale === true
+    end
   end
 end

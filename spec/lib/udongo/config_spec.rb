@@ -28,7 +28,8 @@ describe Udongo::Config do
   it '#respond_to?' do
     expect(instance).to respond_to(
       :default_locale, :default_locale=, :host, :host=, :time_zone, :time_zone=,
-      :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=
+      :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=,
+      :prefix_routes_with_locale?
     )
   end
 end

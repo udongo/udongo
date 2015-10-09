@@ -32,6 +32,8 @@ TEXT
   describe '#path' do
     context 'without routes' do
       before(:each) do
+        Udongo.config.prefix_routes_with_locale = true
+
         @team = create(:page)
         @team.seo(:nl).slug = 'team'
         @team.seo(:nl).save
@@ -45,8 +47,15 @@ TEXT
         @foo.seo(:nl).save
       end
 
-      it 'first level' do
-        expect(@team.decorate.path(locale: :nl)).to eq '/nl/team'
+      describe 'first level' do
+        it 'with locale prefix' do
+          expect(@team.decorate.path(locale: :nl)).to eq '/nl/team'
+        end
+
+        it 'without locale prefix' do
+          Udongo.config.prefix_routes_with_locale = false
+          expect(@team.decorate.path(locale: :nl)).to eq '/team'
+        end
       end
 
       it 'second level' do

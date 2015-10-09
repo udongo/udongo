@@ -17,12 +17,7 @@ class PageDecorator < Draper::Decorator
     if route.present?
       h.send(route, options)
     else
-      slug = [object.seo(locale).slug]
-
-      parents(include_self: false).each do |p|
-        slug << p.seo(locale).slug
-      end
-
+      slug = parents.map { |p| p.seo(locale).slug }
       "/#{slug.reverse.join('/')}"
     end
   end

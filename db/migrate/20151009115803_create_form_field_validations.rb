@@ -1,7 +1,7 @@
 class CreateFormFieldValidations < ActiveRecord::Migration
   def change
     create_table :form_field_validations do |t|
-      t.references :form_field, index: true, foreign_key: true
+      t.references :form_field, index: true
       t.string :validation_class
       t.integer :position
 

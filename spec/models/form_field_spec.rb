@@ -5,6 +5,7 @@ describe FormField do
   let(:klass) { model.to_s.underscore.to_sym }
 
   it_behaves_like :sortable
+  it_behaves_like :translatable
 
   describe 'validations' do
     describe 'presence' do
@@ -12,6 +13,10 @@ describe FormField do
       it(:name) { expect(build(klass, name: nil)).not_to be_valid }
       it(:field_type) { expect(build(klass, field_type: nil)).not_to be_valid }
     end
+  end
+
+  it 'translatable' do
+    expect(model.translation_config.fields).to eq [:label]
   end
 
   it '#respond_to?' do

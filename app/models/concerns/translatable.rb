@@ -11,8 +11,8 @@ module Concerns
     end
 
     def translation(locale = I18n.locale)
-      @collections = {} unless @collections
-      @collections[locale.to_sym] ||= Collection.new(self, self.class.translation_config, locale)
+      @translation_collections = {} unless @translation_collections
+      @translation_collections[locale.to_sym] ||= Collection.new(self, self.class.translation_config, locale)
     end
 
     module ClassMethods

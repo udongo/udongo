@@ -35,6 +35,34 @@ TEXT
       expect(page.decorate.path).to eq '/backend'
     end
 
+    describe 'route set' do
+      before(:each) do
+        @team = create(:page)
+        @team.seo(:nl).slug = 'team'
+        @team.seo(:nl).save
+
+        @devs = create(:page, parent: @team)
+        @devs.seo(:nl).slug = 'devs'
+        @devs.seo(:nl).save
+
+        @employee = create(:page, parent: @devs)
+        @employee.seo(:nl).slug = 'employee'
+        @employee.seo(:nl).save
+      end
+
+      it 'first level' do
+        @page = create(:page)
+        expect(@team.decorate.path(:nl)).to eq '/team'
+      end
+
+      it 'second level' do
+        expect(@devs.decorate.path(:nl)).to eq '/team/devs'
+      end
+
+      it 'third level' do
+        expect(@employee.decorate.path(:nl)).to eq '/team/devs/employee'
+      end
+    end
     it 'no route set' do
       page = create(:page)
       expect(page.decorate.path).to eq '/'

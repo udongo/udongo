@@ -16,8 +16,8 @@ module Concerns
       @seo_collections = {} unless @seo_collections
       return @seo_collections[locale.to_sym] if @seo_collections[locale.to_sym]
 
-      @seo_collections[locale.to_sym] = meta.find_by(locale: locale) ? meta.find_by(locale: locale) : meta.new(locale: locale)
-      @seo_collections[locale.to_sym]
+      existing_meta = meta.find_by(locale: locale)
+      @seo_collections[locale.to_sym] = existing_meta ? existing_meta : meta.new(locale: locale)
     end
   end
 end

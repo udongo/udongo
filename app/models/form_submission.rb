@@ -4,4 +4,5 @@ class FormSubmission < ActiveRecord::Base
   has_many :fields, class_name: 'FormField'
 
   validates :form, presence: true
+  # TODO: belongs_to :visitor
 end

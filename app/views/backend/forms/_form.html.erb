@@ -1,0 +1,12 @@
+<%= simple_form_for([:backend, model]) do |f| %>
+  <div class="row">
+    <div class="large-6 columns">
+      <fieldset class="radius">
+      </fieldset>
+    </div>
+    <div class="large-6 columns">
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_forms_path %>
+<% end %>

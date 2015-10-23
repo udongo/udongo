@@ -16,6 +16,7 @@ nl:
     enabled?: Ingeschakeld?
     extra: Extra
     flexible_content: Flexibele inhoud
+    forms: Formulieren
     from: Van
     general: Algemeen
     login: Inloggen

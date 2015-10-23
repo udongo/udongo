@@ -1,0 +1,53 @@
+<%= render 'backend/breadcrumbs' %>
+
+<strong><%= t 'b.forms' %></strong>
+<div class="right">
+  <%= link_to icon(:plus, t('b.add')), new_backend_form_path, class: 'button small' %>
+</div>
+
+<hr />
+
+<% if @forms.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t 'b.source' %></th>
+        <th><%= t 'b.destination' %></th>
+        <th><%= t 'b.status_code' %></th>
+        <th><%= t 'b.enabled?' %></th>
+        <th><%= t 'b.used' %></th>
+        <th><%= t 'b.actions' %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @forms.each do |r| %>
+        <tr>
+          <td><%= r.source_uri %></td>
+          <td><%= r.destination_uri %></td>
+          <td><%= r.status_code %></td>
+          <td><%= t r.enabled?.to_s %></td>
+          <td><%= r.times_used.to_i %></td>
+          <td class="icons">
+            <ul class="inline-list">
+              <li><%= link_to icon(:page_edit), edit_backend_form_path(r) %></li>
+              <li><%= link_to icon(:trash), backend_form_path(r), method: 'delete', data: { confirm: t('b.msg.confirm') } %></li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+
+    <% if will_paginate %>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <%= will_paginate %>
+          </td>
+        </tr>
+      </tfoot>
+    <% end  %>
+  </table>
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'draper', '~> 1.4.0'
   s.add_dependency 'ransack', '~> 1.7.0'
   s.add_dependency 'responders', '~> 2.1.0'
-  s.add_dependency 'ckeditor', '~> 4.1.4' # todo rever to 4.1.3 if needed
+  s.add_dependency 'ckeditor', '~> 4.1.4'
   s.add_dependency 'will_paginate', '~> 3.0.6'
 
   # Development dependencies

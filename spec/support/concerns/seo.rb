@@ -33,11 +33,22 @@ shared_examples_for :seo do
     end
   end
 
+  describe '.find_by_slug!' do
+    it :result do
+      instance.meta.create!(locale: 'nl', slug: 'test')
+      expect(model.find_by_slug!('test', locale: :nl)).to eq instance
+    end
+
+    it 'no result' do
+      expect{ model.find_by_slug!('test', locale: :nl) }.to raise_exception
+    end
+  end
+
   it '#respond_to?' do
     expect(build(klass)).to respond_to(:meta, :seo)
   end
 
   it '.respond_to?' do
-    expect(model).to respond_to(:find_by_slug)
+    expect(model).to respond_to(:find_by_slug, :find_by_slug!)
   end
 end

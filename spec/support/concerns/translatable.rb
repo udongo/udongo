@@ -19,6 +19,10 @@ shared_examples_for :translatable do
     end
   end
 
+  it '#translatable?' do
+    expect(build(klass)).to be_translatable
+  end
+
   describe 'scopes' do
     describe '.within_locale' do
       it 'no results' do
@@ -38,7 +42,7 @@ shared_examples_for :translatable do
   end
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:translation)
+    expect(build(klass)).to respond_to(:translation, :translatable?)
   end
 
   it '.respond_to?' do

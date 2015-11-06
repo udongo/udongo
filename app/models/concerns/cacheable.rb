@@ -9,7 +9,7 @@ module Concerns
         Rails.cache.fetch([name, value]) do
           o = find_by!(@cache_field => value)
 
-          if name.constantize.respond_to?(:translation_config)
+          if o.respond_to?(:translatable) && o.translatable?
             Udongo.config.locales.each do |l|
               name.constantize.translation_config.fields.each { |f| o.translation(l).send(f) }
             end

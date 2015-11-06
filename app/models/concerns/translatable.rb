@@ -15,6 +15,10 @@ module Concerns
       @translation_collections[locale.to_sym] ||= Collection.new(self, self.class.translation_config, locale)
     end
 
+    def translatable?
+      true
+    end
+
     module ClassMethods
       def translatable_field(name)
         delegate name, to: :translation

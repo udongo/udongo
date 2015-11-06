@@ -5,9 +5,19 @@ module Concerns
     included do
       after_save :flush_cache
 
-      scope :find_in_cache, ->(value) do
-        Rails.cache.fetch([name, value]) { find_by!(@cache_field => value) }
-      end
+      scope :find_in_cache, ->(value) {
+        Rails.cache.fetch([name, value]) do
+          o = find_by!(@cache_field => value)
+
+          if name.constantize.respond_to?(:translation_config)
+            Udongo.config.locales.each do |l|
+              name.constantize.translation_config.fields.each { |f| o.translation(l).send(f) }
+            end
+          end
+
+          o
+        end
+      }
     end
 
     module ClassMethods

@@ -9,6 +9,9 @@ module Concerns
         Rails.cache.fetch([name, value]) do
           o = find_by!(@cache_field => value)
 
+          # If the model is translatable, we want all the translation fields in
+          # every locale to be initialized. This way we avoid a separate query
+          # for each of the fields in the translation collection.
           if o.respond_to?(:translatable) && o.translatable?
             Udongo.config.locales.each do |l|
               name.constantize.translation_config.fields.each { |f| o.translation(l).send(f) }

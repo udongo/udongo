@@ -40,7 +40,7 @@ shared_examples_for :seo do
     end
 
     it 'no result' do
-      expect{ model.find_by_slug!('test', locale: :nl) }.to raise_exception
+      expect{ model.find_by_slug!('test', locale: :nl) }.to raise_exception RuntimeError
     end
   end
 

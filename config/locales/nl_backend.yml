@@ -30,6 +30,7 @@ nl:
     password: Wachtwoord
     redirect: Redirect
     redirects: Redirects
+    restart_webserver: Webserver herstarten
     save: Opslaan
     search: Zoeken
     settings: Instellingen

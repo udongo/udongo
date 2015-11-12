@@ -9,6 +9,8 @@
 * Make it possible to disable the page content.
 * Add setting 'prefix_routes_with_locale' which defaults to true.
 * Make the navigation items positionable.
+* Make find_in_cache aware of translatable models and caches all the fields in
+  all the configured locales.
 
 
 0.0.9 - 2015-08-21

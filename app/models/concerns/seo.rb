@@ -8,7 +8,15 @@ module Concerns
 
     module ClassMethods
       def find_by_slug(slug, locale: I18n.locale)
-        joins(:meta).where('meta.locale' => locale, 'meta.slug' => slug, 'meta.sluggable_type' => self.name).first
+        joins(:meta).where(
+          'meta.locale' => locale,
+          'meta.slug' => slug,
+          'meta.sluggable_type' => self.name
+        ).first
+      end
+
+      def find_by_slug!(slug, locale: I18n.locale)
+        find_by_slug(slug, locale: locale) || raise('No such record found')
       end
     end
 

@@ -5,6 +5,10 @@ module UdongoHelper
     js_asset_loader.load_js file, target
   end
 
+  def restart_webserver_button
+    link_to I18n.t('b.restart_webserver'), backend_restart_webserver_path, class: 'button', method: 'post'
+  end
+
   # Before using: Put <%= yield(:stylesheets) %> in the <head> of your app's frontend
   def stylesheet(file, media = :screen)
     css_asset_loader.view = self

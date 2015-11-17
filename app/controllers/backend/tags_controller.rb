@@ -1,7 +1,7 @@
 class Backend::TagsController < BackendController
   def index
-    tags = ::Tag.where(locale: locale).map do |t|
-      { label: t.name, value: t.name }
+    tags = ::Tag.by_locale(locale).pluck(:name).map do |name|
+      { label: name, value: name }
     end
 
     render json: tags

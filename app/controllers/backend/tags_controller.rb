@@ -8,6 +8,12 @@ class Backend::TagsController < BackendController
   end
 
   def create
+    # TODO do some checks
+    # bestaat type
+    # bestaat id
+    # respond_to?(:taggable?) && #taggable?
+
+    raise 'foo'
     handle_request do
       create_tag unless tag_exists?
       model.tagged_items.create! tag: find_tag

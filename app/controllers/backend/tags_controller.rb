@@ -9,7 +9,7 @@ class Backend::TagsController < BackendController
 
   def create
     create_tag unless tag_exists?
-    tag_model
+    find_model.tagged_items.create tag: find_tag
     render json: { tag: params[:tag] }
   end
 
@@ -42,11 +42,5 @@ class Backend::TagsController < BackendController
       name: params[:tag],
       slug: params[:tag].parameterize
     }
-  end
-
-  def tag_model
-    if find_model.tagged_items.where(tag_id: find_tag.id).empty?
-      find_model.tagged_items.create! tag: find_tag
-    end
   end
 end

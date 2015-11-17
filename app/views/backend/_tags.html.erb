@@ -4,8 +4,8 @@
 <% javascript 'backend/plugins/tagbox' %>
 <% javascript 'backend/tags' %>
 
-<% hide_label ||= true %>
-<% locale ||= params[:translation_locale] ? params[:translation_locale] : nil %>
+<% hide_label = local_assigns.has_key?(:hide_label) ? local_assigns[:hide_label] : true %>
+<% locale = local_assigns.has_key?(:translation_locale) ? local_assigns[:translation_locale] : nil %>
 
 <fieldset class="radius">
   <legend><%= t 'b.tags' %></legend>

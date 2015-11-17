@@ -4,13 +4,10 @@
 <% javascript 'backend/plugins/tagbox' %>
 <% javascript 'backend/tags' %>
 
-<% hide_label = local_assigns.has_key?(:hide_label) ? local_assigns[:hide_label] : true %>
 <% locale = local_assigns.has_key?(:translation_locale) ? local_assigns[:translation_locale] : nil %>
 
 <fieldset class="radius">
   <legend><%= t 'b.tags' %></legend>
 
-  <!-- TODO check this markup (I believe this is still bootstrap. -->
-  <%= label_tag(:tags, t('b.tags'), class: 'control-label col-sm-2') unless hide_label %>
   <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tags_path, locale: locale, type: model.class.name, id: model.id, base_path: backend_tags_path } %>
 </fieldset>

@@ -5,9 +5,10 @@
 <% javascript 'backend/tags' %>
 
 <% locale = local_assigns.has_key?(:translation_locale) ? local_assigns[:translation_locale] : nil %>
+<% actual_model = model.decorated? ? model.object : model %>
 
 <fieldset class="radius">
   <legend><%= t 'b.tags' %></legend>
 
-  <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tags_path, locale: locale, type: model.class.name, id: model.id, base_path: backend_tags_path } %>
+  <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tags_path, locale: locale, type: actual_model.class.name, id: model.id, base_path: backend_tags_path } %>
 </fieldset>

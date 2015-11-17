@@ -15,7 +15,7 @@ class Backend::TagsController < BackendController
 
   def destroy
     find_model.tagged_items.where(tag_id: find_tag.id).destroy_all
-    render json: { tag: params[:tag] }
+    render json: { success: true }
   end
 
   private

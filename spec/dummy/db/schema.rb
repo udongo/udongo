@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008114433) do
+ActiveRecord::Schema.define(version: 20151117190950) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -248,13 +248,15 @@ ActiveRecord::Schema.define(version: 20151008114433) do
   add_index "tagged_items", ["taggable_type"], name: "index_tagged_items_on_taggable_type", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string   "locale",     limit: 255
-    t.string   "name",       limit: 255
-    t.string   "slug",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "locale",             limit: 255
+    t.string   "name",               limit: 255
+    t.string   "slug",               limit: 255
+    t.string   "external_reference", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
+  add_index "tags", ["external_reference"], name: "index_tags_on_external_reference", using: :btree
   add_index "tags", ["locale"], name: "index_tags_on_locale", using: :btree
   add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
   add_index "tags", ["slug"], name: "index_tags_on_slug", using: :btree

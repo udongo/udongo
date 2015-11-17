@@ -4,7 +4,7 @@
 <% javascript 'backend/plugins/tagbox' %>
 <% javascript 'backend/tags' %>
 
-<% locale = local_assigns.has_key?(:translation_locale) ? local_assigns[:translation_locale] : nil %>
+<% locale = local_assigns.has_key?(:locale) ? local_assigns[:locale] : params[:translation_locale] %>
 <% actual_model = model.decorated? ? model.object : model %>
 
 <fieldset class="radius">

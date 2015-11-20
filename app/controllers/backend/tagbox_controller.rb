@@ -9,14 +9,13 @@ class Backend::TagboxController < BackendController
 
   def create
     create_tag if tag_creatable?
-    tag = find_model.tagged_items.create tag: find_tag
-    render json: { tag: params[:tag], valid: tag.present? }
+    render json: { tag: params[:tag], valid: item_tagged?(find_tag) }
   end
 
   def destroy
     tag = find_tag
-    destroyed_tag = find_model.tagged_items.where(tag_id: tag.id).destroy_all if tag.present?
-    render json: { success: destroyed_tag.present? }
+    find_model.tagged_items.where(tag_id: tag.id).destroy_all if tag.present?
+    render json: { success: true }
   end
 
   private
@@ -43,5 +42,11 @@ class Backend::TagboxController < BackendController
       name: params[:tag],
       slug: params[:tag].parameterize
     }
+  end
+
+  def item_tagged?(tag)
+    return false unless tag
+    find_model.tagged_items.create! tag: tag
+    true
   end
 end

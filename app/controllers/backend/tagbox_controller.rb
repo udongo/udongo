@@ -29,7 +29,6 @@ class Backend::TagboxController < BackendController
   end
 
   def tag_creatable?
-    # TODO: do something with params[:taggable_type] to check for
     !::Tag.exists?(tag_params) && Udongo.config.allow_new_tags?
   end
 

@@ -10,7 +10,7 @@ class Backend::TagboxController < BackendController
   def create
     create_tag if tag_creatable?
     tag = find_model.tagged_items.create tag: find_tag
-    render json: { tag: params[:tag], valid: tag.valid? }
+    render json: { tag: params[:tag], valid: tag.present? }
   end
 
   def destroy

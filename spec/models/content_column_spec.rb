@@ -13,6 +13,18 @@ describe ContentColumn do
     end
   end
 
+  describe 'touch' do
+    let(:yesterday) { Time.zone.yesterday.to_date }
+
+    it :row do
+      column = create(klass)
+      column.row.update_attribute(:updated_at, yesterday)
+      column.width = 11
+      column.save
+      expect(column.row.updated_at.to_date).to eq Date.today
+    end
+  end
+
   it '#respond_to?' do
     expect(build(klass)).to respond_to(:row, :content)
   end

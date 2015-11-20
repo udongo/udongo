@@ -27,7 +27,9 @@ var tags = {
       },
       type: type
     }).done(function(data){
-      if(!data.valid) input.tagit('removeTagByLabel', data.tag);
+      if(!data.valid) {
+        input.tagit('removeTagByLabel', data.tag);
+      }
     });
   }
 }

@@ -21,5 +21,9 @@ module Concerns
     def tags_string(locale = I18n.locale)
       tags(locale).map(&:name).join(',')
     end
+
+    def taggable?
+      true
+    end
   end
 end

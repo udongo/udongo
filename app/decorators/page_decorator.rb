@@ -10,24 +10,22 @@ class PageDecorator < Draper::Decorator
   end
 
   def path(locale: I18n.locale, options: {})
-    if route.present?
-      h.send(route, options)
-    else
-      slugs = []
+    return h.send(route, options) if route.present?
 
-      parents.each do |p|
-        if p.route.present?
-          slugs << h.send(p.route, options)
-          return slugs.reverse.join('/')
-        else
-          slugs << p.seo(locale).slug
-        end
+    slugs = []
+
+    parents.each do |p|
+      if p.route.present?
+        slugs << h.send(p.route, options)
+        return slugs.reverse.join('/')
+      else
+        slugs << p.seo(locale).slug
       end
-
-      str = ''
-      str << "/#{locale}" if Udongo.config.prefix_routes_with_locale?
-      str << "/#{slugs.reverse.join('/')}"
-      str
     end
+
+    str = ''
+    str << "/#{locale}" if Udongo.config.prefix_routes_with_locale?
+    str << "/#{slugs.reverse.join('/')}"
+    str
   end
 end

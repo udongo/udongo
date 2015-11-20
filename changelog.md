@@ -1,4 +1,10 @@
-0.0.10 - xxxx-xx-xx
+0.0.11 - xxxx-xx-xx
+--
+* Add 'external reference' to tags. This allows you to integrate tags from third
+  party systems.
+
+
+0.0.10 - 2015-11-12
 --
 * Stop using a sidebar for the navigation.
 * Introduce the redirects module with support for short URLs /go/foo
@@ -9,6 +15,9 @@
 * Make it possible to disable the page content.
 * Add setting 'prefix_routes_with_locale' which defaults to true.
 * Make the navigation items positionable.
+* Make find_in_cache aware of translatable models and caches all the fields in
+  all the configured locales.
+* Add functionality to restart the webserver.
 
 
 0.0.9 - 2015-08-21

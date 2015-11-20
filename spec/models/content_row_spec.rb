@@ -14,23 +14,6 @@ describe ContentRow do
     end
   end
 
-  describe 'touch' do
-    let(:yesterday) { Time.zone.yesterday.to_date }
-
-    it :rowable do
-      page = create(:page)
-      page.update_attribute(:updated_at, yesterday)
-
-      row = create(klass, rowable_type: 'Page', rowable_id: page.id)
-      page.reload
-
-      row.created_at = 2.weeks.ago
-      row.save!
-
-      expect(page.updated_at.to_date).to eq Date.today
-    end
-  end
-
   it '#respond_to?' do
     expect(build(klass)).to respond_to(:rowable, :columns)
   end

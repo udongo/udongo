@@ -8,7 +8,7 @@ class Backend::TagsController < BackendController
   end
 
   def create
-    create_tag unless tag_exists?
+    create_tag if tag_creatable?
     tag = find_model.tagged_items.create tag: find_tag
     render json: { tag: params[:tag], valid: tag.valid? }
   end
@@ -28,8 +28,9 @@ class Backend::TagsController < BackendController
     ::Tag.find_by locale: params[:locale], name: params[:tag]
   end
 
-  def tag_exists?
-    ::Tag.exists?(tag_params)
+  def tag_creatable?
+    # TODO: do something with params[:taggable_type] to check for
+    !::Tag.exists?(tag_params)
   end
 
   def create_tag

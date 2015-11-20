@@ -10,30 +10,6 @@ describe TaggedItem do
     end
   end
 
-  describe :after_destroy do
-    let(:tag) { create(:tag, locale: 'nl', name: 'foo', slug: 'foo') }
-
-    before(:each) do
-      @item1 = create(:tagged_item, taggable_id: 1, tag_id: tag.id)
-      @item2 = create(:tagged_item, taggable_id: 2, tag_id: tag.id)
-    end
-
-    context 'tags in use' do
-      it :true do
-        @item2.destroy
-
-        expect(Tag.exists?(id: tag.id)).to be true
-      end
-
-      it :false do
-        @item1.destroy
-        @item2.destroy
-
-        expect(Tag.exists?(id: tag.id)).to be false
-      end
-    end
-  end
-
   it '#respond_to?' do
     expect(model.new).to respond_to(:taggable, :tag)
   end

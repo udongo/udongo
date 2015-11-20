@@ -17,7 +17,7 @@ module Udongo
     end
 
     def allow_new_tags?
-      allow_new_tags == true
+      allow_new_tags === true
     end
   end
 end

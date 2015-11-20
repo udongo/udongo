@@ -1,4 +1,4 @@
-class Backend::TagsController < BackendController
+class Backend::TagboxController < BackendController
   def index
     tags = ::Tag.by_locale(locale).pluck(:name).map do |name|
       { label: name, value: name }

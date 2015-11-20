@@ -37,8 +37,10 @@ Rails.application.routes.draw do
       concerns :translatable
     end
 
-    resources :tags, only: [:index, :create] do
-      collection { delete '/', action: :destroy }
+    scope :tagbox, controller: 'tagbox', as: 'tagbox' do
+      get '/', action: 'index'
+      post '/', action: 'create'
+      delete '/', action: 'destroy'
     end
 
     resources :redirects, except: :show

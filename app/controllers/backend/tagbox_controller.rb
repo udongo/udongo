@@ -15,8 +15,8 @@ class Backend::TagboxController < BackendController
 
   def destroy
     tag = find_tag
-    find_model.tagged_items.where(tag_id: tag.id).destroy_all if tag.present?
-    render json: { success: true }
+    destroyed_tag = find_model.tagged_items.where(tag_id: tag.id).destroy_all if tag.present?
+    render json: { success: destroyed_tag.present? }
   end
 
   private

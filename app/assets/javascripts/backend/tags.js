@@ -27,7 +27,7 @@ var tags = {
       },
       type: type
     }).done(function(data){
-      if(!data.valid) {
+      if(type == 'POST' && !data.valid) {
         input.tagit('removeTagByLabel', data.tag);
       }
     });

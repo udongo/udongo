@@ -2,6 +2,7 @@
 --
 * Add 'external reference' to tags. This allows you to integrate tags from third
   party systems.
+* Make it possible to disallow the creation of new tags.
 
 
 0.0.10 - 2015-11-12

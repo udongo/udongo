@@ -9,7 +9,7 @@ module Udongo
       @prefix_routes_with_locale = true
       @host = 'udongo.dev'
       @time_zone = 'Brussels'
-      @allow_new_tags = false
+      @allow_new_tags = true
     end
 
     def prefix_routes_with_locale?

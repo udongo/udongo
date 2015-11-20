@@ -10,5 +10,5 @@
 <fieldset class="radius">
   <legend><%= t 'b.tags' %></legend>
 
-  <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tags_path, locale: locale, type: actual_model.class.name, id: model.id, base_path: backend_tags_path } %>
+  <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tagbox_path, locale: locale, type: actual_model.class.name, id: model.id, base_path: backend_tagbox_path } %>
 </fieldset>

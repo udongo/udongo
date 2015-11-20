@@ -32,7 +32,7 @@ TEXT
   describe '#path' do
     context 'without routes' do
       before(:each) do
-        Udongo.config.prefix_routes_with_locale = true
+        allow(Udongo.config).to receive(:prefix_routes_with_locale?) { true }
 
         @team = create(:page)
         @team.seo(:nl).slug = 'team'
@@ -53,7 +53,7 @@ TEXT
         end
 
         it 'without locale prefix' do
-          Udongo.config.prefix_routes_with_locale = false
+          allow(Udongo.config).to receive(:prefix_routes_with_locale?) { false }
           expect(@team.decorate.path(locale: :nl)).to eq '/team'
         end
       end

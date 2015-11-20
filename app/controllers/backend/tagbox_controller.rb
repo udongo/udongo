@@ -1,4 +1,4 @@
-class Backend::TagsController < BackendController
+class Backend::TagboxController < BackendController
   def index
     tags = ::Tag.by_locale(locale).pluck(:name).map do |name|
       { label: name, value: name }
@@ -8,13 +8,13 @@ class Backend::TagsController < BackendController
   end
 
   def create
-    create_tag unless tag_exists?
-    find_model.tagged_items.create tag: find_tag
-    render json: { tag: params[:tag] }
+    create_tag if tag_creatable?
+    render json: { tag: params[:tag], valid: item_tagged?(find_tag) }
   end
 
   def destroy
-    find_model.tagged_items.where(tag_id: find_tag.id).destroy_all
+    tag = find_tag
+    find_model.tagged_items.where(tag_id: tag.id).destroy_all if tag.present?
     render json: { success: true }
   end
 
@@ -28,8 +28,8 @@ class Backend::TagsController < BackendController
     ::Tag.find_by locale: params[:locale], name: params[:tag]
   end
 
-  def tag_exists?
-    ::Tag.exists? tag_params
+  def tag_creatable?
+    !::Tag.exists?(tag_params) && Udongo.config.allow_new_tags?
   end
 
   def create_tag
@@ -42,5 +42,11 @@ class Backend::TagsController < BackendController
       name: params[:tag],
       slug: params[:tag].parameterize
     }
+  end
+
+  def item_tagged?(tag)
+    return false unless tag
+    find_model.tagged_items.create! tag: tag
+    true
   end
 end

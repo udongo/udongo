@@ -29,7 +29,7 @@ class Backend::TagsController < BackendController
   end
 
   def tag_exists?
-    ::Tag.exists?(tag_params)
+    ::Tag.exists? tag_params
   end
 
   def create_tag

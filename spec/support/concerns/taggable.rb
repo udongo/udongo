@@ -40,8 +40,12 @@ shared_examples_for :taggable do
     end
   end
 
+  it '#taggable?' do
+    expect(instance).to be_taggable
+  end
+
   it '#respond_to?' do
-    expect(model.new).to respond_to(:tagged_items, :related, :tags, :tags_string)
+    expect(model.new).to respond_to(:tagged_items, :related, :tags, :tags_string, :taggable?)
   end
 end
 

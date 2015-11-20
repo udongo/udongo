@@ -9,8 +9,8 @@ class Backend::TagsController < BackendController
 
   def create
     create_tag unless tag_exists?
-    find_model.tagged_items.create tag: find_tag
-    render json: { tag: params[:tag] }
+    tag = find_model.tagged_items.create tag: find_tag
+    render json: { tag: params[:tag], valid: tag.valid? }
   end
 
   def destroy

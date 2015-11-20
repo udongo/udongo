@@ -26,6 +26,8 @@ var tags = {
         tag: tag
       },
       type: type
+    }).done(function(data){
+      if(!data.valid) input.tagit('removeTagByLabel', data.tag);
     });
   }
 }

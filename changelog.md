@@ -4,6 +4,7 @@
   party systems.
 * Make it possible to disallow the creation of new tags.
 * Don't limit the ckeditor locales to just nl, fr and en.
+* Add MetaInfo class which can be used to hold the frontend meta info.
 
 
 0.0.10 - 2015-11-12

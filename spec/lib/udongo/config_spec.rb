@@ -23,13 +23,17 @@ describe Udongo::Config do
     it :prefix_routes_with_locale do
       expect(instance.prefix_routes_with_locale).to eq true
     end
+
+    it :flexible_content_types do
+      expect(instance.flexible_content_types).to eq %w(text image)
+    end
   end
 
   it '#respond_to?' do
     expect(instance).to respond_to(
       :default_locale, :default_locale=, :host, :host=, :time_zone, :time_zone=,
       :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=,
-      :prefix_routes_with_locale?
+      :prefix_routes_with_locale?, :flexible_content_types, :flexible_content_types=
     )
   end
 end

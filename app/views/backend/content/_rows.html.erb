@@ -17,8 +17,9 @@
             <div class="large-<%= column.width %> columns">
               <% content = column.content.decorate %>
 
-              <%= render 'backend/content/text', text: content if content.content_type_is?(:text) %>
-              <%= render 'backend/content/image', image: content if content.content_type_is?(:image) %>
+              <% Udongo.config.flexible_content_types.each do |content_type| %>
+                <%= render("backend/content/#{content_type}", object: content) if content.content_type_is?(content_type)  %>
+              <% end %>
 
               <%= link_to icon(:trash), backend_content_row_column_path(row, column), method: :delete, data: { confirm: t('b.msg.confirm') } %>
               <%= link_to icon(:wrench, "(#{column.width})"), edit_backend_content_row_column_path(row, column) %>

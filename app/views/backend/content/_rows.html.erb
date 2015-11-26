@@ -1,5 +1,5 @@
 <% rows = model.content_rows(locale) %>
-<div id="content-row">
+<div id="content-rows">
   <% rows.where(locale: locale).each do |row| %>
     <fieldset>
       <div class="row" id="content-row-<%= row.id %>">

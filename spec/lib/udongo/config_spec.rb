@@ -27,13 +27,18 @@ describe Udongo::Config do
     it :flexible_content_types do
       expect(instance.flexible_content_types).to eq %w(text image)
     end
+
+    it :allow_new_tags do
+      expect(instance.allow_new_tags).to eq true
+    end
   end
 
   it '#respond_to?' do
     expect(instance).to respond_to(
       :default_locale, :default_locale=, :host, :host=, :time_zone, :time_zone=,
       :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=,
-      :prefix_routes_with_locale?, :flexible_content_types, :flexible_content_types=
+      :prefix_routes_with_locale?, :flexible_content_types, :flexible_content_types=,
+      :allow_new_tags, :allow_new_tags?
     )
   end
 end

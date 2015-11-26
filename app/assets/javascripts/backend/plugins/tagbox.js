@@ -5,7 +5,7 @@
       limit: null,
       minLength: 2,
       on_add: function(tag, input) {},
-      on_remove: function(tag, input) {},
+      on_remove: function(tag, input) {}
     }, options);
 
     return this.each(function() {
@@ -21,7 +21,7 @@
         });
       } else {
         return tagit(input, settings.items);
-      };
+      }
 
       function tagit(input, items) {
         input.tagit({
@@ -29,7 +29,7 @@
             minLength: settings.minLength,
             source: function(request, response) {
               response($.ui.autocomplete.filter(settings.items, request.term));
-            },
+            }
           },
           allowSpaces: true,
           caseSensitive: false,
@@ -46,7 +46,7 @@
             }
           }
         });
-      };
+      }
     });
   };
 }(jQuery));

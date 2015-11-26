@@ -1,11 +1,7 @@
 class ContentImageDecorator < Draper::Decorator
   delegate_all
 
-  def text?
-    false
-  end
-
-  def image?
-    true
+  def content_type_is?(value)
+    value.to_sym == :image
   end
 end

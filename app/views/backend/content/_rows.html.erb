@@ -1,8 +1,6 @@
 <% rows = model.content_rows(locale) %>
-<fieldset id="content-rows">
-  <legend><%= t 'b.flexible_content' %></legend>
-
-  <% rows.where(locale: locale).each do |row| %>
+<% rows.where(locale: locale).each do |row| %>
+  <fieldset class="radius">
     <div class="row" id="content-row-<%= row.id %>">
       <div class="large-12 columns">
         <ul class="button-group radius">
@@ -17,18 +15,18 @@
             <div class="large-<%= column.width %> columns">
               <% content = column.content.decorate %>
 
-              <%= render 'backend/content/text', text: content if content.text? %>
-              <%= render 'backend/content/image', image: content if content.image? %>
+              <% Udongo.config.flexible_content_types.each do |content_type| %>
+                <%= render("backend/content/#{content_type}", object: content) if content.content_type_is?(content_type)  %>
+              <% end %>
 
               <%= link_to icon(:trash), backend_content_row_column_path(row, column), method: :delete, data: { confirm: t('b.msg.confirm') } %>
               <%= link_to icon(:wrench, "(#{column.width})"), edit_backend_content_row_column_path(row, column) %>
             </div>
           <% end %>
         </div>
-        <hr>
       </div>
     </div>
-  <% end %>
+  </fieldset>
+<% end %>
 
-  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>
-</fieldset>
+<%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>

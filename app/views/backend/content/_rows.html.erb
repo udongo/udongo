@@ -17,8 +17,8 @@
             <div class="large-<%= column.width %> columns">
               <% content = column.content.decorate %>
 
-              <%= render 'backend/content/text', text: content if content.text? %>
-              <%= render 'backend/content/image', image: content if content.image? %>
+              <%= render 'backend/content/text', text: content if content.content_type_is?(:text) %>
+              <%= render 'backend/content/image', image: content if content.content_type_is?(:image) %>
 
               <%= link_to icon(:trash), backend_content_row_column_path(row, column), method: :delete, data: { confirm: t('b.msg.confirm') } %>
               <%= link_to icon(:wrench, "(#{column.width})"), edit_backend_content_row_column_path(row, column) %>

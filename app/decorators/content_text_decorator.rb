@@ -5,11 +5,7 @@ class ContentTextDecorator < Draper::Decorator
     content.to_s.html_safe
   end
 
-  def text?
-    true
-  end
-
-  def image?
-    false
+  def content_type_is?(value)
+    value.to_sym == :text
   end
 end

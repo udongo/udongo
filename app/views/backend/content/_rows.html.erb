@@ -1,8 +1,5 @@
 <% rows = model.content_rows(locale) %>
 <div id="content-row">
-  <h1><%= t 'b.flexible_content' %></h1>
-  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>
-
   <% rows.where(locale: locale).each do |row| %>
     <fieldset>
       <div class="row" id="content-row-<%= row.id %>">
@@ -32,4 +29,6 @@
       </div>
     </fieldset>
   <% end %>
+
+  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>
 </div>

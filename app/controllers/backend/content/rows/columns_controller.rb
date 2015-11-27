@@ -51,15 +51,7 @@ class Backend::Content::Rows::ColumnsController < BackendController
   end
 
   def redirect_to_edit(column)
-    if column.content.is_a?(ContentText)
-      redirect_to edit_backend_content_text_path(column.content)
-
-    elsif column.content.is_a?(ContentImage)
-      redirect_to edit_backend_content_image_path(column.content)
-
-    else
-      raise "No such content type #{column.content.class}"
-    end
+    redirect_to send("edit_backend_content_#{column.content.content_type}_path", column.content)
   end
 
   def cancel_url

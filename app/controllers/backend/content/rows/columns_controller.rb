@@ -51,7 +51,7 @@ class Backend::Content::Rows::ColumnsController < BackendController
   end
 
   def redirect_to_edit(column)
-    redirect_to send("edit_backend_content_#{column.content.content_type}_path", column.content)
+    redirect_to send("edit_backend_content_#{column.content.decorate.content_type}_path", column.content)
   end
 
   def cancel_url

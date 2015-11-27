@@ -55,8 +55,9 @@ Rails.application.routes.draw do
       end
 
       scope module: 'rows' do
-        resources :texts, only: [:edit, :update]
-        resources :images, only: [:edit, :update]
+        Udongo.config.flexible_content_types.each do |content_type|
+          resources content_type.to_sym, only: [:edit, :update]
+        end
       end
     end
   end

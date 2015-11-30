@@ -5,8 +5,6 @@
     <div class="panel radius" id="content-row-<%= row.id %>">
       <div class="row">
         <div class="medium-12 columns">
-          <!-- TODO use the acts_ast_list first? and last? to make sure not to show up/down when not possible -->
-
           <ul class="button-group radius">
             <% unless row.first? %>
               <li><%= link_to icon(:arrow_up, t('b.up')), move_up_backend_content_row_path(row), class: 'button small secondary' %></li>

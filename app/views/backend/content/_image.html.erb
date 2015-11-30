@@ -2,11 +2,11 @@
 
   <% if object.url.present? %>
     <%= link_to object.url, class: 'th radius' do %>
-      <%= image_tag object.file.url, alt: '' %>
+      <%= image_tag object.file.size_1024x640.url, alt: '' %>
     <% end %>
 
   <% else %>
-    <%= image_tag object.file.url, alt: '' %>
+    <%= image_tag object.file.size_1024x640.url, alt: '' %>
   <% end %>
 
   <% if object.caption.present? %>

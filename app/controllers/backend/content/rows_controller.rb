@@ -10,6 +10,20 @@ class Backend::Content::RowsController < BackendController
     end
   end
 
+  def move_up
+    @row = ::ContentRow.find params[:id]
+    @row.move_higher
+
+    redirect_to content_path(@row.rowable, @row.locale, "content-row-#{@row.id}")
+  end
+
+  def move_down
+    @row = ::ContentRow.find params[:id]
+    @row.move_lower
+
+    redirect_to content_path(@row.rowable, @row.locale, "content-row-#{@row.id}")
+  end
+
   def destroy
     row = ::ContentRow.find params[:id]
     row.destroy

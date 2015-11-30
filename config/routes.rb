@@ -49,6 +49,10 @@ Rails.application.routes.draw do
       resources :rows, only: [:index, :new, :destroy] do
         concerns :positionable
 
+        member do
+          get 'move_up', 'move_down'
+        end
+
         scope module: 'rows' do
           resources :columns
         end

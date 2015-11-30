@@ -4,9 +4,11 @@
   <div class="panel radius" id="content-row-<%= row.id %>">
     <div class="row">
       <div class="medium-12 columns">
+        <!-- TODO use the acts_ast_list first? and last? to make sure not to show up/down when not possible -->
+
         <ul class="button-group radius">
-          <li><%= link_to icon(:arrow_up, t('b.up')), '#', class: 'button small secondary' %></li>
-          <li><%= link_to icon(:arrow_down, t('b.down')), '#', class: 'button small secondary' %></li>
+          <li><%= link_to icon(:arrow_up, t('b.up')), move_up_backend_content_row_path(row), class: 'button small secondary' %></li>
+          <li><%= link_to icon(:arrow_down, t('b.down')), move_down_backend_content_row_path(row), class: 'button small secondary' %></li>
           <li><%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'button small secondary' %></li>
           <li><%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
         </ul>

@@ -9,6 +9,7 @@
 * Added rake task to regenerate all the ContentImage files in all the versions.
 * Make the list of flexible content types dynamic so you can write your own.
 * Optimize the backend flexible content previews.
+* Make the content rows/columns movable.
 
 
 0.0.10 - 2015-11-12

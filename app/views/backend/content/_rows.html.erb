@@ -2,7 +2,7 @@
 <% rows.where(locale: locale).each do |row| %>
   <fieldset class="radius">
     <div class="row" id="content-row-<%= row.id %>">
-      <div class="large-12 columns">
+      <div class="medium-12 columns">
         <ul class="button-group radius">
           <!-- TODO make rows draggable -->
           <li><%= link_to icon(:list_bullet, t('b.move')), '#', class: 'button small secondary' %></li>

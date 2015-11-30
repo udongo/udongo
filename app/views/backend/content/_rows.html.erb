@@ -31,10 +31,18 @@
           <% end %>
 
           <ul class="button-group radius">
+            <% unless column.first? %>
+              <li><%= link_to icon(:arrow_left), move_up_backend_content_row_column_path(row, column), class: 'button small secondary' %></li>
+            <% end %>
+
             <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>
-            <li><%= link_to icon(:pencil), edit_link, class: 'button small' %></li>
-            <li><%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'button small', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
-            <li><%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), title: column.width, class: 'button small' %></li>
+            <li><%= link_to icon(:pencil), edit_link, class: 'button small secondary' %></li>
+            <li><%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
+            <li><%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), title: column.width, class: 'button small secondary' %></li>
+
+            <% unless column.last? %>
+              <li><%= link_to icon(:arrow_right), move_down_backend_content_row_column_path(row, column), class: 'button small secondary' %></li>
+            <% end %>
           </ul>
         </div>
       <% end %>

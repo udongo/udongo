@@ -11,6 +11,7 @@ nl:
     delete: Verwijder
     description: Beschrijving
     destination: Bestemming
+    down: Omlaag
     edit: Bewerk
     email: E-mail
     enabled?: Ingeschakeld?
@@ -42,6 +43,7 @@ nl:
     tags: Tags
     title: Titel
     to: Naar
+    up: Omhoog
     used: Gebruikt
 
     msg:

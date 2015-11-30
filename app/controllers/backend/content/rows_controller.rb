@@ -40,6 +40,6 @@ class Backend::Content::RowsController < BackendController
 
   def redirect_back_to_content(anchor = nil)
     anchor = "content-row-#{@row.id}" unless anchor.present?
-    redirect_to content_path(@row.rowable, @row.locale, anchor: anchor)
+    redirect_to content_path(@row.rowable, @row.locale, anchor)
   end
 end

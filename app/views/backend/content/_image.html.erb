@@ -10,7 +10,9 @@
   <% end %>
 
   <% if object.caption.present? %>
-    <%= object.caption.html_safe %>
+    <div class="text-center">
+      <%= object.caption.html_safe %>
+    </div>
   <% end %>
 <% end %>
 

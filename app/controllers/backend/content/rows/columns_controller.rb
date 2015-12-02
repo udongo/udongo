@@ -1,6 +1,6 @@
 class Backend::Content::Rows::ColumnsController < BackendController
   before_action :find_row
-  before_action :find_column, only: [:edit, :update, :destroy]
+  before_action :find_column, only: [:edit, :update, :move_up, :move_down, :destroy]
   layout 'backend/lightbox'
 
   def new
@@ -27,6 +27,16 @@ class Backend::Content::Rows::ColumnsController < BackendController
     else
       render :edit
     end
+  end
+
+  def move_up
+    @column.move_higher
+    redirect_to cancel_url
+  end
+
+  def move_down
+    @column.move_lower
+    redirect_to cancel_url
   end
 
   def destroy

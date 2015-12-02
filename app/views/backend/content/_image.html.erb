@@ -10,9 +10,8 @@
   <% end %>
 
   <% if object.caption.present? %>
-    <%= object.caption.html_safe %>
+    <div class="text-center">
+      <%= object.caption.html_safe %>
+    </div>
   <% end %>
 <% end %>
-
-<br>
-<%= link_to icon(:pencil), edit_backend_content_image_path(object) %>

@@ -1,32 +1,53 @@
-<% rows = model.content_rows(locale) %>
-<% rows.where(locale: locale).each do |row| %>
-  <fieldset class="radius">
-    <div class="row" id="content-row-<%= row.id %>">
-      <div class="medium-12 columns">
-        <ul class="button-group radius">
-          <!-- TODO make rows draggable -->
-          <li><%= link_to icon(:list_bullet, t('b.move')), '#', class: 'button small secondary' %></li>
-          <li><%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'button small secondary' %></li>
-          <li><%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
-        </ul>
+<div id="content-rows">
+  <% rows = model.content_rows(locale) %>
+  <% rows.where(locale: locale).each do |row| %>
 
-        <div class="row">
-          <% row.columns.each do |column| %>
-            <div class="large-<%= column.width %> columns">
-              <% content = column.content.decorate %>
+    <div class="panel radius" id="content-row-<%= row.id %>">
+      <div class="row">
+        <div class="medium-12 columns">
+          <ul class="button-group radius">
+            <% unless row.first? %>
+              <li><%= link_to icon(:arrow_up, t('b.up')), move_up_backend_content_row_path(row), class: 'button small secondary' %></li>
+            <% end %>
 
-              <% Udongo.config.flexible_content_types.each do |content_type| %>
-                <%= render("backend/content/#{content_type}", object: content) if content.content_type_is?(content_type)  %>
-              <% end %>
+            <% unless row.last? %>
+              <li><%= link_to icon(:arrow_down, t('b.down')), move_down_backend_content_row_path(row), class: 'button small secondary' %></li>
+            <% end %>
 
-              <%= link_to icon(:trash), backend_content_row_column_path(row, column), method: :delete, data: { confirm: t('b.msg.confirm') } %>
-              <%= link_to icon(:wrench, "(#{column.width})"), edit_backend_content_row_column_path(row, column) %>
-            </div>
-          <% end %>
+            <li><%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'button small secondary' %></li>
+            <li><%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </fieldset>
-<% end %>
 
-<%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>
+      <div class="row">
+        <% row.columns.each do |column| %>
+          <div class="large-<%= column.width %> columns">
+            <% content = column.content.decorate %>
+
+            <% Udongo.config.flexible_content_types.each do |content_type| %>
+              <%= render("backend/content/#{content_type}", object: content) if content.content_type_is?(content_type)  %>
+            <% end %>
+
+            <ul class="button-group radius">
+              <% unless column.first? %>
+                <li><%= link_to icon(:arrow_left), move_up_backend_content_row_column_path(row, column), class: 'button small secondary' %></li>
+              <% end %>
+
+              <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>
+              <li><%= link_to icon(:pencil), edit_link, class: 'button small secondary' %></li>
+              <li><%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
+              <li><%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), title: column.width, class: 'button small secondary' %></li>
+
+              <% unless column.last? %>
+                <li><%= link_to icon(:arrow_right), move_down_backend_content_row_column_path(row, column), class: 'button small secondary' %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>
+</div>

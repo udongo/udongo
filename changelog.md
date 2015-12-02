@@ -9,6 +9,7 @@
 * Added rake task to regenerate all the ContentImage files in all the versions.
 * Make the list of flexible content types dynamic so you can write your own.
 * Optimize the backend flexible content previews.
+* You can now set the project name, which will be used in the backend navigation.
 
 
 0.0.10 - 2015-11-12

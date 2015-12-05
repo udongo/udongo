@@ -1,4 +1,4 @@
-0.0.11 - xxxx-xx-xx
+0.0.11 - 2015-12-05
 --
 * Add 'external reference' to tags. This allows you to integrate tags from third
   party systems.

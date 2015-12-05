@@ -31,6 +31,10 @@ describe Udongo::Config do
     it :allow_new_tags do
       expect(instance.allow_new_tags).to eq true
     end
+
+    it :project_name do
+      expect(instance.project_name).to eq 'Udongo'
+    end
   end
 
   it '#respond_to?' do
@@ -38,7 +42,7 @@ describe Udongo::Config do
       :default_locale, :default_locale=, :host, :host=, :time_zone, :time_zone=,
       :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=,
       :prefix_routes_with_locale?, :flexible_content_types, :flexible_content_types=,
-      :allow_new_tags, :allow_new_tags?
+      :allow_new_tags, :allow_new_tags?, :project_name, :project_name=
     )
   end
 end

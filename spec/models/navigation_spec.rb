@@ -9,12 +9,12 @@ describe Navigation do
       it(:description) { expect(build(klass, description: nil)).not_to be_valid }
     end
 
-    describe 'name' do
-      it(:presence) { expect(build(klass, name: nil)).not_to be_valid }
+    describe 'identifier' do
+      it(:presence) { expect(build(klass, identifier: nil)).not_to be_valid }
 
       it :unique do
-        create(klass, name: 'foo')
-        expect(build(klass, name: 'FOO')).not_to be_valid
+        create(klass, identifier: 'foo')
+        expect(build(klass, identifier: 'FOO')).not_to be_valid
       end
     end
   end

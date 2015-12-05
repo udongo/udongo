@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117190950) do
+ActiveRecord::Schema.define(version: 20151205202815) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20151117190950) do
   add_index "navigation_items", ["position"], name: "index_navigation_items_on_position", using: :btree
 
   create_table "navigations", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "identifier",  limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

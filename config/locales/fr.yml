@@ -1,4 +1,10 @@
 fr:
+  'true': Oui
+  'false': Non
+  will_paginate:
+    previous_label: Précédent
+    next_label: Prochaine
+    page_gap: ...
   date:
     abbr_day_names:
       - dim

@@ -1,6 +1,7 @@
 0.0.12 - xxxx-xx-xx
 --
 * Bugfix: navigation item wasn't using the sortable scope.
+* Bugfix: make sure content widgets can have camelcased model names.
 
 
 0.0.11 - 2015-12-05

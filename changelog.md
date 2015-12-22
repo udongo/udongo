@@ -2,6 +2,7 @@
 --
 * Bugfix: navigation item wasn't using the sortable scope.
 * Bugfix: make sure content widgets can have camelcased model names.
+* Order redirects based on the times they've been used.
 
 
 0.0.11 - 2015-12-05

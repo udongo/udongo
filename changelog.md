@@ -2,6 +2,7 @@
 --
 * Bugfix: navigation item wasn't using the sortable scope.
 * Bugfix: make sure content widgets can have camelcased model names.
+* The tagbox no longer triggers tagged item creation errors.
 
 
 0.0.11 - 2015-12-05

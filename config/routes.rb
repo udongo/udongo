@@ -69,4 +69,5 @@ Rails.application.routes.draw do
   end
 
   get 'go/:slug' => 'redirects#go'
+  get '*path' => 'catch_all#resolve'
 end

@@ -4,6 +4,7 @@ module Concerns
 
     included do
       after_save :flush_cache
+      after_touch :flush_cache
 
       scope :find_in_cache, ->(value) {
         Rails.cache.fetch([name, value]) do

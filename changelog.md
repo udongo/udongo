@@ -5,6 +5,8 @@
 * Order redirects based on the times they've been used.
 * Add a catch all route with a basic controller that checks for 404's
 * The tagbox no longer triggers tagged item creation errors.
+* The cacheable concern now flushes the cache when the after_touch callback
+  happens.
 
 
 0.0.11 - 2015-12-05

@@ -84,48 +84,74 @@ module Concerns
 
       def transform_value(klass, value)
         if klass == :string
-          if value.is_a?(String)
-            return value
-          elsif value.is_a?(Symbol)
-            return value.to_s
-          end
+          return string_value(value)
 
-        elsif klass == :integer && value.is_a?(Fixnum)
-          return value
+        elsif klass == :integer
+          return integer_value(value)
 
-        elsif klass == :float && value.is_a?(Float)
-          return value
+        elsif klass == :float
+          return float_value(value)
 
-        elsif klass == :array && value.is_a?(Array)
-          return value
+        elsif klass == :array
+          return array_value(value)
 
         elsif klass == :boolean
-          if value === true || value == '1' || value == 1
-            return true
-          elsif value === false || value == '0' || value == 0
-            return false
-          end
+          return boolean_value(value)
 
         elsif klass == :date
-          if value.is_a?(Date)
-            return value
-          else
-            begin
-              Date.parse(value)
-            rescue
-              nil
-            end
-          end
+          return date_value(value)
 
         elsif klass == :date_time
-          if value.is_a?(DateTime)
-            return value
-          else
-            begin
-              DateTime.parse(value)
-            rescue
-              nil
-            end
+          return date_time_value(value)
+        end
+      end
+
+      def string_value(value)
+        (value.is_a?(String) || value.is_a?(Symbol)) ? value.to_s : nil
+      end
+
+      def integer_value(value)
+        value.is_a?(Fixnum) ? value : nil
+      end
+
+      def float_value(value)
+        value.is_a?(Float) ? value : nil
+      end
+
+      def array_value(value)
+        value.is_a?(Array) ? value : nil
+      end
+
+      def boolean_value(value)
+        if value === true || value == '1' || value == 1
+          true
+        elsif value === false || value == '0' || value == 0
+          false
+        end
+      end
+
+      def date_value(value)
+        if value.is_a?(Date)
+          value
+
+        else
+          begin
+            Date.parse(value)
+          rescue
+            nil
+          end
+        end
+      end
+
+      def date_time_value(value)
+        if value.is_a?(DateTime)
+          value
+
+        else
+          begin
+            DateTime.parse(value)
+          rescue
+            nil
           end
         end
       end

@@ -44,6 +44,37 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'boolean' do
+      it 'defaults to nil' do
+        @config.add :active, :boolean
+        collection = model.new(::Page.new, @config)
+        expect(collection.active).to eq nil
+      end
+
+      it 'defaults to provided default' do
+        @config.add :active, :boolean, true
+        collection = model.new(::Page.new, @config)
+        expect(collection.active).to eq true
+      end
+
+      describe 'read from db' do
+        it 'db contains boolean' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'boolean', name: 'active', value: true)
+          @config.add :active, :boolean
+          collection = model.new(page, @config)
+
+          expect(collection.active).to eq true
+        end
+
+        it 'db contains something else' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'boolean', name: 'active', value: 1337)
+          @config.add :active, :boolean
+          collection = model.new(page, @config)
+
+          expect(collection.active).to eq nil
+        end
+      end
     end
 
     describe 'date' do

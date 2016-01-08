@@ -63,6 +63,8 @@ module Concerns
           true
         elsif klass == :array && value.is_a?(Array)
           true
+        elsif klass == :boolean && (value.is_a?(TrueClass) || value.is_a?(FalseClass))
+          true
         else
           false
         end

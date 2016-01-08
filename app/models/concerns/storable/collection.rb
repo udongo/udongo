@@ -83,27 +83,7 @@ module Concerns
       end
 
       def transform_value(klass, value)
-        if klass == :string
-          return string_value(value)
-
-        elsif klass == :integer
-          return integer_value(value)
-
-        elsif klass == :float
-          return float_value(value)
-
-        elsif klass == :array
-          return array_value(value)
-
-        elsif klass == :boolean
-          return boolean_value(value)
-
-        elsif klass == :date
-          return date_value(value)
-
-        elsif klass == :date_time
-          return date_time_value(value)
-        end
+        send("#{klass}_value", value)
       end
 
       def string_value(value)

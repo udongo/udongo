@@ -84,9 +84,9 @@ module Concerns
 
       def transform_value(klass, value)
         if klass == :string
-          if value.is_a? String
+          if value.is_a?(String)
             return value
-          elsif value.is_a? Symbol
+          elsif value.is_a?(Symbol)
             return value.to_s
           end
 

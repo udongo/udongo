@@ -260,6 +260,27 @@ describe Concerns::Storable::Collection do
       collection = model.new(::Page.new, @config)
       expect { collection.foo = 'bar' }.to raise_error(NoMethodError)
     end
+
+    describe 'array' do
+    end
+
+    describe 'boolean' do
+    end
+
+    describe 'date' do
+    end
+
+    describe 'date_time' do
+    end
+
+    describe 'float' do
+    end
+
+    describe 'integer' do
+    end
+
+    describe 'string' do
+    end
   end
 
   # describe '#read / #write / #save' do

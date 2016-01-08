@@ -265,21 +265,32 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'boolean' do
+      # 1 => true
+      # true => true
+      # 0 => false
+      # false => false
     end
 
     describe 'date' do
+      # date = date
+      # string => date.parse
     end
 
     describe 'date_time' do
+      # date_time = date
+      # string => datetime.parse
     end
 
     describe 'float' do
+      # float => float
     end
 
     describe 'integer' do
+      # integer => integer
     end
 
     describe 'string' do
+      # string => string
     end
   end
 

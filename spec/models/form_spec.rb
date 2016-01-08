@@ -15,6 +15,6 @@ describe Form do
   end
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:fields)
+    expect(build(klass)).to respond_to(:fields, :submissions)
   end
 end

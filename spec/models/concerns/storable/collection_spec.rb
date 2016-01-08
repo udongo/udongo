@@ -8,31 +8,7 @@ describe Concerns::Storable::Collection do
     @config = Concerns::Storable::Config.new
   end
 
-  describe '#read / #write' do
-    it 'read from unknown field' do
-      collection = model.new(::Page.new, @config)
-      expect { collection.foo }.to raise_error(NoMethodError)
-    end
-
-    it 'write to unknown field' do
-      collection = model.new(::Page.new, @config)
-      expect { collection.foo = 'bar' }.to raise_error(NoMethodError)
-    end
-
-    it 'defaults to nil' do
-      @config.add :foo, :string
-      collection = model.new(::Page.new, @config)
-
-      expect(collection.foo).to eq nil
-    end
-
-    it 'defaults to provided default' do
-      @config.add :foo, :string, 'bar'
-      collection = model.new(::Page.new, @config)
-
-      expect(collection.foo).to eq 'bar'
-    end
-
+  describe '#read' do
     describe 'array' do
     end
 
@@ -52,8 +28,66 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'string' do
+      it 'defaults to nil' do
+        @config.add :foo, :string
+        collection = model.new(::Page.new, @config)
+        expect(collection.foo).to eq nil
+      end
+
+      it 'defaults to provided default' do
+        @config.add :foo, :string, 'bar'
+        collection = model.new(::Page.new, @config)
+        expect(collection.foo).to eq 'bar'
+      end
+
+      describe 'read from db' do
+        it 'db contains string' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, name: 'foo', value: 'baz')
+          @config.add :foo, :string
+          collection = model.new(page, @config)
+
+          expect(collection.foo).to eq 'baz'
+        end
+
+        it 'db contains something else' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, name: 'foo', value: 1337)
+          @config.add :foo, :string
+          collection = model.new(page, @config)
+
+          expect(collection.foo).to eq nil
+        end
+      end
     end
   end
+
+  # describe '#read / #write / #save' do
+  #   it 'read from unknown field' do
+  #     collection = model.new(::Page.new, @config)
+  #     expect { collection.foo }.to raise_error(NoMethodError)
+  #   end
+  #
+  #   it 'write to unknown field' do
+  #     collection = model.new(::Page.new, @config)
+  #     expect { collection.foo = 'bar' }.to raise_error(NoMethodError)
+  #   end
+  #
+  #   it 'defaults to nil' do
+  #     @config.add :foo, :string
+  #     collection = model.new(::Page.new, @config)
+  #
+  #     expect(collection.foo).to eq nil
+  #   end
+  #
+  #   it 'defaults to provided default' do
+  #     @config.add :foo, :string, 'bar'
+  #     collection = model.new(::Page.new, @config)
+  #
+  #     expect(collection.foo).to eq 'bar'
+  #   end
+  #
+  # end
 
   # before(:each) do
   #   config = Concerns::Translatable::Config.new

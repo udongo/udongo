@@ -27,11 +27,11 @@ module Concerns
         init_field(field)
         object = @stores[field]
 
-        if object.value.nil?
-          @config.fields[field][:default]
-        else
-          object.value
+        unless object.value.nil?
+          return object.value if klasses_match(@config.fields[field][:klass], object.value)
         end
+
+        @config.fields[field][:default]
       end
 
       def write(field, value)
@@ -55,6 +55,14 @@ module Concerns
             klass: @config.fields[field.to_sym][:klass],
             name: field
           )
+        end
+      end
+
+      def klasses_match(klass, value)
+        if klass == :string && value.is_a?(String)
+          true
+        else
+          false
         end
       end
     end

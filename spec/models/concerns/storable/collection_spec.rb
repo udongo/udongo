@@ -10,6 +10,37 @@ describe Concerns::Storable::Collection do
 
   describe '#read' do
     describe 'array' do
+      it 'defaults to nil' do
+        @config.add :locales, :array
+        collection = model.new(::Page.new, @config)
+        expect(collection.locales).to eq nil
+      end
+
+      it 'defaults to provided default' do
+        @config.add :locales, :array, []
+        collection = model.new(::Page.new, @config)
+        expect(collection.locales).to eq []
+      end
+
+      describe 'read from db' do
+        it 'db contains array' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'array', name: 'locales', value: [:nl])
+          @config.add :locales, :array
+          collection = model.new(page, @config)
+
+          expect(collection.locales).to eq [:nl]
+        end
+
+        it 'db contains something else' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'array', name: 'locales', value: 1337)
+          @config.add :locales, :array
+          collection = model.new(page, @config)
+
+          expect(collection.locales).to eq nil
+        end
+      end
     end
 
     describe 'boolean' do

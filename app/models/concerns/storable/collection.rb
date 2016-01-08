@@ -61,6 +61,8 @@ module Concerns
       def klasses_match(klass, value)
         if klass == :string && value.is_a?(String)
           true
+        elsif klass == :array && value.is_a?(Array)
+          true
         else
           false
         end

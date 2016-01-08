@@ -46,7 +46,7 @@ class Backend::TagboxController < BackendController
 
   def item_tagged?(tag)
     return false unless tag
-    find_model.tagged_items.create! tag: tag
+    find_model.tagged_items.create tag: tag
     true
   end
 end

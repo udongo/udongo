@@ -12,7 +12,9 @@ module Concerns
 
     def translation(locale = I18n.locale)
       @translation_collections = {} unless @translation_collections
-      @translation_collections[locale.to_sym] ||= Collection.new(self, self.class.translation_config, locale)
+      @translation_collections[locale.to_sym] ||= Concerns::Translatable::Collection.new(
+        self, self.class.translation_config, locale
+      )
     end
 
     def translatable?

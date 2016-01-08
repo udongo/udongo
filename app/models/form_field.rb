@@ -6,7 +6,9 @@ class FormField < ActiveRecord::Base
   translatable_fields :label, :default_value, :placeholder
 
   belongs_to :form
-  has_many :validations, class_name: 'FormFieldValidation'
+  has_many :validations,
+    class_name: 'FormFieldValidation',
+    dependent: :destroy
 
   validates :form, :name, :field_type, presence: true
 end

@@ -9,6 +9,11 @@ describe Concerns::Storable::Collection do
   end
 
   describe '#read' do
+    it 'no such field configurated' do
+      collection = model.new(::Page.new, @config)
+      expect { collection.foo }.to raise_error(NoMethodError)
+    end
+
     describe 'array' do
       it 'defaults to nil' do
         @config.add :locales, :array
@@ -247,6 +252,13 @@ describe Concerns::Storable::Collection do
           expect(collection.foo).to eq nil
         end
       end
+    end
+  end
+
+  describe '#write' do
+    it 'no such field configurated' do
+      collection = model.new(::Page.new, @config)
+      expect { collection.foo = 'bar' }.to raise_error(NoMethodError)
     end
   end
 

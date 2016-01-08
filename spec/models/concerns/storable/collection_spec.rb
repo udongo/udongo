@@ -343,8 +343,26 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'date_time' do
-      # date_time = date
-      # string => datetime.parse
+      before(:each)  do
+        @config.add :foo, :date_time
+        @collection = model.new(::Page.new, @config)
+      end
+
+      it 'an actual datetime' do
+        now = DateTime.now
+        @collection.foo = now
+        expect(@collection.foo).to eq now
+      end
+
+      it 'datetime as a string' do
+        @collection.foo = '2016-01-07 14:45:33'
+        expect(@collection.foo).to eq DateTime.parse('2016-01-07 14:45:33')
+      end
+
+      it 'something else' do
+        @collection.foo = 'foo'
+        expect(@collection.foo).to eq nil
+      end
     end
 
     describe 'float' do

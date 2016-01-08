@@ -116,6 +116,17 @@ module Concerns
               nil
             end
           end
+
+        elsif klass == :date_time
+          if value.is_a?(DateTime)
+            return value
+          else
+            begin
+              DateTime.parse(value)
+            rescue
+              nil
+            end
+          end
         end
       end
     end

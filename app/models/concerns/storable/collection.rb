@@ -69,6 +69,8 @@ module Concerns
           true
         elsif klass == :date_time && value.is_a?(DateTime)
           true
+        elsif klass == :float && value.is_a?(Float)
+          true
         else
           false
         end

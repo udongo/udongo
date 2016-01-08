@@ -148,6 +148,37 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'float' do
+      it 'defaults to nil' do
+        @config.add :discount, :float
+        collection = model.new(::Page.new, @config)
+        expect(collection.discount).to eq nil
+      end
+
+      it 'defaults to provided default' do
+        @config.add :discount, :float, 1.1
+        collection = model.new(::Page.new, @config)
+        expect(collection.discount).to eq 1.1
+      end
+
+      describe 'read from db' do
+        it 'db contains float' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'float', name: 'discount', value: 1.0)
+          @config.add :discount, :float
+          collection = model.new(page, @config)
+
+          expect(collection.discount).to eq 1.0
+        end
+
+        it 'db contains something else' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'float', name: 'discount', value: 1337)
+          @config.add :discount, :float
+          collection = model.new(page, @config)
+
+          expect(collection.discount).to eq nil
+        end
+      end
     end
 
     describe 'integer' do

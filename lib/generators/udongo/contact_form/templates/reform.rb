@@ -1,6 +1,4 @@
-class klass < Reform::Form
-  include Composition
+class klass < Udongo::ActiveModelSimulator
 
-  model :form_submission
 
 end

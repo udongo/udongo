@@ -1,6 +1,10 @@
 class Udongo::ContactFormGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
+  def class_name
+    'Frontend::ContactForm'
+  end
+
   def destination_file
     'app/forms/frontend/contact_form.rb'
   end
@@ -9,7 +13,7 @@ class Udongo::ContactFormGenerator < Rails::Generators::Base
     'app/forms/frontend/contact_form.rb'
     say_status 'OK', 'Copying to app/forms/frontend/contact_form', :yellow
     copy_file 'reform.rb', destination_file
-    gsub_file destination_file, 'klass', 'Frontend::ContactForm'
+    gsub_file destination_file, 'klass', class_name
 	end
 
   def create_database_records
@@ -21,12 +25,10 @@ class Udongo::ContactFormGenerator < Rails::Generators::Base
     message = f.fields.create!(name: 'message', field_type: 'textarea')
     message.validations.create!(validation_class: 'Udongo::FormValidations::Required')
 
-    f.fields.each do |field|
-      inject_into_file destination_file, after: "model :form_submission\n\n" do
-        <<-"RUBY"
-  property :#{field.name}
-        RUBY
-      end
-		end
+    inject_into_file destination_file, after: "class #{class_name} < Udongo::ActiveModelSimulator\n" do
+      <<-"RUBY"
+  attr_accessor :#{f.fields.map(&:name).join(', :')}
+      RUBY
+    end
   end
 end

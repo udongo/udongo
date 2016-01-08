@@ -8,6 +8,7 @@ class FormField < ActiveRecord::Base
   belongs_to :form
   has_many :validations,
     class_name: 'FormFieldValidation',
+    foreign_key: :field_id,
     dependent: :destroy
 
   validates :form, :name, :field_type, presence: true

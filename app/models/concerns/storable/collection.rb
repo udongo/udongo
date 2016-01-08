@@ -67,6 +67,8 @@ module Concerns
           true
         elsif klass == :date && value.is_a?(Date)
           true
+        elsif klass == :date_time && value.is_a?(DateTime)
+          true
         else
           false
         end

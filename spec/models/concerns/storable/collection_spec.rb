@@ -112,6 +112,39 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'date_time' do
+      it 'defaults to nil' do
+        @config.add :last_login_at, :date
+        collection = model.new(::Page.new, @config)
+        expect(collection.last_login_at).to eq nil
+      end
+
+      it 'defaults to provided default' do
+        now = DateTime.now
+        @config.add :last_login_at, :date, now
+        collection = model.new(::Page.new, @config)
+        expect(collection.last_login_at).to eq now
+      end
+
+      describe 'read from db' do
+        it 'db contains date_time' do
+          now = DateTime.now
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'date_time', name: 'last_login_at', value: now)
+          @config.add :last_login_at, :date_time
+          collection = model.new(page, @config)
+
+          expect(collection.last_login_at).to eq now
+        end
+
+        it 'db contains something else' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'date_time', name: 'last_login_at', value: 1337)
+          @config.add :last_login_at, :date_time
+          collection = model.new(page, @config)
+
+          expect(collection.last_login_at).to eq nil
+        end
+      end
     end
 
     describe 'float' do

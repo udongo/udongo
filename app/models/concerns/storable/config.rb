@@ -1,8 +1,17 @@
 module Concerns
   module Storable
     class Config
-      KLASSES = %w(array boolean date date_time float integer string)
       attr_reader :fields
+
+      KLASSES = {
+        array: [Array],
+        boolean: [TrueClass, FalseClass],
+        date: [Date],
+        date_time: [DateTime],
+        float: [Float],
+        integer: [Fixnum],
+        string: [String]
+      }
 
       def initialize
         @fields = {}
@@ -24,7 +33,7 @@ module Concerns
       private
 
       def valid_klass?(value)
-        KLASSES.include?(value.to_s)
+        KLASSES.keys.include?(value.to_sym)
       end
     end
   end

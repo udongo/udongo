@@ -26,7 +26,7 @@ describe Concerns::Storable::Config do
     end
 
     it 'only allow certain klasses' do
-      klass::KLASSES.each do |k|
+      klass::KLASSES.keys.each do |k|
         config.add(:foo, k)
         expect(config.fields[:foo][:klass]).to eq k.to_sym
       end

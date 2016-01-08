@@ -61,23 +61,7 @@ module Concerns
       end
 
       def klasses_match(klass, value)
-        if klass == :string && value.is_a?(String)
-          true
-        elsif klass == :array && value.is_a?(Array)
-          true
-        elsif klass == :boolean && (value.is_a?(TrueClass) || value.is_a?(FalseClass))
-          true
-        elsif klass == :date && value.is_a?(Date)
-          true
-        elsif klass == :date_time && value.is_a?(DateTime)
-          true
-        elsif klass == :float && value.is_a?(Float)
-          true
-        elsif klass == :integer && value.is_a?(Fixnum)
-          true
-        else
-          false
-        end
+        Concerns::Storable::Config::KLASSES[klass].include? value.class
       end
 
       def transform_value(klass, value)

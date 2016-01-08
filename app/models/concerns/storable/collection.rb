@@ -87,19 +87,19 @@ module Concerns
       end
 
       def string_value(value)
-        (value.is_a?(String) || value.is_a?(Symbol)) ? value.to_s : nil
+        value.to_s if value.is_a?(String) || value.is_a?(Symbol)
       end
 
       def integer_value(value)
-        value.is_a?(Fixnum) ? value : nil
+        value if value.is_a?(Fixnum)
       end
 
       def float_value(value)
-        value.is_a?(Float) ? value : nil
+        value if value.is_a?(Float)
       end
 
       def array_value(value)
-        value.is_a?(Array) ? value : nil
+        value if value.is_a?(Array)
       end
 
       def boolean_value(value)

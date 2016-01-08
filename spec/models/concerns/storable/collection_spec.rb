@@ -182,6 +182,37 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'integer' do
+      it 'defaults to nil' do
+        @config.add :age, :integer
+        collection = model.new(::Page.new, @config)
+        expect(collection.age).to eq nil
+      end
+
+      it 'defaults to provided default' do
+        @config.add :age, :integer, 101
+        collection = model.new(::Page.new, @config)
+        expect(collection.age).to eq 101
+      end
+
+      describe 'read from db' do
+        it 'db contains integer' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'integer', name: 'age', value: 101)
+          @config.add :age, :integer
+          collection = model.new(page, @config)
+
+          expect(collection.age).to eq 101
+        end
+
+        it 'db contains something else' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'integer', name: 'age', value: true)
+          @config.add :age, :integer
+          collection = model.new(page, @config)
+
+          expect(collection.age).to eq nil
+        end
+      end
     end
 
     describe 'string' do

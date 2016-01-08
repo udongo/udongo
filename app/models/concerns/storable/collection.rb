@@ -71,6 +71,8 @@ module Concerns
           true
         elsif klass == :float && value.is_a?(Float)
           true
+        elsif klass == :integer && value.is_a?(Fixnum)
+          true
         else
           false
         end

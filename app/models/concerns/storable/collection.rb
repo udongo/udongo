@@ -22,8 +22,16 @@ module Concerns
       end
 
       def read(field)
-        init_field(field.to_sym)
-        @stores[field.to_sym].value
+        field = field.to_sym
+
+        init_field(field)
+        object = @stores[field]
+
+        if object.value.nil?
+          @config.fields[field][:default]
+        else
+          object.value
+        end
       end
 
       def write(field, value)

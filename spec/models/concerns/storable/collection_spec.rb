@@ -4,6 +4,56 @@ describe Concerns::Storable::Collection do
   let(:model) { described_class }
   let(:klass) { model.to_s.underscore.to_sym }
 
+  before(:each) do
+    @config = Concerns::Storable::Config.new
+  end
+
+  describe '#read / #write' do
+    it 'read from unknown field' do
+      collection = model.new(::Page.new, @config)
+      expect { collection.foo }.to raise_error(NoMethodError)
+    end
+
+    it 'write to unknown field' do
+      collection = model.new(::Page.new, @config)
+      expect { collection.foo = 'bar' }.to raise_error(NoMethodError)
+    end
+
+    it 'defaults to nil' do
+      @config.add :foo, :string
+      collection = model.new(::Page.new, @config)
+
+      expect(collection.foo).to eq nil
+    end
+
+    it 'defaults to provided default' do
+      @config.add :foo, :string, 'bar'
+      collection = model.new(::Page.new, @config)
+
+      expect(collection.foo).to eq 'bar'
+    end
+
+    describe 'array' do
+    end
+
+    describe 'boolean' do
+    end
+
+    describe 'date' do
+    end
+
+    describe 'date_time' do
+    end
+
+    describe 'float' do
+    end
+
+    describe 'integer' do
+    end
+
+    describe 'string' do
+    end
+  end
 
   # before(:each) do
   #   config = Concerns::Translatable::Config.new
@@ -69,6 +119,7 @@ describe Concerns::Storable::Collection do
   # end
 
   it '#respond_to?' do
-    expect(@collection).to respond_to(:save, :read, :write)
+    collection = model.new(::Page.new, @config)
+    expect(collection).to respond_to(:save, :read, :write)
   end
 end

@@ -111,28 +111,22 @@ module Concerns
       end
 
       def date_value(value)
-        if value.is_a?(Date)
-          value
+        return value if value.is_a?(Date)
 
-        else
-          begin
-            Date.parse(value)
-          rescue
-            nil
-          end
+        begin
+          Date.parse(value)
+        rescue
+          nil
         end
       end
 
       def date_time_value(value)
-        if value.is_a?(DateTime)
-          value
+        return value if value.is_a?(DateTime)
 
-        else
-          begin
-            DateTime.parse(value)
-          rescue
-            nil
-          end
+        begin
+          DateTime.parse(value)
+        rescue
+          nil
         end
       end
     end

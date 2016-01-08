@@ -336,6 +336,11 @@ describe Concerns::Storable::Collection do
         expect(@collection.foo).to eq Date.parse('2016-01-07')
       end
 
+      it 'incorrect date as string' do
+        @collection.foo = '2016-99-99'
+        expect(@collection.foo).to eq nil
+      end
+
       it 'something else' do
         @collection.foo = 'foo'
         expect(@collection.foo).to eq nil
@@ -357,6 +362,11 @@ describe Concerns::Storable::Collection do
       it 'datetime as a string' do
         @collection.foo = '2016-01-07 14:45:33'
         expect(@collection.foo).to eq DateTime.parse('2016-01-07 14:45:33')
+      end
+
+      it 'incorrect datetime as a string' do
+        @collection.foo = '2016-01-07 99:99:99'
+        expect(@collection.foo).to eq nil
       end
 
       it 'something else' do

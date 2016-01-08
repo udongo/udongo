@@ -262,16 +262,74 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'array' do
+      it 'an actual array' do
+        @config.add :foo, :array
+        collection = model.new(::Page.new, @config)
+        collection.foo = [1, 2, 3]
+
+        expect(collection.foo).to eq [1, 2, 3]
+      end
+
+      it 'something else' do
+        @config.add :foo, :array
+        collection = model.new(::Page.new, @config)
+        collection.foo = { foo: 'bar' }
+
+        expect(collection.foo).to eq nil
+      end
     end
 
     describe 'boolean' do
-      # 1 => true
-      # true => true
-      # 0 => false
-      # false => false
+      before(:each) do
+        @config.add :foo, :boolean
+        @collection = model.new(::Page.new, @config)
+      end
+
+      it 'true' do
+        @collection.foo = true
+        expect(@collection.foo).to eq true
+      end
+
+      it 'false' do
+        @collection.foo = false
+        expect(@collection.foo).to eq false
+      end
+
+      it '1 => true' do
+        @collection.foo = 1
+        expect(@collection.foo).to eq true
+      end
+
+      it '"1" => true' do
+        @collection.foo = '1'
+        expect(@collection.foo).to eq true
+      end
+
+      it '0 => false' do
+        @collection.foo = 0
+        expect(@collection.foo).to eq false
+      end
+
+      it '"0" => false' do
+        @collection.foo = '0'
+        expect(@collection.foo).to eq false
+      end
+
+      it 'something else' do
+        @collection.foo = 'foo'
+        expect(@collection.foo).to eq nil
+      end
     end
 
     describe 'date' do
+      it 'an actual date' do
+      end
+
+      it 'date as a string' do
+      end
+
+      it 'something else' do
+      end
       # date = date
       # string => date.parse
     end
@@ -282,15 +340,65 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'float' do
-      # float => float
+      it 'an actual float' do
+        @config.add :foo, :float
+        collection = model.new(::Page.new, @config)
+        collection.foo = 13.37
+
+        expect(collection.foo).to eq 13.37
+      end
+
+      it 'something else' do
+        @config.add :foo, :float
+        collection = model.new(::Page.new, @config)
+        collection.foo = 1337
+
+        expect(collection.foo).to eq nil
+      end
     end
 
     describe 'integer' do
-      # integer => integer
+      it 'an actual integer' do
+        @config.add :foo, :integer
+        collection = model.new(::Page.new, @config)
+        collection.foo = 1337
+
+        expect(collection.foo).to eq 1337
+      end
+
+      it 'something else' do
+        @config.add :foo, :integer
+        collection = model.new(::Page.new, @config)
+        collection.foo = '1337'
+
+        expect(collection.foo).to eq nil
+      end
     end
 
     describe 'string' do
-      # string => string
+      it 'an actual string' do
+        @config.add :foo, :string
+        collection = model.new(::Page.new, @config)
+        collection.foo = 'bar'
+
+        expect(collection.foo).to eq 'bar'
+      end
+
+      it 'a symbol' do
+        @config.add :foo, :string
+        collection = model.new(::Page.new, @config)
+        collection.foo = :bar
+
+        expect(collection.foo).to eq 'bar'
+      end
+
+      it 'something else' do
+        @config.add :foo, :string
+        collection = model.new(::Page.new, @config)
+        collection.foo = 1337
+
+        expect(collection.foo).to eq nil
+      end
     end
   end
 

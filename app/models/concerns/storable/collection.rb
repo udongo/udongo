@@ -35,8 +35,12 @@ module Concerns
       end
 
       def write(field, value)
-        init_field(field.to_sym)
-        @stores[field.to_sym].value = value
+        field = field.to_sym
+
+        init_field(field)
+
+        value = transform_value(@config.fields[field][:klass], value)
+        @stores[field].value = value
       end
 
       def save
@@ -75,6 +79,32 @@ module Concerns
           true
         else
           false
+        end
+      end
+
+      def transform_value(klass, value)
+        if klass == :string
+          if value.is_a? String
+            return value
+          elsif value.is_a? Symbol
+            return value.to_s
+          end
+
+        elsif klass == :integer && value.is_a?(Fixnum)
+          return value
+
+        elsif klass == :float && value.is_a?(Float)
+          return value
+
+        elsif klass == :array && value.is_a?(Array)
+          return value
+
+        elsif klass == :boolean
+          if value === true || value == '1' || value == 1
+            return true
+          elsif value === false || value == '0' || value == 0
+            return false
+          end
         end
       end
     end

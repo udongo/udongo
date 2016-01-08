@@ -66,7 +66,7 @@ describe NavigationItemDecorator do
 
         it 'page has no route' do
           item = create(:navigation_item, page: @page)
-          expect(item.decorate.path).to eq '/'
+          expect(item.decorate.path).to eq '/nl/'
         end
       end
     end

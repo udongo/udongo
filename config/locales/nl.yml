@@ -5,18 +5,6 @@ nl:
     previous_label: Vorige
     next_label: Volgende
     page_gap: ...
-
-    page_entries_info:
-      multi_page: "%{model} %{from} - %{to} van %{count} in totaal"
-      multi_page_html: "%{model} <strong>%{from}&nbsp;-&nbsp;%{to}</strong> van <strong>%{count}</strong> in totaal"
-      single_page:
-        zero: 'Geen %{model} gevonden'
-        one: '1 %{model}'
-        other: "%{count} %{model}"
-      single_page_html:
-        zero: 'Geen %{model} gevonden'
-        one: '<strong>1</strong> %{model}'
-        other: '<strong>%{count}</strong> %{model}'
   date:
     abbr_day_names:
     - zo

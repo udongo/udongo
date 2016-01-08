@@ -1,17 +1,17 @@
-<% if image.present? && image.file.present? %>
+<% if object.present? && object.file.present? %>
 
-  <% if image.url.present? %>
-    <%= link_to image.url, class: 'th radius' do %>
-      <%= image_tag image.file.url, alt: '' %>
+  <% if object.url.present? %>
+    <%= link_to object.url, class: 'th radius' do %>
+      <%= image_tag object.file.size_1024x640.url, alt: '' %>
     <% end %>
 
   <% else %>
-    <%= image_tag image.file.url, alt: '' %>
+    <%= image_tag object.file.size_1024x640.url, alt: '' %>
   <% end %>
 
-  <% if image.caption.present? %>
-    <%= image.caption.html_safe %>
+  <% if object.caption.present? %>
+    <div class="text-center">
+      <%= object.caption.html_safe %>
+    </div>
   <% end %>
 <% end %>
-
-<%= link_to icon(:pencil), edit_backend_content_image_path(image) %>

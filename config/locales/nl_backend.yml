@@ -11,6 +11,7 @@ nl:
     delete: Verwijder
     description: Beschrijving
     destination: Bestemming
+    down: Omlaag
     edit: Bewerk
     email: E-mail
     enabled?: Ingeschakeld?
@@ -31,6 +32,7 @@ nl:
     password: Wachtwoord
     redirect: Redirect
     redirects: Redirects
+    restart_webserver: Webserver herstarten
     save: Opslaan
     search: Zoeken
     settings: Instellingen
@@ -40,7 +42,9 @@ nl:
     status: Status
     status_code: Statuscode
     tags: Tags
+    title: Titel
     to: Naar
+    up: Omhoog
     used: Gebruikt
 
     msg:
@@ -82,3 +86,5 @@ nl:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
+      webserver:
+        restarted: De webserver werd opnieuw opgestart

@@ -1,4 +1,3 @@
-
 module Udongo
   class Breadcrumb
     def initialize

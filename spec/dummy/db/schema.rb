@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(version: 20151023135358) do
   add_index "navigation_items", ["position"], name: "index_navigation_items_on_position", using: :btree
 
   create_table "navigations", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "identifier",  limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -297,13 +297,15 @@ ActiveRecord::Schema.define(version: 20151023135358) do
   add_index "tagged_items", ["taggable_type"], name: "index_tagged_items_on_taggable_type", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string   "locale",     limit: 255
-    t.string   "name",       limit: 255
-    t.string   "slug",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "locale",             limit: 255
+    t.string   "name",               limit: 255
+    t.string   "slug",               limit: 255
+    t.string   "external_reference", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
+  add_index "tags", ["external_reference"], name: "index_tags_on_external_reference", using: :btree
   add_index "tags", ["locale"], name: "index_tags_on_locale", using: :btree
   add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
   add_index "tags", ["slug"], name: "index_tags_on_slug", using: :btree

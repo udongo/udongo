@@ -22,7 +22,7 @@ module Concerns
       end
 
       def find_model
-        @model = model.find params[:id]
+        @model = model.find(params[:id]).decorate
       end
 
       # TODO refactor?

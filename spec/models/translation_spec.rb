@@ -13,8 +13,8 @@ describe Translation do
     end
 
     it 'unique name scoped on translatable_type, translatable_id and locale' do
-      create(klass, translatable_type: 'Article', translatable_id: 1, locale: 'nl', name: 'foo')
-      expect(build(klass, translatable_type: 'Article', translatable_id: 1, locale: 'nl', name: 'FOO')).not_to be_valid
+      create(klass, translatable_type: 'Page', translatable_id: 1, locale: 'nl', name: 'foo')
+      expect(build(klass, translatable_type: 'Page', translatable_id: 1, locale: 'nl', name: 'FOO')).not_to be_valid
     end
   end
 

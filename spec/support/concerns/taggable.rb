@@ -8,7 +8,7 @@ shared_examples_for :taggable do
   it '#tags' do
     tag = create(:tag, locale: :nl, name: 'foo', slug: 'foo')
     instance.tagged_items.create!(tag: tag)
-    expect(instance.tags).to eq [tag]
+    expect(instance.tags(:nl)).to eq [tag]
   end
 
   it '#tags_string' do
@@ -16,7 +16,7 @@ shared_examples_for :taggable do
     tag2 = create(:tag, locale: :nl, name: 'bar', slug: 'bar')
     instance.tagged_items.create!(tag: tag1)
     instance.tagged_items.create!(tag: tag2)
-    expect(instance.tags_string).to eq 'foo,bar'
+    expect(instance.tags_string(:nl)).to eq 'foo,bar'
   end
 
   describe '#related' do
@@ -27,7 +27,7 @@ shared_examples_for :taggable do
     it :blank do
       instance.tagged_items.create!(tag: tag1)
       instance2.tagged_items.create!(tag: tag2)
-      expect(instance.related).to eq []
+      expect(instance.related(:nl)).to eq []
     end
 
     it :results do
@@ -35,13 +35,17 @@ shared_examples_for :taggable do
       instance.tagged_items.create!(tag: tag2)
       instance2.tagged_items.create!(tag: tag1)
       instance2.tagged_items.create!(tag: tag2)
-      expect(instance.related).to eq [instance2]
-      expect(instance2.related).to eq [instance]
+      expect(instance.related(:nl)).to eq [instance2]
+      expect(instance2.related(:nl)).to eq [instance]
     end
   end
 
+  it '#taggable?' do
+    expect(instance).to be_taggable
+  end
+
   it '#respond_to?' do
-    expect(model.new).to respond_to(:tagged_items, :related, :tags, :tags_string)
+    expect(model.new).to respond_to(:tagged_items, :related, :tags, :tags_string, :taggable?)
   end
 end
 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'dashboard#show'
-    post 'seo/slugify' => 'seo#slugify'
+    post 'restart_webserver' => 'webserver#restart'
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins, except: [:show]
@@ -37,8 +37,10 @@ Rails.application.routes.draw do
       concerns :translatable
     end
 
-    resources :tags, only: [:index, :create] do
-      collection { delete '/', action: :destroy }
+    scope :tagbox, controller: 'tagbox', as: 'tagbox' do
+      get '/', action: 'index'
+      post '/', action: 'create'
+      delete '/', action: 'destroy'
     end
 
     resources :redirects, except: :show
@@ -47,19 +49,27 @@ Rails.application.routes.draw do
 
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
-        concerns :positionable
+        member do
+          get 'move_up', 'move_down'
+        end
 
         scope module: 'rows' do
-          resources :columns
+          resources :columns do
+            member do
+              get 'move_up', 'move_down'
+            end
+          end
         end
       end
 
       scope module: 'rows' do
-        resources :texts, only: [:edit, :update]
-        resources :images, only: [:edit, :update]
+        Udongo.config.flexible_content_types.each do |content_type|
+          resources content_type.to_s.pluralize.to_sym, only: [:edit, :update]
+        end
       end
     end
   end
 
   get 'go/:slug' => 'redirects#go'
+  get '*path' => 'catch_all#resolve'
 end

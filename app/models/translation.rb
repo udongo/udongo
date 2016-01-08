@@ -2,7 +2,7 @@ class Translation < ActiveRecord::Base
   include Concerns::Loggable
   include Concerns::Locale
 
-  belongs_to :translatable, polymorphic: true
+  belongs_to :translatable, polymorphic: true, touch: true
 
   validates :locale, :name, presence: true
   validates :name,

@@ -1,7 +1,7 @@
 class Meta < ActiveRecord::Base
   include Concerns::Locale
 
-  belongs_to :sluggable, polymorphic: true
+  belongs_to :sluggable, polymorphic: true, touch: true
 
   validates :locale, :slug, presence: true
 

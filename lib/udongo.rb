@@ -1,6 +1,7 @@
 require 'udongo/engine'
 require 'udongo/config'
 require 'udongo/breadcrumb'
+require 'udongo/meta_info'
 require 'udongo/active_model_simulator'
 require 'jquery-rails'
 require 'jquery-ui-rails'

@@ -26,8 +26,12 @@ var tags = {
         tag: tag
       },
       type: type
+    }).done(function(data){
+      if(type == 'POST' && !data.valid) {
+        input.tagit('removeTagByLabel', data.tag);
+      }
     });
   }
-}
+};
 
 $(function(){ tags.init(); });

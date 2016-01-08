@@ -1,4 +1,30 @@
-0.0.10 - xxxx-xx-xx
+0.0.12 - xxxx-xx-xx
+--
+* Bugfix: navigation item wasn't using the sortable scope.
+* Bugfix: make sure content widgets can have camelcased model names.
+* Order redirects based on the times they've been used.
+* Add a catch all route with a basic controller that checks for 404's
+* The tagbox no longer triggers tagged item creation errors.
+* The cacheable concern now flushes the cache when the after_touch callback
+  happens.
+
+
+0.0.11 - 2015-12-05
+--
+* Add 'external reference' to tags. This allows you to integrate tags from third
+  party systems.
+* Make it possible to disallow the creation of new tags.
+* Don't limit the ckeditor locales to just nl, fr and en.
+* Add MetaInfo class which can be used to hold the frontend meta info.
+* Save more image formats for the ContentImage image.
+* Added rake task to regenerate all the ContentImage files in all the versions.
+* Make the list of flexible content types dynamic so you can write your own.
+* Optimize the backend flexible content previews.
+* You can now set the project name, which will be used in the backend navigation.
+* Make the content rows/columns movable.
+
+
+0.0.10 - 2015-11-12
 --
 * Stop using a sidebar for the navigation.
 * Introduce the redirects module with support for short URLs /go/foo
@@ -7,6 +33,11 @@
 * Order snippets by their description.
 * Get rid of FrontendController since it's content is not relevant.
 * Make it possible to disable the page content.
+* Add setting 'prefix_routes_with_locale' which defaults to true.
+* Make the navigation items positionable.
+* Make find_in_cache aware of translatable models and caches all the fields in
+  all the configured locales.
+* Add functionality to restart the webserver.
 
 
 0.0.9 - 2015-08-21

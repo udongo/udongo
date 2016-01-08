@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205202815) do
+ActiveRecord::Schema.define(version: 20160108100104) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -234,6 +234,19 @@ ActiveRecord::Schema.define(version: 20151205202815) do
   end
 
   add_index "snippets", ["identifier"], name: "index_snippets_on_identifier", using: :btree
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "storable_type", limit: 255
+    t.integer  "storable_id",   limit: 4
+    t.string   "name",          limit: 255
+    t.text     "value",         limit: 65535
+    t.string   "klass",         limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "stores", ["storable_id"], name: "index_stores_on_storable_id", using: :btree
+  add_index "stores", ["storable_type"], name: "index_stores_on_storable_type", using: :btree
 
   create_table "tagged_items", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4

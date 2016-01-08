@@ -1,6 +1,8 @@
 class Store < ActiveRecord::Base
   belongs_to :storable, polymorphic: true, touch: true
 
+  serialize :value
+
   validates :name, :klass, presence: true
   validates :name,
             uniqueness: { case_sensitive: false,

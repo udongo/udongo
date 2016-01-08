@@ -422,95 +422,37 @@ describe Concerns::Storable::Collection do
     end
   end
 
-  # describe '#read / #write / #save' do
-  #   it 'read from unknown field' do
-  #     collection = model.new(::Page.new, @config)
-  #     expect { collection.foo }.to raise_error(NoMethodError)
-  #   end
-  #
-  #   it 'write to unknown field' do
-  #     collection = model.new(::Page.new, @config)
-  #     expect { collection.foo = 'bar' }.to raise_error(NoMethodError)
-  #   end
-  #
-  #   it 'defaults to nil' do
-  #     @config.add :foo, :string
-  #     collection = model.new(::Page.new, @config)
-  #
-  #     expect(collection.foo).to eq nil
-  #   end
-  #
-  #   it 'defaults to provided default' do
-  #     @config.add :foo, :string, 'bar'
-  #     collection = model.new(::Page.new, @config)
-  #
-  #     expect(collection.foo).to eq 'bar'
-  #   end
-  #
-  # end
+  it '#save' do
+    page = create(:page)
 
-  # before(:each) do
-  #   config = Concerns::Translatable::Config.new
-  #   config.add(:title)
-  #   config.add(:subtitle)
-  #
-  #   @collection = model.new(
-  #     ::Page.new, config, :nl
-  #   )
-  # end
-  #
-  # describe '#read' do
-  #   it 'cannot read when not in config' do
-  #     expect { @collection.foo_bar_baz }.to raise_error(NoMethodError)
-  #   end
-  #
-  #   it 'reads if translation is new' do
-  #     expect(@collection.title).not_to be_present
-  #   end
-  #
-  #   it 'reads if translation exists' do
-  #     @collection.title = 'foo'
-  #     expect(@collection.title).to eq 'foo'
-  #   end
-  # end
-  #
-  # describe '#write' do
-  #   it 'cannot write fields in the config' do
-  #     expect { @collection.foo_bar == 'baz' }.to raise_error(NoMethodError)
-  #   end
-  #
-  #   it 'writes if translation is new' do
-  #     @collection.title = 'foo'
-  #     expect(@collection.title).to eq 'foo'
-  #   end
-  #
-  #   it 'writes if translation exists' do
-  #     Translation.create!(
-  #       translatable_type: 'Page',
-  #       translatable_id: 1,
-  #       locale: 'nl',
-  #       name: 'title',
-  #       value: 'foo'
-  #     )
-  #
-  #     @collection.title = 'bar'
-  #     expect(@collection.title).to eq 'bar'
-  #   end
-  # end
-  #
-  # it '#save' do
-  #   @collection.title = 'foo'
-  #   @collection.subtitle = 'bar'
-  #   @collection.save
-  #
-  #   config = Concerns::Translatable::Config.new
-  #   config.add(:title)
-  #   config.add(:subtitle)
-  #
-  #   new_collection = Concerns::Translatable::Collection.new(::Page.new, config, :nl)
-  #   expect(new_collection.title).to eq 'foo'
-  #   expect(new_collection.subtitle).to eq 'bar'
-  # end
+    @config.add :locales, :array
+    @config.add :active, :boolean
+    @config.add :starts_on, :date
+    @config.add :starts_at, :date_time
+    @config.add :discount, :float
+    @config.add :age, :integer
+    @config.add :email, :string
+
+
+    collection = model.new(page, @config)
+    collection.locales = [:nl, :fr]
+    collection.active = true
+    collection.starts_on = Date.today
+    collection.starts_at = DateTime.parse('2016-01-07 14:45')
+    collection.discount = 13.37
+    collection.age = 37
+    collection.email = 'foo@bar.baz'
+    collection.save
+
+    collection = model.new(page, @config)
+    expect(collection.locales).to eq [:nl, :fr]
+    expect(collection.active).to eq true
+    expect(collection.starts_on).to eq Date.today
+    expect(collection.starts_at).to eq DateTime.parse('2016-01-07 14:45')
+    expect(collection.discount).to eq 13.37
+    expect(collection.age).to eq 37
+    expect(collection.email).to eq 'foo@bar.baz'
+  end
 
   it '#respond_to?' do
     collection = model.new(::Page.new, @config)

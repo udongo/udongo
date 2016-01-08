@@ -3,4 +3,6 @@ class Form < ActiveRecord::Base
   translatable_fields :success_message
 
   has_many :fields, class_name: 'FormField', dependent: :destroy
+
+  validates :name, presence: true
 end

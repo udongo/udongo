@@ -321,16 +321,25 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'date' do
+      before(:each)  do
+        @config.add :foo, :date
+        @collection = model.new(::Page.new, @config)
+      end
+
       it 'an actual date' do
+        @collection.foo = Date.today
+        expect(@collection.foo).to eq Date.today
       end
 
       it 'date as a string' do
+        @collection.foo = '2016-01-07'
+        expect(@collection.foo).to eq Date.parse('2016-01-07')
       end
 
       it 'something else' do
+        @collection.foo = 'foo'
+        expect(@collection.foo).to eq nil
       end
-      # date = date
-      # string => date.parse
     end
 
     describe 'date_time' do

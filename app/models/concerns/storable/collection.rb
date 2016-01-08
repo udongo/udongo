@@ -105,6 +105,17 @@ module Concerns
           elsif value === false || value == '0' || value == 0
             return false
           end
+
+        elsif klass == :date
+          if value.is_a?(Date)
+            return value
+          else
+            begin
+              Date.parse(value)
+            rescue
+              nil
+            end
+          end
         end
       end
     end

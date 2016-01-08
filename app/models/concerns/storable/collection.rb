@@ -23,8 +23,7 @@ module Concerns
 
       def read(field)
         field = field.to_sym
-
-        init_field(field)
+        init_field(field.to_sym)
         object = @stores[field]
 
         unless object.value.nil?
@@ -36,10 +35,9 @@ module Concerns
 
       def write(field, value)
         field = field.to_sym
-
         init_field(field)
-
         value = transform_value(@config.fields[field][:klass], value)
+
         @stores[field].value = value
       end
 

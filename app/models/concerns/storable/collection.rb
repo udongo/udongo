@@ -65,6 +65,8 @@ module Concerns
           true
         elsif klass == :boolean && (value.is_a?(TrueClass) || value.is_a?(FalseClass))
           true
+        elsif klass == :date && value.is_a?(Date)
+          true
         else
           false
         end

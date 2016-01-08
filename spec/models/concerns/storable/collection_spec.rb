@@ -78,6 +78,37 @@ describe Concerns::Storable::Collection do
     end
 
     describe 'date' do
+      it 'defaults to nil' do
+        @config.add :starts_on, :date
+        collection = model.new(::Page.new, @config)
+        expect(collection.starts_on).to eq nil
+      end
+
+      it 'defaults to provided default' do
+        @config.add :starts_on, :date, Date.today
+        collection = model.new(::Page.new, @config)
+        expect(collection.starts_on).to eq Date.today
+      end
+
+      describe 'read from db' do
+        it 'db contains date' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'date', name: 'starts_on', value: Date.today)
+          @config.add :starts_on, :date
+          collection = model.new(page, @config)
+
+          expect(collection.starts_on).to eq Date.today
+        end
+
+        it 'db contains something else' do
+          page = create(:page)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'date', name: 'starts_on', value: 1337)
+          @config.add :starts_on, :date
+          collection = model.new(page, @config)
+
+          expect(collection.starts_on).to eq nil
+        end
+      end
     end
 
     describe 'date_time' do

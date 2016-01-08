@@ -74,7 +74,7 @@ describe Concerns::Storable::Collection do
       describe 'read from db' do
         it 'db contains string' do
           page = create(:page)
-          create(:store, storable_type: 'Page', storable_id: page.id, name: 'foo', value: 'baz')
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'string', name: 'foo', value: 'baz')
           @config.add :foo, :string
           collection = model.new(page, @config)
 
@@ -83,7 +83,7 @@ describe Concerns::Storable::Collection do
 
         it 'db contains something else' do
           page = create(:page)
-          create(:store, storable_type: 'Page', storable_id: page.id, name: 'foo', value: 1337)
+          create(:store, storable_type: 'Page', storable_id: page.id, klass: 'string', name: 'foo', value: 1337)
           @config.add :foo, :string
           collection = model.new(page, @config)
 

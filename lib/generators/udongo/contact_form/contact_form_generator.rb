@@ -14,6 +14,7 @@ class Udongo::ContactFormGenerator < Rails::Generators::Base
     say_status 'OK', 'Copying to app/forms/frontend/contact_form', :yellow
     copy_file 'reform.rb', destination_file
     gsub_file destination_file, 'klass', class_name
+    gsub_file destination_file, 'form_name', 'contact'
 	end
 
   def create_database_records

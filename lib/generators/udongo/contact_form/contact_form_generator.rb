@@ -9,10 +9,10 @@ class Udongo::ContactFormGenerator < Rails::Generators::Base
     'app/forms/frontend/contact_form.rb'
   end
 
-	def generate_reform_class
+  def generate_form_class
     'app/forms/frontend/contact_form.rb'
     say_status 'OK', 'Copying to app/forms/frontend/contact_form', :yellow
-    copy_file 'reform.rb', destination_file
+    copy_file 'form.rb', destination_file
     gsub_file destination_file, 'klass', class_name
     gsub_file destination_file, 'form_name', 'contact'
 	end

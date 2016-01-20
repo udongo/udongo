@@ -1,10 +1,38 @@
+require 'rails/generators/generated_attribute'
+
 class Udongo::FormGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   argument :name, type: :string, required: true, banner: 'name'
   argument :namespace, type: :string, banner: 'app namespace', default: 'frontend'
 
+  class_option :fields, type: :string, required: true, banner: 'field_name:type', desc: 'Creates the specified form fields for this form.'
+
+  def initialize(*args, &block)
+    super
+    filter_fields
+  end
+
   def class_name
     "#{namespace.camelcase}::#{name.camelcase}Form"
+  end
+
+  def create_database_records
+    f = ::Form.create!(name: name, locales: Udongo.config.locales)
+
+    @fields.each do |field|
+      f.fields.create!(name: field.name, field_type: field.type)
+    end
+    #name.validations.create!(validation_class: 'Udongo::FormValidations::Required')
+    #email.validations.create!(validation_class: 'Udongo::FormValidations::Email')
+    #message.validations.create!(validation_class: 'Udongo::FormValidations::Required')
+
+    puts "#{f.fields.map(&:name).join(', :')}".inspect
+
+    inject_into_file destination_file, after: "class #{class_name} < Udongo::ActiveModelSimulator\n" do
+      <<-"RUBY"
+  attr_accessor :#{f.fields.map(&:name).join(', :')}
+      RUBY
+    end
   end
 
   def destination_file
@@ -18,19 +46,21 @@ class Udongo::FormGenerator < Rails::Generators::Base
     gsub_file destination_file, 'form_name', name
 	end
 
-  def create_database_records
-    f = ::Form.create!(name: name, locales: Udongo.config.locales)
-    name = f.fields.create!(name: 'name', field_type: 'text')
-    name.validations.create!(validation_class: 'Udongo::FormValidations::Required')
-    email = f.fields.create!(name: 'email', field_type: 'email')
-    email.validations.create!(validation_class: 'Udongo::FormValidations::Email')
-    message = f.fields.create!(name: 'message', field_type: 'textarea')
-    message.validations.create!(validation_class: 'Udongo::FormValidations::Required')
+  def filter_fields
+    @fields = options.fields.split(',').inject([]) do |fields, f|
+      if f.to_s.include?(':')
+        attr = f.split(':')[0]
+        type = f.split(':')[1].to_sym
+      else
+        attr = f
+        type = :string
+      end
 
-    inject_into_file destination_file, after: "class #{class_name} < Udongo::ActiveModelSimulator\n" do
-      <<-"RUBY"
-  attr_accessor :#{f.fields.map(&:name).join(', :')}
-      RUBY
+      fields << Rails::Generators::GeneratedAttribute.new(attr, type)
     end
+  end
+
+  def fields
+    @fields || []
   end
 end

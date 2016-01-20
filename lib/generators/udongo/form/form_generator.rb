@@ -1,24 +1,25 @@
-class Udongo::ContactFormGenerator < Rails::Generators::Base
+class Udongo::FormGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
+  argument :name, type: :string, required: true, banner: 'name'
+  argument :namespace, type: :string, banner: 'app namespace', default: 'frontend'
 
   def class_name
-    'Frontend::ContactForm'
+    "#{namespace.camelcase}::#{name.camelcase}Form"
   end
 
   def destination_file
-    'app/forms/frontend/contact_form.rb'
+    "app/forms/#{namespace.underscore}/#{name.underscore}_form.rb"
   end
 
   def generate_form_class
-    'app/forms/frontend/contact_form.rb'
-    say_status 'OK', 'Copying to app/forms/frontend/contact_form', :yellow
+    say_status 'OK', "Copying to #{destination_file}", :yellow
     copy_file 'form.rb', destination_file
     gsub_file destination_file, 'klass', class_name
-    gsub_file destination_file, 'form_name', 'contact'
+    gsub_file destination_file, 'form_name', name
 	end
 
   def create_database_records
-    f = ::Form.create!(name: 'contact', locales: Udongo.config.locales)
+    f = ::Form.create!(name: name, locales: Udongo.config.locales)
     name = f.fields.create!(name: 'name', field_type: 'text')
     name.validations.create!(validation_class: 'Udongo::FormValidations::Required')
     email = f.fields.create!(name: 'email', field_type: 'email')

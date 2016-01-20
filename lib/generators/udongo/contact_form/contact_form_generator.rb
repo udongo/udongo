@@ -23,7 +23,7 @@ class Udongo::ContactFormGenerator < Rails::Generators::Base
     name.validations.create!(validation_class: 'Udongo::FormValidations::Required')
     email = f.fields.create!(name: 'email', field_type: 'email')
     email.validations.create!(validation_class: 'Udongo::FormValidations::Email')
-    message = f.fields.create!(name: 'message', field_type: 'textarea')
+    message = f.fields.create!(name: 'message', field_type: 'text')
     message.validations.create!(validation_class: 'Udongo::FormValidations::Required')
 
     inject_into_file destination_file, after: "class #{class_name} < Udongo::ActiveModelSimulator\n" do

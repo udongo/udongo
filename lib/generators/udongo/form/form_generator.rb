@@ -16,6 +16,13 @@ class Udongo::FormGenerator < Rails::Generators::Base
     "#{namespace.camelcase}::#{name.camelcase}Form"
   end
 
+  def copy_form_class
+    say_status 'OK', "Copying to #{destination_file}", :yellow
+    copy_file 'form.rb', destination_file
+    gsub_file destination_file, 'klass', class_name
+    gsub_file destination_file, 'form_name', name
+  end
+
   def create_database_records
     f = ::Form.create!(name: name, locales: Udongo.config.locales)
 
@@ -26,10 +33,8 @@ class Udongo::FormGenerator < Rails::Generators::Base
     #email.validations.create!(validation_class: 'Udongo::FormValidations::Email')
     #message.validations.create!(validation_class: 'Udongo::FormValidations::Required')
 
-    puts "#{f.fields.map(&:name).join(', :')}".inspect
-
     inject_into_file destination_file, after: "class #{class_name} < Udongo::ActiveModelSimulator\n" do
-      <<-"RUBY"
+      <<-RUBY
   attr_accessor :#{f.fields.map(&:name).join(', :')}
       RUBY
     end
@@ -38,13 +43,6 @@ class Udongo::FormGenerator < Rails::Generators::Base
   def destination_file
     "app/forms/#{namespace.underscore}/#{name.underscore}_form.rb"
   end
-
-  def generate_form_class
-    say_status 'OK', "Copying to #{destination_file}", :yellow
-    copy_file 'form.rb', destination_file
-    gsub_file destination_file, 'klass', class_name
-    gsub_file destination_file, 'form_name', name
-	end
 
   def filter_fields
     @fields = options.fields.split(',').inject([]) do |fields, f|

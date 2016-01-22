@@ -7,6 +7,9 @@
 * The tagbox no longer triggers tagged item creation errors.
 * The cacheable concern now flushes the cache when the after_touch callback
   happens.
+* Add the storable concern v2 which allows you to save arbitrary data in the db
+  according to certain types (array, boolean, date, date_time, float, integer
+  and string)
 
 
 0.0.11 - 2015-12-05

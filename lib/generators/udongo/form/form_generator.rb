@@ -24,14 +24,13 @@ class Udongo::FormGenerator < Rails::Generators::Base
   end
 
   def create_database_records
-    f = ::Form.create!(name: name, locales: Udongo.config.locales)
+    f = ::Form.create!(locales: Udongo.config.locales, name: name)
 
     @fields.each do |field|
-      f.fields.create!(name: field.name, field_type: field.type)
+      field_object = f.fields.create!(locales: Udongo.config.locales, name: field.name, field_type: field.type)
+      # TODO: validations
+      #field_object.validations.create!(locales: Udongo.config.locales, validation_class: 'Udongo::FormValidations::Required')
     end
-    #name.validations.create!(validation_class: 'Udongo::FormValidations::Required')
-    #email.validations.create!(validation_class: 'Udongo::FormValidations::Email')
-    #message.validations.create!(validation_class: 'Udongo::FormValidations::Required')
 
     inject_into_file destination_file, after: "class #{class_name} < Udongo::ActiveModelSimulator\n" do
       <<-RUBY

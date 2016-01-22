@@ -50,7 +50,7 @@ class Udongo::FormGenerator < Rails::Generators::Base
         type = f.split(':')[1].to_sym
       else
         attr = f
-        type = :string
+        type = :text
       end
 
       fields << Rails::Generators::GeneratedAttribute.new(attr, type)

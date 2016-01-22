@@ -1,4 +1,7 @@
-0.0.12 - xxxx-xx-xx
+0.0.13 - xxxx-xx-xx
+--
+
+0.0.12 - 2016-01-22
 --
 * Bugfix: navigation item wasn't using the sortable scope.
 * Bugfix: make sure content widgets can have camelcased model names.
@@ -10,6 +13,7 @@
 * Add the storable concern v2 which allows you to save arbitrary data in the db
   according to certain types (array, boolean, date, date_time, float, integer
   and string)
+* Add generator to create a new form
 
 
 0.0.11 - 2015-12-05

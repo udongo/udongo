@@ -4,4 +4,11 @@ class FormSubmission < ActiveRecord::Base
 
   validates :form, presence: true
   # TODO: belongs_to :visitor
+
+  def data_as_hash
+    data.inject({}) do |stack, d|
+      stack[d.name.to_sym] = d.value
+      stack
+    end
+  end
 end

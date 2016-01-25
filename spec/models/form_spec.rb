@@ -6,7 +6,7 @@ describe Form do
 
   describe 'validations' do
     describe 'presence' do
-      it(:name) { expect(build(klass, name: nil)).to_not be_valid }
+      it(:identifier) { expect(build(klass, identifier: nil)).to_not be_valid }
     end
   end
 

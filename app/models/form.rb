@@ -5,5 +5,5 @@ class Form < ActiveRecord::Base
   has_many :fields, class_name: 'FormField', dependent: :destroy
   has_many :submissions, class_name: 'FormSubmission', dependent: :destroy
 
-  validates :name, presence: true
+  validates :identifier, presence: true
 end

@@ -5,9 +5,9 @@ class FormSubmission < ActiveRecord::Base
   validates :form, presence: true
   # TODO: belongs_to :visitor
 
-  def data_as_hash
-    data.inject({}) do |stack, d|
-      stack[d.name.to_sym] = d.value
+  def data_object
+    data.inject(OpenStruct.new) do |stack, d|
+      stack.send("#{d.name}=", d.value)
       stack
     end
   end

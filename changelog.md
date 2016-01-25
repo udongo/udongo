@@ -1,5 +1,6 @@
 0.0.13 - xxxx-xx-xx
 --
+* FormSubmission#data_object
 
 0.0.12 - 2016-01-22
 --

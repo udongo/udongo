@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'foundation-rails', '~> 5.5.1'
 
   # Other
-  s.add_dependency 'spring', '~> 1.4.4'
   s.add_dependency 'bcrypt', '~> 3.1.7'
   s.add_dependency 'simple_form', '~> 3.1.1'
   s.add_dependency 'acts_as_list', '~> 0.7.2'
@@ -49,4 +48,5 @@ Gem::Specification.new do |s|
 
   # Development dependencies
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'spring', '~> 1.4.4'
 end

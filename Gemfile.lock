@@ -23,7 +23,6 @@ PATH
       rmagick (~> 2.15.4)
       sass-rails (~> 5.0.3)
       simple_form (~> 3.1.1)
-      spring (~> 1.4.4)
       will_paginate (~> 3.0.6)
 
 GEM
@@ -294,6 +293,7 @@ DEPENDENCIES
   launchy
   rb-fsevent
   rspec-rails (~> 3.4.0)
+  spring (~> 1.4.4)
   spring-commands-rspec (~> 1.0.4)
   sqlite3
   udongo!

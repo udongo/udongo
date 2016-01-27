@@ -11,15 +11,16 @@ gemspec
 # your gem to rubygems.org.
 
 group :test do
-  gem 'guard-rspec'
   gem 'launchy'
   gem 'database_cleaner'
 end
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'rspec-rails', '~> 3.4.0'
+  gem 'guard-rspec', '~> 4.6.4'
   gem 'factory_girl_rails', require: false
-  gem 'rb-fsevent'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :development do

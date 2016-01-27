@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 module Concerns
   module PaginationController
     extend ActiveSupport::Concern
@@ -13,6 +15,14 @@ module Concerns
       return 1 unless params[:page].respond_to?(:to_i)
       page = params[:page].to_i.abs
       page == 0 ? 1 : page
+    end
+
+    def paginate(records)
+      if records.is_a?(Array)
+        records.paginate page: page_number, per_page: per_page
+      else
+        records.page(page_number).per_page(per_page)
+      end
     end
 
     def per_page

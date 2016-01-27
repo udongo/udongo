@@ -1,6 +1,7 @@
 0.0.13 - xxxx-xx-xx
 --
 * FormSubmission#data_object
+* Adds support for Spring in engine development
 
 0.0.12 - 2016-01-22
 --

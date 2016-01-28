@@ -1,0 +1,22 @@
+<%= render 'backend/breadcrumbs' %>
+
+<% if @email_templates.any? %>
+  <table>
+    <tr>
+      <th><%= t 'b.description' %></th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @email_templates.each do |s| %>
+      <tr>
+        <td><%= s.description %></td>
+        <td>
+          <%= link_to icon(:pencil), edit_translation_backend_email_template_path(s, translation_locale: default_locale) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

@@ -23,7 +23,7 @@
       storable_field :birthday, :date
     end
 
-### Defaults values for each type
+### Default values for each type
 * string => nil
 * integer => nil
 * date => nil

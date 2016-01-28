@@ -2,7 +2,10 @@
 --
 * FormSubmission#data_object
 * Adds support for Spring in engine development
-* Expands Concerns::PaginationController with a method that handles both arrays and AR collections.
+* Expands Concerns::PaginationController with a method that handles both arrays
+  and AR collections.
+* Add module for e-mail templates.
+
 
 0.0.12 - 2016-01-22
 --

@@ -1,11 +1,12 @@
 class Backend::EmailTemplatesController < BackendController
   include Concerns::Backend::TranslatableController
+  include Concerns::Backend::PositionableController
 
   before_action :find_model, only: [:edit, :update]
   before_action -> { breadcrumb.add t('b.email_templates'), backend_email_templates_path }
 
   def index
-    @email_templates = ::EmailTemplate.order(:description)
+    @email_templates = ::EmailTemplate.all
   end
 
   def new

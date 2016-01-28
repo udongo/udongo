@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
     resources :email_templates, except: [:show, :destroy] do
       concerns :translatable
+      concerns :positionable
     end
 
     scope :tagbox, controller: 'tagbox', as: 'tagbox' do

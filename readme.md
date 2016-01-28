@@ -2,14 +2,7 @@
 
 # Concerns
 ## Storable concern
-If you want to make model storable, all you have to do is include the Storable concern. From then on you can add fields using the **storable_field** method.
-
-storable_field takes 3 parameters.
-* field name
-* type
-* default value (optional)
-
-The possible types are:
+### Possible field types
 * string
 * integer
 * date
@@ -17,7 +10,7 @@ The possible types are:
 * boolean
 * array
 
-An example of how you could use this.
+### Example
 
     class User < ActiveRecord::Base
       include Concerns::Storable
@@ -30,7 +23,7 @@ An example of how you could use this.
       storable_field :birthday, :date
     end
 
-If you don't set a default, the following defaults apply for each type:
+### Defaults values for each type
 * string => nil
 * integer => nil
 * date => nil

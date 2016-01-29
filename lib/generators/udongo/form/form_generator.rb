@@ -24,7 +24,7 @@ class Udongo::FormGenerator < Rails::Generators::Base
   end
 
   def create_database_records
-    f = ::Form.create!(locales: Udongo.config.locales, name: name)
+    f = ::Form.create!(locales: Udongo.config.locales, identifier: name)
 
     @fields.each do |field|
       field_object = f.fields.create!(locales: Udongo.config.locales, name: field.name, field_type: field.type)

@@ -1,0 +1,31 @@
+<% breadcrumb.add @model.description, edit_backend_email_template_path(@model) %>
+<% breadcrumb.add t('b.edit'), edit_backend_email_template_path(@model) %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= simple_form_for([:backend, @translation], url: edit_translation_backend_email_template_path) do |f| %>
+  <ul class="tabs">
+    <li class="tab-title">
+      <%= link_to t('b.general'), edit_backend_email_template_path(@model) %>
+    </li>
+
+    <% Udongo.config.locales.each do |locale| %>
+      <li class="tab-title <%= 'active' if params[:translation_locale] == locale %>">
+        <%= link_to locale.upcase, edit_translation_backend_email_template_path(@model, locale) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <fieldset class="radius">
+        <legend><%= t 'b.general' %></legend>
+
+        <%= f.input :subject, as: :string %>
+        <%= f.input :plain_content, as: :text, input_html: { rows: 10 } %>
+        <%= f.input :html_content, as: :ckeditor %>
+      </fieldset>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_email_templates_path %>
+<% end %>

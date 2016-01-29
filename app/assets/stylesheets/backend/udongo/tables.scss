@@ -1,6 +1,26 @@
 table {
   width: 100%;
 
+
+  tbody {
+    tr td {
+      ul {
+        li {
+          font-size: 0.9em;
+          line-height: 1.4em;
+        }
+
+        &.no-styles {
+          margin: 0;
+
+          li {
+            list-style: none;
+          }
+        }
+      }
+    }
+  }
+
   tfoot {
     background-color: #fafafa;
 

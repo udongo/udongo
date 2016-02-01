@@ -7,6 +7,5 @@ FactoryGirl.define do
     subject 'foo'
     plain_content 'foo'
     html_content 'foo'
-    sent_at { DateTime.now }
   end
 end

@@ -6,4 +6,8 @@ class Email < ActiveRecord::Base
 
   scope :sent, -> { where('sent_at IS NOT NULL') }
   scope :not_sent, -> { where('sent_at IS NULL') }
+
+  def mark_as_sent!
+    update_attribute :sent_at, DateTime.now
+  end
 end

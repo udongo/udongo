@@ -30,6 +30,12 @@ describe Email do
     end
   end
 
+  it '#mark_as_sent!' do
+    email = create(klass, sent_at: nil)
+    email.mark_as_sent!
+    expect(email.sent_at.to_date).to eq Date.today
+  end
+
   describe 'scopes' do
     before(:each) do
       @a = create(:email, sent_at: nil)
@@ -47,6 +53,10 @@ describe Email do
 
   it '.respond_to?' do
     expect(model).to respond_to(:sent, :not_sent)
+  end
+
+  it '#respond_to?' do
+    expect(build(klass)).to respond_to(:mark_as_sent!)
   end
 end
 

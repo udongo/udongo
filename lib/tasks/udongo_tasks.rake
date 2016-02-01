@@ -26,20 +26,15 @@ namespace :udongo do
   end
 
   namespace :queue do
-    desc 'Check the queue for tasks and execute 1 and then dequeue it.'
+    desc 'Checks the queue for tasks and executes at most 3 of them'
     task process: :environment do
 
-      QueuedTask.not_locked.limit(5).each do |t|
-        t.lock!
-
-        begin
-          t.run!
-          t.dequeue!
-        rescue
-          raise
-        ensure
-          t.unlock! unless t.destroyed?
-        end
+      # This code will process at most 3 records from the queue. The attempts
+      # are done 1 by 1, because if you would fetch all the 5 tasks at once you
+      # might risk another process already completed the task which leaves only
+      # some already executed task.
+      3.times do
+        QueuedTask.not_locked.limit(1).each { |t| t.process! }
       end
     end
   end

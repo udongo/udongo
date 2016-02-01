@@ -45,14 +45,23 @@ describe QueuedTask do
     expect(model.first.data).to eq({ foo: 'bar' })
   end
 
-  it '#dequeue' do
+  it '#dequeue!' do
     task = model.queue Object, foo: 'bar'
     task.dequeue!
     expect(model.count).to eq 0
   end
 
+  it '#process!' do
+    task = create(klass, klass: Object, locked: false)
+    expect { task.process! }.to raise_exception(ArgumentError)
+    expect(task).not_to be_locked
+  end
+
+
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:lock!, :unlock!, :run!)#, :dequeue)
+    expect(build(klass)).to respond_to(
+      :lock!, :unlock!, :run!, :dequeue!, :process!
+    )
   end
 
   it '.respond_to?' do

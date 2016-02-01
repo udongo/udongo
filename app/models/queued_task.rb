@@ -25,4 +25,17 @@ class QueuedTask < ActiveRecord::Base
   def dequeue!
     destroy
   end
+
+  def process!
+    lock!
+
+    begin
+      run!
+      dequeue!
+    rescue
+      raise
+    ensure
+      unlock! unless destroyed?
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128080029) do
+ActiveRecord::Schema.define(version: 20160201121021) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -132,6 +132,20 @@ ActiveRecord::Schema.define(version: 20160128080029) do
   end
 
   add_index "email_templates", ["identifier"], name: "index_email_templates_on_identifier", using: :btree
+
+  create_table "emails", force: :cascade do |t|
+    t.string   "from_name",     limit: 255
+    t.string   "from_email",    limit: 255
+    t.string   "to_name",       limit: 255
+    t.string   "to_email",      limit: 255
+    t.string   "subject",       limit: 255
+    t.text     "plain_content", limit: 65535
+    t.text     "html_content",  limit: 65535
+    t.string   "locale",        limit: 255
+    t.datetime "sent_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "form_field_validations", force: :cascade do |t|
     t.integer  "field_id",         limit: 4

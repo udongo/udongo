@@ -6,6 +6,7 @@
   and AR collections.
 * Add module for e-mail templates.
 * Add some styles for unordered lists in tables.
+* Add the Email model which holds all the sent/unsent e-mails.
 
 
 0.0.12 - 2016-01-22

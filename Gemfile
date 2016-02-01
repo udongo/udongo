@@ -21,6 +21,7 @@ group :test, :development do
   gem 'guard-rspec', '~> 4.6.4'
   gem 'factory_girl_rails', require: false
   gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'letter_opener', '~> 1.4.1'
 end
 
 group :development do

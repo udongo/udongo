@@ -48,7 +48,7 @@ The first paramter specifiecs the string of the class you want to execute the ru
         @foo = data[:foo]
       end
 
-      def run
+      def run!
         # add code to run
       end
     end

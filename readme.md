@@ -30,3 +30,29 @@
 * date_time => nil
 * boolean => false
 * array => nil
+
+# Queue
+## Add tasks to the queue
+You can add tasks to the queue by executing:
+
+    QueuedTask.queue('SomeClass', id: 37, foo: bar)
+
+The first paramter specifiecs the string of the class you want to execute the run method from. The second parameter is a hash that contains most scalar values.
+
+
+## Example of a task
+
+    class SomeClass
+      def initialize(data)
+        @id = data[:id]
+        @foo = data[:foo]
+      end
+
+      def run!
+        # add code to run
+      end
+    end
+
+
+## Rake task to run as a cronjob
+    rake udongo:queueu:process

@@ -24,4 +24,23 @@ namespace :udongo do
       end
     end
   end
+
+  namespace :queue do
+    desc 'Check the queue for tasks and execute 1 and then dequeue it.'
+    task process: :environment do
+
+      QueuedTask.not_locked.limit(5).each do |t|
+        t.lock!
+
+        begin
+          t.run!
+          t.dequeue!
+        rescue
+          raise
+        ensure
+          t.unlock! unless t.destroyed?
+        end
+      end
+    end
+  end
 end

@@ -39,7 +39,6 @@ You can add tasks to the queue by executing:
 
 The first paramter specifiecs the string of the class you want to execute the run method from. The second parameter is a hash that contains most scalar values.
 
-
 ## Example of a task
 
     class SomeClass
@@ -55,4 +54,4 @@ The first paramter specifiecs the string of the class you want to execute the ru
 
 
 ## Rake task to run as a cronjob
-    rake udongo:queueu:process
+    rake udongo:queue:process

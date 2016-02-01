@@ -26,18 +26,16 @@ describe QueuedTask do
     end
   end
 
-  describe '#lock / #unlock' do
-    it '#lock' do
-      task = create(klass, locked: false)
-      task.lock!
-      expect(task).to be_locked
-    end
+  it '#lock!' do
+    task = create(klass, locked: false)
+    task.lock!
+    expect(task).to be_locked
+  end
 
-    it '#unlock' do
-      task = create(klass, locked: true)
-      task.unlock!
-      expect(task).not_to be_locked
-    end
+  it '#unlock!' do
+    task = create(klass, locked: true)
+    task.unlock!
+    expect(task).not_to be_locked
   end
 
   it '.queue' do

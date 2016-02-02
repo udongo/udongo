@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../../../../lib/udongo/email_vars/form_submission.rb'
 
 describe Udongo::EmailVars::FormSubmission do
   let(:form_submission) { create(:form_submission) }

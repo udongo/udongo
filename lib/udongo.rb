@@ -1,3 +1,4 @@
+# TODO: Find a proper solution to autorequire (udongo) classes
 require 'udongo/engine'
 require 'udongo/config'
 require 'udongo/breadcrumb'

@@ -7,6 +7,7 @@
 * Add module for e-mail templates.
 * Add some styles for unordered lists in tables.
 * Add the Email model which holds all the sent/unsent e-mails.
+* Add very basic module to show the items in the email table.
 
 
 0.0.12 - 2016-01-22

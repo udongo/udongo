@@ -14,6 +14,7 @@ nl:
     down: Omlaag
     edit: Bewerk
     email: E-mail
+    emails: E-mails
     email_template: E-mail template
     email_templates: E-mail templates
     enabled?: Ingeschakeld?
@@ -22,6 +23,8 @@ nl:
     forms: Formulieren
     from: Van
     general: Algemeen
+    html_content: HTML inhoud
+    locale: Taal
     login: Inloggen
     logout: Uitloggen
     move: Verplaatsen
@@ -29,20 +32,26 @@ nl:
     navigation: Navigatie
     new: Nieuw
     none: Geen
+    not_yet_sent: Nog niet verzonden
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
+    plain_content: Tekst inhoud
+    recipient: Bestemmeling
     redirect: Redirect
     redirects: Redirects
     restart_webserver: Webserver herstarten
     save: Opslaan
     search: Zoeken
+    sender: Afzender
+    sent_at: Verzonden op
     settings: Instellingen
     snippet: Snippet
     snippets: Snippets
     source: Bron
     status: Status
     status_code: Statuscode
+    subject: Onderwerp
     tags: Tags
     title: Titel
     to: Naar

@@ -1,0 +1,48 @@
+<% breadcrumb.add @email.subject %>
+<%= render 'backend/breadcrumbs' %>
+
+<div class="row">
+  <div class="medium-6 columns">
+    <div class="panel">
+      <h2><%= t 'b.sender' %></h2>
+      <dl>
+        <dt><%= t 'b.name' %></dt>
+        <dd><%= @email.from_name %></dd>
+
+        <dt><%= t 'b.email' %></dt>
+        <dd><%= mail_to @email.from_email%></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="medium-6 columns">
+    <div class="panel">
+      <h2><%= t 'b.recipient' %></h2>
+      <dl>
+        <dt><%= t 'b.name' %></dt>
+        <dd><%= @email.to_name %></dd>
+
+        <dt><%= t 'b.email' %></dt>
+        <dd><%= mail_to @email.to_email%></dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h2><%= t 'b.html_content' %></h2>
+      <iframe src="<%= html_content_backend_email_path(@email) %>" height="400" width="100%" frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <div class="panel">
+      <h2><%= t 'b.plain_content' %></h2>
+      <pre><%= @email.plain_content %></pre>
+    </div>
+  </div>
+</div>

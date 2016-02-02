@@ -1,0 +1,51 @@
+<%= render 'backend/breadcrumbs' %>
+
+<% if @emails.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t 'b.from' %></th>
+        <th><%= t 'b.to' %></th>
+        <th><%= t 'b.subject' %></th>
+        <th><%= t 'b.locale' %></th>
+        <th><%= t 'b.sent_at' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @emails.each do |e| %>
+        <tr>
+          <td><%= mail_to e.from_email, e.from_name %></td>
+          <td><%= mail_to e.to_email, e.to_name %></td>
+          <td><%= e.subject %></td>
+          <td><%= e.locale %></td>
+          <td>
+            <% if e.sent_at %>
+              <%= l e.sent_at %>
+            <% else %>
+              <%= t 'b.not_yet_sent' %>
+            <% end %>
+          </td>
+          <td class="icons">
+            <ul class="inline-list">
+              <li><%= link_to icon(:magnifying_glass), backend_email_path(e) %></li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+
+    <% if will_paginate %>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <%= will_paginate %>
+          </td>
+        </tr>
+      </tfoot>
+    <% end  %>
+  </table>
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

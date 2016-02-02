@@ -8,6 +8,8 @@
 * Add some styles for unordered lists in tables.
 * Add the Email model which holds all the sent/unsent e-mails.
 * Add very basic module to show the items in the email table.
+* Add Concerns::Emailable
+* Expands FormSubmission to be emailable
 
 
 0.0.12 - 2016-01-22

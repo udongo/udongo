@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../../../lib/udongo/email_vars_parser.rb'
 
 describe Udongo::EmailVarsParser do
   include described_class

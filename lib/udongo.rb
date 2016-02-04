@@ -1,8 +1,11 @@
+# TODO: Find a proper solution to autorequire (udongo) classes
 require 'udongo/engine'
 require 'udongo/config'
 require 'udongo/breadcrumb'
 require 'udongo/meta_info'
 require 'udongo/active_model_simulator'
+require 'udongo/email_vars_parser'
+require 'udongo/email_vars/form_submission'
 require 'jquery-rails'
 require 'jquery-ui-rails'
 require 'foundation-rails'

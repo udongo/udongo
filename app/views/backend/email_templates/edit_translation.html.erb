@@ -20,6 +20,11 @@
       <% if @model.vars.present? %>
         <fieldset class="radius">
           <legend><%= t 'b.variables' %></legend>
+          <!-- TODO
+             I would like to have 2 columns. In the left are all the email vars
+             that you can use. In the right column we explain how to use them
+             and how the if statements work.
+          -->
           <%= @model.vars.to_html %>
         </fieldset>
       <% end %>

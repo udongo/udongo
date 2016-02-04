@@ -13,6 +13,7 @@
 * Use the project_name config var for the backend template title.
 * Show the list of available email template vars.
 * Make the Address model emailable.
+* Switch plain/html content in the email template translation form.
 
 
 0.0.12 - 2016-01-22

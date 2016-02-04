@@ -17,6 +17,13 @@
 
   <div class="row">
     <div class="large-12 columns">
+      <% if @model.vars.present? %>
+        <fieldset class="radius">
+          <legend><%= t 'b.variables' %></legend>
+          <%= @model.vars.to_html %>
+        </fieldset>
+      <% end %>
+
       <fieldset class="radius">
         <legend><%= t 'b.general' %></legend>
 

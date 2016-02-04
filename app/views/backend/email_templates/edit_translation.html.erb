@@ -25,7 +25,7 @@
              that you can use. In the right column we explain how to use them
              and how the if statements work.
           -->
-          <%= @model.vars.to_html %>
+          <%= @model.vars.html_safe %>
         </fieldset>
       <% end %>
 

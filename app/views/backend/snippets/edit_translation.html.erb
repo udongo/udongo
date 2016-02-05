@@ -22,7 +22,7 @@
 
         <%= f.input :title, as: :string %>
 
-        <% content_type = @model.html_content? ? :ckeditor : :text %>
+        <% content_type = @model.editor_for_content? ? :ckeditor : :text %>
         <%= f.input :content, as: content_type %>
       </fieldset>
     </div>

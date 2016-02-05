@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201123128) do
+ActiveRecord::Schema.define(version: 20160205132009) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -312,13 +312,14 @@ ActiveRecord::Schema.define(version: 20160201123128) do
   add_index "settings", ["name"], name: "index_settings_on_name", using: :btree
 
   create_table "snippets", force: :cascade do |t|
-    t.string   "identifier",   limit: 255
-    t.string   "description",  limit: 255
-    t.boolean  "html_title",   limit: 1
-    t.boolean  "html_content", limit: 1
-    t.text     "locales",      limit: 65535
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "identifier",            limit: 255
+    t.string   "description",           limit: 255
+    t.boolean  "allow_html_in_title",   limit: 1
+    t.boolean  "allow_html_in_content", limit: 1
+    t.boolean  "editor_for_content",    limit: 1
+    t.text     "locales",               limit: 65535
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "snippets", ["identifier"], name: "index_snippets_on_identifier", using: :btree

@@ -2,12 +2,19 @@ require 'rails_helper'
 
 describe SnippetDecorator do
   describe '#title' do
+    it 'nil will always return a string' do
+      snippet = create(:snippet)
+      expect(snippet.decorate.title).to eq ''
+      expect(snippet.decorate.title).to be_a(String)
+    end
+
     it :html do
-      snippet = create(:snippet, html_title: true)
-      snippet.translation(I18n.locale).title = '### Foo'
+      snippet = create(:snippet, allow_html_in_title: true)
+      snippet.translation(I18n.locale).title = 'foo<br>bar'
       snippet.translation(I18n.locale).save
 
-      expect(snippet.decorate.title).to eq "<h3>Foo</h3>\n"
+      expect(snippet.decorate.title).to eq 'foo<br>bar'
+      expect(snippet.decorate.title).to be_a(ActiveSupport::SafeBuffer)
     end
 
     it :no_html do
@@ -16,16 +23,24 @@ describe SnippetDecorator do
       snippet.translation(I18n.locale).save
 
       expect(snippet.decorate.title).to eq 'Foo'
+      expect(snippet.decorate.title).to be_a(String)
     end
   end
 
   describe '#content' do
+    it 'nil will always return a string' do
+      snippet = create(:snippet)
+      expect(snippet.decorate.content).to eq ''
+      expect(snippet.decorate.content).to be_a(String)
+    end
+
     it :html do
-      snippet = create(:snippet, html_content: true)
-      snippet.translation(I18n.locale).content = '### Foo'
+      snippet = create(:snippet, allow_html_in_content: true)
+      snippet.translation(I18n.locale).content = 'foo<br>bar'
       snippet.translation(I18n.locale).save
 
-      expect(snippet.decorate.content).to eq "<h3>Foo</h3>\n"
+      expect(snippet.decorate.content).to eq 'foo<br>bar'
+      expect(snippet.decorate.content).to be_a(ActiveSupport::SafeBuffer)
     end
 
     it :no_html do
@@ -34,6 +49,7 @@ describe SnippetDecorator do
       snippet.translation(I18n.locale).save
 
       expect(snippet.decorate.content).to eq 'Foo'
+      expect(snippet.decorate.content).to be_a(String)
     end
   end
 

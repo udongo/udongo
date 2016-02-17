@@ -14,6 +14,7 @@
 * Show the list of available email template vars.
 * Make the Address model emailable.
 * Switch plain/html content in the email template translation form.
+* Don't make the meta slug required.
 
 
 0.0.12 - 2016-01-22

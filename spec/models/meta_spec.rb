@@ -8,7 +8,6 @@ describe Meta do
 
   describe 'validations' do
     describe 'presence' do
-      it(:slug) { expect(build(klass, slug: nil)).not_to be_valid }
       it(:locale) { expect(build(klass, locale: nil)).not_to be_valid }
     end
   end

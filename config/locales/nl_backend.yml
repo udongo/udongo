@@ -19,11 +19,13 @@ nl:
     email_templates: E-mail templates
     enabled?: Ingeschakeld?
     extra: Extra
+    first_name: Voornaam
     flexible_content: Flexibele inhoud
     forms: Formulieren
     from: Van
     general: Algemeen
     html_content: HTML inhoud
+    last_name: Achternaam
     locale: Taal
     login: Inloggen
     logout: Uitloggen

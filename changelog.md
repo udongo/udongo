@@ -15,6 +15,7 @@
 * Make the Address model emailable.
 * Switch plain/html content in the email template translation form.
 * Don't make the meta slug required.
+* Hide the search in the backend navigation for now.
 
 
 0.0.12 - 2016-01-22

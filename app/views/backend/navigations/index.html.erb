@@ -9,31 +9,32 @@
 
   <% if n.items.any? %>
     <table>
-      <tr>
-        <th>&nbsp;</th>
-        <th><%= t 'b.page' %></th>
-        <th><%= t 'b.custom_title' %></th>
-        <th><%= t 'b.custom_url' %></th>
-        <th><%= t 'b.extra' %></th>
-        <th>&nbsp;</th>
-      </tr>
-
-      <% n.items.each do |i| %>
-        <tr data-update-position="<%= update_position_backend_navigation_item_path(n, i) %>">
-          <td>
-            <%= i.page ? i.page.description : t('b.none') %>
-          </td>
-          <td><%= i.translation.label %></td>
-          <td><%= i.translation.path %></td>
-          <td><%= i.extra %></td>
-          <td class="icons">
-            <ul class="inline-list">
-              <li><%= link_to icon(:pencil), edit_backend_navigation_item_path(n, i) %></li>
-              <li><%= link_to icon(:trash), backend_navigation_item_path(n, i), method: :delete, data: { confirm: t('b.msg.confirm') }%></li>
-            </ul>
-          </td>
+      <thead>
+        <tr>
+          <th><%= t 'b.page' %></th>
+          <th><%= t 'b.custom_title' %></th>
+          <th><%= t 'b.custom_url' %></th>
+          <th><%= t 'b.extra' %></th>
+          <th>&nbsp;</th>
         </tr>
-      <% end %>
+      </thead>
+
+      <tbody>
+        <% n.items.each do |i| %>
+          <tr data-update-position="<%= update_position_backend_navigation_item_path(n, i) %>">
+            <td>
+              <%= i.page ? i.page.description : t('b.none') %>
+            </td>
+            <td><%= i.translation.label %></td>
+            <td><%= i.translation.path %></td>
+            <td><%= i.extra %></td>
+            <td class="right">
+              <%= link_to icon(:page_edit), edit_backend_navigation_item_path(n, i) %>
+              <%= link_to icon(:trash), backend_navigation_item_path(n, i), method: :delete, data: { confirm: t('b.msg.confirm') }%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
 
   <% else %>

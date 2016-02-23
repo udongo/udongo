@@ -6,22 +6,26 @@
 
 <% if @admins.any? %>
   <table>
-    <tr>
-      <th><%= t 'b.name' %></th>
-      <th><%= t 'b.email' %></th>
-      <th>&nbsp;</th>
-    </tr>
-
-    <% @admins.each do |a| %>
+    <thead>
       <tr>
-        <td><%= a.full_name %></td>
-        <td><%= mail_to a.email %></td>
-        <td>
-          <%= link_to icon(:pencil), edit_backend_admin_path(a) %>
-          <%= link_to icon(:trash), backend_admin_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
-        </td>
+        <th><%= t 'b.name' %></th>
+        <th><%= t 'b.email' %></th>
+        <th>&nbsp;</th>
       </tr>
-    <% end %>
+    </thead>
+
+    <tbody>
+      <% @admins.each do |a| %>
+        <tr>
+          <td><%= a.full_name %></td>
+          <td><%= mail_to a.email %></td>
+          <td class="right">
+            <%= link_to icon(:page_edit), edit_backend_admin_path(a) %>
+            <%= link_to icon(:trash), backend_admin_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
 <% else %>

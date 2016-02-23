@@ -1,7 +1,7 @@
 <%= render 'backend/breadcrumbs' %>
 
 <% if @emails.any? %>
-  <table class="table">
+  <table>
     <thead>
       <tr>
         <th><%= t 'b.from' %></th>
@@ -46,6 +46,7 @@
       </tfoot>
     <% end  %>
   </table>
+
 <% else %>
   <p><%= t 'b.msg.no_items' %></p>
 <% end %>

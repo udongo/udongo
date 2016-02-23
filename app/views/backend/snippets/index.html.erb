@@ -2,19 +2,23 @@
 
 <% if @snippets.any? %>
   <table>
-    <tr>
-      <th><%= t 'b.description' %></th>
-      <th>&nbsp;</th>
-    </tr>
-
-    <% @snippets.each do |a| %>
+    <thead>
       <tr>
-        <td><%= a.description %></td>
-        <td>
-          <%= link_to icon(:pencil), edit_translation_backend_snippet_path(a, translation_locale: default_locale) %>
-        </td>
+        <th><%= t 'b.description' %></th>
+        <th>&nbsp;</th>
       </tr>
-    <% end %>
+    </thead>
+
+    <tbody>
+      <% @snippets.each do |a| %>
+        <tr>
+          <td><%= a.description %></td>
+          <td class="right">
+            <%= link_to icon(:page_edit), edit_translation_backend_snippet_path(a, translation_locale: default_locale) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
 <% else %>

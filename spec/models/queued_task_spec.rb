@@ -57,7 +57,6 @@ describe QueuedTask do
     expect(task).not_to be_locked
   end
 
-
   it '#respond_to?' do
     expect(build(klass)).to respond_to(
       :lock!, :unlock!, :run!, :dequeue!, :process!

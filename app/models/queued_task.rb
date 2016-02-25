@@ -22,6 +22,8 @@ class QueuedTask < ActiveRecord::Base
     create!(klass: klass, data: data)
   end
 
+  # TODO add queue_unless_already_queued
+
   def dequeue!
     destroy
   end

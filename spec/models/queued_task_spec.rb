@@ -45,6 +45,16 @@ describe QueuedTask do
     expect(model.first.data).to eq({ foo: 'bar' })
   end
 
+  it '.queue_unless_already_queued' do
+    model.queue_unless_already_queued Object, foo: 'bar'
+    expect(model.count).to eq 1
+
+    model.queue_unless_already_queued Object, foo: 'bar'
+    expect(model.count).to eq 1
+    expect(model.first.klass).to eq 'Object'
+    expect(model.first.data).to eq({ foo: 'bar' })
+  end
+
   it '#dequeue!' do
     task = model.queue Object, foo: 'bar'
     task.dequeue!

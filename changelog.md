@@ -17,6 +17,7 @@
 * Don't make the meta slug required.
 * Hide the search in the backend navigation for now.
 * Tweak css for the search filter panels.
+* Add QueuedTask.queue_unless_already_queued which speaks for itself.
 * Add .icons class for the <td> which contains icons.
 
 

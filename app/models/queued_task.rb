@@ -22,7 +22,9 @@ class QueuedTask < ActiveRecord::Base
     create!(klass: klass, data: data)
   end
 
-  # TODO add queue_unless_already_queued
+  def self.queue_unless_already_queued(klass, data)
+    self.queue(klass, data) if where(klass: klass).where('data = ?', data.to_yaml).empty?
+  end
 
   def dequeue!
     destroy

@@ -46,7 +46,7 @@
           <td><%= r.status_code %></td>
           <td><%= t r.enabled?.to_s %></td>
           <td><%= r.times_used.to_i %></td>
-          <td class="right">
+          <td class="right icons">
             <%= link_to icon(:page_edit), edit_backend_redirect_path(r) %>
             <%= link_to icon(:trash), backend_redirect_path(r), method: 'delete', data: { confirm: t('b.msg.confirm') } %>
           </td>

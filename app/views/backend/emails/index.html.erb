@@ -27,10 +27,8 @@
               <%= t 'b.not_yet_sent' %>
             <% end %>
           </td>
-          <td class="icons">
-            <ul class="inline-list">
-              <li><%= link_to icon(:magnifying_glass), backend_email_path(e) %></li>
-            </ul>
+          <td class="right icons">
+            <%= link_to icon(:magnifying_glass), backend_email_path(e) %>
           </td>
         </tr>
       <% end %>

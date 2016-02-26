@@ -28,7 +28,7 @@
             <td><%= i.translation.label %></td>
             <td><%= i.translation.path %></td>
             <td><%= i.extra %></td>
-            <td class="right">
+            <td class="right icons">
               <%= link_to icon(:page_edit), edit_backend_navigation_item_path(n, i) %>
               <%= link_to icon(:trash), backend_navigation_item_path(n, i), method: :delete, data: { confirm: t('b.msg.confirm') }%>
             </td>

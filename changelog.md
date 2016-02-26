@@ -17,6 +17,7 @@
 * Don't make the meta slug required.
 * Hide the search in the backend navigation for now.
 * Tweak css for the search filter panels.
+* Add .icons class for the <td> which contains icons.
 
 
 0.0.12 - 2016-01-22

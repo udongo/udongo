@@ -19,7 +19,7 @@
         <tr>
           <td><%= a.full_name %></td>
           <td><%= mail_to a.email %></td>
-          <td class="right">
+          <td class="right icons">
             <%= link_to icon(:page_edit), edit_backend_admin_path(a) %>
             <%= link_to icon(:trash), backend_admin_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
           </td>

@@ -13,7 +13,7 @@
       <% @snippets.each do |a| %>
         <tr>
           <td><%= a.description %></td>
-          <td class="right">
+          <td class="right icons">
             <%= link_to icon(:page_edit), edit_translation_backend_snippet_path(a, translation_locale: default_locale) %>
           </td>
         </tr>

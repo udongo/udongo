@@ -19,6 +19,7 @@ require 'ransack'
 require 'ckeditor'
 require 'responders'
 require 'will_paginate'
+require 'bootstrap'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

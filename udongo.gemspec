@@ -24,8 +24,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails', '~> 4.0.5'
   s.add_dependency 'jquery-ui-rails', '~> 5.0.5'
 
-  # Use SCSS for stylesheets
+  # Styling
   s.add_dependency 'sass-rails', '~> 5.0.3'
+  s.add_dependency 'bootstrap', '~> 4.0.0.alpha3'
 
   # Other
   s.add_dependency 'bcrypt', '~> 3.1.7'

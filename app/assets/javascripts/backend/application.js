@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
 //= require jquery-ui/sortable
+//= require bootstrap
 //= require ckeditor/init
 //= require backend/general

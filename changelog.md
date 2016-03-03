@@ -19,6 +19,7 @@
 * Tweak css for the search filter panels.
 * Add QueuedTask.queue_unless_already_queued which speaks for itself.
 * Add .icons class for the <td> which contains icons.
+* Add 'data' field to Log which contains a an optional hash.
 
 
 0.0.12 - 2016-01-22

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205132009) do
+ActiveRecord::Schema.define(version: 20160303141417) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -201,6 +201,7 @@ ActiveRecord::Schema.define(version: 20160205132009) do
     t.integer  "loggable_id",   limit: 4
     t.string   "loggable_type", limit: 255
     t.text     "content",       limit: 65535
+    t.text     "data",          limit: 65535
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

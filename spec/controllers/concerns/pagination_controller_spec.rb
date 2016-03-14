@@ -22,9 +22,23 @@ describe Concerns::PaginationController do
       expect(controller.paginate(records).map(&:id)).to eq [6,7,8,9,10]
     end
 
-    it 'AR' do
+    it 'ActiveRecord' do
       records = Page.all
       expect(controller.paginate(records).map(&:id)).to eq [6,7,8,9,10]
+    end
+
+    describe 'options hash' do
+      let(:records) { Page.all }
+
+      it 'page' do
+        expect(controller.paginate(records, page: 1).map(&:id)).to eq [1,2,3,4,5]
+        expect(controller.paginate(records, page: 2).map(&:id)).to eq [6,7,8,9,10]
+      end
+
+      it 'per_page' do
+        expect(controller.paginate(records, page: 1, per_page: 2).map(&:id)).to eq [1,2]
+        expect(controller.paginate(records, page: 2, per_page: 3).map(&:id)).to eq [4,5,6]
+      end
     end
   end
 

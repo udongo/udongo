@@ -2,8 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Backend - <%= Udongo.config.project_name %></title>
 
   <%= yield(:javascripts_head) %>
@@ -14,21 +13,64 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-  <section class="content">
-    <div class="row">
-      <div class="large-10 large-offset-1 columns">
-        <%= render 'backend/navigation' %>
-      </div>
-    </div>
+<body class="logged-in">
 
-    <div class="row">
-      <div class="large-10 large-offset-1 columns">
-        <%= render 'backend/flash_messages' %>
-        <%= yield %>
-      </div>
-    </div>
-  </section>
+
+
+
+  <div class="container">
+    <nav class="navbar navbar-dark bg-inverse">
+
+      <%= link_to backend_path, class: 'navbar-brand' do %>
+        <%= Udongo.config.project_name %>
+      <% end %>
+
+      <ul class="nav navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t 'b.content' %></a>
+          <div class="dropdown-menu">
+            <%= link_to t('b.pages'), backend_pages_path, class: 'dropdown-item' %>
+            <%= link_to t('b.snippets'), backend_snippets_path, class: 'dropdown-item' %>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= t 'b.settings' %></a>
+          <div class="dropdown-menu">
+            <%= link_to t('b.navigation'), backend_navigations_path, class: 'dropdown-item' %>
+            <%= link_to t('b.admins'), backend_admins_path, class: 'dropdown-item' %>
+            <%= link_to t('b.redirects'), backend_redirects_path, class: 'dropdown-item' %>
+            <%= link_to t('b.email'), backend_emails_path, class: 'dropdown-item' %>
+            <%= link_to t('b.email_templates'), backend_email_templates_path, class: 'dropdown-item' %>
+          </div>
+        </li>
+        <li class="nav-item dropdown pull-xs-right">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_admin.full_name %></a>
+          <div class="dropdown-menu">
+            <%= link_to t('b.logout'), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') }, class: 'dropdown-item' %>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+
+<br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+  <div>
+    <%= render 'backend/navigation' %>
+    <%= render 'backend/flash_messages' %>
+    <%= yield %>
+  </div>
 
   <%= yield(:javascripts_early) %>
   <%= javascript_include_tag 'backend/application' %>

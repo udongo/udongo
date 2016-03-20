@@ -17,11 +17,13 @@ module Concerns
       page == 0 ? 1 : page
     end
 
-    def paginate(records)
+    def paginate(records, options = {})
+      options.reverse_merge!(page: page_number, per_page: per_page)
+
       if records.is_a?(Array)
-        records.paginate page: page_number, per_page: per_page
+        records.paginate options
       else
-        records.page(page_number).per_page(per_page)
+        records.page(options[:page]).per_page(options[:per_page])
       end
     end
 

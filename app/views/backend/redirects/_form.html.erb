@@ -1,21 +1,42 @@
-<%= simple_form_for([:backend, model]) do |f| %>
+<%= simple_form_for [:backend, model] do |f| %>
   <div class="row">
-    <div class="large-6 columns">
-      <fieldset class="radius">
-        <%= f.input :source_uri %>
-        <%= f.input :destination_uri %>
-        <%= f.input :disabled, as: :boolean %>
-      </fieldset>
-    </div>
-    <div class="large-6 columns">
-      <fieldset class="radius">
-        <%= f.input :status_code, collection: model.status_code_collection_for_dropdown %>
-        <div data-alert class="alert-box info radius">
-          <%= icon :info %>
-          <%= t 'b.msg.help_texts.status_code' %>:
-          <%= link_to 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection', target: '_blank' %>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.general' %>
         </div>
-      </fieldset>
+
+        <div class="card-block">
+          <%= f.input :source_uri %>
+          <%= f.input :destination_uri %>
+          <%= f.input :disabled, as: :boolean %>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Check me out
+            </label>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.advanced' %>
+        </div>
+        <div class="card-block">
+          <%= f.input :status_code, collection: model.status_code_collection_for_dropdown %>
+
+          <div class="alert alert-info">
+            <%= icon :info %>
+            <%= t 'b.msg.help_texts.status_code' %>:
+            <%= link_to 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection', target: '_blank' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

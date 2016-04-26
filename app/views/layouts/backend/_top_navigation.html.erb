@@ -1,20 +1,27 @@
-<ul class="left">
-  <li class="has-dropdown">
-    <%= link_to t('b.content'), '#' %>
-    <ul class="dropdown">
-      <li><%= link_to t('b.pages'), backend_pages_path %></li>
-      <li><%= link_to t('b.snippets'), backend_snippets_path %></li>
-    </ul>
+<ul class="nav navbar-nav">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= icon(:list, t('b.content')) %></a>
+    <div class="dropdown-menu">
+      <%= link_to t('b.pages'), backend_pages_path, class: 'dropdown-item' %>
+      <%= link_to t('b.snippets'), backend_snippets_path, class: 'dropdown-item' %>
+    </div>
   </li>
 
-  <li class="has-dropdown">
-    <%= link_to t('b.settings'), '#' %>
-    <ul class="dropdown">
-      <li><%= link_to t('b.navigation'), backend_navigations_path %></li>
-      <li><%= link_to t('b.admins'), backend_admins_path %></li>
-      <li><%= link_to t('b.redirects'), backend_redirects_path %></li>
-      <li><%= link_to t('b.email'), backend_emails_path %></li>
-      <li><%= link_to t('b.email_templates'), backend_email_templates_path %></li>
-    </ul>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= icon(:cog, t('b.settings')) %></a>
+    <div class="dropdown-menu">
+      <%= link_to t('b.navigation'), backend_navigations_path, class: 'dropdown-item' %>
+      <%= link_to t('b.admins'), backend_admins_path, class: 'dropdown-item' %>
+      <%= link_to t('b.redirects'), backend_redirects_path, class: 'dropdown-item' %>
+      <%= link_to t('b.email'), backend_emails_path, class: 'dropdown-item' %>
+      <%= link_to t('b.email_templates'), backend_email_templates_path, class: 'dropdown-item' %>
+    </div>
+  </li>
+
+  <li class="nav-item dropdown pull-xs-right">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= icon(:user, current_admin.full_name) %></a>
+    <div class="dropdown-menu">
+      <%= link_to icon(:sign_out, t('b.logout')), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') }, class: 'dropdown-item' %>
+    </div>
   </li>
 </ul>

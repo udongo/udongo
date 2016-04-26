@@ -9,7 +9,6 @@ require 'udongo/email_vars/form_submission'
 require 'udongo/email_vars/address'
 require 'jquery-rails'
 require 'jquery-ui-rails'
-require 'foundation-rails'
 require 'simple_form'
 require 'acts_as_list'
 require 'carrierwave'
@@ -20,6 +19,8 @@ require 'ransack'
 require 'ckeditor'
 require 'responders'
 require 'will_paginate'
+require 'bootstrap'
+require 'font-awesome-sass'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

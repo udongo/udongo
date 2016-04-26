@@ -11,8 +11,9 @@
  * file per style scope.
  *
  *= require_self
- *= require foundation
- *= require backend/foundation_and_overrides
- *= require backend/foundation/foundation-icons
- *= require backend/udongo
  */
+
+@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'udongo';

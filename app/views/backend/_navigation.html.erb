@@ -1,23 +1,8 @@
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to Udongo.config.project_name, backend_path %></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+<nav class="navbar navbar-dark bg-inverse">
+  <%= link_to backend_path, class: 'navbar-brand' do %>
+    <%= Udongo.config.project_name %>
+  <% end %>
 
-  <section class="top-bar-section">
-    <%= render 'layouts/backend/top_navigation' %>
-
-    <ul class="right">
-      <li class="divider"></li>
-      <li class="has-dropdown">
-        <%= link_to current_admin.full_name, '#' %>
-        <ul class="dropdown">
-          <li><%= link_to icon(:power, t('b.logout')), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
-        </ul>
-      </li>
-    </ul>
-  </section>
+  <%= render 'layouts/backend/top_navigation' %>
 </nav>
 

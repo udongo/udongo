@@ -20,6 +20,7 @@ require 'ckeditor'
 require 'responders'
 require 'will_paginate'
 require 'bootstrap'
+require 'font-awesome-sass'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

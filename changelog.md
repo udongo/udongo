@@ -4,7 +4,7 @@
 * Adds support for Spring in engine development
 * Expands Concerns::PaginationController with a method that handles both arrays
   and AR collections.
-* Allow page_number/per_page overrides through an options hash for 
+* Allow page_number/per_page overrides through an options hash for
   Concerns::PaginationController#paginate
 * Add module for e-mail templates.
 * Add some styles for unordered lists in tables.

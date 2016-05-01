@@ -20,7 +20,7 @@
           <%= t 'b.advanced' %>
         </div>
         <div class="card-block">
-          <%= f.input :status_code, collection: model.status_code_collection_for_dropdown %>
+          <%= f.input :status_code, collection: model.status_code_collection %>
 
           <div class="alert alert-info">
             <%= icon :info, t('b.msg.help_texts.status_code') %>

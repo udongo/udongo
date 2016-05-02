@@ -23,6 +23,7 @@
 * Add .icons class for the <td> which contains icons.
 * Add 'data' field to Log which contains a an optional hash.
 * Use the bootstrap/fontawesome css files instead of the gems.
+* Upgrade the reform gem to v2.1.0
 
 
 0.0.12 - 2016-01-22

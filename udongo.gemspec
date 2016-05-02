@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'carrierwave', '~> 0.10.0'
   s.add_dependency 'rakismet', '~> 1.5.1'
   s.add_dependency 'marked-rails', '~> 0.3.2'
-  s.add_dependency 'reform', '~> 1.2.6'
+  s.add_dependency 'reform', '~> 2.1.0'
   s.add_dependency 'redcarpet', '~> 3.3.3'
   s.add_dependency 'draper', '~> 1.4.0'
   s.add_dependency 'ransack', '~> 1.7.0'

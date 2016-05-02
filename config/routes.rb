@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     post 'restart_webserver' => 'webserver#restart'
 
     resources :sessions, only: [:new, :create, :destroy]
-    resources :admins, except: [:show]
+    resources :admins
 
     resources :pages, except: [:show] do
       concerns :translatable

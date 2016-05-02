@@ -1,10 +1,9 @@
 <% if flash[:notice] || flash[:alert] %>
-  <% alert_class = 'alert' %>
+  <% alert_class = 'info' %>
   <% alert_class = 'success' if flash[:notice] %>
 
-  <div class="alert-box <%= alert_class %> radius" data-alert>
+  <div class="alert alert-<%= alert_class %>" role="alert">
     <%= flash[:notice] %>
     <%= flash[:alert] %>
-    <%= link_to '&times;'.html_safe, '#', class: 'close' %>
   </div>
 <% end %>

@@ -2,8 +2,12 @@
 
 // Base
 // fonts
+@import 'font-awesome';
 
 // Components
+@import 'components/navbar';
+@import 'components/breadcrumb';
+@import 'components/form';
 
 // Page specific styles
 @import 'pages/login';

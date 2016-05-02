@@ -8,7 +8,7 @@ module Udongo
       @items
     end
 
-    def add(name, link = '#')
+    def add(name, link = nil)
       @items << { name: name, link: link }
     end
 

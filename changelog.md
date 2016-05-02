@@ -22,6 +22,7 @@
 * Add QueuedTask.queue_unless_already_queued which speaks for itself.
 * Add .icons class for the <td> which contains icons.
 * Add 'data' field to Log which contains a an optional hash.
+* Use the bootstrap/fontawesome css files instead of the gems.
 
 
 0.0.12 - 2016-01-22

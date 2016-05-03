@@ -1,6 +1,6 @@
 class DatePickerInput < SimpleForm::Inputs::Base
   def input
-    template.content_tag(:div, class: 'input-group date') do
+    template.content_tag(:div, class: 'input-group') do
       template.concat @builder.text_field(attribute_name, input_html_options)
       template.concat span_table
     end

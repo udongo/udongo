@@ -1,20 +1,30 @@
 <%= simple_form_for [:backend, @admin] do |f| %>
   <div class="row">
-    <div class="large-6 columns">
-      <fieldset class="radius">
-        <legend><%= t 'b.msg.admins.personal_details' %></legend>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :email, required: true %>
-      </fieldset>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.msg.admins.personal_details' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :email, required: true %>
+        </div>
+      </div>
     </div>
 
-    <div class="large-6 columns">
-      <fieldset class="radius">
-        <legend><%= t 'b.msg.admins.account_details' %></legend>
-        <%= f.input :password, required: password_required? %>
-        <%= f.input :password_confirmation, required: password_required? %>
-      </fieldset>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.msg.admins.account_details' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :password, required: password_required? %>
+          <%= f.input :password_confirmation, required: password_required? %>
+        </div>
+      </div>
     </div>
   </div>
 

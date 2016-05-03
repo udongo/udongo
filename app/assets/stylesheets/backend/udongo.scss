@@ -1,6 +1,14 @@
-@import 'udongo/general';
-@import 'udongo/pagination';
-@import 'udongo/forms';
-@import 'udongo/tables';
-@import 'udongo/login';
-@import 'udongo/lightbox';
+@charset "utf-8";
+
+// Base
+// fonts
+@import 'font-awesome';
+
+// Components
+@import 'components/navbar';
+@import 'components/breadcrumb';
+@import 'components/form';
+
+// Page specific styles
+@import 'pages/login';
+@import 'pages/logged_in';

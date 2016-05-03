@@ -1,10 +1,15 @@
-0.0.13 - xxxx-xx-xx
+0.1.0 - xxxx-xx-xx
+--
+* Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
+
+
+0.0.13 - 2016-05-02
 --
 * FormSubmission#data_object
 * Adds support for Spring in engine development
 * Expands Concerns::PaginationController with a method that handles both arrays
   and AR collections.
-* Allow page_number/per_page overrides through an options hash for 
+* Allow page_number/per_page overrides through an options hash for
   Concerns::PaginationController#paginate
 * Add module for e-mail templates.
 * Add some styles for unordered lists in tables.
@@ -22,7 +27,8 @@
 * Add QueuedTask.queue_unless_already_queued which speaks for itself.
 * Add .icons class for the <td> which contains icons.
 * Add 'data' field to Log which contains a an optional hash.
-* Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
+* Use the bootstrap/fontawesome css files instead of the gems.
+* Upgrade the reform gem to v2.1.0
 
 
 0.0.12 - 2016-01-22

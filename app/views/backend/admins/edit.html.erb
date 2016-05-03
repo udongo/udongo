@@ -1,4 +1,4 @@
-<% breadcrumb.add @admin.full_name, edit_backend_admin_path(@admin) %>
+<% breadcrumb.add @admin.full_name, backend_admin_path(@admin) %>
 <% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
-<%= render 'form' %>
+<%= render 'backend/admins/form' %>

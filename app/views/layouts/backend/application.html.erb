@@ -2,8 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Backend - <%= Udongo.config.project_name %></title>
 
   <%= yield(:javascripts_head) %>
@@ -14,21 +13,12 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-  <section class="content">
-    <div class="row">
-      <div class="large-10 large-offset-1 columns">
-        <%= render 'backend/navigation' %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-10 large-offset-1 columns">
-        <%= render 'backend/flash_messages' %>
-        <%= yield %>
-      </div>
-    </div>
-  </section>
+<body class="logged-in">
+  <div class="container">
+    <%= render 'backend/navigation' %>
+    <%= render 'backend/flash_messages' %>
+    <%= yield %>
+  </div>
 
   <%= yield(:javascripts_early) %>
   <%= javascript_include_tag 'backend/application' %>

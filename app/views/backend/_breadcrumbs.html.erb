@@ -1,16 +1,18 @@
 <% if breadcrumb.any? %>
-  <ul class="breadcrumbs">
-    <li>
-      <%= link_to backend_path do %>
-        <i class="fi-home"></i>
-      <% end %>
-    </li>
+  <ol class="breadcrumb">
+    <li><%= link_to icon(:home), backend_path %></li>
 
     <% breadcrumb.each do |item| %>
-      <% klass = (item == breadcrumb.all.last) ? 'current' : '' %>
+      <% klass = (item == breadcrumb.all.last) ? 'active' : '' %>
       <li class="<%= klass %>">
-        <%= link_to item[:name].to_s.html_safe, item[:link] %>
+
+        <% if item[:link].present? %>
+          <%= link_to item[:name].to_s.html_safe, item[:link] %>
+        <% else %>
+          <%= item[:name].to_s.html_safe %>
+        <% end %>
+
       </li>
     <% end %>
-  </ul>
+  </ol>
 <% end %>

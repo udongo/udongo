@@ -1,4 +1,4 @@
-var tree = {
+var tree = tree || {
   vars: {
     container: null
   },

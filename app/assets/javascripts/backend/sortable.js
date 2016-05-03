@@ -1,4 +1,4 @@
-var sortable = {
+var sortable = sortable || {
   init: function() {
     $('table tbody').each(function(){
       var tbody = $(this);

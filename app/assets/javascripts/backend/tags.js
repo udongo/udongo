@@ -1,4 +1,4 @@
-var tags = {
+var tags = tags || {
   init: function() {
     $('input[data-tagbox]').udongo_tagbox({
       on_add: tags.add,

@@ -22,6 +22,7 @@
 * Add QueuedTask.queue_unless_already_queued which speaks for itself.
 * Add .icons class for the <td> which contains icons.
 * Add 'data' field to Log which contains a an optional hash.
+* Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
 
 
 0.0.12 - 2016-01-22

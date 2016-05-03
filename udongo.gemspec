@@ -48,5 +48,5 @@ Gem::Specification.new do |s|
 
   # Development dependencies
   s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'spring', '~> 1.4.4'
+  s.add_development_dependency 'spring', '~> 1.6.4'
 end

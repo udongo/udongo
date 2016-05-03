@@ -263,7 +263,7 @@ GEM
     slop (3.6.0)
     sort_alphabetical (1.0.2)
       unicode_utils (>= 1.2.2)
-    spring (1.4.4)
+    spring (1.6.4)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.5.2)
@@ -296,7 +296,7 @@ DEPENDENCIES
   letter_opener (~> 1.4.1)
   rb-fsevent
   rspec-rails (~> 3.4.0)
-  spring (~> 1.4.4)
+  spring (~> 1.6.4)
   spring-commands-rspec (~> 1.0.4)
   sqlite3
   udongo!

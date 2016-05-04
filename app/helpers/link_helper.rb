@@ -1,6 +1,7 @@
 module LinkHelper
   def link_to_show(object)
     str = find_object_path(object)
+
     link_to(
       icon(:search),
       send(str, *remove_symbols(object)),
@@ -30,33 +31,20 @@ module LinkHelper
     )
   end
 
-  private
-
   def find_object_path(object)
-    str = ''
+    return "#{object.class.name.underscore}_path" unless object.is_a?(Array)
 
-    if object.is_a?(Array)
-
-      object.each do |item|
-        if item.is_a?(Symbol)
-          str << "#{item}_"
-        else
-          str << "#{item.class.name.underscore}_"
-        end
+    object.map do |item|
+      if item.is_a?(Symbol)
+        "#{item}"
+      else
+        "#{item.class.name.underscore}"
       end
-    else
-      str << "#{object.class.name.underscore}_"
-    end
-
-    str << 'path'
-    str
+    end.join('_') << '_path'
   end
 
   def remove_symbols(object)
-    if object.is_a?(Array)
-      object.select { |o| !o.is_a?(Symbol) }
-    else
-      object
-    end
+    return object unless object.is_a?(Array)
+    object.select { |o| !o.is_a?(Symbol) }
   end
 end

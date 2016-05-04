@@ -1,5 +1,6 @@
 0.1.0 - xxxx-xx-xx
 --
+* Add LinkHelper to provide shorthands for show/edit/destroy links.
 
 
 0.0.13 - 2016-05-02

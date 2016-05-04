@@ -3,30 +3,23 @@ require 'rails_helper'
 describe LinkHelper do
   include IconHelper
 
-  # it 'foo' do
-    # user = create(:admin)
-    # puts link_to_edit([:backend, create(:admin)])
-  # end
+  before(:each) do
+    I18n.locale = :nl
+    @admin = create(:admin, id: 37)
+  end
 
-  # let(:model) { described_class }
-  # let(:klass) { model.to_s.underscore.to_sym }
+  it '#link_to_show' do
+    expected = '<a title="Bekijk" href="/backend/admins/37"><i class="fa fa-search"></i></a>'
+    expect(link_to_show([:backend, @admin])).to eq expected
+  end
 
-  # describe 'validations' do
-  #   it(:first_name) { expect(build(klass, first_name: nil)).not_to be_valid }
-  #   it(:last_name) { expect(build(klass, last_name: nil)).not_to be_valid }
-  #
-  #   describe 'email' do
-  #     it(:value) { expect(build(klass, email: nil)).not_to be_valid }
-  #
-  #     it :valid do
-  #       expect(build(klass, email: 'foo')).not_to be_valid
-  #       expect(build(klass, email: 'foo@bar.baz')).to be_valid
-  #     end
-  #
-  #     it :unique do
-  #       create(klass, email: 'foo@bar.baz')
-  #       expect(build(klass, email: 'FOO@BAR.baz')).not_to be_valid
-  #     end
-  #   end
-  # end
+  it '#link_to_edit' do
+    expected = '<a title="Bewerk" href="/backend/admins/37/edit"><i class="fa fa-pencil-square-o"></i></a>'
+    expect(link_to_edit([:backend, @admin])).to eq expected
+  end
+
+  it '#link_to_delete' do
+    expected = '<a data-confirm="Ben je zeker?" title="Verwijder" rel="nofollow" data-method="delete" href="/backend/admins/37"><i class="fa fa-trash"></i></a>'
+    expect(link_to_delete([:backend, @admin])).to eq expected
+  end
 end

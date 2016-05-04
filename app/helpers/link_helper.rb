@@ -1,7 +1,11 @@
 module LinkHelper
   def link_to_show(object)
     str = find_object_path(object)
-    link_to icon(:search), send(str, *remove_symbols(object))
+    link_to(
+      icon(:search),
+      send(str, *remove_symbols(object)),
+      title: t('b.view')
+    )
   end
 
   def link_to_edit(object)

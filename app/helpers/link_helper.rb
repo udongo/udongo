@@ -35,11 +35,7 @@ module LinkHelper
     return "#{object.class.name.underscore}_path" unless object.is_a?(Array)
 
     object.map do |item|
-      if item.is_a?(Symbol)
-        "#{item}"
-      else
-        "#{item.class.name.underscore}"
-      end
+      item.is_a?(Symbol) ? "#{item}" : "#{item.class.name.underscore}"
     end.join('_') << '_path'
   end
 

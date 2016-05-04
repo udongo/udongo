@@ -61,6 +61,7 @@ nl:
     up: Omhoog
     used: Gebruikt
     variables: Variabelen
+    view: Bekijk
 
     msg:
       added: '%s werd toegevoegd.'

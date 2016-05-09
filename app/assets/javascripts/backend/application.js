@@ -18,4 +18,5 @@
 //= require backend/bootstrap
 //= require ckeditor/init
 //= require backend/general
+//= require backend/bootstrap-datepicker.min
 //= require backend/datepickers

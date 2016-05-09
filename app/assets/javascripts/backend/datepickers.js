@@ -22,7 +22,6 @@ var datepickers = datepickers || {
 
   load_regulars: function() {
     var inputs = $('input[data-range-picker="false"]');
-    console.log(inputs);
     if(typeof inputs.datepicker !== 'function') return;
     inputs.datepicker();
   },

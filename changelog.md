@@ -1,7 +1,7 @@
 0.1.0 - xxxx-xx-xx
 --
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
-* Add DatePickerInput to be used with Simple Form inputs (as: :datepicker)
+* Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
 
 
 0.0.13 - 2016-05-02

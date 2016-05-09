@@ -10,12 +10,12 @@ describe PageDecorator do
 
     it 'disabled' do
       result = @a.decorate.options_for_parents(disabled: @b.id)
-      expect(result).to eq [["Foo", 5], ["- Foo", 6], ["- Foo", 7]]
+      expect(result).to eq [["Foo", @a.id], ["- Foo", @b.id], ["- Foo", @c.id]]
     end
 
     it 'selected' do
       result = @b.decorate.options_for_parents
-      expect(result).to eq [["Foo", 2], ["- Foo", 3], ["- Foo", 4]]
+      expect(result).to eq [["Foo", @a.id], ["- Foo", @b.id], ["- Foo", @c.id]]
     end
   end
 

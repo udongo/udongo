@@ -12,6 +12,10 @@
 }
 
 .date_picker {
+  [readonly="readonly"] {
+    background-color: #fff;
+  }
+
   .input-group-addon {
     cursor: pointer;
   }

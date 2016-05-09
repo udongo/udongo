@@ -54,6 +54,9 @@ nl:
       navigation_item:
         path: URL
 
+      page:
+        parent_id: Onder welke hoofdpagina hoort deze pagina?
+
       redirect:
         destination_uri: Bestemming
         source_uri: Bron

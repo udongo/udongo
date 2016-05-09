@@ -1,20 +1,20 @@
 <div class="row">
-  <div class="large-8 columns">
-    <fieldset class="radius">
-      <legend><%= t 'b.msg.pages.content' %></legend>
-      <%= form.input :description %>
-    </fieldset>
-
-    <fieldset class="radius">
-      <legend><%= t 'b.msg.pages.parent' %></legend>
-      <%= form.select :parent_id, @model.options_for_parents, include_blank: true, hide_label: true %>
-    </fieldset>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header"><%= t 'b.msg.pages.content' %></div>
+      <div class="card-block">
+        <%= form.input :description %>
+        <%= form.select :parent_id, @model.options_for_parents, include_blank: true %>
+      </div>
+    </div>
   </div>
 
-  <div class="large-4 columns">
-    <fieldset class="radius">
-      <legend><%= t 'b.status' %></legend>
-      <%= form.input :visible %>
-    </fieldset>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header"><%= t 'b.status' %></div>
+      <div class="card-block">
+        <%= form.input :visible %>
+      </div>
+    </div>
   </div>
 </div>

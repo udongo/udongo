@@ -10,7 +10,7 @@ var general = general || {
   },
 
   load_datepickers: function() {
-    var inputs = $('.date-picker input');
+    var inputs = $('.date_picker input');
     if(typeof inputs.datepicker === 'function') {
       inputs.datepicker();
       $('.date_picker .input-group-addon').on('click', this.datepicker_icon_click_listener);

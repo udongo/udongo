@@ -4,7 +4,7 @@
       <div class="card-header"><%= t 'b.msg.pages.content' %></div>
       <div class="card-block">
         <%= form.input :description %>
-        <%= form.select :parent_id, @model.options_for_parents, include_blank: true %>
+        <%= form.input :parent_id, collection: @model.options_for_parents, include_blank: true %>
       </div>
     </div>
   </div>

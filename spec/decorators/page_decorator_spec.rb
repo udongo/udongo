@@ -9,23 +9,13 @@ describe PageDecorator do
     end
 
     it 'disabled' do
-      expected = <<TEXT
-<option value=\"#{@a.id}\">#{@a.description}</option>
-<option disabled=\"disabled\" value=\"#{@b.id}\">- #{@b.description}</option>
-<option value=\"#{@c.id}\">- #{@c.description}</option>
-TEXT
       result = @a.decorate.options_for_parents(disabled: @b.id)
-      expect(result).to eq expected.strip
+      expect(result).to eq [["Foo", 5], ["- Foo", 6], ["- Foo", 7]]
     end
 
     it 'selected' do
-      expected = <<TEXT
-<option selected=\"selected\" value=\"#{@a.id}\">#{@a.description}</option>
-<option value=\"#{@b.id}\">- #{@b.description}</option>
-<option value=\"#{@c.id}\">- #{@c.description}</option>
-TEXT
       result = @b.decorate.options_for_parents
-      expect(result).to eq expected.strip
+      expect(result).to eq [["Foo", 2], ["- Foo", 3], ["- Foo", 4]]
     end
   end
 

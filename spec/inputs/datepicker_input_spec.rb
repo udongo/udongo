@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe DatepickerInput do
+describe DatePickerInput do
   let(:instance) { described_class.new(OpenStruct.new, 'foo', 'foo', 'text') }
   before(:each) do
     allow(instance).to receive(:template) { ActionView::Base.new }

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
 //= require jquery-ui/sortable
+var Tether = {}; // TODO: Remove this when you require Bootstrap 4 tooltips
 //= require backend/bootstrap
 //= require ckeditor/init
 //= require backend/general

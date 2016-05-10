@@ -2,6 +2,7 @@
 --
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
 * Fix the sortable js to show the correct font-awesome icon.
+* Let Udongo::EmailVarsParser#replace_vars handle unlimited nested collections as var values.
 
 
 0.0.13 - 2016-05-02

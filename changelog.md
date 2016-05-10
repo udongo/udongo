@@ -1,6 +1,7 @@
 0.1.0 - xxxx-xx-xx
 --
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
+* Fix the sortable js to show the correct font-awesome icon.
 
 
 0.0.13 - 2016-05-02

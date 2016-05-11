@@ -15,7 +15,7 @@
         <tr data-update-position="<%= update_position_backend_email_template_path(s) %>">
           <td><%= s.description %></td>
           <td class="text-xs-right">
-            <%= link_to icon(:pencil_square_o), edit_translation_backend_email_template_path(s, translation_locale: default_locale) %>
+            <%= link_to_edit [:backend, s] %>
           </td>
         </tr>
       <% end %>

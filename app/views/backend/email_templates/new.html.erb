@@ -2,13 +2,33 @@
 <%= render 'backend/breadcrumbs' %>
 
 <%= simple_form_for [:backend, @model] do |f| %>
-  <fieldset class="radius">
-    <legend><%= t 'b.general' %></legend>
-    <%= f.input :identifier %>
-    <%= f.input :description, as: :string %>
-    <%= f.input :from_name %>
-    <%= f.input :from_email %>
-  </fieldset>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.general' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :identifier %>
+          <%= f.input :description, as: :string %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.settings' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :from_name %>
+          <%= f.input :from_email %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%= render 'backend/form_actions', cancel_url: backend_email_templates_path %>
 <% end %>

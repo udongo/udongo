@@ -3,14 +3,7 @@
 <%= render 'backend/breadcrumbs' %>
 
 <%= simple_form_for [:backend, @model] do |f| %>
-  <ul class="tabs">
-    <li class="tab-title active">
-      <%= link_to t('b.general'), '#' %>
-    </li>
-    <% Udongo.config.locales.each do |locale| %>
-      <li class="tab-title"><%= link_to locale.upcase, edit_translation_backend_email_template_path(@model, locale) %></li>
-    <% end %>
-  </ul>
+  <%= render 'backend/email_templates/tabs', active: :general %>
 
   <div class="tabs-content">
     <fieldset class="radius">

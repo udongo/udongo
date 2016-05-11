@@ -1,0 +1,17 @@
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <% klass = %w(nav-link) %>
+    <% klass << 'active' if active == :general %>
+
+    <%= link_to t('b.general'), edit_backend_email_template_path(@model), class: klass %>
+  </li>
+
+  <% Udongo.config.locales.each do |locale| %>
+    <li class="nav-item">
+      <% klass = %w(nav-link) %>
+      <% klass << 'active' if active == locale.to_sym %>
+
+      <%= link_to locale.upcase, edit_translation_backend_email_template_path(@model, locale), class: klass %>
+    </li>
+  <% end %>
+</ul>

@@ -21,6 +21,12 @@ describe Udongo::EmailVarsParser do
 
       expect(replace_vars('I am [name]', vars)).to eq 'I am Davy'
     end
+
+    it 'handles nested collections' do
+      vars = {}
+      vars[:workshop_subscription] = { workshop: { foo: 'bar' } }
+      expect(replace_vars('Welcome to [workshop_subscription.workshop.foo]', vars)).to eq 'Welcome to bar'
+    end
   end
 
   describe 'single line ifs' do

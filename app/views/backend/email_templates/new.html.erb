@@ -1,14 +1,4 @@
-<% breadcrumb.add t('b.add'), new_backend_email_template_path %>
+<% breadcrumb.add t('b.add') %>
 <%= render 'backend/breadcrumbs' %>
 
-<%= simple_form_for [:backend, @model] do |f| %>
-  <fieldset class="radius">
-    <legend><%= t 'b.general' %></legend>
-    <%= f.input :identifier %>
-    <%= f.input :description, as: :string %>
-    <%= f.input :from_name %>
-    <%= f.input :from_email %>
-  </fieldset>
-
-  <%= render 'backend/form_actions', cancel_url: backend_email_templates_path %>
-<% end %>
+<%= render 'form' %>

@@ -2,8 +2,8 @@
 <%= render 'backend/breadcrumbs' %>
 
 <% if @email_templates.any? %>
-  <table>
-    <thead>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.description' %></th>
         <th>&nbsp;</th>
@@ -14,8 +14,8 @@
       <% @email_templates.each do |s| %>
         <tr data-update-position="<%= update_position_backend_email_template_path(s) %>">
           <td><%= s.description %></td>
-          <td class="right icons">
-            <%= link_to icon(:page_edit), edit_translation_backend_email_template_path(s, translation_locale: default_locale) %>
+          <td class="text-xs-right">
+            <%= link_to_edit [:backend, s] %>
           </td>
         </tr>
       <% end %>

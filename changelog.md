@@ -2,6 +2,9 @@
 --
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
 * Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
+* Fix the sortable js to show the correct font-awesome icon.
+* Let Udongo::EmailVarsParser#replace_vars handle unlimited nested collections as var values.
+* Cleanup the layout of the following modules: email, email templates.
 
 
 0.0.13 - 2016-05-02

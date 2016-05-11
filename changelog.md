@@ -2,6 +2,7 @@
 --
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
 * Fix the sortable js to show the correct font-awesome icon.
+* Cleanup the layout of the email templates module.
 
 
 0.0.13 - 2016-05-02

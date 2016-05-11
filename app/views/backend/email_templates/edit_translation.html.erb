@@ -2,30 +2,48 @@
 <% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
 
+<%= render 'backend/email_templates/tabs', active: params[:translation_locale].to_sym %>
+
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_email_template_path) do |f| %>
-  <%= render 'backend/email_templates/tabs', active: params[:translation_locale].to_sym %>
+
+  <% if @model.vars.present? %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <%= t 'b.variables' %>
+          </div>
+
+          <div class="card-block">
+            <%= @model.vars.to_s.html_safe %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <div class="row">
-    <div class="large-12 columns">
-      <% if @model.vars.present? %>
-        <fieldset class="radius">
-          <legend><%= t 'b.variables' %></legend>
-          <!-- TODO
-             I would like to have 2 columns. In the left are all the email vars
-             that you can use. In the right column we explain how to use them
-             and how the if statements work.
-          -->
-          <%= @model.vars.html_safe %>
-        </fieldset>
-      <% end %>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.content' %>
+        </div>
 
-      <fieldset class="radius">
-        <legend><%= t 'b.general' %></legend>
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :subject, as: :string %>
+            </div>
+          </div>
 
-        <%= f.input :subject, as: :string %>
-        <%= f.input :html_content, as: :ckeditor %>
-        <%= f.input :plain_content, as: :text, input_html: { rows: 10 } %>
-      </fieldset>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.input :html_content, as: :ckeditor %>
+              <%= f.input :plain_content, as: :text, input_html: { rows: 10 } %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

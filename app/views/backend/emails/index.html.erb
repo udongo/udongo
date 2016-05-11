@@ -1,8 +1,8 @@
 <%= render 'backend/breadcrumbs' %>
 
 <% if @emails.any? %>
-  <table>
-    <thead>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.from' %></th>
         <th><%= t 'b.to' %></th>
@@ -28,7 +28,7 @@
             <% end %>
           </td>
           <td class="right icons">
-            <%= link_to icon(:magnifying_glass), backend_email_path(e) %>
+            <%= link_to_show [:backend, e] %>
           </td>
         </tr>
       <% end %>

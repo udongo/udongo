@@ -1,7 +1,13 @@
 module Udongo::EmailVarsParser
-  def replace_vars(content, vars, conditionals_allowed = true)
+  def replace_vars(content, vars, conditionals_allowed = true, prefix: nil)
     vars.each do |key, value|
-      content = content.gsub(Regexp.new('\[' + key.to_s + '\]'), value.to_s)
+      key = "#{prefix}.#{key}" if prefix.present?
+
+      if value.respond_to?(:each)
+        content = replace_vars(content, value, prefix: key)
+      else
+        content.gsub!(Regexp.new('\[' + key.to_s + '\]'), value.to_s)
+      end
     end
 
     conditionals_allowed ? replace_ifs(content, vars) : content

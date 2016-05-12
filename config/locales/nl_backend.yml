@@ -2,7 +2,6 @@ nl:
   b:
     actions: Acties
     add: Toevoegen
-    add_column: Kolom toevoegen
     admins: Beheerders
     advanced: Geavanceerd
     cancel: Annuleren
@@ -15,9 +14,6 @@ nl:
     destination: Bestemming
     down: Omlaag
     edit: Bewerk
-    edit_column: Kolom bewerken
-    edit_image: Afbeelding bewerken
-    edit_text: Tekst bewerken
     email: E-mail
     emails: E-mails
     email_template: E-mail template
@@ -84,7 +80,12 @@ nl:
       flexible_content:
         add_column: Kolom toevoegen
         add_row: Rij toevoegen
+        add_text: Tekst toevoegen
         delete_row: Rij verwijderen
+        edit_column: Kolom bewerken
+        edit_image: Afbeelding bewerken
+        edit_text: Tekst bewerken
+        explanation: Met module kan je flexibele responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
       forgot_password: Wachtwoord vergeten?
       help_texts:
         status_code: Meer info over het gebruik van status codes

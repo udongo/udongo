@@ -8,24 +8,15 @@ describe PageDecorator do
       @c = create(:page, parent: @a)
     end
 
-    it 'disabled' do
-      expected = <<TEXT
-<option value=\"#{@a.id}\">#{@a.description}</option>
-<option disabled=\"disabled\" value=\"#{@b.id}\">- #{@b.description}</option>
-<option value=\"#{@c.id}\">- #{@c.description}</option>
-TEXT
-      result = @a.decorate.options_for_parents(disabled: @b.id)
-      expect(result).to eq expected.strip
-    end
-
     it 'selected' do
-      expected = <<TEXT
-<option selected=\"selected\" value=\"#{@a.id}\">#{@a.description}</option>
-<option value=\"#{@b.id}\">- #{@b.description}</option>
-<option value=\"#{@c.id}\">- #{@c.description}</option>
-TEXT
+      expected = [
+        [@a.description, @a.id],
+        ["- #{@b.description}", @b.id],
+        ["- #{@c.description}", @c.id]
+      ]
+
       result = @b.decorate.options_for_parents
-      expect(result).to eq expected.strip
+      expect(result).to eq expected
     end
   end
 

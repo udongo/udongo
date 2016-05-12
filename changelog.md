@@ -3,7 +3,10 @@
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
 * Fix the sortable js to show the correct font-awesome icon.
 * Let Udongo::EmailVarsParser#replace_vars handle unlimited nested collections as var values.
-* Cleanup the layout of the following modules: email, email templates.
+* Cleanup the layout of the following modules: email, email templates, flexible
+  content.
+* Make it possible to disable the first input field focus for an entire form by
+  adding the 'no-focus' class to that form.
 
 
 0.0.13 - 2016-05-02

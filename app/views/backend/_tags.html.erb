@@ -7,8 +7,12 @@
 <% locale = local_assigns.has_key?(:locale) ? local_assigns[:locale] : params[:translation_locale] %>
 <% actual_model = model.decorated? ? model.object : model %>
 
-<fieldset class="radius">
-  <legend><%= t 'b.tags' %></legend>
+<div class="card">
+  <div class="card-header">
+    <%= t 'b.tags' %>
+  </div>
 
-  <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tagbox_path, locale: locale, type: actual_model.class.name, id: model.id, base_path: backend_tagbox_path } %>
-</fieldset>
+  <div class="card-block">
+    <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tagbox_path, locale: locale, type: actual_model.class.name, id: model.id, base_path: backend_tagbox_path } %>
+  </div>
+</div>

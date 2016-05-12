@@ -90,14 +90,9 @@ nl:
         custom: Op maat
         deleted: Het navigatie item werd verwijderd.
       no_items: Er zijn geen items.
-      pages:
-        content: Inhoud
-        info: Welke pagina is dit?
-        parent: Onder welke hoofdpagina hoort deze pagina?
 
       saved: '%s werd bewaard.'
-      seo:
-        info: SEO
+      seo: SEO
       status_codes:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)

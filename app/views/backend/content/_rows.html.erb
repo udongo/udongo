@@ -1,53 +1,67 @@
 <div id="content-rows">
-  <% rows = model.content_rows(locale) %>
-  <% rows.where(locale: locale).each do |row| %>
+  <% rows = model.content_rows.where(locale: locale) %>
 
-    <div class="panel radius" id="content-row-<%= row.id %>">
-      <div class="row">
-        <div class="medium-12 columns">
-          <ul class="button-group radius">
-            <% unless row.first? %>
-              <li><%= link_to icon(:arrow_up, t('b.up')), move_up_backend_content_row_path(row), class: 'button small secondary' %></li>
-            <% end %>
+  <% if rows.empty? %>
+    <div class="card">
+      <div class="card-header">
+        <%= t 'b.flexible_content' %>
+      </div>
 
-            <% unless row.last? %>
-              <li><%= link_to icon(:arrow_down, t('b.down')), move_down_backend_content_row_path(row), class: 'button small secondary' %></li>
-            <% end %>
+      <div class="card-block">
+        <!-- TODO add explanation about what this module does! -->
+      </div>
+    </div>
+  <% end %>
 
-            <li><%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'button small secondary' %></li>
-            <li><%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
-          </ul>
+  <% rows.each do |row| %>
+    <div class="card" id="content-row-<%= row.id %>">
+      <div class="card-header">
+        <div class="btn-group" role="group">
+          <% unless row.first? %>
+            <%= link_to icon(:arrow_up, t('b.up')), move_up_backend_content_row_path(row), class: 'btn btn-info-outline' %>
+          <% end %>
+
+          <% unless row.last? %>
+            <%= link_to icon(:arrow_down, t('b.down')), move_down_backend_content_row_path(row), class: 'btn btn-info-outline' %>
+          <% end %>
+
+          <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-info-outline' %>
+          <!-- TODO use shorthand syntax -->
+          <%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'btn btn-info-outline', method: :delete, data: { confirm: t('b.msg.confirm') } %>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row card-block">
         <% row.columns.each do |column| %>
-          <div class="large-<%= column.width %> columns">
+          <div class="col-lg-<%= column.width %> columns">
             <% content = column.content.decorate %>
 
             <% Udongo.config.flexible_content_types.each do |content_type| %>
               <%= render("backend/content/#{content_type}", object: content) if content.content_type_is?(content_type)  %>
             <% end %>
 
-            <ul class="button-group radius">
+            <div class="btn-group" role="group">
               <% unless column.first? %>
-                <li><%= link_to icon(:arrow_left), move_up_backend_content_row_column_path(row, column), class: 'button small secondary' %></li>
+                <%= link_to icon(:arrow_left), move_up_backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm' %>
               <% end %>
 
               <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>
-              <li><%= link_to icon(:page_edit), edit_link, class: 'button small secondary' %></li>
-              <li><%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'button small secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %></li>
-              <li><%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), title: column.width, class: 'button small secondary' %></li>
+              <%= link_to icon(:pencil_square_o), edit_link, class: 'btn btn-secondary btn-sm' %>
+
+              <!-- TODO use shorthand syntax -->
+              <%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm', method: :delete, data: { confirm: t('b.msg.confirm') } %>
+
+              <%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), title: column.width, class: 'btn btn-secondary btn-sm' %>
 
               <% unless column.last? %>
-                <li><%= link_to icon(:arrow_right), move_down_backend_content_row_column_path(row, column), class: 'button small secondary' %></li>
+                <%= link_to icon(:arrow_right), move_down_backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm' %>
               <% end %>
-            </ul>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
   <% end %>
 
-  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'button small radius' %>
+  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'btn btn-info btn-sm' %>
 </div>

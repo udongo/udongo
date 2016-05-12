@@ -1,9 +1,13 @@
-<fieldset class="radius">
-  <legend><%= t 'b.msg.seo.info' %></legend>
+<div class="card">
+  <div class="card-header">
+    <%= t 'b.msg.seo' %>
+  </div>
 
-  <%= f.input :seo_slug, as: :string %>
-  <%= f.input :seo_title, as: :string %>
-  <%= f.input :seo_description, as: :string %>
-  <%= f.input :seo_keywords, as: :string %>
-  <%= f.input :seo_custom, as: :text %>
-</fieldset>
+  <div class="card-block">
+    <%= f.input :seo_slug, as: :string %>
+    <%= f.input :seo_title, as: :string %>
+    <%= f.input :seo_description, as: :string %>
+    <%= f.input :seo_keywords, as: :string %>
+    <%= f.input :seo_custom, as: :text %>
+  </div>
+</div>

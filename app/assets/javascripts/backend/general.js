@@ -1,6 +1,6 @@
 var general = {
   init: function() {
-    $('form input:visible:not(.no-focus):first').focus();
+    $('form:not(.no-focus) input:visible:not(.no-focus):first').focus();
   }
 };
 

@@ -1,4 +1,4 @@
-<%= simple_form_for(@column, url: backend_content_row_columns_path(@row)) do |f| %>
+<%= simple_form_for(@column, url: backend_content_row_column_path(@row, @column)) do |f| %>
   <div class="card">
     <div class="card-header">
       <%= t 'b.edit_column' %>

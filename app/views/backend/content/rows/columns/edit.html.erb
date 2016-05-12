@@ -1,7 +1,21 @@
-<%= simple_form_for @column, url: backend_content_row_column_path(@row, @column) do |f| %>
-  <fieldset class="radius">
-    <%= f.input :width, as: :integer %>
-  </fieldset>
+<%= simple_form_for(@column, url: backend_content_row_columns_path(@row)) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.edit_column' %>
+    </div>
+
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :width, as: :integer %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.input :content_type, collection: options_for_content_types, disabled: true, include_blank: false %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%= render 'backend/form_actions', cancel_url: cancel_url %>
 <% end %>

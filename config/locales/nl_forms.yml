@@ -46,6 +46,7 @@ nl:
 
       content_column:
         content_type: Type
+        width: Breedte (1-12)
 
       email_template:
         from_email: E-mail adres afzender

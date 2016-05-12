@@ -2,6 +2,7 @@ nl:
   b:
     actions: Acties
     add: Toevoegen
+    add_column: Kolom toevoegen
     admins: Beheerders
     advanced: Geavanceerd
     cancel: Annuleren
@@ -14,6 +15,7 @@ nl:
     destination: Bestemming
     down: Omlaag
     edit: Bewerk
+    edit_column: Kolom bewerken
     email: E-mail
     emails: E-mails
     email_template: E-mail template

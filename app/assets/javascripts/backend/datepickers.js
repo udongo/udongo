@@ -59,7 +59,6 @@ var datepickers = datepickers || {
   stops_on_change_date_listener: function(selected) {
     var input = $(this);
     var date = new Date(selected.date.valueOf());
-    console.log(date);
     date.setDate(date.getDate(new Date(selected.date.valueOf())));
     datepickers.starts_on(input.data('stop')).datepicker('setEndDate', date);
   }

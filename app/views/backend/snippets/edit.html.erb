@@ -1,5 +1,5 @@
 <% breadcrumb.add @model.description, edit_backend_snippet_path(@model) %>
-<% breadcrumb.add t('b.edit'), edit_backend_snippet_path(@model) %>
+<% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
 
 <%= simple_form_for [:backend, @model] do |f| %>

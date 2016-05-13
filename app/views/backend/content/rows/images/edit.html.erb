@@ -1,19 +1,22 @@
-<% if @model.file.present? %>
-  <div class="row">
-    <div class="large-7 large-centered columns">
-      <div class="panel radius">
-        <%= image_tag(@model.file.url, alt: '', class: 'radius') %>
-      </div>
-    </div>
+<div class="card">
+  <div class="card-header">
+    <%= t 'b.msg.flexible_content.edit_image' %>
   </div>
-<% end %>
 
-<%= simple_form_for [:backend, @model] do |f| %>
-  <fieldset class="radius">
-    <%= f.input :file, as: :file %>
-    <%= f.input :url, as: :string %>
-    <%= f.input :caption, as: :text %>
-  </fieldset>
+  <div class="card-block">
+    <% if @model.file.present? %>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <%= image_tag(@model.file.url, alt: '', class: 'img-fluid') %>
+        </div>
+      </div>
+    <% end %>
 
-  <%= render 'backend/form_actions', cancel_url: content_path %>
-<% end %>
+    <%= simple_form_for [:backend, @model] do |f| %>
+      <%= f.input :file, as: :file %>
+      <%= f.input :url, as: :string %>
+      <%= f.input :caption, as: :text %>
+      <%= render 'backend/form_actions', cancel_url: content_path %>
+    <% end %>
+  </div>
+</div>

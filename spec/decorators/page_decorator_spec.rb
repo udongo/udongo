@@ -8,14 +8,15 @@ describe PageDecorator do
       @c = create(:page, parent: @a)
     end
 
-    it 'disabled' do
-      result = @a.decorate.options_for_parents(disabled: @b.id)
-      expect(result).to eq [["Foo", @a.id], ["- Foo", @b.id], ["- Foo", @c.id]]
-    end
-
     it 'selected' do
+      expected = [
+        [@a.description, @a.id],
+        ["- #{@b.description}", @b.id],
+        ["- #{@c.description}", @c.id]
+      ]
+
       result = @b.decorate.options_for_parents
-      expect(result).to eq [["Foo", @a.id], ["- Foo", @b.id], ["- Foo", @c.id]]
+      expect(result).to eq expected
     end
   end
 

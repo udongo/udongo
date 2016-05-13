@@ -1,33 +1,33 @@
 <% breadcrumb.add @model.description, edit_backend_page_path(@model) %>
-<% breadcrumb.add t('b.edit'), edit_backend_page_path(@model) %>
+<% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
 
-<%= simple_form_for([:backend, @translation], url: edit_translation_backend_page_path) do |f| %>
-  <ul class="tabs">
-    <li class="tab-title">
-      <%= link_to t('b.general'), edit_backend_page_path(@model) %>
-    </li>
+<%= render 'backend/pages/tabs', active: params[:translation_locale].to_sym %>
 
-    <% Udongo.config.locales.each do |locale| %>
-      <li class="tab-title <%= 'active' if params[:translation_locale] == locale %>">
-        <%= link_to locale.upcase, edit_translation_backend_page_path(@model, locale) %>
-      </li>
-    <% end %>
-  </ul>
+<%= simple_form_for([:backend, @translation], url: edit_translation_backend_page_path, html: { class: 'no-focus' }) do |f| %>
 
   <div class="row">
-    <div class="large-12 columns">
-      <fieldset class="radius">
-        <legend><%= t 'b.msg.pages.content' %></legend>
+    <div class="col-md-12">
+      <!-- Content -->
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.content' %>
+        </div>
 
-        <%= f.input :title %>
-        <%= f.input :subtitle %>
-      </fieldset>
+        <div class="card-block">
+          <%= f.input :title %>
+          <%= f.input :subtitle %>
+        </div>
+      </div>
 
+      <!-- Flexible Content -->
       <%= render('backend/content/rows', model: @model, locale: params[:translation_locale]) unless @model.content_disabled? %>
 
-      <%= render 'backend/tags', model: @model %>
+      <!-- SEO -->
       <%= render 'backend/seo_form', f: f %>
+
+      <!-- Tags -->
+      <%= render 'backend/tags', model: @model %>
     </div>
   </div>
 

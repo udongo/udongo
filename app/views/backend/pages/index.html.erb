@@ -4,17 +4,16 @@
 <% javascript 'backend/pages' %>
 <%= render 'backend/breadcrumbs' %>
 
-<div class="panel">
-  <div class="panel-heading">
-    <strong><%= t 'b.pages' %></strong>
-    <div class="right">
-      <%= link_to t('b.add'), new_backend_page_path, class: 'button small' %>
-    </div>
-  </div>
+<p class="text-xs-right">
+  <%= link_to t('b.add'), new_backend_page_path, class: 'btn btn-primary btn-sm' %>
+</p>
 
-  <% if @pages.any? %>
-    <div id="pages-tree" data-source="<%= backend_pages_path(format: :json) %>"></div>
-  <% else %>
-    <p><%= t 'b.msg.no_results' %></p>
-  <% end %>
+<div class="card">
+  <div class="card-block">
+    <% if @pages.any? %>
+      <div id="pages-tree" data-source="<%= backend_pages_path(format: :json) %>"></div>
+    <% else %>
+      <p><%= t 'b.msg.no_items' %></p>
+    <% end %>
+  </div>
 </div>

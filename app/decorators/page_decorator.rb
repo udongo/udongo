@@ -1,7 +1,7 @@
 class PageDecorator < Draper::Decorator
   delegate_all
 
-  def options_for_parents(disabled: nil)
+  def options_for_parents
     ::Page.flat_tree.map do |p|
       ["#{'-' * p.depth} #{p.description}".strip, p.id]
     end

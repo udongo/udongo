@@ -1,19 +1,6 @@
 <% breadcrumb.add @model.description, edit_backend_page_path(@model) %>
-<% breadcrumb.add t('b.edit'), edit_backend_page_path(@model) %>
+<% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
 
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to t('b.general'), '#', class: 'nav-link active' %>
-  </li>
-  <% Udongo.config.locales.each do |locale| %>
-    <li class="nav-item">
-      <%= link_to locale.upcase, edit_translation_backend_page_path(@model, locale), class: 'nav-link' %>
-    </li>
-  <% end %>
-</ul>
-
-<%= simple_form_for [:backend, @model] do |f| %>
-  <%= render 'backend/pages/form_fields', form: f %>
-  <%= render 'backend/form_actions', cancel_url: backend_pages_path %>
-<% end %>
+<%= render 'backend/pages/tabs', active: :general %>
+<%= render 'backend/pages/form' %>

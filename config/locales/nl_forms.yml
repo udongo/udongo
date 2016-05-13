@@ -46,6 +46,11 @@ nl:
 
       content_column:
         content_type: Type
+        width_xs: Breedte (extra small)
+        width_sm: Breedte (small)
+        width_md: Breedte (medium)
+        width_lg: Breedte (large)
+        width_xl: Breedte (extra large)
 
       email_template:
         from_email: E-mail adres afzender
@@ -55,19 +60,8 @@ nl:
         path: URL
 
       page:
-        parent_id: Onder welke hoofdpagina hoort deze pagina?
+        parent_id: Bovenliggende pagina
 
       redirect:
         destination_uri: Bestemming
         source_uri: Bron
-
-    hints:
-      defaults:
-        seo_description: Vat de inhoud kort samen. Deze samenvatting wordt getoond bij de resultaten van de zoekmachine.
-        seo_keywords_html: |
-          Kies een aantal goed doordachte termen die de inhoud beschrijven.<br />
-          <strong>Let wel</strong>: Vanuit een SEO-standpunt bieden deze niet langer meerwaarde.
-        seo_title: De titel in het browservenster (&lt;title&gt;).
-
-      content_column:
-        width: Cijfer tussen 1 en 12.

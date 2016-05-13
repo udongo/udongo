@@ -1,7 +1,13 @@
 <%= simple_form_for [:backend, @model] do |f| %>
-  <fieldset class="radius">
-    <%= f.input :content, as: :ckeditor, label: false %>
-  </fieldset>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.msg.flexible_content.edit_text' %>
+    </div>
+
+    <div class="card-block">
+      <%= f.input :content, as: :ckeditor, label: false %>
+    </div>
+  </div>
 
   <%= render 'backend/form_actions', cancel_url: content_path %>
 <% end %>

@@ -45,12 +45,12 @@ var tree = tree || {
   types: function() {
     return {
       default: {
-        icon: 'fi-folder',
+        icon: 'fa fa-folder',
         children: true,
         valid_children: ['default', 'file']
       },
       file: {
-        icon: 'fi-page',
+        icon: 'fa fa-file-o',
         valid_children: ['file']
       }
     };
@@ -72,7 +72,7 @@ var tree = tree || {
         separator_before: false,
         separator_after: false,
         label: 'Verwijderen',
-        icon: 'fi-trash',
+        icon: 'fa fa-trash',
         action: tree.contextmenu_remove_listener,
         _disabled: !node.data.deletable
       }
@@ -121,12 +121,12 @@ var tree = tree || {
       type: 'POST'
     }).done(function(data){
       if(data.moved) {
-        instance.set_icon(moved_node, 'fi-check');
+        instance.set_icon(moved_node, 'fa fa-check');
         tree.change_icon_color(moved_node, '#66aa66');
 
         setTimeout(function(){
           tree.change_icon_color(moved_node, 'inherit');
-          instance.set_icon(moved_node, 'fi-page');
+          instance.set_icon(moved_node, 'fa fa-file-o');
         }, 2000);
       }
     });

@@ -8,9 +8,6 @@ class DatePickerInput < SimpleForm::Inputs::Base
 
   def data_attributes
     attributes = {}
-    attributes[:range_picker] = range_picker?
-    attributes[:start] = self.options[:start] === true
-    attributes[:stop] = self.options[:stop] === true
     attributes.reverse_merge!(
       date_language: I18n.locale,
       date_format: 'dd/mm/yyyy'
@@ -23,10 +20,6 @@ class DatePickerInput < SimpleForm::Inputs::Base
 
   def input_html_options
     super.merge(class: 'form-control', readonly: true, data: data_attributes)
-  end
-
-  def range_picker?
-    self.options[:start] === true || self.options[:stop] === true
   end
 
   def span_table

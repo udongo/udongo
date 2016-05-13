@@ -1,4 +1,4 @@
-var pages = {
+var pages = pages || {
   init: function() {
     tree.init('#pages-tree');
   }

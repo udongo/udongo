@@ -55,6 +55,14 @@ The first paramter specifiecs the string of the class you want to execute the ru
 ## Rake task to run as a cronjob
     rake udongo:queue:process
 
+# Validators
+## E-mail validator
+    validates :email, email: true
+
+## URL validator
+    validates :url, url: true
+
+
 # Cryptography
 ```Udongo::Cryptography``` is a module you can include in any class to provide you with functionality to encrypt and decrypt values. It is a wrapper that currently uses ```ActiveSupport::MessageEncryptor```, which in turns uses the Rails secret key to encrypt keys.
 

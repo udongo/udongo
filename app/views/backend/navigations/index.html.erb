@@ -2,9 +2,13 @@
 <%= render 'backend/breadcrumbs' %>
 
 <% @navigations.each do |n| %>
-  <strong><%= n.description %></strong>
-  <div class="right">
-    <%= link_to t('b.add'), new_backend_navigation_item_path(n), class: 'button small' %>
+  <div class="row">
+    <div class="col-md-6">
+      <h2><%= n.description %></h2>
+    </div>
+    <div class="col-md-6 text-xs-right">
+      <%= link_to t('b.add'), new_backend_navigation_item_path(n), class: 'btn btn-primary btn-sm' %>
+    </div>
   </div>
 
   <% if n.items.any? %>
@@ -28,8 +32,8 @@
             <td><%= i.translation.label %></td>
             <td><%= i.translation.path %></td>
             <td><%= i.extra %></td>
-            <td class="right icons">
-              <%= link_to icon(:page_edit), edit_backend_navigation_item_path(n, i) %>
+            <td class="text-xs-right">
+              <%= link_to icon(:pencil_square_o), edit_backend_navigation_item_path(n, i) %>
               <%= link_to icon(:trash), backend_navigation_item_path(n, i), method: :delete, data: { confirm: t('b.msg.confirm') }%>
             </td>
           </tr>
@@ -43,12 +47,12 @@
 <% end %>
 
 <% if @navigations.empty? %>
-  <div class="panel">
-    <div class="panel-heading">
-      <strong><%= t 'b.navigation' %></strong>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.navigation' %>
     </div>
 
-    <div class="panel-body">
+    <div class="card-block">
       <%= t 'b.msg.no_items' %>
     </div>
   </div>

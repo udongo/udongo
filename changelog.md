@@ -13,6 +13,7 @@
   See readme.md for more information.
 * Make it possible to set the content column width for each responsive
   breakpoint.
+* Add the email validator and cleanup the URL validator.
 
 
 0.0.13 - 2016-05-02

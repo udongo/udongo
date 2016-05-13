@@ -1,0 +1,21 @@
+<div class="row subnav">
+  <div class="col-md-12">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <% klass = %w(nav-link) %>
+        <% klass << 'active' if active == :general %>
+
+        <%= link_to t('b.general'), edit_backend_navigation_item_path(@navigation, @model), class: klass %>
+      </li>
+
+      <% Udongo.config.locales.each do |locale| %>
+        <li class="nav-item">
+          <% klass = %w(nav-link) %>
+          <% klass << 'active' if active == locale.to_sym %>
+
+          <%= link_to locale.upcase, edit_translation_backend_navigation_item_path(@navigation, @model, locale), class: klass %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

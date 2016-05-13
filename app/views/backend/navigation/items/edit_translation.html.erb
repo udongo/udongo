@@ -3,26 +3,17 @@
 <% breadcrumb.add @model.label %>
 <%= render 'backend/breadcrumbs' %>
 
+<%= render 'backend/navigation/items/tabs', active: params[:translation_locale].to_sym %>
+
 <%= simple_form_for(@translation, url: edit_translation_backend_navigation_item_path) do |f| %>
-  <ul class="tabs">
-    <li class="tab-title">
-      <%= link_to t('b.general'), edit_backend_navigation_item_path(@navigation, @model) %>
-    </li>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.msg.navigation.custom' %>
+    </div>
 
-    <% Udongo.config.locales.each do |locale| %>
-      <li class="tab-title <%= 'active' if params[:translation_locale] == locale %>">
-        <%= link_to locale.upcase, edit_translation_backend_navigation_item_path(@navigation, @model, locale) %>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="row">
-    <div class="large-12 columns">
-      <fieldset class="radius">
-        <legend><%= t 'b.msg.navigation.custom' %></legend>
-        <%= f.input :label %>
-        <%= f.input :path %>
-      </fieldset>
+    <div class="card-block">
+      <%= f.input :label %>
+      <%= f.input :path %>
     </div>
   </div>
 

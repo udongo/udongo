@@ -22,10 +22,28 @@ describe Udongo::EmailVarsParser do
       expect(replace_vars('I am [name]', vars)).to eq 'I am Davy'
     end
 
-    it 'handles nested collections' do
-      vars = {}
-      vars[:workshop_subscription] = { workshop: { foo: 'bar' } }
-      expect(replace_vars('Welcome to [workshop_subscription.workshop.foo]', vars)).to eq 'Welcome to bar'
+    describe 'handles nested collections' do
+      let(:vars) { {} }
+
+      it '2 levels' do
+        vars[:workshop_subscription] = { workshop: 'foo' }
+        expect(replace_vars('Welcome to [workshop_subscription.workshop]', vars)).to eq 'Welcome to foo'
+      end
+
+      it '3 levels' do
+        vars[:workshop_subscription] = { workshop: { foo: 'bar' } }
+        expect(replace_vars('Welcome to [workshop_subscription.workshop.foo]', vars)).to eq 'Welcome to bar'
+      end
+
+      it '4 levels' do
+        vars[:workshop_subscription] = { workshop: { foo: { bar: 'baz' } } }
+        expect(replace_vars('Welcome to [workshop_subscription.workshop.foo.bar]', vars)).to eq 'Welcome to baz'
+      end
+
+      it '5 levels' do
+        vars[:workshop_subscription] = { workshop: { foo: { bar: { baz: 'bak' } } } }
+        expect(replace_vars('Welcome to [workshop_subscription.workshop.foo.bar.baz]', vars)).to eq 'Welcome to bak'
+      end
     end
   end
 

@@ -1,8 +1,8 @@
 <%= render 'backend/breadcrumbs' %>
 
 <% if @snippets.any? %>
-  <table>
-    <thead>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.description' %></th>
         <th>&nbsp;</th>
@@ -13,8 +13,8 @@
       <% @snippets.each do |a| %>
         <tr>
           <td><%= a.description %></td>
-          <td class="right icons">
-            <%= link_to icon(:pencil_square_o), edit_translation_backend_snippet_path(a, translation_locale: default_locale) %>
+          <td class="text-xs-right">
+            <%= link_to_edit [:backend, a] %>
           </td>
         </tr>
       <% end %>

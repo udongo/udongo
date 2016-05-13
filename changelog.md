@@ -8,6 +8,8 @@
   content.
 * Make it possible to disable the first input field focus for an entire form by
   adding the 'no-focus' class to that form.
+* Add Udongo::Cryptography to make encrypting/decrypting values secure and easy.
+  See readme.md for more information.
 * Make it possible to set the content column width for each responsive
   breakpoint.
 

@@ -112,3 +112,22 @@ irb(main):023:0> crypt = Udongo::Crypt.new(secret: '1234567890123456789012345678
 irb(main):024:0> crypt.encrypt('foo')
 => "YXhsZDV4RlZLTnljclhvM3pKbmV3Zz09LS1ycVR4bEtZemh2UUVKVlBQRnhlcjZRPT0=--f23e37ef7fb94e94cfa8a509f93bdb94e4bc5552"
 ```
+
+# Datepickers
+There are two custom inputs in Udongo to help handles dates. ```DatePickerInput``` and ```DateRangePickerInput```. Both make use of the [bootstrap-datepicker](http://bootstrap-datepicker.readthedocs.io/en/stable/) JS plugin. You can set/override its defaults through data-attributes, as explained in the docs.
+
+## Usage
+### DatePickerInput
+Applying ```as: :date_picker``` to a simple_form input will bind a datepicker with all the default events bound:
+```erb
+<%= f.input :date, as: :date_picker %>
+```
+### DateRangePickerInput
+You can combine two datepicker input fields into a range picker by applying ```as: :date_range_picker``` to 2 different simple_form input fields.
+
+This will link a datepicker to each input with its relevant change listeners bound to prevent you from selecting a start date past the stop date, and vice versa:
+```erb
+<%= f.input :start_date, as: :date_range_picker, start: 'foo' %>
+<%= f.input :stop_date, as: :date_range_picker, stop: 'foo' %>
+```
+The value used in the ```start``` and ```stop``` attributes needs to be the same for two datepicker fields to be combined into a range picker. **If these values don't match, your pickers won't display the intended behaviour.**

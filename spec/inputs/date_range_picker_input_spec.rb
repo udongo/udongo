@@ -9,23 +9,23 @@ describe DateRangePickerInput do
   it '#data_attributes' do
     allow(I18n).to receive(:locale) { :nl }
     expect(instance.data_attributes).to eq({
-      range_picker: false,
-      start: false,
-      stop: false,
       date_language: :nl,
-      date_format: 'dd/mm/yyyy'
+      date_format: 'dd/mm/yyyy',
+      range_picker: false,
+      start: nil,
+      stop: nil
     })
   end
 
   describe '#range_picker?' do
     describe 'true' do
       it 'start' do
-        instance = described_class.new(OpenStruct.new, 'foo', 'foo', 'foo', start: true)
+        instance = described_class.new(OpenStruct.new, 'foo', 'foo', 'foo', start: 'foo')
         expect(instance.range_picker?).to be true
       end
 
       it 'stop' do
-        instance = described_class.new(OpenStruct.new, 'foo', 'foo', 'foo', stop: true)
+        instance = described_class.new(OpenStruct.new, 'foo', 'foo', 'foo', stop: 'foo')
         expect(instance.range_picker?).to be true
       end
     end

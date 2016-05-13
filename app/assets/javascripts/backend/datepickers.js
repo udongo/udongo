@@ -2,7 +2,10 @@ var datepickers = datepickers || {
   init: function() {
     this.load_ranges();
     this.load_regulars();
-    $('.date_picker .input-group-addon').on('click', this.icon_click_listener);
+    $('.date_picker, .date_range_picker').find('.input-group-addon').on(
+      'click',
+      this.icon_click_listener
+    );
   },
 
   icon_click_listener: function(e) {
@@ -21,13 +24,13 @@ var datepickers = datepickers || {
   },
 
   load_regulars: function() {
-    var inputs = $('input[data-range-picker="false"]');
+    var inputs = $('.date_picker input');
     if(typeof inputs.datepicker !== 'function') return;
     inputs.datepicker();
   },
 
   starts_on: function() {
-    return $('input[data-range-picker="true"][data-start="true"]');
+    return $('.date_range_picker input[data-start]');
   },
 
   starts_on_change_date_listener: function(selected) {
@@ -37,7 +40,7 @@ var datepickers = datepickers || {
   },
 
   stops_on: function() {
-    return $('input[data-range-picker="true"][data-stop="true"]');
+    return $('.date_range_picker input[data-stop]');
   },
 
   stops_on_change_date_listener: function(selected) {

@@ -1,0 +1,22 @@
+<%= simple_form_for(@model, url: url) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.general' %>
+    </div>
+
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :page_id, collection: @model.options_for_page, include_blank: true %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.input :extra, as: :string %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_navigations_path %>
+<% end %>

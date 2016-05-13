@@ -57,6 +57,7 @@ nl:
         from_name: Naam afzender
 
       navigation_item:
+        page_id: Pagina
         path: URL
 
       page:

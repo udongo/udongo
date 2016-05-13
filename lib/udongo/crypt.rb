@@ -1,8 +1,8 @@
 class Udongo::Crypt
   attr_reader :options
 
-  def initialize(options = {})
-    @options = options.reverse_merge!(secret: Rails.configuration.secret_key_base)
+  def initialize(secret: Rails.configuration.secret_key_base)
+    @options = { secret: secret }
   end
 
   def crypt

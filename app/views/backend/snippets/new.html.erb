@@ -1,21 +1,4 @@
 <% breadcrumb.add t('b.add') %>
 <%= render 'backend/breadcrumbs' %>
 
-<%= simple_form_for [:backend, @model] do |f| %>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <%= t 'b.general' %>
-        </div>
-
-        <div class="card-block">
-          <%= f.input :identifier %>
-          <%= f.input :description, as: :string %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <%= render 'backend/form_actions', cancel_url: backend_snippets_path %>
-<% end %>
+<%= render 'backend/snippets/form' %>

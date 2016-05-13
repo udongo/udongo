@@ -19,9 +19,9 @@ module Udongo::EmailVarsParser
       if_content = match.last
 
       if vars[if_var] || vars[if_var.to_sym]
-        content = content.gsub("[if:#{if_var}]#{if_content}[/if]", if_content)
+        content.gsub!("[if:#{if_var}]#{if_content}[/if]", if_content)
       else
-        content = content.gsub("[if:#{if_var}]#{if_content}[/if]", '')
+        content.gsub!("[if:#{if_var}]#{if_content}[/if]", '')
       end
     end
 

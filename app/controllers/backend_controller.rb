@@ -1,4 +1,6 @@
 class BackendController < ActionController::Base
+  include Udongo::Cryptography
+
   layout 'backend/application'
   before_action :check_login
 

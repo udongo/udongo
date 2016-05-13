@@ -57,7 +57,9 @@ class Backend::Content::Rows::ColumnsController < BackendController
   end
 
   def allowed_params
-    params.require(:content_column).permit(:width, :content_type)
+    params.require(:content_column).permit(
+      :width_xs, :width_sm, :width_md, :width_lg, :width_xl, :content_type
+    )
   end
 
   def redirect_to_edit(column)

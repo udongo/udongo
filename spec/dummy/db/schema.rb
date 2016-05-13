@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303141417) do
+ActiveRecord::Schema.define(version: 20160513110925) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -77,7 +77,11 @@ ActiveRecord::Schema.define(version: 20160303141417) do
 
   create_table "content_columns", force: :cascade do |t|
     t.integer  "row_id",       limit: 4
-    t.integer  "width",        limit: 4
+    t.integer  "width_md",     limit: 4
+    t.integer  "width_lg",     limit: 4
+    t.integer  "width_xl",     limit: 4
+    t.integer  "width_xs",     limit: 4
+    t.integer  "width_sm",     limit: 4
     t.integer  "position",     limit: 4
     t.string   "content_type", limit: 255
     t.integer  "content_id",   limit: 4

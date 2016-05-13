@@ -46,7 +46,11 @@ nl:
 
       content_column:
         content_type: Type
-        width: Breedte (1-12)
+        width_xs: Breedte (extra small)
+        width_sm: Breedte (small)
+        width_md: Breedte (medium)
+        width_lg: Breedte (large)
+        width_xl: Breedte (extra large)
 
       email_template:
         from_email: E-mail adres afzender

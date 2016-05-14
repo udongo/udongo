@@ -14,6 +14,7 @@
 * Make it possible to set the content column width for each responsive
   breakpoint.
 * Add the email validator and cleanup the URL validator.
+* Add DatePicker and DateRangerPicker to use with simple form.
 
 
 0.0.13 - 2016-05-02

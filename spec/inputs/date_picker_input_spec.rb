@@ -9,9 +9,6 @@ describe DatePickerInput do
   it '#data_attributes' do
     allow(I18n).to receive(:locale) { :nl }
     expect(instance.data_attributes).to eq({
-      range_picker: false,
-      start: false,
-      stop: false,
       date_language: :nl,
       date_format: 'dd/mm/yyyy'
     })
@@ -19,24 +16,6 @@ describe DatePickerInput do
 
   it '#icon_table' do
     expect(instance.icon_table).to eq '<span class="fa fa-th"></span>'
-  end
-
-  describe '#range_picker?' do
-    describe 'true' do
-      it 'start' do
-        instance = described_class.new(OpenStruct.new, 'foo', 'foo', 'foo', start: true)
-        expect(instance.range_picker?).to be true
-      end
-
-      it 'stop' do
-        instance = described_class.new(OpenStruct.new, 'foo', 'foo', 'foo', stop: true)
-        expect(instance.range_picker?).to be true
-      end
-    end
-
-    it 'false' do
-      expect(instance.range_picker?).to be false
-    end
   end
 
   it '#responds_to?' do

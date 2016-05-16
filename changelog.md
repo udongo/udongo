@@ -16,6 +16,7 @@
 * Add the email validator and cleanup the URL validator.
 * Add DatePicker and DateRangerPicker to use with simple form.
 * Update to rails 4.2.6.
+* Order logs by created_at descending AND by ID descending.
 
 
 0.0.13 - 2016-05-02

@@ -263,7 +263,7 @@ describe Concerns::Storable::Collection do
 
     describe 'array' do
       before(:each) do
-        @config.add :foo, :array
+        @config.add :foo, :array, []
         @collection = model.new(::Page.new, @config)
       end
 
@@ -274,7 +274,15 @@ describe Concerns::Storable::Collection do
 
       it 'something else' do
         @collection.foo = { foo: 'bar' }
-        expect(@collection.foo).to eq nil
+        expect(@collection.foo).to eq []
+      end
+
+      it '<<' do
+        @collection.foo << :bar
+        expect(@collection.foo).to eq [:bar]
+        @collection.save
+
+        expect(::Store.first.value).to eq [:bar]
       end
     end
 
@@ -411,7 +419,7 @@ describe Concerns::Storable::Collection do
 
     describe 'string' do
       before(:each) do
-        @config.add :foo, :string
+        @config.add :foo, :string, ''
         @collection = model.new(::Page.new, @config)
       end
 
@@ -427,7 +435,18 @@ describe Concerns::Storable::Collection do
 
       it 'something else' do
         @collection.foo = 1337
-        expect(@collection.foo).to eq nil
+        expect(@collection.foo).to eq ''
+      end
+
+      it '<<' do
+        @collection.foo << 'foo'
+        expect(@collection.foo).to eq 'foo'
+
+        @collection.foo << 'bar'
+        expect(@collection.foo).to eq 'foobar'
+
+        @collection.save
+        expect(::Store.first.value).to eq 'foobar'
       end
     end
   end

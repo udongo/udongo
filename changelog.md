@@ -16,6 +16,8 @@
 * Add the email validator and cleanup the URL validator.
 * Add DatePicker and DateRangerPicker to use with simple form.
 * Order logs by created_at descending AND by ID descending.
+* Fix nasty bug in the storable concern which made it impossible to work with
+  the << operator for strings and arrays.
 
 
 0.0.13 - 2016-05-02

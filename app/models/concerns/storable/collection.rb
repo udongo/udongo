@@ -30,7 +30,8 @@ module Concerns
           return object.value if klasses_match(@config.fields[field][:klass], object.value)
         end
 
-        @config.fields[field][:default]
+        object.value = Marshal.load(Marshal.dump(@config.fields[field][:default]))
+        object.value
       end
 
       def write(field, value)

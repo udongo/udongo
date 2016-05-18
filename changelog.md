@@ -18,6 +18,7 @@
 * Order logs by created_at descending AND by ID descending.
 * Fix nasty bug in the storable concern which made it impossible to work with
   the << operator for strings and arrays.
+* Bugfix: the link helpers can now also work with decorated objects.
 
 
 0.0.13 - 2016-05-02

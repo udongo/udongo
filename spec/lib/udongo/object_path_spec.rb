@@ -10,7 +10,12 @@ describe Udongo::ObjectPath do
 
     it '[admin]' do
       admin = create(:admin)
-      expect(klass.find([admin])).to eq 'admin_path'
+      expect(klass.find(admin)).to eq 'admin_path'
+    end
+
+    it 'page decorated' do
+      page = create(:page).decorate
+      expect(klass.find(page)).to eq 'page_path'
     end
 
     it '[:backend, @admin]' do
@@ -21,6 +26,11 @@ describe Udongo::ObjectPath do
     it '[:backend, @admin, :foo]' do
       admin = create(:admin)
       expect(klass.find([:backend, admin, :foo])).to eq 'backend_admin_foo_path'
+    end
+
+    it '[:backend, @page] decorated' do
+      page = create(:page).decorate
+      expect(klass.find([:backend, page])).to eq 'backend_page_path'
     end
   end
 

@@ -1,9 +1,11 @@
 class Udongo::ObjectPath
   def self.find(object)
-    return "#{object.class.name.underscore}_path" unless object.is_a?(Array)
+    unless object.is_a?(Array)
+      return "#{object.class.name.underscore}_path".gsub('_decorator', '')
+    end
 
     object.map do |item|
-      item.is_a?(Symbol) ? "#{item}" : "#{item.class.name.underscore}"
+      item.is_a?(Symbol) ? "#{item}" : "#{item.class.name.underscore}".gsub('_decorator', '')
     end.join('_') << '_path'
   end
 

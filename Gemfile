@@ -13,6 +13,7 @@ gemspec
 group :test do
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'codeclimate-test-reporter', '~> 0.5.0', require: nil
 end
 
 group :test, :development do

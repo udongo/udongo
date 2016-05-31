@@ -1,5 +1,5 @@
-0.1.0 - xxxx-xx-xx
---
+0.1.0 - 2016-05-31
+------------------
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
 * Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
 * Fix the sortable js to show the correct font-awesome icon.

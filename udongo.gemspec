@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = %w(udongo@bauffman.be udongo@davelens.be)
   s.homepage    = 'http://udongo.be'
   s.summary     = 'Blimp CMS'
-  s.description = 'Blimp CMS'
+  s.description = 'Blimp CMS.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
@@ -21,31 +21,31 @@ Gem::Specification.new do |s|
   s.add_dependency 'mysql2', '~> 0.3.20'
 
   # Javascript related
-  s.add_dependency 'jquery-rails', '~> 4.0.5'
-  s.add_dependency 'jquery-ui-rails', '~> 5.0.5'
+  s.add_dependency 'jquery-rails', '~> 4.0', '>= 4.0.5'
+  s.add_dependency 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
   # Styling
-  s.add_dependency 'sass-rails', '~> 5.0.3'
+  s.add_dependency 'sass-rails', '~> 5.0', '>= 5.0.3'
 
   # Other
-  s.add_dependency 'bcrypt', '~> 3.1.7'
-  s.add_dependency 'simple_form', '~> 3.1.1'
-  s.add_dependency 'acts_as_list', '~> 0.7.2'
-  s.add_dependency 'country_select', '~> 2.4.0'
-  s.add_dependency 'rmagick', '~> 2.15.4'
-  s.add_dependency 'mini_magick', '~> 4.3.6'
-  s.add_dependency 'carrierwave', '~> 0.10.0'
-  s.add_dependency 'rakismet', '~> 1.5.1'
-  s.add_dependency 'marked-rails', '~> 0.3.2'
-  s.add_dependency 'reform', '~> 2.1.0'
-  s.add_dependency 'redcarpet', '~> 3.3.3'
-  s.add_dependency 'draper', '~> 1.4.0'
-  s.add_dependency 'ransack', '~> 1.7.0'
-  s.add_dependency 'responders', '~> 2.1.0'
-  s.add_dependency 'ckeditor', '~> 4.1.4'
-  s.add_dependency 'will_paginate', '~> 3.0.6'
+  s.add_dependency 'bcrypt', '~> 3.1', '>= 3.1.7'
+  s.add_dependency 'simple_form', '~> 3.1', '>= 3.1.1'
+  s.add_dependency 'acts_as_list', '~> 0.7', '>= 0.7.2'
+  s.add_dependency 'country_select', '~> 2.4', '>= 2.4.0'
+  s.add_dependency 'rmagick', '~> 2.15', '>= 2.15.4'
+  s.add_dependency 'mini_magick', '~> 4.3', '>= 4.3.6'
+  s.add_dependency 'carrierwave', '~> 0.10', '>= 0.10.0'
+  s.add_dependency 'rakismet', '~> 1.5', '>= 1.5.1'
+  s.add_dependency 'marked-rails', '~> 0.3', '>= 0.3.2'
+  s.add_dependency 'reform', '~> 2.1', '>= 2.1.0'
+  s.add_dependency 'redcarpet', '~> 3.3', '>= 3.3.3'
+  s.add_dependency 'draper', '~> 1.4', '>= 1.4.0'
+  s.add_dependency 'ransack', '~> 1.7', '>= 1.7.0'
+  s.add_dependency 'responders', '~> 2.1', '>= 2.1.0'
+  s.add_dependency 'ckeditor', '~> 4.1', '>= 4.1.4'
+  s.add_dependency 'will_paginate', '~> 3.0', '>= 3.0.6'
 
   # Development dependencies
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'spring', '~> 1.6.4'
+  s.add_development_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
+  s.add_development_dependency 'spring', '~> 1.6', '>= 1.6.4'
 end

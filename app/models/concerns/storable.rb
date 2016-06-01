@@ -30,10 +30,7 @@ module Concerns
 
     module ClassMethods
       def storable_field(name, type, default = nil)
-        # TODO can be oneliner
-        delegate name, to: :store
-        delegate "#{name}=", to: :store
-
+        delegate name, "#{name}=", to: :store
         store_config.add name, type, default
       end
 

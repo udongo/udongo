@@ -49,7 +49,7 @@ describe Concerns::Storable::Collection do
     collection.save
 
     collection = model.new(page, :custom, config)
-    collection.delete
+    expect(collection.delete).to eq true
 
     expect(collection.foo).to eq nil
     expect(collection.bar).to eq nil

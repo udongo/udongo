@@ -55,6 +55,7 @@ module Concerns
 
       def reset_values
         attributes.keys.each { |k| send("#{k}=", nil) }
+        true
       end
     end
   end

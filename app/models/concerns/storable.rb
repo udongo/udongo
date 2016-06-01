@@ -41,6 +41,8 @@ module Concerns
 
     module ClassMethods
       def storable_field(name, type, default = nil)
+        delegate name, to: :store
+        delegate "#{name}=", to: :store
         store_config.add name, type, default
       end
 

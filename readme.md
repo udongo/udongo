@@ -3,33 +3,51 @@
 # Concerns
 ## Storable concern
 ### Possible field types
-* string
-* integer
-* date
-* date_time
-* boolean
-* array
+* String
+* Integer
+* Date
+* DateTime
+* Boolean
+* Array
+* Float
 
-### Example
-
+### Setup
     class User < ActiveRecord::Base
       include Concerns::Storable
 
-      storable_field :gender, :string, default: 'male'
-      storable_field :age, :integer
-      storable_field :last_login_at, :date_time
-      storable_field :cool_dude, :boolean, default: true
-      storable_field :locales, :array, default: %w(nl)
-      storable_field :birthday, :date
+      storable_field :gender, String, 'male'
+      storable_field :age, Integer
+      storable_field :last_login_at, DateTime
+      storable_field :cool_dude, Boolean, true
+      storable_field :locales, Array, %w(nl)
+      storable_field :birthday, Date
     end
 
-### Default values for each type
-* string => nil
-* integer => nil
-* date => nil
-* date_time => nil
-* boolean => false
-* array => nil
+### Reading values
+    u = User.first
+    u.gender
+
+    # Which is equal to
+    u.store(:default).gender
+
+### Writing values
+    u = User.first
+    u.gender = 'female'
+
+    # Which is equal to
+    u.store(:default).gender = 'female'
+
+### Saving values
+    u = User.first
+    u.gender = 'female'
+    u.save
+
+    u.store(:custom).gender = 'unknown'
+    u.store(:custom).save
+
+When you save the parent object (user), all the store collections will
+automatically be saved.
+
 
 # Queue
 ## Add tasks to the queue
@@ -78,20 +96,16 @@ end
 
 ## Syntax
 ### encrypt
-```irb
-irb(main):007:0> crypt.encrypt('foo')
-=> "azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8"
-irb(main):007:0> crypt.encrypt('foo')
-=> "bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7"
-```
+    crypt.encrypt('foo')
+    => "azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8"
+    crypt.encrypt('foo')
+    => "bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7"
 
 ### decrypt
-```irb
-irb(main):007:0> crypt.decrypt('azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8')
-=> "foo"
-irb(main):007:0> crypt.decrypt('bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7')
-=> "foo"
-```
+    crypt.decrypt('azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8')
+    => "foo"
+    crypt.decrypt('bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7')
+    => "foo"
 
 As the examples above illustrate, each subsequent encrypt always returns a different, decryptable hash.
 
@@ -114,12 +128,11 @@ def Udongo::Cryptography
   end
 end
 ```
-```irb
-irb(main):023:0> crypt = Udongo::Crypt.new(secret: '1234567890123456789012345678901234567890')
-=> #<Udongo::Crypt:0x007fcb1a0f3b50 @options={:secret=>"1234567890123456789012345678901234567890"}>
-irb(main):024:0> crypt.encrypt('foo')
-=> "YXhsZDV4RlZLTnljclhvM3pKbmV3Zz09LS1ycVR4bEtZemh2UUVKVlBQRnhlcjZRPT0=--f23e37ef7fb94e94cfa8a509f93bdb94e4bc5552"
-```
+
+    crypt = Udongo::Crypt.new(secret: '1234567890123456789012345678901234567890')
+    => #<Udongo::Crypt:0x007fcb1a0f3b50 @options={:secret=>"1234567890123456789012345678901234567890"}>
+    crypt.encrypt('foo')
+    => "YXhsZDV4RlZLTnljclhvM3pKbmV3Zz09LS1ycVR4bEtZemh2UUVKVlBQRnhlcjZRPT0=--f23e37ef7fb94e94cfa8a509f93bdb94e4bc5552"
 
 # Datepickers
 There are two custom inputs in Udongo to help handles dates. ```DatePickerInput``` and ```DateRangePickerInput```. Both make use of the [bootstrap-datepicker](http://bootstrap-datepicker.readthedocs.io/en/stable/) JS plugin. You can set/override its defaults through data-attributes, as explained in the docs.

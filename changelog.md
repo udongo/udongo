@@ -1,6 +1,8 @@
 1.0.0 - xxxx-xx-xx
 ------------------
-* Complete overhaul of the Storable concern.
+* Complete overhaul of the Storable concern. It's now internally using Virtus to
+  handle reading/writing attributes. You can now also have storable fields
+  within different categories.
 
 
 0.1.0 - 2016-05-31

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513110925) do
+ActiveRecord::Schema.define(version: 20160601111729) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160513110925) do
     t.string   "website",          limit: 255
     t.text     "message",          limit: 65535
     t.string   "status",           limit: 255
-    t.boolean  "marked_as_spam",   limit: 1
+    t.boolean  "marked_as_spam"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 20160513110925) do
     t.text     "locales",     limit: 65535
     t.string   "from_name",   limit: 255
     t.string   "from_email",  limit: 255
-    t.boolean  "optional",    limit: 1
+    t.boolean  "optional"
     t.text     "vars",        limit: 65535
     t.integer  "position",    limit: 4
     t.datetime "created_at",                null: false
@@ -269,10 +269,10 @@ ActiveRecord::Schema.define(version: 20160513110925) do
     t.string   "description",      limit: 255
     t.integer  "parent_id",        limit: 4
     t.integer  "position",         limit: 4
-    t.boolean  "visible",          limit: 1
-    t.boolean  "deletable",        limit: 1
-    t.boolean  "draggable",        limit: 1
-    t.boolean  "content_disabled", limit: 1
+    t.boolean  "visible"
+    t.boolean  "deletable"
+    t.boolean  "draggable"
+    t.boolean  "content_disabled"
     t.text     "locales",          limit: 65535
     t.string   "route",            limit: 255
     t.datetime "created_at"
@@ -287,7 +287,7 @@ ActiveRecord::Schema.define(version: 20160513110925) do
   create_table "queued_tasks", force: :cascade do |t|
     t.string   "klass",      limit: 255
     t.text     "data",       limit: 65535
-    t.boolean  "locked",     limit: 1
+    t.boolean  "locked"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -298,7 +298,7 @@ ActiveRecord::Schema.define(version: 20160513110925) do
     t.string   "source_uri",      limit: 255
     t.string   "destination_uri", limit: 255
     t.integer  "status_code",     limit: 4
-    t.boolean  "disabled",        limit: 1
+    t.boolean  "disabled"
     t.integer  "times_used",      limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -319,9 +319,9 @@ ActiveRecord::Schema.define(version: 20160513110925) do
   create_table "snippets", force: :cascade do |t|
     t.string   "identifier",            limit: 255
     t.string   "description",           limit: 255
-    t.boolean  "allow_html_in_title",   limit: 1
-    t.boolean  "allow_html_in_content", limit: 1
-    t.boolean  "editor_for_content",    limit: 1
+    t.boolean  "allow_html_in_title"
+    t.boolean  "allow_html_in_content"
+    t.boolean  "editor_for_content"
     t.text     "locales",               limit: 65535
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -332,6 +332,7 @@ ActiveRecord::Schema.define(version: 20160513110925) do
   create_table "stores", force: :cascade do |t|
     t.string   "storable_type", limit: 255
     t.integer  "storable_id",   limit: 4
+    t.string   "collection",    limit: 255
     t.string   "name",          limit: 255
     t.text     "value",         limit: 65535
     t.string   "klass",         limit: 255
@@ -339,6 +340,7 @@ ActiveRecord::Schema.define(version: 20160513110925) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "stores", ["collection"], name: "index_stores_on_collection", using: :btree
   add_index "stores", ["storable_id"], name: "index_stores_on_storable_id", using: :btree
   add_index "stores", ["storable_type"], name: "index_stores_on_storable_type", using: :btree
 

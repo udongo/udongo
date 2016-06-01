@@ -22,6 +22,6 @@ describe Snippet do
   end
 
   it 'translatable' do
-    expect(model.translation_config.fields).to eq [:title, :content]
+    expect(model.translatable_fields_list).to eq [:title, :content]
   end
 end

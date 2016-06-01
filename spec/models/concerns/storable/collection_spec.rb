@@ -37,6 +37,24 @@ describe Concerns::Storable::Collection do
     expect(collection.email).to eq 'foo@bar.baz'
   end
 
+  it '#delete' do
+    page = create(:page)
+
+    config.add :foo, String
+    config.add :bar, String
+
+    collection = model.new(page, :custom, config)
+    collection.foo = 'foo'
+    collection.bar = 'bar'
+    collection.save
+
+    collection = model.new(page, :custom, config)
+    expect(collection.delete).to eq true
+
+    expect(collection.foo).to eq nil
+    expect(collection.bar).to eq nil
+  end
+
   it '#respond_to?' do
     collection = model.new(create(:page), :default, config)
     expect(collection).to respond_to(:save)

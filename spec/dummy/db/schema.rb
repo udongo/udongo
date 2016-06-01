@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601115312) do
+ActiveRecord::Schema.define(version: 20160601200049) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -369,17 +369,5 @@ ActiveRecord::Schema.define(version: 20160601115312) do
   add_index "tags", ["locale"], name: "index_tags_on_locale", using: :btree
   add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
   add_index "tags", ["slug"], name: "index_tags_on_slug", using: :btree
-
-  create_table "translations", force: :cascade do |t|
-    t.integer  "translatable_id",   limit: 4
-    t.string   "translatable_type", limit: 255
-    t.string   "locale",            limit: 255
-    t.string   "name",              limit: 255
-    t.text     "value",             limit: 65535
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-  end
-
-  add_index "translations", ["translatable_id", "translatable_type", "locale", "name"], name: "idx_translations_magic", using: :btree
 
 end

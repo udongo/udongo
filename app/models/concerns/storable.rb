@@ -6,9 +6,7 @@ module Concerns
       has_many :stores, as: :storable, dependent: :destroy
 
       after_save do
-        if @store_collections
-          @store_collections.keys.each { |c| store(c).save }
-        end
+        @store_collections.keys.each { |c| store(c).save } if @store_collections
       end
     end
 

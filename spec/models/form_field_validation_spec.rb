@@ -15,7 +15,7 @@ describe FormFieldValidation do
   end
 
   it 'translatable' do
-    expect(model.translation_config.fields).to eq [:error_message]
+    expect(model.translatable_fields_list).to eq [:error_message]
   end
 
   it '#respond_to?' do

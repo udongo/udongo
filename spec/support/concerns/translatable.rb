@@ -13,7 +13,7 @@ shared_examples_for :translatable do
       object = create(klass)
       field = model.translatable_fields_list.first
       object.translation(:nl).send("#{field}=", 'foo')
-      object.translation(:nl).save
+      object.save
 
       expect(object.locales).to eq ['nl']
     end
@@ -30,12 +30,23 @@ shared_examples_for :translatable do
       end
 
       it 'dutch only' do
-        object = create(klass, locales: %w(nl))
+        field = model.translatable_fields_list.first
+
+        object = create(klass)
+        object.translation(:nl).send("#{field}=", 'foo')
+        object.save
+
         expect(model.with_locale(:nl)).to eq [object]
       end
 
       it 'dutch and english' do
-        object = create(klass, locales: %w(nl en))
+        field = model.translatable_fields_list.first
+
+        object = create(klass)
+        object.translation(:nl).send("#{field}=", 'foo')
+        object.translation(:en).send("#{field}=", 'foo')
+        object.save
+
         expect(model.with_locale(:nl)).to eq [object]
       end
     end

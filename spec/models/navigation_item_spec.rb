@@ -14,7 +14,7 @@ describe NavigationItem do
   end
 
   it 'translatable' do
-    expect(model.translation_config.fields).to eq [:label, :path]
+    expect(model.translatable_fields_list).to eq [:label, :path]
   end
 end
 

@@ -32,6 +32,6 @@ describe EmailTemplate do
   end
 
   it 'translatable' do
-    expect(model.translation_config.fields).to eq [:subject, :plain_content, :html_content]
+    expect(model.translatable_fields_list).to eq [:subject, :plain_content, :html_content]
   end
 end

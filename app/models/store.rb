@@ -6,5 +6,5 @@ class Store < ActiveRecord::Base
   validates :collection, :name, :klass, presence: true
   validates :name,
             uniqueness: { case_sensitive: false,
-                          scope: [:storable_type, :storable_id] }
+                          scope: [:collection, :storable_type, :storable_id] }
 end

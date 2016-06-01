@@ -11,6 +11,14 @@ describe RedirectDecorator do
                                                   ]
   end
 
+  it '#summary' do
+    redirect = create(:redirect, source_uri: 'foo', destination_uri: 'bar').decorate
+
+    I18n.with_locale :nl do
+      expect(redirect.summary).to eq 'Van foo naar bar'
+    end
+  end
+
   it '#respond_to?' do
     expect(instance).to respond_to(:status_code_collection, :summary)
   end

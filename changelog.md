@@ -3,6 +3,8 @@
 * Complete overhaul of the Storable concern. It's now internally using Virtus to
   handle reading/writing attributes. You can now also have storable fields
   within different categories.
+* Translatable has been revamped to leverage the strenghts of the Storable
+  concern.
 
 
 0.1.0 - 2016-05-31

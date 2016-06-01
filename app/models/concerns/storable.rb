@@ -4,9 +4,7 @@ module Concerns
 
     included do
       has_many :stores, as: :storable, dependent: :destroy
-
-      # TODO fix me
-      # after_save { store.save }
+      after_save { store.save }
     end
 
     def storable?

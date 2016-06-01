@@ -8,16 +8,16 @@ module Concerns
 
       # TODO the 'klass' field is not required in the db.
       def save
-        attributes.each do |k,v|
+        attributes.each do |name,value|
           tmp = ::Store.find_or_initialize_by(
             collection: @category,
             storable_type: @parent.class.name,
             storable_id: @parent.id,
             klass: 'FooBar',
-            name: k
+            name: name
           )
 
-          tmp.value = v
+          tmp.value = value
           tmp.save!
         end
       end

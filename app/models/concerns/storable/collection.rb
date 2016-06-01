@@ -6,6 +6,7 @@ module Concerns
         @category = category
 
         init_attributes(config)
+        init_values(config)
       end
 
       def save
@@ -22,6 +23,16 @@ module Concerns
         end
       end
 
+      def delete
+        ::Store.where(
+          storable_type: @parent.class,
+          storable_id: @parent.id,
+          collection: @category,
+        ).each { |s| s.destroy }
+
+        reset_values
+      end
+
       private
 
       def init_attributes(config)
@@ -30,7 +41,9 @@ module Concerns
         config.fields.each do |field,options|
           attribute field, options[:type], default: options[:default], lazy: true
         end
+      end
 
+      def init_values(config)
         ::Store.where(
           storable_type: @parent.class,
           storable_id: @parent.id,
@@ -38,6 +51,10 @@ module Concerns
         ).pluck(:name, :value).each do |field, value|
           send "#{field}=", value if config.allowed?(field)
         end
+      end
+
+      def reset_values
+        attributes.keys.each { |k| send("#{k}=", nil) }
       end
     end
   end

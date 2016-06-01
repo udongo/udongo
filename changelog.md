@@ -1,3 +1,8 @@
+1.0.0 - xxxx-xx-xx
+------------------
+* Complete overhaul of the Storable concern.
+
+
 0.1.0 - 2016-05-31
 ------------------
 * Add LinkHelper to provide shorthands for show/edit/destroy links.

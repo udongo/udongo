@@ -4,7 +4,12 @@ module Concerns
 
     included do
       has_many :stores, as: :storable, dependent: :destroy
-      after_save { store.save }
+
+      after_save do
+        if @store_collections
+          @store_collections.keys.each { |c| store(c).save }
+        end
+      end
     end
 
     def storable?

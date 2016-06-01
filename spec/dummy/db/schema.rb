@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601111729) do
+ActiveRecord::Schema.define(version: 20160601115312) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "addressable_id",   limit: 4
@@ -335,11 +335,11 @@ ActiveRecord::Schema.define(version: 20160601111729) do
     t.string   "collection",    limit: 255
     t.string   "name",          limit: 255
     t.text     "value",         limit: 65535
-    t.string   "klass",         limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "stores", ["collection", "storable_id", "storable_type"], name: "idx_storable", using: :btree
   add_index "stores", ["collection"], name: "index_stores_on_collection", using: :btree
   add_index "stores", ["storable_id"], name: "index_stores_on_storable_id", using: :btree
   add_index "stores", ["storable_type"], name: "index_stores_on_storable_type", using: :btree

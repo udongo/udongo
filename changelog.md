@@ -5,6 +5,7 @@
   within different categories.
 * Translatable has been revamped to leverage the strenghts of the Storable
   concern.
+* Add the English translation files.
 
 
 0.1.0 - 2016-05-31

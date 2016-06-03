@@ -1,0 +1,106 @@
+en:
+  b:
+    actions: Actions
+    add: Add
+    admins: Admins
+    advanced: Advanced
+    cancel: Cancel
+    content: Content
+    current_image: Current image
+    custom_title: Custom title
+    custom_url: Custom URL
+    delete: Delete
+    description: Description
+    destination: Destination
+    down: Down
+    edit: Edit
+    email: E-mail
+    emails: E-mails
+    email_template: E-mail template
+    email_templates: E-mail templates
+    enabled?: Enabled?
+    extra: Extra
+    first_name: First name
+    flexible_content: Flexible content
+    forms: Forms
+    from: From
+    general: General
+    html_content: HTML content
+    last_name: Last name
+    locale: Locale
+    login: Login
+    logout: Logout
+    move: Move
+    name: Name
+    navigation: Navigation
+    new: New
+    none: None
+    not_yet_sent: Not yet sent
+    page: Page
+    pages: Pages
+    password: Password
+    plain_content: Plain content
+    recipient: Recipient
+    redirect: Redirect
+    redirects: Redirects
+    restart_webserver: Restart webserver
+    save: Save
+    search: Search
+    sender: Sender
+    sent_at: Sent at
+    settings: Settings
+    snippet: Snippet
+    snippets: Snippets
+    source: Source
+    status: Status
+    status_code: Status code
+    subject: Subject
+    tags: Tags
+    title: Title
+    to: To
+    up: Up
+    used: Used
+    variables: Variables
+    view: View
+
+    msg:
+      added: '%s was added.'
+      admins:
+        account_details: Account details
+        added: The admin was added.
+        deleted: The admin was deleted.
+        personal_details: Personal details
+      changes_saved: The changes have been saved.
+      confirm: Are you sure?
+      content_types:
+        image: Image
+        text: Text
+      deleted: '%s was deleted.'
+      edited: '%s was edited.'
+      flexible_content:
+        add_column: Add column
+        add_row: Add row
+        add_text: Add text
+        delete_row: Delete row
+        edit_column: Edit column
+        edit_image: Edit image
+        edit_text: Edit text
+        explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
+      forgot_password: Forgot password?
+      help_texts:
+        status_code: More info about the use of status codes.
+      incorrect_login: Incorret login credentials.
+      navigation:
+        added: The navigation item was added.
+        custom: Custom
+        deleted: The navigation item was deleted.
+      no_items: There are no items.
+
+      saved: '%s was saved.'
+      seo: SEO
+      status_codes:
+        '301': 301 (Moved Permanently)
+        '303': 303 (See Other)
+        '307': 307 (Temporary Redirect)
+      webserver:
+        restarted: The webserver was restarted.

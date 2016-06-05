@@ -1,6 +1,7 @@
 1.0.1 - xxxx-xx-xx
 ------------------
-* Get rid of some dependencies that are currently not used: rakismet.
+* Get rid of the rakismet and marked-rails gems, beacuse they're not being used.
+* Move mysql2 to the development dependencies in the gemspec.
 
 
 1.0.0 - 2016-06-05

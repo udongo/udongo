@@ -10,6 +10,8 @@ class Backend::SnippetForm
   validates :identifier, :description, presence: true
   validate :unique_identifier
 
+  delegate :id, to: :snippet
+
   def initialize(snippet = nil)
     @snippet = snippet || ::Snippet.new
     attributes.keys.each { |k| send("#{k}=", @snippet.send(k)) } if snippet

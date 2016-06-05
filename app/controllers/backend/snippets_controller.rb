@@ -23,8 +23,14 @@ class Backend::SnippetsController < BackendController
     end
   end
 
+  def edit
+    @form = Backend::SnippetForm.new(@model)
+  end
+
   def update
-    if @model.update_attributes(allowed_params)
+    @form = Backend::SnippetForm.new(@model)
+
+    if @form.save params[:snippet]
       redirect_to edit_backend_snippet_path(@model), notice: translate_notice(:edited, :snippet)
     else
       render :edit

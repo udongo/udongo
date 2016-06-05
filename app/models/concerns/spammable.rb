@@ -5,18 +5,10 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      include Rakismet::Model
-
       scope :spam, ->{ where(marked_as_spam: true) }
       scope :not_spam, -> { where('marked_as_spam = 0 OR marked_as_spam IS NULL') }
 
       after_initialize :spam_defaults
-    end
-
-    module ClassMethods
-      def spammable(*args)
-        rakismet_attrs *args
-      end
     end
 
     def mark_as_spam!

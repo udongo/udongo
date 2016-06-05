@@ -25,7 +25,6 @@ module Concerns
         @model = model.find(params[:id]).decorate
       end
 
-      # TODO refactor?
       def content_path
         column = @model.column
         path = "edit_translation_backend_#{column.row.rowable.class.to_s.downcase}_path"

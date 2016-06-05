@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
 
   # General
   s.add_dependency 'rails', '4.2.6'
-  s.add_dependency 'mysql2', '~> 0.3.20'
 
   # Javascript related
   s.add_dependency 'jquery-rails', '~> 4.0', '>= 4.0.5'
@@ -45,6 +44,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'virtus', '~> 1.0', '>= 1.0.5'
 
   # Development dependencies
+  s.add_development_dependency 'mysql2', '~> 0.3.20'
   s.add_development_dependency 'sqlite3', '~> 1.3', '>= 1.3.11'
   s.add_development_dependency 'spring', '~> 1.6', '>= 1.6.4'
 end

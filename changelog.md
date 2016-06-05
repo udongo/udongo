@@ -1,4 +1,4 @@
-1.0.0 - xxxx-xx-xx
+1.0.0 - 2016-06-05
 ------------------
 * Complete overhaul of the Storable concern. It's now internally using Virtus to
   handle reading/writing attributes. You can now also have storable fields

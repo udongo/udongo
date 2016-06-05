@@ -1,11 +1,11 @@
 1.0.1 - xxxx-xx-xx
-------------------
+--
 * Get rid of the rakismet and marked-rails gems, beacuse they're not being used.
 * Move mysql2 to the development dependencies in the gemspec.
 
 
 1.0.0 - 2016-06-05
-------------------
+--
 * Complete overhaul of the Storable concern. It's now internally using Virtus to
   handle reading/writing attributes. You can now also have storable fields
   within different categories.
@@ -15,7 +15,7 @@
 
 
 0.1.0 - 2016-05-31
-------------------
+--
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
 * Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
 * Fix the sortable js to show the correct font-awesome icon.

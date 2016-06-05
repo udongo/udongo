@@ -1,3 +1,8 @@
+1.0.1 - xxxx-xx-xx
+------------------
+* Get rid of some dependencies that are currently not used.
+
+
 1.0.0 - 2016-06-05
 ------------------
 * Complete overhaul of the Storable concern. It's now internally using Virtus to

@@ -1,6 +1,4 @@
 class Udongo::ObjectPath
-  # TODO it would be better if this always expects an array, that way this could
-  # be rewritten a lot cleaner.
   def self.find(object)
     unless object.is_a?(Array)
       return cleanup("#{object.class.name.underscore}_path")

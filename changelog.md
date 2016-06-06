@@ -1,4 +1,4 @@
-1.0.1 - xxxx-xx-xx
+1.0.1 - 2016-06-06
 --
 * Get rid of the rakismet and marked-rails gems, beacuse they're not being used.
 * Move mysql2 to the development dependencies in the gemspec.

@@ -2,6 +2,7 @@
 --
 * Get rid of the rakismet and marked-rails gems, beacuse they're not being used.
 * Move mysql2 to the development dependencies in the gemspec.
+* Rename the minified bootstrap datepicker scss file to a css file.
 
 
 1.0.0 - 2016-06-05

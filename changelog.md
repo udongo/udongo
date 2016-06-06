@@ -1,3 +1,8 @@
+1.0.3 - 2016-06-06
+--
+* Bugfix: fix link to non existing css file.
+
+
 1.0.2 - 2016-06-06
 --
 * Bugfix: add the vendor directory to the list of gem files. This makes sure the

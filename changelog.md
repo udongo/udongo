@@ -1,3 +1,9 @@
+1.0.2 - 2016-06-06
+--
+* Bugfix: add the vendor directory to the list of gem files. This makes sure the
+  assets in the vendor dir are loaded correctly.
+
+
 1.0.1 - 2016-06-06
 --
 * Get rid of the rakismet and marked-rails gems, beacuse they're not being used.

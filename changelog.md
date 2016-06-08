@@ -1,5 +1,6 @@
 1.0.4 - xxxx-xx-xx
 --
+* Add spec for the SnippetForm class.
 
 
 1.0.3 - 2016-06-06

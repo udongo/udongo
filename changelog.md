@@ -1,3 +1,7 @@
+1.0.4 - xxxx-xx-xx
+--
+
+
 1.0.3 - 2016-06-06
 --
 * Bugfix: fix link to non existing css file.

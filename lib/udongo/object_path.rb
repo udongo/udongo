@@ -14,8 +14,6 @@ class Udongo::ObjectPath
     object.select { |o| !o.is_a?(Symbol) }
   end
 
-  private
-
   def self.cleanup(value)
     value.to_s.gsub('_decorator', '')
   end

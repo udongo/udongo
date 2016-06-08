@@ -10,7 +10,6 @@ class Backend::SnippetsController < BackendController
 
   def new
     @form = Backend::SnippetForm.new
-    # @model = ::Snippet.new
   end
 
   def create

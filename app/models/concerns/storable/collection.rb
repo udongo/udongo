@@ -4,6 +4,7 @@ module Concerns
       def initialize(parent, category, config)
         @parent = parent
         @category = category
+        @config = config
 
         init_attributes(config)
         init_values(config)
@@ -11,25 +12,25 @@ module Concerns
 
       def save
         attributes.each do |name,value|
-          tmp = ::Store.find_or_initialize_by(
-            collection: @category,
-            storable_type: @parent.class.name,
-            storable_id: @parent.id,
-            name: name
-          )
-
+          tmp = store(name)
           tmp.value = value
           tmp.save!
         end
       end
 
-      def delete
-        ::Store.where(
-          storable_type: @parent.class,
-          storable_id: @parent.id,
-          collection: @category,
-        ).each { |s| s.destroy }
+      def store(name, file: false)
+        stores(file: file).find_or_initialize_by(name: name)
+      end
 
+      # You'll find that mounting an uploader on Store will prevent
+      # the saving of other attributes.
+      def stores(file: false)
+        klass = file ? StoreWithFile : Store
+        klass.where(storable: @parent, collection: @category)
+      end
+
+      def delete
+        stores.each { |s| s.destroy }
         reset_values
       end
 
@@ -39,16 +40,25 @@ module Concerns
         extend(Virtus.model)
 
         config.fields.each do |field,options|
-          attribute field, options[:type], default: options[:default], lazy: true
+          if options[:type].to_s.include?('Uploader')
+            self.class.send(:define_method, field) do
+              ::StoreWithFile.mount_uploader :value, options[:type]
+              store(field, file: true).value
+            end
+            self.class.send(:define_method, "#{field}=") do |value|
+              s = store(field, file: true)
+              s.value = value
+              s.save
+            end
+          else
+            attribute field, options[:type], default: options[:default], lazy: true
+          end
         end
       end
 
       def init_values(config)
-        ::Store.where(
-          storable_type: @parent.class,
-          storable_id: @parent.id,
-          collection: @category,
-        ).pluck(:name, :value).each do |field, value|
+        stores.pluck(:name, :value).each do |field, value|
+          next if @config.fields[field.to_sym][:type].to_s.include?('Uploader')
           send "#{field}=", value if config.allowed?(field)
         end
       end

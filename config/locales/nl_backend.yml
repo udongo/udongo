@@ -1,6 +1,7 @@
 nl:
   b:
     actions: Acties
+    admin: Beheerder
     add: Toevoegen
     admins: Beheerders
     advanced: Geavanceerd
@@ -67,8 +68,6 @@ nl:
       added: '%{actor} werd toegevoegd.'
       admins:
         account_details: Accountgegevens
-        added: De admin werd toegevoegd.
-        deleted: De admin werd verwijderd.
         personal_details: Persoonlijke gegevens
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?

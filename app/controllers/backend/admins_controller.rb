@@ -18,7 +18,7 @@ class Backend::AdminsController < BackendController
     @admin = ::Admin.new allowed_params
 
     if @admin.save
-      redirect_to backend_admins_path, notice: t('b.msg.admins.added')
+      redirect_to backend_admins_path, notice: translate_notice(:added, :admin)
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Backend::AdminsController < BackendController
 
   def update
     if @admin.update_attributes allowed_params
-      redirect_to backend_admins_path, notice: t('b.msg.changes_saved')
+      redirect_to backend_admins_path, notice: translate_notice(:changes_saved)
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class Backend::AdminsController < BackendController
 
   def destroy
     @admin.destroy
-    redirect_to backend_admins_path, notice: t('b.msg.admins.deleted')
+    redirect_to backend_admins_path, notice: translate_notice(:deleted, :admin)
   end
 
   private

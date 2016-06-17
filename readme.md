@@ -139,3 +139,54 @@ This will link a datepicker to each input with its relevant change listeners bou
 <%= f.input :stop_date, as: :date_range_picker, stop: 'foo' %>
 ```
 The value used in the ```start``` and ```stop``` attributes needs to be the same for two datepicker fields to be combined into a range picker. **If these values don't match, your pickers won't display the intended behaviour.**
+
+# Notifications
+The ```Udongo::Notification``` class provides a generic way to parse action notices without directly interacting with ```I18n```. Its ```translate``` method can be used in a number of ways:
+
+## Without parameters
+```yaml
+nl:
+  b:
+    msg:
+      refreshed: De pagina werd opnieuw ingeladen. 
+```
+```ruby
+irb(main):001:0> Udongo::Notification.new(:refreshed).translate
+=> "De pagina werd opnieuw ingeladen."
+```
+
+## A string as parameter
+```yaml
+nl:
+  b:
+    admin: Beheerder
+    msg:
+      added: '%{actor} werd toegevoegd.'
+```
+```ruby
+irb(main):001:0> Udongo::Notification.new(:added).translate(:admin)
+=> "Beheerder werd toegevoegd."
+```
+
+## Parameter hash
+```yaml
+nl:
+  b:
+    msg:
+      added: '%{name} werd toegevoegd met %{pies} taarten.'
+```
+```ruby
+irb(main):001:0> Udongo::Notification.new(:added).translate(name: 'Dave', pies: 10)
+=> "Dave werd toegevoegd met 10 taarten."
+```
+
+## Notifications in controllers
+```BackendController#translate_notice``` uses ```Udongo::Notification``` to output translated notices. Typically this is used in tandem with redirects. For example in the admins module:
+
+```ruby
+class Backend::AdminsController < BackendController
+  def create
+    redirect_to backend_admins_path, notice: translate_notice(:added, :admin)
+  end
+end
+```

@@ -19,6 +19,7 @@
 * Fix nasty bug in the storable concern which made it impossible to work with
   the << operator for strings and arrays.
 * Bugfix: the link helpers can now also work with decorated objects.
+* Add Udongo::Notification and use it in BackendController#translate_notice.
 
 
 0.0.13 - 2016-05-02

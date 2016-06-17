@@ -15,7 +15,7 @@ class BackendController < ActionController::Base
   helper_method :current_admin
 
   def translate_notice(notice, actor)
-    I18n.t("b.msg.#{notice}") % I18n.t("b.#{actor}")
+    Udongo::Notification.new.translate_notice(notice, actor)
   end
 
   def default_locale

@@ -64,7 +64,7 @@ nl:
     view: Bekijk
 
     msg:
-      added: '%s werd toegevoegd.'
+      added: '%{actor} werd toegevoegd.'
       admins:
         account_details: Accountgegevens
         added: De admin werd toegevoegd.
@@ -75,8 +75,8 @@ nl:
       content_types:
         image: Afbeelding
         text: Tekst
-      deleted: '%s werd verwijderd.'
-      edited: '%s werd gewijzigd.'
+      deleted: '%{actor} werd verwijderd.'
+      edited: '%{actor} werd gewijzigd.'
       flexible_content:
         add_column: Kolom toevoegen
         add_row: Rij toevoegen
@@ -96,7 +96,7 @@ nl:
         deleted: Het navigatie item werd verwijderd.
       no_items: Er zijn geen items.
 
-      saved: '%s werd bewaard.'
+      saved: '%{actor} werd bewaard.'
       seo: SEO
       status_codes:
         '301': 301 (Moved Permanently)

@@ -1,11 +1,19 @@
 class Udongo::Notification
-  def translate_notice(notice, *args)
-    return I18n.t("b.msg.#{notice}") if args.blank?
+  def initialize(notice)
+    @notice = notice
+  end
 
-    if args.first.is_a?(Hash)
-      I18n.t("b.msg.#{notice}", args.first)
-    else
-      I18n.t("b.msg.#{notice}", actor: I18n.t("b.#{args.first}"))
-    end
+  def build_hash(actor)
+    { actor: I18n.t("b.#{actor}") }
+  end
+
+  def label
+    "b.msg.#{@notice}"
+  end
+
+  def translate(vars = nil)
+    return I18n.t(label) if vars.blank?
+    vars = build_hash(vars) unless vars.is_a?(Hash)
+    I18n.t(label, vars)
   end
 end

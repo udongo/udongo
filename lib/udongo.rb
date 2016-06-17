@@ -1,4 +1,3 @@
-# TODO: Find a proper solution to autorequire (udongo) classes
 require 'udongo/engine'
 require 'udongo/config'
 require 'udongo/breadcrumb'
@@ -17,12 +16,12 @@ require 'simple_form'
 require 'acts_as_list'
 require 'carrierwave'
 require 'reform'
-require 'rakismet'
 require 'draper'
 require 'ransack'
 require 'ckeditor'
 require 'responders'
 require 'will_paginate'
+require 'virtus'
 
 module Udongo
   PATH = File.expand_path('../../', __FILE__)

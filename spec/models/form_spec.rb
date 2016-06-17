@@ -11,7 +11,7 @@ describe Form do
   end
 
   it 'translatable' do
-    expect(model.translation_config.fields).to eq [:success_message]
+    expect(model.translatable_fields_list).to eq [:success_message]
   end
 
   it '#respond_to?' do

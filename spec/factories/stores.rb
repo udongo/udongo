@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :store do
+    collection 'default'
     name 'foo'
-    klass 'string'
   end
 end

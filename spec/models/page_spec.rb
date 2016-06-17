@@ -29,7 +29,7 @@ describe Page do
   end
 
   it 'translatable' do
-    expect(model.translation_config.fields).to eq [:title, :subtitle]
+    expect(model.translatable_fields_list).to eq [:title, :subtitle]
   end
 
   it '#respond_to?' do

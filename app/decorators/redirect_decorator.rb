@@ -8,6 +8,6 @@ class RedirectDecorator < Draper::Decorator
   end
 
   def summary
-    "#{I18n.t('b.from')} #{object.source_uri} #{I18n.t('b.to')} #{object.destination_uri}"
+    "#{I18n.t('b.from')} #{object.source_uri} #{I18n.t('b.to').downcase} #{object.destination_uri}"
   end
 end

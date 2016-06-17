@@ -11,9 +11,9 @@ shared_examples_for :translatable do
 
     it 'updates when a translation is added' do
       object = create(klass)
-      field = model.translation_config.fields.first
+      field = model.translatable_fields_list.first
       object.translation(:nl).send("#{field}=", 'foo')
-      object.translation(:nl).save
+      object.save
 
       expect(object.locales).to eq ['nl']
     end
@@ -24,19 +24,30 @@ shared_examples_for :translatable do
   end
 
   describe 'scopes' do
-    describe '.within_locale' do
+    describe '.with_locale' do
       it 'no results' do
-        expect(model.within_locale(:nl)).to eq []
+        expect(model.with_locale(:nl)).to eq []
       end
 
       it 'dutch only' do
-        object = create(klass, locales: %w(nl))
-        expect(model.within_locale(:nl)).to eq [object]
+        field = model.translatable_fields_list.first
+
+        object = create(klass)
+        object.translation(:nl).send("#{field}=", 'foo')
+        object.save
+
+        expect(model.with_locale(:nl)).to eq [object]
       end
 
       it 'dutch and english' do
-        object = create(klass, locales: %w(nl en))
-        expect(model.within_locale(:nl)).to eq [object]
+        field = model.translatable_fields_list.first
+
+        object = create(klass)
+        object.translation(:nl).send("#{field}=", 'foo')
+        object.translation(:en).send("#{field}=", 'foo')
+        object.save
+
+        expect(model.with_locale(:nl)).to eq [object]
       end
     end
   end
@@ -47,8 +58,7 @@ shared_examples_for :translatable do
 
   it '.respond_to?' do
     expect(model).to respond_to(
-      :translatable_field, :translatable_fields, :translation_config,
-      :within_locale
+      :translatable_field, :translatable_fields, :with_locale
     )
   end
 end

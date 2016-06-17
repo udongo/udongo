@@ -1,8 +1,6 @@
 module Udongo
   class ActiveModelSimulator
-    extend ActiveModel::Naming
-    include ActiveModel::Conversion
-    include ActiveModel::Validations
+    include ActiveModel::Model
 
     def initialize(attributes = {})
       attributes ||= {}

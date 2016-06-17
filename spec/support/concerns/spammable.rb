@@ -44,10 +44,10 @@ shared_examples_for :spammable do
   end
 
   it '.respond_to?' do
-    expect(model).to respond_to(:spammable, :spam, :not_spam)
+    expect(model).to respond_to(:spam, :not_spam)
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:mark_as_spam!, :spam?, :spam!, :ham!)
+    expect(model.new).to respond_to(:mark_as_spam!)
   end
 end

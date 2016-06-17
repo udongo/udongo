@@ -1,0 +1,68 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: 'Please check the errors below:'
+
+    labels:
+      defaults:
+        caption: Caption
+        category: Category
+        content: Content
+        description: Description
+        disabled: Disabled
+        email: E-mail
+        extra: Extra
+        first_name: First name
+        html_content: HTML content
+        identifier: Internal name
+        label: Label
+        last_name: Last name
+        message: Message
+        name: Name
+        password: Password
+        password_confirmation: Password confirmation
+        phone: Phone
+        plain_content: Plain content
+        seo_title: Page title
+        seo_slug: Custom URL
+        seo_description: Description
+        seo_keywords: Keywords
+        seo_custom: Extra meta-tags
+        subject: Subject
+        subtitle: Subtitle
+        summary: Summary
+        title: Title
+        visible: Visible?
+        width: Width
+        url: URL
+
+      content_column:
+        content_type: Type
+        width_xs: Width (extra small)
+        width_sm: Width (small)
+        width_md: Width (medium)
+        width_lg: Width (large)
+        width_xl: Width (extra large)
+
+      email_template:
+        from_email: Sender e-mail address
+        from_name: Sender name
+
+      navigation_item:
+        page_id: Page
+        path: URL
+
+      page:
+        parent_id: Parent page
+
+      redirect:
+        destination_uri: Destination
+        source_uri: Source

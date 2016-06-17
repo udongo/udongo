@@ -3,8 +3,8 @@ class Store < ActiveRecord::Base
 
   serialize :value
 
-  validates :name, :klass, presence: true
+  validates :collection, :name, presence: true
   validates :name,
             uniqueness: { case_sensitive: false,
-                          scope: [:storable_type, :storable_id] }
+                          scope: [:collection, :storable_type, :storable_id] }
 end

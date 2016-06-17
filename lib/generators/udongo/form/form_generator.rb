@@ -28,7 +28,6 @@ class Udongo::FormGenerator < Rails::Generators::Base
 
     @fields.each do |field|
       field_object = f.fields.create!(locales: Udongo.config.locales, name: field.name, field_type: field.type)
-      # TODO: validations
       #field_object.validations.create!(locales: Udongo.config.locales, validation_class: 'Udongo::FormValidations::Required')
     end
 

@@ -1,4 +1,38 @@
-0.1.0 - xxxx-xx-xx
+1.0.4 - xxxx-xx-xx
+--
+* Add spec for the SnippetForm class.
+* Add Udongo::Notification and use it in BackendController#translate_notice.
+
+
+1.0.3 - 2016-06-06
+--
+* Bugfix: fix link to non existing css file.
+
+
+1.0.2 - 2016-06-06
+--
+* Bugfix: add the vendor directory to the list of gem files. This makes sure the
+  assets in the vendor dir are loaded correctly.
+
+
+1.0.1 - 2016-06-06
+--
+* Get rid of the rakismet and marked-rails gems, beacuse they're not being used.
+* Move mysql2 to the development dependencies in the gemspec.
+* Rename the minified bootstrap datepicker scss file to a css file.
+
+
+1.0.0 - 2016-06-05
+--
+* Complete overhaul of the Storable concern. It's now internally using Virtus to
+  handle reading/writing attributes. You can now also have storable fields
+  within different categories.
+* Translatable has been revamped to leverage the strenghts of the Storable
+  concern.
+* Add the English translation files.
+
+
+0.1.0 - 2016-05-31
 --
 * Add LinkHelper to provide shorthands for show/edit/destroy links.
 * Add DatePickerInput to be used with Simple Form inputs (as: :date_picker)
@@ -19,7 +53,6 @@
 * Fix nasty bug in the storable concern which made it impossible to work with
   the << operator for strings and arrays.
 * Bugfix: the link helpers can now also work with decorated objects.
-* Add Udongo::Notification and use it in BackendController#translate_notice.
 
 
 0.0.13 - 2016-05-02

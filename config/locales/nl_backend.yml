@@ -34,6 +34,7 @@ nl:
     move: Verplaatsen
     name: Naam
     navigation: Navigatie
+    navigation_item: Navigatie-item
     new: Nieuw
     none: Geen
     not_yet_sent: Nog niet verzonden
@@ -90,9 +91,7 @@ nl:
         status_code: Meer info over het gebruik van status codes
       incorrect_login: Ongeldige login gegevens.
       navigation:
-        added: Het navigatie item werd toegevoegd.
         custom: Op maat
-        deleted: Het navigatie item werd verwijderd.
       no_items: Er zijn geen items.
 
       saved: '%{actor} werd bewaard.'

@@ -1,8 +1,8 @@
 nl:
   b:
     actions: Acties
-    admin: Beheerder
     add: Toevoegen
+    admin: Beheerder
     admins: Beheerders
     advanced: Geavanceerd
     cancel: Annuleren

@@ -2,6 +2,7 @@ en:
   b:
     actions: Actions
     add: Add
+    admin: Admin
     admins: Admins
     advanced: Advanced
     cancel: Cancel
@@ -33,6 +34,7 @@ en:
     move: Move
     name: Name
     navigation: Navigation
+    navigation_item: Navigation item
     new: New
     none: None
     not_yet_sent: Not yet sent
@@ -67,8 +69,6 @@ en:
       added: '%s was added.'
       admins:
         account_details: Account details
-        added: The admin was added.
-        deleted: The admin was deleted.
         personal_details: Personal details
       changes_saved: The changes have been saved.
       confirm: Are you sure?
@@ -91,9 +91,7 @@ en:
         status_code: More info about the use of status codes.
       incorrect_login: Incorret login credentials.
       navigation:
-        added: The navigation item was added.
         custom: Custom
-        deleted: The navigation item was deleted.
       no_items: There are no items.
 
       saved: '%s was saved.'

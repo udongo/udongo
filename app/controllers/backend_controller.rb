@@ -14,7 +14,7 @@ class BackendController < ActionController::Base
   end
   helper_method :current_admin
 
-  def translate_notice(notice, actor)
+  def translate_notice(notice, actor = nil)
     Udongo::Notification.new(notice).translate(actor)
   end
 

@@ -47,7 +47,9 @@ module Concerns
             end
             self.class.send(:define_method, "#{field}=") do |value|
               # TODO: This gets called "too much". Right now, when we save a
-              # form with a filefield, it always "reuploads" the file.
+              # form with a filefield, you will notice in the database that
+              # the store value keeps updating with a new filename hash.
+              # It always "reuploads" the file.
               s = store(field, file: true)
               s.value = value
               s.save

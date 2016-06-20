@@ -1,6 +1,7 @@
 1.0.4 - xxxx-xx-xx
 --
 * Add spec for the SnippetForm class.
+* Add Udongo::Notification and use it in BackendController#translate_notice.
 
 
 1.0.3 - 2016-06-06
@@ -52,7 +53,6 @@
 * Fix nasty bug in the storable concern which made it impossible to work with
   the << operator for strings and arrays.
 * Bugfix: the link helpers can now also work with decorated objects.
-* Upgrade to rails 4.2.6
 
 
 0.0.13 - 2016-05-02

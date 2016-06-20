@@ -2,6 +2,7 @@ nl:
   b:
     actions: Acties
     add: Toevoegen
+    admin: Beheerder
     admins: Beheerders
     advanced: Geavanceerd
     cancel: Annuleren
@@ -33,6 +34,7 @@ nl:
     move: Verplaatsen
     name: Naam
     navigation: Navigatie
+    navigation_item: Navigatie-item
     new: Nieuw
     none: Geen
     not_yet_sent: Nog niet verzonden
@@ -64,19 +66,17 @@ nl:
     view: Bekijk
 
     msg:
-      added: '%s werd toegevoegd.'
+      added: '%{actor} werd toegevoegd.'
       admins:
         account_details: Accountgegevens
-        added: De admin werd toegevoegd.
-        deleted: De admin werd verwijderd.
         personal_details: Persoonlijke gegevens
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
       content_types:
         image: Afbeelding
         text: Tekst
-      deleted: '%s werd verwijderd.'
-      edited: '%s werd gewijzigd.'
+      deleted: '%{actor} werd verwijderd.'
+      edited: '%{actor} werd gewijzigd.'
       flexible_content:
         add_column: Kolom toevoegen
         add_row: Rij toevoegen
@@ -91,12 +91,9 @@ nl:
         status_code: Meer info over het gebruik van status codes
       incorrect_login: Ongeldige login gegevens.
       navigation:
-        added: Het navigatie item werd toegevoegd.
         custom: Op maat
-        deleted: Het navigatie item werd verwijderd.
       no_items: Er zijn geen items.
-
-      saved: '%s werd bewaard.'
+      saved: '%{actor} werd bewaard.'
       seo: SEO
       status_codes:
         '301': 301 (Moved Permanently)

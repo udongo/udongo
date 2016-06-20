@@ -14,7 +14,8 @@ class Backend::Navigation::ItemsController < BackendController
     @model = @navigation.items.new(allowed_params).decorate
 
     if @model.save
-      redirect_to backend_navigations_path, notice: t('b.msg.navigation.added')
+      redirect_to backend_navigations_path,
+        notice: translate_notice(:added, :navigation_item)
     else
       render :new
     end
@@ -22,7 +23,8 @@ class Backend::Navigation::ItemsController < BackendController
 
   def update
     if @model.update_attributes allowed_params
-      redirect_to backend_navigations_path, notice: t('b.msg.changes_saved')
+      redirect_to backend_navigations_path,
+        notice: translate_notice(:changes_saved)
     else
       render :edit
     end
@@ -30,7 +32,8 @@ class Backend::Navigation::ItemsController < BackendController
 
   def destroy
     @model.destroy
-    redirect_to backend_navigations_path, notice: t('b.msg.navigation.deleted')
+    redirect_to backend_navigations_path,
+      notice: translate_notice(:deleted, :navigation_item)
   end
 
   private

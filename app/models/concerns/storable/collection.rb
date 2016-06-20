@@ -6,8 +6,8 @@ module Concerns
         @category = category
         @config = config
 
-        init_attributes(config)
-        init_values(config)
+        init_attributes
+        init_values
       end
 
       def save
@@ -36,10 +36,10 @@ module Concerns
 
       private
 
-      def init_attributes(config)
+      def init_attributes
         extend(Virtus.model)
 
-        config.fields.each do |field,options|
+        @config.fields.each do |field,options|
           if options[:type].to_s.include?('Uploader')
             self.class.send(:define_method, field) do
               ::StoreWithFile.mount_uploader :value, options[:type]
@@ -60,10 +60,10 @@ module Concerns
         end
       end
 
-      def init_values(config)
+      def init_values
         stores.pluck(:name, :value).each do |field, value|
           next if @config.fields[field.to_sym][:type].to_s.include?('Uploader')
-          send "#{field}=", value if config.allowed?(field)
+          send "#{field}=", value if @config.allowed?(field)
         end
       end
 

@@ -93,7 +93,6 @@ nl:
       navigation:
         custom: Op maat
       no_items: Er zijn geen items.
-
       saved: '%{actor} werd bewaard.'
       seo: SEO
       status_codes:

@@ -93,7 +93,6 @@ en:
       navigation:
         custom: Custom
       no_items: There are no items.
-
       saved: '%s was saved.'
       seo: SEO
       status_codes:

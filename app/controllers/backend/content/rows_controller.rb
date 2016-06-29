@@ -1,6 +1,6 @@
 class Backend::Content::RowsController < BackendController
   include Concerns::Backend::PositionableController
-  before_action :find_model, only: [:update_position, :move_up, :move_down, :destroy]
+  before_action :find_model, only: [:update_position, :destroy]
 
   def new
     if params[:klass] && params[:id] && params[:locale]
@@ -11,16 +11,6 @@ class Backend::Content::RowsController < BackendController
     else
       render text: 'Insufficient params. Please provide klass, id and locale.'
     end
-  end
-
-  def move_up
-    @row.move_higher
-    redirect_back_to_content
-  end
-
-  def move_down
-    @row.move_lower
-    redirect_back_to_content
   end
 
   def destroy

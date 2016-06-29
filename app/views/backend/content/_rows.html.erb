@@ -20,14 +20,6 @@
     <div class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
       <div class="card-header handle">
         <div class="btn-group" role="group">
-          <% unless row.first? %>
-            <%= link_to icon(:arrow_up, t('b.up')), move_up_backend_content_row_path(row), class: 'btn btn-info-outline' %>
-          <% end %>
-
-          <% unless row.last? %>
-            <%= link_to icon(:arrow_down, t('b.down')), move_down_backend_content_row_path(row), class: 'btn btn-info-outline' %>
-          <% end %>
-
           <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-info-outline' %>
           <%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'btn btn-info-outline', method: :delete, data: { confirm: t('b.msg.confirm') } %>
         </div>

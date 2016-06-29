@@ -16,8 +16,8 @@
   <% end %>
 
   <% rows.each do |row| %>
-    <div class="card" id="content-row-<%= row.id %>">
-      <div class="card-header">
+    <div class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
+      <div class="card-header handle">
         <div class="btn-group" role="group">
           <% unless row.first? %>
             <%= link_to icon(:arrow_up, t('b.up')), move_up_backend_content_row_path(row), class: 'btn btn-info-outline' %>
@@ -32,12 +32,12 @@
         </div>
       </div>
 
-      <div class="row card-block">
+      <div class="row content-columns card-block">
         <% row.columns.each do |column| %>
           <% content = column.content.decorate %>
 
-          <div class="col-xs-<%= column.width_xs %> col-sm-<%= column.width_sm %> col-md-<%= column.width_md %> col-lg-<%= column.width_lg %> col-xl-<%= column.width_xl %>">
-            <div class="card" data-update-position="<%= update_position_backend_content_row_column_path(row, column) %>">
+          <div class="content-column col-xs-<%= column.width_xs %> col-sm-<%= column.width_sm %> col-md-<%= column.width_md %> col-lg-<%= column.width_lg %> col-xl-<%= column.width_xl %>" data-update-position="<%= update_position_backend_content_row_column_path(row, column) %>">
+            <div class="card">
               <div class="card-header handle">
                 <div class="btn-group" role="group">
                   <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>

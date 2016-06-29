@@ -57,6 +57,8 @@ Rails.application.routes.draw do
 
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
+        concerns :positionable
+
         member do
           get 'move_up', 'move_down'
         end

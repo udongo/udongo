@@ -40,18 +40,10 @@
             <div class="card" data-update-position="<%= update_position_backend_content_row_column_path(row, column) %>">
               <div class="card-header handle">
                 <div class="btn-group" role="group">
-                  <% unless column.first? %>
-                    <%= link_to icon(:arrow_left), move_up_backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm' %>
-                  <% end %>
-
                   <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>
                   <%= link_to icon(:pencil_square_o), edit_link, class: 'btn btn-info-outline btn-sm' %>
                   <%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'btn btn-info-outline btn-sm', method: :delete, data: { confirm: t('b.msg.confirm') } %>
                   <%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), class: 'btn btn-info-outline btn-sm' %>
-
-                  <% unless column.last? %>
-                    <%= link_to icon(:arrow_right), move_down_backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm' %>
-                  <% end %>
                 </div>
               </div>
 

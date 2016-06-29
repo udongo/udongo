@@ -36,7 +36,7 @@
         <% row.columns.each do |column| %>
           <% content = column.content.decorate %>
 
-          <div class="col-xs-<%= column.width_xs %> col-sm-<%= column.width_sm %> col-md-<%= column.width_md %> col-lg-<%= column.width_lg %> col-xl-<%= column.width_xl %>" style="border: 1px solid red;">
+          <div class="col-xs-<%= column.width_xs %> col-sm-<%= column.width_sm %> col-md-<%= column.width_md %> col-lg-<%= column.width_lg %> col-xl-<%= column.width_xl %>">
             <div class="card" data-update-position="<%= update_position_backend_content_row_column_path(row, column) %>">
               <div class="card-header handle">
                 <div class="btn-group" role="group">

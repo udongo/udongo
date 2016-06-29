@@ -63,9 +63,7 @@ Rails.application.routes.draw do
 
         scope module: 'rows' do
           resources :columns do
-            member do
-              get 'move_up', 'move_down'
-            end
+            concerns :positionable
           end
         end
       end

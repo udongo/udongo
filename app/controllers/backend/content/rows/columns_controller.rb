@@ -1,6 +1,8 @@
 class Backend::Content::Rows::ColumnsController < BackendController
+  include Concerns::Backend::PositionableController
+
   before_action :find_row
-  before_action :find_column, only: [:edit, :update, :move_up, :move_down, :destroy]
+  before_action :find_model, only: [:edit, :update, :update_position, :move_up, :move_down, :destroy]
   layout 'backend/lightbox'
 
   def new
@@ -52,7 +54,7 @@ class Backend::Content::Rows::ColumnsController < BackendController
     @row = ::ContentRow.find params[:row_id]
   end
 
-  def find_column
+  def find_model
     @column = ::ContentColumn.find params[:id]
   end
 

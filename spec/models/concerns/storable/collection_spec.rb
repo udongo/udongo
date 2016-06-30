@@ -4,10 +4,10 @@ describe Concerns::Storable::Collection do
   let(:model) { described_class }
   let(:klass) { model.to_s.underscore.to_sym }
   let(:config) { Concerns::Storable::Config.new }
+  let(:page) { create(:page) }
 
+  # TODO: Split up tests; 1 expect / test.
   it '#save' do
-    page = create(:page)
-
     config.add :locales, Array
     config.add :active, Axiom::Types::Boolean
     config.add :starts_on, Date
@@ -15,7 +15,6 @@ describe Concerns::Storable::Collection do
     config.add :discount, Float
     config.add :age, Integer
     config.add :email, String
-
 
     collection = model.new(page, :custom, config)
     collection.locales = [:nl, :fr]
@@ -37,9 +36,26 @@ describe Concerns::Storable::Collection do
     expect(collection.email).to eq 'foo@bar.baz'
   end
 
-  it '#delete' do
-    page = create(:page)
+  describe '#store' do
+    let(:instance) { described_class.new(page, :custom, config) }
+    before(:each) { config.add :foo, String }
 
+    it 'no result' do
+      expect(instance.store(:foo).id).to eq nil
+    end
+
+    it 'with result' do
+      store = create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+      expect(instance.store(:foo).id).to eq store.id
+    end
+
+    it 'file: true' do
+      store = create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+      expect(instance.store(:foo, file: true).id).to eq store.id
+    end
+  end
+
+  it '#delete' do
     config.add :foo, String
     config.add :bar, String
 
@@ -56,7 +72,7 @@ describe Concerns::Storable::Collection do
   end
 
   it '#respond_to?' do
-    collection = model.new(create(:page), :default, config)
+    collection = described_class.new(page, :default, config)
     expect(collection).to respond_to(:save)
   end
 end

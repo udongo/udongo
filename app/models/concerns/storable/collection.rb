@@ -41,15 +41,15 @@ module Concerns
 
         @config.fields.each do |field,options|
           if options[:type].to_s.include?('Uploader')
+            # TODO: define methods in separate method
             self.class.send(:define_method, field) do
               ::StoreWithFile.mount_uploader :value, options[:type]
               store(field, file: true).value
             end
             self.class.send(:define_method, "#{field}=") do |value|
-              # TODO: This gets called "too much". Right now, when we save a
-              # form with a filefield, you will notice in the database that
-              # the store value keeps updating with a new filename hash.
-              # It always "reuploads" the file.
+              # Right now, when we save a form with a filefield, you will
+              # notice in the database that the store value keeps updating
+              # with a new filename hash. It always "reuploads" the file.
               s = store(field, file: true)
               s.value = value
               s.save

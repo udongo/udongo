@@ -55,6 +55,27 @@ describe Concerns::Storable::Collection do
     end
   end
 
+  describe '#stores' do
+    let(:instance) { described_class.new(page, :custom, config) }
+    before(:each) { config.add :foo, String }
+
+    it 'no result' do
+      expect(instance.stores).to eq []
+    end
+
+    it 'with result' do
+      create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+      stores = instance.stores
+      expect(stores.first.class).to eq Store
+    end
+
+    it 'file: true' do
+      create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+      stores = instance.stores(file: true)
+      expect(stores.first.class).to eq StoreWithFile
+    end
+  end
+
   it '#delete' do
     config.add :foo, String
     config.add :bar, String
@@ -73,6 +94,8 @@ describe Concerns::Storable::Collection do
 
   it '#respond_to?' do
     collection = described_class.new(page, :default, config)
-    expect(collection).to respond_to(:save)
+    expect(collection).to respond_to(
+      :delete, :store, :stores, :save
+    )
   end
 end

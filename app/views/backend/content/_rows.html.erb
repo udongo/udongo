@@ -17,7 +17,7 @@
   <% end %>
 
   <% rows.each do |row| %>
-    <div class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
+    <div id="content-row-<%= row.id %>" class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
       <div class="card-header handle">
         <div class="btn-group" role="group">
           <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-info-outline' %>

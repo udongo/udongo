@@ -10,6 +10,11 @@ module Concerns
         init_values
       end
 
+      def delete
+        stores.each { |s| s.destroy }
+        reset_values
+      end
+
       def save
         attributes.each do |name,value|
           tmp = store(name)
@@ -27,11 +32,6 @@ module Concerns
       def stores(file: false)
         klass = file ? StoreWithFile : Store
         klass.where(storable: @parent, collection: @category)
-      end
-
-      def delete
-        stores.each { |s| s.destroy }
-        reset_values
       end
 
       private

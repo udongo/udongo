@@ -34,6 +34,24 @@ module Concerns
         klass.where(storable: @parent, collection: @category)
       end
 
+      def define_reader_method_for_uploader_field(field, options)
+        self.class.send(:define_method, field) do
+          ::StoreWithFile.mount_uploader :value, options[:type]
+          store(field, file: true).value
+        end
+      end
+
+      def define_writer_method_for_uploader_field(field, options)
+        self.class.send(:define_method, "#{field}=") do |value|
+          # Right now, when we save a form with a filefield, you will
+          # notice in the database that the store value keeps updating
+          # with a new filename hash. It always "reuploads" the file.
+          s = store(field, file: true)
+          s.value = value
+          s.save
+        end
+      end
+
       private
 
       def init_attributes
@@ -41,19 +59,8 @@ module Concerns
 
         @config.fields.each do |field,options|
           if options[:type].to_s.include?('Uploader')
-            # TODO: define methods in separate method
-            self.class.send(:define_method, field) do
-              ::StoreWithFile.mount_uploader :value, options[:type]
-              store(field, file: true).value
-            end
-            self.class.send(:define_method, "#{field}=") do |value|
-              # Right now, when we save a form with a filefield, you will
-              # notice in the database that the store value keeps updating
-              # with a new filename hash. It always "reuploads" the file.
-              s = store(field, file: true)
-              s.value = value
-              s.save
-            end
+            define_reader_method_for_uploader_field(field, options)
+            define_writer_method_for_uploader_field(field, options)
           else
             attribute field, options[:type], default: options[:default], lazy: true
           end

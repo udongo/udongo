@@ -36,6 +36,22 @@ describe Concerns::Storable::Collection do
     expect(collection.email).to eq 'foo@bar.baz'
   end
 
+  it '#define_reader_method_for_uploader_field' do
+    store = create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+    config.add :foo, String
+    instance = described_class.new(page, :custom, config)
+    instance.define_reader_method_for_uploader_field(:foo, { type: String })
+    expect(instance).to respond_to(:foo)
+  end
+
+  it '#define_writer_method_for_uploader_field' do
+    store = create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+    config.add :foo, String
+    instance = described_class.new(page, :custom, config)
+    instance.define_writer_method_for_uploader_field(:foo, { type: String })
+    expect(instance).to respond_to('foo=')
+  end
+
   describe '#store' do
     let(:instance) { described_class.new(page, :custom, config) }
     before(:each) { config.add :foo, String }

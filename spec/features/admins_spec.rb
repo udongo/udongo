@@ -27,6 +27,7 @@ describe 'admins' do
     admin_page.submit_with('Erik', 'Bauffman', 'erik@bauffman.be', 'foo')
 
     expect(page).to have_current_path(backend_admins_path)
+    expect(page).to have_content('Beheerder werd toegevoegd.')
     expect(page).to have_content('Erik Bauffman')
     expect(page).to have_content('erik@bauffman.be')
   end
@@ -48,6 +49,7 @@ describe 'admins' do
 
     admin_page.submit_with('Martha', 'Kauffman', 'martha@kauffman.com')
     expect(page).to have_current_path(backend_admins_path)
+    expect(page).to have_content('De wijzigingen werden opgeslagen.')
     expect(page).to have_content('Martha Kauffman')
     expect(page).to have_content('martha@kauffman.com')
   end
@@ -73,6 +75,7 @@ describe 'admins' do
     page.find(:path, '//table/tbody/tr[2]/td[3]/a[2]').click
 
     expect(page).to have_current_path(backend_admins_path)
+    expect(page).to have_content('Beheerder werd verwijderd.')
     expect(page).not_to have_content('Martha Kauffman')
     expect(page).not_to have_content('martha@kauffman.be')
   end

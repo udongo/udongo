@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/repos/55225453e30ba0015300479e/badges/6cdc017255ce2cab1336/gpa.svg)](https://codeclimate.com/repos/55225453e30ba0015300479e/feed)
+[![Code Climate](https://codeclimate.com/github/blimp/udongo/badges/gpa.svg)](https://codeclimate.com/github/blimp/udongo)
 
 # Concerns
 ## Storable concern

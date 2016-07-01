@@ -1,12 +1,14 @@
 require_relative 'page'
 
 class Features::Pages::LoginPage < Features::Pages::Page
+  attr_reader :admin
+
   def initialize
     db_setup
   end
 
   def db_setup
-    FactoryGirl.create(
+    @admin = FactoryGirl.create(
       :admin,
       first_name: 'Foo',
       last_name: 'Bar',

@@ -19,9 +19,8 @@ describe 'admins' do
   end
 
   it 'show redirects to edit' do
-    admin = ::Admin.first
-    visit backend_admin_path(admin)
-    expect(page).to have_current_path(edit_backend_admin_path(admin))
+    visit backend_admin_path(login_page.admin)
+    expect(page).to have_current_path(edit_backend_admin_path(login_page.admin))
   end
 
   it 'create new admin' do

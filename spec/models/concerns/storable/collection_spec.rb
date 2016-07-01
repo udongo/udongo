@@ -6,34 +6,83 @@ describe Concerns::Storable::Collection do
   let(:config) { Concerns::Storable::Config.new }
   let(:page) { create(:page) }
 
-  # TODO: Split up tests; 1 expect / test.
-  it '#save' do
-    config.add :locales, Array
-    config.add :active, Axiom::Types::Boolean
-    config.add :starts_on, Date
-    config.add :starts_at, DateTime
-    config.add :discount, Float
-    config.add :age, Integer
-    config.add :email, String
+  describe '#save' do
+    it :locales do
+      config.add :locales, Array
 
-    collection = model.new(page, :custom, config)
-    collection.locales = [:nl, :fr]
-    collection.active = true
-    collection.starts_on = Date.today
-    collection.starts_at = DateTime.parse('2016-01-07 14:45')
-    collection.discount = 13.37
-    collection.age = 37
-    collection.email = 'foo@bar.baz'
-    collection.save
+      collection = model.new(page, :custom, config)
+      collection.locales = [:nl, :fr]
+      collection.save
 
-    collection = model.new(page, :custom, config)
-    expect(collection.locales).to eq [:nl, :fr]
-    expect(collection.active).to eq true
-    expect(collection.starts_on).to eq Date.today
-    expect(collection.starts_at).to eq DateTime.parse('2016-01-07 14:45')
-    expect(collection.discount).to eq 13.37
-    expect(collection.age).to eq 37
-    expect(collection.email).to eq 'foo@bar.baz'
+      collection = model.new(page, :custom, config)
+      expect(collection.locales).to eq [:nl, :fr]
+    end
+
+    it :active do
+      config.add :active, Axiom::Types::Boolean
+
+      collection = model.new(page, :custom, config)
+      collection.active = true
+      collection.save
+
+      collection = model.new(page, :custom, config)
+      expect(collection.active).to eq true
+    end
+
+    it :starts_on do
+      config.add :starts_on, Date
+
+      collection = model.new(page, :custom, config)
+      collection.starts_on = Date.today
+      collection.save
+
+      collection = model.new(page, :custom, config)
+      expect(collection.starts_on).to eq Date.today
+    end
+
+    it :starts_at do
+      config.add :starts_at, DateTime
+
+      collection = model.new(page, :custom, config)
+      collection.starts_at = DateTime.parse('2016-01-07 14:45')
+      collection.save
+
+      collection = model.new(page, :custom, config)
+      expect(collection.starts_at).to eq DateTime.parse('2016-01-07 14:45')
+    end
+
+    it :discount do
+      config.add :discount, Float
+
+      collection = model.new(page, :custom, config)
+      collection.discount = 13.37
+      collection.save
+
+      collection = model.new(page, :custom, config)
+      expect(collection.discount).to eq 13.37
+    end
+
+    it :age do
+      config.add :age, Integer
+
+      collection = model.new(page, :custom, config)
+      collection.age = 37
+      collection.save
+
+      collection = model.new(page, :custom, config)
+      expect(collection.age).to eq 37
+    end
+
+    it :email do
+      config.add :email, String
+
+      collection = model.new(page, :custom, config)
+      collection.email = 'foo@bar.baz'
+      collection.save
+
+      collection = model.new(page, :custom, config)
+      expect(collection.email).to eq 'foo@bar.baz'
+    end
   end
 
   it '#define_reader_method_for_uploader_field' do

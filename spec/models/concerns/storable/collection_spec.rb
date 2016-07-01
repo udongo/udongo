@@ -37,7 +37,7 @@ describe Concerns::Storable::Collection do
   end
 
   it '#define_reader_method_for_uploader_field' do
-    store = create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+    create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
     config.add :foo, String
     instance = described_class.new(page, :custom, config)
     instance.define_reader_method_for_uploader_field(:foo, { type: String })
@@ -45,7 +45,7 @@ describe Concerns::Storable::Collection do
   end
 
   it '#define_writer_method_for_uploader_field' do
-    store = create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
+    create(:store, storable: page, name: 'foo', value: 'bar', collection: :custom)
     config.add :foo, String
     instance = described_class.new(page, :custom, config)
     instance.define_writer_method_for_uploader_field(:foo, { type: String })

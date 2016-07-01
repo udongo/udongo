@@ -4,6 +4,7 @@
 * Add Udongo::Notification and use it in BackendController#translate_notice.
 * Fix issue with storable config fields that are present in the DB, but are no
   longer in the storable class.
+* Flexible image preview no longer makes the URL previewable.
 
 
 1.0.3 - 2016-06-06

@@ -1,13 +1,6 @@
 <% if object.present? && object.file.present? %>
 
-  <% if object.url.present? %>
-    <%= link_to object.url do %>
-      <%= image_tag object.file.size_1024x640.url, alt: '', class: 'img-fluid' %>
-    <% end %>
-
-  <% else %>
-    <%= image_tag object.file.size_1024x640.url, alt: '', class: 'img-fluid' %>
-  <% end %>
+  <%= image_tag object.file.size_1024x640.url, alt: '', class: 'img-fluid' %>
 
   <% if object.caption.present? %>
     <div class="text-center">

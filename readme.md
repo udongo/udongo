@@ -161,7 +161,7 @@ The ```Udongo::Notification``` class provides a generic way to parse action noti
 nl:
   b:
     msg:
-      refreshed: De pagina werd opnieuw ingeladen. 
+      refreshed: De pagina werd opnieuw ingeladen.
 ```
 ```ruby
 irb(main):001:0> Udongo::Notification.new(:refreshed).translate

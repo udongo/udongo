@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe 'authentication' do
   describe 'redirects when not logged in' do
-    it '/backend redirecs to /backend/sessions/new' do
-      visit '/backend'
-      expect(page).to have_current_path('/backend/sessions/new')
+    it 'dashboard redirecs to login page' do
+      visit backend_path
+      expect(page).to have_current_path(new_backend_session_path)
     end
 
-    it 'redirects to login if not logged in' do
-      visit '/backend/admins'
-      expect(page).to have_current_path('/backend/sessions/new')
+    it 'redirects to login page if not logged in' do
+      visit backend_admins_path
+      expect(page).to have_current_path(new_backend_session_path)
     end
   end
 
@@ -19,17 +19,17 @@ describe 'authentication' do
     end
 
     it 'valid login credentials' do
-      visit '/backend/sessions/new'
+      visit new_backend_session_path
       page.fill_in 'session[email]', with: 'foo@bar.baz', match: :first
       page.fill_in 'session[password]', with: 'sekret', match: :first
       page.click_button 'Inloggen', match: :first
 
-      expect(page).to have_current_path('/backend')
+      expect(page).to have_current_path(backend_path)
       expect(page).to have_content('Foo Bar')
     end
 
     it 'inavlid login credentials' do
-      visit '/backend/sessions/new'
+      visit new_backend_session_path
       page.fill_in 'session[email]', with: 'bla', match: :first
       page.fill_in 'session[password]', with: 'bla', match: :first
       page.click_button 'Inloggen', match: :first
@@ -42,15 +42,15 @@ describe 'authentication' do
   it 'logout' do
     create(:admin, first_name: 'Foo', last_name: 'Bar', email: 'foo@bar.baz', password: 'sekret', password_confirmation: 'sekret')
 
-    visit '/backend/sessions/new'
+    visit new_backend_session_path
     page.fill_in 'session[email]', with: 'foo@bar.baz', match: :first
     page.fill_in 'session[password]', with: 'sekret', match: :first
     page.click_button 'Inloggen', match: :first
 
-    expect(page).to have_current_path('/backend')
+    expect(page).to have_current_path(backend_path)
     expect(page).to have_content('Foo Bar')
 
     page.click_link('Uitloggen')
-    expect(page).to have_current_path('/backend/sessions/new')
+    expect(page).to have_current_path(new_backend_session_path)
   end
 end

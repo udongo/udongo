@@ -82,6 +82,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.8.0)
+      capybara (>= 2.3.0, < 2.7.0)
+      json
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -107,6 +110,8 @@ GEM
     country_select (2.5.2)
       countries (~> 1.2.0)
       sort_alphabetical (~> 1.0)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     currencies (0.4.2)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
@@ -150,6 +155,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashdiff (0.3.0)
     i18n (0.7.0)
     i18n_data (0.7.0)
     ice_nine (0.11.2)
@@ -266,6 +272,7 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     ruby_dep (1.3.1)
+    safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -308,6 +315,10 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
+    webmock (1.22.6)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     will_paginate (3.1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -319,6 +330,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   capybara (~> 2.5.0)
+  capybara-webkit (~> 1.8.0)
   codeclimate-test-reporter (~> 0.5.0)
   database_cleaner
   factory_girl_rails
@@ -332,6 +344,7 @@ DEPENDENCIES
   spring-commands-rspec (~> 1.0.4)
   sqlite3 (~> 1.3, >= 1.3.11)
   udongo!
+  webmock (~> 1.22.3)
 
 BUNDLED WITH
    1.12.5

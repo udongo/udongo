@@ -69,8 +69,9 @@ module Concerns
 
       def init_values
         stores.pluck(:name, :value).each do |field, value|
+          next unless @config.allowed?(field)
           next if @config.fields[field.to_sym][:type].to_s.include?('Uploader')
-          send "#{field}=", value if @config.allowed?(field)
+          send "#{field}=", value
         end
       end
 

@@ -17,13 +17,13 @@ class Features::Pages::LoginPage < Features::Pages::Page
   end
 
   def login(email = 'foo@bar.baz', password = 'sekret')
-    page.fill_in 'session[email]', with: email, match: :first
-    page.fill_in 'session[password]', with: password, match: :first
-    page.click_button 'Inloggen', match: :first
+    fill_in 'session[email]', with: email
+    fill_in 'session[password]', with: password
+    click_button 'Inloggen'
   end
 
   def logout
-    page.click_link('Uitloggen')
+    click_link('Uitloggen')
   end
 
   def visit

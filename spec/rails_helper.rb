@@ -37,6 +37,9 @@ RSpec.configure do |config|
   # Allow the short syntax
   config.include FactoryGirl::Syntax::Methods
 
+  # Capybara DSL
+  config.include Capybara::DSL
+
   # Makes methods available based on file type (ie. post/get in controller specs)
   config.infer_spec_type_from_file_location!
 

@@ -18,6 +18,12 @@ describe 'admins' do
     expect(page).to have_content('foo@bar.baz')
   end
 
+  it 'show redirects to edit' do
+    admin = ::Admin.first
+    visit backend_admin_path(admin)
+    expect(page).to have_current_path(edit_backend_admin_path(admin))
+  end
+
   it 'create new admin' do
     admin_page.visit
     page.click_link 'Toevoegen'

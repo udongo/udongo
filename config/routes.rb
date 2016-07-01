@@ -24,6 +24,10 @@ Rails.application.routes.draw do
       member { post :tree_drag_and_drop }
     end
 
+    resources :forms do
+      resources :form_submissions, as: :submissions
+    end
+
     resources :navigations, only: [:index] do
       scope module: 'navigation' do
         resources :items, except: [:index, :show] do

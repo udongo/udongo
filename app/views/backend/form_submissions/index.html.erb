@@ -1,0 +1,26 @@
+<%= render 'backend/breadcrumbs' %>
+
+<% if @submissions.any? %>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Extra info</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @submissions.each do |s| %>
+        <tr>
+          <td><%= s.extra_info %></td>
+          <td class="text-xs-right">
+            <%= link_to icon(:pencil_square_o), edit_backend_form_submission_path(@form, s) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

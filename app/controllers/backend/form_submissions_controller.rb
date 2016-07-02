@@ -8,6 +8,6 @@ class Backend::FormSubmissionsController < BackendController
   private
 
   def find_form
-    @form ||= Form.find(params[:form_id].to_i)
+    @form ||= Form.find(params[:form_id].to_i).decorate
   end
 end

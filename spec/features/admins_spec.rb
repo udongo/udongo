@@ -50,7 +50,7 @@ describe 'admins' do
   it 'edit an admin' do
     admin_page.visit
 
-    page.find(:xpath, '//table/tbody/tr/td[3]/a[1]').click
+    page.find('tbody td:last a:first').click
 
     admin_page.submit_with('Martha', 'Kauffman', 'martha@kauffman.com')
     expect(page).to have_current_path(backend_admins_path)

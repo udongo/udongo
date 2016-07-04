@@ -49,10 +49,9 @@ describe 'admins' do
 
   it 'edit an admin' do
     admin_page.visit
-
     page.find('tbody td:last a:first').click
-
     admin_page.submit_with('Martha', 'Kauffman', 'martha@kauffman.com')
+
     expect(page).to have_current_path(backend_admins_path)
     expect(page).to have_content('De wijzigingen werden opgeslagen.')
     expect(page).to have_content('Martha Kauffman')
@@ -61,13 +60,11 @@ describe 'admins' do
 
   it 'edit admin password and login with new password' do
     admin_page.visit
-
-    page.find(:xpath, '//table/tbody/tr/td[3]/a[1]').click
-
+    page.find('tbody td:last a:first').click
     admin_page.submit_with('Erik', 'Bauffman', 'erik@bauffman.be', 'new-pw')
-
     login_page.logout
     login_page.login('erik@bauffman.be', 'new-pw')
+
     expect(page).to have_current_path(backend_path)
   end
 

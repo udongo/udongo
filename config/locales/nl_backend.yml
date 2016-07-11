@@ -26,6 +26,7 @@ nl:
     forms: Formulieren
     from: Van
     general: Algemeen
+    house_number: Huisnummer
     html_content: HTML inhoud
     last_name: Achternaam
     locale: Taal
@@ -58,6 +59,7 @@ nl:
     status_code: Statuscode
     subject: Onderwerp
     tags: Tags
+    telephone: Telefoonnummer
     title: Titel
     to: Naar
     up: Omhoog

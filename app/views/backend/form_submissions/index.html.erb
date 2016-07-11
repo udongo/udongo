@@ -15,7 +15,7 @@
       <% @form.submissions.each do |s| %>
         <tr>
           <% if @form.email_present? %>
-            <td><%= s.data_object.email %></td>
+            <td><%= mail_to s.data_object.email %></td>
           <% end %>
           <td class="text-xs-right">
             <%= link_to icon(:pencil_square_o), edit_backend_form_submission_path(@form, s) %>

@@ -13,7 +13,7 @@ describe Backend::FormSubmissionHelper do
     end
 
     it 'name as symbol' do
-      allow(Udongo.config).to receive(:form_submission_fields_for_overview) { %w(first_name) }
+      allow(Udongo.config).to receive(:form_datagrid_fields) { %w(first_name) }
       expect(information_list(submission)).to eq '<ul class="list-unstyled"><li>Voornaam: John</li></ul>'
     end
   end

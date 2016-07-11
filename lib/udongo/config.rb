@@ -2,7 +2,7 @@ module Udongo
   class Config
     attr_accessor :default_locale, :locales, :prefix_routes_with_locale, :host,
                   :time_zone, :allow_new_tags, :flexible_content_types,
-                  :project_name, :form_submission_fields_for_overview
+                  :project_name, :form_datagrid_fields
 
     def initialize
       @default_locale = :nl
@@ -13,7 +13,7 @@ module Udongo
       @allow_new_tags = true
       @flexible_content_types = %w(text image)
       @project_name = 'Udongo'
-      @form_submission_fields_for_overview = []
+      @form_datagrid_fields = []
     end
 
     def prefix_routes_with_locale?

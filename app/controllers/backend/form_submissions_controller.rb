@@ -1,8 +1,9 @@
 class Backend::FormSubmissionsController < BackendController
+  include Concerns::PaginationController
   before_action :find_form
 
   def index
-    @submissions = FormSubmission.includes(:data).decorate
+    @submissions = paginate(FormSubmission.includes(:data).decorate)
   end
 
   private

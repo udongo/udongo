@@ -12,7 +12,7 @@
     <tbody>
       <% @forms.each do |f| %>
         <tr>
-          <td><%= f.identifier %></td>
+          <td><%= f.description %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, f] %>
             <%= link_to icon(:search), backend_form_submissions_path(f) %>

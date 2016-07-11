@@ -9,7 +9,7 @@ var flexible_content = flexible_content || {
 
     $('.content-columns').sortable({
       axis: 'x',
-      handle: '.card-header',
+      handle: '.card',
       update: sortable.update_position_listener
     })
   }

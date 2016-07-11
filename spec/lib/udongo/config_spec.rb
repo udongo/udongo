@@ -35,6 +35,10 @@ describe Udongo::Config do
     it :project_name do
       expect(instance.project_name).to eq 'Udongo'
     end
+
+    it :form_submission_fields_for_overview do
+      expect(instance.form_submission_fields_for_overview).to eq []
+    end
   end
 
   it '#respond_to?' do
@@ -42,7 +46,8 @@ describe Udongo::Config do
       :default_locale, :default_locale=, :host, :host=, :time_zone, :time_zone=,
       :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=,
       :prefix_routes_with_locale?, :flexible_content_types, :flexible_content_types=,
-      :allow_new_tags, :allow_new_tags?, :project_name, :project_name=
+      :allow_new_tags, :allow_new_tags?, :project_name, :project_name=,
+      :form_submission_fields_for_overview, :form_submission_fields_for_overview=
     )
   end
 end

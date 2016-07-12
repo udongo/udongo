@@ -1,6 +1,11 @@
 #content-rows {
   margin-bottom: 35px;
 
+  /* Add row button */
+  > a {
+    width: 100%;
+  }
+
   .handle {
     cursor: move;
   }

@@ -8,17 +8,22 @@
     opacity: 0.5;
   }
 
-  /* Add row button */
-  > a {
-    width: 100%;
-  }
-
   .handle {
     cursor: move;
   }
 
   .content-column {
     .card {
+      &:hover {
+        border: 1px solid #999;
+
+        .btn-group a {
+          border: 1px solid #999 !important;
+          border-bottom: none !important;
+          color: #333 !important;
+        }
+      }
+
       .card-footer {
         background-color: white;
         padding-bottom: 4px;
@@ -46,18 +51,15 @@
           }
         }
       }
-
-      &:hover {
-        border: 1px solid #999;
-
-        .btn-group a {
-          border: 1px solid #999 !important;
-          border-bottom: none !important;
-          color: #333 !important;
-        }
-      }
-
     }
+  }
+
+  a.btn.full-width {
+    width: 100%;
+  }
+
+  a.btn.block {
+    padding: 25px;
   }
 }
 

@@ -50,13 +50,17 @@
           <% end %>
 
           <% unless row.column_limit_reached? %>
-            <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-lg-up', style: 'width: 100%' %>
-            <%= link_to icon(:plus), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-md-down', style: 'padding: 25px;' %>
+            <% if row.columns.blank? %>
+              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary btn-block' %>
+            <% else %>
+              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-xl-up full-width' %>
+              <%= link_to icon(:plus), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-lg-down block' %>
+            <% end %>
           <% end %>
         </div>
       </div>
     <% end %>
   </div>
 
-  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'btn btn-secondary' %>
+  <%= link_to icon(:plus, t('b.msg.flexible_content.add_row')), new_backend_content_row_path(klass: @model.class, id: @model.id, locale: locale), class: 'btn btn-secondary btn-block' %>
 </div>

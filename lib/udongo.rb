@@ -1,15 +1,3 @@
-require 'udongo/engine'
-require 'udongo/config'
-require 'udongo/breadcrumb'
-require 'udongo/meta_info'
-require 'udongo/object_path'
-require 'udongo/crypt'
-require 'udongo/cryptography'
-require 'udongo/active_model_simulator'
-require 'udongo/email_vars_parser'
-require 'udongo/email_vars/form_submission'
-require 'udongo/email_vars/address'
-require 'udongo/notification'
 require 'jquery-rails'
 require 'jquery-ui-rails'
 require 'simple_form'
@@ -28,6 +16,10 @@ module Udongo
 
   class << self
     attr_writer :config
+
+    Dir.glob("#{PATH}/lib/udongo/**/*.rb").each do |file|
+      require file
+    end
   end
 
   def self.config

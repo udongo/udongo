@@ -6,6 +6,8 @@
   longer in the storable class.
 * Classes in lib/udongo/**/* are now loaded automatically.
 * Restyled flexible content widget.
+* You now get a suggested width when adding a new content column in the
+  flexible content widget. Values are based on previously set column widths.
 
 
 1.0.3 - 2016-06-06

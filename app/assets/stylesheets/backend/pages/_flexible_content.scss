@@ -43,11 +43,6 @@
             &:last-child {
               border-bottom-right-radius: 0;
             }
-
-            &:hover, &:focus, &:active {
-              background-color: #999;
-              color: white !important;
-            }
           }
         }
       }
@@ -58,7 +53,7 @@
         .btn-group a {
           border: 1px solid #999 !important;
           border-bottom: none !important;
-          color: #999 !important;
+          color: #333 !important;
         }
       }
 

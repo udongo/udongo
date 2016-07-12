@@ -6,7 +6,7 @@ class Backend::Content::Rows::ColumnsController < BackendController
   layout 'backend/lightbox'
 
   def new
-    @column = @row.columns.new
+    @column = @row.columns.new(@row.column_width_calculator.hashed_values)
     cancel_url
   end
 

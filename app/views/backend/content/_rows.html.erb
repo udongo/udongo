@@ -17,11 +17,10 @@
       </div>
     <% end %>
 
-    <% rows.each do |row| %>
+    <% rows.decorate.each do |row| %>
       <div id="content-row-<%= row.id %>" class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
         <div class="card-header handle">
           <div class="btn-group" role="group">
-            <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary' %>
             <%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'btn btn-secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %>
           </div>
         </div>
@@ -48,6 +47,11 @@
                 </div>
               </div>
             </div>
+          <% end %>
+
+          <% unless row.column_limit_reached? %>
+            <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-lg-up', style: 'width: 100%' %>
+            <%= link_to icon(:plus), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-md-down', style: 'padding: 25px;' %>
           <% end %>
         </div>
       </div>

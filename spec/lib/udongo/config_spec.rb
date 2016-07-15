@@ -37,7 +37,7 @@ describe Udongo::Config do
     end
 
     it :form_datagrid_fields do
-      expect(instance.form_datagrid_fields).to eq({})
+      expect(instance.form_submissions).to eq({})
     end
   end
 
@@ -47,7 +47,7 @@ describe Udongo::Config do
       :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=,
       :prefix_routes_with_locale?, :flexible_content_types, :flexible_content_types=,
       :allow_new_tags, :allow_new_tags?, :project_name, :project_name=,
-      :form_datagrid_fields, :form_datagrid_fields=
+      :form_submissions, :form_submissions=
     )
   end
 end

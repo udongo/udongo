@@ -21,6 +21,7 @@ en:
     email_templates: E-mail templates
     enabled?: Enabled?
     extra: Extra
+    filter: Filter
     first_name: First name
     flexible_content: Flexible content
     forms: Forms

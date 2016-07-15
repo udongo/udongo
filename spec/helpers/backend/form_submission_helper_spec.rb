@@ -15,7 +15,9 @@ describe Backend::FormSubmissionHelper do
     end
 
     it 'name as symbol' do
-      allow(Udongo.config).to receive(:form_datagrid_fields) { { foo: %w(first_name) } }
+      allow(Udongo.config).to receive(:form_submissions) do
+        { foo: { datagrid_fields: %w(first_name) } }
+      end
       expect(datagrid_column_values(form, submission)).to eq '<td>John</td>'
     end
   end

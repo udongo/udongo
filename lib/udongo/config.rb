@@ -13,7 +13,7 @@ module Udongo
       @allow_new_tags = true
       @flexible_content_types = %w(text image)
       @project_name = 'Udongo'
-      @form_datagrid_fields = []
+      @form_datagrid_fields = {}
     end
 
     def prefix_routes_with_locale?

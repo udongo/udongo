@@ -1,7 +1,4 @@
-class Backend::SnippetForm
-  include ActiveModel::Model
-  include Virtus.model
-
+class Backend::SnippetForm < Udongo::Form
   attr_reader :snippet
 
   attribute :identifier, String
@@ -25,17 +22,6 @@ class Backend::SnippetForm
     !@snippet.new_record?
   end
 
-  def save(params)
-    attributes.keys.each { |k| send("#{k}=", params[k]) }
-
-    if valid?
-      save_snippet
-      true
-    else
-      false
-    end
-  end
-
   private
 
   def unique_identifier
@@ -47,7 +33,7 @@ class Backend::SnippetForm
     end
   end
 
-  def save_snippet
+  def save_object
     attributes.each { |k, v| @snippet.send("#{k}=", v) }
     @snippet.save!
   end

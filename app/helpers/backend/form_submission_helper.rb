@@ -14,7 +14,7 @@ module Backend::FormSubmissionHelper
     return nil if fields.blank?
 
     fields.map do |field|
-      content_tag(:th, "data_#{field}", t("b.#{field}"))
+      content_tag(:th, t("b.#{field}"))
     end.join("\n").html_safe
   end
 end

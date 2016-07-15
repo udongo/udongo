@@ -5,7 +5,7 @@ module Udongo
 
       def initialize(form, params = {})
         @form = form
-        @params = params
+        @params = params || {}
       end
 
       def fields

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe Udongo::Forms::SubmissionFilter do
-  let(:instance) { described_class.new }
+  let(:form) { create(:form) }
+  let(:instance) { described_class.new(form) }
 
   describe '#result' do
     it 'default' do

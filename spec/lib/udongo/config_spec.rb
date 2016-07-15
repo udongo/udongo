@@ -37,7 +37,7 @@ describe Udongo::Config do
     end
 
     it :form_datagrid_fields do
-      expect(instance.form_datagrid_fields).to eq []
+      expect(instance.form_datagrid_fields).to eq({})
     end
   end
 

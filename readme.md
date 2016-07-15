@@ -12,38 +12,49 @@
 * Float
 
 ### Setup
-    class User < ActiveRecord::Base
-      include Concerns::Storable
+```ruby
+class User < ActiveRecord::Base
+  include Concerns::Storable
 
-      storable_field :gender, String, 'male'
-      storable_field :age, Integer
-      storable_field :last_login_at, DateTime
-      storable_field :cool_dude, Boolean, true
-      storable_field :locales, Array, %w(nl)
-      storable_field :birthday, Date
-    end
+  storable_field :gender, String, 'male'
+  storable_field :age, Integer
+  storable_field :last_login_at, DateTime
+  storable_field :cool_dude, Boolean, true
+  storable_field :locales, Array, %w(nl)
+  storable_field :birthday, Date
+end
+```
 
 ### Reading values
-    u = User.first
-    u.gender
+```ruby
+u = User.first
+u.gender
 
-    # Which is equal to
-    u.store(:default).gender
+# Which is equal to
+u.store(:default).gender
+```
 
 ### Writing values
-    u = User.first
-    u.gender = 'female'
+```ruby
+u = User.first
+u.gender = 'female'
+```
 
-    # Which is equal to
-    u.store(:default).gender = 'female'
+Which is equal to
+
+```ruby
+u.store(:default).gender = 'female'
+```
 
 ### Saving values
-    u = User.first
-    u.gender = 'female'
-    u.save
+```ruby
+u = User.first
+u.gender = 'female'
+u.save
 
-    u.store(:custom).gender = 'unknown'
-    u.store(:custom).save
+u.store(:custom).gender = 'unknown'
+u.store(:custom).save
+```
 
 When you save the parent object (user), all the store collections will
 automatically be saved.

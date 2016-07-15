@@ -4,7 +4,7 @@ class Backend::FormSubmissionsController < BackendController
 
   def index
     @filter = Udongo::Forms::SubmissionFilter.search(params[:q])
-    @submissions = paginate(@filter.result.decorate)
+    @submissions = paginate(@filter.result).decorate
   end
 
   private

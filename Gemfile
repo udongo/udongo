@@ -14,6 +14,9 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'codeclimate-test-reporter', '~> 0.5.0', require: nil
+  gem 'capybara', '~> 2.5.0'
+  gem 'webmock', '~> 1.22.3'
+  gem 'capybara-webkit', '~> 1.8.0'
 end
 
 group :test, :development do

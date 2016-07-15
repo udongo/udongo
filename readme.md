@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/repos/55225453e30ba0015300479e/badges/6cdc017255ce2cab1336/gpa.svg)](https://codeclimate.com/repos/55225453e30ba0015300479e/feed)
+[![Code Climate](https://codeclimate.com/github/udongo/udongo/badges/gpa.svg)](https://codeclimate.com/github/udongo/udongo)
 
 # Concerns
 ## Storable concern
@@ -12,38 +12,46 @@
 * Float
 
 ### Setup
-    class User < ActiveRecord::Base
-      include Concerns::Storable
+```ruby
+class User < ActiveRecord::Base
+  include Concerns::Storable
 
-      storable_field :gender, String, 'male'
-      storable_field :age, Integer
-      storable_field :last_login_at, DateTime
-      storable_field :cool_dude, Boolean, true
-      storable_field :locales, Array, %w(nl)
-      storable_field :birthday, Date
-    end
+  storable_field :gender, String, 'male'
+  storable_field :age, Integer
+  storable_field :last_login_at, DateTime
+  storable_field :cool_dude, Boolean, true
+  storable_field :locales, Array, %w(nl)
+  storable_field :birthday, Date
+end
+```
 
 ### Reading values
-    u = User.first
-    u.gender
+```ruby
+u = User.first
+u.gender
 
-    # Which is equal to
-    u.store(:default).gender
+# Which is equal to
+u.store(:default).gender
+```
 
 ### Writing values
-    u = User.first
-    u.gender = 'female'
+```ruby
+u = User.first
+u.gender = 'female'
 
-    # Which is equal to
-    u.store(:default).gender = 'female'
+# Which is equal to
+u.store(:default).gender = 'female'
+```
 
 ### Saving values
-    u = User.first
-    u.gender = 'female'
-    u.save
+```ruby
+u = User.first
+u.gender = 'female'
+u.save
 
-    u.store(:custom).gender = 'unknown'
-    u.store(:custom).save
+u.store(:custom).gender = 'unknown'
+u.store(:custom).save
+```
 
 When you save the parent object (user), all the store collections will
 automatically be saved.
@@ -53,32 +61,42 @@ automatically be saved.
 ## Add tasks to the queue
 You can add tasks to the queue by executing:
 
-    QueuedTask.queue('SomeClass', id: 37, foo: bar)
+```ruby
+QueuedTask.queue('SomeClass', id: 37, foo: bar)
+```
 
 The first paramter specifiecs the string of the class you want to execute the run method from. The second parameter is a hash that contains most scalar values.
 
 ## Example of a task
 
-    class SomeClass
-      def initialize(data)
-        @id = data[:id]
-        @foo = data[:foo]
-      end
+```ruby
+class SomeClass
+  def initialize(data)
+    @id = data[:id]
+    @foo = data[:foo]
+  end
 
-      def run!
-        # add code to run
-      end
-    end
+  def run!
+    # add code to run
+  end
+end
+```
 
 ## Rake task to run as a cronjob
-    rake udongo:queue:process
+```ruby
+rake udongo:queue:process
+```
 
 # Validators
 ## E-mail validator
-    validates :email, email: true
+```ruby
+validates :email, email: true
+```
 
 ## URL validator
-    validates :url, url: true
+```ruby
+validates :url, url: true
+```
 
 
 # Cryptography
@@ -96,16 +114,20 @@ end
 
 ## Syntax
 ### encrypt
-    crypt.encrypt('foo')
-    => "azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8"
-    crypt.encrypt('foo')
-    => "bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7"
+```ruby
+crypt.encrypt('foo')
+=> "azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8"
+crypt.encrypt('foo')
+=> "bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7"
+```
 
 ### decrypt
-    crypt.decrypt('azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8')
-    => "foo"
-    crypt.decrypt('bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7')
-    => "foo"
+```ruby
+crypt.decrypt('azZiS1lPVU8zV1ljOTdjM2tIM2hTdz09LS1PODc5OEprRmxlMFVMU1lqaDdXK25RPT0=--77983f6f21e31117ac15011fed52dac3fdf776a8')
+=> "foo"
+crypt.decrypt('bEFwVHVDV1hVc29UUmhJK1RQcllYUT09LS03WkZVYTdkOVhIQnloa1czUkE3L1V3PT0=--3fcc73bd6c11874966bb23811ad48980a44e40e7')
+=> "foo"
+```
 
 As the examples above illustrate, each subsequent encrypt always returns a different, decryptable hash.
 
@@ -129,10 +151,12 @@ def Udongo::Cryptography
 end
 ```
 
-    crypt = Udongo::Crypt.new(secret: '1234567890123456789012345678901234567890')
-    => #<Udongo::Crypt:0x007fcb1a0f3b50 @options={:secret=>"1234567890123456789012345678901234567890"}>
-    crypt.encrypt('foo')
-    => "YXhsZDV4RlZLTnljclhvM3pKbmV3Zz09LS1ycVR4bEtZemh2UUVKVlBQRnhlcjZRPT0=--f23e37ef7fb94e94cfa8a509f93bdb94e4bc5552"
+```ruby
+crypt = Udongo::Crypt.new(secret: '1234567890123456789012345678901234567890')
+=> #<Udongo::Crypt:0x007fcb1a0f3b50 @options={:secret=>"1234567890123456789012345678901234567890"}>
+crypt.encrypt('foo')
+=> "YXhsZDV4RlZLTnljclhvM3pKbmV3Zz09LS1ycVR4bEtZemh2UUVKVlBQRnhlcjZRPT0=--f23e37ef7fb94e94cfa8a509f93bdb94e4bc5552"
+```
 
 # Datepickers
 There are two custom inputs in Udongo to help handles dates. ```DatePickerInput``` and ```DateRangePickerInput```. Both make use of the [bootstrap-datepicker](http://bootstrap-datepicker.readthedocs.io/en/stable/) JS plugin. You can set/override its defaults through data-attributes, as explained in the docs.
@@ -143,6 +167,7 @@ Applying ```as: :date_picker``` to a simple_form input will bind a datepicker wi
 ```erb
 <%= f.input :date, as: :date_picker %>
 ```
+
 ### DateRangePickerInput
 You can combine two datepicker input fields into a range picker by applying ```as: :date_range_picker``` to 2 different simple_form input fields.
 
@@ -161,9 +186,10 @@ The ```Udongo::Notification``` class provides a generic way to parse action noti
 nl:
   b:
     msg:
-      refreshed: De pagina werd opnieuw ingeladen. 
+      refreshed: De pagina werd opnieuw ingeladen.
 ```
-```ruby
+
+```
 irb(main):001:0> Udongo::Notification.new(:refreshed).translate
 => "De pagina werd opnieuw ingeladen."
 ```
@@ -176,6 +202,7 @@ nl:
     msg:
       added: '%{actor} werd toegevoegd.'
 ```
+
 ```ruby
 irb(main):001:0> Udongo::Notification.new(:added).translate(:admin)
 => "Beheerder werd toegevoegd."

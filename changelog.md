@@ -2,6 +2,13 @@
 --
 * Add spec for the SnippetForm class.
 * Add Udongo::Notification and use it in BackendController#translate_notice.
+* Fix issue with storable config fields that are present in the DB, but are no
+  longer in the storable class.
+* Flexible image preview no longer makes the URL previewable.
+* Classes in lib/udongo/**/* are now loaded automatically.
+* Restyled flexible content widget.
+* You now get a suggested width when adding a new content column in the
+  flexible content widget. Values are based on previously set column widths.
 
 
 1.0.3 - 2016-06-06

@@ -15,6 +15,8 @@ describe ContentRow do
   end
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:rowable, :columns)
+    expect(build(klass)).to respond_to(
+      :rowable, :columns, :column_width_calculator
+    )
   end
 end

@@ -26,7 +26,7 @@ var sortable = sortable || {
   },
 
   update_position_listener: function(e, ui) {
-    var new_position = ui.item[0].rowIndex;
+    var new_position = ui.item.index() + 1
 
     $.ajax({
       data: { position: new_position },

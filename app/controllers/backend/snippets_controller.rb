@@ -16,7 +16,8 @@ class Backend::SnippetsController < BackendController
     @form = Backend::SnippetForm.new
 
     if @form.save params[:snippet]
-      redirect_to edit_translation_backend_snippet_path(@form.snippet, translation_locale: default_locale), notice: translate_notice(:added, :snippet)
+      redirect_to edit_translation_backend_snippet_path(@form.snippet, translation_locale: default_locale),
+                  notice: translate_notice(:added, :snippet)
     else
       render :new
     end
@@ -30,7 +31,8 @@ class Backend::SnippetsController < BackendController
     @form = Backend::SnippetForm.new(@model)
 
     if @form.save params[:snippet]
-      redirect_to edit_backend_snippet_path(@model), notice: translate_notice(:edited, :snippet)
+      redirect_to edit_backend_snippet_path(@model),
+                  notice: translate_notice(:edited, :snippet)
     else
       render :edit
     end

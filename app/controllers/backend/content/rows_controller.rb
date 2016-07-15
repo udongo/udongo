@@ -1,5 +1,6 @@
 class Backend::Content::RowsController < BackendController
-  before_action :find_row, only: [:move_up, :move_down, :destroy]
+  include Concerns::Backend::PositionableController
+  before_action :find_model, only: [:update_position, :destroy]
 
   def new
     if params[:klass] && params[:id] && params[:locale]
@@ -12,16 +13,6 @@ class Backend::Content::RowsController < BackendController
     end
   end
 
-  def move_up
-    @row.move_higher
-    redirect_back_to_content
-  end
-
-  def move_down
-    @row.move_lower
-    redirect_back_to_content
-  end
-
   def destroy
     @row.destroy
     redirect_back_to_content('content-rows')
@@ -29,7 +20,7 @@ class Backend::Content::RowsController < BackendController
 
   private
 
-  def find_row
+  def find_model
     @row = ::ContentRow.find params[:id]
   end
 

@@ -57,15 +57,11 @@ Rails.application.routes.draw do
 
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
-        member do
-          get 'move_up', 'move_down'
-        end
+        concerns :positionable
 
         scope module: 'rows' do
           resources :columns do
-            member do
-              get 'move_up', 'move_down'
-            end
+            concerns :positionable
           end
         end
       end

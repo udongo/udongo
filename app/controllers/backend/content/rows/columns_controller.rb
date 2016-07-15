@@ -1,10 +1,12 @@
 class Backend::Content::Rows::ColumnsController < BackendController
+  include Concerns::Backend::PositionableController
+
   before_action :find_row
-  before_action :find_column, only: [:edit, :update, :move_up, :move_down, :destroy]
+  before_action :find_model, only: [:edit, :update, :update_position, :destroy]
   layout 'backend/lightbox'
 
   def new
-    @column = @row.columns.new
+    @column = @row.columns.new(@row.column_width_calculator.hashed_values)
     cancel_url
   end
 
@@ -29,16 +31,6 @@ class Backend::Content::Rows::ColumnsController < BackendController
     end
   end
 
-  def move_up
-    @column.move_higher
-    redirect_to cancel_url
-  end
-
-  def move_down
-    @column.move_lower
-    redirect_to cancel_url
-  end
-
   def destroy
     @column.destroy
 
@@ -52,7 +44,7 @@ class Backend::Content::Rows::ColumnsController < BackendController
     @row = ::ContentRow.find params[:row_id]
   end
 
-  def find_column
+  def find_model
     @column = ::ContentColumn.find params[:id]
   end
 

@@ -1,14 +1,16 @@
-<div class="filter">
-  <%= form_for :filter, url: backend_form_submissions_path, method: 'get', html: { class: 'form-inline' } do |f| %>
-    <div class="card">
-      <div class="card-block">
-        <% @filter.fields.each do |field| %>
-          <div class="form-group">
-            <%= text_field_tag "q[#{field.to_sym}]", @filter.params[field.to_sym], placeholder: t("b.#{field}"), class: 'form-control' %>
-          </div>
-        <% end %>
-        <%= button_tag t('b.filter'), class: 'btn btn-primary' %>
+<% if @filter.fields.any? %>
+  <div class="filter">
+    <%= form_for :filter, url: backend_form_submissions_path, method: 'get', html: { class: 'form-inline' } do |f| %>
+      <div class="card">
+        <div class="card-block">
+          <% @filter.fields.each do |field| %>
+            <div class="form-group">
+              <%= text_field_tag "q[#{field.to_sym}]", @filter.params[field.to_sym], placeholder: t("b.#{field}"), class: 'form-control' %>
+            </div>
+          <% end %>
+          <%= button_tag t('b.filter'), class: 'btn btn-primary' %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>

@@ -8,8 +8,14 @@ module Udongo
         @params = params || {}
       end
 
+      # TODO: Refactor duplicate in lib/udongo/forms/submission_datagrid.rb
+      def config
+        @config ||= Udongo.config.form_submissions[form.identifier.to_sym]
+      end
+
       def fields
-        Udongo.config.form_submissions[form.identifier.to_sym][:filter]
+        return [] if config.blank?
+        config[:filter]
       end
 
       def result

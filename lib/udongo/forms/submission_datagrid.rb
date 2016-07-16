@@ -18,6 +18,7 @@ module Udongo
         map_fields { |field| content_tag(:th, I18n.t("b.#{field}")) }
       end
 
+      # TODO: Refactor duplicate in lib/udongo/forms/submission_filter.rb
       def config
         @config ||= Udongo.config.form_submissions[form.identifier.to_sym]
       end

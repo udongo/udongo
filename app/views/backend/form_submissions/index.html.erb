@@ -9,7 +9,7 @@
         <% if @form.email_present? %>
           <th><%= t('b.email') %></th>
         <% end %>
-        <%= datagrid_column_headers(@form, @filter) %>
+        <%= @form.datagrid.column_headers(@filter) %>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -20,7 +20,7 @@
           <% if @form.email_present? %>
             <td><%= mail_to s.data_object.email %></td>
           <% end %>
-          <%= datagrid_column_values(@form, s) %>
+          <%= @form.datagrid.column_values(s) %>
           <td class="text-xs-right">
             <%= link_to icon(:pencil_square_o), edit_backend_form_submission_path(@form, s) %>
           </td>

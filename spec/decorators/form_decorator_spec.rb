@@ -4,6 +4,10 @@ describe FormDecorator do
   let(:instance) { create(:form).decorate }
   it('decorated?') { expect(instance).to be_decorated_with described_class }
 
+  it '#datagrid' do
+    expect(instance.datagrid).to be_instance_of Udongo::Forms::SubmissionDatagrid
+  end
+
   describe '#email_present?' do
     let(:submission) { create(:form_submission) }
 
@@ -22,7 +26,7 @@ describe FormDecorator do
 
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :email_present?
+      :datagrid, :email_present?
     )
   end
 end

@@ -7,8 +7,8 @@ describe Udongo::Forms::SubmissionDatagrid do
   let(:instance) { described_class.new(form) }
 
   before(:each) do
-    allow(Udongo.config).to receive(:form_submissions) do
-      { foo: { datagrid_fields: [:foo, :bar], filter: [:foo] } }
+    allow(Udongo.config.forms).to receive(:foo) do
+      OpenStruct.new(datagrid_fields: [:foo, :bar], filter_fields: [:foo])
     end
   end
 
@@ -19,7 +19,6 @@ describe Udongo::Forms::SubmissionDatagrid do
     end
 
     it 'with fields defined in config' do
-      allow(instance).to receive(:config) { { datagrid_fields: [:foo, :bar] } }
       expect(instance.fields).to eq [:foo, :bar]
     end
   end

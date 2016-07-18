@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Udongo::Config do
-  let(:instance) { Udongo::Config.new }
+  let(:instance) { described_class.new }
 
   describe 'defaults' do
     it :default_locale do
@@ -37,7 +37,7 @@ describe Udongo::Config do
     end
 
     it :form_datagrid_fields do
-      expect(instance.form_submissions).to eq({})
+      expect(instance.forms).to be_instance_of(Udongo::Configs::Forms)
     end
   end
 
@@ -47,7 +47,7 @@ describe Udongo::Config do
       :locales, :locales=, :prefix_routes_with_locale, :prefix_routes_with_locale=,
       :prefix_routes_with_locale?, :flexible_content_types, :flexible_content_types=,
       :allow_new_tags, :allow_new_tags?, :project_name, :project_name=,
-      :form_submissions, :form_submissions=
+      :forms, :forms=
     )
   end
 end

@@ -18,8 +18,8 @@ module Udongo
       end
 
       def fields
-        return [] if config.blank?
-        config[:datagrid_fields]
+        return [] if config.nil?
+        config.datagrid_fields
       end
 
       def map_fields(&block)

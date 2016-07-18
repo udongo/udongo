@@ -4,7 +4,7 @@ module Udongo
       attr_reader :form
 
       def config
-        @config ||= Udongo.config.form_submissions[form.identifier.to_sym]
+        Udongo.config.forms.send(form.identifier.to_sym)
       end
     end
   end

@@ -10,8 +10,8 @@ module Udongo
       end
 
       def fields
-        return [] if config.blank?
-        config[:filter]
+        return [] if config.nil?
+        config.filter_fields
       end
 
       def result

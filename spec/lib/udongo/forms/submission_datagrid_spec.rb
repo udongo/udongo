@@ -12,17 +12,6 @@ describe Udongo::Forms::SubmissionDatagrid do
     end
   end
 
-  describe '#config' do
-    it 'with matching form identifier' do
-      expect(instance.config).to eq({ datagrid_fields: [:foo, :bar], filter: [:foo] })
-    end
-
-    it 'without matching form identifier' do
-      form.update_attribute(:identifier, 'bar')
-      expect(instance.config).to be nil
-    end
-  end
-
   describe '#fields' do
     it 'no config' do
       form.update_attribute(:identifier, 'bar')

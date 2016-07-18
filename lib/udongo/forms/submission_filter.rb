@@ -1,16 +1,12 @@
 module Udongo
   module Forms
     class SubmissionFilter
-      attr_reader :form, :params
+      include Udongo::Forms::Config
+      attr_reader :params
 
       def initialize(form, params = {})
         @form = form
         @params = params || {}
-      end
-
-      # TODO: Refactor duplicate in lib/udongo/forms/submission_datagrid.rb
-      def config
-        @config ||= Udongo.config.form_submissions[form.identifier.to_sym]
       end
 
       def fields

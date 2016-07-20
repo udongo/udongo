@@ -98,8 +98,6 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    codeclimate-test-reporter (0.5.0)
-      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -124,7 +122,6 @@ GEM
       declarative (~> 0.0.6)
       representable (>= 2.4.0, <= 3.1.0)
       uber
-    docile (1.1.5)
     draper (1.4.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -284,11 +281,6 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    simplecov (0.11.2)
-      docile (~> 1.1.0)
-      json (~> 1.8)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.0)
     slop (3.6.0)
     sort_alphabetical (1.0.2)
       unicode_utils (>= 1.2.2)
@@ -331,7 +323,6 @@ DEPENDENCIES
   binding_of_caller
   capybara (~> 2.5.0)
   capybara-webkit (~> 1.8.0)
-  codeclimate-test-reporter (~> 0.5.0)
   database_cleaner
   factory_girl_rails
   guard-rspec (~> 4.6.4)

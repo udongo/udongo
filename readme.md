@@ -1,5 +1,13 @@
 [![Code Climate](https://codeclimate.com/github/udongo/udongo/badges/gpa.svg)](https://codeclimate.com/github/udongo/udongo)
 
+# Configuration settings
+## Base 
+
+## Tags
+## Snippets
+## Forms
+## ...
+
 # Concerns
 ## Storable concern
 ### Possible field types

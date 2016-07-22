@@ -34,17 +34,9 @@
         </tr>
       <% end %>
     </tbody>
-
-    <% if will_paginate %>
-      <tfoot>
-        <tr>
-          <td colspan="6">
-            <%= will_paginate %>
-          </td>
-        </tr>
-      </tfoot>
-    <% end  %>
   </table>
+
+  <%= udongo_paginate @redirects %>
 <% else %>
   <p><%= t 'b.msg.no_items' %></p>
 <% end %>

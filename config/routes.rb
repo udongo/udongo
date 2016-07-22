@@ -67,7 +67,7 @@ Rails.application.routes.draw do
       end
 
       scope module: 'rows' do
-        Udongo.config.flexible_content_types.each do |content_type|
+        Udongo.config.flexible_content.types.each do |content_type|
           resources content_type.to_s.pluralize.to_sym, only: [:edit, :update]
         end
       end

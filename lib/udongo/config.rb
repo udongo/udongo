@@ -7,8 +7,6 @@ module Udongo
     def initialize
       @configs = {}
 
-      @default_locale = :nl
-      @locales = %w(nl en fr de)
       @prefix_routes_with_locale = true
       @host = 'udongo.dev'
       @time_zone = 'Brussels'

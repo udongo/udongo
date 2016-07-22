@@ -19,7 +19,7 @@ class BackendController < ActionController::Base
   end
 
   def default_locale
-    Udongo.config.default_locale
+    Udongo.config.i18n.default_locale
   end
   helper_method :default_locale
 

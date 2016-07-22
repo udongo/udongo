@@ -9,7 +9,7 @@ module Concerns
       serialize :locales, Array
 
       after_save do
-        locales = ::Store.where(
+        locales = Store.where(
           storable_type: self.class,
           storable_id: self.id,
           name: self.class.translatable_fields_list

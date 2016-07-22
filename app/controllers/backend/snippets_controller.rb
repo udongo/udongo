@@ -5,7 +5,7 @@ class Backend::SnippetsController < BackendController
   before_action -> { breadcrumb.add t('b.snippets'), backend_snippets_path }
 
   def index
-    @snippets = ::Snippet.order(:description)
+    @snippets = Snippet.order(:description)
   end
 
   def new
@@ -41,7 +41,7 @@ class Backend::SnippetsController < BackendController
   private
 
   def find_model
-    @model = ::Snippet.find params[:id]
+    @model = Snippet.find params[:id]
   end
 
   def translation_form

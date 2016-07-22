@@ -39,11 +39,11 @@ class Backend::Navigation::ItemsController < BackendController
   private
 
   def find_navigation
-    @navigation = ::Navigation.find params[:navigation_id]
+    @navigation = Navigation.find params[:navigation_id]
   end
 
   def find_model
-    @model = ::NavigationItem.find(params[:id]).decorate
+    @model = NavigationItem.find(params[:id]).decorate
   end
 
   def allowed_params

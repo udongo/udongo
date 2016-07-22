@@ -1,6 +1,6 @@
 class RedirectsController < ActionController::Base
   def go
-    redirect = ::Redirect.find_by(source_uri: source_uri)
+    redirect = Redirect.find_by(source_uri: source_uri)
 
     if redirect && redirect.enabled?
       redirect.used!

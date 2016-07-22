@@ -21,7 +21,7 @@ class Backend::Content::RowsController < BackendController
   private
 
   def find_model
-    @row = ::ContentRow.find params[:id]
+    @row = ContentRow.find params[:id]
   end
 
   def content_path(instance, locale, anchor)

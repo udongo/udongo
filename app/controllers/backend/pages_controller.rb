@@ -5,7 +5,7 @@ class Backend::PagesController < BackendController
   before_action -> { breadcrumb.add t('b.pages'), backend_pages_path }
 
   def index
-    @pages = ::Page.all
+    @pages = Page.all
 
     respond_to do |format|
       format.html
@@ -16,11 +16,11 @@ class Backend::PagesController < BackendController
   end
 
   def new
-    @model = ::Page.new.decorate
+    @model = Page.new.decorate
   end
 
   def create
-    @model = ::Page.new(params.require('page').permit(:description, :visible, :parent_id)).decorate
+    @model = Page.new(params.require('page').permit(:description, :visible, :parent_id)).decorate
 
     if @model.save
       redirect_to edit_backend_page_path(@model), notice: translate_notice(:added, :page)
@@ -46,7 +46,7 @@ class Backend::PagesController < BackendController
   end
 
   def page_tree_data(parent_id: nil)
-    ::Page.where(parent_id: parent_id).inject([]) do |data, p|
+    Page.where(parent_id: parent_id).inject([]) do |data, p|
       hash = node_data p
       hash[:children] = page_tree_data(parent_id: p.id) if p.children.any?
       data << hash
@@ -56,7 +56,7 @@ class Backend::PagesController < BackendController
   private
 
   def find_model
-    @model = ::Page.find(params[:id]).decorate
+    @model = Page.find(params[:id]).decorate
   end
 
   def translation_form

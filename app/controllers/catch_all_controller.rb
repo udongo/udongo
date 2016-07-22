@@ -1,6 +1,6 @@
 class CatchAllController < ActionController::Base
   def resolve
-    redirect = ::Redirect.find_by(source_uri: request.path)
+    redirect = Redirect.find_by(source_uri: request.path)
 
     if redirect && redirect.enabled?
       redirect.used!

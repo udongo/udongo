@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Udongo::ContentRow::ColumnWidthCalculator do
+describe Udongo::FlexibleContent::ColumnWidthCalculator do
   let(:row) { create(:content_row) }
   let(:instance) { described_class.new(row) }
 

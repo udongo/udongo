@@ -1,6 +1,6 @@
 class Backend::Content::Rows::ImagesController < BackendController
   include Concerns::Backend::ContentTypeController
 
-  model ::ContentImage
+  model ContentImage
   allowed_params :file, :caption, :url
 end

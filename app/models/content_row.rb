@@ -10,6 +10,6 @@ class ContentRow < ActiveRecord::Base
   validates :locale, presence: true
 
   def column_width_calculator
-    @column_width_calculator ||= Udongo::ContentRow::ColumnWidthCalculator.new(self)
+    @column_width_calculator ||= Udongo::FlexibleContent::ColumnWidthCalculator.new(self)
   end
 end

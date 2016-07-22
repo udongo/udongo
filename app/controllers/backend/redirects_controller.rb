@@ -5,16 +5,16 @@ class Backend::RedirectsController < BackendController
   before_action :find_model, only: [:edit, :update, :destroy]
 
   def index
-    @search = ::Redirect.ransack params[:q]
+    @search = Redirect.ransack params[:q]
     @redirects = @search.result(distinct: true).order('times_used DESC').page(page_number).per_page(per_page)
   end
 
   def new
-    @redirect = ::Redirect.new(status_code: 301).decorate
+    @redirect = Redirect.new(status_code: 301).decorate
   end
 
   def create
-    @redirect = ::Redirect.new(allowed_params).decorate
+    @redirect = Redirect.new(allowed_params).decorate
 
     if @redirect.save
       redirect_to backend_redirects_path, notice: translate_notice(:added, :redirect)
@@ -45,6 +45,6 @@ class Backend::RedirectsController < BackendController
   end
 
   def find_model
-    @redirect = ::Redirect.find(params[:id]).decorate
+    @redirect = Redirect.find(params[:id]).decorate
   end
 end

@@ -1,5 +1,5 @@
 module Udongo
-  module ContentRow
+  module FlexibleContent
     class ColumnWidthCalculator
       attr_reader :row
 

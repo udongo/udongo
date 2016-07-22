@@ -3,7 +3,6 @@ module Udongo
     def initialize
       @configs = {}
 
-      @prefix_routes_with_locale = true
       @allow_new_tags = true
       @flexible_content_types = %w(text image)
     end
@@ -16,10 +15,6 @@ module Udongo
       end
 
       @configs[method_name]
-    end
-
-    def prefix_routes_with_locale?
-      prefix_routes_with_locale === true
     end
 
     def allow_new_tags?

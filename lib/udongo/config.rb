@@ -1,9 +1,5 @@
 module Udongo
   class Config
-    attr_accessor :default_locale, :locales, :prefix_routes_with_locale, :host,
-                  :time_zone, :allow_new_tags, :flexible_content_types,
-                  :project_name
-
     def initialize
       @configs = {}
 

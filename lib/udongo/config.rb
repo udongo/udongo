@@ -4,11 +4,8 @@ module Udongo
       @configs = {}
 
       @prefix_routes_with_locale = true
-      @host = 'udongo.dev'
-      @time_zone = 'Brussels'
       @allow_new_tags = true
       @flexible_content_types = %w(text image)
-      @project_name = 'Udongo'
     end
 
     def method_missing(method_name, *arguments, &block)

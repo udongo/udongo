@@ -2,9 +2,6 @@ module Udongo
   class Config
     def initialize
       @configs = {}
-
-      @allow_new_tags = true
-      @flexible_content_types = %w(text image)
     end
 
     def method_missing(method_name, *arguments, &block)
@@ -15,10 +12,6 @@ module Udongo
       end
 
       @configs[method_name]
-    end
-
-    def allow_new_tags?
-      allow_new_tags === true
     end
   end
 end

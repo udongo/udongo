@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
 
     resources :forms do
-      resources :form_submissions, as: :submissions
+      resources :submissions, controller: 'forms/submissions'
     end
 
     resources :navigations, only: [:index] do

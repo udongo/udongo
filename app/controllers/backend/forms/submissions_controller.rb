@@ -1,4 +1,4 @@
-class Backend::FormSubmissionsController < BackendController
+class Backend::Forms::SubmissionsController < Backend::Forms::BaseController
   include Concerns::PaginationController
   before_action :find_form
 

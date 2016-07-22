@@ -15,7 +15,7 @@ class Backend::SnippetForm < Udongo::Form
   end
 
   def self.model_name
-    ::Snippet.model_name
+    Snippet.model_name
   end
 
   def persisted?
@@ -25,7 +25,7 @@ class Backend::SnippetForm < Udongo::Form
   private
 
   def unique_identifier
-    qry = ::Snippet.unscoped
+    qry = Snippet.unscoped
     qry = qry.where.not(identifier: @snippet.identifier) if persisted?
 
     if qry.exists?(identifier: identifier)

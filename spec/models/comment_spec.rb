@@ -22,7 +22,7 @@ describe Comment do
       it :valid do
         comment = build(klass)
 
-        ::Comment::STATUSES.each do |status|
+        Comment::STATUSES.each do |status|
           comment.status = status
           expect(comment).to be_valid
         end

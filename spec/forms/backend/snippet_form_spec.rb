@@ -46,7 +46,7 @@ describe Backend::SnippetForm do
     it 'create' do
       expect(instance.save(valid_params)).to eq true
 
-      snippet = ::Snippet.first
+      snippet = Snippet.first
       expect(snippet.identifier).to eq 'foo'
       expect(snippet.description).to eq 'bar'
     end
@@ -59,7 +59,7 @@ describe Backend::SnippetForm do
         description: 'baz'
       )).to eq true
 
-      snippet = ::Snippet.first
+      snippet = Snippet.first
       expect(snippet.identifier).to eq 'bar'
       expect(snippet.description).to eq 'baz'
     end

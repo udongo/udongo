@@ -3,7 +3,7 @@ class Backend::AdminsController < BackendController
   before_action -> { breadcrumb.add t('b.admins'), backend_admins_path }
 
   def index
-    @admins = ::Admin.all
+    @admins = Admin.all
   end
 
   def show
@@ -11,11 +11,11 @@ class Backend::AdminsController < BackendController
   end
 
   def new
-    @admin = ::Admin.new
+    @admin = Admin.new
   end
 
   def create
-    @admin = ::Admin.new allowed_params
+    @admin = Admin.new allowed_params
 
     if @admin.save
       redirect_to backend_admins_path, notice: translate_notice(:added, :admin)
@@ -40,7 +40,7 @@ class Backend::AdminsController < BackendController
   private
 
   def find_admin
-    @admin = ::Admin.find params[:id]
+    @admin = Admin.find params[:id]
   end
 
   def allowed_params

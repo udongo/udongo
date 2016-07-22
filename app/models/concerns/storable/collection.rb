@@ -36,7 +36,7 @@ module Concerns
 
       def define_reader_method_for_uploader_field(field, options)
         self.class.send(:define_method, field) do
-          ::StoreWithFile.mount_uploader :value, options[:type]
+          StoreWithFile.mount_uploader :value, options[:type]
           store(field, file: true).value
         end
       end

@@ -16,7 +16,7 @@ namespace :udongo do
   namespace :content_images do
     desc 'Regenerate all the image versions.'
     task regenerate: :environment do
-      ::ContentImage.find_each do |i|
+      ContentImage.find_each do |i|
         if i.file?
           i.file.recreate_versions!
           i.save!

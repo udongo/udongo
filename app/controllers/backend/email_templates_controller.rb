@@ -6,15 +6,15 @@ class Backend::EmailTemplatesController < BackendController
   before_action -> { breadcrumb.add t('b.email_templates'), backend_email_templates_path }
 
   def index
-    @email_templates = ::EmailTemplate.all
+    @email_templates = EmailTemplate.all
   end
 
   def new
-    @model = ::EmailTemplate.new
+    @model = EmailTemplate.new
   end
 
   def create
-    @model = ::EmailTemplate.new allowed_params
+    @model = EmailTemplate.new allowed_params
 
     if @model.save
       redirect_to edit_translation_backend_email_template_path(@model, translation_locale: default_locale), notice: translate_notice(:added, :email_template)
@@ -34,7 +34,7 @@ class Backend::EmailTemplatesController < BackendController
   private
 
   def find_model
-    @model = ::EmailTemplate.find params[:id]
+    @model = EmailTemplate.find params[:id]
   end
 
   def translation_form

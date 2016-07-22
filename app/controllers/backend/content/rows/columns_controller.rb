@@ -41,11 +41,11 @@ class Backend::Content::Rows::ColumnsController < BackendController
   private
 
   def find_row
-    @row = ::ContentRow.find params[:row_id]
+    @row = ContentRow.find params[:row_id]
   end
 
   def find_model
-    @column = ::ContentColumn.find params[:id]
+    @column = ContentColumn.find params[:id]
   end
 
   def allowed_params

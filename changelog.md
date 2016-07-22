@@ -9,6 +9,7 @@
 * Restyled flexible content widget.
 * You now get a suggested width when adding a new content column in the
   flexible content widget. Values are based on previously set column widths.
+* The codebase had a lot of useless double semicolons, which have been removed.
 
 
 1.0.3 - 2016-06-06

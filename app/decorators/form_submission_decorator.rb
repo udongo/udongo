@@ -1,3 +1,3 @@
-class FormSubmissionDecorator < Draper::Decorator
+class FormSubmissionDecorator < ApplicationDecorator
   delegate_all
 end

@@ -1,4 +1,4 @@
-class PageDecorator < Draper::Decorator
+class PageDecorator < ApplicationDecorator
   delegate_all
 
   def options_for_parents

@@ -1,4 +1,4 @@
-class ContentImageDecorator < Draper::Decorator
+class ContentImageDecorator < ApplicationDecorator
   delegate_all
 
   def content_type_is?(value)

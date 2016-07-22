@@ -1,4 +1,4 @@
-class ContentRowDecorator < Draper::Decorator
+class ContentRowDecorator < ApplicationDecorator
   delegate_all
 
   # If the max. column count for the biggest screen medium is met, we can safely

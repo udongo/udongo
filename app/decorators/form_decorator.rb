@@ -1,4 +1,4 @@
-class FormDecorator < Draper::Decorator
+class FormDecorator < ApplicationDecorator
   delegate_all
 
   def datagrid

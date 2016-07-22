@@ -12,7 +12,6 @@ module Udongo
         map_fields { |field| content_tag(:td, submission.data_object.send(field)) }
       end
 
-      # TODO: Through filter we can perhaps prepare sort links here?
       def column_headers(filter)
         map_fields { |field| content_tag(:th, I18n.t("b.#{field}")) }
       end

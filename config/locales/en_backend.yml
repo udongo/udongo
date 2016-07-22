@@ -27,6 +27,7 @@ en:
     forms: Forms
     from: From
     general: General
+    house_number: House number
     html_content: HTML content
     last_name: Last name
     locale: Locale
@@ -59,6 +60,7 @@ en:
     status_code: Status code
     subject: Subject
     tags: Tags
+    telephone: Telephone
     title: Title
     to: To
     up: Up

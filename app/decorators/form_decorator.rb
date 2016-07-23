@@ -5,8 +5,6 @@ class FormDecorator < ApplicationDecorator
     @datagrid ||= Udongo::Forms::SubmissionDatagrid.new(object)
   end
 
-  # TODO: See if we can move this to Udongo::Forms::SubmissionDatagrid
-  # after Davy's config overhaul.
   def datagrid_fields_configured?
     Udongo.config.forms.send(identifier).datagrid_fields.any?
   end

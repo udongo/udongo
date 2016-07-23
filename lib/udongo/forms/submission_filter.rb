@@ -16,10 +16,12 @@ module Udongo
 
       def result
         data = FormSubmissionData.all
+
         params.each do |key,value|
           next if value.blank?
           data = data.where(name: key).where('value REGEXP ?', value)
         end
+
         FormSubmission.where(id: data.pluck(:submission_id).uniq)
       end
 

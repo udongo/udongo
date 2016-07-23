@@ -29,7 +29,7 @@ class Backend::TagboxController < BackendController
   end
 
   def tag_creatable?
-    !Tag.exists?(tag_params) && Udongo.config.allow_new_tags?
+    !Tag.exists?(tag_params) && Udongo.config.tags.allow_new?
   end
 
   def create_tag

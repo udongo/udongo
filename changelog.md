@@ -1,3 +1,9 @@
+2.0.0 - xxxx-xx-xx
+--
+* The system for setting config variables has changed. Every setting has moved
+  into separate namespaced classes. See the docs configuration section
+
+
 1.0.4 - 2016-07-23
 --
 * Add spec for the SnippetForm class.

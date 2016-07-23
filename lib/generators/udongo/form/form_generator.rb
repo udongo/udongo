@@ -24,10 +24,10 @@ class Udongo::FormGenerator < Rails::Generators::Base
   end
 
   def create_database_records
-    f = Form.create!(locales: Udongo.config.locales, identifier: name)
+    f = Form.create!(locales: Udongo.config.i18n.locales, identifier: name)
 
     @fields.each do |field|
-      field_object = f.fields.create!(locales: Udongo.config.locales, name: field.name, field_type: field.type)
+      field_object = f.fields.create!(locales: Udongo.config.i18n.locales, name: field.name, field_type: field.type)
       #field_object.validations.create!(locales: Udongo.config.locales, validation_class: 'Udongo::FormValidations::Required')
     end
 

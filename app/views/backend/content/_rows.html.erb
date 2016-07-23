@@ -32,7 +32,7 @@
             <div class="content-column col-xs-<%= column.width_xs %> col-sm-<%= column.width_sm %> col-md-<%= column.width_md %> col-lg-<%= column.width_lg %> col-xl-<%= column.width_xl %>" data-update-position="<%= update_position_backend_content_row_column_path(row, column) %>">
               <div class="card handle">
                 <div class="card-block">
-                  <% Udongo.config.flexible_content_types.each do |content_type| %>
+                  <% Udongo.config.flexible_content.types.each do |content_type| %>
                     <%= render("backend/content/#{content_type}", object: content) if content.content_type_is?(content_type)  %>
                   <% end %>
                 </div>

@@ -8,7 +8,7 @@
         <%= link_to t('b.general'), edit_backend_snippet_path(@model), class: klass %>
       </li>
 
-      <% Udongo.config.locales.each do |locale| %>
+      <% Udongo.config.i18n.locales.each do |locale| %>
         <li class="nav-item">
           <% klass = %w(nav-link) %>
           <% klass << 'active' if active == locale.to_sym %>

@@ -4,7 +4,7 @@
   moved into separate namespaced classes. See the docs configuration section
 
 
-1.0.4 - xxxx-xx-xx
+1.0.4 - 2016-07-23
 --
 * Add spec for the SnippetForm class.
 * Add Udongo::Notification and use it in BackendController#translate_notice.

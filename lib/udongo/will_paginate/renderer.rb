@@ -7,19 +7,23 @@ module Udongo
       protected
 
       def page_number(page)
-        tag :li, link(page, page, rel: rel_value(page)), class: ('current' if page == current_page)
+        list_classes = 'page-item'
+        list_classes += ' active' if page == current_page
+        tag(:li, link(page, page, class: 'page-link', rel: rel_value(page)), class: list_classes)
       end
 
       def previous_or_next_page(page, text, classname)
-        tag :li, link(text, page || '#'), class: [classname[0..3], classname, ('unavailable' unless page)].join(' ')
+        list_classes = [classname[0..3], classname, 'page-item']
+        list_classes.push('disabled') unless page
+        tag(:li, link(text, page || '#', class: 'page-link'), class: list_classes.join(' '))
       end
 
       def html_container(html)
-        tag :ul, html, container_attributes
+        tag(:nav, tag(:ul, html, container_attributes))
       end
 
       def gap
-        tag :li, link(super, '#'), class: 'unavailable'
+        tag(:li, link(super, '#', class: 'page-link'), class: 'page-item disabled')
       end
     end
   end

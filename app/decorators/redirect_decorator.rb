@@ -1,4 +1,4 @@
-class RedirectDecorator < Draper::Decorator
+class RedirectDecorator < ApplicationDecorator
   delegate_all
 
   def status_code_collection

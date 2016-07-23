@@ -1,4 +1,4 @@
-class ContentTextDecorator < Draper::Decorator
+class ContentTextDecorator < ApplicationDecorator
   delegate_all
 
   def render

@@ -231,3 +231,20 @@ class Backend::AdminsController < BackendController
 end
 ```
 
+## Configurable form submissions datagrids
+There are two things you can configure in ```config/initializers/udongo.rb``` to affect the form submission datagrids in the CMS:
+* The visible columns in the datagrid
+* Which fields the filter should have
+
+```ruby
+Udongo.configure do |config|
+  config.form_submissions = {
+    contest: {
+      filter: %w(email last_name),
+      datagrid_fields: %w(last_name first_name telephone)
+    }
+  }
+end
+```
+
+Note that the ```contest``` in the config above maps to a ```Form#identifier```. This way you can have different configurations per submissions page.

@@ -1,0 +1,34 @@
+<%= render 'backend/breadcrumbs' %>
+<%= render 'filter' %>
+
+<% if @submissions.any? %>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <% if @form.email_present? %>
+          <th><%= t('b.email') %></th>
+        <% end %>
+        <%= @form.datagrid.column_headers(@filter) %>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @submissions.each do |s| %>
+        <tr>
+          <% if @form.email_present? %>
+            <td><%= mail_to s.data_object.email %></td>
+          <% end %>
+          <%= @form.datagrid.column_values(s) %>
+          <td class="text-xs-right">
+            <%= link_to icon(:pencil_square_o), edit_backend_form_submission_path(@form, s) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= udongo_paginate @submissions %>
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

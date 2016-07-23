@@ -1,4 +1,4 @@
-class NavigationItemDecorator < Draper::Decorator
+class NavigationItemDecorator < ApplicationDecorator
   delegate_all
 
   def label

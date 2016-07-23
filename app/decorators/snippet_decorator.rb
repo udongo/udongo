@@ -1,4 +1,4 @@
-class SnippetDecorator < Draper::Decorator
+class SnippetDecorator < ApplicationDecorator
   def title
     string = object.title.to_s
     object.allow_html_in_title? ? string.html_safe : string

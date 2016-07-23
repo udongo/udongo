@@ -1,12 +1,74 @@
 [![Code Climate](https://codeclimate.com/github/udongo/udongo/badges/gpa.svg)](https://codeclimate.com/github/udongo/udongo)
 
 # Configuration settings
-## Base 
+Every configuration setting has been moved in groups within separate classes.
+The syntax is always ```Udongo.config.[namespace].[setting]```
+
+## Base
+### host 
+```ruby
+Udongo.config.base.host = 'udongo.dev'
+```
+
+### project_name
+```ruby
+Udongo.config.base.project_name = 'Udongo'
+```
+
+### time_zone
+```ruby
+Udongo.config.base.time_zone = 'Brussels'
+```
 
 ## Tags
-## Snippets
+### allow_new
+```ruby
+Udongo.config.tags.allow_new = false
+```
+
+## I18n
+### default_locale
+```ruby
+Udongo.config.i18n.default_locale = :nl
+```
+
+### locales
+```ruby
+Udongo.config.i18n.locales = %w(nl en fr de)
+```
+
+## Flexible content
+### types
+```ruby
+Udongo.config.flexible_content.types = %w(text image)
+```
+
+## Routes
+### prefix_with_locale
+```ruby
+Udongo.config.routes.prefix_with_locale = true
+```
+
 ## Forms
-## ...
+At this moment configurations are always form specific. Let's assume you have a
+form with ```contact``` as identifier.
+
+### filter_fields
+```ruby
+Udongo.config.forms.contact.filter_fields = %w(first_name last_name email)
+```
+
+In this scenario there will be 3 fields above the list of submissions for the
+contact form that you can use to search through the data.
+
+### datagrid_fields
+```ruby
+Udongo.config.forms.contact.datagrid_fields = %w(first_name last_name email)
+```
+
+The datagrid will only contain those 3 fields. If no fields are defined we fall
+back to displaying all fields within a single column named 'data'.
+
 
 # Concerns
 ## Storable concern

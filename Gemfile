@@ -20,7 +20,7 @@ end
 
 group :test, :development do
   gem 'spring-commands-rspec', '~> 1.0.4'
-  # gem 'rspec-rails', '~> 3.4.0'
+  gem 'rspec-rails', '~> 3.5.1'
   gem 'guard-rspec', '~> 4.6.4'
   gem 'factory_girl_rails', '~> 4.7.0', require: false
   gem 'rb-fsevent', '~> 0.9.7' if `uname` =~ /Darwin/

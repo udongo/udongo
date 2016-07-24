@@ -11,23 +11,23 @@ gemspec
 # your gem to rubygems.org.
 
 group :test do
-  # gem 'launchy'
-  # gem 'database_cleaner'
-  # gem 'capybara', '~> 2.5.0'
-  # gem 'webmock', '~> 1.22.3'
-  # gem 'capybara-webkit', '~> 1.8.0'
+  gem 'launchy', '~> 2.4.3'
+  gem 'database_cleaner', '~> 1.5.3'
+  gem 'capybara', '~> 2.5.0'
+  gem 'webmock', '~> 1.22.3'
+  gem 'capybara-webkit', '~> 1.8.0'
 end
 
 group :test, :development do
-  # gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'spring-commands-rspec', '~> 1.0.4'
   # gem 'rspec-rails', '~> 3.4.0'
-  # gem 'guard-rspec', '~> 4.6.4'
-  # gem 'factory_girl_rails', require: false
-  # gem 'rb-fsevent' if `uname` =~ /Darwin/
-  # gem 'letter_opener', '~> 1.4.1'
+  gem 'guard-rspec', '~> 4.6.4'
+  gem 'factory_girl_rails', '~> 4.7.0', require: false
+  gem 'rb-fsevent', '~> 0.9.7' if `uname` =~ /Darwin/
+  gem 'letter_opener', '~> 1.4.1'
 end
 
 group :development do
-  # gem 'better_errors'
-  # gem 'binding_of_caller'
+  gem 'better_errors', '~> 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
 end

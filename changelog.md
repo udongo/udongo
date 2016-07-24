@@ -3,6 +3,7 @@
 * The system for setting config variables has changed. Every setting has moved
   into separate namespaced classes. See the docs configuration section
 * Fix the form settings subclasses.
+* Upgrade to rails 5.
 
 
 1.0.4 - 2016-07-23

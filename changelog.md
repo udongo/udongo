@@ -2,6 +2,7 @@
 --
 * The system for setting config variables has changed. Every setting has moved
   into separate namespaced classes. See the docs configuration section
+* Fix the form settings subclasses.
 
 
 1.0.4 - 2016-07-23

@@ -33,7 +33,7 @@ describe Udongo::Forms::SubmissionDatagrid do
     end
 
     it '#column_headers' do
-      expect(instance.column_headers(filter)).to eq '<th>Voornaam</th>'
+      expect(instance.column_headers).to eq '<th>Voornaam</th>'
     end
 
     it '#column_values' do
@@ -42,8 +42,6 @@ describe Udongo::Forms::SubmissionDatagrid do
   end
 
   it '#responds_to?' do
-    expect(instance).to respond_to(
-      :column_headers, :column_values
-    )
+    expect(instance).to respond_to(:column_headers, :column_values)
   end
 end

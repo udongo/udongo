@@ -39,6 +39,6 @@ describe Udongo::Forms::SubmissionFilter do
   end
 
   it '#responds_to?' do
-    expect(instance).to respond_to(:result, :config, :fields)
+    expect(instance).to respond_to(:result, :fields)
   end
 end

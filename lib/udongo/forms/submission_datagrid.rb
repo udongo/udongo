@@ -1,7 +1,6 @@
 module Udongo
   module Forms
     class SubmissionDatagrid
-      include Udongo::Forms::Config
       include ActionView::Helpers::TagHelper
 
       def initialize(form)
@@ -12,13 +11,12 @@ module Udongo
         map_fields { |field| content_tag(:td, submission.data_object.send(field)) }
       end
 
-      def column_headers(filter)
+      def column_headers
         map_fields { |field| content_tag(:th, I18n.t("b.#{field}")) }
       end
 
       def fields
-        return [] if config.nil?
-        config.datagrid_fields
+        Udongo.config.forms.send(@form.identifier).datagrid_fields
       end
 
       def map_fields(&block)

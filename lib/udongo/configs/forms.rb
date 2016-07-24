@@ -2,12 +2,16 @@ module Udongo
   module Configs
     class Forms
       def initialize
-        @submission_datagrids = {}
+        @configs = {}
       end
 
       def method_missing(method, *args, &block)
-        form = ::Form.find_by!(identifier: method)
-        @submission_datagrids[form.identifier.to_sym] ||= OpenStruct.new(datagrid_fields: [], filter_fields: [])
+        unless @configs[method]
+          super unless ::Form.find_by(identifier: method)
+          @configs[method] = OpenStruct.new(datagrid_fields: [], filter_fields: [])
+        end
+
+        @configs[method]
       end
     end
   end

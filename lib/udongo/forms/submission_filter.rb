@@ -1,7 +1,6 @@
 module Udongo
   module Forms
     class SubmissionFilter
-      include Udongo::Forms::Config
       attr_reader :params
 
       def initialize(form, params = {})
@@ -10,8 +9,7 @@ module Udongo
       end
 
       def fields
-        return [] if config.nil?
-        config.filter_fields
+        Udongo.config.forms.send(@form.identifier).filter_fields
       end
 
       def result

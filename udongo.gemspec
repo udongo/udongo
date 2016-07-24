@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md']
 
   # General
-  s.add_dependency 'rails', '4.2.6'
+  s.add_dependency 'rails', '5.0.0'
 
   # Javascript related
   s.add_dependency 'jquery-rails', '~> 4.0', '>= 4.0.5'
@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'carrierwave', '~> 0.10', '>= 0.10.0'
   s.add_dependency 'reform', '~> 2.1', '>= 2.1.0'
   s.add_dependency 'redcarpet', '~> 3.3', '>= 3.3.3'
-  s.add_dependency 'draper', '~> 1.4', '>= 1.4.0'
+  s.add_dependency 'draper', '3.0.0.pre1'
   s.add_dependency 'ransack', '~> 1.7', '>= 1.7.0'
   s.add_dependency 'responders', '~> 2.1', '>= 2.1.0'
   s.add_dependency 'ckeditor', '~> 4.1', '>= 4.1.4'

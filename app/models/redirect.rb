@@ -1,4 +1,4 @@
-class Redirect < ActiveRecord::Base
+class Redirect < ApplicationRecord
   validates :source_uri, :destination_uri, :status_code, presence: true
   validates :source_uri, uniqueness: { case_sensitive: false }
 

@@ -1,4 +1,4 @@
-class Navigation < ActiveRecord::Base
+class Navigation < ApplicationRecord
   has_many :items, class_name: 'NavigationItem', dependent: :destroy
 
   validates :description, presence: true

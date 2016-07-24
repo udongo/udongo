@@ -1,4 +1,4 @@
-class ContentRow < ActiveRecord::Base
+class ContentRow < ApplicationRecord
   include Concerns::Locale
 
   include Concerns::Sortable

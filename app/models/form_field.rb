@@ -1,4 +1,4 @@
-class FormField < ActiveRecord::Base
+class FormField < ApplicationRecord
   include Concerns::Sortable
   sortable scope: [:form_id]
 

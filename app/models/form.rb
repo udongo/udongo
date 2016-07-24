@@ -1,4 +1,4 @@
-class Form < ActiveRecord::Base
+class Form < ApplicationRecord
   include Concerns::Translatable
   translatable_fields :success_message
 

@@ -1,4 +1,4 @@
-class Email < ActiveRecord::Base
+class Email < ApplicationRecord
   validates :from_name, :to_name, :subject, :plain_content, :html_content,
             presence: true
   validates :from_email, :to_email,

@@ -1,4 +1,4 @@
-class Log < ActiveRecord::Base
+class Log < ApplicationRecord
   serialize :data, Hash
 
   belongs_to :loggable, polymorphic: true

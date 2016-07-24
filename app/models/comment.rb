@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   include Concerns::Parentable
   include Concerns::Locale
   include Concerns::Spammable

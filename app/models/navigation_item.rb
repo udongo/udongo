@@ -1,4 +1,4 @@
-class NavigationItem < ActiveRecord::Base
+class NavigationItem < ApplicationRecord
   include Concerns::Sortable
   sortable scope: :navigation_id
 

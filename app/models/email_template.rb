@@ -1,4 +1,4 @@
-class EmailTemplate < ActiveRecord::Base
+class EmailTemplate < ApplicationRecord
   include Concerns::Translatable
   translatable_fields :subject, :plain_content, :html_content
 

@@ -1,4 +1,4 @@
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   include Concerns::Taggable
   include Concerns::Parentable
   include Concerns::Visible

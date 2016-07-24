@@ -1,4 +1,4 @@
-class FormFieldValidation < ActiveRecord::Base
+class FormFieldValidation < ApplicationRecord
   include Concerns::Sortable
   sortable scope: [:field_id]
 

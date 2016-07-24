@@ -1,4 +1,4 @@
-class ContentColumn < ActiveRecord::Base
+class ContentColumn < ApplicationRecord
   include Concerns::Sortable
   sortable(scope: :row_id)
 

@@ -1,4 +1,4 @@
-class TaggedItem < ActiveRecord::Base
+class TaggedItem < ApplicationRecord
   belongs_to :taggable, polymorphic: true
   belongs_to :tag
 

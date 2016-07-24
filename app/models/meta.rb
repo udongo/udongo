@@ -1,4 +1,4 @@
-class Meta < ActiveRecord::Base
+class Meta < ApplicationRecord
   include Concerns::Locale
 
   belongs_to :sluggable, polymorphic: true, touch: true

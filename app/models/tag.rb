@@ -1,4 +1,4 @@
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   include Concerns::Locale
 
   validates :locale, :name, :slug, presence: true

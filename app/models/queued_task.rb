@@ -1,4 +1,4 @@
-class QueuedTask < ActiveRecord::Base
+class QueuedTask < ApplicationRecord
   validates :klass, presence: true
 
   serialize :data, Hash

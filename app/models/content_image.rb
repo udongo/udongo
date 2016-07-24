@@ -1,4 +1,4 @@
-class ContentImage < ActiveRecord::Base
+class ContentImage < ApplicationRecord
   include Concerns::ContentType
 
   mount_uploader :file, ContentImageUploader

@@ -83,7 +83,7 @@ back to displaying all fields within a single column named 'data'.
 
 ### Setup
 ```ruby
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Concerns::Storable
 
   storable_field :gender, String, 'male'

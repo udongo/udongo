@@ -1,4 +1,4 @@
-class FormSubmission < ActiveRecord::Base
+class FormSubmission < ApplicationRecord
   include Concerns::Emailable
 
   belongs_to :form

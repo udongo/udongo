@@ -1,4 +1,4 @@
-class Store < ActiveRecord::Base
+class Store < ApplicationRecord
   belongs_to :storable, polymorphic: true, touch: true
 
   serialize :value

@@ -1,4 +1,4 @@
-class Snippet < ActiveRecord::Base
+class Snippet < ApplicationRecord
   include Concerns::Translatable
   translatable_fields :title, :content
 

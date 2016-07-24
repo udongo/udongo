@@ -23,7 +23,9 @@ class QueuedTask < ApplicationRecord
   end
 
   def self.queue_unless_already_queued(klass, data)
-    self.queue(klass, data) if where(klass: klass).where('data = ?', data.to_yaml).empty?
+    if where(klass: klass.to_s).where('data = ?', data.to_yaml).empty?
+      self.queue(klass.to_s, data)
+    end
   end
 
   def dequeue!

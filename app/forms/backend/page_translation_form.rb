@@ -1,7 +1,7 @@
 class Backend::PageTranslationForm < Reform::Form
   include Composition
 
-  model :page
+  # model :page
 
   property :title, on: :translation
   property :subtitle, on: :translation

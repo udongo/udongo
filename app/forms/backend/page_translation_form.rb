@@ -15,3 +15,36 @@ class Backend::PageTranslationForm < Reform::Form
   validates :title, presence: true
   validates :seo_slug, presence: true
 end
+
+class Backend::PageTranslationForm < Udongo::Form
+  attr_reader :page, :translation
+
+  # attributes...
+
+  # validations...
+
+  delegate :id, to: :page
+
+  def initialize(page, translation)
+    @page = page
+    @translation = translation
+
+    init_attribute_values(translation)
+  end
+
+  def self.model_name
+    Page.model_name
+  end
+
+  def persisted?
+    true
+  end
+
+  private
+
+  def save_object
+    # set translation fields
+    # set seo fields
+    # save it
+  end
+end

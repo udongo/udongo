@@ -1,5 +1,6 @@
 2.0.1 - xxxx-xx-xx
 --
+* Upgrade bootstrap v4 from alpha 2 to alpha 3.
 
 
 2.0.0 - 2016-07-29

@@ -4,7 +4,7 @@ module Udongo
     include Virtus.model
 
     def initialize(object)
-      instance_variable_set("@#{object.class.to_s.underscore}", object)
+      instance_var_name object
       init_attribute_values(object)
     end
 
@@ -40,6 +40,11 @@ module Udongo
 
     # Written in the subclass
     def save_object
+    end
+
+    def instance_var_name(object)
+      name = "@#{object.class.to_s.underscore.gsub('_decorator', '')}"
+      instance_variable_set(name, object)
     end
   end
 end

@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rmagick', '~> 2.15', '>= 2.15.4'
   s.add_dependency 'mini_magick', '~> 4.3', '>= 4.3.6'
   s.add_dependency 'carrierwave', '~> 0.10', '>= 0.10.0'
-  s.add_dependency 'reform', '~> 2.1', '>= 2.1.0'
+  s.add_dependency 'reform-rails', '~> 0.1', '>= 0.1.4'
   s.add_dependency 'redcarpet', '~> 3.3', '>= 3.3.3'
   s.add_dependency 'draper', '3.0.0.pre1'
   s.add_dependency 'ransack', '~> 1.7', '>= 1.7.0'

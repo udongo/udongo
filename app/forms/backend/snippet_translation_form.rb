@@ -10,8 +10,7 @@ class Backend::SnippetTranslationForm < Udongo::Form
     @snippet = snippet
     @translation = translation
 
-    self.title = translation.title
-    self.content = translation.content
+    init_attribute_values(translation)
   end
 
   def self.model_name
@@ -25,7 +24,7 @@ class Backend::SnippetTranslationForm < Udongo::Form
   private
 
   def save_object
-    attributes.each { |k, v| @translation.send("#{k}=", v) }
+    init_object_values(@translation)
     @translation.save
   end
 end

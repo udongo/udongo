@@ -1,0 +1,16 @@
+nl:
+  g:
+    address: Adres
+    cancel: Annuleren
+    category: Categorie
+    close: Sluiten
+    first_name: Voornaam
+    last_name: Achternaam
+    description: Beschrijving
+    email: E-mail
+    house_number: Huisnummer
+    name: Naam
+    save: Opslaan
+    search: Zoeken
+    subject: Onderwerp
+    telephone: Telefoon

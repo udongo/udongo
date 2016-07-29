@@ -4,6 +4,7 @@
   into separate namespaced classes. See the docs configuration section
 * Fix the form settings subclasses.
 * Upgrade to rails 5.
+* Add nl_general.
 
 
 1.0.4 - 2016-07-23

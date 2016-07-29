@@ -45,9 +45,6 @@ class Backend::SnippetsController < BackendController
   end
 
   def translation_form
-    Backend::SnippetTranslationForm.new(
-      snippet: @model,
-      translation: @model.translation(params[:translation_locale])
-    )
+    Backend::SnippetTranslationForm.new(@model, @model.translation(params[:translation_locale]))
   end
 end

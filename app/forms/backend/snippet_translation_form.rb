@@ -1,8 +1,31 @@
-class Backend::SnippetTranslationForm < Reform::Form
-  include Composition
+class Backend::SnippetTranslationForm < Udongo::Form
+  attr_reader :snippet, :translation
 
-  model :snippet
+  attribute :title, String
+  attribute :content, String
 
-  property :title, on: :translation
-  property :content, on: :translation
+  delegate :id, to: :snippet
+
+  def initialize(snippet, translation)
+    @snippet = snippet
+    @translation = translation
+
+    self.title = translation.title
+    self.content = translation.content
+  end
+
+  def self.model_name
+    Snippet.model_name
+  end
+
+  def persisted?
+    true
+  end
+
+  private
+
+  def save_object
+    attributes.each { |k, v| @translation.send("#{k}=", v) }
+    @translation.save
+  end
 end

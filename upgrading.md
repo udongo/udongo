@@ -1,4 +1,7 @@
 # Upgrade guide
+## From 2.0.0 to 2.0.1
+
+
 ## From 1.0.4 to 2.0.0
 ### Configuration
 Configuration options have been placed in subclasses that are autoloaded. Consult

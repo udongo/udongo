@@ -9,11 +9,6 @@ class Backend::SnippetForm < Udongo::Form
 
   delegate :id, to: :snippet
 
-  def initialize(snippet = nil)
-    @snippet = snippet || Snippet.new
-    attributes.keys.each { |k| send("#{k}=", @snippet.send(k)) } if snippet
-  end
-
   def self.model_name
     Snippet.model_name
   end
@@ -34,7 +29,7 @@ class Backend::SnippetForm < Udongo::Form
   end
 
   def save_object
-    attributes.each { |k, v| @snippet.send("#{k}=", v) }
+    init_object_values(@snippet)
     @snippet.save!
   end
 end

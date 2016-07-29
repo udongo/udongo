@@ -8,7 +8,7 @@ describe Backend::SnippetForm do
       description: 'bar'
     }
   end
-  let(:instance) { klass.new }
+  let(:instance) { klass.new(Snippet.new) }
 
   describe 'validations' do
     describe 'presence' do
@@ -72,11 +72,11 @@ describe Backend::SnippetForm do
     end
 
     it :false do
-      expect(klass.new).not_to be_persisted
+      expect(klass.new(Snippet.new)).not_to be_persisted
     end
   end
 
   it '#respond_to' do
-    expect(klass.new).to respond_to(:save, :persisted?, :snippet)
+    expect(klass.new(Snippet.new)).to respond_to(:save, :persisted?, :snippet)
   end
 end

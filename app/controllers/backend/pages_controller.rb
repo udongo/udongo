@@ -16,21 +16,27 @@ class Backend::PagesController < BackendController
   end
 
   def new
-    @model = Page.new.decorate
+    @form = Backend::PageForm.new(Page.new.decorate)
   end
 
   def create
-    @model = Page.new(params.require('page').permit(:description, :visible, :parent_id)).decorate
+    @form = Backend::PageForm.new(Page.new.decorate)
 
-    if @model.save
-      redirect_to edit_backend_page_path(@model), notice: translate_notice(:added, :page)
+    if @form.save params[:page]
+      redirect_to edit_backend_page_path(@form.page), notice: translate_notice(:added, :page)
     else
       render :new
     end
   end
 
+  def edit
+    @form = Backend::PageForm.new(@model)
+  end
+
   def update
-    if @model.update_attributes(params.require('page').permit(:description, :visible, :parent_id))
+    @form = Backend::PageForm.new(@model)
+
+    if @form.save params[:page]
       redirect_to edit_backend_page_path(@model), notice: translate_notice(:edited, :page)
     else
       render :edit

@@ -1,11 +1,11 @@
 class Backend::PageForm < Udongo::Form
   attr_reader :page
 
-  attribute :identifier, String
+  attribute :parent_id, Integer
   attribute :description, String
+  attribute :visible, Axiom::Types::Boolean
 
-  validates :identifier, :description, presence: true
-  validate :unique_identifier
+  validates :description, presence: true
 
   delegate :id, to: :page
 
@@ -18,15 +18,6 @@ class Backend::PageForm < Udongo::Form
   end
 
   private
-
-  def unique_identifier
-    qry = Page.unscoped
-    qry = qry.where.not(identifier: @page.identifier) if persisted?
-
-    if qry.exists?(identifier: identifier)
-      errors.add :identifier, I18n.t('errors.messages.taken')
-    end
-  end
 
   def save_object
     init_object_values(@page)

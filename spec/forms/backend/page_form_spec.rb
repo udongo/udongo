@@ -4,7 +4,6 @@ describe Backend::PageForm do
   let(:klass) { described_class }
   let(:valid_params) do
     {
-      identifier: 'foo',
       description: 'bar'
     }
   end
@@ -17,29 +16,6 @@ describe Backend::PageForm do
         expect(instance.save(params)).to eq false
       end
     end
-
-    describe 'identifier' do
-      it :presence do
-        params = valid_params.merge(identifier: nil)
-        expect(instance.save(params)).to eq false
-      end
-
-      describe 'unique' do
-        it 'create' do
-          create(:page, valid_params)
-
-          params = valid_params.merge(identifier: 'foo')
-          expect(instance.save(params)).to eq false
-        end
-
-        it 'update' do
-          page = create(:page, valid_params)
-
-          params = valid_params.merge(identifier: 'foo')
-          expect(klass.new(page).save(params)).to eq true
-        end
-      end
-    end
   end
 
   describe '#save' do
@@ -47,7 +23,6 @@ describe Backend::PageForm do
       expect(instance.save(valid_params)).to eq true
 
       page = Page.first
-      expect(page.identifier).to eq 'foo'
       expect(page.description).to eq 'bar'
     end
 
@@ -55,12 +30,10 @@ describe Backend::PageForm do
       page = create(:page, valid_params)
 
       expect(klass.new(page).save(
-        identifier: 'bar',
         description: 'baz'
       )).to eq true
 
       page = Page.first
-      expect(page.identifier).to eq 'bar'
       expect(page.description).to eq 'baz'
     end
   end

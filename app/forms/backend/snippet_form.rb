@@ -10,7 +10,7 @@ class Backend::SnippetForm < Udongo::Form
   delegate :id, to: :snippet
 
   def initialize(snippet = nil)
-    @snippet = snippet || ::Snippet.new
+    @snippet = snippet || Snippet.new
     attributes.keys.each { |k| send("#{k}=", @snippet.send(k)) } if snippet
   end
 

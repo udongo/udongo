@@ -5,6 +5,7 @@
 * Fix the form settings subclasses.
 * Upgrade to rails 5.
 * Add nl_general.
+* Add the spec directory to the gem so you can use its factories and concerns.
 
 
 1.0.4 - 2016-07-23

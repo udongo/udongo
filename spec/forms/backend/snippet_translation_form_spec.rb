@@ -24,6 +24,6 @@ describe Backend::SnippetTranslationForm do
   it '#respond_to' do
     snippet = create(:snippet)
     instance = klass.new(snippet, snippet.translation)
-    expect(instance).to respond_to(:save, :persisted?, :snippet)
+    expect(instance).to respond_to(:save, :persisted?, :snippet, :translation)
   end
 end

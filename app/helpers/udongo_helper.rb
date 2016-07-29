@@ -6,7 +6,7 @@ module UdongoHelper
   end
 
   def restart_webserver_button
-    link_to I18n.t('b.restart_webserver'), backend_restart_webserver_path, class: 'button', method: 'post'
+    link_to I18n.t('b.restart_webserver'), backend_restart_webserver_path, class: 'btn btn-info', method: 'post'
   end
 
   # Before using: Put <%= yield(:stylesheets) %> in the <head> of your app's frontend

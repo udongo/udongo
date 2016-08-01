@@ -46,13 +46,10 @@ describe Backend::PageTranslationForm do
   end
 
   it '#persisted?' do
-    page = create(:page)
-    expect(klass.new(page, page.translation, page.seo)).to be_persisted
+    expect(instance).to be_persisted
   end
 
   it '#respond_to' do
-    page = create(:page)
-    instance = klass.new(page, page.translation, page.seo)
     expect(instance).to respond_to(:save, :persisted?, :page, :translation, :seo)
   end
 end

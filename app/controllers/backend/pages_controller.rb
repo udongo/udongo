@@ -69,9 +69,9 @@ class Backend::PagesController < BackendController
 
   def translation_form
     Backend::PageTranslationForm.new(
-      page: @model,
-      translation: @model.translation(params[:translation_locale]),
-      seo: @model.seo(params[:translation_locale])
+      @model,
+      @model.translation(params[:translation_locale]),
+      @model.seo(params[:translation_locale])
     )
   end
 

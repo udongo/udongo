@@ -308,13 +308,9 @@ There are two things you can configure in ```config/initializers/udongo.rb``` to
 
 ```ruby
 Udongo.configure do |config|
-  config.form_submissions = {
-    contest: {
-      filter: %w(email last_name),
-      datagrid_fields: %w(last_name first_name telephone)
-    }
-  }
+  config.forms.contact.datagrid_fields = %w(last_name first_name telephone)
+  config.forms.contact.filter_fields = %w(email last_name)
 end
 ```
 
-Note that the ```contest``` in the config above maps to a ```Form#identifier```. This way you can have different configurations per submissions page.
+Note that the ```contact``` in the config above maps to a ```Form#identifier```. This way you can have different configurations per submissions page.

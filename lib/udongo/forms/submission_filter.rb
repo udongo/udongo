@@ -13,14 +13,14 @@ module Udongo
       end
 
       def result
-        data = FormSubmissionData.all
+        data = @form.data
 
         params.each do |key,value|
           next if value.blank?
           data = data.where(name: key).where('value REGEXP ?', value)
         end
 
-        FormSubmission.where(id: data.pluck(:submission_id).uniq)
+        @form.submissions.where(id: data.pluck(:submission_id).uniq)
       end
 
       def self.search(*args)

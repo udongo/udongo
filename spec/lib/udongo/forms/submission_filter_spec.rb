@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 describe Udongo::Forms::SubmissionFilter do
-  let(:form) { create(:form) }
+  let(:form) { create(:form, identifier: 'foo') }
   let(:instance) { described_class.new(form) }
 
   describe '#result' do
-    let(:a) { create(:form_submission) }
-    let(:b) { create(:form_submission) }
+    let(:other_form) { create(:form, identifier: 'contact') }
+    let(:a) { create(:form_submission, form: form) }
+    let(:b) { create(:form_submission, form: form) }
+    let(:c) { create(:form_submission, form: other_form) }
 
     it 'default' do
       expect(instance.result).to eq []
@@ -16,6 +18,7 @@ describe Udongo::Forms::SubmissionFilter do
       before(:each) do
         create(:form_submission_data, submission: a, name: 'foo', value: 'bar')
         create(:form_submission_data, submission: b, name: 'foo', value: 'baz')
+        create(:form_submission_data, submission: c, name: 'foo', value: 'baz')
       end
 
       it 'no params given, ignore filter' do

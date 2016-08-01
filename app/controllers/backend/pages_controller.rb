@@ -44,10 +44,12 @@ class Backend::PagesController < BackendController
   end
 
   def tree_drag_and_drop
+    # TODO (Dave) - check if this page is draggable.
     render json: { moved: @model.set_position(params[:position], params[:parent_id]) }
   end
 
   def destroy
+    # TODO (Dave) - check if this page may be destroyed.
     render json: { trashed: @model.destroy }
   end
 

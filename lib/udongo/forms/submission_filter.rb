@@ -8,19 +8,30 @@ module Udongo
         @params = params || {}
       end
 
+      def condition(key, value)
+        @form.data.where(name: key).where('value REGEXP ?', value)
+      end
+
       def fields
         Udongo.config.forms.send(@form.identifier).filter_fields
       end
 
       def result
-        data = FormSubmissionData.all
+        data = @form.data
 
-        params.each do |key,value|
+        params.inject([]) do |conditions,param|
+          key, value = param
           next if value.blank?
-          data = data.where(name: key).where('value REGEXP ?', value)
+
+          if conditions.any?
+            data = data.or(condition(key, value))
+          else
+            data = condition(key, value)
+            conditions << data
+          end
         end
 
-        FormSubmission.where(id: data.pluck(:submission_id).uniq)
+        @form.submissions.where(id: data.pluck(:submission_id).uniq)
       end
 
       def self.search(*args)

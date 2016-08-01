@@ -8,7 +8,7 @@
         <% if @form.email_present? %>
           <th><%= t('b.email') %></th>
         <% end %>
-        <%= @form.datagrid.column_headers(@filter) %>
+        <%= @form.datagrid.column_headers %>
         <th>&nbsp;</th>
       </tr>
     </thead>

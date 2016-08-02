@@ -1,4 +1,4 @@
-<%= simple_form_for(@model, url: url) do |f| %>
+<%= simple_form_for(@form, url: url) do |f| %>
   <div class="card">
     <div class="card-header">
       <%= t 'b.general' %>
@@ -7,7 +7,7 @@
     <div class="card-block">
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :page_id, collection: @model.options_for_page, include_blank: true %>
+          <%= f.input :page_id, collection: @form.navigation_item.options_for_page, include_blank: true %>
         </div>
 
         <div class="col-md-6">

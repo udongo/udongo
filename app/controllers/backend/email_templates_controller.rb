@@ -45,8 +45,7 @@ class Backend::EmailTemplatesController < BackendController
 
   def translation_form
     Backend::EmailTemplateTranslationForm.new(
-      email_template: @model,
-      translation: @model.translation(params[:translation_locale])
+      @model, @model.translation(params[:translation_locale])
     )
   end
 end

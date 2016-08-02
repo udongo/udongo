@@ -1,4 +1,4 @@
-2.0.1 - xxxx-xx-xx
+2.0.1 - 2016-08-02
 --
 * Upgrade bootstrap v4 from alpha 2 to alpha 3.
 * The reform gem is no longer used. We now use the Udongo form objects created

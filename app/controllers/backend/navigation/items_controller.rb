@@ -51,8 +51,7 @@ class Backend::Navigation::ItemsController < BackendController
 
   def translation_form
     Backend::NavigationItemTranslationForm.new(
-      navigation_item: @model,
-      translation: @model.translation(params[:translation_locale])
+      @model, @model.translation(params[:translation_locale])
     )
   end
 

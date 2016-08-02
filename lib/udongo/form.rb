@@ -3,8 +3,17 @@ module Udongo
     include ActiveModel::Model
     include Virtus.model
 
-    def initialize(params = {})
-      attributes.keys.each { |k| send("#{k}=", params[k]) } if params.any?
+    def initialize(object)
+      instance_var_name object
+      init_attribute_values(object)
+    end
+
+    def init_attribute_values(object)
+      attributes.keys.each { |k| send("#{k}=", object.send(k)) }
+    end
+
+    def init_object_values(object)
+      attributes.each { |k, v| object.send("#{k}=", v) }
     end
 
     def persisted?
@@ -31,6 +40,11 @@ module Udongo
 
     # Written in the subclass
     def save_object
+    end
+
+    def instance_var_name(object)
+      name = "@#{object.class.to_s.underscore.gsub('_decorator', '')}"
+      instance_variable_set(name, object)
     end
   end
 end

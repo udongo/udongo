@@ -9,11 +9,11 @@ class Backend::SnippetsController < BackendController
   end
 
   def new
-    @form = Backend::SnippetForm.new
+    @form = Backend::SnippetForm.new(Snippet.new)
   end
 
   def create
-    @form = Backend::SnippetForm.new
+    @form = Backend::SnippetForm.new(Snippet.new)
 
     if @form.save params[:snippet]
       redirect_to edit_translation_backend_snippet_path(@form.snippet, translation_locale: default_locale),
@@ -45,9 +45,6 @@ class Backend::SnippetsController < BackendController
   end
 
   def translation_form
-    Backend::SnippetTranslationForm.new(
-      snippet: @model,
-      translation: @model.translation(params[:translation_locale])
-    )
+    Backend::SnippetTranslationForm.new(@model, @model.translation(params[:translation_locale]))
   end
 end

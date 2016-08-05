@@ -15,6 +15,7 @@ module Concerns
       end
     end
 
+    # TODO (Dave) - https://github.com/udongo/udongo/issues/20
     def set_position(new_position, parent_id = nil)
       if respond_to?(:draggable?) && !draggable? || position == new_position.to_i
         return false

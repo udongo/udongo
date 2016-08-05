@@ -9,8 +9,7 @@ module Concerns
       end
 
       def update_translation
-        if @translation.validate(params[model_name])
-          @translation.save
+        if @translation.save(params[model_name])
           redirect_to translatable_path, notice: t('b.msg.changes_saved')
         else
           render :edit_translation

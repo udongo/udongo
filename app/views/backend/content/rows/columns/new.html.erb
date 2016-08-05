@@ -7,9 +7,7 @@
     <div class="card-block">
       <div class="row">
         <div class="col-md-6">
-          <% Udongo.config.flexible_content.allowed_column_dimensions.each do |dimension| %>
-            <%= f.input("width_#{dimension}", as: :integer) %>
-          <% end %>
+          <%= render 'backend/content/rows/columns/dimension_fields', form: f %>
         </div>
 
         <div class="col-md-6">

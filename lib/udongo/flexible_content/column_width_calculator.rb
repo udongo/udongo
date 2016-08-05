@@ -11,7 +11,7 @@ module Udongo
 
       def calculate(field)
         difference = 12 - total(field)
-        return 12 if difference.zero?
+        return 12 if difference.zero? || field.to_sym == :width_xs
         difference
       end
 

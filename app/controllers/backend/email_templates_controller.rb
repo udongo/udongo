@@ -10,21 +10,27 @@ class Backend::EmailTemplatesController < BackendController
   end
 
   def new
-    @model = EmailTemplate.new
+    @form = Backend::EmailTemplateForm.new(EmailTemplate.new)
   end
 
   def create
-    @model = EmailTemplate.new allowed_params
+    @form = Backend::EmailTemplateForm.new(EmailTemplate.new)
 
-    if @model.save
-      redirect_to edit_translation_backend_email_template_path(@model, translation_locale: default_locale), notice: translate_notice(:added, :email_template)
+    if @form.save params[:email_template]
+      redirect_to edit_translation_backend_email_template_path(@form.email_template, translation_locale: default_locale), notice: translate_notice(:added, :email_template)
     else
       render :new
     end
   end
 
+  def edit
+    @form = Backend::EmailTemplateForm.new(@model)
+  end
+
   def update
-    if @model.update_attributes(allowed_params)
+    @form = Backend::EmailTemplateForm.new(@model)
+
+    if @form.save params[:email_template]
       redirect_to edit_backend_email_template_path(@model), notice: translate_notice(:edited, :email_template)
     else
       render :edit
@@ -39,12 +45,7 @@ class Backend::EmailTemplatesController < BackendController
 
   def translation_form
     Backend::EmailTemplateTranslationForm.new(
-      email_template: @model,
-      translation: @model.translation(params[:translation_locale])
+      @model, @model.translation(params[:translation_locale])
     )
-  end
-
-  def allowed_params
-    params.require('email_template').permit(:identifier, :description, :from_name, :from_email)
   end
 end

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,364 +10,296 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711114156) do
+ActiveRecord::Schema.define(version: 20160815100903) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer  "addressable_id",   limit: 4
-    t.string   "addressable_type", limit: 255
-    t.string   "street",           limit: 255
-    t.string   "number",           limit: 255
-    t.string   "box",              limit: 255
-    t.string   "postal",           limit: 255
-    t.string   "city",             limit: 255
-    t.string   "country",          limit: 255
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.string   "street"
+    t.string   "number"
+    t.string   "box"
+    t.string   "postal"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["addressable_id"], name: "index_addresses_on_addressable_id", using: :btree
+    t.index ["addressable_type"], name: "index_addresses_on_addressable_type", using: :btree
   end
 
-  add_index "addresses", ["addressable_id"], name: "index_addresses_on_addressable_id", using: :btree
-  add_index "addresses", ["addressable_type"], name: "index_addresses_on_addressable_type", using: :btree
-
-  create_table "admins", force: :cascade do |t|
-    t.string   "first_name",      limit: 255
-    t.string   "last_name",       limit: 255
-    t.string   "email",           limit: 255
-    t.string   "password_digest", limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string   "data_file_name",    limit: 255, null: false
-    t.string   "data_content_type", limit: 255
-    t.integer  "data_file_size",    limit: 4
-    t.integer  "assetable_id",      limit: 4
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
     t.string   "assetable_type",    limit: 30
     t.string   "type",              limit: 30
-    t.integer  "width",             limit: 4
-    t.integer  "height",            limit: 4
+    t.integer  "width"
+    t.integer  "height"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
   end
 
-  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
-  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
-
-  create_table "comments", force: :cascade do |t|
-    t.integer  "commentable_id",   limit: 4
-    t.string   "commentable_type", limit: 255
-    t.string   "locale",           limit: 255
-    t.integer  "parent_id",        limit: 4
-    t.string   "author",           limit: 255
-    t.string   "email",            limit: 255
-    t.string   "website",          limit: 255
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "locale"
+    t.integer  "parent_id"
+    t.string   "author"
+    t.string   "email"
+    t.string   "website"
     t.text     "message",          limit: 65535
-    t.string   "status",           limit: 255
+    t.string   "status"
     t.boolean  "marked_as_spam"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.index ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+    t.index ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+    t.index ["locale"], name: "index_comments_on_locale", using: :btree
+    t.index ["parent_id"], name: "index_comments_on_parent_id", using: :btree
+    t.index ["status"], name: "index_comments_on_status", using: :btree
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
-  add_index "comments", ["locale"], name: "index_comments_on_locale", using: :btree
-  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
-  add_index "comments", ["status"], name: "index_comments_on_status", using: :btree
-
-  create_table "content_columns", force: :cascade do |t|
-    t.integer  "row_id",       limit: 4
-    t.integer  "width_md",     limit: 4
-    t.integer  "width_lg",     limit: 4
-    t.integer  "width_xl",     limit: 4
-    t.integer  "width_xs",     limit: 4
-    t.integer  "width_sm",     limit: 4
-    t.integer  "position",     limit: 4
-    t.string   "content_type", limit: 255
-    t.integer  "content_id",   limit: 4
+  create_table "content_columns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "row_id"
+    t.integer  "width_md"
+    t.integer  "width_lg"
+    t.integer  "width_xl"
+    t.integer  "width_xs"
+    t.integer  "width_sm"
+    t.integer  "position"
+    t.string   "content_type"
+    t.integer  "content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["content_id"], name: "idx_content_columns_on_content_id", using: :btree
+    t.index ["content_type"], name: "idx_content_columns_on_content_type", using: :btree
+    t.index ["position"], name: "index_content_columns_on_position", using: :btree
+    t.index ["row_id"], name: "index_content_columns_on_row_id", using: :btree
   end
 
-  add_index "content_columns", ["content_id"], name: "idx_content_columns_on_content_id", using: :btree
-  add_index "content_columns", ["content_type"], name: "idx_content_columns_on_content_type", using: :btree
-  add_index "content_columns", ["position"], name: "index_content_columns_on_position", using: :btree
-  add_index "content_columns", ["row_id"], name: "index_content_columns_on_row_id", using: :btree
-
-  create_table "content_images", force: :cascade do |t|
-    t.string   "file",       limit: 255
+  create_table "content_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "file"
     t.text     "caption",    limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "url",        limit: 65535
   end
 
-  create_table "content_rows", force: :cascade do |t|
-    t.string   "locale",       limit: 255
-    t.string   "rowable_type", limit: 255
-    t.integer  "rowable_id",   limit: 4
-    t.integer  "position",     limit: 4
+  create_table "content_rows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "locale"
+    t.string   "rowable_type"
+    t.integer  "rowable_id"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["locale"], name: "index_content_rows_on_locale", using: :btree
+    t.index ["position"], name: "index_content_rows_on_position", using: :btree
+    t.index ["rowable_id"], name: "idx_content_rows_on_rowable_id", using: :btree
+    t.index ["rowable_type"], name: "idx_content_rows_on_rowable_type", using: :btree
   end
 
-  add_index "content_rows", ["locale"], name: "index_content_rows_on_locale", using: :btree
-  add_index "content_rows", ["position"], name: "index_content_rows_on_position", using: :btree
-  add_index "content_rows", ["rowable_id"], name: "idx_content_rows_on_rowable_id", using: :btree
-  add_index "content_rows", ["rowable_type"], name: "idx_content_rows_on_rowable_type", using: :btree
-
-  create_table "content_texts", force: :cascade do |t|
+  create_table "content_texts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "email_templates", force: :cascade do |t|
-    t.string   "identifier",  limit: 255
-    t.string   "description", limit: 255
+  create_table "email_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "identifier"
+    t.string   "description"
     t.text     "locales",     limit: 65535
-    t.string   "from_name",   limit: 255
-    t.string   "from_email",  limit: 255
+    t.string   "from_name"
+    t.string   "from_email"
     t.boolean  "optional"
     t.text     "vars",        limit: 65535
-    t.integer  "position",    limit: 4
+    t.integer  "position"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.index ["identifier"], name: "index_email_templates_on_identifier", using: :btree
   end
 
-  add_index "email_templates", ["identifier"], name: "index_email_templates_on_identifier", using: :btree
-
-  create_table "emails", force: :cascade do |t|
-    t.string   "from_name",     limit: 255
-    t.string   "from_email",    limit: 255
-    t.string   "to_name",       limit: 255
-    t.string   "to_email",      limit: 255
-    t.string   "subject",       limit: 255
+  create_table "emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "from_name"
+    t.string   "from_email"
+    t.string   "to_name"
+    t.string   "to_email"
+    t.string   "subject"
     t.text     "plain_content", limit: 65535
     t.text     "html_content",  limit: 65535
-    t.string   "locale",        limit: 255
+    t.string   "locale"
     t.datetime "sent_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "form_field_validations", force: :cascade do |t|
-    t.integer  "field_id",         limit: 4
-    t.text     "locales",          limit: 65535
-    t.string   "validation_class", limit: 255
-    t.integer  "position",         limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  add_index "form_field_validations", ["field_id"], name: "index_form_field_validations_on_field_id", using: :btree
-
-  create_table "form_fields", force: :cascade do |t|
-    t.integer  "form_id",    limit: 4
-    t.text     "locales",    limit: 65535
-    t.string   "name",       limit: 255
-    t.string   "field_type", limit: 255
-    t.integer  "position",   limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "form_fields", ["form_id"], name: "index_form_fields_on_form_id", using: :btree
-
-  create_table "form_submission_data", force: :cascade do |t|
-    t.integer  "submission_id", limit: 4
-    t.string   "name",          limit: 255
-    t.text     "value",         limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  add_index "form_submission_data", ["submission_id"], name: "index_form_submission_data_on_submission_id", using: :btree
-
-  create_table "form_submissions", force: :cascade do |t|
-    t.integer  "form_id",    limit: 4
-    t.text     "extra_info", limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "form_submissions", ["form_id"], name: "index_form_submissions_on_form_id", using: :btree
-
-  create_table "forms", force: :cascade do |t|
-    t.text     "locales",     limit: 65535
-    t.string   "identifier",  limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  create_table "logs", force: :cascade do |t|
-    t.string   "category",      limit: 255
-    t.integer  "loggable_id",   limit: 4
-    t.string   "loggable_type", limit: 255
+  create_table "logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "category"
+    t.integer  "loggable_id"
+    t.string   "loggable_type"
     t.text     "content",       limit: 65535
     t.text     "data",          limit: 65535
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["category"], name: "index_logs_on_category", using: :btree
+    t.index ["loggable_id"], name: "index_logs_on_loggable_id", using: :btree
+    t.index ["loggable_type"], name: "index_logs_on_loggable_type", using: :btree
   end
 
-  add_index "logs", ["category"], name: "index_logs_on_category", using: :btree
-  add_index "logs", ["loggable_id"], name: "index_logs_on_loggable_id", using: :btree
-  add_index "logs", ["loggable_type"], name: "index_logs_on_loggable_type", using: :btree
-
-  create_table "meta", force: :cascade do |t|
-    t.string   "locale",         limit: 255
-    t.integer  "sluggable_id",   limit: 4
-    t.string   "sluggable_type", limit: 255
-    t.string   "slug",           limit: 255
-    t.string   "title",          limit: 255
-    t.string   "keywords",       limit: 255
+  create_table "meta", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "locale"
+    t.integer  "sluggable_id"
+    t.string   "sluggable_type"
+    t.string   "slug"
+    t.string   "title"
+    t.string   "keywords"
     t.text     "description",    limit: 65535
     t.text     "custom",         limit: 65535
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["locale"], name: "index_meta_on_locale", using: :btree
+    t.index ["slug"], name: "index_meta_on_slug", using: :btree
+    t.index ["sluggable_id"], name: "index_meta_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_meta_on_sluggable_type", using: :btree
   end
 
-  add_index "meta", ["locale"], name: "index_meta_on_locale", using: :btree
-  add_index "meta", ["slug"], name: "index_meta_on_slug", using: :btree
-  add_index "meta", ["sluggable_id"], name: "index_meta_on_sluggable_id", using: :btree
-  add_index "meta", ["sluggable_type"], name: "index_meta_on_sluggable_type", using: :btree
-
-  create_table "navigation_items", force: :cascade do |t|
-    t.integer  "navigation_id", limit: 4
-    t.integer  "page_id",       limit: 4
+  create_table "navigation_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "navigation_id"
+    t.integer  "page_id"
     t.text     "locales",       limit: 65535
-    t.integer  "position",      limit: 4
+    t.integer  "position"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.string   "extra",         limit: 255
+    t.string   "extra"
+    t.index ["navigation_id"], name: "index_navigation_items_on_navigation_id", using: :btree
+    t.index ["page_id"], name: "index_navigation_items_on_page_id", using: :btree
+    t.index ["position"], name: "index_navigation_items_on_position", using: :btree
   end
 
-  add_index "navigation_items", ["navigation_id"], name: "index_navigation_items_on_navigation_id", using: :btree
-  add_index "navigation_items", ["page_id"], name: "index_navigation_items_on_page_id", using: :btree
-  add_index "navigation_items", ["position"], name: "index_navigation_items_on_position", using: :btree
-
-  create_table "navigations", force: :cascade do |t|
-    t.string   "identifier",  limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "navigations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "identifier"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.integer  "notable_id",   limit: 4
-    t.string   "notable_type", limit: 255
-    t.string   "content",      limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "notable_id"
+    t.string   "notable_type"
+    t.string   "content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["notable_id"], name: "index_notes_on_notable_id", using: :btree
+    t.index ["notable_type"], name: "index_notes_on_notable_type", using: :btree
   end
 
-  add_index "notes", ["notable_id"], name: "index_notes_on_notable_id", using: :btree
-  add_index "notes", ["notable_type"], name: "index_notes_on_notable_type", using: :btree
-
-  create_table "pages", force: :cascade do |t|
-    t.string   "identifier",       limit: 255
-    t.string   "description",      limit: 255
-    t.integer  "parent_id",        limit: 4
-    t.integer  "position",         limit: 4
+  create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "identifier"
+    t.string   "description"
+    t.integer  "parent_id"
+    t.integer  "position"
     t.boolean  "visible"
     t.boolean  "deletable"
     t.boolean  "draggable"
     t.boolean  "content_disabled"
     t.text     "locales",          limit: 65535
-    t.string   "route",            limit: 255
+    t.string   "route"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["identifier"], name: "index_pages_on_identifier", using: :btree
+    t.index ["parent_id"], name: "index_page_parent_id", using: :btree
+    t.index ["position"], name: "index_pages_on_position", using: :btree
+    t.index ["visible"], name: "index_pages_on_visible", using: :btree
   end
 
-  add_index "pages", ["identifier"], name: "index_pages_on_identifier", using: :btree
-  add_index "pages", ["parent_id"], name: "index_page_parent_id", using: :btree
-  add_index "pages", ["position"], name: "index_pages_on_position", using: :btree
-  add_index "pages", ["visible"], name: "index_pages_on_visible", using: :btree
-
-  create_table "queued_tasks", force: :cascade do |t|
-    t.string   "klass",      limit: 255
+  create_table "queued_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "klass"
     t.text     "data",       limit: 65535
     t.boolean  "locked"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["locked"], name: "index_queued_tasks_on_locked", using: :btree
   end
 
-  add_index "queued_tasks", ["locked"], name: "index_queued_tasks_on_locked", using: :btree
-
-  create_table "redirects", force: :cascade do |t|
-    t.string   "source_uri",      limit: 255
-    t.string   "destination_uri", limit: 255
-    t.integer  "status_code",     limit: 4
+  create_table "redirects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "source_uri"
+    t.string   "destination_uri"
+    t.integer  "status_code"
     t.boolean  "disabled"
-    t.integer  "times_used",      limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "times_used"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["source_uri"], name: "index_redirects_on_source_uri", using: :btree
   end
 
-  add_index "redirects", ["source_uri"], name: "index_redirects_on_source_uri", using: :btree
-
-  create_table "settings", force: :cascade do |t|
-    t.string   "name",        limit: 255
+  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
     t.text     "value",       limit: 65535
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.index ["name"], name: "index_settings_on_name", using: :btree
   end
 
-  add_index "settings", ["name"], name: "index_settings_on_name", using: :btree
-
-  create_table "snippets", force: :cascade do |t|
-    t.string   "identifier",            limit: 255
-    t.string   "description",           limit: 255
+  create_table "snippets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "identifier"
+    t.string   "description"
     t.boolean  "allow_html_in_title"
     t.boolean  "allow_html_in_content"
     t.boolean  "editor_for_content"
     t.text     "locales",               limit: 65535
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["identifier"], name: "index_snippets_on_identifier", using: :btree
   end
 
-  add_index "snippets", ["identifier"], name: "index_snippets_on_identifier", using: :btree
-
-  create_table "stores", force: :cascade do |t|
-    t.string   "storable_type", limit: 255
-    t.integer  "storable_id",   limit: 4
-    t.string   "collection",    limit: 255
-    t.string   "name",          limit: 255
+  create_table "stores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "storable_type"
+    t.integer  "storable_id"
+    t.string   "collection"
+    t.string   "name"
     t.text     "value",         limit: 65535
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["collection", "storable_id", "storable_type"], name: "idx_storable", using: :btree
+    t.index ["collection"], name: "index_stores_on_collection", using: :btree
+    t.index ["storable_id"], name: "index_stores_on_storable_id", using: :btree
+    t.index ["storable_type"], name: "index_stores_on_storable_type", using: :btree
   end
 
-  add_index "stores", ["collection", "storable_id", "storable_type"], name: "idx_storable", using: :btree
-  add_index "stores", ["collection"], name: "index_stores_on_collection", using: :btree
-  add_index "stores", ["storable_id"], name: "index_stores_on_storable_id", using: :btree
-  add_index "stores", ["storable_type"], name: "index_stores_on_storable_type", using: :btree
-
-  create_table "tagged_items", force: :cascade do |t|
-    t.integer  "tag_id",        limit: 4
-    t.integer  "taggable_id",   limit: 4
-    t.string   "taggable_type", limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "tagged_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["tag_id"], name: "index_tagged_items_on_tag_id", using: :btree
+    t.index ["taggable_id"], name: "index_tagged_items_on_taggable_id", using: :btree
+    t.index ["taggable_type"], name: "index_tagged_items_on_taggable_type", using: :btree
   end
 
-  add_index "tagged_items", ["tag_id"], name: "index_tagged_items_on_tag_id", using: :btree
-  add_index "tagged_items", ["taggable_id"], name: "index_tagged_items_on_taggable_id", using: :btree
-  add_index "tagged_items", ["taggable_type"], name: "index_tagged_items_on_taggable_type", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string   "locale",             limit: 255
-    t.string   "name",               limit: 255
-    t.string   "slug",               limit: 255
-    t.string   "external_reference", limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "locale"
+    t.string   "name"
+    t.string   "slug"
+    t.string   "external_reference"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["external_reference"], name: "index_tags_on_external_reference", using: :btree
+    t.index ["locale"], name: "index_tags_on_locale", using: :btree
+    t.index ["name"], name: "index_tags_on_name", using: :btree
+    t.index ["slug"], name: "index_tags_on_slug", using: :btree
   end
-
-  add_index "tags", ["external_reference"], name: "index_tags_on_external_reference", using: :btree
-  add_index "tags", ["locale"], name: "index_tags_on_locale", using: :btree
-  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
-  add_index "tags", ["slug"], name: "index_tags_on_slug", using: :btree
 
 end

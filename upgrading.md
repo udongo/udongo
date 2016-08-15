@@ -1,5 +1,10 @@
 # Upgrade guide
-## from 2.0.1 to 2.0.2
+## from 2.0.4 to 3.0.0
+# TODO Davy - note which classes have been discontinued!
+
+
+## from 2.0.1 to 2.0.4
+No actions required.
 
 
 ## From 2.0.0 to 2.0.1

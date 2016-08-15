@@ -1,7 +1,14 @@
 # Upgrade guide
 ## from 2.0.4 to 3.0.0
-# TODO Davy - note which classes have been discontinued!
-
+Everything related to the form models has been deleted. So if you use any of 
+these classes, you're in for a rough ride.
+* Form
+* FormDecorator
+* FormField
+* FormFieldValidation
+* FormSubmission
+* FormSubmissionData
+* FormSubmissionDecorator
 
 ## from 2.0.1 to 2.0.4
 No actions required.

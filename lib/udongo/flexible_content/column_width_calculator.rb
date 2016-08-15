@@ -10,9 +10,11 @@ module Udongo
       end
 
       def calculate(field)
+        field = field.to_sym
+        return 12 if field == :width_xs || field == :width_sm
+
         difference = 12 - total(field)
-        return 12 if difference.zero?
-        difference
+        difference.zero? ? 12 : difference
       end
 
       def hashed_values

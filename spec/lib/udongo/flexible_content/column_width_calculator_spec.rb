@@ -17,8 +17,14 @@ describe Udongo::FlexibleContent::ColumnWidthCalculator do
       expect(instance.calculate(:width_sm)).to eq 12
     end
 
-    it '12' do
+    it 'defaults to 12 for XS' do
+      allow(instance).to receive(:total).with(:width_xs) { 5 }
       expect(instance.calculate(:width_xs)).to eq 12
+    end
+
+    it 'defaults to 12 for SM' do
+      allow(instance).to receive(:total).with(:width_sm) { 5 }
+      expect(instance.calculate(:width_sm)).to eq 12
     end
 
     it 'column set' do
@@ -44,6 +50,8 @@ describe Udongo::FlexibleContent::ColumnWidthCalculator do
   end
 
   it '#responds_to?' do
-    expect(instance).to respond_to(:hashed_values, :calculate, :total)
+    expect(instance).to respond_to(
+      :hashed_values, :calculate, :total
+    )
   end
 end

@@ -7,11 +7,7 @@
     <div class="card-block">
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :width_xs, as: :integer %>
-          <%= f.input :width_sm, as: :integer %>
-          <%= f.input :width_md, as: :integer %>
-          <%= f.input :width_lg, as: :integer %>
-          <%= f.input :width_xl, as: :integer %>
+          <%= render 'backend/content/rows/columns/dimension_fields', form: f %>
         </div>
 
         <div class="col-md-6">

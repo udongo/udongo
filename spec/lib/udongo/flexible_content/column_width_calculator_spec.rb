@@ -22,6 +22,11 @@ describe Udongo::FlexibleContent::ColumnWidthCalculator do
       expect(instance.calculate(:width_xs)).to eq 12
     end
 
+    it 'defaults to 12 for SM' do
+      allow(instance).to receive(:total).with(:width_sm) { 5 }
+      expect(instance.calculate(:width_sm)).to eq 12
+    end
+
     it 'column set' do
       expect(instance.calculate(:width_xl)).to eq 4
     end

@@ -1,3 +1,9 @@
+3.0.0 - xxxx-xx-xx
+--
+* Because of the complex structure and no actually necessity, the form models
+  and their related code have been cut.
+
+
 2.0.4 - 2016-08-15
 --
 * Fix issue with resizing pictures in the CKEditor picture uploader.

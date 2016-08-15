@@ -10,6 +10,9 @@ these classes, you're in for a rough ride.
 * FormSubmissionData
 * FormSubmissionDecorator
 
+You can now choose which breakpoints you want to show in the interface when 
+editing flexible content. See the docs.
+
 
 ## from 2.0.1 to 2.0.4
 No actions required.

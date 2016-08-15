@@ -3,5 +3,5 @@ class Ckeditor::Asset < ApplicationRecord
 
   delegate :url, :current_path, :content_type, to: :data
 
-  validates_presence_of :data
+  validates :data, presence: true
 end

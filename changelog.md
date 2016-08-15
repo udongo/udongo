@@ -1,3 +1,9 @@
+2.0.3 - 2016-08-15
+--
+* Revert CKEditor from 4.2.0 to 4.1.6 because of breaking changes related to
+  browsing attachments.
+
+
 2.0.2 - 2016-08-15
 --
 * CKEditor has some breaking changes and apparently they didn't find it

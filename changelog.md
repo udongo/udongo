@@ -1,5 +1,24 @@
-2.0.2 - xxxx-xx-xx
+3.0.0 - xxxx-xx-xx
 --
+* Because of the complex structure and no actually necessity, the form models
+  and their related code have been cut.
+
+
+2.0.4 - 2016-08-15
+--
+* Fix issue with resizing pictures in the CKEditor picture uploader.
+
+
+2.0.3 - 2016-08-15
+--
+* Revert CKEditor from 4.2.0 to 4.1.6 because of breaking changes related to
+  browsing attachments.
+
+
+2.0.2 - 2016-08-15
+--
+* CKEditor has some breaking changes and apparently they didn't find it
+  necessary to use the version numbers as intended.
 
 
 2.0.1 - 2016-08-02

@@ -49,27 +49,6 @@ Udongo.config.flexible_content.types = %w(text image)
 Udongo.config.routes.prefix_with_locale = true
 ```
 
-## Forms
-At this moment configurations are always form specific. Let's assume you have a
-form with ```contact``` as identifier.
-
-### filter_fields
-```ruby
-Udongo.config.forms.contact.filter_fields = %w(first_name last_name email)
-```
-
-In this scenario there will be 3 fields above the list of submissions for the
-contact form that you can use to search through the data.
-
-### datagrid_fields
-```ruby
-Udongo.config.forms.contact.datagrid_fields = %w(first_name last_name email)
-```
-
-The datagrid will only contain those 3 fields. If no fields are defined we fall
-back to displaying all fields within a single column named 'data'.
-
-
 # Concerns
 ## Storable concern
 ### Possible field types
@@ -300,17 +279,3 @@ class Backend::AdminsController < BackendController
   end
 end
 ```
-
-## Configurable form submissions datagrids
-There are two things you can configure in ```config/initializers/udongo.rb``` to affect the form submission datagrids in the CMS:
-* The visible columns in the datagrid
-* Which fields the filter should have
-
-```ruby
-Udongo.configure do |config|
-  config.forms.contact.datagrid_fields = %w(last_name first_name telephone)
-  config.forms.contact.filter_fields = %w(email last_name)
-end
-```
-
-Note that the ```contact``` in the config above maps to a ```Form#identifier```. This way you can have different configurations per submissions page.

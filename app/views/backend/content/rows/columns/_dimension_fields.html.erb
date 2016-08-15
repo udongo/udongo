@@ -1,3 +1,3 @@
-<% Udongo.config.flexible_content.breakpoints.each do |bp| %>
+<% Udongo::Configs::FlexibleContent::BREAKPOINTS.each do |bp| %>
   <%= form.input "width_#{bp}", as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.allowed_breakpoint?(bp) } %>
 <% end %>

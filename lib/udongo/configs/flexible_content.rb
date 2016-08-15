@@ -8,10 +8,6 @@ module Udongo
       attribute :types, Array, default: %w(text image)
       attribute :allowed_breakpoints, Array, default: BREAKPOINTS
 
-      def breakpoints
-        BREAKPOINTS
-      end
-
       def allowed_breakpoint?(value)
         allowed_breakpoints.include?(value.to_s)
       end

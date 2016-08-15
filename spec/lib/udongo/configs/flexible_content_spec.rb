@@ -5,8 +5,8 @@ describe Udongo::Configs::FlexibleContent do
   let(:instance) { described_class.new }
 
   describe 'defaults' do
-    it :breakpoints do
-      expect(instance.breakpoints).to eq %w(xs sm md lg xl)
+    it :BREAKPOINTS do
+      expect(klass::BREAKPOINTS).to eq %w(xs sm md lg xl)
     end
 
     it :allowed_breakpoints do

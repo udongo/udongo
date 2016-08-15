@@ -43,6 +43,11 @@ Udongo.config.i18n.locales = %w(nl en fr de)
 Udongo.config.flexible_content.types = %w(text image)
 ```
 
+### allowed_breakpoints
+```ruby
+Udongo.config.flexible_content.allowed_breakpoints = %w(xs sm md lg xl)
+```
+
 ## Routes
 ### prefix_with_locale
 ```ruby

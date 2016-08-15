@@ -1,11 +1,16 @@
 require 'rails_helper'
 
 describe Udongo::Configs::FlexibleContent do
+  let(:klass) { described_class }
   let(:instance) { described_class.new }
 
   describe 'defaults' do
-    it :allowed_column_dimensions do
-      expect(instance.allowed_column_dimensions).to eq %w(xs sm md lg xl)
+    it :breakpoints do
+      expect(instance.breakpoints).to eq %w(xs sm md lg xl)
+    end
+
+    it :allowed_breakpoints do
+      expect(instance.allowed_breakpoints).to eq %w(xs sm md lg xl)
     end
 
     it :types do
@@ -13,22 +18,22 @@ describe Udongo::Configs::FlexibleContent do
     end
   end
 
-  describe '#column_dimension_allowed?' do
+  describe '#allowed_breakpoint?' do
     it 'true' do
-      allow(instance).to receive(:allowed_column_dimensions) { %w(xs sm md lg xl) }
-      expect(instance.column_dimension_allowed?(:sm)).to be true
+      allow(instance).to receive(:allowed_breakpoints) { %w(xs sm md lg xl) }
+      expect(instance.allowed_breakpoint?(:sm)).to be true
     end
 
     it 'false' do
-      allow(instance).to receive(:allowed_column_dimensions) { %w(xs) }
-      expect(instance.column_dimension_allowed?(:sm)).to be false
+      allow(instance).to receive(:allowed_breakpoints) { %w(xs) }
+      expect(instance.allowed_breakpoint?(:sm)).to be false
     end
   end
 
   it '#respond_to?' do
     expect(instance).to respond_to(
-      :types, :types=, :allowed_column_dimensions, :allowed_column_dimensions=,
-      :column_dimension_allowed?
+      :types, :types=, :allowed_breakpoints, :allowed_breakpoints=,
+      :allowed_breakpoint?
     )
   end
 end

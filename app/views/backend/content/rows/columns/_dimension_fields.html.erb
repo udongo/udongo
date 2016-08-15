@@ -1,5 +1,3 @@
-<%= form.input :width_xs, as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.column_dimension_allowed?(:xs) } %>
-<%= form.input :width_sm, as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.column_dimension_allowed?(:sm) } %>
-<%= form.input :width_md, as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.column_dimension_allowed?(:md) } %>
-<%= form.input :width_lg, as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.column_dimension_allowed?(:lg) } %>
-<%= form.input :width_xl, as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.column_dimension_allowed?(:xl) } %>
+<% Udongo.config.flexible_content.breakpoints.each do |bp| %>
+  <%= form.input "width_#{bp}", as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.allowed_breakpoint?(bp) } %>
+<% end %>

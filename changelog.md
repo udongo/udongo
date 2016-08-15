@@ -1,5 +1,7 @@
-2.0.2 - xxxx-xx-xx
+2.0.2 - 2016-08-15
 --
+* CKEditor has some breaking changes and apparently they didn't find it
+  necessary to use the version numbers as intended.
 
 
 2.0.1 - 2016-08-02

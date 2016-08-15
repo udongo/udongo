@@ -1,3 +1,8 @@
+2.0.4 - 2016-08-15
+--
+* Fix issue with resizing pictures in the CKEditor picture uploader.
+
+
 2.0.3 - 2016-08-15
 --
 * Revert CKEditor from 4.2.0 to 4.1.6 because of breaking changes related to

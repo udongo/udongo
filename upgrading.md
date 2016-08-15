@@ -10,6 +10,7 @@ these classes, you're in for a rough ride.
 * FormSubmissionData
 * FormSubmissionDecorator
 
+
 ## from 2.0.1 to 2.0.4
 No actions required.
 

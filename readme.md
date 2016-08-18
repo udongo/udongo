@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/udongo/udongo/badges/gpa.svg)](https://codeclimate.com/github/udongo/udongo)
+[![CircleCI](https://circleci.com/gh/udongo/udongo/tree/master.svg?style=svg)](https://circleci.com/gh/udongo/udongo/tree/master)
 
 # Configuration settings
 Every configuration setting has been moved in groups within separate classes.

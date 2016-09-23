@@ -5,6 +5,8 @@
 * You can now set the list of breakpoints you want to have visible for the 
   flexible content. In most cases the xs and xl don't need to clutter the 
   interface, so now you can hide them.
+* You can only set the snippet identifier when creating it. When editing, this
+  field is hidden.
 
 
 2.0.4 - 2016-08-15

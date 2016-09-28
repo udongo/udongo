@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       member { post :tree_drag_and_drop }
     end
 
+    # TODO test routes
     resources :navigations, only: [:index] do
       scope module: 'navigation' do
         resources :items, except: [:index, :show] do
@@ -33,28 +34,34 @@ Rails.application.routes.draw do
       end
     end
 
+    # TODO test routes
     resources :snippets, except: [:show, :destroy] do
       concerns :translatable
     end
 
+    # TODO test routes
     resources :email_templates, except: [:show, :destroy] do
       concerns :translatable
       concerns :positionable
     end
 
+    # TODO test routes
     scope :tagbox, controller: 'tagbox', as: 'tagbox' do
       get '/', action: 'index'
       post '/', action: 'create'
       delete '/', action: 'destroy'
     end
 
+    # TODO test routes
     resources :emails, only: [:index, :show] do
       member do
         get 'html_content'
       end
     end
+    # TODO test routes
     resources :redirects, except: :show
 
+    # TODO test routes
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
         concerns :positionable

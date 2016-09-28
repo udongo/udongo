@@ -24,4 +24,13 @@ describe 'catch all' do
                                      path: 'foo/bar/baz'
                                    )
   end
+
+  it 'GET /foo/bar.js' do
+    expect(get: '/foo/bar.js').to route_to(
+                                    controller: 'catch_all',
+                                    action: 'resolve',
+                                    path: 'foo/bar',
+                                    format: 'js'
+                                  )
+  end
 end

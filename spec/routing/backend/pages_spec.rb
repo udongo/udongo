@@ -44,9 +44,4 @@ describe 'page routes' do
   it 'POST /backend/pages/1/tree_drag_and_drop' do
     expect(post: tree_drag_and_drop_backend_page_path(1)).to route_to('backend/pages#tree_drag_and_drop', id: '1')
   end
-
-  # resources :pages, except: [:show] do
-  #   concerns :translatable
-  #   member { post :tree_drag_and_drop }
-  # end
 end

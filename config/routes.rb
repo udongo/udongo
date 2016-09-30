@@ -44,7 +44,6 @@ Rails.application.routes.draw do
       concerns :positionable
     end
 
-    # TODO test routes
     scope :tagbox, controller: 'tagbox', as: 'tagbox' do
       get '/', action: 'index'
       post '/', action: 'create'

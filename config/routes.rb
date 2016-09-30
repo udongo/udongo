@@ -51,7 +51,6 @@ Rails.application.routes.draw do
       delete '/', action: 'destroy'
     end
 
-    # TODO test routes
     resources :emails, only: [:index, :show] do
       member do
         get 'html_content'

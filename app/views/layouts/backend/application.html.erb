@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Backend - <%= Udongo.config.base.project_name %></title>
-
-  <%= yield(:javascripts_head) %>
-
-  <%= stylesheet_link_tag 'backend/application', media: 'all' %>
-  <%= yield(:stylesheets) %>
-  <%= javascript_include_tag 'modernizr' %>
-  <%= csrf_meta_tags %>
-</head>
+<%= render 'layouts/frontend/head' %>
 
 <body class="logged-in">
   <div class="container">

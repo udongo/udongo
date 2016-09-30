@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Udongo</title>
-
-  <%= stylesheet_link_tag 'backend/application', media: 'all' %>
-  <%= javascript_include_tag 'modernizr' %>
-  <%= javascript_include_tag 'backend/application' %>
-  <%= csrf_meta_tags %>
-</head>
+<%= render 'layouts/frontend/head' %>
 
 <body class="lightbox">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 offset-md-2">
-      <%= yield %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= yield %>
+      </div>
     </div>
   </div>
+
+  <%= yield(:javascripts_early) %>
+  <%= javascript_include_tag 'backend/application' %>
+  <%= yield(:javascripts) %>
 </body>
 </html>

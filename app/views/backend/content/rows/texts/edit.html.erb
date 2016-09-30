@@ -1,3 +1,6 @@
+<% javascript 'trix' %>
+<% stylesheet 'trix' %>
+
 <%= simple_form_for [:backend, @model] do |f| %>
   <div class="card">
     <div class="card-header">
@@ -5,7 +8,8 @@
     </div>
 
     <div class="card-block">
-      <%= f.input :content, as: :ckeditor, label: false %>
+      <%= f.input :content, as: :hidden, label: false %>
+      <trix-editor input="content_text_content"></trix-editor>
     </div>
   </div>
 

@@ -34,7 +34,6 @@ Rails.application.routes.draw do
       end
     end
 
-    # TODO test routes
     resources :snippets, except: [:show, :destroy] do
       concerns :translatable
     end

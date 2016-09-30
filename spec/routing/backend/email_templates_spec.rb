@@ -35,7 +35,7 @@ describe 'email_template routes' do
     )
   end
 
-  it 'PUT /backend/email_templates/1/edit/nl' do
+  it 'PATCH /backend/email_templates/1/edit/nl' do
     expect(patch: edit_translation_backend_email_template_path('1', 'nl')).to(
       route_to('backend/email_templates#update_translation', id: '1', translation_locale: 'nl')
     )

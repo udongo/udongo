@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'page routes' do
   it 'GET /backend/pages' do
-    expect(get: '/backend/pages').to route_to('backend/pages#index')
+    expect(get: backend_pages_path).to route_to('backend/pages#index')
   end
 
   it 'GET /backend/pages/1' do
@@ -36,7 +36,7 @@ describe 'page routes' do
   end
 
   it 'PUT /backend/pages/1/edit/nl' do
-    expect(patch: '/backend/pages/1/edit/nl').to(
+    expect(patch: edit_translation_backend_page_path('1', 'nl')).to(
       route_to('backend/pages#update_translation', id: '1', translation_locale: 'nl')
     )
   end

@@ -38,7 +38,6 @@ Rails.application.routes.draw do
       concerns :translatable
     end
 
-    # TODO test routes
     resources :email_templates, except: [:show, :destroy] do
       concerns :translatable
       concerns :positionable

@@ -57,7 +57,7 @@ Rails.application.routes.draw do
         get 'html_content'
       end
     end
-    # TODO test routes
+
     resources :redirects, except: :show
 
     # TODO test routes

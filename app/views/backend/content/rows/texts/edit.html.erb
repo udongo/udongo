@@ -8,10 +8,7 @@
     </div>
 
     <div class="card-block">
-      <%# TODO: Try and use f.input :content, as: 'editor', label: false %>
-      <%# https://github.com/galetahub/ckeditor/blob/master/lib/ckeditor/hooks/simple_form.rb %>
-      <%= f.input :content, as: :hidden, label: false %>
-      <trix-editor input="content_text_content"></trix-editor>
+      <%= f.input :content, as: :trix_editor, label: false %>
     </div>
   </div>
 

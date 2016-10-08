@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
   s.description = 'Blimp CMS.'
   s.license     = 'MIT'
 
+  # TODO: shouldn't spec/support be included in this list?
+  # Right now we can't use # it_behaves_like :translatable in an app's tests.
   s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md']
 
   # General

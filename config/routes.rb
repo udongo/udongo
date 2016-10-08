@@ -56,13 +56,12 @@ Rails.application.routes.draw do
 
     resources :redirects, except: :show
 
-    # TODO test routes
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
         concerns :positionable
 
         scope module: 'rows' do
-          resources :columns do
+          resources :columns, except: [:index, :show] do
             concerns :positionable
           end
         end

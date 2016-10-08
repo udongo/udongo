@@ -63,7 +63,7 @@ describe 'navigation routes' do
     expect(patch: edit_translation_backend_navigation_item_path(1, 2, 'nl')).to route_to('backend/navigation/items#update_translation', navigation_id: '1', id: '2', translation_locale: 'nl')
   end
 
-  it 'POST' do
+  it 'POST /backend/navigations/1/items/2/update_position' do
     expect(post: update_position_backend_navigation_item_path(1, 2)).to route_to('backend/navigation/items#update_position', navigation_id: '1', id: '2')
   end
 end

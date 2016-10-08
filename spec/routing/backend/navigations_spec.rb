@@ -5,7 +5,9 @@ describe 'navigation routes' do
     expect(get: backend_navigations_path).to route_to('backend/navigations#index')
   end
 
-  # TODO no show
+  it 'GET /backend/navigations/1' do
+    expect(get: '/backend/navigations/1').to route_to('catch_all#resolve', path: 'backend/navigations/1')
+  end
 
   it 'GET /backend/navigations/new' do
     expect(get: '/backend/navigations/new').to route_to('catch_all#resolve', path: 'backend/navigations/new')

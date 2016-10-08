@@ -42,8 +42,4 @@ describe 'authentication' do
       expect(response).to redirect_to('/backend/sessions/new')
     end
   end
-
-  # logout
-  # -> redirects to login if already logged out
-  # -> redirects to login if actually loggin out
 end

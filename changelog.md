@@ -7,6 +7,7 @@
   interface, so now you can hide them.
 * You can only set the snippet identifier when creating it. When editing, this
   field is hidden.
+* Added specs for all routes.
 
 
 2.0.4 - 2016-08-15

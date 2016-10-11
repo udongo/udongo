@@ -28,6 +28,6 @@ class Backend::EmailTemplateTranslationForm < Udongo::Form
 
   def save_object
     init_object_values(@translation)
-    @translation.save
+    @email_template.save
   end
 end

@@ -53,6 +53,7 @@ Rails.application.routes.draw do
         get 'html_content'
       end
     end
+
     resources :redirects, except: :show
 
     namespace :content do
@@ -60,7 +61,7 @@ Rails.application.routes.draw do
         concerns :positionable
 
         scope module: 'rows' do
-          resources :columns do
+          resources :columns, except: [:index, :show] do
             concerns :positionable
           end
         end

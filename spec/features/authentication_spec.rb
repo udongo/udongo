@@ -25,6 +25,14 @@ describe 'authentication' do
       expect(page).to have_content('Foo Bar')
     end
 
+    it 'via admins' do
+      visit backend_admins_path
+      login_page.login
+
+      expect(page).to have_current_path(backend_admins_path)
+      expect(page).to have_content('Foo Bar')
+    end
+
     it 'invalid login credentials' do
       login_page.visit
       login_page.login('foo', 'bar')

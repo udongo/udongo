@@ -25,6 +25,6 @@ class Backend::SnippetTranslationForm < Udongo::Form
 
   def save_object
     init_object_values(@translation)
-    @translation.save
+    @snippet.save
   end
 end

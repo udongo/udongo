@@ -105,12 +105,66 @@ u.gender = 'female'
 u.save
 
 u.store(:custom).gender = 'unknown'
-u.store(:custom).save
+u.save
 ```
 
-When you save the parent object (user), all the store collections will
-automatically be saved.
+When you save the parent object (user), all the store collections will automatically be saved.
 
+## Translatable concern
+This concern is actually the storable concern with some predefined settings. In order to use this concern your model needs to have a database text field named ```locales```.
+
+### Setup
+```ruby
+class Document < ApplicationRecord
+  include Concerns::Translatable
+  
+  # One field
+  translatable_field :name
+ 
+  # Multiple fields
+  translatable_fields :description, :summary 
+end
+```
+
+### Reading values
+When reading values the current ```I18n.locale``` is used. If you want to specify the locale, you need to use the longer syntax.
+
+```ruby
+d = Document.first
+d.name
+
+# Which is equal to
+d.translation(:nl).name
+```
+
+### Writing values
+```ruby
+d = Document.first
+d.name = 'foo'
+
+# Which is equal to
+d.translation(:nl).name = 'foo'
+```
+
+### Saving values
+Make sure to always call the ```#save``` method on your model. You can call the one on the translation, but this will not trigger an update for the ```locales``` field.
+```ruby
+d = Document.first
+d.name = 'foo'
+d.save
+
+d.translation(:nl).foo
+d.save
+```
+
+When you save the parent object (document), all the translations will automatically be saved.
+
+### .by_locale scope
+This concern adds a scope to your model which makes it easy to fetch the models that have translations within a certain locale.
+
+```ruby
+documents = Document.by_locale(:nl)
+```
 
 # Queue
 ## Add tasks to the queue

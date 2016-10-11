@@ -60,13 +60,14 @@ class Backend::PageTranslationForm < Udongo::Form
   def save_object
     @translation.title = title
     @translation.subtitle = subtitle
-    @translation.save
 
     @seo.title = seo_title
     @seo.keywords = seo_keywords
     @seo.description = seo_description
     @seo.custom = seo_custom
     @seo.slug = seo_slug
-    @seo.save
+
+    # Saves the page, translation and SEO info all at once.
+    @page.save
   end
 end

@@ -25,6 +25,6 @@ class Backend::NavigationItemTranslationForm < Udongo::Form
 
   def save_object
     init_object_values(@translation)
-    @translation.save
+    @navigation_item.save
   end
 end

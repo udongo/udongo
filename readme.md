@@ -173,12 +173,14 @@ This concern makes it easy to have multiple addresses with a category linked to 
 ```ruby
 class User < ApplicationRecord
   include Concerns::Addressable
-  address_categories %w(personal billing), default: 'personal'
+  configure_address %w(personal billing), default: 'personal'
 end
 ```
 
+If you don't provide a default, we will use the first one in the list.
+
 ### Usage
-If you request an address that's not initialized this will be done for you. So calling ```#address```, with or without category, will always return an address model
+If you request an address that's not initialized this will be done for you. So calling ```#address```, with or without category, will always return an address model.
 
 ```ruby
 u = User.first

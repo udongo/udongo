@@ -8,6 +8,7 @@
 * You can only set the snippet identifier when creating it. When editing, this
   field is hidden.
 * Added specs for all routes.
+* Add concern to easily use multiple addresses for a single model.
 
 
 2.0.4 - 2016-08-15

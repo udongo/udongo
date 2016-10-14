@@ -15,6 +15,10 @@ these classes, you're in for a rough ride.
 You can now choose which breakpoints you want to show in the interface when 
 editing flexible content. See the docs.
 
+### BackendController renamed to Backend::BaseController
+You need to change each occurence of ```BackendController``` with
+```Backend::Basecontroller```
+
 
 ## from 2.0.1 to 2.0.4
 No actions required.

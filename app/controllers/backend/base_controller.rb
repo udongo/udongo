@@ -1,4 +1,4 @@
-class BackendController < ActionController::Base
+class Backend::BaseController < ActionController::Base
   include Udongo::Cryptography
 
   layout 'backend/application'

@@ -9,6 +9,7 @@
   field is hidden.
 * Added specs for all routes.
 * Add concern to easily use multiple addresses for a single model.
+* The BackendController has been renamed and moved to Backend::BaseController.
 
 
 2.0.4 - 2016-08-15

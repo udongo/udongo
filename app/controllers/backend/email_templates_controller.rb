@@ -1,4 +1,4 @@
-class Backend::EmailTemplatesController < BackendController
+class Backend::EmailTemplatesController < Backend::BaseController
   include Concerns::Backend::TranslatableController
   include Concerns::Backend::PositionableController
 

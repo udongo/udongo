@@ -1,4 +1,4 @@
-class Backend::Navigation::ItemsController < BackendController
+class Backend::Navigation::ItemsController < Backend::BaseController
   include Concerns::Backend::TranslatableController
   include Concerns::Backend::PositionableController
 

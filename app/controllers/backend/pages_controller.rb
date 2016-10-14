@@ -1,4 +1,4 @@
-class Backend::PagesController < BackendController
+class Backend::PagesController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
   before_action :find_model, only: [:edit, :update, :tree_drag_and_drop, :destroy]

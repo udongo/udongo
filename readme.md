@@ -235,7 +235,7 @@ validates :url, url: true
 # Cryptography
 ```Udongo::Cryptography``` is a module you can include in any class to provide you with functionality to encrypt and decrypt values. It is a wrapper that currently uses ```ActiveSupport::MessageEncryptor```, which in turns uses the Rails secret key to encrypt keys.
 
-By default, it is included in ```BackendController```.
+By default, it is included in ```Backend::BaseController```.
 
 ## Configuration
 Include the Udongo::Cryptography module in the class where you wish to encrypt/decrypt:
@@ -354,10 +354,10 @@ irb(main):001:0> Udongo::Notification.new(:added).translate(name: 'Dave', pies: 
 ```
 
 ## Notifications in controllers
-```BackendController#translate_notice``` uses ```Udongo::Notification``` to output translated notices. Typically this is used in tandem with redirects. For example in the admins module:
+```Backend::BaseController#translate_notice``` uses ```Udongo::Notification``` to output translated notices. Typically this is used in tandem with redirects. For example in the admins module:
 
 ```ruby
-class Backend::AdminsController < BackendController
+class Backend::AdminsController < Backend::BaseController
   def create
     redirect_to backend_admins_path, notice: translate_notice(:added, :admin)
   end

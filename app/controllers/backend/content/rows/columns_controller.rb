@@ -1,4 +1,4 @@
-class Backend::Content::Rows::ColumnsController < BackendController
+class Backend::Content::Rows::ColumnsController < Backend::BaseController
   include Concerns::Backend::PositionableController
 
   before_action :find_row

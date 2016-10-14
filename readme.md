@@ -166,6 +166,30 @@ This concern adds a scope to your model which makes it easy to fetch the models 
 documents = Document.by_locale(:nl)
 ```
 
+## Addressable concern
+This concern makes it easy to have multiple addresses with a category linked to a model.
+
+### Setup
+```ruby
+class User < ApplicationRecord
+  include Concerns::Addressable
+  configure_address %w(personal billing), default: 'personal'
+end
+```
+
+If you don't provide a default, we will use the first one in the list.
+
+### Usage
+If you request an address that's not initialized this will be done for you. So calling ```#address```, with or without category, will always return an address model.
+
+```ruby
+u = User.first
+u.address
+
+# Which is equal to
+u.address(:personal)
+```
+
 # Queue
 ## Add tasks to the queue
 You can add tasks to the queue by executing:

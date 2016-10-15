@@ -8,6 +8,7 @@ describe Backend::WebserverController do
 
   describe 'POST restart' do
     it 'touches tmp/restart.txt' do
+      FileUtils.mkdir('tmp') unless Dir.exists?('tmp')
       post :restart
       expect(File.exists?('tmp/restart.txt')).to eq true
     end

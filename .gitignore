@@ -13,3 +13,4 @@ spec/dummy/public/uploads
 todo
 config/environment.rb
 coverage
+tmp/restart.txt

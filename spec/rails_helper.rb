@@ -1,6 +1,10 @@
 ENV['RAILS_ENV'] ||= 'test'
 
-# require 'rails_helper'
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter 'spec/'
+end
+
 require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rspec/rails'
 require 'factory_girl_rails'

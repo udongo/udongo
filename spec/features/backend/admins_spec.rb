@@ -59,7 +59,16 @@ describe 'admins' do
     expect(page).to have_current_path(backend_path)
   end
 
-  it 'edit an admin' do
+  it 'edit an admin without success' do
+    admin_page.visit
+    page.find('tbody td:last a:first').click
+    admin_page.submit_with(nil, nil, 'martha@kauffman.com')
+
+    expect(page).to have_current_path(backend_admin_path(Admin.first))
+    expect(page).to have_content('moet opgegeven zijn')
+  end
+
+  it 'edit an admin successfully' do
     admin_page.visit
     page.find('tbody td:last a:first').click
     admin_page.submit_with('Martha', 'Kauffman', 'martha@kauffman.com')

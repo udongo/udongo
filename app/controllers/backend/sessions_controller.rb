@@ -1,4 +1,4 @@
-class Backend::SessionsController < BackendController
+class Backend::SessionsController < Backend::BaseController
   skip_before_action :check_login
   layout 'backend/login'
 

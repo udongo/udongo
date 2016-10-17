@@ -1,5 +1,6 @@
 # Upgrade guide
 ## from 2.0.4 to 3.0.0
+### Forms
 Everything related to the form models has been deleted. So if you use any of 
 these classes, you're in for a rough ride.
 * Form
@@ -10,8 +11,13 @@ these classes, you're in for a rough ride.
 * FormSubmissionData
 * FormSubmissionDecorator
 
+### Configuration
 You can now choose which breakpoints you want to show in the interface when 
 editing flexible content. See the docs.
+
+### BackendController renamed to Backend::BaseController
+You need to change each occurence of ```BackendController``` with
+```Backend::Basecontroller```
 
 
 ## from 2.0.1 to 2.0.4

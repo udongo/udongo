@@ -1,4 +1,4 @@
-class Backend::AdminsController < BackendController
+class Backend::AdminsController < Backend::BaseController
   before_action :find_admin, only: [:show, :edit, :update, :destroy]
   before_action -> { breadcrumb.add t('b.admins'), backend_admins_path }
 

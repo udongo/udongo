@@ -1,4 +1,4 @@
-class Backend::Content::RowsController < BackendController
+class Backend::Content::RowsController < Backend::BaseController
   include Concerns::Backend::PositionableController
   before_action :find_model, only: [:update_position, :destroy]
 

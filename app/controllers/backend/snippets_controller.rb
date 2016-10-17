@@ -1,4 +1,4 @@
-class Backend::SnippetsController < BackendController
+class Backend::SnippetsController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
   before_action :find_model, only: [:edit, :update]

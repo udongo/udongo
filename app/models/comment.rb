@@ -11,8 +11,7 @@ class Comment < ApplicationRecord
 
   validates :author, :message, presence: true
   validates :status, inclusion: { in: STATUSES }
-  validates :email, presence: true,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates :email, presence: true, email: true
   validates :website, url: true, allow_blank: true
 
   def published?

@@ -105,12 +105,90 @@ u.gender = 'female'
 u.save
 
 u.store(:custom).gender = 'unknown'
-u.store(:custom).save
+u.save
 ```
 
-When you save the parent object (user), all the store collections will
-automatically be saved.
+When you save the parent object (user), all the store collections will automatically be saved.
 
+## Translatable concern
+This concern is actually the storable concern with some predefined settings. In order to use this concern your model needs to have a database text field named ```locales```.
+
+### Setup
+```ruby
+class Document < ApplicationRecord
+  include Concerns::Translatable
+  
+  # One field
+  translatable_field :name
+ 
+  # Multiple fields
+  translatable_fields :description, :summary 
+end
+```
+
+### Reading values
+When reading values the current ```I18n.locale``` is used. If you want to specify the locale, you need to use the longer syntax.
+
+```ruby
+d = Document.first
+d.name
+
+# Which is equal to
+d.translation(:nl).name
+```
+
+### Writing values
+```ruby
+d = Document.first
+d.name = 'foo'
+
+# Which is equal to
+d.translation(:nl).name = 'foo'
+```
+
+### Saving values
+Make sure to always call the ```#save``` method on your model. You can call the one on the translation, but this will not trigger an update for the ```locales``` field.
+```ruby
+d = Document.first
+d.name = 'foo'
+d.save
+
+d.translation(:nl).foo
+d.save
+```
+
+When you save the parent object (document), all the translations will automatically be saved.
+
+### .by_locale scope
+This concern adds a scope to your model which makes it easy to fetch the models that have translations within a certain locale.
+
+```ruby
+documents = Document.by_locale(:nl)
+```
+
+## Addressable concern
+This concern makes it easy to have multiple addresses with a category linked to a model.
+
+### Setup
+```ruby
+class User < ApplicationRecord
+  include Concerns::Addressable
+  configure_address %w(personal billing), default: 'personal'
+end
+```
+
+If you don't provide a default, we will use the first one in the list.
+
+### Usage
+If you request an address that's not initialized this will be done for you. So calling ```#address```, with or without category, will always return an address model.
+
+```ruby
+u = User.first
+u.address
+
+# Which is equal to
+u.address(:personal)
+```
 
 # Queue
 ## Add tasks to the queue
@@ -157,7 +235,7 @@ validates :url, url: true
 # Cryptography
 ```Udongo::Cryptography``` is a module you can include in any class to provide you with functionality to encrypt and decrypt values. It is a wrapper that currently uses ```ActiveSupport::MessageEncryptor```, which in turns uses the Rails secret key to encrypt keys.
 
-By default, it is included in ```BackendController```.
+By default, it is included in ```Backend::BaseController```.
 
 ## Configuration
 Include the Udongo::Cryptography module in the class where you wish to encrypt/decrypt:
@@ -276,10 +354,10 @@ irb(main):001:0> Udongo::Notification.new(:added).translate(name: 'Dave', pies: 
 ```
 
 ## Notifications in controllers
-```BackendController#translate_notice``` uses ```Udongo::Notification``` to output translated notices. Typically this is used in tandem with redirects. For example in the admins module:
+```Backend::BaseController#translate_notice``` uses ```Udongo::Notification``` to output translated notices. Typically this is used in tandem with redirects. For example in the admins module:
 
 ```ruby
-class Backend::AdminsController < BackendController
+class Backend::AdminsController < Backend::BaseController
   def create
     redirect_to backend_admins_path, notice: translate_notice(:added, :admin)
   end

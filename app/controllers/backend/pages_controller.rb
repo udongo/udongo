@@ -10,7 +10,7 @@ class Backend::PagesController < Backend::BaseController
     respond_to do |format|
       format.html
       format.json {
-        render json: page_tree_data.to_json
+        render json: Udongo::Pages::Tree.new(self).data
       }
     end
   end
@@ -53,14 +53,6 @@ class Backend::PagesController < Backend::BaseController
     render json: { trashed: @model.destroy }
   end
 
-  def page_tree_data(parent_id: nil)
-    Page.where(parent_id: parent_id).inject([]) do |data, p|
-      hash = node_data p
-      hash[:children] = page_tree_data(parent_id: p.id) if p.children.any?
-      data << hash
-    end
-  end
-
   private
 
   def find_model
@@ -73,25 +65,5 @@ class Backend::PagesController < Backend::BaseController
       @model.translation(params[:translation_locale]),
       @model.seo(params[:translation_locale])
     )
-  end
-
-  def node_data(page)
-    {
-      text: page.description,
-      type: :file,
-      li_attr: {
-        class: ('jstree-node-invisible' unless page.visible?)
-      },
-      state: { selected: false },
-      data: {
-        id: page.id,
-        url: edit_backend_page_path(page),
-        delete_url: backend_page_path(page, format: :json),
-        deletable: page.deletable?,
-        draggable: page.draggable?,
-        update_position_url: tree_drag_and_drop_backend_page_path(page)
-      },
-      children: []
-    }
   end
 end

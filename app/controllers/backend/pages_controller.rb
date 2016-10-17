@@ -79,6 +79,9 @@ class Backend::PagesController < Backend::BaseController
     {
       text: page.description,
       type: :file,
+      li_attr: {
+        class: ('jstree-node-invisible' unless page.visible?)
+      },
       state: { selected: false },
       data: {
         id: page.id,

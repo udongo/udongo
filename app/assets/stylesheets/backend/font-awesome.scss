@@ -183,6 +183,20 @@
 .fa-inverse {
   color: #ffffff;
 }
+
+@mixin icon($icon) {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  line-height: 1;
+  content: $icon;
+}
+
+/* These variables can be used with the `icon` mixin. Expand these as you see fit. */
+$icon-eye-slash: "\f070";
+
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
 .fa-glass:before { content: "\f000"; }

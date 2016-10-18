@@ -19,6 +19,10 @@ editing flexible content. See the docs.
 You need to change each occurence of ```BackendController``` with
 ```Backend::Basecontroller```
 
+### Spec support/factories
+You can now again required spec/support and spec/factories in your specs. This
+way you can easily test shared examples eg for translatable.
+
 
 ## from 2.0.1 to 2.0.4
 No actions required.

@@ -63,7 +63,8 @@ describe QueuedTask do
 
   it '#process!' do
     task = create(klass, klass: Object, locked: false)
-    expect { task.process! }.to raise_exception(ArgumentError)
+    expect { task.process! }.to raise_error(ArgumentError)
+
     expect(task).not_to be_locked
   end
 

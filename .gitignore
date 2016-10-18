@@ -13,3 +13,5 @@ spec/dummy/public/uploads
 todo
 config/environment.rb
 .DS_Store
+coverage
+tmp/restart.txt

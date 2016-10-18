@@ -6,7 +6,7 @@ class RedirectsController < ActionController::Base
       redirect.used!
       redirect_to redirect.destination_uri, status: redirect.status_code
     else
-      render text: 'No such redirect or disabled.', status: 404
+      render plain: 'No such redirect or disabled.', status: 404
     end
   end
 

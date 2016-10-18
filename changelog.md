@@ -10,6 +10,7 @@
 * Added specs for all routes.
 * Add concern to easily use multiple addresses for a single model.
 * The BackendController has been renamed and moved to Backend::BaseController.
+* Add spec/support and spec/factories to the gem.
 
 
 2.0.4 - 2016-08-15

@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   # TODO: shouldn't spec/support be included in this list?
   # Right now we can't use # it_behaves_like :translatable in an app's tests.
-  s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md']
+  s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md', 'spec/factories', 'spec/support']
 
   # General
   s.add_dependency 'rails', '5.0.0'

@@ -9,7 +9,7 @@ describe Udongo::Configs::I18ns::App do
     end
 
     it :locales do
-      expect(klass.new.locales).to eq %w(nl)
+      expect(klass.new.locales).to eq %w(nl fr en)
     end
   end
 

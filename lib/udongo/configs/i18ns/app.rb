@@ -5,7 +5,7 @@ module Udongo
         include Virtus.model
 
         attribute :default_locale, String, default: 'nl'
-        attribute :locales, Array, default: %w(nl)
+        attribute :locales, Array, default: %w(nl fr en)
       end
     end
   end

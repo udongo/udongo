@@ -13,8 +13,10 @@ en:
 
     labels:
       defaults:
+        bcc: BCC
         caption: Caption
         category: Category
+        cc: CC
         content: Content
         description: Description
         disabled: Disabled

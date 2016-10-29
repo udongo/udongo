@@ -7,8 +7,11 @@ describe Admin do
   it_behaves_like :person
 
   describe 'validations' do
-    it(:first_name) { expect(build(klass, first_name: nil)).not_to be_valid }
-    it(:last_name) { expect(build(klass, last_name: nil)).not_to be_valid }
+    describe 'presence' do
+      it(:locale) { expect(build(klass, locale: nil)).not_to be_valid }
+      it(:first_name) { expect(build(klass, first_name: nil)).not_to be_valid }
+      it(:last_name) { expect(build(klass, last_name: nil)).not_to be_valid }
+    end
 
     describe 'email' do
       it(:value) { expect(build(klass, email: nil)).not_to be_valid }

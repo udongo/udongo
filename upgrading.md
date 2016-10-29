@@ -28,6 +28,10 @@ Change every instance of ```Udongo.config.i18n.locales``` with
 ```Udongo.config.i18n.app.locales``` and ```Udongo.config.i18n.default_locale```
 with ```Udongo.config.i18n.app.default_locale```
 
+### Backend default_locale helper renamed
+In the backend you used to have a helper ```default_locale```. You need to 
+rename each occurence to ```default_app_locale```
+
 
 ## from 2.0.1 to 2.0.4
 No actions required.

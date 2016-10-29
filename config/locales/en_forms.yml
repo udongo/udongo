@@ -25,6 +25,7 @@ en:
         identifier: Internal name
         label: Label
         last_name: Last name
+        locale: Locale
         message: Message
         name: Name
         password: Password

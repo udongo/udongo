@@ -16,7 +16,7 @@ class Backend::SnippetsController < Backend::BaseController
     @form = Backend::SnippetForm.new(Snippet.new)
 
     if @form.save params[:snippet]
-      redirect_to edit_translation_backend_snippet_path(@form.snippet, translation_locale: default_locale),
+      redirect_to edit_translation_backend_snippet_path(@form.snippet, translation_locale: default_app_locale),
                   notice: translate_notice(:added, :snippet)
     else
       render :new

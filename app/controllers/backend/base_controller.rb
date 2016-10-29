@@ -18,10 +18,10 @@ class Backend::BaseController < ActionController::Base
     Udongo::Notification.new(notice).translate(actor)
   end
 
-  def default_locale
-    Udongo.config.i18n.default_locale
+  def default_app_locale
+    Udongo.config.i18n.app.default_locale
   end
-  helper_method :default_locale
+  helper_method :default_app_locale
 
   private
 

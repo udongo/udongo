@@ -17,7 +17,7 @@ class Backend::EmailTemplatesController < Backend::BaseController
     @form = Backend::EmailTemplateForm.new(EmailTemplate.new)
 
     if @form.save params[:email_template]
-      redirect_to edit_translation_backend_email_template_path(@form.email_template, translation_locale: default_locale), notice: translate_notice(:added, :email_template)
+      redirect_to edit_translation_backend_email_template_path(@form.email_template, translation_locale: default_app_locale), notice: translate_notice(:added, :email_template)
     else
       render :new
     end

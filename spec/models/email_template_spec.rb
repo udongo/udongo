@@ -29,6 +29,24 @@ describe EmailTemplate do
         expect(build(klass, from_email: 'foo@bar.baz')).to be_valid
       end
     end
+
+    describe 'cc' do
+      it(:blank) { expect(build(klass, cc: nil)).to be_valid }
+
+      it :valid do
+        expect(build(klass, cc: 'foo')).not_to be_valid
+        expect(build(klass, cc: 'foo@bar.baz')).to be_valid
+      end
+    end
+
+    describe 'bcc' do
+      it(:blank) { expect(build(klass, bcc: nil)).to be_valid }
+
+      it :valid do
+        expect(build(klass, bcc: 'foo')).not_to be_valid
+        expect(build(klass, bcc: 'foo@bar.baz')).to be_valid
+      end
+    end
   end
 
   it 'translatable' do

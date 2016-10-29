@@ -45,7 +45,7 @@ class Backend::AdminsController < Backend::BaseController
 
   def allowed_params
     params[:admin].permit(
-      :first_name, :last_name, :email, :password, :password_confirmation
+      :locale, :first_name, :last_name, :email, :password, :password_confirmation
     )
   end
 

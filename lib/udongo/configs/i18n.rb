@@ -1,10 +1,12 @@
 module Udongo
   module Configs
     class I18n
-      include Virtus.model
+      attr_reader :app, :cms
 
-      attribute :default_locale, String, default: 'nl'
-      attribute :locales, Array, default: %w(nl en fr de)
+      def initialize
+        @app = Udongo::Configs::I18ns::App.new
+        @cms = Udongo::Configs::I18ns::Cms.new
+      end
     end
   end
 end

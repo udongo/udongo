@@ -5,12 +5,13 @@
 * You can now set the list of breakpoints you want to have visible for the 
   flexible content. In most cases the xs and xl don't need to clutter the 
   interface, so now you can hide them.
-* You can only set the snippet identifier when creating it. When editing, this
-  field is hidden.
 * Added specs for all routes.
 * Add concern to easily use multiple addresses for a single model.
 * The BackendController has been renamed and moved to Backend::BaseController.
 * Add spec/support and spec/factories to the gem.
+* The i18n configuration has been split in 'app' and 'cms'. You can now
+  configure the cms interface locale(s) indepent of the app locale(s).
+* An admin can now choose his interface locale.
 
 
 2.0.4 - 2016-08-15

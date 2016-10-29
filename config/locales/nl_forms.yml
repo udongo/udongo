@@ -25,6 +25,7 @@ nl:
         identifier: Interne naam
         label: Label
         last_name: Achternaam
+        locale: Taal
         message: Bericht
         name: Naam
         password: Wachtwoord

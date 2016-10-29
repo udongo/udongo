@@ -62,6 +62,36 @@ describe Backend::EmailTemplateForm do
         expect(instance.save(params)).to eq true
       end
     end
+
+    describe 'cc' do
+      it :blank do
+        params = valid_params.merge(cc: nil)
+        expect(instance.save(params)).to eq true
+      end
+
+      it :valid do
+        params = valid_params.merge(cc: 'foo')
+        expect(instance.save(params)).to eq false
+
+        params = valid_params.merge(cc: 'foo@bar.baz')
+        expect(instance.save(params)).to eq true
+      end
+    end
+
+    describe 'bcc' do
+      it :blank do
+        params = valid_params.merge(bcc: nil)
+        expect(instance.save(params)).to eq true
+      end
+
+      it :valid do
+        params = valid_params.merge(bcc: 'foo')
+        expect(instance.save(params)).to eq false
+
+        params = valid_params.merge(bcc: 'foo@bar.baz')
+        expect(instance.save(params)).to eq true
+      end
+    end
   end
 
   describe '#save' do

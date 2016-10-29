@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029124558) do
+ActiveRecord::Schema.define(version: 20161029130557) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(version: 20161029124558) do
     t.text     "locales",     limit: 65535
     t.string   "from_name"
     t.string   "from_email"
+    t.string   "cc"
+    t.string   "bcc"
     t.boolean  "optional"
     t.text     "vars",        limit: 65535
     t.integer  "position"

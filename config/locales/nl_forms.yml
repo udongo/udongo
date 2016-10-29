@@ -13,8 +13,10 @@ nl:
 
     labels:
       defaults:
+        bcc: BCC
         caption: Beschrijving
         category: Categorie
+        cc: CC
         content: Inhoud
         description: Beschrijving
         disabled: Uitgeschakeld

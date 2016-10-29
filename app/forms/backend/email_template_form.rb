@@ -5,9 +5,12 @@ class Backend::EmailTemplateForm < Udongo::Form
   attribute :description, String
   attribute :from_name, String
   attribute :from_email, String
+  attribute :cc, String
+  attribute :bcc, String
 
   validates :identifier, :description, :from_name, :from_email, presence: true
   validates :from_email, email: true
+  validates :cc, :bcc, email: true, allow_blank: true
   validate :unique_identifier
 
   delegate :id, to: :email_template

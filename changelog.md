@@ -12,6 +12,8 @@
 * The i18n configuration has been split in 'app' and 'cms'. You can now
   configure the cms interface locale(s) indepent of the app locale(s).
 * An admin can now choose his interface locale.
+* Add cc/bcc to the email templates and sent emails.
+* The general mailer has been expanded so it's easier to override the headers.
 
 
 2.0.4 - 2016-08-15

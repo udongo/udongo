@@ -11,6 +11,8 @@
 * Add concern to easily use multiple addresses for a single model.
 * The BackendController has been renamed and moved to Backend::BaseController.
 * Add spec/support and spec/factories to the gem.
+* The i18n configuration has been split in 'app' and 'cms'. You can now
+  configure the cms interface locale(s) indepent of the app locale(s).
 
 
 2.0.4 - 2016-08-15

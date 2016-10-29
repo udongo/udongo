@@ -13,6 +13,7 @@
 * Add spec/support and spec/factories to the gem.
 * The i18n configuration has been split in 'app' and 'cms'. You can now
   configure the cms interface locale(s) indepent of the app locale(s).
+* An admin can now choose his interface locale.
 
 
 2.0.4 - 2016-08-15

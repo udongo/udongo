@@ -2,7 +2,7 @@ class Backend::BaseController < ActionController::Base
   include Udongo::Cryptography
 
   layout 'backend/application'
-  before_action :check_login
+  before_action :interface_locale, :check_login
 
   def breadcrumb
     @breadcrumb ||= Udongo::Breadcrumb.new
@@ -24,6 +24,14 @@ class Backend::BaseController < ActionController::Base
   helper_method :default_app_locale
 
   private
+
+  def interface_locale
+    if current_admin && current_admin.locale.present?
+      I18n.locale = current_admin.locale
+    else
+      I18n.locale = Udongo.config.i18n.cms.default_interface_locale
+    end
+  end
 
   def check_login
     unless current_admin

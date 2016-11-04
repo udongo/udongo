@@ -16,9 +16,11 @@ module Udongo::Pages
         data: {
           id: page.id,
           url: context.edit_backend_page_path(page),
+          toggle_visibility_url: context.toggle_visibility_backend_page_path(page, format: :json),
           delete_url: context.backend_page_path(page, format: :json),
           deletable: page.deletable?,
           draggable: page.draggable?,
+          visible: page.visible?,
           update_position_url: context.tree_drag_and_drop_backend_page_path(page)
         },
         children: [] # This gets filled through Udongo::Pages::Tree

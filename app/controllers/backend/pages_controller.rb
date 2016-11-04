@@ -1,7 +1,8 @@
 class Backend::PagesController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
-  before_action :find_model, only: [:edit, :update, :tree_drag_and_drop, :destroy]
+  before_action :find_model, except: [:index, :new, :create]
+  #before_action :find_model, only: [:edit, :update, :tree_drag_and_drop, :destroy]
   before_action -> { breadcrumb.add t('b.pages'), backend_pages_path }
 
   def index
@@ -41,6 +42,11 @@ class Backend::PagesController < Backend::BaseController
     else
       render :edit
     end
+  end
+
+  def toggle_visibility
+    @model.visible? ? @model.hide! : @model.show!
+    render json: { toggled: @model }
   end
 
   def tree_drag_and_drop

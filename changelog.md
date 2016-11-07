@@ -15,6 +15,7 @@
 * An admin can now choose his interface locale.
 * Add cc/bcc to the email templates and sent emails.
 * The general mailer has been expanded so it's easier to override the headers.
+* Added new contextmenu options for making pages (in)visible through the tree.
 
 
 2.0.4 - 2016-08-15

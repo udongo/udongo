@@ -179,6 +179,8 @@ var tree = tree || {
     } else {
       obj.removeClass('jstree-node-invisible');
     }
+
+    window.location.reload();
   },
 
   types: function() {

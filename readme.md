@@ -28,14 +28,26 @@ Udongo.config.tags.allow_new = false
 ```
 
 ## I18n
-### default_locale
+### app
+#### default_locale
 ```ruby
-Udongo.config.i18n.default_locale = :nl
+Udongo.config.i18n.app.default_locale = :nl
 ```
 
 ### locales
 ```ruby
-Udongo.config.i18n.locales = %w(nl en fr de)
+Udongo.config.i18n.app.locales = %w(nl)
+```
+
+### cms
+#### default_interface_locale
+```ruby
+Udongo.config.i18n.app.default_interface_locale = 'nl'
+```
+
+#### interface_locales
+```ruby
+Udongo.config.i18n.app.interface_locales = %w(nl en)
 ```
 
 ## Flexible content

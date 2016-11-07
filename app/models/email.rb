@@ -2,6 +2,7 @@ class Email < ApplicationRecord
   validates :from_name, :to_name, :subject, :plain_content, :html_content,
             presence: true
   validates :from_email, :to_email, email: true
+  validates :cc, :bcc, email: true, allow_blank: true
 
   scope :sent, -> { where('sent_at IS NOT NULL') }
   scope :not_sent, -> { where('sent_at IS NULL') }

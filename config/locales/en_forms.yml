@@ -13,8 +13,10 @@ en:
 
     labels:
       defaults:
+        bcc: BCC
         caption: Caption
         category: Category
+        cc: CC
         content: Content
         description: Description
         disabled: Disabled
@@ -25,6 +27,7 @@ en:
         identifier: Internal name
         label: Label
         last_name: Last name
+        locale: Locale
         message: Message
         name: Name
         password: Password

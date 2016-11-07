@@ -1,7 +1,5 @@
 module Udongo::Pages
   class TreeNode
-    attr_reader :context, :page
-
     # Context should contain accessible routes.
     def initialize(context, page)
       @context = context
@@ -10,25 +8,25 @@ module Udongo::Pages
 
     def data
       {
-        text: page.description,
+        text: @page.description,
         type: :file,
         li_attr: list_attributes,
         data: {
-          id: page.id,
-          url: context.edit_backend_page_path(page),
-          toggle_visibility_url: context.toggle_visibility_backend_page_path(page, format: :json),
-          delete_url: context.backend_page_path(page, format: :json),
-          deletable: page.deletable?,
-          draggable: page.draggable?,
-          visible: page.visible?,
-          update_position_url: context.tree_drag_and_drop_backend_page_path(page)
+          id: @page.id,
+          url: @context.edit_backend_page_path(@page),
+          delete_url: @context.backend_page_path(@page, format: :json),
+          deletable: @page.deletable?,
+          draggable: @page.draggable?,
+          update_position_url: @context.tree_drag_and_drop_backend_page_path(@page),
+          visible: @page.visible?,
+          toggle_visibility_url: @context.toggle_visibility_backend_page_path(@page, format: :json)
         },
         children: [] # This gets filled through Udongo::Pages::Tree
       }
     end
 
     def list_attributes
-      return if page.visible?
+      return if @page.visible?
 
       {
         class: 'jstree-node-invisible',

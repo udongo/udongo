@@ -19,6 +19,19 @@ editing flexible content. See the docs.
 You need to change each occurence of ```BackendController``` with
 ```Backend::Basecontroller```
 
+### Spec support/factories
+You can now again require spec/support and spec/factories in your specs. This
+way you can easily test shared examples eg for translatable.
+
+### I18n configuration
+Change every instance of ```Udongo.config.i18n.locales``` with
+```Udongo.config.i18n.app.locales``` and ```Udongo.config.i18n.default_locale```
+with ```Udongo.config.i18n.app.default_locale```
+
+### Backend default_locale helper renamed
+In the backend you used to have a helper ```default_locale```. You need to 
+rename each occurence to ```default_app_locale```
+
 
 ## from 2.0.1 to 2.0.4
 No actions required.

@@ -6,9 +6,9 @@ describe Udongo do
   end
 
   it '.reset_config' do
-    Udongo.config.i18n.default_locale = :foo
+    Udongo.config.base.host = :foo
     Udongo.reset_config
-    expect(Udongo.config.i18n.default_locale).to eq 'nl'
+    expect(Udongo.config.base.host).to eq 'udongo.dev'
   end
 
   it '.respond_to?' do

@@ -9,6 +9,7 @@ describe Udongo::Pages::Tree do
       allow(route_context).to receive(:backend_page_path) { '/backend/pages/1' }
       allow(route_context).to receive(:edit_backend_page_path) { '/backend/pages/1/edit' }
       allow(route_context).to receive(:tree_drag_and_drop_backend_page_path) { '/backend/pages/1/tree_drag_and_drop' }
+      allow(route_context).to receive(:toggle_visibility_backend_page_path) { '/backend/pages/1/toggle_visibility' }
     end
 
     it '#default' do
@@ -28,7 +29,9 @@ describe Udongo::Pages::Tree do
             delete_url: '/backend/pages/1',
             deletable: true,
             draggable: true,
-            update_position_url: '/backend/pages/1/tree_drag_and_drop'
+            update_position_url: '/backend/pages/1/tree_drag_and_drop',
+            visible: true,
+            toggle_visibility_url: '/backend/pages/1/toggle_visibility'
           },
           children: []
         }

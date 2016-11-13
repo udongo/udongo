@@ -46,6 +46,6 @@ describe 'page routes' do
   end
 
   it 'POST /backend/pages/1/toggle_visility' do
-    expect(post: toggle_visbility_backend_page_path(1)).to route_to('backend/pages#toggle_visbility_backend_page_path', id: '1')
+    expect(post: toggle_visibility_backend_page_path(1)).to route_to('backend/pages#toggle_visibility', id: '1')
   end
 end

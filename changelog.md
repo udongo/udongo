@@ -8,6 +8,8 @@
 * Added specs for all routes.
 * Add concern to easily use multiple addresses for a single model.
 * The BackendController has been renamed and moved to Backend::BaseController.
+* Update Bootstrap to v4.0.0-alpha.4
+* Tweak the styles for the simple form initializer.
 * Pages marked as invisible are now visibly distinguished from visible pages. Fixes #9
 * Add spec/support and spec/factories to the gem.
 * The i18n configuration has been split in 'app' and 'cms'. You can now

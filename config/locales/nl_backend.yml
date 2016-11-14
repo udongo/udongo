@@ -95,6 +95,8 @@ nl:
       navigation:
         custom: Op maat
       no_items: Er zijn geen items.
+      pages:
+        invisible: Deze pagina is niet zichtbaar op de website.
       saved: '%{actor} werd bewaard.'
       seo: SEO
       status_codes:

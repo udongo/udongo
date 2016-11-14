@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014135637) do
+ActiveRecord::Schema.define(version: 20161029171056) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -29,12 +29,14 @@ ActiveRecord::Schema.define(version: 20161014135637) do
   end
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "locale"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["locale"], name: "index_admins_on_locale", using: :btree
   end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -123,6 +125,8 @@ ActiveRecord::Schema.define(version: 20161014135637) do
     t.text     "locales",     limit: 65535
     t.string   "from_name"
     t.string   "from_email"
+    t.string   "cc"
+    t.string   "bcc"
     t.boolean  "optional"
     t.text     "vars",        limit: 65535
     t.integer  "position"
@@ -136,6 +140,8 @@ ActiveRecord::Schema.define(version: 20161014135637) do
     t.string   "from_email"
     t.string   "to_name"
     t.string   "to_email"
+    t.string   "cc"
+    t.string   "bcc"
     t.string   "subject"
     t.text     "plain_content", limit: 65535
     t.text     "html_content",  limit: 65535

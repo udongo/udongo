@@ -1,7 +1,7 @@
 class Backend::PagesController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
-  before_action :find_model, only: [:edit, :update, :tree_drag_and_drop, :destroy]
+  before_action :find_model, except: [:index, :new, :create]
   before_action -> { breadcrumb.add t('b.pages'), backend_pages_path }
 
   def index
@@ -10,7 +10,7 @@ class Backend::PagesController < Backend::BaseController
     respond_to do |format|
       format.html
       format.json {
-        render json: page_tree_data.to_json
+        render json: Udongo::Pages::Tree.new(self).data
       }
     end
   end
@@ -43,6 +43,11 @@ class Backend::PagesController < Backend::BaseController
     end
   end
 
+  def toggle_visibility
+    @model.visible? ? @model.hide! : @model.show!
+    render json: { toggled: @model }
+  end
+
   def tree_drag_and_drop
     # TODO (Dave) - check if this page is draggable.
     render json: { moved: @model.set_position(params[:position], params[:parent_id]) }
@@ -51,14 +56,6 @@ class Backend::PagesController < Backend::BaseController
   def destroy
     # TODO (Dave) - check if this page may be destroyed.
     render json: { trashed: @model.destroy }
-  end
-
-  def page_tree_data(parent_id: nil)
-    Page.where(parent_id: parent_id).inject([]) do |data, p|
-      hash = node_data p
-      hash[:children] = page_tree_data(parent_id: p.id) if p.children.any?
-      data << hash
-    end
   end
 
   private
@@ -73,22 +70,5 @@ class Backend::PagesController < Backend::BaseController
       @model.translation(params[:translation_locale]),
       @model.seo(params[:translation_locale])
     )
-  end
-
-  def node_data(page)
-    {
-      text: page.description,
-      type: :file,
-      state: { selected: false },
-      data: {
-        id: page.id,
-        url: edit_backend_page_path(page),
-        delete_url: backend_page_path(page, format: :json),
-        deletable: page.deletable?,
-        draggable: page.draggable?,
-        update_position_url: tree_drag_and_drop_backend_page_path(page)
-      },
-      children: []
-    }
   end
 end

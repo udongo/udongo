@@ -1,0 +1,9 @@
+li.jstree-node-invisible {
+  > a.jstree-anchor {
+    opacity: 0.6;
+
+    i.jstree-icon:before {
+      @include icon($icon-eye-slash);
+    }
+  }
+}

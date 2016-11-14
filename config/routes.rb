@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
     resources :pages, except: [:show] do
       concerns :translatable
-      member { post :tree_drag_and_drop }
+      member do
+        post :tree_drag_and_drop, :toggle_visibility
+      end
     end
 
     resources :navigations, only: [:index] do

@@ -13,8 +13,10 @@ nl:
 
     labels:
       defaults:
+        bcc: BCC
         caption: Beschrijving
         category: Categorie
+        cc: CC
         content: Inhoud
         description: Beschrijving
         disabled: Uitgeschakeld
@@ -25,6 +27,7 @@ nl:
         identifier: Interne naam
         label: Label
         last_name: Achternaam
+        locale: Taal
         message: Bericht
         name: Naam
         password: Wachtwoord

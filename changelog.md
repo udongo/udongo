@@ -10,6 +10,8 @@
 * Added specs for all routes.
 * Add concern to easily use multiple addresses for a single model.
 * The BackendController has been renamed and moved to Backend::BaseController.
+* Update Bootstrap to v4.0.0-alpha.4
+* Tweak the styles for the simple form initializer.
 
 
 2.0.4 - 2016-08-15

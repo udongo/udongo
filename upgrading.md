@@ -32,7 +32,7 @@ In the backend you used to have a helper ```default_locale```. You need to
 rename each occurence to ```default_app_locale```
 
 
-## from 2.0.1 to 2.0.4
+## From 2.0.1 to 2.0.4
 No actions required.
 
 

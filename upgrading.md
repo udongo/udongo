@@ -1,5 +1,5 @@
 # Upgrade guide
-## from 2.0.4 to 3.0.0
+## From 2.0.4 to 3.0.0
 ### Forms
 Everything related to the form models has been deleted. So if you use any of 
 these classes, you're in for a rough ride.

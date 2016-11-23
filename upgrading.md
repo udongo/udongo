@@ -16,8 +16,7 @@ You can now choose which breakpoints you want to show in the interface when
 editing flexible content. See the docs.
 
 ### BackendController renamed to Backend::BaseController
-You need to change each occurence of ```BackendController``` with
-```Backend::Basecontroller```
+You need to change each occurence of ```BackendController``` with ```Backend::Basecontroller```
 
 ### Spec support/factories
 You can now again require spec/support and spec/factories in your specs. This

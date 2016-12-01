@@ -26,4 +26,10 @@ describe User do
       end
     end
   end
+
+  it '#responds_to?' do
+    expect(build(klass)).to respond_to(
+      :authenticate
+    )
+  end
 end

@@ -3,6 +3,8 @@ require 'rails_helper'
 describe User do
   let(:klass) { described_class.to_s.underscore.to_sym }
 
+  it_behaves_like :person
+
   describe 'validations' do
     describe 'presence' do
       it(:first_name) { expect(build(klass, first_name: nil)).not_to be_valid }

@@ -5,6 +5,8 @@ describe User do
 
   describe 'validations' do
     describe 'presence' do
+      it(:first_name) { expect(build(klass, first_name: nil)).not_to be_valid }
+      it(:last_name) { expect(build(klass, last_name: nil)).not_to be_valid }
       it(:email) { expect(build(klass, email: nil)).not_to be_valid }
     end
 

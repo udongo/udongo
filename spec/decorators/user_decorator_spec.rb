@@ -31,6 +31,7 @@ describe UserDecorator do
 
   it '#responds_to?' do
     expect(instance).to respond_to(
+      :abbreviation
     )
   end
 end

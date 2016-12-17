@@ -28,7 +28,9 @@ module Concerns
       def content_path
         column = @model.column
         path = "edit_translation_backend_#{column.row.rowable.class.to_s.downcase}_path"
-        send(path, column.row.rowable, locale, anchor: "content-row-#{column.row.id}")
+        # TODO this needs to be the locale that you were editing, not the interface locale.
+        # You can reproduce this by editing flexible content in NL when your interface is english.
+        send(path, column.row.rowable, @model.column.row.locale, anchor: "content-row-#{column.row.id}")
       end
 
       def update

@@ -18,6 +18,8 @@
 * Add cc/bcc to the email templates and sent emails.
 * The general mailer has been expanded so it's easier to override the headers.
 * Added new contextmenu options for making pages (in)visible through the tree.
+* After adding or editing content in a certain locale, redirect to the correct
+  locale.
 
 
 2.0.4 - 2016-08-15

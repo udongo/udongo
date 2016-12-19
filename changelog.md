@@ -22,6 +22,7 @@
 * After adding or editing content in a certain locale, redirect to the correct
   locale.
 * The dashboard template no longer contains dashboard#show.
+* You can now add your custom css to app/assets/stylesheets/backend/custom.scss
 
 
 2.0.4 - 2016-08-15

@@ -375,3 +375,8 @@ class Backend::AdminsController < Backend::BaseController
   end
 end
 ```
+
+# Javascript libs
+## Select2
+This library is loaded by default in the backend.
+See https://select2.github.io

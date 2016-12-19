@@ -18,6 +18,7 @@
 * Add cc/bcc to the email templates and sent emails.
 * The general mailer has been expanded so it's easier to override the headers.
 * Added new contextmenu options for making pages (in)visible through the tree.
+* Add (and load) the select2 js lib in the backend.
 * After adding or editing content in a certain locale, redirect to the correct
   locale.
 

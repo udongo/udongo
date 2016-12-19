@@ -1,5 +1,5 @@
 # Upgrade guide
-## from 2.0.4 to 3.0.0
+## From 2.0.4 to 3.0.0
 ### Forms
 Everything related to the form models has been deleted. So if you use any of 
 these classes, you're in for a rough ride.
@@ -16,8 +16,7 @@ You can now choose which breakpoints you want to show in the interface when
 editing flexible content. See the docs.
 
 ### BackendController renamed to Backend::BaseController
-You need to change each occurence of ```BackendController``` with
-```Backend::Basecontroller```
+You need to change each occurence of ```BackendController``` with ```Backend::Basecontroller```
 
 ### Spec support/factories
 You can now again require spec/support and spec/factories in your specs. This
@@ -33,7 +32,7 @@ In the backend you used to have a helper ```default_locale```. You need to
 rename each occurence to ```default_app_locale```
 
 
-## from 2.0.1 to 2.0.4
+## From 2.0.1 to 2.0.4
 No actions required.
 
 

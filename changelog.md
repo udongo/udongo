@@ -21,6 +21,7 @@
 * Add (and load) the select2 js lib in the backend.
 * After adding or editing content in a certain locale, redirect to the correct
   locale.
+* The dashboard template no longer contains dashboard#show.
 
 
 2.0.4 - 2016-08-15

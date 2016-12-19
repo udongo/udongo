@@ -89,6 +89,7 @@ nl:
         edit_text: Tekst bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
       forgot_password: Wachtwoord vergeten?
+      general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:
         status_code: Meer info over het gebruik van status codes
       incorrect_login: Ongeldige login gegevens.

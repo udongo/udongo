@@ -4,6 +4,7 @@
 <%= render 'backend/breadcrumbs' %>
 
 <%= render 'backend/navigation/items/tabs', active: params[:translation_locale].to_sym %>
+<%= render 'backend/general_form_error', object: @translation %>
 
 <%= simple_form_for(@translation, url: edit_translation_backend_navigation_item_path) do |f| %>
   <div class="card">

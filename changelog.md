@@ -23,6 +23,7 @@
   locale.
 * The dashboard template no longer contains dashboard#show.
 * You can now add your custom css to app/assets/stylesheets/backend/custom.scss
+* When a backend form has 1 or more errors, you will now see a general error.
 
 
 2.0.4 - 2016-08-15

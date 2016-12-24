@@ -16,11 +16,6 @@ describe Backend::SnippetTranslationForm do
     expect(translation.content).to eq 'foo'
   end
 
-  it '#persisted?' do
-    snippet = create(:snippet)
-    expect(klass.new(snippet, snippet.translation)).to be_persisted
-  end
-
   it '.respond_to?' do
     expect(klass).to respond_to(:model_name)
   end

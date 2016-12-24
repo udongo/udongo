@@ -61,12 +61,6 @@ Udongo.config.flexible_content.types = %w(text image)
 Udongo.config.flexible_content.allowed_breakpoints = %w(xs sm md lg xl)
 ```
 
-## Routes
-### prefix_with_locale
-```ruby
-Udongo.config.routes.prefix_with_locale = true
-```
-
 # Concerns
 ## Storable concern
 ### Possible field types

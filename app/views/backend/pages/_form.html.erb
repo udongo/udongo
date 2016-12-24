@@ -1,6 +1,6 @@
-<%= render 'backend/general_form_error', object: @form %>
+<%= render 'backend/general_form_error', object: @model %>
 
-<%= simple_form_for [:backend, @form] do |f| %>
+<%= simple_form_for [:backend, @model] do |f| %>
   <div class="row">
     <div class="col-md-8">
       <div class="card">
@@ -10,7 +10,7 @@
 
         <div class="card-block">
           <%= f.input :description %>
-          <%= f.input :parent_id, collection: @form.page.options_for_parents, disabled: 1 %>
+          <%= f.input :parent_id, collection: @model.options_for_parents, disabled: 1 %>
         </div>
       </div>
     </div>

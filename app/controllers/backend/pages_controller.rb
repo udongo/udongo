@@ -16,27 +16,21 @@ class Backend::PagesController < Backend::BaseController
   end
 
   def new
-    @form = Backend::PageForm.new(Page.new.decorate)
+    @model = Page.new.decorate
   end
 
   def create
-    @form = Backend::PageForm.new(Page.new.decorate)
+    @model = Page.new(allowed_params).decorate
 
-    if @form.save params[:page]
-      redirect_to edit_backend_page_path(@form.page), notice: translate_notice(:added, :page)
+    if @model.save
+      redirect_to edit_backend_page_path(@model), notice: translate_notice(:added, :page)
     else
       render :new
     end
   end
 
-  def edit
-    @form = Backend::PageForm.new(@model)
-  end
-
   def update
-    @form = Backend::PageForm.new(@model)
-
-    if @form.save params[:page]
+    if @model.update_attributes allowed_params
       redirect_to edit_backend_page_path(@model), notice: translate_notice(:edited, :page)
     else
       render :edit
@@ -62,6 +56,10 @@ class Backend::PagesController < Backend::BaseController
 
   def find_model
     @model = Page.find(params[:id]).decorate
+  end
+
+  def allowed_params
+    params[:page].permit(:description, :parent_id, :visible)
   end
 
   def translation_form

@@ -23,8 +23,6 @@ describe PageDecorator do
   describe '#path' do
     context 'without routes' do
       before(:each) do
-        allow(Udongo.config.routes).to receive(:prefix_with_locale?) { true }
-
         @team = create(:page)
         @team.seo(:nl).slug = 'team'
         @team.seo(:nl).save
@@ -38,15 +36,8 @@ describe PageDecorator do
         @foo.seo(:nl).save
       end
 
-      describe 'first level' do
-        it 'with locale prefix' do
-          expect(@team.decorate.path(locale: :nl)).to eq '/nl/team'
-        end
-
-        it 'without locale prefix' do
-          allow(Udongo.config.routes).to receive(:prefix_with_locale?) { false }
-          expect(@team.decorate.path(locale: :nl)).to eq '/team'
-        end
+      it 'first level' do
+        expect(@team.decorate.path(locale: :nl)).to eq '/nl/team'
       end
 
       it 'second level' do

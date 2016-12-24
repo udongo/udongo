@@ -26,6 +26,11 @@
 * When a backend form has 1 or more errors, you will now see a general error.
 * The `prefix_with_locale` setting has been removed because it's always true.
 * The webserver restart button/action has been removed.
+* The following form objects have been removed in favor of the model:
+  - EmailTemplateForm
+  - NavigationItemForm
+  - PageForm
+  - SnippetForm
 
 
 2.0.4 - 2016-08-15

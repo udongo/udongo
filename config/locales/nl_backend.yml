@@ -46,7 +46,6 @@ nl:
     recipient: Bestemmeling
     redirect: Redirect
     redirects: Redirects
-    restart_webserver: Webserver herstarten
     save: Opslaan
     search: Zoeken
     sender: Afzender
@@ -104,5 +103,3 @@ nl:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
-      webserver:
-        restarted: De webserver werd opnieuw opgestart

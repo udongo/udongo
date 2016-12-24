@@ -35,6 +35,19 @@ rename each occurence to ```default_app_locale```
 Make sure to remove this setting from your Udongo config.
 ```Udongo.config.routes.prefix_with_locale = true```
 
+### Webserver restart
+The button to manually restart the webserver has been removed. If you want to
+keep this behaviour, below is the old code.
+
+```ruby
+class Backend::WebserverController < Backend::BaseController
+  def restart
+    `touch tmp/restart.txt`
+    redirect_to backend_path, notice: t('b.msg.webserver.restarted')
+  end
+end
+```
+
 
 ## From 2.0.1 to 2.0.4
 No actions required.

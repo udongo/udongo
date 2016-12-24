@@ -7,11 +7,4 @@ describe 'general routes' do
                                    action: 'show'
                                  )
   end
-
-  it 'POST /backend/restart_webserver' do
-    expect(post: backend_restart_webserver_path).to route_to(
-                                                      controller: 'backend/webserver',
-                                                      action: 'restart'
-                                                    )
-  end
 end

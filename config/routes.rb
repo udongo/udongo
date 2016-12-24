@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'dashboard#show'
-    post 'restart_webserver' => 'webserver#restart'
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins

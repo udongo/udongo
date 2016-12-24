@@ -49,6 +49,12 @@ end
 ```
 
 
+### Backend::TranslationForm
+This form object was added and can be used to simplify your existing translation
+forms (except for those that use SEO). To stay up-to-date, you should check your
+translation form objects and if they can benefit from this new class.
+
+
 ## From 2.0.1 to 2.0.4
 No actions required.
 

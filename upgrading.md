@@ -31,6 +31,10 @@ with ```Udongo.config.i18n.app.default_locale```
 In the backend you used to have a helper ```default_locale```. You need to 
 rename each occurence to ```default_app_locale```
 
+### Removed the setting `prefix_with_locale`
+Make sure to remove this setting from your Udongo config.
+```Udongo.config.routes.prefix_with_locale = true```
+
 
 ## From 2.0.1 to 2.0.4
 No actions required.

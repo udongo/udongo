@@ -1,7 +1,7 @@
 3.0.0 - xxxx-xx-xx
 --
-* Because of the complex structure and no actually necessity, the form models
-  and their related code have been cut.
+* Because of the complex structure and no actual necessity, the form models and
+  their related code have been cut.
 * You can now set the list of breakpoints you want to have visible for the 
   flexible content. In most cases the xs and xl don't need to clutter the 
   interface, so now you can hide them.

@@ -6,13 +6,13 @@ describe 'authentication' do
 
   describe 'redirects when not logged in' do
     it 'dashboard redirecs to login page' do
-      visit backend_path
-      expect(page).to have_current_path(new_backend_session_path)
+      visit '/backend'
+      expect(page).to have_current_path('/backend/sessions/new')
     end
 
     it 'redirects to login page if not logged in' do
-      visit backend_admins_path
-      expect(page).to have_current_path(new_backend_session_path)
+      visit '/backend/admins'
+      expect(page).to have_current_path('/backend/sessions/new')
     end
   end
 
@@ -21,15 +21,15 @@ describe 'authentication' do
       login_page.visit
       login_page.login('foo@bar.baz', 'sekret')
 
-      expect(page).to have_current_path(backend_path)
+      expect(page).to have_current_path('/backend')
       expect(page).to have_content('Foo Bar')
     end
 
     it 'via admins' do
-      visit backend_admins_path
+      visit '/backend/admins'
       login_page.login
 
-      expect(page).to have_current_path(backend_admins_path)
+      expect(page).to have_current_path('/backend/admins')
       expect(page).to have_content('Foo Bar')
     end
 
@@ -46,10 +46,10 @@ describe 'authentication' do
     login_page.visit
     login_page.login('foo@bar.baz', 'sekret')
 
-    expect(page).to have_current_path(backend_path)
+    expect(page).to have_current_path('/backend')
     expect(page).to have_content('Foo Bar')
 
     login_page.logout
-    expect(page).to have_current_path(new_backend_session_path)
+    expect(page).to have_current_path('/backend/sessions/new')
   end
 end

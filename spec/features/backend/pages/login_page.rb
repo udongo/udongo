@@ -8,7 +8,7 @@ class Features::Pages::LoginPage < Features::Pages::Page
   end
 
   def db_setup
-    create(
+    @admin = create(
       :admin,
       first_name: 'Foo',
       last_name: 'Bar',

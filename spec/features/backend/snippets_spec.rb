@@ -88,11 +88,9 @@ describe 'snippets' do
         snippet_page.click_edit
         page.click_link 'NL'
 
-        snippet = Snippet.first
-        expect(snippet.translation(:nl).title).to eq 'Snippet title'
-        expect(snippet.translation(:nl).content).to eq 'Snippet content'
-
-        expect(page).to have_current_path("/backend/snippets/#{snippet.id}/edit/nl")
+        expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit/nl")
+        expect(find_field('Titel').value).to eq 'Snippet title'
+        expect(find_field('Inhoud').value).to eq 'Snippet content'
       end
 
       it 'with success' do

@@ -2,7 +2,7 @@ require 'rails_helper'
 require_relative 'pages/login_page'
 require_relative 'pages/snippet_page'
 
-describe 'admins' do
+describe 'snippets' do
   let(:login_page) { Features::Pages::LoginPage.new }
   let(:snippet_page) { Features::Pages::SnippetPage.new }
 
@@ -14,11 +14,14 @@ describe 'admins' do
   describe 'create' do
     it 'with success' do
       visit '/backend/snippets/new'
-
       snippet_page.fill_in_general('foo', 'bar')
       snippet_page.submit
 
-      expect(page).to have_current_path("/backend/snippets/#{Snippet.first.id}/edit/nl")
+      snippet = Snippet.first
+      expect(snippet.identifier).to eq 'foo'
+      expect(snippet.description).to eq 'bar'
+
+      expect(page).to have_current_path("/backend/snippets/#{snippet.id}/edit/nl")
       expect(page).to have_content('Snippet werd toegevoegd.')
     end
 
@@ -56,10 +59,12 @@ describe 'admins' do
         snippet_page.fill_in_general('foo 2', 'bar 2')
         snippet_page.submit
 
-        expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit")
+        snippet = Snippet.first
+        expect(snippet.identifier).to eq 'foo 2'
+        expect(snippet.description).to eq 'bar 2'
+
+        expect(page).to have_current_path("/backend/snippets/#{snippet.id}/edit")
         expect(page).to have_content('Snippet werd gewijzigd.')
-        expect(find_field('Interne naam').value).to eq 'foo 2'
-        expect(find_field('Beschrijving').value).to eq 'bar 2'
       end
 
       it 'without success' do
@@ -68,10 +73,12 @@ describe 'admins' do
         snippet_page.fill_in_general('', '')
         snippet_page.submit
 
-        expect(page).to have_current_path("/backend/snippets/#{@snippet.id}")
+        snippet = Snippet.first
+        expect(snippet.identifier).to eq 'foo'
+        expect(snippet.description).to eq 'bar'
+
+        expect(page).to have_current_path("/backend/snippets/#{snippet.id}")
         expect(page).to have_content('Er trad een fout op.')
-        expect(find_field('Interne naam').value).to eq ''
-        expect(find_field('Beschrijving').value).to eq ''
       end
     end
 
@@ -81,9 +88,11 @@ describe 'admins' do
         snippet_page.click_edit
         page.click_link 'NL'
 
-        expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit/nl")
-        expect(find_field('Titel').value).to eq 'Snippet title'
-        expect(find_field('Inhoud').value).to eq 'Snippet content'
+        snippet = Snippet.first
+        expect(snippet.translation(:nl).title).to eq 'Snippet title'
+        expect(snippet.translation(:nl).content).to eq 'Snippet content'
+
+        expect(page).to have_current_path("/backend/snippets/#{snippet.id}/edit/nl")
       end
 
       it 'with success' do
@@ -93,9 +102,11 @@ describe 'admins' do
         snippet_page.fill_in_translation('Snippet title 2', 'Snippet content 2')
         snippet_page.submit
 
-        expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit/nl")
-        expect(find_field('Titel').value).to eq 'Snippet title 2'
-        expect(find_field('Inhoud').value).to eq 'Snippet content 2'
+        snippet = Snippet.first
+        expect(snippet.translation(:nl).title).to eq 'Snippet title 2'
+        expect(snippet.translation(:nl).content).to eq 'Snippet content 2'
+
+        expect(page).to have_current_path("/backend/snippets/#{snippet.id}/edit/nl")
       end
 
       it 'without success' do

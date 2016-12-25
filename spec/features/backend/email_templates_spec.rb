@@ -93,8 +93,8 @@ describe 'e-mail templates' do
       it 'without success' do
         email_template_page.visit
         email_template_page.click_edit
-        email_template_page.fill_in_general '', ''
-        email_template_page.fill_in_settings '', '', '', ''
+        email_template_page.fill_in_general('', '')
+        email_template_page.fill_in_settings('', '', '', '')
         email_template_page.submit
 
         template = EmailTemplate.first
@@ -138,10 +138,20 @@ describe 'e-mail templates' do
       end
 
       it 'without success' do
-        # Because a snippet translation form has no validations, this example
-        # contains no actual expectations.
+        email_template_page.visit
+        email_template_page.click_edit
+        page.click_link 'NL'
+        email_template_page.fill_in_translation('', '', '')
+        email_template_page.submit
+
+        template = EmailTemplate.first
+        expect(template.translation(:nl).subject).to eq 'Subject'
+        expect(template.translation(:nl).plain_content).to eq 'Plain content'
+        expect(template.translation(:nl).html_content).to eq 'HTML content'
+
+        expect(page).to have_current_path("/backend/email_templates/#{template.id}/edit/nl")
+        expect(page).to have_content('Er trad een fout op.')
       end
     end
   end
 end
-

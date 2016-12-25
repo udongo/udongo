@@ -69,7 +69,7 @@ describe 'admins' do
         snippet_page.submit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}")
-        expect(page).to have_content('Er trad een fout op')
+        expect(page).to have_content('Er trad een fout op.')
         expect(find_field('Interne naam').value).to eq ''
         expect(find_field('Beschrijving').value).to eq ''
       end

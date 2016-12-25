@@ -43,7 +43,7 @@ describe 'admins' do
     describe 'general' do
       it 'with success' do
         snippet_page.visit
-        page.find('tbody td:last a:first').click
+        snippet_page.click_edit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit")
         expect(find_field('Interne naam').value).to eq 'foo'
@@ -60,7 +60,7 @@ describe 'admins' do
 
       it 'without success' do
         snippet_page.visit
-        page.find('tbody td:last a:first').click
+        snippet_page.click_edit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit")
         expect(find_field('Interne naam').value).to eq 'foo'
@@ -79,7 +79,7 @@ describe 'admins' do
     describe 'translation' do
       it 'with success' do
         snippet_page.visit
-        page.find('tbody td:last a:first').click
+        snippet_page.click_edit
         page.click_link 'NL'
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit/nl")

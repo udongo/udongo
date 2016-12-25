@@ -12,6 +12,10 @@ class Features::Pages::SnippetPage < Features::Pages::Page
     fill_in 'Inhoud', with: content
   end
 
+  def click_edit
+    find('tbody td:last a:first').click
+  end
+
   def submit
     click_button 'Opslaan'
   end

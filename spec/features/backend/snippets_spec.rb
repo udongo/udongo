@@ -11,19 +11,13 @@ describe 'admins' do
     login_page.login
   end
 
-  # index
-  # create (with/without success)
-  # edit (general>with/without success, translation>with/without success)
-  # destroy
-
-
   describe 'create' do
     it 'with success' do
       visit '/backend/snippets/new'
 
       page.fill_in 'Interne naam', with: 'foo'
       page.fill_in 'Beschrijving', with: 'bar'
-      page.click_button 'Opslaan'
+      snippet_page.submit
 
       expect(page).to have_current_path("/backend/snippets/#{Snippet.first.id}/edit/nl")
       expect(page).to have_content('Snippet werd toegevoegd.')
@@ -31,7 +25,7 @@ describe 'admins' do
 
     it 'without success' do
       visit '/backend/snippets/new'
-      page.click_button 'Opslaan'
+      snippet_page.submit
 
       expect(page).to have_current_path('/backend/snippets')
       expect(page).to have_content('Er trad een fout op.')
@@ -58,7 +52,7 @@ describe 'admins' do
 
         page.fill_in 'Interne naam', with: 'foo 2'
         page.fill_in 'Beschrijving', with: 'bar 2'
-        page.click_button 'Opslaan'
+        snippet_page.submit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit")
         expect(page).to have_content('Snippet werd gewijzigd.')
@@ -76,7 +70,7 @@ describe 'admins' do
 
         page.fill_in 'Interne naam', with: ''
         page.fill_in 'Beschrijving', with: ''
-        page.click_button 'Opslaan'
+        snippet_page.submit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}")
         expect(page).to have_content('Er trad een fout op')

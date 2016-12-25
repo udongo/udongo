@@ -14,9 +14,9 @@ class Features::Pages::SnippetPage < Features::Pages::Page
   #   submit
   # end
   #
-  # def submit
-  #   click_button 'Opslaan'
-  # end
+  def submit
+    click_button 'Opslaan'
+  end
 
   def visit
     super '/backend/snippets'

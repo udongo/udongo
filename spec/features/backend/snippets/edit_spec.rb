@@ -1,6 +1,6 @@
 require 'rails_helper'
-require_relative '../pages/login_page'
-require_relative '../pages/snippet_page'
+require_relative '../../pages/login_page'
+require_relative '../../pages/snippet_page'
 
 describe 'edit snippets' do
   let(:login_page) { Features::Pages::LoginPage.new }

@@ -1,6 +1,6 @@
 require 'rails_helper'
-require_relative '../pages/login_page'
-require_relative '../pages/email_template_page'
+require_relative '../../pages/login_page'
+require_relative '../../pages/email_template_page'
 
 describe 'edit e-mail templates' do
   let(:login_page) { Features::Pages::LoginPage.new }

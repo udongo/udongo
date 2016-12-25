@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative 'pages/login_page'
+require_relative '../pages/login_page'
 
 describe 'authentication' do
   let(:login_page) { Features::Pages::LoginPage.new }

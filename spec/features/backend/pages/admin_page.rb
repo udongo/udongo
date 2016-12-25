@@ -1,7 +1,6 @@
 require_relative 'page'
 
 class Features::Pages::AdminPage < Features::Pages::Page
-
   def submit_with(first_name, last_name, email, password = nil)
     fill_in 'admin[first_name]', with: first_name, match: :first
     fill_in 'admin[last_name]', with: last_name, match: :first

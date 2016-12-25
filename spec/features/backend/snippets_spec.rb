@@ -41,14 +41,18 @@ describe 'admins' do
     end
 
     describe 'general' do
-      it 'with success' do
+      it 'fields are prefilled' do
         snippet_page.visit
         snippet_page.click_edit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit")
         expect(find_field('Interne naam').value).to eq 'foo'
         expect(find_field('Beschrijving').value).to eq 'bar'
+      end
 
+      it 'with success' do
+        snippet_page.visit
+        snippet_page.click_edit
         snippet_page.fill_in_general('foo 2', 'bar 2')
         snippet_page.submit
 
@@ -61,11 +65,6 @@ describe 'admins' do
       it 'without success' do
         snippet_page.visit
         snippet_page.click_edit
-
-        expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit")
-        expect(find_field('Interne naam').value).to eq 'foo'
-        expect(find_field('Beschrijving').value).to eq 'bar'
-
         snippet_page.fill_in_general('', '')
         snippet_page.submit
 
@@ -77,7 +76,7 @@ describe 'admins' do
     end
 
     describe 'translation' do
-      it 'with success' do
+      it 'fields are prefilled' do
         snippet_page.visit
         snippet_page.click_edit
         page.click_link 'NL'
@@ -85,7 +84,12 @@ describe 'admins' do
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit/nl")
         expect(find_field('Titel').value).to eq 'Snippet title'
         expect(find_field('Inhoud').value).to eq 'Snippet content'
+      end
 
+      it 'with success' do
+        snippet_page.visit
+        snippet_page.click_edit
+        page.click_link 'NL'
         snippet_page.fill_in_translation('Snippet title 2', 'Snippet content 2')
         snippet_page.submit
 

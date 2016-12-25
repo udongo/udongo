@@ -15,8 +15,7 @@ describe 'admins' do
     it 'with success' do
       visit '/backend/snippets/new'
 
-      page.fill_in 'Interne naam', with: 'foo'
-      page.fill_in 'Beschrijving', with: 'bar'
+      snippet_page.fill_in_general('foo', 'bar')
       snippet_page.submit
 
       expect(page).to have_current_path("/backend/snippets/#{Snippet.first.id}/edit/nl")
@@ -50,8 +49,7 @@ describe 'admins' do
         expect(find_field('Interne naam').value).to eq 'foo'
         expect(find_field('Beschrijving').value).to eq 'bar'
 
-        page.fill_in 'Interne naam', with: 'foo 2'
-        page.fill_in 'Beschrijving', with: 'bar 2'
+        snippet_page.fill_in_general('foo 2', 'bar 2')
         snippet_page.submit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit")
@@ -68,8 +66,7 @@ describe 'admins' do
         expect(find_field('Interne naam').value).to eq 'foo'
         expect(find_field('Beschrijving').value).to eq 'bar'
 
-        page.fill_in 'Interne naam', with: ''
-        page.fill_in 'Beschrijving', with: ''
+        snippet_page.fill_in_general('', '')
         snippet_page.submit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}")
@@ -89,9 +86,8 @@ describe 'admins' do
         expect(find_field('Titel').value).to eq 'Snippet title'
         expect(find_field('Inhoud').value).to eq 'Snippet content'
 
-        page.fill_in 'Titel', with: 'Snippet title 2'
-        page.fill_in 'Inhoud', with: 'Snippet content 2'
-        page.click_button 'Opslaan'
+        snippet_page.fill_in_translation('Snippet title 2', 'Snippet content 2')
+        snippet_page.submit
 
         expect(page).to have_current_path("/backend/snippets/#{@snippet.id}/edit/nl")
         expect(find_field('Titel').value).to eq 'Snippet title 2'

@@ -14,6 +14,7 @@ describe Page do
   it_behaves_like :draggable
   it_behaves_like :flexible_content
   it_behaves_like :cacheable
+  it_behaves_like :searchable
 
   describe 'validations' do
     describe 'presence' do
@@ -30,6 +31,10 @@ describe Page do
 
   it 'translatable' do
     expect(model.translatable_fields_list).to eq [:title, :subtitle]
+  end
+
+  it 'searchable fields' do
+    expect(model.searchable_fields_list).to eq [:title, :subtitle, :content]
   end
 
   it '#respond_to?' do

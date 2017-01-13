@@ -16,6 +16,9 @@ class Page < ApplicationRecord
   include Concerns::Cacheable
   cache_by :identifier
 
+  include Concerns::Searchable
+  searchable_fields :title, :subtitle, :content
+
   has_many :navigation_items, dependent: :destroy
 
   validates :description, presence: true

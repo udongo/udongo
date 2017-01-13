@@ -1,4 +1,4 @@
-3.0.0 - xxxx-xx-xx
+3.0.0 - 2017-01-13
 --
 * Because of the complex structure and no actual necessity, the form models and
   their related code have been cut.

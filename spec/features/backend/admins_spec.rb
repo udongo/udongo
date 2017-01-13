@@ -12,7 +12,7 @@ describe 'admins' do
   end
 
   it 'only has 1 admin (current one)' do
-    visit backend_admins_path
+    admin_page.visit
     expect(page).to have_current_path(backend_admins_path)
     expect(page).to have_content('Foo Bar')
     expect(page).to have_content('foo@bar.baz')

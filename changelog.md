@@ -1,7 +1,7 @@
 3.0.0 - xxxx-xx-xx
 --
-* Because of the complex structure and no actually necessity, the form models
-  and their related code have been cut.
+* Because of the complex structure and no actual necessity, the form models and
+  their related code have been cut.
 * You can now set the list of breakpoints you want to have visible for the 
   flexible content. In most cases the xs and xl don't need to clutter the 
   interface, so now you can hide them.
@@ -18,6 +18,21 @@
 * Add cc/bcc to the email templates and sent emails.
 * The general mailer has been expanded so it's easier to override the headers.
 * Added new contextmenu options for making pages (in)visible through the tree.
+* Add (and load) the select2 js lib in the backend.
+* After adding or editing content in a certain locale, redirect to the correct
+  locale.
+* The dashboard template no longer contains dashboard#show.
+* You can now add your custom css to app/assets/stylesheets/backend/custom.scss
+* When a backend form has 1 or more errors, you will now see a general error.
+* The `prefix_with_locale` setting has been removed because it's always true.
+* The webserver restart button/action has been removed.
+* The following form objects have been removed in favor of the model:
+  - EmailTemplateForm
+  - NavigationItemForm
+  - PageForm
+  - SnippetForm
+* A `Backend::TranslationForm` has been added. This makes it a whole lot easier
+  to create translation forms for your models.
 
 
 2.0.4 - 2016-08-15

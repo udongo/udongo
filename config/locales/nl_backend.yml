@@ -46,7 +46,6 @@ nl:
     recipient: Bestemmeling
     redirect: Redirect
     redirects: Redirects
-    restart_webserver: Webserver herstarten
     save: Opslaan
     search: Zoeken
     sender: Afzender
@@ -89,6 +88,7 @@ nl:
         edit_text: Tekst bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
       forgot_password: Wachtwoord vergeten?
+      general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:
         status_code: Meer info over het gebruik van status codes
       incorrect_login: Ongeldige login gegevens.
@@ -103,5 +103,3 @@ nl:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
-      webserver:
-        restarted: De webserver werd opnieuw opgestart

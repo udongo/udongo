@@ -8,7 +8,7 @@ class Features::Pages::LoginPage < Features::Pages::Page
   end
 
   def db_setup
-    @admin = FactoryGirl.create(
+    @admin = create(
       :admin,
       first_name: 'Foo',
       last_name: 'Bar',
@@ -19,13 +19,13 @@ class Features::Pages::LoginPage < Features::Pages::Page
   end
 
   def login(email = 'foo@bar.baz', password = 'sekret')
-    fill_in 'session[email]', with: email
-    fill_in 'session[password]', with: password
+    fill_in 'E-mail', with: email
+    fill_in 'Wachtwoord', with: password
     click_button 'Inloggen'
   end
 
   def logout
-    click_link('Uitloggen')
+    click_link 'Uitloggen'
   end
 
   def visit

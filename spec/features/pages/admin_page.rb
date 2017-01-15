@@ -15,6 +15,10 @@ class Features::Pages::AdminPage < Features::Pages::Page
     submit
   end
 
+  def click_add
+    click_link 'Toevoegen'
+  end
+
   def submit
     click_button 'Opslaan'
   end

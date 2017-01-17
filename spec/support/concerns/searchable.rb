@@ -56,7 +56,47 @@ shared_examples_for :searchable do
   end
 
   describe 'after_save' do
-    # TODO:
+    context 'non-translatable model' do
+      before(:each) do
+        allow(described_class).to receive(:searchable_fields_list) { [:foo] }
+        allow_any_instance_of(described_class).to receive(:translatable?) { false }
+        allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
+      end
+
+      it 'default' do
+        instance = build(klass)
+        expect(instance.search_indices).to eq []
+      end
+
+      it 'saves the search index' do
+        allow(Udongo.config.i18n.app).to receive(:default_locale) { :nl }
+        instance = create(klass)
+        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bar'
+
+        # We have to make sure the model has an updated value for foo,
+        # so Searchable can read it on save.
+        allow_any_instance_of(described_class).to receive(:foo) { 'bak' }
+        instance.save
+        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bak'
+      end
+    end
+
+    context 'translatable model' do
+      it 'updates the search index' do
+        allow(described_class).to receive(:searchable_fields_list) { [:foo] }
+        allow(described_class).to receive(:translatable_fields_list) { [:foo] }
+        allow_any_instance_of(described_class).to receive(:translatable?) { false }
+        allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
+        instance = create(klass)
+        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bar'
+
+        # We have to make sure the model has an updated value for foo,
+        # so Searchable can read it on save.
+        allow_any_instance_of(described_class).to receive(:foo) { 'bak' }
+        instance.save
+        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bak'
+      end
+    end
   end
 
   it '.respond_to?' do

@@ -5,32 +5,33 @@ module Concerns
     included do
       has_many :search_indices, as: :searchable, dependent: :destroy
 
-      # TODO: callbacks.
-      # Create indices for every indicated searchable field.
-      # Update them when their searchable values change.
-      # Make sure to take translations into account.
-      after_create do
+      # Creates and saves indices for every indicated searchable field.
+      # Takes translations into account.
+      after_save do
         self.class.searchable_fields_list.each do |key|
-          if translatable?
-            next unless self.class.translatable_fields_list.include?(key)
+          save_search_index!(key) unless translatable?
 
-            Udongo.config.i18n.app.locales.each do |locale|
-              value = translation(locale.to_sym).send(key)
-              next if value.blank?
-              search_indices.create!(locale: locale, key: key, value: value)
-            end
-          else
-            search_indices.create!(
-              locale: Udongo.config.i18n.app.default_locale,
-              key: key,
-              value: send(key)
-            )
-          end
+          next unless self.class.translatable_fields_list.include?(key)
+          save_translatable_search_index!(key)
         end
       end
 
-      # TODO:
-      after_save do
+      def save_search_index!(key)
+        value = send(key)
+        return if value.blank?
+        index = search_indices.find_or_create_by!(locale: Udongo.config.i18n.app.default_locale, key: key)
+        index.value = value
+        index.save!
+      end
+
+      def save_translatable_search_index!(key)
+        Udongo.config.i18n.app.locales.each do |locale|
+          value = translation(locale.to_sym).send(key)
+          next if value.blank?
+          index = search_indices.find_or_create_by!(locale: locale, key: key)
+          index.value = value
+          index.save!
+        end
       end
     end
 

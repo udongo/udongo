@@ -10,7 +10,6 @@ describe SearchIndex do
       it(:locale) { expect(build(klass, locale: nil)).to_not be_valid }
       it(:searchable) { expect(build(klass, searchable: nil)).to_not be_valid }
       it(:key) { expect(build(klass, key: nil)).to_not be_valid }
-      it(:value) { expect(build(klass, value: nil)).to_not be_valid }
     end
   end
 

@@ -3,6 +3,5 @@ class SearchIndex < ApplicationRecord
 
   belongs_to :searchable, polymorphic: true
 
-  validates :searchable_id, :searchable_type, :locale, :key, :value,
-    presence: true
+  validates :searchable_id, :searchable_type, :locale, :key, presence: true
 end

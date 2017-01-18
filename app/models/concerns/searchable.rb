@@ -9,10 +9,12 @@ module Concerns
       # Takes translations into account.
       after_save do
         self.class.searchable_fields_list.each do |key|
-          save_search_index!(key) unless translatable?
-
-          next unless self.class.translatable_fields_list.include?(key)
-          save_translatable_search_index!(key)
+          if translatable?
+            next unless self.class.translatable_fields_list.include?(key)
+            save_translatable_search_index!(key
+          else
+            save_search_index!(key)
+          end
         end
       end
 

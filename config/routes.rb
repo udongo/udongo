@@ -57,6 +57,8 @@ Rails.application.routes.draw do
 
     resources :redirects, except: :show
 
+    resources :search_synonyms, except: :show
+
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
         concerns :positionable

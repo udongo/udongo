@@ -13,8 +13,11 @@
       <%= link_to t('b.navigation'), backend_navigations_path, class: 'dropdown-item' %>
       <%= link_to t('b.admins'), backend_admins_path, class: 'dropdown-item' %>
       <%= link_to t('b.redirects'), backend_redirects_path, class: 'dropdown-item' %>
+      <div class="dropdown-divider"></div>
       <%= link_to t('b.emails'), backend_emails_path, class: 'dropdown-item' %>
       <%= link_to t('b.email_templates'), backend_email_templates_path, class: 'dropdown-item' %>
+      <div class="dropdown-divider"></div>
+      <%= link_to t('b.search_synonyms'), backend_search_synonyms_path, class: 'dropdown-item' %>
     </div>
   </li>
 

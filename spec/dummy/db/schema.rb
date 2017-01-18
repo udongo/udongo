@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117143805) do
+ActiveRecord::Schema.define(version: 20170118130428) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -260,6 +260,16 @@ ActiveRecord::Schema.define(version: 20170117143805) do
     t.datetime "updated_at",                    null: false
     t.index ["locale", "key"], name: "index_search_indices_on_locale_and_key", using: :btree
     t.index ["searchable_type", "searchable_id"], name: "index_search_indices_on_searchable_type_and_searchable_id", using: :btree
+  end
+
+  create_table "search_synonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "locale"
+    t.string   "term"
+    t.text     "synonyms",   limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["locale"], name: "index_search_synonyms_on_locale", using: :btree
+    t.index ["term"], name: "index_search_synonyms_on_term", using: :btree
   end
 
   create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

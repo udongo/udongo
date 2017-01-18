@@ -48,6 +48,9 @@ en:
     redirects: Redirects
     save: Save
     search: Search
+    search_term: Search term
+    search_synonym: Search synonym
+    search_synonyms: Search synonyms
     sender: Sender
     sent_at: Sent at
     settings: Settings
@@ -57,6 +60,7 @@ en:
     status: Status
     status_code: Status code
     subject: Subject
+    synonyms: Synonym(s)
     tags: Tags
     telephone: Telephone
     title: Title

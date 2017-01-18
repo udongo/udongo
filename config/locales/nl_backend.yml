@@ -48,6 +48,9 @@ nl:
     redirects: Redirects
     save: Opslaan
     search: Zoeken
+    search_term: Zoekterm
+    search_synonym: Zoektermsynoniem
+    search_synonyms: Zoektermsynoniemen
     sender: Afzender
     sent_at: Verzonden op
     settings: Instellingen
@@ -57,6 +60,7 @@ nl:
     status: Status
     status_code: Statuscode
     subject: Onderwerp
+    synonyms: Synoniem(en)
     tags: Tags
     telephone: Telefoonnummer
     title: Titel

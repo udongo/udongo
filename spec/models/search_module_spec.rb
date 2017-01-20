@@ -9,6 +9,15 @@ describe SearchModule do
     end
   end
 
+  describe 'scopes' do
+    it '.weighted' do
+      a = create(klass, name: 'Foo', weight: 5)
+      b = create(klass, name: 'Bar', weight: 10)
+      c = create(klass, name: 'Baz', weight: 1)
+      expect(described_class.weighted).to eq [b, a, c]
+    end
+  end
+
   describe '#indices' do
     it 'default' do
       expect(build(klass).indices).to eq []

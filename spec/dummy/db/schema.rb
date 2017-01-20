@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118130428) do
+ActiveRecord::Schema.define(version: 20170118153840) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(version: 20170118130428) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["locale"], name: "index_admins_on_locale", using: :btree
+  end
+
+  create_table "article_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category_id"
+    t.string   "author"
+    t.datetime "published_at"
+    t.boolean  "visible"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -262,6 +276,15 @@ ActiveRecord::Schema.define(version: 20170118130428) do
     t.index ["searchable_type", "searchable_id"], name: "index_search_indices_on_searchable_type_and_searchable_id", using: :btree
   end
 
+  create_table "search_modules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.boolean  "searchable"
+    t.integer  "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "searchable"], name: "index_search_modules_on_name_and_searchable", using: :btree
+  end
+
   create_table "search_synonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "locale"
     t.string   "term"
@@ -329,6 +352,18 @@ ActiveRecord::Schema.define(version: 20170118130428) do
     t.index ["locale"], name: "index_tags_on_locale", using: :btree
     t.index ["name"], name: "index_tags_on_name", using: :btree
     t.index ["slug"], name: "index_tags_on_slug", using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email"
+    t.string   "password"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "display_name"
+    t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
 end

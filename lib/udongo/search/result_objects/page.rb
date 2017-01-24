@@ -14,7 +14,7 @@ module Udongo::Search::ResultObjects
     # However, this seems very restrictive to me. If I narrow down the data
     # a dev can use in an autocomplete, it severely reduces options he/she has
     # in how the autocomplete results look like. Think of autocompletes in a
-    # shop that require images or prices to be included in an autocomplete.
+    # shop that require images or prices to be included in their result bodies.
     #
     # A possible solution to the above:
     # If one would use ActionController.render('', locals: { index: index })

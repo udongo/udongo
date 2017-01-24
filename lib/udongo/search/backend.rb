@@ -7,7 +7,7 @@ module Udongo::Search
   # search query. See Udongo::Search::Base for more information on how this
   # search functionality is designed.
   class Backend < Udongo::Search::Base
-    def find
+    def search
       # Translate the filtered indices into meaningful result objects.
       indices.map do |index|
         result_object(index).build

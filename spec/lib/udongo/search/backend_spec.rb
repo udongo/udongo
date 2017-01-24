@@ -11,9 +11,9 @@ describe Udongo::Search::Backend do
     create(:search_module, name: 'Foo', weight: 1)
   end
 
-  describe '#find' do
+  describe '#search' do
     it 'default' do
-      expect(instance.find).to eq []
+      expect(instance.search).to eq []
     end
 
     it 'single result' do
@@ -37,7 +37,7 @@ describe Udongo::Search::Backend do
 
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :find, :result_object
+      :search, :result_object
     )
   end
 end

@@ -21,8 +21,7 @@ module Udongo::Search
     attr_reader :term
 
     def initialize(term)
-      # TODO: term will probably require filtering once we use this through
-      # an autocomplete.
+      # Filtering term should happen in classes extending the Base class.
       @term = term
     end
 

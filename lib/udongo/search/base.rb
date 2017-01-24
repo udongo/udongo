@@ -1,21 +1,29 @@
 module Udongo::Search
+  # The goal of the Base class is to filter our indices on the given search
+  # term. Further manipulation of individual index data into a meaningful
+  # result set (think autocomplete results) is done by extending this class.
+  #
+  # Examples of class extensions could be:
+  # Udongo::Search::Backend - included in Udongo
+  # Udongo::Search::Frontend
+  # Udongo::Search::Api
+  #
+  # The primary benefit in having these namespaced search interfaces is to
+  # provide a way for the developer to have different result objects for
+  # each resource.
+  # An example: A search request for a specific Page instance in the frontend
+  # will typically return a link to said page. However, in search requests made
+  # in the backend for the same Page instance, you'd expect a link to a form in
+  # the backend Page module where you can edit the page's contents.
+  #
+  # However these result objects are structured are also up to the developer.
   class Base
     attr_reader :term
 
     def initialize(term)
+      # TODO: term will probably require filtering once we use this through
+      # an autocomplete.
       @term = term
-    end
-
-    def find
-      # TODO: After we have a bunch of indices, we have to translate them into
-      # meaningful links.
-      indices.each do |index|
-        puts index.inspect
-      end
-
-      #searchable_models.each do |model|
-        #model.constantize.new(indices).
-      #end
     end
 
     def indices
@@ -26,21 +34,6 @@ module Udongo::Search
       @indices ||= SearchModule.weighted.inject([]) do |stack, m|
         stack << m.indices.where('search_indices.value REGEXP ?', term)
       end.flatten
-    end
-
-    # TODO: Perhaps this isn't necessary, but I'll leave it here until I'm sure.
-    def searchable_models
-      Dir.glob(File.join(Udongo::PATH, 'app/models/*.rb')).inject([]) do |stack, file|
-        if File.readlines(file).grep(/include Concerns::Searchable/).any?
-          filename = file.split('/').last
-
-          if File.exists?(File.join(Udongo::PATH, 'lib/udongo/search/', filename))
-            stack << filename.gsub('.rb', '')
-          end
-        end
-
-        stack
-      end
     end
   end
 end

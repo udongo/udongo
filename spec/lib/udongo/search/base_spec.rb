@@ -4,10 +4,6 @@ describe Udongo::Search::Base do
   let(:klass) { described_class.to_s.underscore.to_sym }
   let(:instance) { described_class.new('foo') }
 
-  describe '#find' do
-    # TODO:
-  end
-
   describe '#indices' do
     it 'default' do
       expect(instance.indices).to eq []
@@ -33,7 +29,7 @@ describe Udongo::Search::Base do
 
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :find, :indices
+      :indices
     )
   end
 end

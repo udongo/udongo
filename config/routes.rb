@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'dashboard#show'
+    get 'search' => 'search#query'
+
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins

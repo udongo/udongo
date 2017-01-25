@@ -13,14 +13,5 @@ module Udongo::Search
         result_object(index).build
       end
     end
-
-
-    # In order to provide a good result set in a search autocomplete, we have
-    # to translate the raw index to a class that makes an index adhere
-    # to a certain interface (that can include links).
-    def result_object(index)
-      klass = "Udongo::Search::ResultObjects::#{index.searchable_type}"
-      klass.constantize.new(index)
-    end
   end
 end

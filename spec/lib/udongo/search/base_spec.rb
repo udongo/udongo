@@ -27,6 +27,16 @@ describe Udongo::Search::Base do
     end
   end
 
+  describe '#result_object' do
+    let(:index) do
+      create(:search_index, searchable_type: 'Foo', searchable_id: 5, value: 'foo')
+    end
+
+    it 'index maps to a specific ResultObjects resource class' do
+      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Foo)
+    end
+  end
+
   it '#responds_to?' do
     expect(instance).to respond_to(
       :indices

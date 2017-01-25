@@ -29,7 +29,7 @@
   </li>
 
   <li class="nav-item pull-xs-right">
-    <%= form_tag backend_search_path, method: :get, class: 'form-inline my-2 my-lg-0' do %>
+    <%= form_tag backend_search_path, method: :get, class: 'form-inline my-2 my-lg-0', remote: true do %>
       <%= text_field_tag :query, params[:query], class: 'form-control mr-sm-2', placeholder: 'Search' %>
     <% end %>
   </li>

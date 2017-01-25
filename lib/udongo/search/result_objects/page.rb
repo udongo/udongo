@@ -1,7 +1,5 @@
 module Udongo::Search::ResultObjects
   class Page < Udongo::Search::ResultObject
-    # TODO: How will I structure a result object?
-    #
     # Typically, an autocomplete requires 3 things:
     #
     # * A title indicating a resource name.
@@ -16,13 +14,21 @@ module Udongo::Search::ResultObjects
     # in how the autocomplete results look like. Think of autocompletes in a
     # shop that require images or prices to be included in their result bodies.
     #
-    # A possible solution to the above:
-    # If one would use ActionController.render('', locals: { index: index })
-    # in this class to map the entire index instance to a user-defined partial
-    # that represents a single result row in an autocomplete, a frontend
-    # search query could build a series of said partial renders in order
-    # to build its result set. If a lot of mutation is required, this could
-    # also be achieved in this class, with the possibility of testing those
-    # mutations.
+    # This is why I chose to let ApplicationController.render work around the
+    # problem by letting the dev decide how the row should look.
+    #
+    # Now, a frontend search query could build a series of said partial renders
+    # in order to build its result set. If a lot of mutation is required, this
+    # could also be achieved in this class, with the possibility of testing
+    # those mutations.
+    #
+    # TODO: Move the build method to Udongo::Search::ResultObject? This way,
+    # only a partial would be required as a minimum in order to provide
+    # HTML result rows for use in an autocomplete.
+    def build
+      partial_target = index.class.name.underscore
+      partial = "backend/search/result_rows/#{partial_target}"
+      ApplicationController.render(partial: partial, locals: { "#{partial_target}": index })
+    end
   end
 end

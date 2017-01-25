@@ -12,7 +12,8 @@ module Udongo::Search
       # These require a { label: ... value: ... } to accommodate jquery-ui.
       #
       # TODO: Obviously, not every searchable will have a page link.
-      # This requires a factory to determine correct values.
+      # This requires a factory pattern based on searchable_type to determine
+      # the correct values.
       indices.map do |index|
         {
           label: result_object(index).build_html,

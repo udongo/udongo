@@ -10,9 +10,14 @@ module Concerns
       # A possible solution could have been to make ContentText searchable,
       # but because that model is not polymorphic, this is not possible.
       #
-      # Another solution in the realms of the feasible:
+      # Another solution in the realms of the feasible, with Page as example:
       # In theory, if I could save the ContentText#content value as an index
-      # linked to the parent Page object, there would be no problem.
+      # linked to the parent Page object, there would be no problem. I would
+      # let ContentText include Concerns::Searchable, and in this class
+      # build in an exception to bubble up to the page instance. This is
+      # possible through:
+      # ContentColumn.find_by(content: ContentText.last).row.rowable
+      #
       # The Udongo::Search::Base#indices method already groups by searchable
       # so in this case there wouldn't be duplicates, only additional matches
       # for the searchable because it takes ContentText#content into account.

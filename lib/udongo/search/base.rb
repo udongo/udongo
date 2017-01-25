@@ -11,10 +11,14 @@ module Udongo::Search
   # The primary benefit in having these namespaced search interfaces is to
   # provide a way for the developer to have different result objects for
   # each resource.
-  # An example: A search request for a specific Page instance in the frontend
+  #
+  # Example #1: A search request for a specific Page instance in the frontend
   # will typically return a link to said page. However, in search requests made
   # in the backend for the same Page instance, you'd expect a link to a form in
   # the backend Page module where you can edit the page's contents.
+  #
+  # Example #2: Some autocompletes in a frontend namespace might require an
+  # image or a price to be included in its body.
   #
   # However these result objects are structured are also up to the developer.
   class Base

@@ -22,11 +22,12 @@ module Udongo::Search
   #
   # However these result objects are structured are also up to the developer.
   class Base
-    attr_reader :term
+    attr_reader :term, :controller
 
-    def initialize(term)
+    def initialize(term, controller: nil)
       # Filtering term should happen in classes extending the Base class.
       @term = term
+      @controller = controller
     end
 
     def class_exists?(class_name)

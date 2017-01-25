@@ -25,10 +25,11 @@ module Udongo::Search::ResultObjects
     # TODO: Move the build method to Udongo::Search::ResultObject? This way,
     # only a partial would be required as a minimum in order to provide
     # HTML result rows for use in an autocomplete.
-    def build
-      partial_target = index.class.name.underscore
+    def build_html
+      partial_target = index.searchable_type.underscore
       partial = "backend/search/result_rows/#{partial_target}"
-      ApplicationController.render(partial: partial, locals: { "#{partial_target}": index })
+      locals = { "#{partial_target}": index.searchable, index: index }
+      ApplicationController.render(partial: partial, locals: locals)
     end
   end
 end

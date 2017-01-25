@@ -20,17 +20,17 @@ describe Udongo::Search::Backend do
       create(:search_module, name: 'Bar', weight: 1)
       instance = described_class.new('bar')
       index = create(:search_index, searchable_type: 'Bar', searchable_id: 5, value: 'bar')
-      expect { instance.search }.to raise_error('You need to define Udongo::Search::ResultObjects::Bar#build in lib/udongo/search/result_objects/bar.rb')
+      expect { instance.search }.to raise_error('You need to define Udongo::Search::ResultObjects::Bar#build_html in lib/udongo/search/result_objects/bar.rb')
     end
 
-    it 'raises error when resource class exists, but does not have the #build method' do
+    it 'raises error when resource class exists, but does not have the #build_html method' do
       class Udongo::Search::ResultObjects::FooBar
       end
 
       create(:search_module, name: 'FooBar', weight: 1)
       instance = described_class.new('bar')
       index = create(:search_index, searchable_type: 'FooBar', searchable_id: 5, value: 'bar')
-      expect { instance.search }.to raise_error('You need to define Udongo::Search::ResultObjects::FooBar#build in lib/udongo/search/result_objects/foo_bar.rb')
+      expect { instance.search }.to raise_error('You need to define Udongo::Search::ResultObjects::FooBar#build_html in lib/udongo/search/result_objects/foo_bar.rb')
     end
 
     it 'single result' do

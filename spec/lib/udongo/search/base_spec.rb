@@ -49,11 +49,12 @@ describe Udongo::Search::Base do
     end
 
     it 'index maps to Udongo::Search::ResultObject when a specific resource object was not found' do
-      index = create(:search_index, searchable_type: 'Bar', searchable_id: 5, value: 'bar')
+      allow(instance).to receive(:result_object_exists?) { false }
       expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObject)
     end
 
     it 'index maps to a specific ResultObjects resource class' do
+      allow(instance).to receive(:result_object_exists?) { true }
       expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Foo)
     end
   end
@@ -62,14 +63,20 @@ describe Udongo::Search::Base do
     it 'true' do
       # This gives true without more info because the class extends from
       # Udongo::Search::ResultObject
+      allow(instance).to receive(:result_object_exists?) { true }
       expect(instance.result_object_exists?('Udongo::Search::ResultObjects::Foo')).to be true
     end
 
     describe 'false' do
-      it 'class exists, no #build method defined' do
+      it 'class does not exist' do
+        allow(instance).to receive(:class_exists?) { false }
+        expect(instance.result_object_exists?('')).to be false
       end
 
-      it '#build method defined, class does not exist' do
+      it 'class exists, no #build_html method defined' do
+        class Udongo::Search::ResultObjects::Blub
+        end
+        expect(instance.result_object_exists?('Udongo::Search::ResultObjects::Blub')).to be false
       end
     end
   end

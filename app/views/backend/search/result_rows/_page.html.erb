@@ -1,6 +1,1 @@
 <h5><%= page.title %></h5>
-<% page.content_rows.where(locale: locale).each do |row| %>
-  <% row.columns.each do |column| %>
-    <p><%= column.content.decorate %></p>
-  <% end %>
-<% end %>

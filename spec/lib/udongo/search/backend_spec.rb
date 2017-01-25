@@ -16,6 +16,23 @@ describe Udongo::Search::Backend do
       expect(instance.search).to eq []
     end
 
+    it 'raises error when resource class does not exist' do
+      create(:search_module, name: 'Bar', weight: 1)
+      instance = described_class.new('bar')
+      index = create(:search_index, searchable_type: 'Bar', searchable_id: 5, value: 'bar')
+      expect { instance.search }.to raise_error('You need to define Udongo::Search::ResultObjects::Bar#build in lib/udongo/search/result_objects/bar.rb')
+    end
+
+    it 'raises error when resource class exists, but does not have the #build method' do
+      class Udongo::Search::ResultObjects::FooBar
+      end
+
+      create(:search_module, name: 'FooBar', weight: 1)
+      instance = described_class.new('bar')
+      index = create(:search_index, searchable_type: 'FooBar', searchable_id: 5, value: 'bar')
+      expect { instance.search }.to raise_error('You need to define Udongo::Search::ResultObjects::FooBar#build in lib/udongo/search/result_objects/foo_bar.rb')
+    end
+
     it 'single result' do
       # TODO:
     end
@@ -25,19 +42,9 @@ describe Udongo::Search::Backend do
     end
   end
 
-  describe '#result_object' do
-    let(:index) do
-      create(:search_index, searchable_type: 'Foo', searchable_id: 5, value: 'foo')
-    end
-
-    it 'index maps to a ResultObjects class' do
-      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Foo)
-    end
-  end
-
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :search, :result_object
+      :search, :indices, :result_object
     )
   end
 end

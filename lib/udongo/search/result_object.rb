@@ -11,7 +11,7 @@ module Udongo::Search
 
     def build
       raise InterfaceNotImplementedError.new(
-        "You need to define Udongo::Search::ResultObjects::#{index.searchable_type}#build in lib/udongo/search/result_objects/page.rb"
+        "You need to define Udongo::Search::ResultObjects::#{index.searchable_type}#build in lib/udongo/search/result_objects/#{index.searchable_type.underscore}.rb"
       )
     end
   end

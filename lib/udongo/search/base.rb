@@ -29,6 +29,13 @@ module Udongo::Search
       @term = term
     end
 
+    def class_exists?(class_name)
+      klass = Module.const_get(class_name)
+      return klass.is_a?(Class)
+    rescue NameError
+      return false
+    end
+
     def indices
       return [] unless term.present?
 
@@ -44,7 +51,12 @@ module Udongo::Search
     # to a certain interface (that can include links).
     def result_object(index)
       klass = "Udongo::Search::ResultObjects::#{index.searchable_type}"
+      klass = 'Udongo::Search::ResultObject' unless result_object_exists?(klass)
       klass.constantize.new(index)
+    end
+
+    def result_object_exists?(name)
+      class_exists?(name) && name.constantize.method_defined?(:build)
     end
   end
 end

@@ -3,15 +3,14 @@ var search = search || {
     this.target().autocomplete({
       minLength: 2,
       source: search.target().parents('form').attr('action'),
-      focus: search.focus,
       select: search.select
     }).on('keypress', this.keypress_listener);
-  },
 
-  focus: function(event, ui) {
-    console.log(ui);
-    $(event.target).val(ui.item.label);
-    return false;
+    this.target().data('ui-autocomplete')._renderItem = function(ul, item) {
+      return $('<li></li>').data("item.autocomplete", item)
+        .append(item.label)
+        .appendTo(ul);
+    };
   },
 
   keypress_listener: function(e) {

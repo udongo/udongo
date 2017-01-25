@@ -34,7 +34,7 @@ describe Page do
   end
 
   it 'searchable fields' do
-    expect(model.searchable_fields_list).to eq [:title, :subtitle, :content]
+    expect(model.searchable_fields_list).to eq [:title, :subtitle]
   end
 
   it '#respond_to?' do

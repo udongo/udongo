@@ -26,32 +26,34 @@ shared_examples_for :searchable do
       end
     end
 
-    context 'translatable model' do
-      before(:each) do
-        described_class.translatable_fields :foo, :bar
-      end
-
-      let(:create_instance!) do
-        instance = build(klass)
-        Udongo.config.i18n.app.locales.each do |l|
-          t = instance.translation(l.to_sym)
-          t.foo = "baz #{l}"
-          t.bar = 'bak'
+    if described_class.respond_to?(:translatable_fields)
+      context 'translatable model' do
+        before(:each) do
+          described_class.translatable_fields :foo, :bar
         end
-        instance.save
-        instance
-      end
 
-      it 'creates search indices for every translation' do
-        instance = create_instance!
-        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'baz nl'
-        expect(instance.search_indices.find_by(locale: :fr, key: 'foo').value).to eq 'baz fr'
-        expect(instance.search_indices.find_by(locale: :en, key: 'foo').value).to eq 'baz en'
-      end
+        let(:create_instance!) do
+          instance = build(klass)
+          Udongo.config.i18n.app.locales.each do |l|
+            t = instance.translation(l.to_sym)
+            t.foo = "baz #{l}"
+            t.bar = 'bak'
+          end
+          instance.save
+          instance
+        end
 
-      it 'does not copy translatable fields that are not in searchable fields' do
-        instance = create_instance!
-        expect(instance.search_indices.find_by(locale: :nl, key: 'bar')).to be nil
+        it 'creates search indices for every translation' do
+          instance = create_instance!
+          expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'baz nl'
+          expect(instance.search_indices.find_by(locale: :fr, key: 'foo').value).to eq 'baz fr'
+          expect(instance.search_indices.find_by(locale: :en, key: 'foo').value).to eq 'baz en'
+        end
+
+        it 'does not copy translatable fields that are not in searchable fields' do
+          instance = create_instance!
+          expect(instance.search_indices.find_by(locale: :nl, key: 'bar')).to be nil
+        end
       end
     end
   end

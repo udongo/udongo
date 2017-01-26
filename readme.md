@@ -249,6 +249,62 @@ validates :email, email: true
 validates :url, url: true
 ```
 
+# Search engine
+4.0 introduced a rough structure to build a search autocomplete upon through ```Concerns::Searchable```. 
+
+## How does it work?
+Included in Udongo by default is the backend search, which makes Page records accessible through an autocomplete. In order to build search support for a model, we have to make it include the concern:
+
+```ruby
+class Page
+  include Concerns::Searchable
+  searchable_fields :title, :subtitle, :flexible_content
+end
+```
+
+```Concerns::Searchable``` saves ```SearchIndex``` records to our database whenever a model gets saved. Support for both ```Concern::Translatable``` and ```Concern::FlexibleContent``` is built in, meaning that translatable fields can also be searchable fields.
+
+By including ```:flexible_content``` as a searchable field, we flag it to build search indices for all flexible content of the ```ContentText``` type.
+
+```Backend::SearchController#index``` contains a call to ```Udongo::Search::Backend```. That class is responsible for matching a search term against the available search indices:
+
+```ruby
+class Backend::SearchController < Backend::BaseController
+  def query
+    @results = Udongo::Search::Backend.new(params[:term], controller: self).search
+    render json: @results
+  end
+end
+```
+
+```Udongo::Search::Backend#search``` in turn translates those indices in a format that jQueryUI's autocomplete understands: ```{ label: 'foo', value: 'bar' }```.
+```ruby
+module Udongo::Search
+  class Backend < Udongo::Search::Base
+    def search
+      indices.map do |index|
+        result = result_object(index)
+        { label: result.build_html, value: result.url }
+      end
+    end
+  end
+end
+```
+
+By default the ```#result_object``` is an instance of ```Udongo::Search::ResultObject```. You can define your own result object class, which in this example is done for the ```Page``` model:
+```ruby
+module Udongo::Search::ResultObjects
+  class Page < Udongo::Search::ResultObject
+    def url
+      if namespace == :backend
+        controller.edit_backend_page_path(index.searchable)
+      end
+    end
+  end
+end
+````
+This gives devs a way to extend the data for use in jQuery's autocomplete, or simply to mutate the index data. In the example above, we check what namespace we reside in in order to generate an edit link to the relevant page in the pages module. If one were to build a search for the frontend that includes pages, you could build the required URL for it here.
+
 
 # Cryptography
 ```Udongo::Cryptography``` is a module you can include in any class to provide you with functionality to encrypt and decrypt values. It is a wrapper that currently uses ```ActiveSupport::MessageEncryptor```, which in turns uses the Rails secret key to encrypt keys.

@@ -37,6 +37,7 @@ module Udongo::Search
       return false
     end
 
+    # TODO: term needs to take SearchSynonym into account.
     def indices
       return [] unless term.present?
 

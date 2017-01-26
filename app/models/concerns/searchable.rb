@@ -26,7 +26,7 @@ module Concerns
       # Takes translations into account.
       after_save do
         self.class.searchable_fields_list.each do |key|
-          if translatable?
+          if respond_to?(:translatable?) && translatable?
             next unless self.class.translatable_fields_list.include?(key)
             save_translatable_search_index!(key)
           else

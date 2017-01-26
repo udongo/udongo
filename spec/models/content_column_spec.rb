@@ -9,7 +9,12 @@ describe ContentColumn do
   describe 'after_destroy' do
     let(:content) { create(:content_text, content: 'foobar') }
     let(:instance) { create(klass, content: content) }
-    let(:page) { create(:page) }
+    let(:page) do
+      # Necessary to exclude the otherwise mandatory Page#description
+      # to be included in the search indices for these tests.
+      allow(Page).to receive(:searchable_fields_list) { [:flexible_content] }
+      create(:page)
+    end
 
     it 'no errors without searchable parent link' do
       expect { instance.destroy }.to_not raise_error

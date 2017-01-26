@@ -14,9 +14,10 @@ module Concerns
       after_save do
         self.class.searchable_fields_list.each do |key|
           if key == :flexible_content
-            save_flexible_content_search_indices!
-          elsif respond_to?(:translatable?) && translatable?
-            next unless self.class.translatable_fields_list.include?(key)
+            save_flexible_content_search_indices! && next
+          end
+
+          if respond_to?(:translatable?) && self.class.translatable_fields_list.include?(key)
             save_translatable_search_index!(key)
           else
             save_search_index!(key)

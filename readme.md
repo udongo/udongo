@@ -72,7 +72,6 @@ Udongo.config.flexible_content.allowed_breakpoints = %w(xs sm md lg xl)
 * Array
 * Float
 
-### Setup
 ```ruby
 class User < ApplicationRecord
   include Concerns::Storable
@@ -119,7 +118,6 @@ When you save the parent object (user), all the store collections will automatic
 ## Translatable concern
 This concern is actually the storable concern with some predefined settings. In order to use this concern your model needs to have a database text field named ```locales```.
 
-### Setup
 ```ruby
 class Document < ApplicationRecord
   include Concerns::Translatable
@@ -190,7 +188,6 @@ documents = Document.by_locale(:nl)
 ## Addressable concern
 This concern makes it easy to have multiple addresses with a category linked to a model.
 
-### Setup
 ```ruby
 class User < ApplicationRecord
   include Concerns::Addressable

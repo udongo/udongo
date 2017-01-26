@@ -256,6 +256,7 @@ validates :url, url: true
 Included in Udongo by default is the backend search, which makes Page records accessible through an autocomplete. In order to build search support for a model, we have to make it include the concern:
 
 ```ruby
+# app/models/page.rb
 class Page
   include Concerns::Searchable
   searchable_fields :title, :subtitle, :flexible_content
@@ -269,6 +270,7 @@ By including ```:flexible_content``` as a searchable field, we flag it to build 
 ```Backend::SearchController#index``` contains a call to ```Udongo::Search::Backend```. That class is responsible for matching a search term against the available search indices:
 
 ```ruby
+# app/controllers/backend/search_controller.rb
 class Backend::SearchController < Backend::BaseController
   def query
     @results = Udongo::Search::Backend.new(params[:term], controller: self).search
@@ -279,6 +281,7 @@ end
 
 ```Udongo::Search::Backend#search``` in turn translates those indices in a format that jQueryUI's autocomplete understands: ```{ label: 'foo', value: 'bar' }```.
 ```ruby
+# lib/udongo/search/backend.rb
 module Udongo::Search
   class Backend < Udongo::Search::Base
     def search
@@ -293,6 +296,7 @@ end
 
 By default the ```#result_object``` is an instance of ```Udongo::Search::ResultObject```. You can define your own result object class, which in this example is done for the ```Page``` model:
 ```ruby
+# lib/udongo/search/result_objects/page.rb
 module Udongo::Search::ResultObjects
   class Page < Udongo::Search::ResultObject
     def url
@@ -303,8 +307,18 @@ module Udongo::Search::ResultObjects
   end
 end
 ````
-This gives devs a way to extend the data for use in jQuery's autocomplete, or simply to mutate the index data. In the example above, we check what namespace we reside in in order to generate an edit link to the relevant page in the pages module. If one were to build a search for the frontend that includes pages, you could build the required URL for it here.
+This gives devs a way to extend the data for use in jQueryUI's autocomplete, or simply to mutate the index data. In the example above, we check what namespace we reside in in order to generate an edit link to the relevant page in the pages module. If one were to build a search for the frontend that includes pages, you could build the required URL for it here.
 
+### HTML labels in autocomplete
+Support for HTML labels is automatically included through ```vendor/assets/javascripts/jquery-ui.autocomplete.html.js`. The labels should reside in partial files and be rendered with ```Udongo::Search::ResultObject#build_html```. This provide support for funkier autocomplete result structures:
+
+```erb
+<!-- app/views/backend/search/result_rows/_page.html.erb -->
+<%= t('b.page') %> — <%= page.title %><br />
+<small>
+  <%= truncate(page.description, length: 40) %>
+</small>
+```
 
 # Cryptography
 ```Udongo::Cryptography``` is a module you can include in any class to provide you with functionality to encrypt and decrypt values. It is a wrapper that currently uses ```ActiveSupport::MessageEncryptor```, which in turns uses the Rails secret key to encrypt keys.

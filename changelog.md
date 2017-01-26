@@ -1,4 +1,8 @@
-3.0.0 - xxxx-xx-xx
+4.0.0 - xxxx-xx-xx
+--
+
+
+3.0.0 - 2017-01-13
 --
 * Because of the complex structure and no actual necessity, the form models and
   their related code have been cut.
@@ -33,6 +37,7 @@
   - SnippetForm
 * A `Backend::TranslationForm` has been added. This makes it a whole lot easier
   to create translation forms for your models.
+* Feature tests have been added for most of the basic functionality.
 
 
 2.0.4 - 2016-08-15

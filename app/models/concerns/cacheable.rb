@@ -7,7 +7,7 @@ module Concerns
       after_touch :flush_cache
 
       scope :find_in_cache, ->(value) {
-        Rails.cache.fetch [name, value]  do
+        Rails.cache.fetch [name, value] do
           find_by!(@cache_field => value)
         end
       }

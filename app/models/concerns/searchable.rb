@@ -5,28 +5,17 @@ module Concerns
     included do
       has_many :search_indices, as: :searchable, dependent: :destroy
 
-      # TODO: What on earth am I going to do with FlexibleContent?
+      # The after_save block creates or saves indices for every indicated
+      # searchable field. Takes both translations and flexible content into
+      # account.
       #
-      # A possible solution could have been to make ContentText searchable,
-      # but because that model is not polymorphic, this is not possible.
-      #
-      # Another solution in the realms of the feasible, with Page as example:
-      # In theory, if I could save the ContentText#content value as an index
-      # linked to the parent Page object, there would be no problem. I would
-      # let ContentText include Concerns::Searchable, and in this class
-      # build in an exception to bubble up to the page instance. This is
-      # possible through:
-      # ContentColumn.find_by(content: ContentText.last).row.rowable
-      #
-      # The Udongo::Search::Base#indices method already groups by searchable
-      # so in this case there wouldn't be duplicates, only additional matches
-      # for the searchable because it takes ContentText#content into account.
-
-      # Creates and saves indices for every indicated searchable field.
-      # Takes translations into account.
+      # Translation support was relatively painless, but FlexibleContent
+      # required more thought. See #save_flexible_content_indices!
       after_save do
         self.class.searchable_fields_list.each do |key|
-          if respond_to?(:translatable?) && translatable?
+          if key == :flexible_content
+            save_flexible_content_search_indices!
+          elsif respond_to?(:translatable?) && translatable?
             next unless self.class.translatable_fields_list.include?(key)
             save_translatable_search_index!(key)
           else
@@ -35,9 +24,32 @@ module Concerns
         end
       end
 
+      # I save all ContentText#content values as indices linked to the parent
+      # object. The Udongo::Search::Base#indices method already groups by
+      # searchable resource, so there are never any duplicates.
+      # Only additional matches for the searchable because it takes
+      # ContentText#content sources into account.
+      #
+      # ContentColumn and ContentText have after_{save,destroy} callbacks
+      # to help facilitate searchable management. Note that said code was
+      # initially present in this class, and it was such a mess that it became
+      # unpractical to maintain.
+      def save_flexible_content_search_indices!
+        content_rows.each do |row|
+          row.columns.each do |column|
+            next unless column.content.is_a?(ContentText)
+            key = "flexible_content:#{column.content_id}"
+            index = search_indices.find_or_create_by!(locale: row.locale, key: key)
+            index.value = column.content.content
+            index.save!
+          end
+        end
+      end
+
       def save_search_index!(key)
         value = send(key)
         return if value.blank?
+
         index = search_indices.find_or_create_by!(locale: Udongo.config.i18n.app.default_locale, key: key)
         index.value = value
         index.save!
@@ -51,6 +63,10 @@ module Concerns
           index.value = value
           index.save!
         end
+      end
+
+      def searchable?
+        true
       end
     end
 

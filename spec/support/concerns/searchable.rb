@@ -63,6 +63,7 @@ shared_examples_for :searchable do
       before(:each) do
         allow(described_class).to receive(:searchable_fields_list) { [:foo] }
         allow_any_instance_of(described_class).to receive(:translatable?) { false }
+        allow_any_instance_of(described_class).to receive(:flexible_content?) { false }
         allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
         allow_any_instance_of(Concerns::Storable::Collection).to receive(:foo) { 'bar' }
       end
@@ -87,22 +88,65 @@ shared_examples_for :searchable do
     end
 
     context 'translatable model' do
-      it 'updates the search index' do
+      let(:create_instance!) { create(klass) }
+
+      before(:each) do
+        allow(described_class).to receive(:translatable_fields_list) { [:foo] }
         allow(described_class).to receive(:searchable_fields_list) { [:foo] }
-        allow_any_instance_of(described_class).to receive(:translatable?) { false }
+        allow_any_instance_of(described_class).to receive(:translatable?) { true }
+        allow_any_instance_of(described_class).to receive(:flexible_content?) { false }
+
         allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
         allow_any_instance_of(Concerns::Storable::Collection).to receive(:foo) { 'bar' }
-        instance = create(klass)
-        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bar'
+      end
 
+      it 'creates index' do
+        instance = create_instance!
+        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bar'
+      end
+
+      it 'saves index' do
         # We have to make sure the model has an updated value for foo,
         # so Searchable can read it on save.
+        instance = create_instance!
+
         allow_any_instance_of(described_class).to receive(:foo) { 'bak' }
         allow_any_instance_of(Concerns::Storable::Collection).to receive(:foo) { 'bak' }
-        instance.save
+        instance.save!
         expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bak'
       end
     end
+
+    context 'model with flexible_content' do
+      let(:instance) { create(klass) }
+      let(:content) { create(:content_text, content: 'Lorem ipsum') }
+
+      before(:each) do
+        allow(described_class).to receive(:searchable_fields_list) { [:foo, :flexible_content] }
+        allow_any_instance_of(described_class).to receive(:translatable?) { false }
+        allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
+        allow_any_instance_of(Concerns::Storable::Collection).to receive(:foo) { 'bar' }
+
+        row = create(:content_row, locale: 'nl', rowable: instance)
+        row.columns << create(:content_column, content: content)
+        instance.content_rows << row
+      end
+
+      it 'saves index when updating searchable instance' do
+        instance.save!
+        key = "flexible_content:#{content.id}"
+        expect(instance.search_indices.find_by(locale: :nl, key: key).value).to eq 'Lorem ipsum'
+      end
+
+      it 'saves index when updating flexible content' do
+        instance.save!
+        content.content = 'Dolor sit amet'
+        content.save!
+        key = "flexible_content:#{content.id}"
+        expect(instance.search_indices.find_by(locale: :nl, key: key).value).to eq 'Dolor sit amet'
+      end
+    end
+
   end
 
   it '.respond_to?' do

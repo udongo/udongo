@@ -9,6 +9,8 @@ shared_examples_for :flexible_content do
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:content_rows, :flexible_content?)
+    expect(model.new).to respond_to(
+      :content_rows, :flexible_content?
+    )
   end
 end

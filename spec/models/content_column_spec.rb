@@ -6,6 +6,24 @@ describe ContentColumn do
 
   it_behaves_like :sortable
 
+  describe 'after_destroy' do
+    let(:content) { create(:content_text, content: 'foobar') }
+    let(:instance) { create(klass, content: content) }
+    let(:page) { create(:page) }
+
+    it 'no errors without searchable parent link' do
+      expect { instance.destroy }.to_not raise_error
+    end
+
+    it 'removes search indices from searchable parent' do
+      create(:content_row, columns: [instance], rowable: page)
+      index = create(:search_index, searchable: page, key: "flexible_content:#{content.id}")
+      expect(instance.parent.search_indices).to eq [index]
+      instance.destroy
+      expect(instance.parent.search_indices).to eq []
+    end
+  end
+
   describe 'validations' do
     describe 'presence' do
       it(:row) { expect(build(klass, row: nil)).not_to be_valid }
@@ -79,7 +97,42 @@ describe ContentColumn do
     end
   end
 
+  describe 'searchable integration' do
+    let(:instance) { create(klass) }
+
+    describe 'linked_to_searchable_parent?' do
+      let(:page) { create(:page) }
+
+      it 'true' do
+        create(:content_row, columns: [instance], rowable: page)
+        expect(instance.linked_to_searchable_parent?).to be true
+      end
+
+      describe 'false' do
+        it 'no parent' do
+          create(:content_row, columns: [instance])
+          expect(instance.linked_to_searchable_parent?).to be false
+        end
+
+        it 'parent not searchable' do
+          create(:content_row, columns: [instance], rowable: page)
+          allow_any_instance_of(Page).to receive(:searchable?) { false }
+          expect(instance.linked_to_searchable_parent?).to be false
+        end
+      end
+    end
+  end
+
+  it '#parent' do
+    instance = create(klass)
+    page = create(:page)
+    create(:content_row, columns: [instance], rowable: page)
+    expect(instance.parent).to eq page
+  end
+
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:row, :content)
+    expect(build(klass)).to respond_to(
+      :row, :content, :parent, :linked_to_searchable_parent?
+    )
   end
 end

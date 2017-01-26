@@ -11,14 +11,11 @@ module Udongo::Search
       # Translate the filtered indices into meaningful result objects.
       # These require a { label: ... value: ... } to accommodate jquery-ui.
       #
-      # TODO: Obviously, not every searchable will have a page link.
-      # This requires a factory pattern based on searchable_type to determine
-      # the correct values.
+      # The result_object#url method will be nil by default, unless it's
+      # overridden in a specific result object.
       indices.map do |index|
-        {
-          label: result_object(index).build_html,
-          value: controller.edit_backend_page_path(index.searchable)
-        }
+        result = result_object(index)
+        { label: result.build_html, value: result.url }
       end
     end
   end

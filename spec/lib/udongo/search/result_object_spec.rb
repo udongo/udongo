@@ -27,7 +27,7 @@ describe Udongo::Search::ResultObject do
   end
 
   it '#partial' do
-    expect(instance.partial(:backend)).to eq 'backend/search/result_rows/foo'
+    expect(instance.partial).to eq 'frontend/search/result_rows/foo'
   end
 
   it '#partial_target' do

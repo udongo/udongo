@@ -15,5 +15,11 @@ module Udongo::Search::ResultObjects
     #def build_html
     #  super(*args)
     #end
+
+    def url
+      if namespace == :backend
+        controller.edit_backend_page_path(index.searchable)
+      end
+    end
   end
 end

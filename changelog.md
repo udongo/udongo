@@ -1,5 +1,13 @@
 4.0.0 - xxxx-xx-xx
 --
+* Added Concerns::Searchable. This lets model instances automatically save 
+  SearchIndex records to the database as they are changed.
+* Added functionality to Concerns::FlexibleContent so it can play nice with
+  Concerns::Searchable.
+* Added a search input to the backend's top navigation bar. Autocompleted search
+  works through Udongo::Search::Backend.
+* Provided a raw infrastructure to allow for Udongo::Search::Frontend or other
+  namespaced search classes.
 
 
 3.0.0 - 2017-01-13

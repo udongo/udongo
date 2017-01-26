@@ -132,6 +132,21 @@ class Document < ApplicationRecord
 end
 ```
 
+## Searchable concern
+Include this in your model if you want its records to appear in search autocompletes.
+
+```ruby
+class Document < ApplicationRecord
+  include Concerns::Searchable
+
+  # One field
+  searchable_field :title
+
+  # Multiple fields
+  searchable_fields :title, :description, :summary
+end
+```
+
 ### Reading values
 When reading values the current ```I18n.locale``` is used. If you want to specify the locale, you need to use the longer syntax.
 

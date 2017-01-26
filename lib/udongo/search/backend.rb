@@ -16,7 +16,7 @@ module Udongo::Search
       # the correct values.
       indices.map do |index|
         {
-          label: result_object(index).build_html(namespace: :backend),
+          label: result_object(index).build_html,
           value: controller.edit_backend_page_path(index.searchable)
         }
       end

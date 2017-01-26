@@ -14,6 +14,18 @@ describe Udongo::Search::ResultObject do
     expect(instance.locals).to eq({ foo: 'bar', index: index })
   end
 
+  describe '#namespace' do
+    it 'default' do
+      instance = described_class.new(index)
+      expect(instance.namespace).to eq :frontend
+    end
+
+    it 'backend' do
+      instance = described_class.new(index, controller: Backend::SearchController.new)
+      expect(instance.namespace).to eq :backend
+    end
+  end
+
   it '#partial' do
     expect(instance.partial(:backend)).to eq 'backend/search/result_rows/foo'
   end
@@ -26,7 +38,7 @@ describe Udongo::Search::ResultObject do
 
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :build_html, :locals, :partial, :partial_target
+      :build_html, :locals, :partial, :partial_target, :namespace
     )
   end
 end

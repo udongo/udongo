@@ -9,7 +9,7 @@ module Udongo::Search::ResultObjects
     # You could do this directly in the partial as well, but this provides us
     # separation of concerns and testability.
     #
-    #def build_html(namespace: :frontend)
+    #def build_html
     #  super(*args)
     #end
   end

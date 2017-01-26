@@ -58,7 +58,7 @@ module Udongo::Search
     def result_object(index)
       klass = "Udongo::Search::ResultObjects::#{index.searchable_type}"
       klass = 'Udongo::Search::ResultObject' unless result_object_exists?(klass)
-      klass.constantize.new(index)
+      klass.constantize.new(index, controller: controller)
     end
 
     def result_object_exists?(name)

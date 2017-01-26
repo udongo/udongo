@@ -3,10 +3,11 @@ module Udongo::Search
   end
 
   class ResultObject
-    attr_reader :index
+    attr_reader :index, :controller
 
-    def initialize(index)
+    def initialize(index, controller: nil)
       @index = index
+      @controller = controller
     end
 
     # Typically, an autocomplete requires 3 things:
@@ -26,16 +27,22 @@ module Udongo::Search
     # This is why I chose to let ApplicationController.render work around the
     # problem by letting the dev decide how the row should look.
     #
-    # The namespace is there so we can have different partials for front/backend.
-    def build_html(namespace: :frontend)
-      ApplicationController.render(partial: partial(namespace), locals: locals)
+    def build_html
+      ApplicationController.render(partial: partial, locals: locals)
     end
 
     def locals
       { "#{partial_target}": index.searchable, index: index }
     end
 
-    def partial(namespace)
+    # This method exists so we can differentiate result object values/partials
+    # for frontend and backend.
+    def namespace
+      return :frontend if controller.nil?
+      controller.class.parent.to_s.underscore.to_sym
+    end
+
+    def partial
       "#{namespace}/search/result_rows/#{partial_target}"
     end
 

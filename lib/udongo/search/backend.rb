@@ -7,12 +7,12 @@ module Udongo::Search
   # search query. See Udongo::Search::Base for more information on how this
   # search functionality is designed.
   class Backend < Udongo::Search::Base
+    # This translates the filtered indices into meaningful result objects.
+    # These require a { label: ... value: ... } to accommodate jquery-ui.
+    #
+    # Note that the result_object#url method is defined in
+    # Udongo::Search::ResultObjects::Backend::Page.
     def search
-      # Translate the filtered indices into meaningful result objects.
-      # These require a { label: ... value: ... } to accommodate jquery-ui.
-      #
-      # The result_object#url method will be nil by default, unless it's
-      # overridden in a specific result object.
       indices.map do |index|
         result = result_object(index)
         { label: result.build_html, value: result.url }

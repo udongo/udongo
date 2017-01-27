@@ -18,10 +18,10 @@ module Concerns
           end
 
           if respond_to?(:translatable?) && self.class.translatable_fields_list.include?(key)
-            save_translatable_search_index!(key)
-          else
-            save_search_index!(key)
+            save_translatable_search_index!(key) && next
           end
+
+          save_search_index!(key)
         end
       end
 

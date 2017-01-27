@@ -24,10 +24,11 @@ module Udongo::Search
   class Base
     attr_reader :term, :controller
 
-    def initialize(term, controller: nil)
+    def initialize(term, controller: nil, namespace: nil)
       # Filtering term should happen in classes extending the Base class.
       @term = term
       @controller = controller
+      @namespace = namespace
     end
 
     def class_exists?(class_name)
@@ -52,13 +53,21 @@ module Udongo::Search
       end.flatten
     end
 
+    def namespace
+      # This looks daft, but it gives us a foot in the door for when a frontend
+      # search is triggered in the backend.
+      return @namespace unless @namespace.nil?
+      return 'Frontend' if controller.nil?
+      controller.class.parent.to_s
+    end
+
     # In order to provide a good result set in a search autocomplete, we have
     # to translate the raw index to a class that makes an index adhere
     # to a certain interface (that can include links).
     def result_object(index)
-      klass = "Udongo::Search::ResultObjects::#{index.searchable_type}"
+      klass = "Udongo::Search::ResultObjects::#{namespace}::#{index.searchable_type}"
       klass = 'Udongo::Search::ResultObject' unless result_object_exists?(klass)
-      klass.constantize.new(index, controller: controller)
+      klass.constantize.new(index, search_context: self)
     end
 
     def result_object_exists?(name)

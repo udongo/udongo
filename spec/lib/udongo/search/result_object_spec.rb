@@ -3,7 +3,8 @@ require 'rails_helper'
 describe Udongo::Search::ResultObject do
   let(:klass) { described_class.to_s.underscore.to_sym }
   let(:index) { create(:search_index, searchable_type: 'Foo', searchable_id: 1, value: 'foo') }
-  let(:instance) { described_class.new(index) }
+  let(:search_context) { Udongo::Search::Base.new('foo') }
+  let(:instance) { described_class.new(index, search_context: search_context) }
 
   it '#build_html' do
     # TODO: Not sure how to test ApplicationController.render calls.
@@ -12,18 +13,6 @@ describe Udongo::Search::ResultObject do
   it '#locals' do
     allow(index).to receive(:searchable) { 'bar' }
     expect(instance.locals).to eq({ foo: 'bar', index: index })
-  end
-
-  describe '#namespace' do
-    it 'default' do
-      instance = described_class.new(index)
-      expect(instance.namespace).to eq :frontend
-    end
-
-    it 'backend' do
-      instance = described_class.new(index, controller: Backend::SearchController.new)
-      expect(instance.namespace).to eq :backend
-    end
   end
 
   it '#partial' do
@@ -38,7 +27,7 @@ describe Udongo::Search::ResultObject do
 
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :build_html, :locals, :partial, :partial_target, :namespace
+      :build_html, :locals, :partial, :partial_target
     )
   end
 end

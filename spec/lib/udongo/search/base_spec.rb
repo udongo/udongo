@@ -5,18 +5,22 @@ describe Udongo::Search::Base do
   let(:instance) { described_class.new('foo') }
 
   before(:each) do
-    class Udongo::Search::ResultObjects::Foo < Udongo::Search::ResultObject
+    module Udongo::Search::ResultObjects
+      module Frontend
+        class Foo < Udongo::Search::ResultObject
+        end
+      end
     end
   end
 
   # TODO: Move to an initializer so it's accessible wherever?
   describe '#class_exists?' do
     it 'true' do
-      expect(instance.class_exists?('Udongo::Search::ResultObjects::Foo')).to be true
+      expect(instance.class_exists?('Udongo::Search::ResultObjects::Frontend::Foo')).to be true
     end
 
     it 'false' do
-      expect(instance.class_exists?('Udongo::Search::ResultObjects::Bar')).to be false
+      expect(instance.class_exists?('Udongo::Search::ResultObjects::Frontend::Bar')).to be false
     end
   end
 
@@ -55,7 +59,7 @@ describe Udongo::Search::Base do
 
     it 'index maps to a specific ResultObjects resource class' do
       allow(instance).to receive(:result_object_exists?) { true }
-      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Foo)
+      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Frontend::Foo)
     end
   end
 
@@ -78,6 +82,23 @@ describe Udongo::Search::Base do
         end
         expect(instance.result_object_exists?('Udongo::Search::ResultObjects::Blub')).to be false
       end
+    end
+  end
+
+  describe '#namespace' do
+    it 'default' do
+      instance = described_class.new('foo')
+      expect(instance.namespace).to eq 'Frontend'
+    end
+
+    it 'backend' do
+      instance = described_class.new('foo', controller: Backend::SearchController.new)
+      expect(instance.namespace).to eq 'Backend'
+    end
+
+    it 'uses override when passed in through the construct' do
+      instance = described_class.new('foo', controller: Backend::SearchController.new, namespace: 'Frontend')
+      expect(instance.namespace).to eq 'Frontend'
     end
   end
 

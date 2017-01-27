@@ -3,11 +3,11 @@ module Udongo::Search
   end
 
   class ResultObject
-    attr_reader :index, :controller
+    attr_reader :index, :search_context
 
-    def initialize(index, controller: nil)
+    def initialize(index, search_context: nil)
       @index = index
-      @controller = controller
+      @search_context = search_context
     end
 
     # Typically, an autocomplete requires 3 things:
@@ -35,15 +35,8 @@ module Udongo::Search
       { "#{partial_target}": index.searchable, index: index }
     end
 
-    # This method exists so we can differentiate result object values/partials
-    # for frontend and backend.
-    def namespace
-      return :frontend if controller.nil?
-      controller.class.parent.to_s.underscore.to_sym
-    end
-
     def partial
-      "#{namespace}/search/result_rows/#{partial_target}"
+      "#{search_context.namespace.underscore}/search/result_rows/#{partial_target}"
     end
 
     def partial_target

@@ -1,6 +1,5 @@
 class Backend::SearchController < Backend::BaseController
   def query
-    @results = Udongo::Search::Backend.new(params[:term], controller: self).search
-    render json: @results
+    render json: Udongo::Search::Backend.new(params[:term], controller: self).search
   end
 end

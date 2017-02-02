@@ -4,13 +4,10 @@ shared_examples_for :searchable do
   let(:klass) { described_class.to_s.underscore.to_sym }
 
   describe 'after_save' do
-    before(:each) do
-      allow(described_class).to receive(:searchable_fields_list) { [:foo] }
-    end
-
     context 'non-translatable model' do
       before(:each) do
-        allow_any_instance_of(described_class).to receive(:translatable?) { false }
+        allow(described_class).to receive(:searchable_fields_list) { [:foo] }
+        allow(described_class).to receive(:translatable_fields_list) { [] }
         allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
       end
 
@@ -33,6 +30,10 @@ shared_examples_for :searchable do
     end
 
     if described_class.respond_to?(:translatable_fields)
+      before(:each) do
+        allow(described_class).to receive(:searchable_fields_list) { [:foo] }
+      end
+
       context 'translatable model' do
         before(:each) do
           described_class.translatable_fields :foo, :bar

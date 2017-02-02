@@ -18,14 +18,14 @@ shared_examples_for :searchable do
 
       it 'creates a search index' do
         instance = create(klass)
-        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'bar'
+        expect(instance.search_indices.find_by(locale: :nl, name: 'foo').value).to eq 'bar'
       end
 
       it 'saves an existing search index' do
         instance = create(klass)
         allow(instance).to receive(:foo) { 'foobar' }
         instance.save!
-        expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'foobar'
+        expect(instance.search_indices.find_by(locale: :nl, name: 'foo').value).to eq 'foobar'
       end
     end
 
@@ -52,9 +52,9 @@ shared_examples_for :searchable do
 
         it 'creates search indices for every translation' do
           instance = create_instance!
-          expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'baz nl'
-          expect(instance.search_indices.find_by(locale: :fr, key: 'foo').value).to eq 'baz fr'
-          expect(instance.search_indices.find_by(locale: :en, key: 'foo').value).to eq 'baz en'
+          expect(instance.search_indices.find_by(locale: :nl, name: 'foo').value).to eq 'baz nl'
+          expect(instance.search_indices.find_by(locale: :fr, name: 'foo').value).to eq 'baz fr'
+          expect(instance.search_indices.find_by(locale: :en, name: 'foo').value).to eq 'baz en'
         end
 
         it 'saves existing search indices for every translation' do
@@ -68,14 +68,14 @@ shared_examples_for :searchable do
 
           instance.save
 
-          expect(instance.search_indices.find_by(locale: :nl, key: 'foo').value).to eq 'foobar nl'
-          expect(instance.search_indices.find_by(locale: :fr, key: 'foo').value).to eq 'foobar fr'
-          expect(instance.search_indices.find_by(locale: :en, key: 'foo').value).to eq 'foobar en'
+          expect(instance.search_indices.find_by(locale: :nl, name: 'foo').value).to eq 'foobar nl'
+          expect(instance.search_indices.find_by(locale: :fr, name: 'foo').value).to eq 'foobar fr'
+          expect(instance.search_indices.find_by(locale: :en, name: 'foo').value).to eq 'foobar en'
         end
 
         it 'does not copy translatable fields that are not in searchable fields' do
           instance = create_instance!
-          expect(instance.search_indices.find_by(locale: :nl, key: 'bar')).to be nil
+          expect(instance.search_indices.find_by(locale: :nl, name: 'bar')).to be nil
         end
       end
     end
@@ -99,7 +99,7 @@ shared_examples_for :searchable do
         it 'saves index when updating searchable instance' do
           instance.save!
           key = "flexible_content:#{content.id}"
-          expect(instance.search_indices.find_by(locale: :nl, key: key).value).to eq 'Lorem ipsum'
+          expect(instance.search_indices.find_by(locale: :nl, name: key).value).to eq 'Lorem ipsum'
         end
 
         it 'saves index when updating flexible content' do
@@ -107,7 +107,7 @@ shared_examples_for :searchable do
           content.content = 'Dolor sit amet'
           content.save!
           key = "flexible_content:#{content.id}"
-          expect(instance.search_indices.find_by(locale: :nl, key: key).value).to eq 'Dolor sit amet'
+          expect(instance.search_indices.find_by(locale: :nl, name: key).value).to eq 'Dolor sit amet'
         end
       end
     end

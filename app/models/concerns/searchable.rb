@@ -40,7 +40,7 @@ module Concerns
           row.columns.each do |column|
             next unless column.content.is_a?(ContentText)
             key = "flexible_content:#{column.content_id}"
-            index = search_indices.find_or_create_by!(locale: row.locale, key: key)
+            index = search_indices.find_or_create_by!(locale: row.locale, name: key)
             index.value = column.content.content
             index.save!
           end
@@ -51,7 +51,7 @@ module Concerns
         value = send(key)
         return if value.blank?
 
-        index = search_indices.find_or_create_by!(locale: Udongo.config.i18n.app.default_locale, key: key)
+        index = search_indices.find_or_create_by!(locale: Udongo.config.i18n.app.default_locale, name: key)
         index.value = value
         index.save!
       end
@@ -60,7 +60,7 @@ module Concerns
         Udongo.config.i18n.app.locales.each do |locale|
           value = translation(locale.to_sym).send(key)
           next if value.blank?
-          index = search_indices.find_or_create_by!(locale: locale, key: key)
+          index = search_indices.find_or_create_by!(locale: locale, name: key)
           index.value = value
           index.save!
         end

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :search_index do
     locale 'nl'
-    key 'foo'
+    name 'foo'
     value 'bar'
   end
 end

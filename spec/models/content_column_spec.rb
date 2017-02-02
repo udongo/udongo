@@ -22,7 +22,7 @@ describe ContentColumn do
 
     it 'removes search indices from searchable parent' do
       create(:content_row, columns: [instance], rowable: page)
-      index = create(:search_index, searchable: page, key: "flexible_content:#{content.id}")
+      index = create(:search_index, searchable: page, name: "flexible_content:#{content.id}")
       expect(instance.parent.search_indices).to eq [index]
       instance.destroy
       expect(instance.parent.search_indices).to eq []

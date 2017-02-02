@@ -6,7 +6,7 @@ class ContentColumn < ApplicationRecord
   # SearchIndex instance.
   after_destroy do
     next unless linked_to_searchable_parent?
-    parent.search_indices.where(key: "flexible_content:#{content_id}").destroy_all
+    parent.search_indices.where(name: "flexible_content:#{content_id}").destroy_all
   end
 
   belongs_to :row, class_name: 'ContentRow', touch: true

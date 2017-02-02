@@ -5,6 +5,8 @@ module Udongo::Search
   class ResultObject
     attr_reader :index, :search_context
 
+    delegate :searchable, to: :index
+
     def initialize(index, search_context: nil)
       @index = index
       @search_context = search_context
@@ -29,6 +31,10 @@ module Udongo::Search
     #
     def build_html
       ApplicationController.render(partial: partial, locals: locals)
+    end
+
+    def label
+      searchable.send(index.name)
     end
 
     def locals

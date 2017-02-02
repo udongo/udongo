@@ -12,7 +12,6 @@ shared_examples_for :searchable do
       before(:each) do
         allow_any_instance_of(described_class).to receive(:translatable?) { false }
         allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
-        allow_any_instance_of(Concerns::Storable::Collection).to receive(:foo) { 'bar' }
       end
 
       it 'default' do
@@ -87,7 +86,7 @@ shared_examples_for :searchable do
 
         before(:each) do
           # TODO: See if an example is possible without allow_any_instance_of
-          allow(described_class).to receive(:searchable_fields_list) { [:foo, :flexible_content] }
+          allow(described_class).to receive(:searchable_fields_list) { [:foo] }
           allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
           allow_any_instance_of(Concerns::Storable::Collection).to receive(:foo) { 'bar' }
 

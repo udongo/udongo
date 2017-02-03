@@ -51,7 +51,7 @@ module Udongo::Search
     end
 
     def partial
-      "#{search_context.namespace.underscore}/search/result_rows/#{partial_target}"
+      "#{search_context.namespace.to_s.underscore}/search/result_rows/#{partial_target}"
     end
 
     def partial_target

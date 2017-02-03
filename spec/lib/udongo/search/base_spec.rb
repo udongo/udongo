@@ -13,7 +13,6 @@ describe Udongo::Search::Base do
     end
   end
 
-  # TODO: Move to an initializer so it's accessible wherever?
   describe '#class_exists?' do
     it 'true' do
       expect(instance.class_exists?('Udongo::Search::ResultObjects::Frontend::Foo')).to be true

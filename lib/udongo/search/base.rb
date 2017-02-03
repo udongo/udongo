@@ -30,6 +30,7 @@ module Udongo::Search
       @namespace = namespace
     end
 
+    # TODO: Move to a globally accessible location?
     def class_exists?(class_name)
       klass = Module.const_get(class_name)
       return klass.is_a?(Class)

@@ -6,6 +6,9 @@ shared_examples_for :searchable do
   describe 'after_save' do
     context 'non-translatable model' do
       before(:each) do
+        # Because this is a spec/support included through it_behaves_like,
+        # we have to mock the entry points of the data used in
+        # Concerns::Searchable.
         allow(described_class).to receive(:searchable_fields_list) { [:foo] }
         allow(described_class).to receive(:translatable_fields_list) { [] }
         allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
@@ -86,7 +89,9 @@ shared_examples_for :searchable do
         let(:content) { create(:content_text, content: 'Lorem ipsum') }
 
         before(:each) do
-          # TODO: See if an example is possible without allow_any_instance_of
+          # Because this is a spec/support included through it_behaves_like,
+          # we have to mock the entry points of the data used in
+          # Concerns::Searchable.
           allow(described_class).to receive(:searchable_fields_list) { [:foo] }
           allow_any_instance_of(described_class).to receive(:foo) { 'bar' }
           allow_any_instance_of(Concerns::Storable::Collection).to receive(:foo) { 'bar' }

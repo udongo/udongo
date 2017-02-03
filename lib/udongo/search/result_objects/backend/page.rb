@@ -13,7 +13,7 @@ module Udongo::Search::ResultObjects
     # in the partial as well, but this way we have separation of concerns.
     class Page < Udongo::Search::ResultObject
       def url
-        search_context.controller.edit_backend_page_path(index.searchable)
+        search_context.controller.edit_backend_page_path(searchable)
       end
     end
   end

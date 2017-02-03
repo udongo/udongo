@@ -43,7 +43,23 @@ describe Udongo::Search::Base do
       c = create(:search_index, searchable_type: 'Foo', searchable_id: 5, value: 'foo')
       d = create(:search_index, searchable_type: 'Foo', searchable_id: 8, value: 'foo')
       e = create(:search_index, searchable_type: 'Baz', searchable_id: 18, value: 'foo')
+
       expect(instance.indices).to eq [a, b, e, c, d]
+    end
+
+    it 'returns results triggered by a SearchSynonym' do
+      create(:search_module, name: 'Foo', weight: 1)
+
+      create(:search_synonym, term: 'foo', synonyms: 'bar,baz')
+
+      a = create(:search_index, searchable_type: 'Foo', searchable_id: 1, value: 'foo')
+      b = create(:search_index, searchable_type: 'Foo', searchable_id: 2, value: 'blub')
+      c = create(:search_index, searchable_type: 'Foo', searchable_id: 5, value: 'bar')
+      d = create(:search_index, searchable_type: 'Foo', searchable_id: 8, value: 'foo too')
+      e = create(:search_index, searchable_type: 'Foo', searchable_id: 18, value: 'baz')
+
+      instance = described_class.new('bar')
+      expect(instance.indices).to eq [a, d]
     end
   end
 

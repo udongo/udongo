@@ -25,8 +25,7 @@ module Udongo::Search
     attr_reader :term, :controller
 
     def initialize(term, controller: nil, namespace: nil)
-      # Filtering term should happen in classes extending the Base class.
-      @term = term
+      @term = Udongo::Search::Term.new(term, controller: controller)
       @controller = controller
       @namespace = namespace
     end
@@ -38,7 +37,6 @@ module Udongo::Search
       return false
     end
 
-    # TODO: term needs to take SearchSynonym into account.
     def indices
       return [] unless term.present?
 
@@ -48,7 +46,7 @@ module Udongo::Search
         # The group happens to make sure we end up with just 1 copy of
         # a searchable result Otherwise matches from both an indexed
         # Page#title and Page#description would be in the result set.
-        stack << m.indices.where('search_indices.value REGEXP ?', term)
+        stack << m.indices.where('search_indices.value REGEXP ?', term.value)
           .group([:searchable_type, :searchable_id])
       end.flatten
     end

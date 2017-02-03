@@ -34,9 +34,42 @@ describe Udongo::Search::ResultObject do
     expect(instance.partial_target).to eq 'foo_bar'
   end
 
+  describe '#invisible?' do
+    let(:page) { create(:page) }
+    let(:index) { create(:search_index, searchable: page, name: 'foo', value: 'bar') }
+    let(:instance) { described_class.new(index, search_context: search_context) }
+
+    it 'false' do
+      allow(instance.searchable).to receive(:visible?) { true }
+      expect(instance.invisible?).to be false
+    end
+
+    it 'true' do
+      allow(instance.searchable).to receive(:visible?) { false }
+      expect(instance.invisible?).to be true
+    end
+  end
+
+  describe '#unpublished?' do
+    let(:page) { create(:page) }
+    let(:index) { create(:search_index, searchable: page, name: 'foo', value: 'bar') }
+    let(:instance) { described_class.new(index, search_context: search_context) }
+
+    it 'true' do
+      allow(instance.searchable).to receive(:published?) { true }
+      expect(instance.unpublished?).to be false
+    end
+
+    it 'false' do
+      allow(instance.searchable).to receive(:published?) { true }
+      expect(instance.unpublished?).to be false
+    end
+  end
+
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :build_html, :locals, :partial, :partial_target
+      :build_html, :locals, :partial, :partial_target, :invisible?,
+      :unpublished?
     )
   end
 end

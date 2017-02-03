@@ -33,6 +33,10 @@ module Udongo::Search
       ApplicationController.render(partial: partial, locals: locals)
     end
 
+    def invisible?
+      searchable.respond_to?(:visible) && !searchable.visible?
+    end
+
     def label
       searchable.send(index.name)
     end
@@ -47,6 +51,10 @@ module Udongo::Search
 
     def partial_target
       index.searchable_type.underscore
+    end
+
+    def unpublished?
+      searchable.respond_to?(:published?) && !searchable.published?
     end
   end
 end

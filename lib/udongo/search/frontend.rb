@@ -15,8 +15,7 @@ module Udongo::Search
     def search
       indices.map do |index|
         result = result_object(index)
-        next if result.searchable.respond_to?(:visible) && !result.searchable.visible?
-        next if result.searchable.respond_to?(:published?) && !result.searchable.published?
+        next if result.invisible? || result.unpublished?
         { label: result.label, value: result.url }
       end.select(&:present?)
     end

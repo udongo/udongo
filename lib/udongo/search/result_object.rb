@@ -38,6 +38,11 @@ module Udongo::Search
     end
 
     def label
+      if index.name.include?('flexible_content')
+        id = index.name.split(':')[1].to_i
+        return ContentText.find(id).content
+      end
+
       searchable.send(index.name)
     end
 

@@ -10,13 +10,27 @@ describe Udongo::Search::ResultObject do
     # TODO: Not sure how to test ApplicationController.render calls.
   end
 
-  it '#label' do
-    page = create(:page)
-    allow(page).to receive(:foo) { 'foobar' }
-    index = create(:search_index, searchable: page, name: 'foo', value: 'foobar')
-    instance = described_class.new(index, search_context: search_context)
+  describe '#label' do
+    let(:page) { create(:page) }
 
-    expect(instance.label).to eq 'foobar'
+    before(:each) do
+      allow(page).to receive(:foo) { 'foobar' }
+    end
+
+    it 'default' do
+      index = create(:search_index, searchable: page, name: 'foo', value: 'foobar')
+      instance = described_class.new(index, search_context: search_context)
+
+      expect(instance.label).to eq 'foobar'
+    end
+
+    it 'flexible_content' do
+      text = create(:content_text, content: 'This search is foobar.')
+      index = create(:search_index, searchable: page, name: "flexible_content:#{text.id}", value: 'foobar')
+      instance = described_class.new(index, search_context: search_context)
+
+      expect(instance.label).to eq 'This search is foobar.'
+    end
   end
 
   it '#locals' do

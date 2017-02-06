@@ -39,20 +39,6 @@ ActiveRecord::Schema.define(version: 20170202170310) do
     t.index ["locale"], name: "index_admins_on_locale", using: :btree
   end
 
-  create_table "article_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "category_id"
-    t.string   "author"
-    t.datetime "published_at"
-    t.boolean  "visible"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -352,18 +338,6 @@ ActiveRecord::Schema.define(version: 20170202170310) do
     t.index ["locale"], name: "index_tags_on_locale", using: :btree
     t.index ["name"], name: "index_tags_on_name", using: :btree
     t.index ["slug"], name: "index_tags_on_slug", using: :btree
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email"
-    t.string   "password"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "display_name"
-    t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
 end

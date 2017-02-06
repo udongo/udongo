@@ -18,5 +18,7 @@ module Concerns
     def published?
       published_at && published_at.past?
     end
+
+    # TODO add #unpublished?
   end
 end

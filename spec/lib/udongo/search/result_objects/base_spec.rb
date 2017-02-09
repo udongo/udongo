@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Udongo::Search::ResultObject do
+describe Udongo::Search::ResultObjects::Base do
   let(:klass) { described_class.to_s.underscore.to_sym }
   let(:index) { create(:search_index, searchable_type: 'Foo', searchable_id: 1, value: 'foo') }
   let(:search_context) { Udongo::Search::Base.new('foo') }

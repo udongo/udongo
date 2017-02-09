@@ -65,7 +65,7 @@ module Udongo::Search
     # to a certain interface (that can include links).
     def result_object(index)
       klass = "Udongo::Search::ResultObjects::#{namespace}::#{index.searchable_type}"
-      klass = 'Udongo::Search::ResultObject' unless result_object_exists?(klass)
+      klass = 'Udongo::Search::ResultObjects::Base' unless result_object_exists?(klass)
       klass.constantize.new(index, search_context: self)
     end
 

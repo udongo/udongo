@@ -294,11 +294,11 @@ module Udongo::Search
 end
 ```
 
-By default the ```#result_object``` is an instance of ```Udongo::Search::ResultObject```. You can define your own result object class, which in this example is done for the ```Page``` model:
+By default the ```#result_object``` is an instance of ```Udongo::Search::ResultObjects::Base```. You can define your own result object class, which in this example is done for the ```Page``` model:
 ```ruby
 # lib/udongo/search/result_objects/page.rb
 module Udongo::Search::ResultObjects
-  class Page < Udongo::Search::ResultObject
+  class Page < Udongo::Search::ResultObjects::Base
     def url
       if namespace == :backend
         controller.edit_backend_page_path(index.searchable)
@@ -310,7 +310,7 @@ end
 This gives devs a way to extend the data for use in jQueryUI's autocomplete, or simply to mutate the index data. In the example above, we check what namespace we reside in in order to generate an edit link to the relevant page in the pages module. If one were to build a search for the frontend that includes pages, you could build the required URL for it here.
 
 ### HTML labels in autocomplete
-Support for HTML labels is automatically included through ```vendor/assets/javascripts/jquery-ui.autocomplete.html.js`. The labels should reside in partial files and be rendered with ```Udongo::Search::ResultObject#build_html```. This provide support for funkier autocomplete result structures:
+Support for HTML labels is automatically included through ```vendor/assets/javascripts/jquery-ui.autocomplete.html.js`. The labels should reside in partial files and be rendered with ```Udongo::Search::ResultObjects::Base#build_html```. This provide support for funkier autocomplete result structures:
 
 ```erb
 <!-- app/views/backend/search/result_rows/_page.html.erb -->

@@ -5,7 +5,7 @@ describe Udongo::Search::Backend do
   let(:instance) { described_class.new('foo', namespace: 'Backend') }
 
   before(:each) do
-    class Udongo::Search::ResultObjects::Backend::Foo < Udongo::Search::ResultObject
+    class Udongo::Search::ResultObjects::Backend::Foo < Udongo::Search::ResultObjects::Base
       def url
         '/backend/pages/1/edit'
       end

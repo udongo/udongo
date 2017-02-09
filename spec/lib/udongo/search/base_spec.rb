@@ -7,7 +7,7 @@ describe Udongo::Search::Base do
   before(:each) do
     module Udongo::Search::ResultObjects
       module Frontend
-        class Foo < Udongo::Search::ResultObject
+        class Foo < Udongo::Search::ResultObjects::Base
         end
       end
     end
@@ -69,7 +69,7 @@ describe Udongo::Search::Base do
 
     it 'index maps to Udongo::Search::ResultObject when a specific resource object was not found' do
       allow(instance).to receive(:result_object_exists?) { false }
-      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObject)
+      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Base)
     end
 
     it 'index maps to a specific ResultObjects resource class' do

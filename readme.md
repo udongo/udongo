@@ -313,7 +313,7 @@ This gives devs a way to extend the data for use in jQueryUI's autocomplete, or 
 Support for HTML labels is automatically included through ```vendor/assets/javascripts/jquery-ui.autocomplete.html.js`. The labels should reside in partial files and be rendered with ```Udongo::Search::ResultObjects::Base#build_html```. This provide support for funkier autocomplete result structures:
 
 ```erb
-<!-- app/views/backend/search/result_rows/_page.html.erb -->
+<!-- app/views/backend/search/_page.html.erb -->
 <%= t('b.page') %> — <%= page.title %><br />
 <small>
   <%= truncate(page.description, length: 40) %>

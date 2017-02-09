@@ -13,13 +13,13 @@ describe Udongo::Search::ResultObjects::Base do
 
     it 'raises error when partial does not exist' do
       allow(Rails).to receive(:root) { 'app_path' }
-      expect { instance.build_html }.to raise_error('In order to display formatted HTML for search results, the build_html method expects for a partial to exist in app_path/app/views/frontend/search/result_rows/_foo.html.erb')
+      expect { instance.build_html }.to raise_error('In order to display formatted HTML for search results, the build_html method expects for a partial to exist in app_path/app/views/frontend/search/_foo.html.erb')
     end
   end
 
   it '#full_partial' do
     root = Rails.root.to_s.gsub('spec/dummy', '')
-    expect(instance.full_partial).to eq "#{root}app/views/frontend/search/result_rows/_foo.html.erb"
+    expect(instance.full_partial).to eq "#{root}app/views/frontend/search/_foo.html.erb"
   end
 
   describe '#label' do
@@ -51,11 +51,11 @@ describe Udongo::Search::ResultObjects::Base do
   end
 
   it '#partial' do
-    expect(instance.partial).to eq 'frontend/search/result_rows/foo'
+    expect(instance.partial).to eq 'frontend/search/foo'
   end
 
   it '#partial_path' do
-    expect(instance.partial_path).to eq 'frontend/search/result_rows'
+    expect(instance.partial_path).to eq 'frontend/search'
   end
 
   it '#partial_target' do

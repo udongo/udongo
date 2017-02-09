@@ -66,7 +66,7 @@ module Udongo
         end
 
         def partial_path
-          "#{search_context.namespace.to_s.underscore}/search/result_rows"
+          "#{search_context.namespace.to_s.underscore}/search"
         end
 
         def partial_target

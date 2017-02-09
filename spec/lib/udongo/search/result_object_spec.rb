@@ -6,8 +6,20 @@ describe Udongo::Search::ResultObject do
   let(:search_context) { Udongo::Search::Base.new('foo') }
   let(:instance) { described_class.new(index, search_context: search_context) }
 
-  it '#build_html' do
-    # TODO: Not sure how to test ApplicationController.render calls.
+  describe '#build_html' do
+    it 'renders' do
+      # TODO: Not sure how to test ApplicationController.render calls.
+    end
+
+    it 'raises error when partial does not exist' do
+      allow(Rails).to receive(:root) { 'app_path' }
+      expect { instance.build_html }.to raise_error('In order to display formatted HTML for search results, the build_html method expects for a partial to exist in app_path/app/views/frontend/search/result_rows/_foo.html.erb')
+    end
+  end
+
+  it '#full_partial' do
+    root = Rails.root.to_s.gsub('spec/dummy', '')
+    expect(instance.full_partial).to eq "#{root}app/views/frontend/search/result_rows/_foo.html.erb"
   end
 
   describe '#label' do
@@ -40,6 +52,10 @@ describe Udongo::Search::ResultObject do
 
   it '#partial' do
     expect(instance.partial).to eq 'frontend/search/result_rows/foo'
+  end
+
+  it '#partial_path' do
+    expect(instance.partial_path).to eq 'frontend/search/result_rows'
   end
 
   it '#partial_target' do
@@ -82,8 +98,8 @@ describe Udongo::Search::ResultObject do
 
   it '#responds_to?' do
     expect(instance).to respond_to(
-      :build_html, :locals, :partial, :partial_target, :invisible?,
-      :unpublished?
+      :build_html, :locals, :partial, :partial_target, :hidden?,
+      :unpublished?, :full_partial, :partial_path
     )
   end
 end

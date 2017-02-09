@@ -28,6 +28,7 @@ describe Udongo::Search::Backend do
         @page_a = create(:page, description: 'foobar')
         @page_b = create(:page, description: 'foobar too')
         @index_a = create(:search_index, searchable: @page_a, locale: 'nl', name: 'description', value: 'foobar')
+        allow(File).to receive(:exists?) { true }
       end
 
       it 'single' do

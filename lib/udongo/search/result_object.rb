@@ -31,10 +31,17 @@ module Udongo::Search
     # problem by letting the dev decide how the row should look.
     #
     def build_html
-      # TODO whine when the partial does not exist
+      unless File.exists?(full_partial)
+        raise(InterfaceNotImplementedError, "In order to display formatted HTML for search results, the build_html method expects for a partial to exist in #{full_partial}")
+      end
+
       ApplicationController.render(partial: partial, locals: locals)
     end
 
+    def full_partial
+      root = Rails.root.to_s.gsub('spec/dummy', '')
+      File.join(root, 'app/views', partial_path, "_#{partial_target}.html.erb")
+    end
 
     def hidden?
       searchable.respond_to?(:visible) && searchable.hidden?
@@ -54,7 +61,11 @@ module Udongo::Search
     end
 
     def partial
-      "#{search_context.namespace.to_s.underscore}/search/result_rows/#{partial_target}"
+      "#{partial_path}/#{partial_target}"
+    end
+
+    def partial_path
+      "#{search_context.namespace.to_s.underscore}/search/result_rows"
     end
 
     def partial_target

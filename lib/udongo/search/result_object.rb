@@ -2,6 +2,7 @@ module Udongo::Search
   class InterfaceNotImplementedError < NoMethodError
   end
 
+  # TODO move to result_objects/base
   class ResultObject
     attr_reader :index, :search_context
 
@@ -30,9 +31,11 @@ module Udongo::Search
     # problem by letting the dev decide how the row should look.
     #
     def build_html
+      # TODO whine when the partial does not exist
       ApplicationController.render(partial: partial, locals: locals)
     end
 
+    # TODO use #hidden? instead of invisible
     def invisible?
       searchable.respond_to?(:visible) && !searchable.visible?
     end
@@ -59,6 +62,7 @@ module Udongo::Search
     end
 
     def unpublished?
+      # TODO create and use #unpublished? in the publishable concern
       searchable.respond_to?(:published?) && !searchable.published?
     end
   end

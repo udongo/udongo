@@ -15,7 +15,7 @@ module Udongo::Search
     def search
       indices.map do |index|
         result = result_object(index)
-        next if result.invisible? || result.unpublished?
+        next if result.hidden? || result.unpublished?
         { label: result.label, value: result.url }
       end.select(&:present?)
     end

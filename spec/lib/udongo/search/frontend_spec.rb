@@ -28,7 +28,7 @@ describe Udongo::Search::Frontend do
     it 'filters on publishable state' do
       create(:page, description: 'foobar', visible: true)
       page = create(:page, description: 'foobar', visible: true)
-      allow(page).to receive(:published?) { true }
+      allow(page).to receive(:unpublished?) { true }
       index = create(:search_index, searchable: page, locale: 'nl', name: 'description', value: 'foobar')
       allow(instance).to receive(:indices) { [index] }
 

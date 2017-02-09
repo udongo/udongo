@@ -35,9 +35,9 @@ module Udongo::Search
       ApplicationController.render(partial: partial, locals: locals)
     end
 
-    # TODO use #hidden? instead of invisible
-    def invisible?
-      searchable.respond_to?(:visible) && !searchable.visible?
+
+    def hidden?
+      searchable.respond_to?(:visible) && searchable.hidden?
     end
 
     def label
@@ -62,8 +62,7 @@ module Udongo::Search
     end
 
     def unpublished?
-      # TODO create and use #unpublished? in the publishable concern
-      searchable.respond_to?(:published?) && !searchable.published?
+      searchable.respond_to?(:published?) && searchable.unpublished?
     end
   end
 end

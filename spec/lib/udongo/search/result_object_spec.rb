@@ -48,19 +48,19 @@ describe Udongo::Search::ResultObject do
     expect(instance.partial_target).to eq 'foo_bar'
   end
 
-  describe '#invisible?' do
+  describe '#hidden?' do
     let(:page) { create(:page) }
     let(:index) { create(:search_index, searchable: page, name: 'foo', value: 'bar') }
     let(:instance) { described_class.new(index, search_context: search_context) }
 
     it 'false' do
       allow(instance.searchable).to receive(:visible?) { true }
-      expect(instance.invisible?).to be false
+      expect(instance.hidden?).to be false
     end
 
     it 'true' do
       allow(instance.searchable).to receive(:visible?) { false }
-      expect(instance.invisible?).to be true
+      expect(instance.hidden?).to be true
     end
   end
 
@@ -70,12 +70,12 @@ describe Udongo::Search::ResultObject do
     let(:instance) { described_class.new(index, search_context: search_context) }
 
     it 'true' do
-      allow(instance.searchable).to receive(:published?) { true }
+      allow(instance.searchable).to receive(:unpublished?) { true }
       expect(instance.unpublished?).to be false
     end
 
     it 'false' do
-      allow(instance.searchable).to receive(:published?) { true }
+      allow(instance.searchable).to receive(:unpublished?) { true }
       expect(instance.unpublished?).to be false
     end
   end

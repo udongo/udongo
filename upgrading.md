@@ -1,6 +1,6 @@
 # Upgrade guide
 ## From 3.0.0 to 4.0.0
-
+No backwards incompatible changes.
 
 ## From 2.0.4 to 3.0.0
 ### Forms

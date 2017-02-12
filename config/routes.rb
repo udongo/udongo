@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins
-    resources :users
+    resources :users do
+      resources :tools, only: [:index]
+    end
     resources :redirects, except: :show
     resources :search_synonyms, except: :show
 

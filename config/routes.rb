@@ -16,9 +16,10 @@ Rails.application.routes.draw do
     get '/' => 'dashboard#show'
     get 'search' => 'search#query'
 
-
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins
+    resources :redirects, except: :show
+    resources :search_synonyms, except: :show
 
     resources :pages, except: [:show] do
       concerns :translatable
@@ -56,10 +57,6 @@ Rails.application.routes.draw do
         get 'html_content'
       end
     end
-
-    resources :redirects, except: :show
-
-    resources :search_synonyms, except: :show
 
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do

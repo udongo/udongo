@@ -22,8 +22,8 @@
           <td><%= s.term %></td>
           <td><%= s.synonyms %></td>
           <td class="text-xs-right">
-            <%= link_to icon(:pencil_square_o), edit_backend_search_synonym_path(s) %>
-            <%= link_to icon(:trash), backend_search_synonym_path(s), method: 'delete', data: { confirm: t('b.msg.confirm') } %>
+            <%= link_to_edit [:backend, s] %>
+            <%= link_to_delete [:backend, s] %>
           </td>
         </tr>
       <% end %>

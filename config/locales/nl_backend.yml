@@ -49,8 +49,8 @@ nl:
     save: Opslaan
     search: Zoeken
     search_term: Zoekterm
-    search_synonym: Zoektermsynoniem
-    search_synonyms: Zoektermsynoniemen
+    search_synonym: Zoekterm synoniem
+    search_synonyms: Zoekterm synoniemen
     sender: Afzender
     sent_at: Verzonden op
     settings: Instellingen
@@ -60,7 +60,7 @@ nl:
     status: Status
     status_code: Statuscode
     subject: Onderwerp
-    synonyms: Synoniem(en)
+    synonyms: Synoniemen
     tags: Tags
     telephone: Telefoonnummer
     title: Titel

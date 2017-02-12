@@ -1,8 +1,8 @@
 # Upgrade guide
-## From 4.0.0 to 4.1.0
+## From 4.0.0 to 5.0.0
 # User model
 We added a ```User``` model. If your application used to have one, make sure to
-use the Udongo one and migrate your data.
+use the Udongo one and migrate your data accordingly.
 
 
 ## From 3.0.0 to 4.0.0

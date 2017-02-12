@@ -1,4 +1,4 @@
-4.1.0 - xxxx-xx-xx
+5.0.0 - 2017-02-12
 --
 * Added a general ```User``` model which you can extend in your own app.
 

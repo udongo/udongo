@@ -42,6 +42,7 @@ nl:
         subject: Onderwerp
         subtitle: Subtitel
         summary: Korte inhoud
+        synonyms: Synoniemen
         title: Titel
         visible: Zichtbaar?
         width: Breedte
@@ -69,3 +70,6 @@ nl:
       redirect:
         destination_uri: Bestemming
         source_uri: Bron
+
+      search_synonym:
+        term: Zoekterm

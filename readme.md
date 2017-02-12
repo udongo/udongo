@@ -61,12 +61,6 @@ Udongo.config.flexible_content.types = %w(text image)
 Udongo.config.flexible_content.allowed_breakpoints = %w(xs sm md lg xl)
 ```
 
-## Routes
-### prefix_with_locale
-```ruby
-Udongo.config.routes.prefix_with_locale = true
-```
-
 # Concerns
 ## Storable concern
 ### Possible field types
@@ -78,7 +72,6 @@ Udongo.config.routes.prefix_with_locale = true
 * Array
 * Float
 
-### Setup
 ```ruby
 class User < ApplicationRecord
   include Concerns::Storable
@@ -125,7 +118,6 @@ When you save the parent object (user), all the store collections will automatic
 ## Translatable concern
 This concern is actually the storable concern with some predefined settings. In order to use this concern your model needs to have a database text field named ```locales```.
 
-### Setup
 ```ruby
 class Document < ApplicationRecord
   include Concerns::Translatable
@@ -135,6 +127,21 @@ class Document < ApplicationRecord
  
   # Multiple fields
   translatable_fields :description, :summary 
+end
+```
+
+## Searchable concern
+Include this in your model if you want its records to appear in search autocompletes.
+
+```ruby
+class Document < ApplicationRecord
+  include Concerns::Searchable
+
+  # One field
+  searchable_field :title
+
+  # Multiple fields
+  searchable_fields :title, :description, :summary
 end
 ```
 
@@ -181,7 +188,6 @@ documents = Document.by_locale(:nl)
 ## Addressable concern
 This concern makes it easy to have multiple addresses with a category linked to a model.
 
-### Setup
 ```ruby
 class User < ApplicationRecord
   include Concerns::Addressable
@@ -243,6 +249,76 @@ validates :email, email: true
 validates :url, url: true
 ```
 
+# Search engine
+4.0 introduced a rough structure to build a search autocomplete upon through ```Concerns::Searchable```. 
+
+## How does it work?
+Included in Udongo by default is the backend search, which makes Page records accessible through an autocomplete. In order to build search support for a model, we have to make it include the concern:
+
+```ruby
+# app/models/page.rb
+class Page
+  include Concerns::Searchable
+  searchable_fields :title, :subtitle, :flexible_content
+end
+```
+
+```Concerns::Searchable``` saves ```SearchIndex``` records to our database whenever a model gets saved. Support for both ```Concern::Translatable``` and ```Concern::FlexibleContent``` is built in, meaning that translatable fields can also be searchable fields.
+
+By including ```:flexible_content``` as a searchable field, we flag it to build search indices for all flexible content of the ```ContentText``` type.
+
+```Backend::SearchController#index``` contains a call to ```Udongo::Search::Backend```. That class is responsible for matching a search term against the available search indices:
+
+```ruby
+# app/controllers/backend/search_controller.rb
+class Backend::SearchController < Backend::BaseController
+  def query
+    @results = Udongo::Search::Backend.new(params[:term], controller: self).search
+    render json: @results
+  end
+end
+```
+
+```Udongo::Search::Backend#search``` in turn translates those indices in a format that jQueryUI's autocomplete understands: ```{ label: 'foo', value: 'bar' }```.
+```ruby
+# lib/udongo/search/backend.rb
+module Udongo::Search
+  class Backend < Udongo::Search::Base
+    def search
+      indices.map do |index|
+        result = result_object(index)
+        { label: result.build_html, value: result.url }
+      end
+    end
+  end
+end
+```
+
+By default the ```#result_object``` is an instance of ```Udongo::Search::ResultObjects::Base```. You can define your own result object class, which in this example is done for the ```Page``` model:
+```ruby
+# lib/udongo/search/result_objects/page.rb
+module Udongo::Search::ResultObjects
+  class Page < Udongo::Search::ResultObjects::Base
+    def url
+      if namespace == :backend
+        controller.edit_backend_page_path(index.searchable)
+      end
+    end
+  end
+end
+````
+This gives devs a way to extend the data for use in jQueryUI's autocomplete, or simply to mutate the index data. In the example above, we check what namespace we reside in in order to generate an edit link to the relevant page in the pages module. If one were to build a search for the frontend that includes pages, you could build the required URL for it here.
+
+### HTML labels in autocomplete
+Support for HTML labels is automatically included through ```vendor/assets/javascripts/jquery-ui.autocomplete.html.js`. The labels should reside in partial files and be rendered with ```Udongo::Search::ResultObjects::Base#build_html```. This provide support for funkier autocomplete result structures:
+
+```erb
+<!-- app/views/backend/search/_page.html.erb -->
+<%= t('b.page') %> — <%= page.title %><br />
+<small>
+  <%= truncate(page.description, length: 40) %>
+</small>
+```
 
 # Cryptography
 ```Udongo::Cryptography``` is a module you can include in any class to provide you with functionality to encrypt and decrypt values. It is a wrapper that currently uses ```ActiveSupport::MessageEncryptor```, which in turns uses the Rails secret key to encrypt keys.
@@ -375,3 +451,8 @@ class Backend::AdminsController < Backend::BaseController
   end
 end
 ```
+
+# Javascript libs
+## Select2
+This library is loaded by default in the backend.
+See https://select2.github.io

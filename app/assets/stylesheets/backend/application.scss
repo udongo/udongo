@@ -11,8 +11,12 @@
  * file per style scope.
  *
  *= require_self
+ *= require jquery-ui/autocomplete
+ *= require jquery-ui.theme.min
  */
 
 @import 'bootstrap';
 @import 'backend/bootstrap-datepicker';
+@import 'backend/select2.min';
 @import 'udongo';
+@import 'custom';

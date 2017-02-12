@@ -13,10 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
+//= require jquery-ui.autocomplete.html.js
 //= require jquery-ui/sortable
 //= require backend/tether.min
 //= require backend/bootstrap
 //= require ckeditor/init
 //= require backend/general
+//= require backend/search
 //= require backend/bootstrap-datepicker.min
 //= require backend/datepickers
+//= require backend/select2.min

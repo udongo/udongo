@@ -46,9 +46,11 @@ en:
     recipient: Recipient
     redirect: Redirect
     redirects: Redirects
-    restart_webserver: Restart webserver
     save: Save
     search: Search
+    search_term: Search term
+    search_synonym: Search synonym
+    search_synonyms: Search synonyms
     sender: Sender
     sent_at: Sent at
     settings: Settings
@@ -58,6 +60,7 @@ en:
     status: Status
     status_code: Status code
     subject: Subject
+    synonyms: Synonyms
     tags: Tags
     telephone: Telephone
     title: Title
@@ -89,6 +92,7 @@ en:
         edit_text: Edit text
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
       forgot_password: Forgot password?
+      general_form_error: Something went wrong. Please check the marked fields.
       help_texts:
         status_code: More info about the use of status codes.
       incorrect_login: Incorret login credentials.
@@ -101,5 +105,3 @@ en:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
-      webserver:
-        restarted: The webserver was restarted.

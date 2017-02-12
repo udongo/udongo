@@ -15,8 +15,6 @@ group :test do
   gem 'database_cleaner', '~> 1.5.3'
   gem 'capybara', '~> 2.7.1'
   gem 'webmock', '~> 1.22.3'
-  gem 'capybara-webkit', '~> 1.11.1'
-  gem 'simplecov', '~> 0.12.0', require: false
 end
 
 group :test, :development do

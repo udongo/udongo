@@ -21,9 +21,6 @@ class PageDecorator < ApplicationDecorator
       end
     end
 
-    str = ''
-    str << "/#{locale}" if Udongo.config.routes.prefix_with_locale?
-    str << "/#{slugs.reverse.join('/')}"
-    str
+    "/#{locale}/#{slugs.reverse.join('/')}"
   end
 end

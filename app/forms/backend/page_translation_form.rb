@@ -22,11 +22,9 @@ class Backend::PageTranslationForm < Udongo::Form
     self.title = @translation.title
     self.subtitle = @translation.subtitle
 
-    self.seo_title = @seo.title
-    self.seo_keywords = @seo.keywords
-    self.seo_description = @seo.description
-    self.seo_custom = @seo.custom
-    self.seo_slug = @seo.slug
+    %w(title keywords description custom slug).each do |f|
+      self.send("seo_#{f}=", @seo.send(f))
+    end
   end
 
   def self.model_name
@@ -41,11 +39,9 @@ class Backend::PageTranslationForm < Udongo::Form
     self.title = params[:title]
     self.subtitle = params[:subtitle]
 
-    self.seo_title = params[:seo_title]
-    self.seo_keywords = params[:seo_keywords]
-    self.seo_description = params[:seo_description]
-    self.seo_custom = params[:seo_custom]
-    self.seo_slug = params[:seo_slug]
+    %w(title keywords description custom slug).each do |f|
+      self.send("seo_#{f}=", params["seo_#{f}".to_sym])
+    end
 
     if valid?
       save_object
@@ -61,11 +57,9 @@ class Backend::PageTranslationForm < Udongo::Form
     @translation.title = title
     @translation.subtitle = subtitle
 
-    @seo.title = seo_title
-    @seo.keywords = seo_keywords
-    @seo.description = seo_description
-    @seo.custom = seo_custom
-    @seo.slug = seo_slug
+    %w(title keywords description custom slug).each do |f|
+      @seo.send("#{f}=", send("seo_#{f}"))
+    end
 
     # Saves the page, translation and SEO info all at once.
     @page.save

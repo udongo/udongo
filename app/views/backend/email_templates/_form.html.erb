@@ -1,4 +1,6 @@
-<%= simple_form_for [:backend, @form] do |f| %>
+<%= render 'backend/general_form_error', object: @model %>
+
+<%= simple_form_for [:backend, @model] do |f| %>
   <div class="row">
     <div class="col-md-12">
       <div class="card">

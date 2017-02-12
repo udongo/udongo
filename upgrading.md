@@ -1,4 +1,7 @@
 # Upgrade guide
+## From 3.0.0 to 4.0.0
+No backwards incompatible changes.
+
 ## From 2.0.4 to 3.0.0
 ### Forms
 Everything related to the form models has been deleted. So if you use any of 
@@ -30,6 +33,29 @@ with ```Udongo.config.i18n.app.default_locale```
 ### Backend default_locale helper renamed
 In the backend you used to have a helper ```default_locale```. You need to 
 rename each occurence to ```default_app_locale```
+
+### Removed the setting `prefix_with_locale`
+Make sure to remove this setting from your Udongo config.
+```Udongo.config.routes.prefix_with_locale = true```
+
+### Webserver restart
+The button to manually restart the webserver has been removed. If you want to
+keep this behaviour, below is the old code.
+
+```ruby
+class Backend::WebserverController < Backend::BaseController
+  def restart
+    `touch tmp/restart.txt`
+    redirect_to backend_path, notice: t('b.msg.webserver.restarted')
+  end
+end
+```
+
+
+### Backend::TranslationForm
+This form object was added and can be used to simplify your existing translation
+forms (except for those that use SEO). To stay up-to-date, you should check your
+translation form objects and if they can benefit from this new class.
 
 
 ## From 2.0.1 to 2.0.4

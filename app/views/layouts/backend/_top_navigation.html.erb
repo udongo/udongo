@@ -35,7 +35,7 @@
 
   <li class="nav-item pull-xs-right">
     <%= form_tag backend_search_path, method: :get, id: 'search', class: 'form-inline my-2 my-lg-0' do %>
-      <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', placeholder: 'Search' %>
+      <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', placeholder: t('b.search') %>
     <% end %>
   </li>
 </ul>

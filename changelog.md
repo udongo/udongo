@@ -1,3 +1,8 @@
+4.1.0 - xxxx-xx-xx
+--
+* Added a general ```User``` model which you can extend in your own app.
+
+
 4.0.0 - 2017-02-12
 --
 * Added Concerns::Searchable. This lets model instances automatically save 

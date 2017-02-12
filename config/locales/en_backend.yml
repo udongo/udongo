@@ -67,6 +67,8 @@ en:
     to: To
     up: Up
     used: Used
+    user: User
+    users: Users
     variables: Variables
     view: View
 
@@ -99,9 +101,14 @@ en:
       navigation:
         custom: Custom
       no_items: There are no items.
+      pages:
+        invisible: Deze pagina is niet zichtbaar op de website.
       saved: '%s was saved.'
       seo: SEO
       status_codes:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
+      users:
+        account_details: Account details
+        personal_details: Personal details

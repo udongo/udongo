@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202170310) do
+ActiveRecord::Schema.define(version: 20170212150903) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -338,6 +338,24 @@ ActiveRecord::Schema.define(version: 20170202170310) do
     t.index ["locale"], name: "index_tags_on_locale", using: :btree
     t.index ["name"], name: "index_tags_on_name", using: :btree
     t.index ["slug"], name: "index_tags_on_slug", using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "login_count"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string   "password_digest"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
   end
 
 end

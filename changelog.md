@@ -1,3 +1,8 @@
+x.x.x - xxxx-xx-xx
+--
+* Make sure the search field in the top navigation doesn't steal the focus.
+
+
 5.0.0 - 2017-02-12
 --
 * Added a general ```User``` model which you can extend in your own app.

@@ -15,7 +15,14 @@ shared_examples_for :translatable do
       object.translation(:nl).send("#{field}=", 'foo')
       object.save
 
-      expect(object.locales).to eq ['nl']
+      # 13/01 - if this is done with eq instead of include, the searchable spec
+      # fails because of the following in app/models/concerns/searchable.rb:
+      #
+      #   Udongo.config.i18n.app.locales.each do |locale|
+      #     value = translation(locale.to_sym).send(key) <---
+      #     ...
+      #   end
+      expect(object.locales).to include 'nl'
     end
   end
 

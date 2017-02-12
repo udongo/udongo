@@ -2,6 +2,13 @@ class ContentColumn < ApplicationRecord
   include Concerns::Sortable
   sortable(scope: :row_id)
 
+  # Removing a column from a searchable object should remove the linked
+  # SearchIndex instance.
+  after_destroy do
+    next unless linked_to_searchable_parent?
+    parent.search_indices.where(name: "flexible_content:#{content_id}").destroy_all
+  end
+
   belongs_to :row, class_name: 'ContentRow', touch: true
   belongs_to :content, polymorphic: true, dependent: :destroy
 
@@ -11,4 +18,12 @@ class ContentColumn < ApplicationRecord
             numericality: { greater_than: 0, less_than_or_equal_to: 12,  only_integer: true }
 
   default_scope -> { order(:position) }
+
+  def linked_to_searchable_parent?
+    parent.present? && parent.searchable?
+  end
+
+  def parent
+    row.rowable
+  end
 end

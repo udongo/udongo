@@ -18,5 +18,9 @@ module Concerns
     def published?
       published_at && published_at.past?
     end
+
+    def unpublished?
+      !published?
+    end
   end
 end

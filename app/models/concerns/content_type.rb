@@ -7,7 +7,11 @@ module Concerns
     end
 
     def column
-      ::ContentColumn.where(content_type: self.class.name, content_id: id).take
+      ContentColumn.find_by(content: self)
+    end
+
+    def parent
+      column.row.rowable
     end
   end
 end

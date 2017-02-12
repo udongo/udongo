@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'dashboard#show'
+    get 'search' => 'search#query'
+
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins
@@ -56,6 +58,8 @@ Rails.application.routes.draw do
     end
 
     resources :redirects, except: :show
+
+    resources :search_synonyms, except: :show
 
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do

@@ -1,0 +1,34 @@
+<%= render 'backend/general_form_error', object: @user %>
+
+<%= simple_form_for [:backend, @user] do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.msg.users.personal_details' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :email, required: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.msg.users.account_details' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :password, required: @user.new_record? %>
+          <%= f.input :password_confirmation, required: @user.new_record? %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_users_path %>
+<% end %>

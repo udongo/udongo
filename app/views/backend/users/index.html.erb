@@ -1,0 +1,33 @@
+<%= render 'backend/breadcrumbs' %>
+
+<p class="text-xs-right">
+  <%= link_to icon(:plus, t('b.add')), new_backend_user_path, class: 'btn btn-primary btn-sm' %>
+</p>
+
+<% if @users.any? %>
+  <table class="table table-hover table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th><%= t 'b.name' %></th>
+        <th><%= t 'b.email' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |a| %>
+        <tr>
+          <td><%= a.full_name %></td>
+          <td><%= mail_to a.email %></td>
+          <td class="text-xs-right">
+            <%= link_to icon(:pencil_square_o), edit_backend_user_path(a) %>
+            <%= link_to icon(:trash), backend_user_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

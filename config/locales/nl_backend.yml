@@ -67,6 +67,7 @@ nl:
     to: Naar
     up: Omhoog
     used: Gebruikt
+    user: Gebruiker
     users: Gebruikers
     variables: Variabelen
     view: Bekijk
@@ -108,3 +109,6 @@ nl:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
+      users:
+        account_details: Accountgegevens
+        personal_details: Persoonlijke gegevens

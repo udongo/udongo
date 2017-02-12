@@ -1,4 +1,4 @@
-4.0.0 - xxxx-xx-xx
+4.0.0 - 2017-02-12
 --
 * Added Concerns::Searchable. This lets model instances automatically save 
   SearchIndex records to the database as they are changed.

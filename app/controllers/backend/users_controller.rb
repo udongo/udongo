@@ -7,8 +7,7 @@ class Backend::UsersController < Backend::BaseController
   end
 
   def show
-    # TODO add the show action? Or just use edit with tabs?
-    # redirect_to edit_backend_user_path(@user)
+    redirect_to edit_backend_user_path(@user)
   end
 
   def new

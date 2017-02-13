@@ -25,7 +25,7 @@ describe Backend::PageTranslationForm do
       described_class.new(page, page.translation(:nl), page.seo(:nl))
     end
 
-    context 'translations' do
+    describe 'translations' do
       before(:each) do
         valid_params.reverse_merge!(subtitle: 'Dit is een subtitel')
         instance.save(valid_params)
@@ -41,7 +41,7 @@ describe Backend::PageTranslationForm do
       end
     end
 
-    context 'seo' do
+    describe 'seo' do
       before(:each) do
         valid_params.reverse_merge!(
           seo_title: 'Dit is een titel',

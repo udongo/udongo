@@ -3,6 +3,8 @@
 * Make sure the search field in the top navigation doesn't steal the focus.
 * Add missing class for vertical file inputs for Simple Form.
 * Remove the search partial file checks.
+* Fix bug in the SEO form of b/pages#edit_translation that prevented you from
+  saving SEO data.
 
 
 5.0.0 - 2017-02-12

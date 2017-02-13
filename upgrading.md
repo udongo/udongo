@@ -1,4 +1,7 @@
 # Upgrade guide
+## From 5.0.0 to 5.0.1
+No backwards incompatible changes.
+
 ## From 4.0.0 to 5.0.0
 # User model
 We added a ```User``` model. If your application used to have one, make sure to

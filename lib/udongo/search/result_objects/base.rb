@@ -32,16 +32,7 @@ module Udongo
         # problem by letting the dev decide how the row should look.
         #
         def build_html
-          unless File.exists?(full_partial)
-            raise(InterfaceNotImplementedError, "In order to display formatted HTML for search results, the build_html method expects for a partial to exist in #{full_partial}")
-          end
-
           ApplicationController.render(partial: partial, locals: locals)
-        end
-
-        def full_partial
-          root = Rails.root.to_s.gsub('spec/dummy', '')
-          File.join(root, 'app/views', partial_path, "_#{partial_target}.html.erb")
         end
 
         def hidden?

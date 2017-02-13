@@ -62,6 +62,7 @@ class Backend::PageTranslationForm < Udongo::Form
     end
 
     # Saves the page, translation and SEO info all at once.
-    @page.save
+    @seo.save!
+    @page.save!
   end
 end

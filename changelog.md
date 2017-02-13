@@ -1,3 +1,9 @@
+5.0.2 - xxxx-xx-xx
+--
+* Fix bug in the SEO form of b/pages#edit_translation that prevented you from
+  saving SEO data.
+
+
 5.0.1 - 2017-02-13
 --
 * Make sure the search field in the top navigation doesn't steal the focus.

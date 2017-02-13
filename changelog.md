@@ -1,6 +1,7 @@
 x.x.x - xxxx-xx-xx
 --
 * Make sure the search field in the top navigation doesn't steal the focus.
+* Add missing class for vertical file inputs for Simple Form.
 
 
 5.0.0 - 2017-02-12

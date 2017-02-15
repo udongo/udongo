@@ -3,7 +3,7 @@ class Backend::UsersController < Backend::BaseController
   before_action -> { breadcrumb.add t('b.users'), backend_users_path }
 
   def index
-    @users = User.all
+    @users = User.order(:last_name, :first_name)
   end
 
   def show

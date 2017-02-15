@@ -5,7 +5,8 @@ class Backend::UsersController < Backend::BaseController
   before_action -> { breadcrumb.add t('b.users'), backend_users_path }
 
   def index
-    @users = paginate User.order(:last_name, :first_name)
+    @search = User.ransack params[:q]
+    @users = @search.result(distinct: true).order(:last_name, :first_name).page(page_number).per_page(per_page)
   end
 
   def show

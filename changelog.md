@@ -5,6 +5,7 @@
 * The users module now orders by last/first name.
 * The default number of items per page is now 10 instead of 30.
 * A user now has an active/inactive state that you can manage.
+* You can now filter users by their first name, last name and email address.
 
 
 5.0.1 - 2017-02-13

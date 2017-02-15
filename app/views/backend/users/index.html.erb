@@ -28,6 +28,8 @@
     </tbody>
   </table>
 
+  <%= udongo_paginate @users %>
+
 <% else %>
   <p><%= t 'b.msg.no_items' %></p>
 <% end %>

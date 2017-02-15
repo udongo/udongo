@@ -1,9 +1,11 @@
 class Backend::UsersController < Backend::BaseController
+  include Concerns::PaginationController
+
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action -> { breadcrumb.add t('b.users'), backend_users_path }
 
   def index
-    @users = User.order(:last_name, :first_name)
+    @users = paginate User.order(:last_name, :first_name)
   end
 
   def show

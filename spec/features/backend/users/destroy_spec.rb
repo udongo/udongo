@@ -17,7 +17,7 @@ describe 'destroy users' do
 
     user_page.submit_with('Martha', 'Kauffman', 'martha@kauffman.be', 'martha')
 
-    page.find(:path, '//table/tbody/tr[1]/td[4]/a[2]').click
+    page.find('tbody td:last a:last').click
 
     expect(page).to have_current_path(backend_users_path)
     expect(page).to have_content('Gebruiker werd verwijderd.')

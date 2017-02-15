@@ -8,6 +8,7 @@
   which makes those forms great again.
 * Add fix for a collection of checkboxes rendered by SimpleForm to show on
   multiple lines.
+* Set a max width for the cell containing the sortable handle.
 
 
 5.0.2 - 2017-02-13

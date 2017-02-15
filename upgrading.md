@@ -1,4 +1,8 @@
 # Upgrade guide
+## From 5.1.0 to 5.2.0
+No backwards incompatible changes.
+
+
 ## From 5.0.1 to 5.1.0
 ### Users
 A user now has an 'active' (boolean) field. If you already have that, you need

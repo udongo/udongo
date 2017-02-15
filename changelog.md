@@ -1,3 +1,7 @@
+5.2.0 - xxxx-xx-xx
+--
+
+
 5.1.0 - 2017-02-15
 --
 * The users module now orders by last/first name.

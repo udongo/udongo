@@ -78,10 +78,4 @@ describe Backend::PageTranslationForm do
   it '#persisted?' do
     expect(instance).to be_persisted
   end
-
-  it '#respond_to' do
-    expect(instance).to respond_to(
-      :save, :persisted?, :page, :translation, :seo
-    )
-  end
 end

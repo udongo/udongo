@@ -4,6 +4,8 @@
 * The default number of items per page is now 10 instead of 30.
 * A user now has an active/inactive state that you can manage.
 * You can now filter users by their first name, last name and email address.
+* Next to the ```Backend::TranslationForm``` we now added the ```Backend::TranslationWithSeoForm```
+  which makes those forms great again.
 
 
 5.0.2 - 2017-02-13

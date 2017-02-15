@@ -6,6 +6,8 @@
 * You can now filter users by their first name, last name and email address.
 * Next to the ```Backend::TranslationForm``` we now added the ```Backend::TranslationWithSeoForm```
   which makes those forms great again.
+* Add fix for a collection of checkboxes rendered by SimpleForm to show on
+  multiple lines.
 
 
 5.0.2 - 2017-02-13

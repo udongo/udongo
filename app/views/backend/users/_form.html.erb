@@ -25,6 +25,7 @@
         <div class="card-block">
           <%= f.input :password, required: @user.new_record? %>
           <%= f.input :password_confirmation, required: @user.new_record? %>
+          <%= f.input :active %>
         </div>
       </div>
     </div>

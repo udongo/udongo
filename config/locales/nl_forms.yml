@@ -13,6 +13,7 @@ nl:
 
     labels:
       defaults:
+        active: Actief
         bcc: BCC
         caption: Beschrijving
         category: Categorie

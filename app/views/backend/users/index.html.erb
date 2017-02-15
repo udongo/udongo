@@ -10,18 +10,20 @@
       <tr>
         <th><%= t 'b.name' %></th>
         <th><%= t 'b.email' %></th>
+        <th><%= t 'b.active' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @users.each do |a| %>
-        <tr>
-          <td><%= a.full_name %></td>
-          <td><%= mail_to a.email %></td>
+      <% @users.each do |u| %>
+        <tr class="<%= 'text-muted' unless u.active? %>">
+          <td><%= u.full_name %></td>
+          <td><%= mail_to u.email %></td>
+          <td><%= t u.active?.to_s %></td>
           <td class="text-xs-right">
-            <%= link_to icon(:pencil_square_o), edit_backend_user_path(a) %>
-            <%= link_to icon(:trash), backend_user_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
+            <%= link_to icon(:pencil_square_o), edit_backend_user_path(u) %>
+            <%= link_to icon(:trash), backend_user_path(u), method: :delete, data: {confirm: t('b.msg.confirm') }%>
           </td>
         </tr>
       <% end %>

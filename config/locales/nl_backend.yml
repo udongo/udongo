@@ -1,6 +1,7 @@
 nl:
   b:
     actions: Acties
+    active: Actief
     add: Toevoegen
     admin: Beheerder
     admins: Beheerders

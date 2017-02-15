@@ -32,7 +32,7 @@ module Concerns
         return i if params[:per_page].to_i == i
       end
 
-      30
+      10
     end
   end
 end

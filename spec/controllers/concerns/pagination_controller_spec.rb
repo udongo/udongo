@@ -70,9 +70,9 @@ describe Concerns::PaginationController do
   end
 
   describe '#per_page' do
-    it 'defaults to 30' do
+    it 'defaults to 10' do
       allow(controller).to receive(:params) { {} }
-      expect(controller.per_page).to eq 30
+      expect(controller.per_page).to eq 10
     end
 
     it '5' do

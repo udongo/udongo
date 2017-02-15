@@ -1,6 +1,9 @@
 # Upgrade guide
 ## From 5.0.1 to 5.1.0
-No backwards incompatible changes.
+### Users
+A user now has an 'active' (boolean) field. If you already have that, you need
+to remove it and let it be added by the Udongo migrations after which you
+migrate your data.
 
 ## From 5.0.0 to 5.0.1
 No backwards incompatible changes.

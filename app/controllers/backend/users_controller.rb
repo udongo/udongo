@@ -1,7 +1,7 @@
 class Backend::UsersController < Backend::BaseController
   include Concerns::PaginationController
 
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_model, only: [:show, :edit, :update, :destroy]
   before_action -> { breadcrumb.add t('b.users'), backend_users_path }
 
   def index
@@ -42,7 +42,7 @@ class Backend::UsersController < Backend::BaseController
 
   private
 
-  def find_user
+  def find_model
     @user = User.find params[:id]
   end
 

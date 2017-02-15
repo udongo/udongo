@@ -1,4 +1,7 @@
 # Upgrade guide
+## From 5.0.1 to 5.1.0
+No backwards incompatible changes.
+
 ## From 5.0.0 to 5.0.1
 No backwards incompatible changes.
 
@@ -6,7 +9,6 @@ No backwards incompatible changes.
 # User model
 We added a ```User``` model. If your application used to have one, make sure to
 use the Udongo one and migrate your data accordingly.
-
 
 ## From 3.0.0 to 4.0.0
 No backwards incompatible changes.

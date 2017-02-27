@@ -4,7 +4,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   storage :file
 
   def filename
-    @name ||= "#{secure_token}-#{model.id}.#{file.extension.downcase}" if original_filename
+    @name ||= "#{secure_token}.#{file.extension.downcase}" if original_filename
   end
 
   private

@@ -19,7 +19,14 @@
     <tbody>
       <% @assets.each do |a| %>
         <tr>
-          <td><%= link_to 'foo', a.filename.url %></td>
+          <td>
+            <% if a.image? %>
+              <%= image_tag a.filename.url, alt: '', class: 'img-fluid', style: 'max-width: 250px;' %>
+            <% else %>
+
+              <%= link_to icon(:download, t('b.download')), a.filename.url %>
+            <% end %>
+          </td>
           <td><%= simple_format a.description %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, a] %>

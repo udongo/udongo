@@ -22,6 +22,8 @@ nl:
     email_templates: E-mail templates
     enabled?: Ingeschakeld?
     extra: Extra
+    file: Bestand
+    files: Bestanden
     filter: Filter
     first_name: Voornaam
     flexible_content: Flexibele inhoud

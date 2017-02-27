@@ -20,8 +20,9 @@ class AssetUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    main_dir = Digest::MD5.hexdigest(model.id.to_s)[0,2]
-    second_dir = Digest::MD5.hexdigest(model.id.to_s)[2,2]
+    md5 = Digest::MD5.hexdigest(model.id.to_s)
+    main_dir = md5[0,2]
+    second_dir = md5[2,2]
     "uploads/assets/#{main_dir}/#{second_dir}"
   end
 

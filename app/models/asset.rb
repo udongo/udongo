@@ -11,6 +11,10 @@ class Asset < ApplicationRecord
     content_type.include?('image')
   end
 
+  def extension
+    read_attribute(:filename).split('.').last
+  end
+
   private
 
   def update_filesize

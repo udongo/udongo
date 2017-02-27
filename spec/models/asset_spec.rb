@@ -43,6 +43,12 @@ describe Asset do
     end
   end
 
+  it '#extension' do
+    asset = create(klass)
+    asset.write_attribute :filename, 'foo.pdf'
+    expect(asset.extension).to eq 'pdf'
+  end
+
   it '#responds_to?' do
     expect(build(klass)).to respond_to(:image?)
   end

@@ -1,0 +1,35 @@
+<%= render 'backend/breadcrumbs' %>
+
+<!-- TODO add filter -->
+
+<p class="text-xs-right">
+  <%= link_to icon(:plus, t('b.add')), new_backend_asset_path, class: 'btn btn-primary btn-sm' %>
+</p>
+
+<% if @assets.any? %>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <th><%= t 'b.file' %></th>
+        <th><%= t 'b.description' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @assets.each do |a| %>
+        <tr>
+          <td><%= link_to 'foo', a.filename.url %></td>
+          <td><%= simple_format a.description %></td>
+          <td class="text-xs-right">
+            <%= link_to_edit [:backend, a] %>
+            <%= link_to_delete [:backend, a] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

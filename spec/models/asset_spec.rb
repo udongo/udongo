@@ -11,6 +11,24 @@ describe Asset do
     end
   end
 
+  describe 'before_save' do
+    it 'update the filesize' do
+      asset = build(klass)
+      expect(asset.filesize).to eq nil
+
+      asset.save!
+      expect(asset.filesize).to eq 45014
+    end
+
+    it 'update the content_type' do
+      asset = build(klass)
+      expect(asset.content_type).to eq nil
+
+      asset.save!
+      expect(asset.content_type).to eq 'application/jpeg'
+    end
+  end
+
   describe '#image?' do
     it :true do
       %w(gif jpeg jpg png).each do |ext|

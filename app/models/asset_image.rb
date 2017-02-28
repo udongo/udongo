@@ -39,14 +39,10 @@ class AssetImage
       FileUtils.mkpath("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}")
 
       case options[:action].to_sym
-        when :resize_to_limit
-          resize_to_limit width, height, options
-        when :resize_to_fit
-          resize_to_fit width, height, options
-        when :resize_to_fill
-          resize_to_fill width, height, options
-        when :resize_and_pad
-          resize_and_pad width, height, options
+        when :resize_to_limit then resize_to_limit(width, height, options)
+        when :resize_to_fit then resize_to_fit(width, height, options)
+        when :resize_to_fill then resize_to_fill(width, height, options)
+        when :resize_and_pad then resize_and_pad(width, height, options)
         else
           raise "No such resize action '#{options[:action].to_s}'. Available are: resize_to_limit, resize_to_fit, resize_to_fill and resize_and_pad."
       end

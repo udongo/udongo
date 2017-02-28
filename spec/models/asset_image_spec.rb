@@ -94,8 +94,7 @@ describe AssetImage do
 
   it '#respond_to?' do
     expect(klass.new(nil)).to respond_to(
-      :filename, :url, :path, :resize_to_limit, :resize_to_fit, :resize_to_fill,
-      :resize_and_pad, :main_dir, :second_dir
+      :filename, :url, :actual_url, :path, :actual_path
     )
   end
 end

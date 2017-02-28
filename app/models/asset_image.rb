@@ -35,8 +35,8 @@ class AssetImage
 
     name = filename(width, height, options)
 
-    unless File.exists?("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")
-      FileUtils.mkpath("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}")
+    unless File.exists?(actual_path(name))
+      FileUtils.mkpath(File.dirname(actual_path(name)))
 
       case options[:action].to_sym
         when :resize_to_limit then resize_to_limit(width, height, options)
@@ -48,13 +48,23 @@ class AssetImage
       end
     end
 
-    "/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}"
+    actual_url(name)
+  end
+
+  def actual_url(calculated_filename)
+    "/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{calculated_filename}"
   end
 
   def path(width = nil, height = nil, options = {})
-    options[:action] = :resize_to_limit unless options.key?(:action)
-    "#{Rails.root}/public#{url(width, height, options)}"
+    url(width, height, options) # Trigger the actual resize
+    actual_path(filename(width, height, options))
   end
+
+  def actual_path(calculated_filename)
+    "#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{calculated_filename}"
+  end
+
+  private
 
   # Resize the image to fit within the specified dimensions while retaining
   # the original aspect ratio. Will only resize the image if it is larger than the
@@ -62,17 +72,13 @@ class AssetImage
   # in the smaller dimension but will not be larger than the specified values.
   #
   def resize_to_limit(width, height, options = {})
-    options[:action] = :resize_to_limit
-
-    name = filename(width, height, options)
-
     img = MiniMagick::Image.open(@asset.filename.path)
     img.combine_options do |c|
       c.quality options[:quality] if options[:quality]
       c.resize "#{width}x#{height}>"
     end
 
-    img.write("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")
+    img.write(actual_path(filename(width, height, options)))
   end
 
   # Resize the image to fit within the specified dimensions while retaining
@@ -80,8 +86,6 @@ class AssetImage
   # specified in the smaller dimension but will not be larger than the specified values.
   #
   def resize_to_fit(width, height, options = {})
-    options[:action] = :resize_to_fit
-
     name = filename(width, height, options)
 
     img = MiniMagick::Image.open(@asset.filename.path)
@@ -101,7 +105,6 @@ class AssetImage
   # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
   #
   def resize_to_fill(width, height, options = {})
-    options[:action] = :resize_to_fill
     gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
 
     name = filename(width, height, options)
@@ -142,7 +145,6 @@ class AssetImage
   # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
   #
   def resize_and_pad(width, height, options = {})
-    options[:action] = :resize_and_pad
     gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
     background = options.key?(:background) ? options[:background] : :transparant
 

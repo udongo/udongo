@@ -43,14 +43,25 @@ describe Asset do
     end
   end
 
-  it '#extension' do
+  describe '#image' do
+    it :nil do
+      asset = create(klass, content_type: 'application/pdf')
+      expect(asset.image).to eq nil
+    end
+
+    it 'AssetImage' do
+      asset = build(klass, content_type: 'image/jpg')
+      expect(asset.image).to be_a(AssetImage)
+    end
+  end
+
+  it '#actual_filename' do
     asset = create(klass)
     asset.write_attribute :filename, 'foo.pdf'
-    expect(asset.extension).to eq 'pdf'
+    expect(asset.actual_filename).to eq 'foo.pdf'
   end
 
   it '#responds_to?' do
-    expect(build(klass)).to respond_to(:image?)
+    expect(build(klass)).to respond_to(:image?, :image, :actual_filename)
   end
 end
-

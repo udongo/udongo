@@ -11,24 +11,11 @@ class Asset < ApplicationRecord
     content_type.include?('image')
   end
 
-  def image_url(width = nil, height = nil, action: :resize_to_limit, options: {})
-    return unless image?
-
-    Udongo::Assets::Resize.new(self).url(
-      width,
-      height,
-      action: action,
-      options: options
-    )
+  def image
+    AssetImage.new(self) if image?
   end
 
-  # TODO remove?
-  def extension
-    read_attribute(:filename).split('.').last
-  end
-
-  # TODO keep?
-  def name_with_extension
+  def actual_filename
     read_attribute(:filename)
   end
 

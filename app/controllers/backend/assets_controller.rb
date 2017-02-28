@@ -1,9 +1,12 @@
 class Backend::AssetsController < Backend::BaseController
+  include Concerns::PaginationController
+
   before_action :find_model, only: [:show, :edit, :update, :destroy]
   before_action -> { breadcrumb.add t('b.files'), backend_assets_path }
 
   def index
-    @assets = Asset.order('id DESC')
+    @search = Asset.ransack params[:q]
+    @assets = @search.result(distinct: true).order('id DESC').page(page_number).per_page(per_page)
   end
 
   def show

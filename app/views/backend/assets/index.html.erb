@@ -1,6 +1,5 @@
 <%= render 'backend/breadcrumbs' %>
-
-<!-- TODO add filter -->
+<%= render 'filter' %>
 
 <p class="text-xs-right">
   <%= link_to icon(:plus, t('b.add')), new_backend_asset_path, class: 'btn btn-primary btn-sm' %>
@@ -37,6 +36,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <%= udongo_paginate @assets %>
 
 <% else %>
   <p><%= t 'b.msg.no_items' %></p>

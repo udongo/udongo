@@ -1,0 +1,17 @@
+<div class="card filter">
+  <div class="card-block">
+    <%= search_form_for [:backend, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <%= f.search_field :description_cont, placeholder: t('b.description'), class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.submit class: 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

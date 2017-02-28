@@ -6,6 +6,10 @@ class Backend::AssetsController < Backend::BaseController
     @assets = Asset.order('id DESC')
   end
 
+  def show
+    redirect_to @model.filename.url
+  end
+
   def new
     @model = Asset.new
   end

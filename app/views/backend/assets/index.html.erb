@@ -11,6 +11,7 @@
     <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.file' %></th>
+        <th><%= t 'g.type' %></th>
         <th><%= t 'b.description' %></th>
         <th>&nbsp;</th>
       </tr>
@@ -30,6 +31,7 @@
               <%= link_to icon(:download, t('b.download')), a.filename.url %>
             <% end %>
           </td>
+          <td><%= a.actual_filename.split('.').last.upcase %></td>
           <td><%= simple_format a.description %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, a] %>

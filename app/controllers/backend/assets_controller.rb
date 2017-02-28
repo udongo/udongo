@@ -1,5 +1,5 @@
 class Backend::AssetsController < Backend::BaseController
-  before_action :find_model, only: [:edit, :update, :destroy]
+  before_action :find_model, only: [:show, :edit, :update, :destroy]
   before_action -> { breadcrumb.add t('b.files'), backend_assets_path }
 
   def index

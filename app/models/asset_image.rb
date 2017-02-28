@@ -106,6 +106,7 @@ class AssetImage
   #
   # Possible values for options[:gravity] are:
   # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
+  #
   def resize_to_fill(width, height, options = {})
     options[:action] = :resize_to_fill
     gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
@@ -143,6 +144,9 @@ class AssetImage
   # the original aspect ratio. If necessary, will pad the remaining area
   # with the given color, which defaults to transparent (for gif and png,
   # white for jpeg).
+  #
+  # Possible values for options[:gravity] are:
+  # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
   #
   def resize_and_pad(width, height, options = {})
     options[:action] = :resize_and_pad

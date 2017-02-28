@@ -84,6 +84,12 @@ describe AssetImage do
 
       expect(result).to eq 'fill-q15-gn-bgreen-200x250-foo.jpg'
     end
+
+    describe '#url' do
+      it 'full size when no width/height provided' do
+        expect(instance.url).not_to include('/_cache/')
+      end
+    end
   end
 
   it '#respond_to?' do

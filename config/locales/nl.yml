@@ -204,7 +204,7 @@ nl:
   time:
     am: ! '''s ochtends'
     formats:
-      default: ! '%d %B %Y om %Hu%M'
+      default: ! '%-d %B %Y om %Hu%M'
       timeless: ! '%d %B %Y'
       short: ! '%d %b om %Hu%M'
       time_attr: ! '%FT%R%:z'

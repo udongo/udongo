@@ -12,6 +12,7 @@
         <th><%= t 'b.file' %></th>
         <th><%= t 'g.type' %></th>
         <th><%= t 'b.description' %></th>
+        <th><%= t 'b.last_changed_at' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -28,6 +29,7 @@
           </td>
           <td><%= a.actual_filename.split('.').last.upcase %></td>
           <td><%= simple_format a.description %></td>
+          <td><%= l a.updated_at %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, a] %>
             <%= link_to_delete [:backend, a] %>

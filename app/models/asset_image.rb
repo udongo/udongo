@@ -15,6 +15,15 @@ class AssetImage
     str << 'rtfl' if options[:action].to_sym == :resize_to_fill
     str << 'rapd' if options[:action].to_sym == :resize_and_pad
     str << "-q#{options[:quality]}" if options[:quality]
+
+    if options[:gravity]
+      str << '-g' + options[:gravity].to_s.underscore.split('_').map { |s| s[0,1] }.join
+    end
+
+    if options[:background]
+      str << "-b#{options[:background].to_s.parameterize}"
+    end
+
     str << "-#{width}x#{height}"
     str << "-#{@asset.actual_filename}"
     str
@@ -99,7 +108,7 @@ class AssetImage
   # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
   def resize_to_fill(width, height, options = {})
     options[:action] = :resize_to_fill
-    options[:gravity] = 'Center' unless options.key?(:gravity)
+    gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
 
     name = filename(width, height, options)
     img = MiniMagick::Image.open(@asset.filename.path)
@@ -122,7 +131,7 @@ class AssetImage
       end
 
       cmd.quality options[:quality] if options.key?(:quality)
-      cmd.gravity options[:gravity]
+      cmd.gravity gravity
       cmd.background 'rgba(255,255,255,0.0)'
       cmd.extent "#{width}x#{height}" if cols != width || rows != height
     end
@@ -137,8 +146,8 @@ class AssetImage
   #
   def resize_and_pad(width, height, options = {})
     options[:action] = :resize_and_pad
-    options[:gravity] = 'Center' unless options.key?(:gravity)
-    options[:background] = :transparant unless options.key?(:background)
+    gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
+    background = options.key?(:background) ? options[:background] : :transparant
 
     name = filename(width, height, options)
     img = MiniMagick::Image.open(@asset.filename.path)
@@ -149,12 +158,11 @@ class AssetImage
       if options[:background].to_sym == :transparent
         cmd.background 'rgba(255, 255, 255, 0.0)'
       else
-        cmd.background options[:background]
+        cmd.background background
       end
 
-      cmd.gravity options[:gravity]
+      cmd.gravity gravity
       cmd.extent "#{width}x#{height}"
-      # append_combine_options cmd, combine_options
     end
 
     img.write("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")

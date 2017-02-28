@@ -10,10 +10,10 @@ class AssetImage
     options[:action] = :resize_to_limit unless options.key?(:action)
 
     str = ''
-    str << 'rtlmt' if options[:action].to_sym == :resize_to_limit
-    str << 'rtft' if options[:action].to_sym == :resize_to_fit
-    str << 'rtfl' if options[:action].to_sym == :resize_to_fill
-    str << 'rapd' if options[:action].to_sym == :resize_and_pad
+    str << 'limit' if options[:action].to_sym == :resize_to_limit
+    str << 'fit' if options[:action].to_sym == :resize_to_fit
+    str << 'fill' if options[:action].to_sym == :resize_to_fill
+    str << 'pad' if options[:action].to_sym == :resize_and_pad
     str << "-q#{options[:quality]}" if options[:quality]
 
     if options[:gravity]

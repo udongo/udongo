@@ -1,17 +1,6 @@
 require 'mini_magick'
 require 'fileutils'
 
-# When presented with a gravity argument, one of the following values is
-# possible.
-# - NorthWest
-# - North
-# - NorthEast
-# - West
-# - Center (default)
-# - East
-# - SouthWest
-# - South
-# - SouthEast
 class AssetImage
   def initialize(asset)
     @asset = asset
@@ -21,9 +10,11 @@ class AssetImage
     options[:action] = :resize_to_limit unless options.key?(:action)
 
     str = ''
-    str << 'rtl' if options[:action].to_sym == :resize_to_limit
+    str << 'rtlmt' if options[:action].to_sym == :resize_to_limit
+    str << 'rtft' if options[:action].to_sym == :resize_to_fit
+    str << 'rtfl' if options[:action].to_sym == :resize_to_fill
+    str << 'rapd' if options[:action].to_sym == :resize_and_pad
     str << "-q#{options[:quality]}" if options[:quality]
-    # TODO add gravity if present
     str << "-#{width}x#{height}"
     str << "-#{@asset.actual_filename}"
     str
@@ -43,9 +34,15 @@ class AssetImage
 
       case options[:action].to_sym
         when :resize_to_limit
-          resize_to_limit(width, height, options)
+          resize_to_limit width, height, options
+        when :resize_to_fit
+          resize_to_fit width, height, options
+        when :resize_to_fill
+          resize_to_fill width, height, options
+        when :resize_and_pad
+          resize_and_pad width, height, options
         else
-          resize_to_fit(width, height, options)
+          raise "No such resize action '#{options[:action].to_s}'. Available are: resize_to_limit, resize_to_fit, resize_to_fill and resize_and_pad."
       end
     end
 
@@ -69,7 +66,7 @@ class AssetImage
 
     img = MiniMagick::Image.open(@asset.filename.path)
     img.combine_options do |c|
-      c.quality(options[:quality]) if options[:quality]
+      c.quality options[:quality] if options[:quality]
       c.resize "#{width}x#{height}>"
     end
 
@@ -87,7 +84,7 @@ class AssetImage
 
     img = MiniMagick::Image.open(@asset.filename.path)
     img.combine_options do |c|
-      c.quality(options[:quality]) if options[:quality]
+      c.quality options[:quality] if options[:quality]
       c.resize "#{width}x#{height}"
     end
 
@@ -98,10 +95,39 @@ class AssetImage
   # the aspect ratio of the original image. If necessary, crop the image in the
   # larger dimension.
   #
-  def resize_to_fill(width, height, gravity = 'Center')
-    # [width]
-    # OR
-    # x[height]
+  # Possible values for options[:gravity] are:
+  # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
+  def resize_to_fill(width, height, options = {})
+    options[:action] = :resize_to_fill
+    options[:gravity] = 'Center' unless options.key?(:gravity)
+
+    name = filename(width, height, options)
+    img = MiniMagick::Image.open(@asset.filename.path)
+    cols, rows = img[:dimensions]
+
+    img.combine_options do |cmd|
+      if width != cols || height != rows
+        scale_x = width/cols.to_f
+        scale_y = height/rows.to_f
+
+        if scale_x >= scale_y
+          cols = (scale_x * (cols + 0.5)).round
+          rows = (scale_x * (rows + 0.5)).round
+          cmd.resize "#{cols}"
+        else
+          cols = (scale_y * (cols + 0.5)).round
+          rows = (scale_y * (rows + 0.5)).round
+          cmd.resize "x#{rows}"
+        end
+      end
+
+      cmd.quality options[:quality] if options.key?(:quality)
+      cmd.gravity options[:gravity]
+      cmd.background 'rgba(255,255,255,0.0)'
+      cmd.extent "#{width}x#{height}" if cols != width || rows != height
+    end
+
+    img.write("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")
   end
 
   # Resize the image to fit within the specified dimensions while retaining
@@ -109,10 +135,29 @@ class AssetImage
   # with the given color, which defaults to transparent (for gif and png,
   # white for jpeg).
   #
-  def resize_and_pad(width, height, gravity = 'Center', background = :transparant)
-    # [width]x[height]
-    # :transparant background for png
-    # :white background for jpg
+  def resize_and_pad(width, height, options = {})
+    options[:action] = :resize_and_pad
+    options[:gravity] = 'Center' unless options.key?(:gravity)
+    options[:background] = :transparant unless options.key?(:background)
+
+    name = filename(width, height, options)
+    img = MiniMagick::Image.open(@asset.filename.path)
+
+    img.combine_options do |cmd|
+      cmd.thumbnail "#{width}x#{height}>"
+
+      if options[:background].to_sym == :transparent
+        cmd.background 'rgba(255, 255, 255, 0.0)'
+      else
+        cmd.background options[:background]
+      end
+
+      cmd.gravity options[:gravity]
+      cmd.extent "#{width}x#{height}"
+      # append_combine_options cmd, combine_options
+    end
+
+    img.write("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")
   end
 
   def main_dir

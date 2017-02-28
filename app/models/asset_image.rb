@@ -86,15 +86,13 @@ class AssetImage
   # specified in the smaller dimension but will not be larger than the specified values.
   #
   def resize_to_fit(width, height, options = {})
-    name = filename(width, height, options)
-
     img = MiniMagick::Image.open(@asset.filename.path)
     img.combine_options do |c|
       c.quality options[:quality] if options[:quality]
       c.resize "#{width}x#{height}"
     end
 
-    img.write("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")
+    img.write(actual_path(filename(width, height, options)))
   end
 
   # Resize the image to fit within the specified dimensions while retaining
@@ -107,7 +105,6 @@ class AssetImage
   def resize_to_fill(width, height, options = {})
     gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
 
-    name = filename(width, height, options)
     img = MiniMagick::Image.open(@asset.filename.path)
     cols, rows = img[:dimensions]
 
@@ -133,7 +130,7 @@ class AssetImage
       cmd.extent "#{width}x#{height}" if cols != width || rows != height
     end
 
-    img.write("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")
+    img.write(actual_path(filename(width, height, options)))
   end
 
   # Resize the image to fit within the specified dimensions while retaining
@@ -148,9 +145,7 @@ class AssetImage
     gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
     background = options.key?(:background) ? options[:background] : :transparant
 
-    name = filename(width, height, options)
     img = MiniMagick::Image.open(@asset.filename.path)
-
     img.combine_options do |cmd|
       cmd.thumbnail "#{width}x#{height}>"
 
@@ -164,7 +159,7 @@ class AssetImage
       cmd.extent "#{width}x#{height}"
     end
 
-    img.write("#{Rails.root}/public/uploads/assets/_cache/#{main_dir}/#{second_dir}/#{name}")
+    img.write(actual_path(filename(width, height, options)))
   end
 
   def main_dir

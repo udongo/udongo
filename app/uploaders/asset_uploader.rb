@@ -10,7 +10,11 @@ class AssetUploader < CarrierWave::Uploader::Base
   private
 
   def extension_white_list
-    %w(doc docx gif jpeg jpg pdf png txt xls xlsx)
+    if model.image?
+      %w(gif jpeg jpg png)
+    else
+      %w(doc docx gif jpeg jpg pdf png txt xls xlsx)
+    end
   end
 
   def secure_token

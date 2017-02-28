@@ -9,24 +9,21 @@ class AssetImage
   def filename(width = nil, height = nil, options = {})
     options[:action] = :resize_to_limit unless options.key?(:action)
 
-    str = ''
-    str << 'limit' if options[:action].to_sym == :resize_to_limit
-    str << 'fit' if options[:action].to_sym == :resize_to_fit
-    str << 'fill' if options[:action].to_sym == :resize_to_fill
-    str << 'pad' if options[:action].to_sym == :resize_and_pad
-    str << "-q#{options[:quality]}" if options[:quality]
+    str = options[:action].to_s.split('_').last
+
+    if options[:quality]
+      str << '-q' + options[:quality].to_s
+    end
 
     if options[:gravity]
       str << '-g' + options[:gravity].to_s.underscore.split('_').map { |s| s[0,1] }.join
     end
 
     if options[:background]
-      str << "-b#{options[:background].to_s.parameterize}"
+      str << '-b' + options[:background].to_s.parameterize
     end
 
-    str << "-#{width}x#{height}"
-    str << "-#{@asset.actual_filename}"
-    str
+    str << "-#{width}x#{height}-#{@asset.actual_filename}"
   end
 
   def url(width = nil, height = nil, options = {})

@@ -3,6 +3,8 @@ class Asset < ApplicationRecord
 
   mount_uploader :filename, AssetUploader
 
+  has_many :images, dependent: :destroy
+
   before_save :update_filesize, :update_content_type
 
   validates :filename, presence: true
@@ -17,6 +19,10 @@ class Asset < ApplicationRecord
 
   def actual_filename
     read_attribute(:filename)
+  end
+
+  def deletable?
+    images.empty?
   end
 
   private

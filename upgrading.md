@@ -1,7 +1,16 @@
 # Upgrade guide
-## From 5.1.0 to 5.2.0
-No backwards incompatible changes.
+## From 5.2.0 to 5.3.0
+Nothing to see here.
 
+
+## From 5.1.0 to 5.2.0
+This release adds the ```Asset``` and ```Image``` model. If you have one of 
+those in your project, you need to delete them and use the ones Udongo provides.
+
+A new config object ```Udongo.config.assets``` has been added. Here you can set
+which image/file extensions are allowed.
+The following images are allowed by default: gif, jpeg, jpg and png.
+The following files are allowed by default: doc, docx, pdf, txt, xls and xlsx.
 
 ## From 5.0.1 to 5.1.0
 ### Users

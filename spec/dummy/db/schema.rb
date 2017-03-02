@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225144523) do
+ActiveRecord::Schema.define(version: 20170228183831) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -159,6 +159,21 @@ ActiveRecord::Schema.define(version: 20170225144523) do
     t.datetime "sent_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.integer  "asset_id"
+    t.integer  "position"
+    t.boolean  "visible"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["asset_id"], name: "index_images_on_asset_id", using: :btree
+    t.index ["imageable_id"], name: "index_images_on_imageable_id", using: :btree
+    t.index ["imageable_type"], name: "index_images_on_imageable_type", using: :btree
+    t.index ["position"], name: "index_images_on_position", using: :btree
+    t.index ["visible"], name: "index_images_on_visible", using: :btree
   end
 
   create_table "logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

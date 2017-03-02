@@ -1,6 +1,7 @@
 en:
   b:
     actions: Actions
+    active: Active
     add: Add
     admin: Admin
     admins: Admins
@@ -14,6 +15,7 @@ en:
     description: Description
     destination: Destination
     down: Down
+    download: Download
     edit: Edit
     email: E-mail
     emails: E-mails
@@ -21,6 +23,8 @@ en:
     email_templates: E-mail templates
     enabled?: Enabled?
     extra: Extra
+    file: File
+    files: Files
     filter: Filter
     first_name: First name
     flexible_content: Flexible content
@@ -28,6 +32,7 @@ en:
     general: General
     house_number: House number
     html_content: HTML content
+    last_changed_at: Last changed at
     last_name: Last name
     locale: Locale
     login: Login
@@ -54,6 +59,7 @@ en:
     sender: Sender
     sent_at: Sent at
     settings: Settings
+    size: Size
     snippet: Snippet
     snippets: Snippets
     source: Source

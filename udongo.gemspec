@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Blimp CMS'
   s.description = 'Blimp CMS.'
   s.license     = 'MIT'
-  s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md', 'spec/factories', 'spec/support']
+  s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md', 'spec/factories/*', 'spec/support/**/*']
 
   # General
   s.add_dependency 'rails', '5.0.0'

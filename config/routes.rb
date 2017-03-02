@@ -76,6 +76,8 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    resources :assets
   end
 
   get 'go/:slug' => 'redirects#go'

@@ -61,6 +61,17 @@ Udongo.config.flexible_content.types = %w(text image)
 Udongo.config.flexible_content.allowed_breakpoints = %w(xs sm md lg xl)
 ```
 
+## Assets
+### image_white_list
+```ruby
+Udongo.config.image_white_list = %w(gif jpeg jpg png)
+```
+
+### file_white_list
+```ruby
+Udongo.config.file_white_list = %w(doc docx pdf txt xls xlsx)
+```
+
 # Concerns
 ## Storable concern
 ### Possible field types

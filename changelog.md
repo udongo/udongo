@@ -1,6 +1,10 @@
-5.2.0 - xxxx-xx-xx
+5.2.0 - 2017-03-02
 --
+* Add an assets module to manage all kinds of files.
 * Backend now loads jQuery 3 by default.
+* You can now mark a model as 'Imageable', which makes it possible to link one
+  or more images (assets) to it. These assets can be reused for other modules
+  as well.
 
 
 5.1.0 - 2017-02-15

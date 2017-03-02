@@ -13,7 +13,7 @@ describe 'snippet routes' do
     expect(get: new_backend_snippet_path).to route_to('backend/snippets#new')
   end
 
-  it 'POST /backend/snippets/create' do
+  it 'POST /backend/snippets' do
     expect(post: backend_snippets_path).to route_to('backend/snippets#create')
   end
 

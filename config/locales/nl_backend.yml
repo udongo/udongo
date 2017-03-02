@@ -15,6 +15,7 @@ nl:
     description: Beschrijving
     destination: Bestemming
     down: Omlaag
+    download: Download
     edit: Bewerk
     email: E-mail
     emails: E-mails
@@ -22,6 +23,8 @@ nl:
     email_templates: E-mail templates
     enabled?: Ingeschakeld?
     extra: Extra
+    file: Bestand
+    files: Bestanden
     filter: Filter
     first_name: Voornaam
     flexible_content: Flexibele inhoud
@@ -29,6 +32,7 @@ nl:
     general: Algemeen
     house_number: Huisnummer
     html_content: HTML inhoud
+    last_changed_at: Laatst gewijzigd op
     last_name: Achternaam
     locale: Taal
     login: Inloggen
@@ -55,6 +59,7 @@ nl:
     sender: Afzender
     sent_at: Verzonden op
     settings: Instellingen
+    size: Grootte
     snippet: Snippet
     snippets: Snippets
     source: Bron

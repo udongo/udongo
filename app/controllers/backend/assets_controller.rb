@@ -36,8 +36,7 @@ class Backend::AssetsController < Backend::BaseController
   end
 
   def destroy
-    # TODO add if deletable?
-    @model.destroy
+    @model.destroy if @model.deletable?
     redirect_to backend_assets_path, notice: translate_notice(:deleted, :file)
   end
 

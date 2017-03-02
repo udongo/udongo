@@ -34,7 +34,7 @@
           <td><%= l a.updated_at %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, a] %>
-            <%= link_to_delete [:backend, a] %>
+            <%= link_to_delete [:backend, a] if a.deletable? %>
           </td>
         </tr>
       <% end %>

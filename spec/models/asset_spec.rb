@@ -61,7 +61,21 @@ describe Asset do
     expect(asset.actual_filename).to eq 'foo.pdf'
   end
 
+  describe '#deletable?' do
+    it :true do
+      expect(create(klass)).to be_deletable
+    end
+
+    it :false do
+      asset = create(klass)
+      create(:image, asset: asset, imageable: create(:page))
+      expect(asset).not_to be_deletable
+    end
+  end
+
   it '#responds_to?' do
-    expect(build(klass)).to respond_to(:image?, :image, :actual_filename)
+    expect(build(klass)).to respond_to(
+      :image?, :image, :images, :actual_filename, :deletable?
+    )
   end
 end

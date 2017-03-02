@@ -11,9 +11,9 @@ class AssetUploader < CarrierWave::Uploader::Base
 
   def extension_white_list
     if model.image?
-      %w(gif jpeg jpg png)
+      Udongo.config.assets.image_white_list
     else
-      %w(doc docx gif jpeg jpg pdf png txt xls xlsx)
+      (Udongo.config.assets.image_white_list + Udongo.config.assets.file_white_list).flatten
     end
   end
 

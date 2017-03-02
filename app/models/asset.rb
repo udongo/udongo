@@ -12,7 +12,7 @@ class Asset < ApplicationRecord
   end
 
   def image
-    AssetImage.new(self) if image?
+    filename if image?
   end
 
   def actual_filename

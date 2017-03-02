@@ -51,7 +51,7 @@ describe Asset do
 
     it 'AssetImage' do
       asset = build(klass, content_type: 'image/jpg')
-      expect(asset.image).to be_a(AssetImage)
+      expect(asset.image).to be_instance_of(AssetUploader)
     end
   end
 

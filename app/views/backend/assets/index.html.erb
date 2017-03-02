@@ -22,7 +22,7 @@
         <tr>
           <td>
             <% if a.image? %>
-              <%= image_tag a.image.url(150, 150), alt: '', class: 'img-fluid' %>
+              <%= image_tag a.image.url(width: 150, height: 150), alt: '', class: 'img-fluid' %>
             <% else %>
               <%= link_to icon(:download, t('b.download')), a.filename.url %>
             <% end %>

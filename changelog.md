@@ -1,4 +1,4 @@
-5.2.0 - xxxx-xx-xx
+5.2.0 - 2017-03-02
 --
 * Add an assets module to manage all kinds of files.
 * Backend now loads jQuery 3 by default.

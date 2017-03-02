@@ -8,7 +8,7 @@ class Asset < ApplicationRecord
   validates :filename, presence: true
 
   def image?
-    content_type.include?('image')
+    content_type.to_s.include?('image')
   end
 
   def image

@@ -13,7 +13,7 @@ describe Image do
   end
 
   it '#responds_to?' do
-    expect(build(klass)).to respond_to(:asset)
+    expect(build(klass)).to respond_to(:asset, :imageable)
   end
 end
 

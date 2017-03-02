@@ -1,4 +1,8 @@
 # Upgrade guide
+## From 5.2.0 to 5.3.0
+Nothing to see here.
+
+
 ## From 5.1.0 to 5.2.0
 This release adds the ```Asset``` and ```Image``` model. If you have one of 
 those in your project, you need to delete them and use the ones Udongo provides.

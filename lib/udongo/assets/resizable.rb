@@ -64,8 +64,10 @@ module Udongo::Assets::Resizable
   end
 
   def version_base(type = :url, options = {})
+    store = store_dir.gsub('assets', 'assets/_cache')
+    FileUtils.mkdir_p(File.join(Rails.root, 'public', store))
     filename = "#{options[:width]}_#{options[:height]}_#{file.filename}"
-    return File.join('/', store_dir, filename) if type.to_sym == :url
-    File.join(Rails.root, 'public', store_dir, filename) # path requested
+    return File.join('/', store, filename) if type.to_sym == :url
+    File.join(Rails.root, 'public', store, filename) # path requested
   end
 end

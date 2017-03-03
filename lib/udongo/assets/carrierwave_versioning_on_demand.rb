@@ -14,7 +14,7 @@ module Udongo::CarrierwaveVersioningOnDemand
 
   def url(options = {})
     options.reverse_merge!(default_options)
-    return super(options[:version]) if options[:width].nil? && options[:height].nil?
+    return super(options) if options.is_a?(Hash) && options[:width].nil? && options[:height].nil?
     trigger_resize(version_base(path, options), options)
     version_base(:url, options)
   end
@@ -22,19 +22,45 @@ module Udongo::CarrierwaveVersioningOnDemand
   private
 
   def default_options
-    { action: :resize_to_limit, width: nil, height: nil }
+    { action: :resize_to_limit, width: nil, height: nil, quality: 100, gravity: 'Center', background: :transparent }
+  end
+
+  def filter_action(action)
+    unless %w(resize_to_limit resize_to_fit resize_to_fill resize_and_pad).include?(action.to_s)
+      raise "No such resize action '#{action.to_s}'. Available are: resize_to_limit, resize_to_fit, resize_to_fill and resize_and_pad."
+    end
+  end
+
+  def manipulation_options(options = {})
+    options.except(*default_options.keys)
+  end
+
+  def write_image(img, path_to_version, options = {})
+    img.quality(options[:quality])
+    img.write(path_to_version)
+    img
   end
 
   def trigger_resize(path_to_version, options = {})
-    unless File.exists?(path_to_version)
-      # The block allows us to override the location of the written file.
-      self.send(options[:action], options[:width], options[:height]) do |img|
-        img.write(path_to_version)
-        img
+    return if File.exists?(path_to_version)
+    filter_action(options[:action])
+    width, height = [options[:width], options[:height]]
+
+    # FIXME: Get rid of repeated blocks
+    case options[:action].to_sym
+    when :resize_to_fill
+      resize_to_fill(width, height, options[:gravity], combine_options: manipulation_options(options)) do |img|
+        write_image(img, path_to_version, options)
+      end
+    when :resize_and_pad
+      resize_and_pad(width, height, options[:background], options[:gravity], combine_options: manipulation_options(options)) do |img|
+        write_image(img, path_to_version, options)
+      end
+    else
+      self.send(options[:action], width, height, combine_options: manipulation_options(options)) do |img|
+        write_image(img, path_to_version, options)
       end
     end
-  rescue
-    raise "No such resize action '#{options[:action].to_s}'. Available are: resize_to_limit, resize_to_fit, resize_to_fill and resize_and_pad."
   end
 
   def version_base(type = :url, options = {})

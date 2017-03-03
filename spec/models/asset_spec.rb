@@ -25,7 +25,7 @@ describe Asset do
       expect(asset.content_type).to eq nil
 
       asset.save!
-      expect(asset.content_type).to eq 'application/jpeg'
+      expect(asset.content_type).to eq 'image/jpeg'
     end
   end
 

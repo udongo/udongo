@@ -1,6 +1,6 @@
 class AssetUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include Udongo::CarrierwaveVersioningOnDemand
+  include Udongo::Assets::Resizable
 
   storage :file
 

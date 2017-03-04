@@ -1,10 +1,10 @@
 class AssetUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include Udongo::CarrierwaveVersioningOnDemand
+  include Udongo::Assets::Resizable
 
   storage :file
 
-  process resize_to_limit: [2560, 2560], if: :image?
+  process resize_to_limit: [5120, 5120], if: :image?
 
   def filename
     @name ||= "#{secure_token}.#{file.extension.downcase}" if original_filename

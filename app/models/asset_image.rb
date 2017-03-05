@@ -37,14 +37,11 @@ class AssetImage
     unless File.exists?(actual_path(name))
       FileUtils.mkpath(File.dirname(actual_path(name)))
 
-      case options[:action].to_sym
-        when :resize_to_limit then resize_to_limit(width, height, options)
-        when :resize_to_fit then resize_to_fit(width, height, options)
-        when :resize_to_fill then resize_to_fill(width, height, options)
-        when :resize_and_pad then resize_and_pad(width, height, options)
-        else
-          raise "No such resize action '#{options[:action].to_s}'. Available are: resize_to_limit, resize_to_fit, resize_to_fill and resize_and_pad."
+      unless resize_action_allowed? options[:action]
+        raise "No such resize action '#{options[:action].to_s}'. Available are: resize_to_limit, resize_to_fit, resize_to_fill and resize_and_pad."
       end
+
+      trigger_resize(width, height, options)
     end
 
     actual_url(name)
@@ -55,7 +52,7 @@ class AssetImage
   end
 
   def path(width = nil, height = nil, options = {})
-    url(width, height, options) # Trigger the actual resize
+    url(width, height, options) # Trigger the actual resize (if needed)
     actual_path(filename(width, height, options))
   end
 
@@ -65,36 +62,16 @@ class AssetImage
 
   private
 
-  def resize_to_limit(width, height, options = {})
-    Udongo::ImageManipulation::ResizeToLimit.new(
+  def trigger_resize(width, height, options = {})
+    "Udongo::ImageManipulation::#{options[:action].to_s.camelcase}".constantize.new(
       @asset.filename.path, width, height, options
     ).resize(
       actual_path(filename(width, height, options))
     )
   end
 
-  def resize_to_fit(width, height, options = {})
-    Udongo::ImageManipulation::ResizeToFit.new(
-      @asset.filename.path, width, height, options
-    ).resize(
-      actual_path(filename(width, height, options))
-    )
-  end
-
-  def resize_to_fill(width, height, options = {})
-    Udongo::ImageManipulation::ResizeToFill.new(
-      @asset.filename.path, width, height, options
-    ).resize(
-      actual_path(filename(width, height, options))
-    )
-  end
-
-  def resize_and_pad(width, height, options = {})
-    Udongo::ImageManipulation::ResizeAndPad.new(
-      @asset.filename.path, width, height, options
-    ).resize(
-      actual_path(filename(width, height, options))
-    )
+  def resize_action_allowed?(action)
+    %w(resize_to_limit resize_to_fit resize_to_fill resize_and_pad).include?(action.to_s)
   end
 
   def main_dir

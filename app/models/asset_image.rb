@@ -6,22 +6,15 @@ class AssetImage
   end
 
   def filename(width = nil, height = nil, options = {})
-    options[:action] = :resize_to_limit unless options.key?(:action)
+    action = options.key?(:action) ? options[:action] : :resize_to_limit
+    quality = options[:quality]
+    gravity = options[:gravity].to_s.underscore.split('_').map { |s| s[0,1] }.join
+    background = options[:background].to_s.parameterize
 
-    str = options[:action].to_s.split('_').last
-
-    if options[:quality]
-      str << '-q' + options[:quality].to_s
-    end
-
-    if options[:gravity]
-      str << '-g' + options[:gravity].to_s.underscore.split('_').map { |s| s[0,1] }.join
-    end
-
-    if options[:background]
-      str << '-b' + options[:background].to_s.parameterize
-    end
-
+    str = action.to_s.split('_').last
+    str << "-q#{quality}" if quality.present?
+    str << "-g#{gravity}" if gravity.present?
+    str << "-b#{background}" if background.present?
     str << "-#{width}x#{height}-#{@asset.actual_filename}"
   end
 

@@ -49,9 +49,9 @@ describe Asset do
       expect(asset.image).to eq nil
     end
 
-    it 'AssetImage' do
+    it 'Udongo::Assets::Resizer' do
       asset = build(klass, content_type: 'image/jpg')
-      expect(asset.image).to be_a(AssetImage)
+      expect(asset.image).to be_a(Udongo::Assets::Resizer)
     end
   end
 

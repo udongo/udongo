@@ -14,7 +14,7 @@ class Asset < ApplicationRecord
   end
 
   def image
-    AssetImage.new(self) if image?
+    Udongo::Assets::Resizer.new(self) if image?
   end
 
   def actual_filename

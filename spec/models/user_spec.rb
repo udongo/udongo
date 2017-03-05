@@ -29,7 +29,7 @@ describe User do
 
   it '#responds_to?' do
     expect(build(klass)).to respond_to(
-      :authenticate
+      :authenticate, :articles
     )
   end
 end

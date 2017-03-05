@@ -3,6 +3,7 @@ require 'mini_magick'
 module Udongo
   module ImageManipulation
     class ResizeAndPad
+      include Base
 
       # Resize the image to fit within the specified dimensions while retaining
       # the original aspect ratio. If necessary, will pad the remaining area
@@ -12,13 +13,6 @@ module Udongo
       # Possible values for options[:gravity] are:
       # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
       #
-      def initialize(file, width, height, options = {})
-        @file = file
-        @width = width
-        @height = height
-        @options = options
-      end
-
       def resize(path)
         gravity = @options.key?(:gravity) ? @options[:gravity] : 'Center'
         background = @options.key?(:background) ? @options[:background] : :transparant

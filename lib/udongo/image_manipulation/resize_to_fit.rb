@@ -3,6 +3,11 @@ require 'mini_magick'
 module Udongo
   module ImageManipulation
     class ResizeToFit
+
+      # Resize the image to fit within the specified dimensions while retaining
+      # the original aspect ratio. The image may be shorter or narrower than
+      # specified in the smaller dimension but will not be larger than the specified values.
+      #
       def initialize(file, width, height, options = {})
         @file = file
         @width = width

@@ -3,6 +3,15 @@ require 'mini_magick'
 module Udongo
   module ImageManipulation
     class ResizeAndPad
+
+      # Resize the image to fit within the specified dimensions while retaining
+      # the original aspect ratio. If necessary, will pad the remaining area
+      # with the given color, which defaults to transparent (for gif and png,
+      # white for jpeg).
+      #
+      # Possible values for options[:gravity] are:
+      # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
+      #
       def initialize(file, width, height, options = {})
         @file = file
         @width = width

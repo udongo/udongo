@@ -65,11 +65,6 @@ class AssetImage
 
   private
 
-  # Resize the image to fit within the specified dimensions while retaining
-  # the original aspect ratio. Will only resize the image if it is larger than the
-  # specified dimensions. The resulting image may be shorter or narrower than specified
-  # in the smaller dimension but will not be larger than the specified values.
-  #
   def resize_to_limit(width, height, options = {})
     Udongo::ImageManipulation::ResizeToLimit.new(
       @asset.filename.path, width, height, options
@@ -78,10 +73,6 @@ class AssetImage
     )
   end
 
-  # Resize the image to fit within the specified dimensions while retaining
-  # the original aspect ratio. The image may be shorter or narrower than
-  # specified in the smaller dimension but will not be larger than the specified values.
-  #
   def resize_to_fit(width, height, options = {})
     Udongo::ImageManipulation::ResizeToFit.new(
       @asset.filename.path, width, height, options
@@ -90,13 +81,6 @@ class AssetImage
     )
   end
 
-  # Resize the image to fit within the specified dimensions while retaining
-  # the aspect ratio of the original image. If necessary, crop the image in the
-  # larger dimension.
-  #
-  # Possible values for options[:gravity] are:
-  # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
-  #
   def resize_to_fill(width, height, options = {})
     Udongo::ImageManipulation::ResizeToFill.new(
       @asset.filename.path, width, height, options
@@ -105,14 +89,6 @@ class AssetImage
     )
   end
 
-  # Resize the image to fit within the specified dimensions while retaining
-  # the original aspect ratio. If necessary, will pad the remaining area
-  # with the given color, which defaults to transparent (for gif and png,
-  # white for jpeg).
-  #
-  # Possible values for options[:gravity] are:
-  # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
-  #
   def resize_and_pad(width, height, options = {})
     Udongo::ImageManipulation::ResizeAndPad.new(
       @asset.filename.path, width, height, options

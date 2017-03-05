@@ -114,24 +114,11 @@ class AssetImage
   # NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
   #
   def resize_and_pad(width, height, options = {})
-    gravity = options.key?(:gravity) ? options[:gravity] : 'Center'
-    background = options.key?(:background) ? options[:background] : :transparant
-
-    img = MiniMagick::Image.open(@asset.filename.path)
-    img.combine_options do |cmd|
-      cmd.thumbnail "#{width}x#{height}>"
-
-      if background.to_sym == :transparent
-        cmd.background 'rgba(255, 255, 255, 0.0)'
-      else
-        cmd.background background
-      end
-
-      cmd.gravity gravity
-      cmd.extent "#{width}x#{height}"
-    end
-
-    img.write(actual_path(filename(width, height, options)))
+    Udongo::ImageManipulation::ResizeAndPad.new(
+      @asset.filename.path, width, height, options
+    ).resize(
+      actual_path(filename(width, height, options))
+    )
   end
 
   def main_dir

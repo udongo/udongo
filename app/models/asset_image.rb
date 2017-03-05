@@ -1,4 +1,3 @@
-require 'mini_magick'
 require 'fileutils'
 
 class AssetImage
@@ -72,13 +71,11 @@ class AssetImage
   # in the smaller dimension but will not be larger than the specified values.
   #
   def resize_to_limit(width, height, options = {})
-    img = MiniMagick::Image.open(@asset.filename.path)
-    img.combine_options do |c|
-      c.quality options[:quality] if options[:quality]
-      c.resize "#{width}x#{height}>"
-    end
-
-    img.write(actual_path(filename(width, height, options)))
+    Udongo::ImageManipulation::ResizeToLimit.new(
+      @asset, width, height, options
+    ).resize(
+      actual_path(filename(width, height, options))
+    )
   end
 
   # Resize the image to fit within the specified dimensions while retaining

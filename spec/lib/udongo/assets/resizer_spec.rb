@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe AssetImage do
+describe Udongo::Assets::Resizer do
   let(:klass) { described_class }
   let :instance do
     asset = create(:asset)

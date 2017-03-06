@@ -1,6 +1,7 @@
 5.3.0 - xxxx-xx-xx
 --
 * Refactor the asset image resizer(s).
+* Add a basic articles module.
 
 
 5.2.0 - 2017-03-02

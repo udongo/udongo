@@ -10,6 +10,7 @@ describe Article do
   it_behaves_like :flexible_content
   it_behaves_like :searchable
   it_behaves_like :translatable
+  it_behaves_like :publishable
 
   it 'translatable' do
     expect(model.translatable_fields_list).to eq [:title, :summary]

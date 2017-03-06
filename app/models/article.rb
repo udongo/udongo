@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   include Concerns::Seo
   include Concerns::FlexibleContent
   include Concerns::Searchable
+  include Concerns::Publishable
 
   include Concerns::Translatable
   translatable_fields :title, :summary

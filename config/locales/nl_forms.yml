@@ -35,6 +35,8 @@ nl:
         password_confirmation: Wachtwoord bevestiging
         phone: Telefoonnummer
         plain_content: Tekstuele inhoud
+        press_release: Persbericht?
+        published_at: Gepubliceerd op
         seo_title: Paginatitel
         seo_slug: Aangepaste URL
         seo_description: Beschrijving
@@ -45,6 +47,7 @@ nl:
         summary: Korte inhoud
         synonyms: Synoniemen
         title: Titel
+        user_id: Gebruiker
         visible: Zichtbaar?
         width: Breedte
         url: URL

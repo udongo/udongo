@@ -1,0 +1,33 @@
+<%= render 'backend/general_form_error', object: @model %>
+
+<%= simple_form_for [:backend, @model] do |f| %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.general' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :user_id, collection: User.order(:first_name, :last_name), label_method: :full_name %>
+          <%= f.input :published_at, as: :datetime %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.settings' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :press_release, as: :boolean %>
+          <%= f.input :visible, as: :boolean %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_articles_path %>
+<% end %>

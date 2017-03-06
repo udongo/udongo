@@ -79,6 +79,7 @@ nl:
     users: Gebruikers
     variables: Variabelen
     view: Bekijk
+    visible: Zichtbaar
 
     msg:
       added: '%{actor} werd toegevoegd.'
@@ -109,6 +110,7 @@ nl:
       navigation:
         custom: Op maat
       no_items: Er zijn geen items.
+      no_title_set: Dit item heeft nog geen titel.
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
       saved: '%{actor} werd bewaard.'

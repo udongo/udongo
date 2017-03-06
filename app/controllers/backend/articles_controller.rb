@@ -6,7 +6,7 @@ class Backend::ArticlesController < Backend::BaseController
   before_action -> { breadcrumb.add t('b.articles'), backend_articles_path }
 
   def index
-    @articles = paginate Article.all
+    @articles = paginate Article.order('published_at DESC')
   end
 
   def new

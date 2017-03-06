@@ -2,7 +2,7 @@ class Backend::ArticlesController < Backend::BaseController
   include Concerns::Backend::TranslatableController
   include Concerns::PaginationController
 
-  before_action :find_model, only: [:edit, :update]
+  before_action :find_model, only: [:edit, :update, :destroy]
   before_action -> { breadcrumb.add t('b.articles'), backend_articles_path }
 
   def index
@@ -33,7 +33,8 @@ class Backend::ArticlesController < Backend::BaseController
   end
 
   def destroy
-    # render json: { trashed: @model.destroy }
+    @model.destroy
+    redirect_to backend_articles_path, notice: translate_notice(:deleted, :article)
   end
 
   private

@@ -1,0 +1,36 @@
+<% breadcrumb.add @model.title, edit_backend_article_path(@model) %>
+<% breadcrumb.add t('b.edit') %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= render 'tabs', active: params[:translation_locale].to_sym %>
+<%= render 'backend/general_form_error', object: @translation %>
+
+<%= simple_form_for([:backend, @translation], url: edit_translation_backend_article_path, html: { class: 'no-focus' }) do |f| %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Content -->
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.content' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :title %>
+          <%= f.input :summary, as: :text %>
+        </div>
+      </div>
+
+      <!-- Flexible Content -->
+      <%= render 'backend/content/rows', model: @model, locale: params[:translation_locale]   %>
+
+      <!-- SEO -->
+      <%= render 'backend/seo_form', f: f %>
+
+      <!-- Tags -->
+      <%= render 'backend/tags', model: @model %>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_articles_path %>
+<% end %>

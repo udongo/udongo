@@ -9,7 +9,7 @@
         </div>
 
         <div class="card-block">
-          <%= f.input :user_id, collection: User.order(:first_name, :last_name), label_method: :full_name %>
+          <%= f.input :user_id, collection: User.order(:first_name, :last_name), label_method: :full_name, label: t('b.author') %>
           <%= f.input :published_at, as: :datetime %>
         </div>
       </div>

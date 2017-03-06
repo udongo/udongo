@@ -9,6 +9,7 @@
     <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.title' %></th>
+        <th><%= t 'b.author' %></th>
         <th><%= t 'b.visible' %></th>
         <th>&nbsp;</th>
       </tr>
@@ -25,6 +26,13 @@
               <% end %>
             <% else %>
               <%= a.title %>
+            <% end %>
+          </td>
+          <td>
+            <% if a.user.present? %>
+              <%= link_to icon(:user, a.user.full_name), edit_backend_user_path(a.user) %>
+            <% else %>
+              <%= t 'b.not_set' %>
             <% end %>
           </td>
           <td><%= t a.visible?.to_s %></td>

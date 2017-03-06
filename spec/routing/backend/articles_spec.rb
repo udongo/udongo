@@ -40,8 +40,4 @@ describe 'article routes' do
       route_to('backend/articles#update_translation', id: '1', translation_locale: 'nl')
     )
   end
-
-  it 'POST /backend/articles/1/toggle_visility' do
-    expect(get: toggle_visibility_backend_article_path(1)).to route_to('backend/articles#toggle_visibility', id: '1')
-  end
 end

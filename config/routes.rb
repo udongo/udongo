@@ -32,10 +32,6 @@ Rails.application.routes.draw do
 
     resources :articles, except: [:show] do
       concerns :translatable
-
-      member do
-        get :toggle_visibility
-      end
     end
 
     resources :navigations, only: [:index] do

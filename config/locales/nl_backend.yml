@@ -53,6 +53,7 @@ nl:
     password: Wachtwoord
     plain_content: Tekst inhoud
     press_release: Persbericht
+    published_at: Gepubliceerd op
     recipient: Bestemmeling
     redirect: Redirect
     redirects: Redirects

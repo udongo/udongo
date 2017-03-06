@@ -10,6 +10,7 @@
       <tr>
         <th><%= t 'b.title' %></th>
         <th><%= t 'b.author' %></th>
+        <th><%= t 'b.published_at' %></th>
         <th><%= t 'b.visible' %></th>
         <th><%= t 'b.press_release' %></th>
         <th>&nbsp;</th>
@@ -36,6 +37,7 @@
               <%= t 'b.not_set' %>
             <% end %>
           </td>
+          <td><%= l a.published_at if a.published? %></td>
           <td><%= t a.visible?.to_s %></td>
           <td><%= t a.press_release?.to_s %></td>
           <td class="text-xs-right">

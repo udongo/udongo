@@ -23,7 +23,7 @@ nl:
     emails: E-mails
     email_template: E-mail template
     email_templates: E-mail templates
-    enabled?: Ingeschakeld?
+    enabled: Ingeschakeld
     extra: Extra
     file: Bestand
     files: Bestanden

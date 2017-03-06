@@ -21,7 +21,7 @@ en:
     emails: E-mails
     email_template: E-mail template
     email_templates: E-mail templates
-    enabled?: Enabled?
+    enabled: Enabled
     extra: Extra
     file: File
     files: Files

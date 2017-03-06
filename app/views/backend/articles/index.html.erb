@@ -19,7 +19,7 @@
 
     <tbody>
       <% @articles.each do |a| %>
-        <tr class="<%= 'text-muted' if a.hidden? %>">
+        <tr class="<%= 'text-muted' if a.hidden? || a.unpublished? %>">
           <td>
             <% if a.title.blank? %>
               <%= link_to edit_translation_backend_article_path(a, default_app_locale) do %>
@@ -37,7 +37,7 @@
               <%= t 'b.not_set' %>
             <% end %>
           </td>
-          <td><%= l a.published_at if a.published? %></td>
+          <td><%= l a.published_at if a.published_at %></td>
           <td><%= t a.visible?.to_s %></td>
           <td><%= t a.press_release?.to_s %></td>
           <td class="text-xs-right">

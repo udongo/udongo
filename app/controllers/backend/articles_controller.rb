@@ -26,7 +26,7 @@ class Backend::ArticlesController < Backend::BaseController
 
   def update
     if @model.update_attributes allowed_params
-      redirect_to edit_backend_article_path(@model), notice: translate_notice(:edited, :article)
+      redirect_to backend_articles_path, notice: translate_notice(:edited, :article)
     else
       render :edit
     end

@@ -2,7 +2,7 @@ class Backend::ArticlesController < Backend::BaseController
   include Concerns::Backend::TranslatableController
   include Concerns::PaginationController
 
-  before_action :find_model, except: [:index, :new, :create]
+  before_action :find_model, only: [:edit, :update]
   before_action -> { breadcrumb.add t('b.articles'), backend_articles_path }
 
   def index

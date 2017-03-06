@@ -11,6 +11,7 @@
         <th><%= t 'b.title' %></th>
         <th><%= t 'b.author' %></th>
         <th><%= t 'b.visible' %></th>
+        <th><%= t 'b.press_release' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -36,6 +37,7 @@
             <% end %>
           </td>
           <td><%= t a.visible?.to_s %></td>
+          <td><%= t a.press_release?.to_s %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, a] %>
             <%= link_to_delete [:backend, a] %>

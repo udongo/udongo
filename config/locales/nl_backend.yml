@@ -6,6 +6,9 @@ nl:
     admin: Beheerder
     admins: Beheerders
     advanced: Geavanceerd
+    article: Artikel
+    articles: Artikels
+    author: Auteur
     cancel: Annuleren
     content: Inhoud
     current_image: Huidige afbeelding
@@ -21,7 +24,7 @@ nl:
     emails: E-mails
     email_template: E-mail template
     email_templates: E-mail templates
-    enabled?: Ingeschakeld?
+    enabled: Ingeschakeld
     extra: Extra
     file: Bestand
     files: Bestanden
@@ -43,11 +46,14 @@ nl:
     navigation_item: Navigatie-item
     new: Nieuw
     none: Geen
+    not_set: Niet ingesteld
     not_yet_sent: Nog niet verzonden
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
     plain_content: Tekst inhoud
+    press_release: Persbericht
+    published_at: Gepubliceerd op
     recipient: Bestemmeling
     redirect: Redirect
     redirects: Redirects
@@ -77,6 +83,7 @@ nl:
     users: Gebruikers
     variables: Variabelen
     view: Bekijk
+    visible: Zichtbaar
 
     msg:
       added: '%{actor} werd toegevoegd.'
@@ -107,6 +114,7 @@ nl:
       navigation:
         custom: Op maat
       no_items: Er zijn geen items.
+      no_title_set: Dit item heeft nog geen titel.
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
       saved: '%{actor} werd bewaard.'

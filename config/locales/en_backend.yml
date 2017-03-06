@@ -6,6 +6,9 @@ en:
     admin: Admin
     admins: Admins
     advanced: Advanced
+    article: Article
+    articles: Articles
+    author: Author
     cancel: Cancel
     content: Content
     current_image: Current image
@@ -21,7 +24,7 @@ en:
     emails: E-mails
     email_template: E-mail template
     email_templates: E-mail templates
-    enabled?: Enabled?
+    enabled: Enabled
     extra: Extra
     file: File
     files: Files
@@ -43,11 +46,14 @@ en:
     navigation_item: Navigation item
     new: New
     none: None
+    not_set: Not set
     not_yet_sent: Not yet sent
     page: Page
     pages: Pages
     password: Password
     plain_content: Plain content
+    press_release: Press release
+    published_at: Published at
     recipient: Recipient
     redirect: Redirect
     redirects: Redirects
@@ -77,6 +83,7 @@ en:
     users: Users
     variables: Variables
     view: View
+    visible: Visible
 
     msg:
       added: '%s was added.'
@@ -107,6 +114,7 @@ en:
       navigation:
         custom: Custom
       no_items: There are no items.
+      no_title_set: This item has not title.
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
       saved: '%s was saved.'

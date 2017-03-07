@@ -3,7 +3,7 @@ require 'mini_magick'
 module Udongo
   module ImageManipulation
     class ResizeAndPad
-      include Base
+      include Udongo::ImageManipulation::Base
 
       # Resize the image to fit within the specified dimensions while retaining
       # the original aspect ratio. If necessary, will pad the remaining area

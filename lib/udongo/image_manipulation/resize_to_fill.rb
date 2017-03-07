@@ -3,7 +3,7 @@ require 'mini_magick'
 module Udongo
   module ImageManipulation
     class ResizeToFill
-      include Base
+      include Udongo::ImageManipulation::Base
 
       # Resize the image to fit within the specified dimensions while retaining
       # the aspect ratio of the original image. If necessary, crop the image in the

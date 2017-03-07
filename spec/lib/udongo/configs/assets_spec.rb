@@ -20,4 +20,3 @@ describe Udongo::Configs::Assets do
     )
   end
 end
-

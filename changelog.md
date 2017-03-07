@@ -2,6 +2,7 @@
 --
 * Refactor the asset image resizer(s).
 * Add a basic articles module.
+* You can configure the article module with some settings. See the readme.
 
 
 5.2.0 - 2017-03-02

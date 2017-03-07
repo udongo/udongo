@@ -16,6 +16,8 @@
           <%= link_to locale.upcase, edit_translation_backend_article_path(@model, locale), class: klass %>
         </li>
       <% end %>
+
+      <!-- TODO show the images tab if Udongo.config.articles.images? -->
     </ul>
   </div>
 </div>

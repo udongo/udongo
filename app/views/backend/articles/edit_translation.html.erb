@@ -17,7 +17,9 @@
 
         <div class="card-block">
           <%= f.input :title %>
-          <%= f.input :summary, as: :text %>
+
+          <% summary_type = Udongo.config.articles.editor_for_summary? ? :ckeditor : :text %>
+          <%= f.input :summary, as: summary_type %>
         </div>
       </div>
 

@@ -1,5 +1,7 @@
-5.4.0 - xxxx-xx-xx
+5.3.1 - 2017-03-07
 --
+* Bugfix: there was an issue with loading the base module for the image
+  manipulation.
 
 
 5.3.0 - 2017-03-07

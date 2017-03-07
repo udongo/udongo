@@ -1,3 +1,7 @@
+5.4.0 - xxxx-xx-xx
+--
+
+
 5.3.0 - 2017-03-07
 --
 * Refactor the asset image resizer(s).

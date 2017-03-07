@@ -72,6 +72,27 @@ Udongo.config.image_white_list = %w(gif jpeg jpg png)
 Udongo.config.file_white_list = %w(doc docx pdf txt xls xlsx)
 ```
 
+## Articles
+### allow_html_in_title
+```ruby
+Udongo.config.articles.allow_html_in_title = false
+```
+
+### allow_html_in_summary
+```ruby
+Udongo.config.articles.allow_html_in_summary = false
+```
+
+### editor_for_summary
+```ruby
+Udongo.config.articles.editor_for_summary = false
+```
+
+### images
+```ruby
+Udongo.config.articles.images = false
+```
+
 # Concerns
 ## Storable concern
 ### Possible field types

@@ -1,4 +1,4 @@
-require 'mini_magick'
+require_relative 'base'
 
 module Udongo
   module ImageManipulation

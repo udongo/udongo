@@ -22,7 +22,6 @@ describe Udongo::Configs::Tags do
     end
   end
 
-
   it '#respond_to?' do
     expect(klass.new).to respond_to(:allow_new, :allow_new=, :allow_new?)
   end

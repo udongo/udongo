@@ -32,6 +32,11 @@ Rails.application.routes.draw do
 
     resources :articles, except: [:show] do
       concerns :translatable
+
+      # TODO test me (and turn into concern with param!) eg concerns :imageable, parent: :articles
+      resources :images, only: [:index], controller: 'articles/images' do
+        concerns :positionable
+      end
     end
 
     resources :navigations, only: [:index] do
@@ -82,6 +87,12 @@ Rails.application.routes.draw do
       end
     end
 
+    # TODO add routing specs
+    resources :images, only: [:index] do
+      collection do
+        get 'link', 'unlink'
+      end
+    end
     resources :assets
   end
 

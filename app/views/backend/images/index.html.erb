@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    <!-- TODO translate -->
+    Upload new
+  </div>
+  <div class="card-block">
+    <input type="file" />
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <!-- TODO translate -->
+    Choose existing
+  </div>
+
+  <div class="card-block">
+    <div class="row">
+      <% @assets.each do |a| %>
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+          <%= link_to link_backend_images_path(klass: @model.class, id: @model.id, asset_id: a.id), style: '' do %>
+            <%= image_tag a.image.url(550, 550, action: :resize_and_pad, background: :white), alt: '', class: 'img-fluid' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

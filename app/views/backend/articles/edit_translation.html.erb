@@ -2,7 +2,7 @@
 <% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
 
-<%= render 'tabs', active: params[:translation_locale].to_sym %>
+<%= render 'tabs', model: @model, active: params[:translation_locale].to_sym %>
 <%= render 'backend/general_form_error', object: @translation %>
 
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_article_path, html: { class: 'no-focus' }) do |f| %>

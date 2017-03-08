@@ -35,6 +35,8 @@ nl:
     general: Algemeen
     house_number: Huisnummer
     html_content: HTML inhoud
+    image: Afbeelding
+    images: Afbeeldingen
     last_changed_at: Laatst gewijzigd op
     last_name: Achternaam
     locale: Taal

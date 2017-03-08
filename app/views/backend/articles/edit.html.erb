@@ -2,5 +2,5 @@
 <% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
 
-<%= render 'tabs', active: :general %>
+<%= render 'tabs', model: @model, active: :general %>
 <%= render 'form', model: @model %>

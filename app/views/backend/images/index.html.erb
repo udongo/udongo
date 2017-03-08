@@ -1,4 +1,4 @@
-<%= simple_form_for @image, url: backend_images_path(klass: 'Article', id: @model.id) do |f| %>
+<%= simple_form_for @image, url: backend_images_path(klass: @model.class.name, id: @model.id) do |f| %>
   <div class="card">
     <div class="card-header">
       <%= t 'b.upload_a_new_image' %>

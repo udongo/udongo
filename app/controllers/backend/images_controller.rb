@@ -1,9 +1,28 @@
 class Backend::ImagesController < Backend::BaseController
-  before_action :find_model, only: [:index, :link, :unlink]
+  before_action :find_model
 
   def index
     @search = Asset.ransack params[:q]
     @assets = @search.result(distinct: true).image.where.not(id: @model.images.pluck(:asset_id)).order('id DESC')
+    @image = @model.images.new
+  end
+
+  def new
+    @image = @model.images.new
+  end
+
+  def create
+    @image = @model.images.new
+    @image.build_asset
+    @image.asset.filename = params[:image][:asset][:filename]
+    @image.asset.description = params[:image][:asset][:description]
+
+    if @image.asset.filename && @image.asset.filename.content_type.to_s.include?('image') && @image.save
+      redirect_to backend_article_images_path(@model), notice: translate_notice(:added, :image)
+    else
+      @image.errors.add :filename, 'Ignore me'
+      render :new
+    end
   end
 
   def link
@@ -24,5 +43,9 @@ class Backend::ImagesController < Backend::BaseController
     rescue
       redirect_to backend_path
     end
+  end
+
+  def allowed_params
+    params[:image].permit(asset_attributes: [:filename, :description])
   end
 end

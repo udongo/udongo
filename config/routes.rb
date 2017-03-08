@@ -88,7 +88,7 @@ Rails.application.routes.draw do
     end
 
     # TODO add routing specs
-    resources :images, only: [:index] do
+    resources :images, only: [:index, :new, :create] do
       collection do
         get 'link', 'unlink'
       end

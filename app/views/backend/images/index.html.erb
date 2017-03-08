@@ -1,12 +1,22 @@
-<div class="card">
-  <div class="card-header">
-    <!-- TODO translate -->
-    Upload new
+<%= simple_form_for @image, url: backend_images_path(klass: 'Article', id: @model.id) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <!-- TODO translate me -->
+      Upload new
+    </div>
+
+    <div class="card-block">
+      <%= f.simple_fields_for :asset do |fa| %>
+        <%= fa.input :filename, as: :file, label: false, required: false %>
+        <%= fa.input :description, as: :text, required: false %>
+      <% end %>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary"><%= t 'b.save' %></button>
+      </div>
+    </div>
   </div>
-  <div class="card-block">
-    <input type="file" />
-  </div>
-</div>
+<% end %>
 
 <div class="card">
   <div class="card-header">

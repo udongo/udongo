@@ -1,0 +1,25 @@
+<% if @image.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <strong>Er liep iets fout!</strong>
+    Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
+  </div>
+<% end %>
+
+<%= simple_form_for @image, url: backend_images_path(klass: 'Article', id: @model.id) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.image' %>
+    </div>
+
+    <div class="card-block">
+      <%= f.simple_fields_for :asset do |fa| %>
+        <%= fa.input :filename, as: :file, label: false %>
+        <%= fa.input :description, as: :text, required: false %>
+      <% end %>
+
+      <!-- TODO add the klass and id -->
+      <%= render 'backend/form_actions', cancel_url: backend_images_path(klass: 'Article', id: @model.id) %>
+    </div>
+  </div>
+
+<% end %>

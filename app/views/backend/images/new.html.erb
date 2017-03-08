@@ -5,7 +5,7 @@
   </div>
 <% end %>
 
-<%= simple_form_for @image, url: backend_images_path(klass: 'Article', id: @model.id) do |f| %>
+<%= simple_form_for @image, url: backend_images_path(klass: @model.class.name, id: @model.id) do |f| %>
   <div class="card">
     <div class="card-header">
       <%= t 'b.image' %>
@@ -17,8 +17,7 @@
         <%= fa.input :description, as: :text, required: false %>
       <% end %>
 
-      <!-- TODO add the klass and id -->
-      <%= render 'backend/form_actions', cancel_url: backend_images_path(klass: 'Article', id: @model.id) %>
+      <%= render 'backend/form_actions', cancel_url: backend_images_path(klass: @model.class.name, id: @model.id) %>
     </div>
   </div>
 

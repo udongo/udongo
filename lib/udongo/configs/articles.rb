@@ -6,7 +6,7 @@ module Udongo
       attribute :allow_html_in_title, Axiom::Types::Boolean, default: false
       attribute :allow_html_in_summary, Axiom::Types::Boolean, default: false
       attribute :editor_for_summary, Axiom::Types::Boolean, default: false
-      attribute :images, Axiom::Types::Boolean, default: false
+      attribute :images, Axiom::Types::Boolean, default: true
 
       def allow_html_in_title?
         allow_html_in_title === true

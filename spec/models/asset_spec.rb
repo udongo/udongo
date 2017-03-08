@@ -29,6 +29,24 @@ describe Asset do
     end
   end
 
+  describe 'scopes' do
+    it '.image' do
+      a = create(klass)
+      a.update_column :content_type, 'image/jpeg'
+
+      b = create(klass)
+      b.update_column :content_type, 'application/pdf'
+
+      c = create(klass)
+      c.update_column :content_type, 'image/gif'
+
+      d = create(klass)
+      d.update_column :content_type, 'image/png'
+
+      expect(described_class.image.order(:id)).to eq [a, c, d]
+    end
+  end
+
   describe '#image?' do
     it :true do
       %w(gif jpeg jpg png).each do |ext|

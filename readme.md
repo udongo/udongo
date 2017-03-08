@@ -90,7 +90,7 @@ Udongo.config.articles.editor_for_summary = false
 
 ### images
 ```ruby
-Udongo.config.articles.images = false
+Udongo.config.articles.images = true
 ```
 
 # Concerns

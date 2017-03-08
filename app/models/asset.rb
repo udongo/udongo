@@ -5,6 +5,8 @@ class Asset < ApplicationRecord
 
   has_many :images, dependent: :destroy
 
+  scope :image, -> { where(content_type: %w(image/gif image/jpeg image/png)) }
+
   before_save :update_filesize, :update_content_type
 
   validates :filename, presence: true

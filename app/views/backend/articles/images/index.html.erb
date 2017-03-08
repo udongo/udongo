@@ -1,0 +1,43 @@
+<% javascript 'backend/sortable' %>
+<%= render 'backend/breadcrumbs' %>
+<%= render 'backend/articles/tabs', model: @article, active: :images %>
+
+<p class="text-xs-right">
+  <%= link_to icon(:plus, t('b.add')), backend_images_path(klass: @article.class.name, id: @article.id), class: 'btn btn-primary btn-sm' %>
+</p>
+
+<% if @images.any? %>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <th><%= t 'b.file' %></th>
+        <th><%= t 'g.type' %></th>
+        <th><%= t 'b.size' %></th>
+        <th><%= t 'b.description' %></th>
+        <th><%= t 'b.last_changed_at' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @images.each do |img| %>
+        <% a = img.asset %>
+        <tr data-update-position="<%= update_position_backend_article_image_path(@article, img) %>">
+          <td>
+            <%= image_tag a.image.url(150, 150), alt: '', class: 'img-fluid' %>
+          </td>
+          <td><%= a.actual_filename.split('.').last.upcase %></td>
+          <td><%= number_to_human_size a.filesize %></td>
+          <td><%= simple_format a.description %></td>
+          <td><%= l a.updated_at %></td>
+          <td class="text-xs-right">
+            <%= link_to icon(:trash), unlink_backend_images_path(klass: @article.class.name, id: @article.id, asset_id: a.id), data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

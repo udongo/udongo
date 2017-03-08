@@ -1,0 +1,24 @@
+<% if @image.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <strong><%= t 'b.msg.something_went_wrong' %>!</strong>
+    <%= t 'b.msg.please_select_a_valid_image' %>
+  </div>
+<% end %>
+
+<%= simple_form_for @image, url: backend_images_path(klass: @model.class.name, id: @model.id) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.image' %>
+    </div>
+
+    <div class="card-block">
+      <%= f.simple_fields_for :asset do |fa| %>
+        <%= fa.input :filename, as: :file, label: false %>
+        <%= fa.input :description, as: :text, required: false %>
+      <% end %>
+
+      <%= render 'backend/form_actions', cancel_url: backend_images_path(klass: @model.class.name, id: @model.id) %>
+    </div>
+  </div>
+
+<% end %>

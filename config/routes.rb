@@ -32,6 +32,10 @@ Rails.application.routes.draw do
 
     resources :articles, except: [:show] do
       concerns :translatable
+
+      resources :images, only: [:index], controller: 'articles/images' do
+        concerns :positionable
+      end
     end
 
     resources :navigations, only: [:index] do
@@ -80,6 +84,10 @@ Rails.application.routes.draw do
           resources content_type.to_s.pluralize.to_sym, only: [:edit, :update]
         end
       end
+    end
+
+    resources :images, only: [:index, :new, :create] do
+      collection { get 'link', 'unlink' }
     end
 
     resources :assets

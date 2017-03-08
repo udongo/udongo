@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     resources :articles, except: [:show] do
       concerns :translatable
 
-      # TODO test me (and turn into concern with param!) eg concerns :imageable, parent: :articles
       resources :images, only: [:index], controller: 'articles/images' do
         concerns :positionable
       end

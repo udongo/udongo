@@ -26,7 +26,7 @@ class Backend::ImagesController < Backend::BaseController
   end
 
   def unlink
-    @model.images.find_by!(asset_id: Asset.find(params[:asset_id])).destroy
+    @model.images.find_by(asset_id: params[:asset_id]).destroy
     redirect_images_overview(:deleted)
   end
 

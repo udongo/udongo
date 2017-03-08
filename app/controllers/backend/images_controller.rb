@@ -1,18 +1,13 @@
 class Backend::ImagesController < Backend::BaseController
   before_action :find_model
+  before_action :init_image, only: [:index, :new, :create]
 
   def index
     @search = Asset.ransack params[:q]
     @assets = @search.result(distinct: true).image.where.not(id: @model.images.pluck(:asset_id)).order('id DESC')
-    @image = @model.images.new
-  end
-
-  def new
-    @image = @model.images.new
   end
 
   def create
-    @image = @model.images.new
     @image.build_asset
     @image.asset.filename = params[:image][:asset][:filename]
     @image.asset.description = params[:image][:asset][:description]
@@ -52,5 +47,9 @@ class Backend::ImagesController < Backend::BaseController
   def images_overview_path(action)
     redirect_to send("backend_#{@model.class.name.underscore}_images_path", @model),
                 notice: translate_notice(action, :image)
+  end
+
+  def init_image
+    @image = @model.images.new
   end
 end

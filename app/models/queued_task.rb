@@ -1,10 +1,10 @@
 class QueuedTask < ApplicationRecord
-  validates :klass, presence: true
-
   serialize :data, Hash
 
   scope :locked, -> { where(locked: true) }
   scope :not_locked, -> { where('locked = 0 OR locked IS NULL') }
+
+  validates :klass, presence: true
 
   def lock!
     update_attribute :locked, true

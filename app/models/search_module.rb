@@ -1,7 +1,7 @@
 class SearchModule < ApplicationRecord
-  validates :name, presence: true
-
   scope :weighted, -> { order('weight DESC') }
+
+  validates :name, presence: true
 
   def indices
     SearchIndex.joins('INNER JOIN search_modules ON search_indices.searchable_type = search_modules.name')

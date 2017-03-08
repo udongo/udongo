@@ -1,7 +1,7 @@
 <% if @image.errors.any? %>
   <div class="alert alert-danger" role="alert">
-    <strong>Er liep iets fout!</strong>
-    Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
+    <strong><%= t 'b.msg.something_went_wrong' %>!</strong>
+    <%= t 'b.msg.please_select_a_valid_image' %>
   </div>
 <% end %>
 

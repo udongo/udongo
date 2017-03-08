@@ -1,8 +1,7 @@
 <%= simple_form_for @image, url: backend_images_path(klass: 'Article', id: @model.id) do |f| %>
   <div class="card">
     <div class="card-header">
-      <!-- TODO translate me -->
-      Upload new
+      <%= t 'b.upload_a_new_image' %>
     </div>
 
     <div class="card-block">
@@ -20,8 +19,7 @@
 
 <div class="card">
   <div class="card-header">
-    <!-- TODO translate -->
-    Choose existing
+    <%= t 'b.choose_an_existing_image' %>
   </div>
 
   <div class="card-block">

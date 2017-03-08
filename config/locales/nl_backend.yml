@@ -10,6 +10,7 @@ nl:
     articles: Artikels
     author: Auteur
     cancel: Annuleren
+    choose_an_existing_image: Kies bestaande afbeelding
     content: Inhoud
     current_image: Huidige afbeelding
     custom_title: Aangepaste titel
@@ -80,6 +81,7 @@ nl:
     title: Titel
     to: Naar
     up: Omhoog
+    upload_a_new_image: Upload nieuwe afbeelding
     used: Gebruikt
     user: Gebruiker
     users: Gebruikers
@@ -119,8 +121,10 @@ nl:
       no_title_set: Dit item heeft nog geen titel.
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
+      please_select_a_valid_image: Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
       saved: '%{actor} werd bewaard.'
       seo: SEO
+      something_went_wrong: Er liep iets fout!
       status_codes:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)

@@ -1,6 +1,7 @@
 class Backend::ImagesController < Backend::BaseController
   before_action :find_model
   before_action :init_image, only: [:index, :new, :create]
+  layout 'backend/lightbox'
 
   def index
     @search = Asset.ransack params[:q]

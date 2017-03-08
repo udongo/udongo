@@ -1,3 +1,9 @@
+5.4.0 - xxxx-xx-xx
+--
+* When enabled, you can add images to articles from the assets module.
+* Bugfix: the sortable scope for the ```Image``` wasn't properly set.
+
+
 5.3.1 - 2017-03-07
 --
 * Bugfix: there was an issue with loading the base module for the image

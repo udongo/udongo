@@ -3,7 +3,7 @@
 <%= render 'backend/articles/tabs', model: @article, active: :images %>
 
 <p class="text-xs-right">
-  <%= link_to icon(:plus, t('b.add')), backend_images_path(klass: 'Article', id: @article.id), class: 'btn btn-primary btn-sm' %>
+  <%= link_to icon(:plus, t('b.add')), backend_images_path(klass: @article.class.name, id: @article.id), class: 'btn btn-primary btn-sm' %>
 </p>
 
 <% if @images.any? %>
@@ -31,7 +31,7 @@
           <td><%= simple_format a.description %></td>
           <td><%= l a.updated_at %></td>
           <td class="text-xs-right">
-            <%= link_to icon(:trash), unlink_backend_images_path(klass: 'Article', id: @article.id, asset_id: a.id), data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
+            <%= link_to icon(:trash), unlink_backend_images_path(klass: @article.class.name, id: @article.id, asset_id: a.id), data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
           </td>
         </tr>
       <% end %>

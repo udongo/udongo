@@ -1,4 +1,10 @@
 # Upgrade guide
+## From 5.3.0 to 5.4.0
+### Articles
+The ```Udongo.config.articles.images``` setting now defaults to true instead of
+false.
+
+
 ## From 5.2.0 to 5.3.0
 ### Articles
 A new ```Article``` model has been added. If you already have that in your project,

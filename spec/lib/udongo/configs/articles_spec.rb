@@ -18,7 +18,7 @@ describe Udongo::Configs::Articles do
     end
 
     it :images do
-      expect(klass.new.images).to eq false
+      expect(klass.new.images).to eq true
     end
   end
 

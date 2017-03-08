@@ -13,7 +13,7 @@ class Backend::ImagesController < Backend::BaseController
     @image.asset.description = params[:image][:asset][:description]
 
     if @image.asset.filename && @image.asset.filename.content_type.to_s.include?('image') && @image.save
-      redirect_to images_overview_path(:added)
+      redirect_images_overview(:added)
     else
       @image.errors.add :filename, 'Ignore me'
       render :new
@@ -22,12 +22,12 @@ class Backend::ImagesController < Backend::BaseController
 
   def link
     @model.images.create(asset: Asset.find(params[:asset_id]))
-    redirect_to images_overview_path(:added)
+    redirect_images_overview(:added)
   end
 
   def unlink
     @model.images.find_by!(asset_id: Asset.find(params[:asset_id])).destroy
-    redirect_to images_overview_path(:deleted)
+    redirect_images_overview(:deleted)
   end
 
   private
@@ -44,7 +44,7 @@ class Backend::ImagesController < Backend::BaseController
     params[:image].permit(asset_attributes: [:filename, :description])
   end
 
-  def images_overview_path(action)
+  def redirect_images_overview(action)
     redirect_to send("backend_#{@model.class.name.underscore}_images_path", @model),
                 notice: translate_notice(action, :image)
   end

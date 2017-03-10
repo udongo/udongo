@@ -17,6 +17,7 @@
 //= require jquery-ui/sortable
 //= require backend/tether.min
 //= require backend/bootstrap
+//= require backend/jquery.throttle-debounce.min.js
 //= require ckeditor/init
 //= require backend/general
 //= require backend/search

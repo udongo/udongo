@@ -10,6 +10,8 @@ var dirty_inputs = dirty_inputs || {
   },
 
   anchor_click_warning_listener: function(e) {
+    // FIXME: I'm not sure what the approach is to have a default label.
+    // I'm sort of opposed to .js.erb files, but this might be the only way.
     if(!window.confirm('Je gaat de pagina verlaten en het formulier is nog niet bewaard.\nWil je doorgaan?')) {
       e.stopPropagation();
       e.preventDefault();

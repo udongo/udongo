@@ -3,6 +3,7 @@
 * When enabled, you can add images to articles from the assets module.
 * Bugfix: the sortable scope for the ```Image``` wasn't properly set.
 * Images are now enabled by default for articles.
+* Fixed a missing image reference triggered by Tagit.
 
 
 5.3.1 - 2017-03-07

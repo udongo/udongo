@@ -1,13 +1,17 @@
-<div class="card">
+<% javascript 'backend/seo' %>
+
+<% sluggable_field ||= 'title' %>
+
+<%= content_tag :div, class: 'card', data: { seo: true, path: backend_seo_slugify_path, sluggable_input: "##{f.object_name}_#{sluggable_field}" } do %>
   <div class="card-header">
     <%= t 'b.msg.seo' %>
   </div>
 
   <div class="card-block">
     <%= f.input :seo_slug, as: :string %>
-    <%= f.input :seo_title, as: :string %>
+    <%= f.input :seo_title, help: 'test', as: :string %>
     <%= f.input :seo_description, as: :string %>
     <%= f.input :seo_keywords, as: :string %>
     <%= f.input :seo_custom, as: :text %>
   </div>
-</div>
+<% end %>

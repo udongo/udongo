@@ -4,6 +4,10 @@
 // fonts
 @import 'font-awesome';
 
+// Vendored
+@import 'backend/tagit/base';
+@import 'backend/tagit/autocomplete';
+
 // Components
 @import 'components/navbar';
 @import 'components/tabs';

@@ -1,8 +1,14 @@
+5.5.0 - xxxx-xx-xx
+--
+* When an SEO form has a slug, it's automatically calculated based on the title.
+
+
 5.4.0 - 2017-03-08
 --
 * When enabled, you can add images to articles from the assets module.
 * Bugfix: the sortable scope for the ```Image``` wasn't properly set.
 * Images are now enabled by default for articles.
+* Fixed a missing image reference triggered by Tagit.
 
 
 5.3.1 - 2017-03-07

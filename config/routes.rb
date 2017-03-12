@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
     get '/' => 'dashboard#show'
     get 'search' => 'search#query'
+    get 'seo/slugify' => 'seo#slugify'
+
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins

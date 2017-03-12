@@ -1,3 +1,8 @@
+5.5.0 - xxxx-xx-xx
+--
+* When an SEO form has a slug, it's automatically calculated based on the title.
+
+
 5.4.0 - 2017-03-08
 --
 * When enabled, you can add images to articles from the assets module.

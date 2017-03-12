@@ -1,6 +1,6 @@
 var seo = {
   init: function() {
-    this.sluggable_input().on('keyup', $.debounce(1000, this.keyup_listener));
+    this.sluggable_input().on('keyup', $.debounce(250, this.keyup_listener));
   },
 
   data: function(key) {

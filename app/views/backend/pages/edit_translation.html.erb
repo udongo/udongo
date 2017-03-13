@@ -6,7 +6,7 @@
 <%= render 'backend/general_form_error', object: @translation %>
 
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_page_path, html: { class: 'no-focus' }) do |f| %>
-
+  <%= trigger_dirty_inputs_warning %>
   <div class="row">
     <div class="col-md-12">
       <!-- Content -->

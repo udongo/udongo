@@ -1,8 +1,16 @@
 5.5.0 - xxxx-xx-xx
 --
 * When an SEO form has a slug, it's automatically calculated based on the title.
+* Trigger a generic warning when trying to leave a page through an anchor when
+  the form contains unsaved changes.
+* The dirty-inputs warning is now triggered on a form by calling the
+  ```trigger_dirty_inputs_warning``` helper method.
 * The sluggable autofill now plays nice when immediately hitting enter after
   typing your title.
+* Trigger a generic warning when trying to leave a page through an anchor when
+  the form contains unsaved changes.
+* The dirty-inputs warning is now triggered on a form by calling the
+  ```trigger_dirty_inputs_warning``` helper method.
 
 
 5.4.0 - 2017-03-08

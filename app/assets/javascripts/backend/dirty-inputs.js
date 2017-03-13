@@ -1,6 +1,6 @@
 var dirty_inputs = dirty_inputs || {
   init: function() {
-    $('form[data-dirty] :input').on('change, keydown', this.input_change_listener);
+    $('[data-dirty]').parents('form').find(':input').on('change, keydown', this.input_change_listener);
   },
 
   input_change_listener: function(e) {

@@ -5,7 +5,9 @@
 <%= render 'tabs', model: @model, active: params[:translation_locale].to_sym %>
 <%= render 'backend/general_form_error', object: @translation %>
 
-<%= simple_form_for([:backend, @translation], url: edit_translation_backend_article_path, html: { class: 'no-focus' }, data: { dirty: false }) do |f| %>
+<%= simple_form_for([:backend, @translation], url: edit_translation_backend_article_path, html: { class: 'no-focus' }) do |f| %>
+  <%= trigger_dirty_inputs_warning %>
+
   <div class="row">
     <div class="col-md-12">
       <!-- Content -->

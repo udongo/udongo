@@ -100,6 +100,7 @@ nl:
         image: Afbeelding
         text: Tekst
       deleted: '%{actor} werd verwijderd.'
+      dirty_inputs_warning: "Je gaat de pagina verlaten maar je aanpassingen zijn nog niet bewaard.\nWil je nog steeds de pagina verlaten?"
       edited: '%{actor} werd gewijzigd.'
       flexible_content:
         add_column: Kolom toevoegen

@@ -1,18 +1,18 @@
 var dirty_inputs = dirty_inputs || {
+  message: null,
   init: function() {
     $('[data-dirty]').parents('form').find(':input').on('change, keydown', this.input_change_listener);
   },
 
   input_change_listener: function(e) {
-    $(this).data('dirty', true);
-
+    // I have to set the message this way, because the trigger for the click
+    // warning probably won't have the context of the form that this method has.
+    dirty_inputs.message = $(this).parents('form').find('[data-dirty]').text();
     $('a').each(dirty_inputs.iterate_anchors_and_bind_click_warning);
   },
 
   anchor_click_warning_listener: function(e) {
-    // FIXME: I'm not sure what the approach is to have a default label.
-    // I'm sort of opposed to .js.erb files, but this might be the only way.
-    if(!window.confirm('Je gaat de pagina verlaten en het formulier is nog niet bewaard.\nWil je doorgaan?')) {
+    if(!window.confirm(dirty_inputs.message)) {
       e.stopPropagation();
       e.preventDefault();
     }

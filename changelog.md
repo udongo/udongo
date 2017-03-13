@@ -1,6 +1,8 @@
 5.5.0 - xxxx-xx-xx
 --
 * When an SEO form has a slug, it's automatically calculated based on the title.
+* The sluggable autofill now plays nice when immediately hitting enter after
+  typing your title.
 
 
 5.4.0 - 2017-03-08

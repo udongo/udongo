@@ -7,7 +7,9 @@ var dirty_inputs = dirty_inputs || {
   input_change_listener: function(e) {
     // I have to set the message this way, because the trigger for the click
     // warning probably won't have the context of the form that this method has.
-    dirty_inputs.message = $(this).parents('form').find('[data-dirty]').text();
+    var input = $(this);
+    dirty_inputs.message = input.parents('form').find('[data-dirty]').text();
+    input.data('dirty', true);
     $('a').each(dirty_inputs.iterate_anchors_and_bind_click_warning);
   },
 

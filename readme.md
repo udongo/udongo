@@ -73,7 +73,7 @@ This renders the following HTML:
 ```html
 <form class="simple_form" id="edit_your_model_1" action="/backend/your_models/1/edit" accept-charset="UTF-8" method="post">
   ...
-  <span data-dirty="true"></span>
+  <span data-dirty="false"></span>
   ...
 </form>
 ```

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Backend::FormHelper do
   it '.trigger_dirty_inputs_warning' do
-    expect(trigger_dirty_inputs_warning).to eq '<span data-dirty="true"></span>'
+    expect(trigger_dirty_inputs_warning).to eq '<span data-dirty="false"></span>'
   end
 
   it '.responds_to?' do

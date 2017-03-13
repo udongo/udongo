@@ -78,6 +78,15 @@ This renders the following HTML:
 </form>
 ```
 
+You can also override the default message with your own:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  <%= trigger_dirty_inputs_warning(message: 'Are you sure you want to leave the page?') %>
+  ...
+<% end %>
+```
+
 ## Flexible content
 ### types
 ```ruby

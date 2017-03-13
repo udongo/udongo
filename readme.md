@@ -50,6 +50,43 @@ Udongo.config.i18n.app.default_interface_locale = 'nl'
 Udongo.config.i18n.app.interface_locales = %w(nl en)
 ```
 
+## Forms
+### Dirty inputs
+Sometimes a user enters some data in a form and assumes that everything is
+magically saved without submitting said form.
+
+To warn a user that this is not default behaviour, you can trigger a warning
+to show up whenever a user has changed input contents and clicks on any
+```<a>``` element on the page.
+
+Simply call the following helper method within your form tags:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+	<%= trigger_dirty_inputs_warning %>
+  ...
+<% end %>
+```
+
+This renders the following HTML:
+
+```html
+<form class="simple_form" id="edit_your_model_1" action="/backend/your_models/1/edit" accept-charset="UTF-8" method="post">
+  ...
+  <span data-dirty="false"></span>
+  ...
+</form>
+```
+
+You can also override the default message with your own:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  <%= trigger_dirty_inputs_warning(message: 'Are you sure you want to leave the page?') %>
+  ...
+<% end %>
+```
+
 ## Flexible content
 ### types
 ```ruby

@@ -1,4 +1,4 @@
-5.5.0 - xxxx-xx-xx
+5.5.0 - 2017-03-13
 --
 * When an SEO form has a slug, it's automatically calculated based on the title.
 * Trigger a generic warning when trying to leave a page through an anchor when

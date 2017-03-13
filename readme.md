@@ -51,6 +51,32 @@ Udongo.config.i18n.app.interface_locales = %w(nl en)
 ```
 
 ## Forms
+### Adding SEO fields to your page.
+You can add SEO fields to your form by rendering a partial:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  ...
+  <%= render 'backend/seo_form', f: f %>
+  ...
+<% end %>
+```
+This partial has support to let you base its SEO slug on whatever is typed in 
+an input element of your choice. In Udongo, this field is called the 
+**sluggable field**.
+
+By default, the partial looks for a field called **title**. You can override 
+this name by passing ```sluggable_field``` to the partial, like so:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  ...
+  <%# This will look for #backend_your_model_name as its sluggable field. %>
+  <%= render 'backend/seo_form', f: f, sluggable_field: :name %>
+  ...
+<% end %>
+```
+
 ### Dirty inputs
 Sometimes a user enters some data in a form and assumes that everything is
 magically saved without submitting said form.

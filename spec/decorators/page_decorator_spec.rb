@@ -21,7 +21,7 @@ describe PageDecorator do
   end
 
   describe '#path' do
-    context 'without routes' do
+    describe 'without routes' do
       before(:each) do
         @team = create(:page)
         @team.seo(:nl).slug = 'team'
@@ -49,7 +49,7 @@ describe PageDecorator do
       end
     end
 
-    context 'with routes' do
+    describe 'with routes' do
       it 'first level' do
         page = create(:page, route: 'backend_path')
         expect(page.decorate.path).to eq '/backend'

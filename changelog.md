@@ -6,6 +6,8 @@
 * The files nl_backend.yml and en_backend.yml have been synced.
 * The files nl_general.yml and en_general.yml have been removed.
 * Update the font-awesome icons from 4.6.1 to 4.7.0.
+* You can now disable the snippet title/content so it won't show up in the
+  translation edit form (which sometimes confused people).
 
 
 5.5.0 - 2017-03-13

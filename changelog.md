@@ -3,6 +3,7 @@
 * The article title is truncated to 40 chars in the overview and breadcrumbs.
 * Add the PageHelper which contains ```#page(identifier)``` to easily fetch a
   page from cache.
+* The files nl_backend.yml and en_backend.yml have been synced.
 
 
 5.5.0 - 2017-03-13

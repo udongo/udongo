@@ -1,4 +1,4 @@
-<% breadcrumb.add @model.title, edit_backend_article_path(@model) %>
+<% breadcrumb.add truncate(@model.title, length: 40), edit_backend_article_path(@model) %>
 <% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
 

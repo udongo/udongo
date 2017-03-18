@@ -1,3 +1,8 @@
+5.6.0 - 2017-03-18
+--
+* The article title is truncated to 40 chars in the overview and breadcrumbs.
+
+
 5.5.0 - 2017-03-13
 --
 * When an SEO form has a slug, it's automatically calculated based on the title.

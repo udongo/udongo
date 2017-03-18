@@ -8,6 +8,8 @@
 * Update the font-awesome icons from 4.6.1 to 4.7.0.
 * You can now disable the snippet title/content so it won't show up in the
   translation edit form (which sometimes confused people).
+* Added PageDecorator#url because the ```only_path: false``` option seems to be
+  borked at this moment.
 
 
 5.5.0 - 2017-03-13

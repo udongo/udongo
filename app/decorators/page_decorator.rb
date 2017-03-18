@@ -23,4 +23,12 @@ class PageDecorator < ApplicationDecorator
 
     "/#{locale}/#{slugs.reverse.join('/')}"
   end
+
+  def url(locale: I18n.locale, options: {})
+    prefix = Rails.configuration.force_ssl ? 'https://' : 'http://'
+    host = Udongo.config.base.host
+    params = { locale: locale, options: options }
+
+    "#{prefix}#{host}#{path(params)}"
+  end
 end

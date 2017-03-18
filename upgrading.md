@@ -1,9 +1,11 @@
 # Upgrade guide
+## From 5.4.0 to 5.5.0
+No actions required.
+
 ## From 5.3.0 to 5.4.0
 ### Articles
 The ```Udongo.config.articles.images``` setting now defaults to true instead of
 false.
-
 
 ## From 5.2.0 to 5.3.0
 ### Articles
@@ -85,21 +87,17 @@ class Backend::WebserverController < Backend::BaseController
 end
 ```
 
-
 ### Backend::TranslationForm
 This form object was added and can be used to simplify your existing translation
 forms (except for those that use SEO). To stay up-to-date, you should check your
 translation form objects and if they can benefit from this new class.
 
-
 ## From 2.0.1 to 2.0.4
 No actions required.
-
 
 ## From 2.0.0 to 2.0.1
 * Reform gem is no longer used. Make sure to add this gem to your gemfile if you
 wish to continue using this.
-
 
 ## From 1.0.4 to 2.0.0
 ### Configuration

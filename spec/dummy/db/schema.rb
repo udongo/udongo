@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305125627) do
+ActiveRecord::Schema.define(version: 20170318184654) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -332,7 +332,9 @@ ActiveRecord::Schema.define(version: 20170305125627) do
   create_table "snippets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "identifier"
     t.string   "description"
+    t.boolean  "title_disabled"
     t.boolean  "allow_html_in_title"
+    t.boolean  "content_disabled"
     t.boolean  "allow_html_in_content"
     t.boolean  "editor_for_content"
     t.text     "locales",               limit: 65535

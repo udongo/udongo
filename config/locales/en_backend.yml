@@ -10,6 +10,7 @@ en:
     articles: Articles
     author: Author
     cancel: Cancel
+    choose_an_existing_image: Choose an existing image
     content: Content
     current_image: Current image
     custom_title: Custom title
@@ -35,7 +36,8 @@ en:
     general: General
     house_number: House number
     html_content: HTML content
-    images: Afbeeldingen
+    image: Image
+    images: Images
     last_changed_at: Last changed at
     last_name: Last name
     locale: Locale
@@ -79,6 +81,7 @@ en:
     title: Title
     to: To
     up: Up
+    upload_a_new_image: Upload a new image
     used: Used
     user: User
     users: Users
@@ -87,7 +90,7 @@ en:
     visible: Visible
 
     msg:
-      added: '%s was added.'
+      added: '%{actor} was added.'
       admins:
         account_details: Account details
         personal_details: Personal details
@@ -96,9 +99,9 @@ en:
       content_types:
         image: Image
         text: Text
-      deleted: '%s was deleted.'
+      deleted: '%{actor} was deleted.'
       dirty_inputs_warning: "You are about to leave the page but your changes aren't saved yet.\nDo you still want to leave the page?"
-      edited: '%s was edited.'
+      edited: '%{actor} was edited.'
       flexible_content:
         add_column: Add column
         add_row: Add row
@@ -119,8 +122,10 @@ en:
       no_title_set: This item has not title.
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
-      saved: '%s was saved.'
+      please_select_a_valid_image: Please select a valid image and try again.
+      saved: '%{actor} was saved.'
       seo: SEO
+      something_went_wrong: Something went wrong!
       status_codes:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)

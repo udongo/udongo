@@ -114,7 +114,7 @@ nl:
       forgot_password: Wachtwoord vergeten?
       general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:
-        status_code: Meer info over het gebruik van status codes
+        status_code: Meer info over het gebruik van status codes.
       incorrect_login: Ongeldige login gegevens.
       navigation:
         custom: Op maat

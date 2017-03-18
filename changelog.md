@@ -4,6 +4,7 @@
 * Add the PageHelper which contains ```#page(identifier)``` to easily fetch a
   page from cache.
 * The files nl_backend.yml and en_backend.yml have been synced.
+* The files nl_general.yml and en_general.yml have been removed.
 
 
 5.5.0 - 2017-03-13

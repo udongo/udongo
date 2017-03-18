@@ -1,4 +1,9 @@
 # Upgrade guide
+## From 5.5.0 to 5.6.0
+### Translations
+The general translations no longer exists. If you use something like this
+```I18n.t 'g.save'``` in your views, replace that with your own translations.
+
 ## From 5.4.0 to 5.5.0
 No actions required.
 

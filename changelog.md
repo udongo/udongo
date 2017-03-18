@@ -1,6 +1,8 @@
 5.6.0 - 2017-03-18
 --
 * The article title is truncated to 40 chars in the overview and breadcrumbs.
+* Add the PageHelper which contains ```#page(identifier)``` to easily fetch a
+  page from cache.
 
 
 5.5.0 - 2017-03-13

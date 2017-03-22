@@ -547,6 +547,19 @@ class Backend::AdminsController < Backend::BaseController
 end
 ```
 
+# ERB Helpers
+## Snippet
+Find a snippet from cache by its identifier and decorate it.
+```snippet(:identifier)```
+
+## Page
+Find a page from cache by its identifier and decorate it.
+```page(:identifier)```
+
+## Navigation
+Find a navigation from cache by its identifier.
+```navigation(:identifier)```
+
 # Javascript libs
 ## Select2
 This library is loaded by default in the backend.

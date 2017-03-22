@@ -1,3 +1,10 @@
+5.7.0 - 2017-03-22
+--
+* The ```Navigation``` model now includes the cacheable concern.
+* A ```NavigationHelper``` module was added which makes it easier to fetch a
+  navigation by identifier.
+
+
 5.6.0 - 2017-03-18
 --
 * The article title is truncated to 40 chars in the overview and breadcrumbs.

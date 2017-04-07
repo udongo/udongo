@@ -4,6 +4,7 @@ describe FormSubmission do
   let(:klass) { described_class.to_s.underscore.to_sym }
 
   it_behaves_like :emailable
+  it_behaves_like :searchable
 
   describe 'validations' do
     describe 'presence' do

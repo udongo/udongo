@@ -1,5 +1,6 @@
 class FormSubmission < ApplicationRecord
   include Concerns::Emailable
+  include Concerns::Searchable
 
   # TODO: Make this searchable by adding the key/value columns on data
   # as accessible attributes on FormSubmission.

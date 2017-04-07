@@ -3,6 +3,8 @@
 * The ```Navigation``` model now includes the cacheable concern.
 * A ```NavigationHelper``` module was added which makes it easier to fetch a
   navigation by identifier.
+* You can now include ```Concerns::Searchable``` on models without flexible
+  content and not receive errors as a result.
 
 
 5.6.0 - 2017-03-18

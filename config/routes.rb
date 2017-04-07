@@ -32,6 +32,10 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :forms do
+      resources :submissions, controller: 'forms/submissions'
+    end
+
     resources :articles, except: [:show] do
       concerns :translatable
 

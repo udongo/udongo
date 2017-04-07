@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318184654) do
+ActiveRecord::Schema.define(version: 20170407115044) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 20170318184654) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["locale"], name: "index_admins_on_locale", using: :btree
+  end
+
+  create_table "article_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -173,6 +178,45 @@ ActiveRecord::Schema.define(version: 20170318184654) do
     t.datetime "sent_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "form_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_id"
+    t.text     "locales",       limit: 65535
+    t.string   "name"
+    t.string   "field_type"
+    t.string   "default_value"
+    t.string   "placeholder"
+    t.integer  "position"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["form_id"], name: "index_form_fields_on_form_id", using: :btree
+  end
+
+  create_table "form_submission_data", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_submission_id"
+    t.string   "name"
+    t.text     "value",              limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["form_submission_id"], name: "index_form_submission_data_on_form_submission_id", using: :btree
+  end
+
+  create_table "form_submissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_id"
+    t.text     "extra_info", limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["form_id"], name: "index_form_submissions_on_form_id", using: :btree
+  end
+
+  create_table "forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "locales",     limit: 65535
+    t.string   "identifier"
+    t.string   "description"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["identifier"], name: "index_forms_on_identifier", using: :btree
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

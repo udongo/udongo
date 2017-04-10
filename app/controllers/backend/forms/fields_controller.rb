@@ -1,5 +1,6 @@
 class Backend::Forms::FieldsController < Backend::Forms::BaseController
   include Concerns::Backend::TranslatableController
+  include Concerns::Backend::PositionableController
   include Concerns::PaginationController
 
   before_action :find_model, only: %w(edit update destroy)

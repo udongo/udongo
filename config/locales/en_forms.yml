@@ -19,10 +19,12 @@ en:
         category: Category
         cc: CC
         content: Content
+        default_value: Default value
         description: Description
         disabled: Disabled
         email: E-mail
         extra: Extra
+        field_type: Field type
         first_name: First name
         html_content: HTML content
         identifier: Internal name

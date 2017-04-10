@@ -19,10 +19,12 @@ nl:
         category: Categorie
         cc: CC
         content: Inhoud
+        default_value: Standaardwaarde
         description: Beschrijving
         disabled: Uitgeschakeld
         email: E-mail
         extra: Extra
+        field_type: Veldtype
         first_name: Voornaam
         html_content: HTML inhoud
         identifier: Interne naam

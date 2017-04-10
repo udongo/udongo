@@ -6,7 +6,6 @@
 <%= render 'backend/general_form_error', object: @translation %>
 
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_form_path) do |f| %>
-
   <div class="card">
     <div class="card-header">
       <%= t 'b.content' %>

@@ -1,6 +1,6 @@
 <div class="row subnav">
   <div class="col-md-12">
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills pull-left">
       <li class="nav-item">
         <% klass = %w(nav-link) %>
         <% klass << 'active' if active == :general %>
@@ -17,5 +17,11 @@
         </li>
       <% end %>
     </ul>
+
+    <div class="pull-right">
+      <%= link_to backend_form_submissions_path(@model), class: 'btn btn-primary' do %>
+        <%= t('b.form_submissions') %> &rarr;
+      <% end %>
+    </div>
   </div>
 </div>

@@ -15,7 +15,7 @@ describe FormField do
   end
 
   it 'translatable' do
-    expect(described_class.translatable_fields_list).to eq [:label, :default_value, :placeholder]
+    expect(described_class.translatable_fields_list).to eq [:label, :default_value]
   end
 
   it '#respond_to?' do

@@ -3,7 +3,7 @@ class FormField < ApplicationRecord
   sortable scope: [:form_id]
 
   include Concerns::Translatable
-  translatable_fields :label, :default_value, :placeholder
+  translatable_fields :label, :default_value
 
   belongs_to :form
 

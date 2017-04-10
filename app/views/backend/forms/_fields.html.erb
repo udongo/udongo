@@ -21,7 +21,7 @@
         <tbody>
           <% @model.fields.each do |f| %>
             <tr>
-              <td><%= f.name %></td>
+              <td><%= f.identifier %></td>
               <td class="text-xs-right">
                 <%= link_to icon(:pencil_square_o), edit_backend_form_field_path(@model, f) %>
                 <%= link_to icon(:trash), backend_form_field_path(@model, f), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>

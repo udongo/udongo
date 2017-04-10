@@ -9,7 +9,7 @@ describe FormField do
   describe 'validations' do
     describe 'presence' do
       it(:form) { expect(build(klass, form: nil)).not_to be_valid }
-      it(:name) { expect(build(klass, name: nil)).not_to be_valid }
+      it(:identifier) { expect(build(klass, identifier: nil)).not_to be_valid }
       it(:field_type) { expect(build(klass, field_type: nil)).not_to be_valid }
     end
   end

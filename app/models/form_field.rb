@@ -1,4 +1,3 @@
-# FIXME: Rename name to identifier
 class FormField < ApplicationRecord
   include Concerns::Sortable
   sortable scope: [:form_id]
@@ -8,5 +7,5 @@ class FormField < ApplicationRecord
 
   belongs_to :form
 
-  validates :form, :name, :field_type, presence: true
+  validates :form, :identifier, :field_type, presence: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407115044) do
+ActiveRecord::Schema.define(version: 20170410115600) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -183,7 +183,7 @@ ActiveRecord::Schema.define(version: 20170407115044) do
   create_table "form_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "form_id"
     t.text     "locales",       limit: 65535
-    t.string   "name"
+    t.string   "identifier"
     t.string   "field_type"
     t.string   "default_value"
     t.string   "placeholder"

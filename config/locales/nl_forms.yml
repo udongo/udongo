@@ -44,6 +44,7 @@ nl:
         seo_custom: Extra meta-tags
         subject: Onderwerp
         subtitle: Subtitel
+        success_message: Melding bij succesvolle verzending
         summary: Korte inhoud
         synonyms: Synoniemen
         title: Titel

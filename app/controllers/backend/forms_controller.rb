@@ -1,4 +1,5 @@
 class Backend::FormsController < Backend::BaseController
+  include Concerns::Backend::TranslatableController
 
   before_action :find_model, only: [:edit, :update]
   before_action -> do
@@ -29,5 +30,12 @@ class Backend::FormsController < Backend::BaseController
 
   def find_model
     @model = Form.find(params[:id].to_i)
+  end
+
+  def translation_form
+    Backend::FormTranslationForm.new(
+      @model,
+      @model.translation(params[:translation_locale])
+    )
   end
 end

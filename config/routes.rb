@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
 
     resources :forms do
+      concerns :translatable
       resources :submissions, controller: 'forms/submissions'
     end
 

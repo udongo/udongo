@@ -32,6 +32,10 @@ nl:
     filter: Filter
     first_name: Voornaam
     flexible_content: Flexibele inhoud
+    form: Formulier
+    form_submission: Inzending
+    form_submissions: Inzendingen
+    forms: Formulieren
     from: Van
     general: Algemeen
     house_number: Huisnummer

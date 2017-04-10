@@ -1,11 +1,6 @@
 class Backend::Forms::BaseController < Backend::BaseController
   before_action :find_form
 
-  before_action -> do
-    breadcrumb.add t('b.forms'), backend_forms_path
-    breadcrumb.add @form.description
-  end
-
   private
 
   def find_form

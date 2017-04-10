@@ -8,7 +8,7 @@ module Udongo
       end
 
       def column_values(submission)
-        map_fields { |field| content_tag(:td, form_submission.data_object.send(field)) }
+        map_fields { |field| content_tag(:td, submission.data_object.send(field)) }
       end
 
       def column_headers

@@ -1,0 +1,6 @@
+<% breadcrumb.add @model.identifier, edit_backend_form_path(@model) %>
+<% breadcrumb.add t('b.edit') %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= render 'backend/forms/tabs', active: :general %>
+<%= render 'backend/forms/form' %>

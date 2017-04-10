@@ -5,6 +5,7 @@
   navigation by identifier.
 * You can now include ```Concerns::Searchable``` on models without flexible
   content and not receive errors as a result.
+* Add backend module to create and manage forms.
 
 
 5.6.0 - 2017-03-18

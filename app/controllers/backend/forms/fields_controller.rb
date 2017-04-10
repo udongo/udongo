@@ -17,7 +17,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
     @field = @form.fields.new(allowed_params)
 
     if @field.save
-      redirect_to edit_backend_form_path(@form),
+      redirect_to edit_translation_backend_form_field_path(@form, @field, locale),
         notice: translate_notice(:added, :form_field)
     else
       render :new

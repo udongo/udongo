@@ -1,7 +1,7 @@
 class Backend::FormsController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
-  before_action :find_model, only: [:edit, :update]
+  before_action :find_model, only: [:edit, :update, :destroy]
   before_action -> do
     breadcrumb.add t('b.forms'), backend_forms_path
   end
@@ -18,7 +18,8 @@ class Backend::FormsController < Backend::BaseController
     @model = Form.new(allowed_params)
 
     if @model.save
-      redirect_to backend_forms_path, notice: translate_notice(:added, :form)
+      redirect_to edit_backend_form_path(@model),
+        notice: translate_notice(:added, :form)
     else
       render :new
     end
@@ -34,6 +35,11 @@ class Backend::FormsController < Backend::BaseController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @model.destroy
+    redirect_to backend_forms_path, notice: translate_notice(:deleted, :form)
   end
 
   private

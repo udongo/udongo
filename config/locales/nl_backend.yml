@@ -129,6 +129,7 @@ nl:
       forms:
         add_first: Maak het eerste formulier aan
         explanation: Met deze module kan je formulieren beheren en hun inzendingen bekijken.
+        removal_warning: 'Dit formulier kan niet verwijderd worden omdat er %{submissions} inzending(en) aan gekoppeld zijn.'
         view_submissions: Inzendingen voor dit formulier
       general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:

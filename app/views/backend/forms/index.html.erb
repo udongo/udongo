@@ -15,7 +15,16 @@
           <td><%= f.description %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, f] %>
-            <%= link_to icon(:envelope_open), backend_form_submissions_path(f) %>
+
+            <% if f.submissions.any? %>
+              <%= link_to icon(:envelope_open), backend_form_submissions_path(f) %>
+            <% end %>
+
+            <% if f.submissions.any? %>
+              <%= link_to icon(:trash), '#', data: { toggle: 'tooltip' }, title: t('b.msg.forms.removal_warning', submissions: f.submissions.size) %>
+            <% else %>
+              <%= link_to icon(:trash), backend_form_path(f), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
+            <% end %>
           </td>
         </tr>
       <% end %>

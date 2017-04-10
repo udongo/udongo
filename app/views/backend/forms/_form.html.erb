@@ -16,7 +16,9 @@
     </div>
   </div>
 
-  <%= render 'backend/forms/fields' %>
+  <% unless @model.new_record? %>
+    <%= render 'backend/forms/fields' %>
+  <% end %>
 
   <%= render 'backend/form_actions', cancel_url: backend_forms_path %>
 <% end %>

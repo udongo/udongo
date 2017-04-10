@@ -129,6 +129,7 @@ en:
       forms:
         add_first: Create your first form
         explanation: With this module you can manage forms and view their submissions.
+        removal_warning: "This form can't be removed because there are %{submissions} submission(s) linked to it."
         view_submissions: Submissions for this form
       general_form_error: Something went wrong. Please check the marked fields.
       help_texts:

@@ -1,3 +1,5 @@
+<% breadcrumb.add t('b.form_submissions') %>
+
 <%= render 'backend/breadcrumbs' %>
 <%= render 'backend/forms/submissions/filter' %>
 
@@ -22,6 +24,7 @@
           <%= @form.datagrid.column_values(s) %>
           <td class="text-xs-right">
             <%= link_to icon(:search), backend_form_submission_path(@form, s) %>
+            <%= link_to icon(:trash), backend_form_submission_path(@form, s), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
           </td>
         </tr>
       <% end %>

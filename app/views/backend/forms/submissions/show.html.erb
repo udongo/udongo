@@ -1,4 +1,6 @@
+<% breadcrumb.add t('b.form_submissions'), backend_form_submissions_path(@form) %>
 <% breadcrumb.add @model.data_object.email %>
+
 <%= render 'backend/breadcrumbs' %>
 
 <% @form.fields.each do |field| %>

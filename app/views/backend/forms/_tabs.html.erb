@@ -18,10 +18,12 @@
       <% end %>
     </ul>
 
-    <div class="pull-right">
-      <%= link_to backend_form_submissions_path(@model), class: 'btn btn-primary' do %>
-        <%= icon(:envelope_open, t('b.msg.forms.view_submissions')) %>
-      <% end %>
-    </div>
+    <% if @model.submissions.any? %>
+      <div class="pull-right">
+        <%= link_to backend_form_submissions_path(@model), class: 'btn btn-primary' do %>
+          <%= icon(:envelope_open, t('b.msg.forms.view_submissions')) %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

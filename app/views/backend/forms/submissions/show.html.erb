@@ -1,2 +1,9 @@
 <% breadcrumb.add @model.data_object.email %>
 <%= render 'backend/breadcrumbs' %>
+
+<% @form.fields.each do |field| %>
+  <dl>
+    <dt><%= field.label %></dt>
+    <dd><%# d.value %></dd>
+  </dl>
+<% end %>

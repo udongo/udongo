@@ -1,3 +1,4 @@
+# FIXME: Rename name to identifier
 class FormField < ApplicationRecord
   include Concerns::Sortable
   sortable scope: [:form_id]

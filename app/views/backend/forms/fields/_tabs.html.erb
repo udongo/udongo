@@ -5,7 +5,7 @@
         <% klass = %w(nav-link) %>
         <% klass << 'active' if active == :general %>
 
-        <%= link_to t('b.general'), edit_backend_form_path(@model), class: klass %>
+        <%= link_to t('b.general'), edit_backend_form_field_path(@form, @field), class: klass %>
       </li>
 
       <% Udongo.config.i18n.app.locales.each do |locale| %>
@@ -13,15 +13,9 @@
           <% klass = %w(nav-link) %>
           <% klass << 'active' if active == locale.to_sym %>
 
-          <%= link_to locale.upcase, edit_translation_backend_form_path(@model, locale), class: klass %>
+          <%= link_to locale.upcase, edit_translation_backend_form_field_path(@form, @field, locale), class: klass %>
         </li>
       <% end %>
     </ul>
-
-    <div class="pull-right">
-      <%= link_to backend_form_submissions_path(@model), class: 'btn btn-primary' do %>
-        <%= icon(:envelope_open, t('b.msg.forms.view_submissions')) %>
-      <% end %>
-    </div>
   </div>
 </div>

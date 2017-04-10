@@ -33,6 +33,8 @@ nl:
     first_name: Voornaam
     flexible_content: Flexibele inhoud
     form: Formulier
+    form_field: Invulveld
+    form_fields: Invulvelden
     form_submission: Inzending
     form_submissions: Inzendingen
     forms: Formulieren
@@ -117,11 +119,17 @@ nl:
         edit_text: Tekst bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
       forgot_password: Wachtwoord vergeten?
+      form_fields:
+        add: Invulveld toevoegen
+        add_first: Maak het eerste invulveld aan
+        edit: Bewerk invulveld
+        explanation: Er zijn nog geen invulvelden gedefiniëerd.
       form_submissions:
         explanation: Er zijn nog geen inzendingen binnengekomen voor dit formulier.
       forms:
         add_first: Maak het eerste formulier aan
         explanation: Met deze module kan je formulieren beheren en hun inzendingen bekijken.
+        view_submissions: Inzendingen voor dit formulier
       general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:
         status_code: Meer info over het gebruik van status codes.

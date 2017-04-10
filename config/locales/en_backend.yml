@@ -32,6 +32,12 @@ en:
     filter: Filter
     first_name: First name
     flexible_content: Flexible content
+    form: Form
+    form_field: Input field
+    form_fields: Input fields
+    form_submission: Submission
+    form_submissions: Submissions
+    forms: Forms
     from: From
     general: General
     house_number: House number
@@ -113,11 +119,17 @@ en:
         edit_text: Edit text
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
       forgot_password: Forgot password?
+      form_fields:
+        add: Add input field
+        add_first: Create the first input field.
+        edit: Edit input field
+        explanation: No input fields have been added yet.
       form_submissions:
         explanation: There have been no submissions for this form yet.
       forms:
         add_first: Create your first form
         explanation: With this module you can manage forms and view their submissions.
+        view_submissions: Submissions for this form
       general_form_error: Something went wrong. Please check the marked fields.
       help_texts:
         status_code: More info about the use of status codes.

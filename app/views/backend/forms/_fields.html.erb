@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header">
+    <%= t 'b.form_fields' %>
+    <% if @model.fields.any? %>
+      <div class="pull-right">
+        <%= link_to icon(:plus, t('b.msg.form_fields.add')), new_backend_form_field_path(@model), class: 'btn btn-primary btn-sm' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="card-block">
+    <% if @model.fields.any? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t('b.name') %></th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @model.fields.each do |f| %>
+            <tr>
+              <td><%= f.name %></td>
+              <td class="text-xs-right">
+                <%= link_to icon(:pencil_square_o), edit_backend_form_field_path(@model, f) %>
+                <%= link_to icon(:trash), backend_form_field_path(@model, f), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>
+        <%= t('b.msg.form_fields.explanation') %>
+        <%= link_to t('b.msg.form_fields.add_first'), new_backend_form_field_path(@model) %>.
+      </p>
+    <% end %>
+  </div>
+</div>

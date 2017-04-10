@@ -1,0 +1,20 @@
+<%= render 'backend/general_form_error', object: @field %>
+
+<%= simple_form_for [:backend, @field] do |f| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.general' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :name %>
+          <%= f.input :field_type %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: edit_backend_form_path(@form) %>
+<% end %>

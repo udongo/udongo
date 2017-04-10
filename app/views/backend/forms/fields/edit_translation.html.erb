@@ -5,14 +5,18 @@
 <%= render 'backend/general_form_error', object: @translation %>
 
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_form_field_path) do |f| %>
-  <div class="card">
-    <div class="card-header">
-      <%= t 'b.content' %>
-    </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.content' %>
+        </div>
 
-    <div class="card-block">
-      <%= f.input :label %>
-      <%= f.input :default_value %>
+        <div class="card-block">
+          <%= f.input :label %>
+          <%= f.input :default_value %>
+        </div>
+      </div>
     </div>
   </div>
 

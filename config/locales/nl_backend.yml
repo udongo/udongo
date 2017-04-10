@@ -117,6 +117,11 @@ nl:
         edit_text: Tekst bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
       forgot_password: Wachtwoord vergeten?
+      form_submissions:
+        explanation: Er zijn nog geen inzendingen binnengekomen voor dit formulier.
+      forms:
+        add_first: Maak het eerste formulier aan
+        explanation: Met deze module kan je formulieren beheren en hun inzendingen bekijken.
       general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:
         status_code: Meer info over het gebruik van status codes.

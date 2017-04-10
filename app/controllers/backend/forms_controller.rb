@@ -10,6 +10,20 @@ class Backend::FormsController < Backend::BaseController
     @forms = Form.all
   end
 
+  def new
+    @model = Form.new
+  end
+
+  def create
+    @model = Form.new(allowed_params)
+
+    if @model.save
+      redirect_to backend_forms_path, notice: translate_notice(:added, :form)
+    else
+      render :new
+    end
+  end
+
   def edit
     @model = Form.find(params[:id].to_i)
   end

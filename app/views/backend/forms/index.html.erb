@@ -23,5 +23,6 @@
   </table>
 
 <% else %>
-  <p><%= t 'b.msg.no_items' %></p>
+  <p><%= t('b.msg.forms.explanation') %></p>
+  <%= link_to t('b.msg.forms.add_first'), new_backend_form_path, class: 'btn btn-primary' %>
 <% end %>

@@ -125,7 +125,9 @@ nl:
         edit: Bewerk invulveld
         explanation: Er zijn nog geen invulvelden gedefiniëerd.
       form_submissions:
+        back_html: '&larr; Terug naar de inzendingen'
         explanation: Er zijn nog geen inzendingen binnengekomen voor dit formulier.
+        received_at: Ontvangen op
       forms:
         add_first: Maak het eerste formulier aan
         explanation: Met deze module kan je formulieren beheren en hun inzendingen bekijken.

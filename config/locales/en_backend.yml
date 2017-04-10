@@ -125,7 +125,9 @@ en:
         edit: Edit input field
         explanation: No input fields have been added yet.
       form_submissions:
+        back_html: '&larr; Back to the submissions overview'
         explanation: There have been no submissions for this form yet.
+        received_at: Received at
       forms:
         add_first: Create your first form
         explanation: With this module you can manage forms and view their submissions.

@@ -8,4 +8,6 @@ class FormField < ApplicationRecord
   belongs_to :form
 
   validates :form, :identifier, :field_type, presence: true
+
+  validates_uniqueness_of :identifier, scope: :form_id
 end

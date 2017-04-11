@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :form_field do
     form
-    identifier 'name'
+    sequence(:identifier) { |n| "name-#{n}" }
     field_type 'text'
   end
 end

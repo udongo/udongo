@@ -8,9 +8,32 @@ describe FormField do
 
   describe 'validations' do
     describe 'presence' do
-      it(:form) { expect(build(klass, form: nil)).not_to be_valid }
-      it(:identifier) { expect(build(klass, identifier: nil)).not_to be_valid }
-      it(:field_type) { expect(build(klass, field_type: nil)).not_to be_valid }
+      it(:form) { expect(build(klass, form: nil)).to_not be_valid }
+      it(:identifier) { expect(build(klass, identifier: nil)).to_not be_valid }
+      it(:field_type) { expect(build(klass, field_type: nil)).to_not be_valid }
+    end
+
+    describe 'uniqueness' do
+      describe 'identifier' do
+        let(:form) { create(:form) }
+
+        describe 'valid' do
+          it 'scoped on form' do
+            create(klass, identifier: 'blub', form: form)
+            expect(build(klass, identifier: 'foo', form: form)).to be_valid
+          end
+
+          it 'not scoped on form' do
+            create(klass, identifier: 'blub')
+            expect(build(klass, identifier: 'blub')).to be_valid
+          end
+        end
+
+        it 'invalid' do
+          create(klass, identifier: 'foo', form: form)
+          expect(build(klass, identifier: 'foo', form: form)).to_not be_valid
+        end
+      end
     end
   end
 

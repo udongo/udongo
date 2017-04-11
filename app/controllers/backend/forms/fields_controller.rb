@@ -42,7 +42,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
   private
 
   def allowed_params
-    params[:form_field].permit(:identifier, :field_type)
+    params[:form_field].permit(:identifier, :field_type, :presence, :email)
   end
 
   def find_model

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410121055) do
+ActiveRecord::Schema.define(version: 20170411161008) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -37,11 +37,6 @@ ActiveRecord::Schema.define(version: 20170410121055) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["locale"], name: "index_admins_on_locale", using: :btree
-  end
-
-  create_table "article_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -185,6 +180,8 @@ ActiveRecord::Schema.define(version: 20170410121055) do
     t.text     "locales",    limit: 65535
     t.string   "identifier"
     t.string   "field_type"
+    t.boolean  "presence"
+    t.boolean  "email"
     t.integer  "position"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false

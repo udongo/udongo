@@ -15,6 +15,19 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.validations' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :presence %>
+          <%= f.input :email %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <%= render 'backend/form_actions', cancel_url: edit_backend_form_path(@form) %>

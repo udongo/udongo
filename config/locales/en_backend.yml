@@ -94,6 +94,7 @@ en:
     used: Used
     user: User
     users: Users
+    validations: Validations
     variables: Variables
     view: View
     visible: Visible
@@ -126,6 +127,7 @@ en:
         add_first: Create the first input field.
         edit: Edit input field
         explanation: No input fields have been added yet.
+        index_header_html: 'Input fields for form &ldquo;%{form}&rdquo;'
       form_submissions:
         back_html: '&larr; Back to the submissions overview'
         explanation: There have been no submissions for this form yet.

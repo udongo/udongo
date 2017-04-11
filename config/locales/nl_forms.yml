@@ -38,6 +38,7 @@ nl:
         phone: Telefoonnummer
         plain_content: Tekstuele inhoud
         press_release: Persbericht?
+        presence: Verplicht veld
         published_at: Gepubliceerd op
         seo_title: Paginatitel
         seo_slug: Aangepaste URL

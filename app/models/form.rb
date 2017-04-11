@@ -6,5 +6,5 @@ class Form < ApplicationRecord
   has_many :submissions, class_name: 'FormSubmission'
   has_many :data, through: :submissions
 
-  validates :identifier, presence: true
+  validates :description, presence: true
 end

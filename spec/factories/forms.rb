@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :form do
-    identifier 'contact'
+    description 'Contact form'
   end
 end

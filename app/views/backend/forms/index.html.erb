@@ -5,6 +5,7 @@
     <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.description' %></th>
+        <th><%= t 'b.form_submissions' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -13,12 +14,9 @@
       <% @forms.each do |f| %>
         <tr>
           <td><%= f.description %></td>
+          <td><%= link_to f.submissions.size, backend_form_submissions_path(f) %></td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, f] %>
-
-            <% if f.submissions.any? %>
-              <%= link_to icon(:envelope_open), backend_form_submissions_path(f) %>
-            <% end %>
 
             <% if f.submissions.any? %>
               <%= link_to icon(:trash), '#', data: { toggle: 'tooltip' }, title: t('b.msg.forms.removal_warning', submissions: f.submissions.size) %>

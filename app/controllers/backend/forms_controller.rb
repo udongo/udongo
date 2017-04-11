@@ -18,8 +18,7 @@ class Backend::FormsController < Backend::BaseController
     @model = Form.new(allowed_params)
 
     if @model.save
-      redirect_to edit_backend_form_path(@model),
-        notice: translate_notice(:added, :form)
+      redirect_to backend_forms_path, notice: translate_notice(:added, :form)
     else
       render :new
     end

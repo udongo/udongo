@@ -21,6 +21,7 @@ nl:
     down: Omlaag
     download: Download
     edit: Bewerk
+    edit_translation: Bewerk vertaling
     email: E-mail
     emails: E-mails
     email_template: E-mail template
@@ -57,6 +58,7 @@ nl:
     none: Geen
     not_set: Niet ingesteld
     not_yet_sent: Nog niet verzonden
+    overview: Overzicht
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
@@ -123,13 +125,15 @@ nl:
         add: Invulveld toevoegen
         add_first: Maak het eerste invulveld aan
         edit: Bewerk invulveld
-        explanation: Er zijn nog geen invulvelden gedefiniëerd.
+        explanation: Er zijn nog geen invulvelden gedefiniëerd voor dit formulier.
+        index_header_html: 'Invulvelden voor formulier &ldquo;%{form}&rdquo;'
       form_submissions:
         back_html: '&larr; Terug naar de inzendingen'
         explanation: Er zijn nog geen inzendingen binnengekomen voor dit formulier.
         received_at: Ontvangen op
       forms:
         add_first: Maak het eerste formulier aan
+        back_html: '&larr; Terug naar het overzicht van formulieren'
         explanation: Met deze module kan je formulieren beheren en hun inzendingen bekijken.
         removal_warning: 'Dit formulier kan niet verwijderd worden omdat er %{submissions} inzending(en) aan gekoppeld zijn.'
         view_submissions: Inzendingen voor dit formulier

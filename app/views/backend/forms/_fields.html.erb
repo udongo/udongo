@@ -1,17 +1,17 @@
 <% javascript 'backend/sortable' %>
 
-<div class="card">
+<div id="form-fields" class="card">
   <div class="card-header">
-    <%= t 'b.form_fields' %>
-    <% if @model.fields.any? %>
+    <%= t 'b.msg.form_fields.index_header_html', form: form.description %>
+    <% if form.fields.any? %>
       <div class="pull-right">
-        <%= link_to icon(:plus, t('b.msg.form_fields.add')), new_backend_form_field_path(@model), class: 'btn btn-primary btn-sm' %>
+        <%= link_to icon(:plus, t('b.msg.form_fields.add')), new_backend_form_field_path(form), class: 'btn btn-primary btn-sm' %>
       </div>
     <% end %>
   </div>
 
   <div class="card-block">
-    <% if @model.fields.any? %>
+    <% if form.fields.any? %>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -21,12 +21,12 @@
         </thead>
 
         <tbody>
-          <% @model.fields.each do |f| %>
-            <tr data-update-position="<%= update_position_backend_form_field_path(@model, f) %>">
+          <% form.fields.each do |f| %>
+            <tr data-update-position="<%= update_position_backend_form_field_path(form, f) %>">
               <td><%= f.identifier %></td>
               <td class="text-xs-right">
-                <%= link_to icon(:pencil_square_o), edit_backend_form_field_path(@model, f) %>
-                <%= link_to icon(:trash), backend_form_field_path(@model, f), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
+                <%= link_to icon(:pencil_square_o), edit_backend_form_field_path(form, f) %>
+                <%= link_to icon(:trash), backend_form_field_path(form, f), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
               </td>
             </tr>
           <% end %>
@@ -35,7 +35,7 @@
     <% else %>
       <p>
         <%= t('b.msg.form_fields.explanation') %>
-        <%= link_to t('b.msg.form_fields.add_first'), new_backend_form_field_path(@model) %>.
+        <%= link_to t('b.msg.form_fields.add_first'), new_backend_form_field_path(form) %>.
       </p>
     <% end %>
   </div>

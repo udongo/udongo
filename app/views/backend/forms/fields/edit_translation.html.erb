@@ -1,4 +1,5 @@
-<% breadcrumb.add t('b.msg.form_fields.edit') %>
+<% breadcrumb.add t('b.form_fields'), backend_form_fields_path(@form) %>
+<% breadcrumb.add t('b.edit_translation') %>
 <%= render 'backend/breadcrumbs' %>
 
 <%= render 'backend/forms/fields/tabs', active: params[:translation_locale].to_sym %>

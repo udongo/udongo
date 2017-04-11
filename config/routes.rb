@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       concerns :translatable
       resources :submissions, controller: 'forms/submissions'
 
-      resources :fields, controller: 'forms/fields', except: %w(index show) do
+      resources :fields, controller: 'forms/fields', except: %w(show) do
         concerns :translatable, :positionable
       end
     end

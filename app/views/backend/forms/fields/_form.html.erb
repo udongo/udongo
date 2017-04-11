@@ -1,6 +1,6 @@
 <%= render 'backend/general_form_error', object: @field %>
 
-<%= simple_form_for [:backend, @field] do |f| %>
+<%= simple_form_for [:backend, @field], url: url do |f| %>
   <div class="row">
     <div class="col-md-6">
       <div class="card">

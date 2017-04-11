@@ -1,5 +1,5 @@
-<% breadcrumb.add t('b.msg.form_fields.add') %>
+<% breadcrumb.add t('b.form_fields'), backend_form_fields_path(@form) %>
+<% breadcrumb.add t('b.add') %>
 <%= render 'backend/breadcrumbs' %>
 
-<%# render 'backend/forms/fields/tabs', active: :general %>
-<%= render 'backend/forms/fields/form' %>
+<%= render 'backend/forms/fields/form', url: backend_form_fields_path(@form) %>

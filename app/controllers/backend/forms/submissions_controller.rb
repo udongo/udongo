@@ -4,7 +4,7 @@ class Backend::Forms::SubmissionsController < Backend::Forms::BaseController
   before_action :find_model, except: :index
   before_action -> do
     breadcrumb.add t('b.forms'), backend_forms_path
-    breadcrumb.add @form.identifier, edit_backend_form_path(@form)
+    breadcrumb.add @form.description, edit_backend_form_path(@form)
   end
 
   def index

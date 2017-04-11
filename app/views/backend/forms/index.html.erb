@@ -5,6 +5,7 @@
     <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.description' %></th>
+        <th><%= t 'b.form_fields' %></th>
         <th><%= t 'b.form_submissions' %></th>
         <th>&nbsp;</th>
       </tr>
@@ -13,8 +14,23 @@
     <tbody>
       <% @forms.each do |f| %>
         <tr>
-          <td><%= f.description %></td>
-          <td><%= link_to f.submissions.size, backend_form_submissions_path(f) %></td>
+          <td>
+            <%= f.description %>
+          </td>
+          <td>
+            <% if f.fields.none? %>
+              0
+            <% else %>
+              <%= f.fields.size %> (<%= link_to t('b.overview').downcase, backend_form_fields_path(f) %>)
+            <% end %>
+          </td>
+          <td>
+            <% if f.submissions.none? %>
+              0
+            <% else %>
+              <%= f.submissions.size %> (<%= link_to t('b.overview').downcase, backend_form_submissions_path(f) %>)
+            <% end %>
+          </td>
           <td class="text-xs-right">
             <%= link_to_edit [:backend, f] %>
 

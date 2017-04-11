@@ -21,6 +21,7 @@ en:
     down: Down
     download: Download
     edit: Edit
+    edit_translation: Edit translation
     email: E-mail
     emails: E-mails
     email_template: E-mail template
@@ -57,6 +58,7 @@ en:
     none: None
     not_set: Not set
     not_yet_sent: Not yet sent
+    overview: Overview
     page: Page
     pages: Pages
     password: Password
@@ -130,6 +132,7 @@ en:
         received_at: Received at
       forms:
         add_first: Create your first form
+        back_html: '&larr; Back to the forms overview'
         explanation: With this module you can manage forms and view their submissions.
         removal_warning: "This form can't be removed because there are %{submissions} submission(s) linked to it."
         view_submissions: Submissions for this form

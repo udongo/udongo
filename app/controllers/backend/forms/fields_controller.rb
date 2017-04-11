@@ -6,7 +6,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
   before_action :find_model, only: %w(edit update destroy)
   before_action -> do
     breadcrumb.add t('b.forms'), backend_forms_path
-    breadcrumb.add @form.identifier, edit_backend_form_path(@form)
+    breadcrumb.add @form.description, edit_backend_form_path(@form)
   end
 
   def new
@@ -26,7 +26,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
 
   def update
     if @field.update_attributes allowed_params
-      redirect_to edit_backend_form_path(@form),
+      redirect_to backend_form_fields_path(@form),
         notice: translate_notice(:edited, :form_field)
     else
       render :edit
@@ -35,7 +35,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
 
   def destroy
     @field.destroy
-    redirect_to edit_backend_form_path(@form),
+    redirect_to backend_form_fields_path(@form),
       notice: translate_notice(:deleted, :form_field)
   end
 

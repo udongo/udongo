@@ -2,6 +2,7 @@ class Backend::Content::Rows::PicturesController < Backend::BaseController
   include Concerns::Backend::ContentTypeController
   before_action :redirect_unless_has_asset, only: [:edit, :update]
   before_action :redirect_if_has_asset, only: [:link_or_upload, :link, :upload]
+  before_action :prepare_upload, only: [:link_or_upload, :upload]
 
   model ContentPicture
   allowed_params :caption, :url
@@ -13,17 +14,7 @@ class Backend::Content::Rows::PicturesController < Backend::BaseController
     redirect_to edit_backend_content_picture_path
   end
 
-  def link_or_upload
-    @asset = Asset.new
-    @search = Asset.ransack params[:q]
-    @assets = @search.result(distinct: true).image.where.not(id: @model.asset_id).order('id DESC')
-  end
-
   def upload
-    @asset = Asset.new
-    @search = Asset.ransack params[:q]
-    @assets = @search.result(distinct: true).image.where.not(id: @model.asset_id).order('id DESC')
-
     @asset.filename = params[:asset][:filename]
     @asset.description = params[:asset][:description]
 
@@ -50,5 +41,11 @@ class Backend::Content::Rows::PicturesController < Backend::BaseController
     if @model.asset
       redirect_to edit_backend_content_picture_path(@model)
     end
+  end
+
+  def prepare_upload
+    @asset = Asset.new
+    @search = Asset.ransack params[:q]
+    @assets = @search.result(distinct: true).image.where.not(id: @model.asset_id).order('id DESC')
   end
 end

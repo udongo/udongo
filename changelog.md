@@ -2,6 +2,8 @@
 --
 * Add missing ```author``` key to form translations.
 * The ContentImage/Text decorators have been simplified.
+* Fixed bug where you couldn't include ```Concerns::Searchable``` on models
+  without flexible content without getting an unknown method error.
 
 
 5.7.0 - 2017-03-22

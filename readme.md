@@ -116,7 +116,7 @@ You can also override the default message with your own:
 ## Flexible content
 ### types
 ```ruby
-Udongo.config.flexible_content.types = %w(text image)
+Udongo.config.flexible_content.types = %w(text picture)
 ```
 
 ### allowed_breakpoints

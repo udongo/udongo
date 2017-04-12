@@ -111,6 +111,7 @@ en:
         delete_row: Delete row
         edit_column: Edit column
         edit_image: Edit image
+        edit_picture: Edit picture
         edit_text: Edit text
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
       forgot_password: Forgot password?

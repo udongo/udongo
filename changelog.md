@@ -1,4 +1,4 @@
-5.8.0 - xxxx-xx-xx
+5.8.0 - 2017-04-12
 --
 * Add missing ```author``` key to form translations.
 * The ContentImage/Text decorators have been simplified.

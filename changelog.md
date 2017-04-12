@@ -5,6 +5,8 @@
 * Fixed bug where you couldn't include ```Concerns::Searchable``` on models
   without flexible content without getting an unknown method error.
 * The column widths for flexible content are displayed in percentages.
+* An extra widget ```ContentPicture``` has been added. This is the replacement
+  for the ````ContentImage```` which has now been deprecated.
 
 
 5.7.0 - 2017-03-22

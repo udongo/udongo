@@ -98,7 +98,7 @@ nl:
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
       content_types:
-        image: Afbeelding
+        image: Afbeelding (niet meer gebruiken!)
         picture: Foto
         text: Tekst
       deleted: '%{actor} werd verwijderd.'

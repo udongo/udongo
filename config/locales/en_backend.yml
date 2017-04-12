@@ -98,7 +98,7 @@ en:
       changes_saved: The changes have been saved.
       confirm: Are you sure?
       content_types:
-        image: Image
+        image: Image (deprecated!)
         picture: Picture
         text: Text
       deleted: '%{actor} was deleted.'

@@ -1,3 +1,8 @@
+5.8.0 - xxxx-xx-xx
+--
+* Add missing ```author``` key to form translations.
+
+
 5.7.0 - 2017-03-22
 --
 * The ```Navigation``` model now includes the cacheable concern.

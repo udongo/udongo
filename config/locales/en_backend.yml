@@ -114,6 +114,7 @@ en:
         edit_picture: Edit picture
         edit_text: Edit text
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
+        no_picture_present: No picture has been uploaded/linked yet.
       forgot_password: Forgot password?
       general_form_error: Something went wrong. Please check the marked fields.
       help_texts:

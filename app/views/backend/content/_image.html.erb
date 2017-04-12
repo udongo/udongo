@@ -3,7 +3,7 @@
   <%= image_tag object.file.size_1024x640.url, alt: '', class: 'img-fluid' %>
 
   <% if object.caption.present? %>
-    <div class="text-center">
+    <div class="text-xs-center">
       <%= object.caption.html_safe %>
     </div>
   <% end %>

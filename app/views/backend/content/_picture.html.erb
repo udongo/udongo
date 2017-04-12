@@ -1,1 +1,13 @@
-<p>ContentPicture will come here...</p>
+<% if object.present? && object.asset.present? %>
+
+  <%= image_tag object.asset.image.url(1100, 1100, quality: 65), alt: '', class: 'img-fluid' %>
+
+  <% if object.caption.present? %>
+    <div class="text-xs-center">
+      <%= object.caption.html_safe %>
+    </div>
+  <% end %>
+
+<% else %>
+  <%= t 'b.msg.flexible_content.no_picture_present' %>
+<% end %>

@@ -99,6 +99,7 @@ en:
       confirm: Are you sure?
       content_types:
         image: Image
+        picture: Picture
         text: Text
       deleted: '%{actor} was deleted.'
       dirty_inputs_warning: "You are about to leave the page but your changes aren't saved yet.\nDo you still want to leave the page?"

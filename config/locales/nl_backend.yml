@@ -99,6 +99,7 @@ nl:
       confirm: Ben je zeker?
       content_types:
         image: Afbeelding
+        picture: Foto
         text: Tekst
       deleted: '%{actor} werd verwijderd.'
       dirty_inputs_warning: "Je gaat de pagina verlaten maar je aanpassingen zijn nog niet bewaard.\nWil je nog steeds de pagina verlaten?"

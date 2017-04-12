@@ -4,6 +4,7 @@
 * The ContentImage/Text decorators have been simplified.
 * Fixed bug where you couldn't include ```Concerns::Searchable``` on models
   without flexible content without getting an unknown method error.
+* The column widths for flexible content are displayed in percentages.
 
 
 5.7.0 - 2017-03-22

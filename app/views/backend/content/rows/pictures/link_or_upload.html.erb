@@ -8,9 +8,7 @@
       <%= f.input :filename, as: :file, label: false, required: false %>
       <%= f.input :description, as: :text, required: false %>
 
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary"><%= t 'b.save' %></button>
-      </div>
+      <%= render 'backend/form_actions', cancel_url: content_path %>
     </div>
   </div>
 <% end %>

@@ -98,7 +98,8 @@ en:
       changes_saved: The changes have been saved.
       confirm: Are you sure?
       content_types:
-        image: Image
+        image: Image (deprecated!)
+        picture: Picture
         text: Text
       deleted: '%{actor} was deleted.'
       dirty_inputs_warning: "You are about to leave the page but your changes aren't saved yet.\nDo you still want to leave the page?"
@@ -110,8 +111,10 @@ en:
         delete_row: Delete row
         edit_column: Edit column
         edit_image: Edit image
+        edit_picture: Edit picture
         edit_text: Edit text
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
+        no_picture_present: No picture has been uploaded/linked yet.
       forgot_password: Forgot password?
       general_form_error: Something went wrong. Please check the marked fields.
       help_texts:

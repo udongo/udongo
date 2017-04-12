@@ -83,7 +83,15 @@ Rails.application.routes.draw do
 
       scope module: 'rows' do
         Udongo.config.flexible_content.types.each do |content_type|
+          next if content_type == 'picture'
           resources content_type.to_s.pluralize.to_sym, only: [:edit, :update]
+        end
+
+        resources :pictures, only: [:edit, :update] do
+          member do
+            get :link_or_upload, :link
+            post :upload
+          end
         end
       end
     end

@@ -5,7 +5,7 @@ module Udongo
 
       BREAKPOINTS = %w(xs sm md lg xl)
 
-      attribute :types, Array, default: %w(text image)
+      attribute :types, Array, default: %w(text picture image)
       attribute :allowed_breakpoints, Array, default: BREAKPOINTS
 
       def allowed_breakpoint?(value)

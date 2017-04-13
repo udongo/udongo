@@ -45,7 +45,6 @@ describe 'article routes' do
     expect(get: backend_article_images_path(1)).to route_to('backend/articles/images#index', article_id: '1')
   end
 
-
   it 'POST /backend/articles/1/images/2/update_position' do
     expect(post: update_position_backend_article_image_path(1, 2)).to route_to('backend/articles/images#update_position', article_id: '1', id: '2')
   end

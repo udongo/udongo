@@ -28,6 +28,6 @@ var flexible_content = flexible_content || {
       }
     })
   }
-}
+};
 
 $(function(){ flexible_content.init(); });

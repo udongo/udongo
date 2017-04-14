@@ -4,6 +4,6 @@ class Backend::Forms::BaseController < Backend::BaseController
   private
 
   def find_form
-    @form ||= Form.find(params[:form_id].to_i).decorate
+    @form = Form.find(params[:form_id]).decorate
   end
 end

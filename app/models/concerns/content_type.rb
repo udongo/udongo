@@ -13,5 +13,9 @@ module Concerns
     def parent
       column.row.rowable
     end
+
+    def content_type_is?(value)
+      value.to_sym == content_type.to_sym
+    end
   end
 end

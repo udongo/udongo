@@ -1,9 +1,13 @@
 # Upgrade guide
+## From 5.7.0 to 5.8.0
+### Flexible content
+The ```ContentImage``` model has been deprecated. Use ```ContentPicture```
+instead. In version 6.0 we will remove the deprecated widget.
+
 ## From 5.6.0 to 5.7.0
 ### NavigationHelper
 A new module has been added to make it easier to fetch navigations. You can now
 use do something like ```navigation(:footer).items```
-
 
 ## From 5.5.0 to 5.6.0
 ### Translations

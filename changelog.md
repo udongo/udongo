@@ -1,3 +1,9 @@
+5.9.0 - xxxx-xx-xx
+--
+* Fixes issue in pages module that prevented you from clicking the context
+  menu items.
+
+
 5.8.0 - 2017-04-12
 --
 * Add missing ```author``` key to form translations.

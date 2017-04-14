@@ -1,0 +1,20 @@
+<% breadcrumb.add t('b.form_submissions'), backend_form_submissions_path(@form) %>
+<% breadcrumb.add @model.data_object.email %>
+
+<%= render 'backend/breadcrumbs' %>
+
+<div class="card">
+  <div class="card-block">
+    <dl>
+      <dt><%= t('b.msg.form_submissions.received_at') %></dt>
+      <dd><%= l(@model.created_at) %></dd>
+
+      <% @model.data.decorate.each do |d| %>
+        <dt><%= d.label %></dt>
+        <dd><%= d.value %></dd>
+      <% end %>
+    </dl>
+  </div>
+</div>
+
+<%= link_to t('b.msg.form_submissions.back_html'), backend_form_submissions_path(@form), class: 'btn btn-secondary' %>

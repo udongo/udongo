@@ -21,6 +21,7 @@ nl:
     down: Omlaag
     download: Download
     edit: Bewerk
+    edit_translation: Bewerk vertaling
     email: E-mail
     emails: E-mails
     email_template: E-mail template
@@ -32,6 +33,12 @@ nl:
     filter: Filter
     first_name: Voornaam
     flexible_content: Flexibele inhoud
+    form: Formulier
+    form_field: Invulveld
+    form_fields: Invulvelden
+    form_submission: Inzending
+    form_submissions: Inzendingen
+    forms: Formulieren
     from: Van
     general: Algemeen
     house_number: Huisnummer
@@ -51,6 +58,7 @@ nl:
     none: Geen
     not_set: Niet ingesteld
     not_yet_sent: Nog niet verzonden
+    overview: Overzicht
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
@@ -86,6 +94,7 @@ nl:
     used: Gebruikt
     user: Gebruiker
     users: Gebruikers
+    validations: Validaties
     variables: Variabelen
     view: Bekijk
     visible: Zichtbaar
@@ -116,6 +125,22 @@ nl:
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
         no_picture_present: Er werd nog geen foto geüpload of gelinkt.
       forgot_password: Wachtwoord vergeten?
+      form_fields:
+        add: Invulveld toevoegen
+        add_first: Maak het eerste invulveld aan
+        edit: Bewerk invulveld
+        explanation: Er zijn nog geen invulvelden gedefiniëerd voor dit formulier.
+        index_header_html: 'Invulvelden voor formulier &ldquo;%{form}&rdquo;'
+      form_submissions:
+        back_html: '&larr; Terug naar de inzendingen'
+        explanation: Er zijn nog geen inzendingen binnengekomen voor dit formulier.
+        received_at: Ontvangen op
+      forms:
+        add_first: Maak het eerste formulier aan
+        back_html: '&larr; Terug naar het overzicht van formulieren'
+        explanation: Met deze module kan je formulieren beheren en hun inzendingen bekijken.
+        removal_warning: 'Dit formulier kan niet verwijderd worden omdat er %{submissions} inzending(en) aan gekoppeld zijn.'
+        view_submissions: Inzendingen voor dit formulier
       general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:
         status_code: Meer info over het gebruik van status codes.

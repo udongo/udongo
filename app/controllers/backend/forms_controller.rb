@@ -2,9 +2,7 @@ class Backend::FormsController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
   before_action :find_model, only: [:edit, :update, :destroy]
-  before_action -> do
-    breadcrumb.add t('b.forms'), backend_forms_path
-  end
+  before_action -> { breadcrumb.add t('b.forms'), backend_forms_path}
 
   def index
     @forms = Form.all
@@ -25,7 +23,7 @@ class Backend::FormsController < Backend::BaseController
   end
 
   def edit
-    @model = Form.find(params[:id].to_i)
+    @model = Form.find(params[:id])
   end
 
   def update

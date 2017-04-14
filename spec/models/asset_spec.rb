@@ -84,6 +84,18 @@ describe Asset do
       expect(create(klass)).to be_deletable
     end
 
+    it 'has an image' do
+      asset = create(klass)
+      create(:image, asset: asset, imageable: create(:page))
+      expect(asset).not_to be_deletable
+    end
+
+    it 'has a content picture' do
+      asset = create(klass)
+      create(:content_picture, asset: asset)
+      expect(asset).not_to be_deletable
+    end
+
     it :false do
       asset = create(klass)
       create(:image, asset: asset, imageable: create(:page))
@@ -93,7 +105,7 @@ describe Asset do
 
   it '#responds_to?' do
     expect(build(klass)).to respond_to(
-      :image?, :image, :images, :actual_filename, :deletable?
+      :image?, :image, :images, :actual_filename, :deletable?, :content_pictures
     )
   end
 end

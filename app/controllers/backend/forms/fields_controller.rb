@@ -3,7 +3,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
   include Concerns::Backend::PositionableController
   include Concerns::PaginationController
 
-  before_action :find_model, only: %w(edit update destroy)
+  before_action :find_model, only: [:edit, :update, :destroy]
   before_action -> do
     breadcrumb.add t('b.forms'), backend_forms_path
     breadcrumb.add @form.description, edit_backend_form_path(@form)
@@ -27,7 +27,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
   def update
     if @field.update_attributes allowed_params
       redirect_to backend_form_fields_path(@form),
-        notice: translate_notice(:edited, :form_field)
+                  notice: translate_notice(:edited, :form_field)
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
   def destroy
     @field.destroy
     redirect_to backend_form_fields_path(@form),
-      notice: translate_notice(:deleted, :form_field)
+                notice: translate_notice(:deleted, :form_field)
   end
 
   private
@@ -46,7 +46,7 @@ class Backend::Forms::FieldsController < Backend::Forms::BaseController
   end
 
   def find_model
-    @field ||= @form.fields.find(params[:id].to_i)
+    @field ||= @form.fields.find(params[:id])
   end
 
   def translation_form

@@ -3,7 +3,7 @@ class FormSubmissionData < ApplicationRecord
   # possible slow searches for the form submissions.
   after_save do
     next if value.blank?
-    index = form_submission.search_indices.find_or_create_by!(
+    index = form_submission.search_indices.find_or_initialize_by(
       locale: Udongo.config.i18n.app.default_locale,
       name: name
     )

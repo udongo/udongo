@@ -4,6 +4,7 @@ class Asset < ApplicationRecord
   mount_uploader :filename, AssetUploader
 
   has_many :images, dependent: :destroy
+  has_many :content_pictures, dependent: :destroy
 
   scope :image, -> { where(content_type: %w(image/gif image/jpeg image/png)) }
 
@@ -24,7 +25,7 @@ class Asset < ApplicationRecord
   end
 
   def deletable?
-    images.empty?
+    images.empty? && content_pictures.empty?
   end
 
   private

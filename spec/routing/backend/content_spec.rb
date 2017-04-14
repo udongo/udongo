@@ -78,4 +78,16 @@ describe 'content routes' do
       expect(put: "/backend/content/#{plural}/1").to route_to("backend/content/rows/#{plural}#update", id: '1')
     end
   end
+
+  it 'GET /backend/content/pictures/1/link_or_upload' do
+    expect(get: link_or_upload_backend_content_picture_path(1)).to route_to('backend/content/rows/pictures#link_or_upload', id: '1')
+  end
+
+  it 'GET /backend/content/pictures/1/link' do
+    expect(get: link_backend_content_picture_path(1)).to route_to('backend/content/rows/pictures#link', id: '1')
+  end
+
+  it 'POST /backend/content/pictures/1/upload' do
+    expect(post: upload_backend_content_picture_path(1)).to route_to('backend/content/rows/pictures#upload', id: '1')
+  end
 end

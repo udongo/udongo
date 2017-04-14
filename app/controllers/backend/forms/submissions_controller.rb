@@ -8,8 +8,7 @@ class Backend::Forms::SubmissionsController < Backend::Forms::BaseController
   end
 
   def index
-    @filter = Udongo::Forms::SubmissionFilter.search(@form, params[:q])
-    @submissions = paginate(@filter.result)
+    @submissions = paginate(@form.submissions)
   end
 
   def destroy

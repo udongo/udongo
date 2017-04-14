@@ -1,7 +1,6 @@
 <% breadcrumb.add t('b.form_submissions') %>
 
 <%= render 'backend/breadcrumbs' %>
-<%= render 'backend/forms/submissions/filter' %>
 
 <% if @submissions.any? %>
   <table class="table table-striped table-hover">
@@ -10,7 +9,6 @@
         <% if @form.email_present? %>
           <th><%= t('b.email') %></th>
         <% end %>
-        <%= @form.datagrid.column_headers %>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -29,7 +27,6 @@
           <% if @form.email_present? %>
             <td><%= mail_to s.data_object.email %></td>
           <% end %>
-          <%= @form.datagrid.column_values(s) %>
           <td class="text-xs-right">
             <%= link_to icon(:search), backend_form_submission_path(@form, s) %>
             <%= link_to icon(:trash), backend_form_submission_path(@form, s), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>

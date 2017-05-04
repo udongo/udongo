@@ -1,4 +1,22 @@
 # Upgrade guide
+## From 5.8.0 to 5.9.0
+### LinkHelper
+The link helper methods have been refined so they can work with a string or an
+object. This means you can use link_to_show/edit/delete in these two ways.
+
+```ruby
+link_to_show [:backend, object]
+link_to_show some_custom_path(object)
+```
+
+Another method that has been added is ```link_to_edit_translations(object, default_locale)```.
+This can only be used with an object and uses the default app locale.
+
+```ruby
+link_to_edit_translation [:backend, object]
+link_to_edit_translation [:backend, object], :fr
+```
+
 ## From 5.7.0 to 5.8.0
 ### Flexible content
 The ```ContentImage``` model has been deprecated. Use ```ContentPicture```

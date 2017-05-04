@@ -14,8 +14,8 @@
 
     <tfoot>
       <tr>
-        <td colspan="3" class="text-xs-center">
-            <%= link_to icon(:plus, t('b.msg.form_fields.add')), new_backend_form_field_path(@form), class: 'btn btn-primary' %>
+        <td colspan="2" class="text-xs-center">
+          <%= link_to icon(:plus, t('b.msg.form_fields.add')), new_backend_form_field_path(@form), class: 'btn btn-primary' %>
         </td>
       </tr>
     </tfoot>
@@ -25,8 +25,8 @@
         <tr data-update-position="<%= update_position_backend_form_field_path(@form, f) %>">
           <td><%= f.identifier %></td>
           <td class="text-xs-right">
-            <%= link_to icon(:pencil_square_o), edit_backend_form_field_path(@form, f) %>
-            <%= link_to icon(:trash), backend_form_field_path(@form, f), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
+            <%= link_to_edit edit_backend_form_field_path(@form, f) %>
+            <%= link_to_delete backend_form_field_path(@form, f) %>
           </td>
         </tr>
       <% end %>
@@ -40,4 +40,5 @@
     <p>
       <%= link_to t('b.msg.form_fields.add_first'), new_backend_form_field_path(@form), class: 'btn btn-primary' %>
     </p>
+  </div>
 <% end %>

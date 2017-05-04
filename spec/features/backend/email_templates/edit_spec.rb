@@ -30,6 +30,7 @@ describe 'edit e-mail templates' do
     it 'fields are prefilled' do
       email_template_page.visit
       email_template_page.click_edit
+      page.click_link 'Algemeen'
 
       expect(page).to have_current_path("/backend/email_templates/#{@template.id}/edit")
       expect(find_field('Interne naam').value).to eq 'foo'
@@ -43,6 +44,7 @@ describe 'edit e-mail templates' do
     it 'with success' do
       email_template_page.visit
       email_template_page.click_edit
+      page.click_link 'Algemeen'
       email_template_page.fill_in_general('foo 2', 'bar 2')
       email_template_page.fill_in_settings('Erik Bauffman', 'erik@bauffman.bar', 'cc@bauffman.bar', 'bcc@bauffman.bar')
       email_template_page.submit
@@ -62,6 +64,7 @@ describe 'edit e-mail templates' do
     it 'without success' do
       email_template_page.visit
       email_template_page.click_edit
+      page.click_link 'Algemeen'
       email_template_page.fill_in_general('', '')
       email_template_page.fill_in_settings('', '', '', '')
       email_template_page.submit
@@ -83,7 +86,6 @@ describe 'edit e-mail templates' do
     it 'fields are prefilled' do
       email_template_page.visit
       email_template_page.click_edit
-      page.click_link 'NL'
 
       expect(page).to have_current_path("/backend/email_templates/#{@template.id}/edit/nl")
       expect(find_field('Onderwerp').value).to eq 'Subject'
@@ -94,7 +96,6 @@ describe 'edit e-mail templates' do
     it 'with success' do
       email_template_page.visit
       email_template_page.click_edit
-      page.click_link 'NL'
       email_template_page.fill_in_translation('Subject 2', 'Plain content 2', 'HTML content 2')
       email_template_page.submit
 
@@ -109,7 +110,6 @@ describe 'edit e-mail templates' do
     it 'without success' do
       email_template_page.visit
       email_template_page.click_edit
-      page.click_link 'NL'
       email_template_page.fill_in_translation('', '', '')
       email_template_page.submit
 

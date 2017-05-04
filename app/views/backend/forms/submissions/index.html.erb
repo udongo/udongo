@@ -28,8 +28,8 @@
             <td><%= mail_to s.data_object.email %></td>
           <% end %>
           <td class="text-xs-right">
-            <%= link_to icon(:search), backend_form_submission_path(@form, s) %>
-            <%= link_to icon(:trash), backend_form_submission_path(@form, s), method: :delete, data: { confirm: t('b.msg.confirm') }, title: t('b.delete') %>
+            <%= link_to_show backend_form_submission_path(@form, s) %>
+            <%= link_to_delete backend_form_submission_path(@form, s) %>
           </td>
         </tr>
       <% end %>

@@ -13,7 +13,7 @@ module Udongo::Pages
         li_attr: list_attributes,
         data: {
           id: @page.id,
-          url: @context.edit_backend_page_path(@page),
+          url: @context.edit_translation_backend_page_path(@page, Udongo.config.i18n.app.default_locale),
           delete_url: @context.backend_page_path(@page, format: :json),
           deletable: @page.deletable?,
           draggable: @page.draggable?,

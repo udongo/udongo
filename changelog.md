@@ -1,4 +1,4 @@
-5.9.0 - xxxx-xx-xx
+5.9.0 - 2017-05-04
 --
 * Fixes issue in pages module that prevented you from clicking the context
   menu items.

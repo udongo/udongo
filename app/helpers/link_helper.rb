@@ -1,40 +1,36 @@
 module LinkHelper
   def link_to_show(value)
-    if value.is_a?(String)
-      url = value
-    else
-      str = Udongo::ObjectPath.find(value)
-      url = send(str, *Udongo::ObjectPath.remove_symbols(value))
-    end
-
-    link_to icon(:search), url, title: t('b.view')
+    link_to(
+      icon(:search),
+      path_from_string_or_object(value),
+      title: t('b.view')
+    )
   end
 
   def link_to_edit(value)
-    if value.is_a?(String)
-      url = value
-    else
-      str = "edit_#{Udongo::ObjectPath.find(value)}"
-      url = send(str, *Udongo::ObjectPath.remove_symbols(value))
-    end
-
-    link_to icon(:pencil_square_o), url, title: t('b.edit')
+    link_to(
+      icon(:pencil_square_o),
+      path_from_string_or_object(value, 'edit_'),
+      title: t('b.edit')
+    )
   end
 
   def link_to_delete(value)
-    if value.is_a?(String)
-      url = value
-    else
-      str = Udongo::ObjectPath.find(value)
-      url = send(str, *Udongo::ObjectPath.remove_symbols(value))
-    end
-
     link_to(
       icon(:trash),
-      url,
+      path_from_string_or_object(value),
       method: :delete,
       data: { confirm: t('b.msg.confirm') },
       title: t('b.delete')
     )
+  end
+
+  private
+
+  def path_from_string_or_object(value, prefix = nil)
+    return value if value.is_a?(String)
+
+    str = "#{prefix}#{Udongo::ObjectPath.find(value)}"
+    send(str, *Udongo::ObjectPath.remove_symbols(value))
   end
 end

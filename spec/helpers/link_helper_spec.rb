@@ -32,6 +32,12 @@ describe LinkHelper do
     end
   end
 
+  it '#link_to_edit_translation' do
+    page = create(:page, id: 37)
+    expected = '<a title="Bewerk" href="/backend/pages/37/edit/nl"><i class="fa fa-pencil-square-o"></i></a>'
+    expect(link_to_edit_translation([:backend, page])).to eq expected
+  end
+
   describe '#link_to_delete' do
     it 'object param' do
       expected = '<a data-confirm="Ben je zeker?" title="Verwijder" rel="nofollow" data-method="delete" href="/backend/admins/37"><i class="fa fa-trash"></i></a>'

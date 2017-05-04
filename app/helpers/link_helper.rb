@@ -15,6 +15,13 @@ module LinkHelper
     )
   end
 
+  def link_to_edit_translation(object, locale = Udongo.config.i18n.app.default_locale)
+    str = "edit_translation_#{Udongo::ObjectPath.find(object)}"
+    url = send(str, *Udongo::ObjectPath.remove_symbols(object), locale)
+
+    link_to_edit(url)
+  end
+
   def link_to_delete(value)
     link_to(
       icon(:trash),

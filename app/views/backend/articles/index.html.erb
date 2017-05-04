@@ -41,7 +41,7 @@
           <td><%= t a.visible?.to_s %></td>
           <td><%= t a.press_release?.to_s %></td>
           <td class="text-xs-right">
-            <%= link_to_edit edit_translation_backend_article_path(a, default_app_locale) %>
+            <%= link_to_edit_translation [:backend, a] %>
             <%= link_to_delete [:backend, a] %>
           </td>
         </tr>

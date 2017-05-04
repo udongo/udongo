@@ -33,8 +33,8 @@
             <td><%= i.translation.path %></td>
             <td><%= i.extra %></td>
             <td class="text-xs-right">
-              <%= link_to icon(:pencil_square_o), edit_backend_navigation_item_path(n, i) %>
-              <%= link_to icon(:trash), backend_navigation_item_path(n, i), method: :delete, data: { confirm: t('b.msg.confirm') }%>
+              <%= link_to_edit edit_translation_backend_navigation_item_path(n, i, default_app_locale) %>
+              <%= link_to_delete backend_navigation_item_path(n, i) %>
             </td>
           </tr>
         <% end %>

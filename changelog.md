@@ -1,3 +1,8 @@
+5.9.0 - 2017-05-04
+--
+* Make the link_to_show/edit/delete methods a bit more flexible.
+
+
 5.8.0 - 2017-04-12
 --
 * Add missing ```author``` key to form translations.

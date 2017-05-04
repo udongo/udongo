@@ -7,13 +7,7 @@ module LinkHelper
       url = send(str, *Udongo::ObjectPath.remove_symbols(value))
     end
 
-    # str = Udongo::ObjectPath.find(object)
-
-    link_to(
-      icon(:search),
-      url,
-      title: t('b.view')
-    )
+    link_to icon(:search), url, title: t('b.view')
   end
 
   def link_to_edit(value)
@@ -24,11 +18,7 @@ module LinkHelper
       url = send(str, *Udongo::ObjectPath.remove_symbols(value))
     end
 
-    link_to(
-      icon(:pencil_square_o),
-      url,
-      title: t('b.edit')
-    )
+    link_to icon(:pencil_square_o), url, title: t('b.edit')
   end
 
   def link_to_delete(value)

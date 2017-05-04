@@ -1,5 +1,7 @@
 5.9.0 - 2017-05-04
 --
+* Fixes issue in pages module that prevented you from clicking the context
+  menu items.
 * Make the link_to_show/edit/delete methods a bit more flexible.
 
 
@@ -21,6 +23,9 @@
   navigation by identifier.
 * You can now include ```Concerns::Searchable``` on models without flexible
   content and not receive errors as a result.
+* You can now toggle Bootstrap tooltips through data-toggle="tooltip" and 
+  specifying a value in the title field.
+* Added a backend module to create and manage forms.
 
 
 5.6.0 - 2017-03-18

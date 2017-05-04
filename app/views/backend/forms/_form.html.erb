@@ -1,0 +1,24 @@
+<%= render 'backend/general_form_error', object: @model %>
+
+<%= simple_form_for [:backend, @model] do |f| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.general' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :description, as: :string %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% unless @model.new_record? %>
+    <%# TODO: rendered form preview instead of formfields datagrid %>
+    <%# render 'backend/forms/fields', form: @model %>
+  <% end %>
+
+  <%= render 'backend/form_actions', cancel_url: backend_forms_path %>
+<% end %>

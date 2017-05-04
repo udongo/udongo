@@ -63,7 +63,7 @@ var tree = tree || {
 
   contextmenu_remove_listener: function(obj) {
     var instance = tree.vars.container.jstree(true);
-    var node = instance.get_node(obj.reference.prevObject.selector);
+    var node = instance.get_node(obj.reference);
 
     $.ajax({
       data: { id: node.data.id },
@@ -80,7 +80,7 @@ var tree = tree || {
 
   contextmenu_toggle_visibility_listener: function(obj) {
     var instance = tree.vars.container.jstree(true);
-    var node = instance.get_node(obj.reference.prevObject.selector);
+    var node = instance.get_node(obj.reference);
 
     $.ajax({
       data: { id: node.data.id },

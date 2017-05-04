@@ -20,10 +20,12 @@ nl:
         category: Categorie
         cc: CC
         content: Inhoud
+        default_value: Standaardwaarde
         description: Beschrijving
         disabled: Uitgeschakeld
         email: E-mail
         extra: Extra
+        field_type: Veldtype
         first_name: Voornaam
         html_content: HTML inhoud
         identifier: Interne naam
@@ -37,6 +39,7 @@ nl:
         phone: Telefoonnummer
         plain_content: Tekstuele inhoud
         press_release: Persbericht?
+        presence: Verplicht veld
         published_at: Gepubliceerd op
         seo_title: Paginatitel
         seo_slug: Aangepaste URL
@@ -45,6 +48,7 @@ nl:
         seo_custom: Extra meta-tags
         subject: Onderwerp
         subtitle: Subtitel
+        success_message: Melding bij succesvolle verzending
         summary: Korte inhoud
         synonyms: Synoniemen
         title: Titel

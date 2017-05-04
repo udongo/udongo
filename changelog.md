@@ -3,6 +3,7 @@
 * Fixes issue in pages module that prevented you from clicking the context
   menu items.
 * Make the link_to_show/edit/delete methods a bit more flexible.
+* Clicking the snippet edit link now goes directly to the default app locale.
 
 
 5.8.0 - 2017-04-12

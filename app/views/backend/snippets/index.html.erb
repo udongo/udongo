@@ -14,7 +14,7 @@
         <tr>
           <td><%= a.description %></td>
           <td class="text-xs-right">
-            <%= link_to_edit [:backend, a] %>
+            <%= link_to_edit edit_translation_backend_snippet_path(a, default_app_locale) %>
           </td>
         </tr>
       <% end %>

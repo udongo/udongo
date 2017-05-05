@@ -4,8 +4,7 @@
       "width_#{bp}",
       as: :select,
       collection: options_for_column_widths,
-      include_blank: false,
-      wrapper_html: { hidden: !Udongo.config.flexible_content.allowed_breakpoint?(bp) }
+      include_blank: false
     )
   %>
 <% end %>

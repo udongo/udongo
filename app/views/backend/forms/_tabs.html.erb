@@ -1,0 +1,29 @@
+<div class="row subnav">
+  <div class="col-md-12">
+    <ul class="nav nav-pills pull-left">
+      <li class="nav-item">
+        <% klass = %w(nav-link) %>
+        <% klass << 'active' if active == :general %>
+
+        <%= link_to t('b.general'), edit_backend_form_path(@model), class: klass %>
+      </li>
+
+      <% Udongo.config.i18n.app.locales.each do |locale| %>
+        <li class="nav-item">
+          <% klass = %w(nav-link) %>
+          <% klass << 'active' if active == locale.to_sym %>
+
+          <%= link_to locale.upcase, edit_translation_backend_form_path(@model, locale), class: klass %>
+        </li>
+      <% end %>
+    </ul>
+
+    <% if @model.submissions.any? %>
+      <div class="pull-right">
+        <%= link_to backend_form_submissions_path(@model), class: 'btn btn-primary' do %>
+          <%= icon(:envelope_open, t('b.msg.forms.view_submissions')) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

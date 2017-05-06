@@ -124,6 +124,7 @@ nl:
         edit_text: Tekst bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
         no_picture_present: Er werd nog geen foto geüpload of gelinkt.
+        width_explanation: Voor de flexibele inhoud wordt er gebruikt gemaakt van een grid layout. Deze werkt met rijen en kolommen. Iedere rij kan maximaal 12 kolommen bevatten. Daarom dat de breedte uitgedrukt is in een breuk op 12.
       forgot_password: Wachtwoord vergeten?
       form_fields:
         add: Invulveld toevoegen

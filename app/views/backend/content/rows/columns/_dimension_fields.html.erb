@@ -21,7 +21,7 @@
           as: :select,
           collection: options_for_column_widths,
           include_blank: false,
-          wrapper_html: { style: 'display: none;', data: { advanced_breakpoint: true }}
+          wrapper_html: { style: 'display: none;', data: { advanced_breakpoint: true, "breakpoint_#{bp}": true }}
       )
     %>
   <% end %>

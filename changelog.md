@@ -1,6 +1,141 @@
-4.0.0 - xxxx-xx-xx
+5.10.0 - xxxx-xx-xx
 --
+* When adding/editing flexible content columns, you now only see the medium
+  breakpoint by default.
 * Upgrade bootstrap v4 from alpha 4 to alpha 6.
+
+
+5.9.0 - 2017-05-04
+--
+* Fixes issue in pages module that prevented you from clicking the context
+  menu items.
+* Make the link_to_show/edit/delete methods a bit more flexible.
+* Clicking the snippet edit link now goes directly to the default app locale.
+
+
+5.8.0 - 2017-04-12
+--
+* Add missing ```author``` key to form translations.
+* The ContentImage/Text decorators have been simplified.
+* Fixed bug where you couldn't include ```Concerns::Searchable``` on models
+  without flexible content without getting an unknown method error.
+* The column widths for flexible content are displayed in percentages.
+* An extra widget ```ContentPicture``` has been added. This is the replacement
+  for the ````ContentImage```` which has now been deprecated.
+
+
+5.7.0 - 2017-03-22
+--
+* The ```Navigation``` model now includes the cacheable concern.
+* A ```NavigationHelper``` module was added which makes it easier to fetch a
+  navigation by identifier.
+* You can now include ```Concerns::Searchable``` on models without flexible
+  content and not receive errors as a result.
+* You can now toggle Bootstrap tooltips through data-toggle="tooltip" and 
+  specifying a value in the title field.
+* Added a backend module to create and manage forms.
+
+
+5.6.0 - 2017-03-18
+--
+* The article title is truncated to 40 chars in the overview and breadcrumbs.
+* Add the PageHelper which contains ```#page(identifier)``` to easily fetch a
+  page from cache.
+* The files nl_backend.yml and en_backend.yml have been synced.
+* The files nl_general.yml and en_general.yml have been removed.
+* Update the font-awesome icons from 4.6.1 to 4.7.0.
+* You can now disable the snippet title/content so it won't show up in the
+  translation edit form (which sometimes confused people).
+* Added PageDecorator#url because the ```only_path: false``` option seems to be
+  borked at this moment.
+
+
+5.5.0 - 2017-03-13
+--
+* When an SEO form has a slug, it's automatically calculated based on the title.
+* Trigger a generic warning when trying to leave a page through an anchor when
+  the form contains unsaved changes.
+* The dirty-inputs warning is now triggered on a form by calling the
+  ```trigger_dirty_inputs_warning``` helper method.
+* The sluggable autofill now plays nice when immediately hitting enter after
+  typing your title.
+* Trigger a generic warning when trying to leave a page through an anchor when
+  the form contains unsaved changes.
+* The dirty-inputs warning is now triggered on a form by calling the
+  ```trigger_dirty_inputs_warning``` helper method.
+
+
+5.4.0 - 2017-03-08
+--
+* When enabled, you can add images to articles from the assets module.
+* Bugfix: the sortable scope for the ```Image``` wasn't properly set.
+* Images are now enabled by default for articles.
+* Fixed a missing image reference triggered by Tagit.
+
+
+5.3.1 - 2017-03-07
+--
+* Bugfix: there was an issue with loading the base module for the image
+  manipulation.
+
+
+5.3.0 - 2017-03-07
+--
+* Refactor the asset image resizer(s).
+* Add a basic articles module.
+* You can configure the article module with some settings. See the readme.
+
+
+5.2.0 - 2017-03-02
+--
+* Add an assets module to manage all kinds of files.
+* Backend now loads jQuery 3 by default.
+* You can now mark a model as 'Imageable', which makes it possible to link one
+  or more images (assets) to it. These assets can be reused for other modules
+  as well.
+
+
+5.1.0 - 2017-02-15
+--
+* The users module now orders by last/first name.
+* The default number of items per page is now 10 instead of 30.
+* A user now has an active/inactive state that you can manage.
+* You can now filter users by their first name, last name and email address.
+* Next to the ```Backend::TranslationForm``` we now added the ```Backend::TranslationWithSeoForm```
+  which makes those forms great again.
+* Add fix for a collection of checkboxes rendered by SimpleForm to show on
+  multiple lines.
+* Set a max width for the cell containing the sortable handle.
+
+
+5.0.2 - 2017-02-13
+--
+* Fix bug in the SEO form of b/pages#edit_translation that prevented you from
+  saving SEO data.
+
+
+5.0.1 - 2017-02-13
+--
+* Make sure the search field in the top navigation doesn't steal the focus.
+* Add missing class for vertical file inputs for Simple Form.
+* Remove the search partial file checks.
+
+
+5.0.0 - 2017-02-12
+--
+* Added a general ```User``` model which you can extend in your own app.
+
+
+4.0.0 - 2017-02-12
+--
+* Added Concerns::Searchable. This lets model instances automatically save 
+  SearchIndex records to the database as they are changed.
+* Added functionality to Concerns::FlexibleContent so it can play nice with
+  Concerns::Searchable.
+* Added a search input to the backend's top navigation bar. Autocompleted search
+  works through Udongo::Search::Backend.
+* Provided a raw infrastructure to allow for Udongo::Search::Frontend or other
+  namespaced search classes.
 
 
 3.0.0 - 2017-01-13

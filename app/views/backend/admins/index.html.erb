@@ -20,8 +20,8 @@
           <td><%= a.full_name %></td>
           <td><%= mail_to a.email %></td>
           <td class="text-xs-right">
-            <%= link_to icon(:pencil_square_o), edit_backend_admin_path(a) %>
-            <%= link_to icon(:trash), backend_admin_path(a), method: :delete, data: { confirm: t('b.msg.confirm') }%>
+            <%= link_to_edit [:backend, a] %>
+            <%= link_to_delete [:backend, a] %>
           </td>
         </tr>
       <% end %>

@@ -1,6 +1,81 @@
 # Upgrade guide
-## From 3.0.0 to 4.0.0
+## From 5.9.0 to 5.10.0
+### Flexible content
+There no longer are allowed/disallowed breakpoints.
+The setting ```Udongo.config.flexible_content.allowed_breakpoints``` has been
+removed.
 
+## From 5.8.0 to 5.9.0
+### LinkHelper
+The link helper methods have been refined so they can work with a string or an
+object. This means you can use link_to_show/edit/delete in these two ways.
+
+```ruby
+link_to_show [:backend, object]
+link_to_show some_custom_path(object)
+```
+
+Another method that has been added is ```link_to_edit_translations(object, default_locale)```.
+This can only be used with an object and uses the default app locale.
+
+```ruby
+link_to_edit_translation [:backend, object]
+link_to_edit_translation [:backend, object], :fr
+```
+
+## From 5.7.0 to 5.8.0
+### Flexible content
+The ```ContentImage``` model has been deprecated. Use ```ContentPicture```
+instead. In version 6.0 we will remove the deprecated widget.
+
+## From 5.6.0 to 5.7.0
+### NavigationHelper
+A new module has been added to make it easier to fetch navigations. You can now
+use do something like ```navigation(:footer).items```
+
+## From 5.5.0 to 5.6.0
+### Translations
+The general translations no longer exists. If you use something like this
+```I18n.t 'g.save'``` in your views, replace that with your own translations.
+
+## From 5.4.0 to 5.5.0
+No actions required.
+
+## From 5.3.0 to 5.4.0
+### Articles
+The ```Udongo.config.articles.images``` setting now defaults to true instead of
+false.
+
+## From 5.2.0 to 5.3.0
+### Articles
+A new ```Article``` model has been added. If you already have that in your project,
+you need to delete it and use the Udongo one.
+
+## From 5.1.0 to 5.2.0
+This release adds the ```Asset``` and ```Image``` model. If you have one of 
+those in your project, you need to delete them and use the ones Udongo provides.
+
+A new config object ```Udongo.config.assets``` has been added. Here you can set
+which image/file extensions are allowed.
+The following images are allowed by default: gif, jpeg, jpg and png.
+The following files are allowed by default: doc, docx, pdf, txt, xls and xlsx.
+
+## From 5.0.1 to 5.1.0
+### Users
+A user now has an 'active' (boolean) field. If you already have that, you need
+to remove it and let it be added by the Udongo migrations after which you
+migrate your data.
+
+## From 5.0.0 to 5.0.1
+No backwards incompatible changes.
+
+## From 4.0.0 to 5.0.0
+# User model
+We added a ```User``` model. If your application used to have one, make sure to
+use the Udongo one and migrate your data accordingly.
+
+## From 3.0.0 to 4.0.0
+No backwards incompatible changes.
 
 ## From 2.0.4 to 3.0.0
 ### Forms
@@ -51,21 +126,17 @@ class Backend::WebserverController < Backend::BaseController
 end
 ```
 
-
 ### Backend::TranslationForm
 This form object was added and can be used to simplify your existing translation
 forms (except for those that use SEO). To stay up-to-date, you should check your
 translation form objects and if they can benefit from this new class.
 
-
 ## From 2.0.1 to 2.0.4
 No actions required.
-
 
 ## From 2.0.0 to 2.0.1
 * Reform gem is no longer used. Make sure to add this gem to your gemfile if you
 wish to continue using this.
-
 
 ## From 1.0.4 to 2.0.0
 ### Configuration

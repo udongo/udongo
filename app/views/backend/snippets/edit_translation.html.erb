@@ -13,10 +13,14 @@
     </div>
 
     <div class="card-block">
-      <%= f.input :title, as: :string %>
+      <% unless @model.title_disabled? %>
+        <%= f.input :title, as: :string %>
+      <% end %>
 
-      <% content_type = @model.editor_for_content? ? :ckeditor : :text %>
-      <%= f.input :content, as: content_type %>
+      <% unless @model.content_disabled? %>
+        <% content_type = @model.editor_for_content? ? :ckeditor : :text %>
+        <%= f.input :content, as: content_type %>
+      <% end %>
     </div>
   </div>
 

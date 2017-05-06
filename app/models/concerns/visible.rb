@@ -5,8 +5,8 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      scope :visible, ->{ where(visible: true) }
-      scope :hidden, ->{ where('visible = 0 OR visible IS NULL') }
+      scope :visible, -> { where(visible: true) }
+      scope :hidden, -> { where('visible = 0 OR visible IS NULL') }
     end
 
     def hidden?

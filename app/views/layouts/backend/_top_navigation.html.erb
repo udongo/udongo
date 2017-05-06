@@ -3,7 +3,10 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= icon(:list, t('b.content')) %></a>
     <div class="dropdown-menu">
       <%= link_to t('b.pages'), backend_pages_path, class: 'dropdown-item' %>
+      <%= link_to t('b.articles'), backend_articles_path, class: 'dropdown-item' %>
       <%= link_to t('b.snippets'), backend_snippets_path, class: 'dropdown-item' %>
+      <%= link_to t('b.files'), backend_assets_path, class: 'dropdown-item' %>
+      <%= link_to t('b.forms'), backend_forms_path, class: 'dropdown-item' %>
     </div>
   </li>
 
@@ -12,9 +15,18 @@
     <div class="dropdown-menu">
       <%= link_to t('b.navigation'), backend_navigations_path, class: 'dropdown-item' %>
       <%= link_to t('b.admins'), backend_admins_path, class: 'dropdown-item' %>
+      <%= link_to t('b.users'), backend_users_path, class: 'dropdown-item' %>
       <%= link_to t('b.redirects'), backend_redirects_path, class: 'dropdown-item' %>
+      <div class="dropdown-divider"></div>
       <%= link_to t('b.emails'), backend_emails_path, class: 'dropdown-item' %>
       <%= link_to t('b.email_templates'), backend_email_templates_path, class: 'dropdown-item' %>
+    </div>
+  </li>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= icon(:search, t('b.search')) %></a>
+    <div class="dropdown-menu">
+      <%= link_to t('b.synonyms'), backend_search_synonyms_path, class: 'dropdown-item' %>
     </div>
   </li>
 
@@ -23,5 +35,11 @@
     <div class="dropdown-menu">
       <%= link_to icon(:sign_out, t('b.logout')), backend_session_path(id: 42), method: :delete, data: { confirm: t('b.msg.confirm') }, class: 'dropdown-item' %>
     </div>
+  </li>
+
+  <li class="nav-item pull-xs-right">
+    <%= form_tag backend_search_path, method: :get, id: 'search', class: 'form-inline my-2 my-lg-0' do %>
+      <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2 no-focus', placeholder: t('b.search') %>
+    <% end %>
   </li>
 </ul>

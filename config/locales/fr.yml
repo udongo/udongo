@@ -206,7 +206,7 @@ fr:
   time:
     am: 'am'
     formats:
-      default: "%A %d %B %Y à %Hh%M"
+      default: "%A %-d %B %Y à %Hh%M"
       timeless: '%d %B %Y'
       short: "%d %b à %Hh%M"
       time_attr: ! '%G-W%V-%uT%R%:z'

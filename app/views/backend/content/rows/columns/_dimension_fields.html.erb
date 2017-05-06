@@ -1,3 +1,27 @@
-<% Udongo::Configs::FlexibleContent::BREAKPOINTS.each do |bp| %>
-  <%= form.input "width_#{bp}", as: :integer, wrapper_html: { hidden: !Udongo.config.flexible_content.allowed_breakpoint?(bp) } %>
+<% Udongo::Configs::FlexibleContent::BREAKPOINTS.each do |b| %>
+  <% if b == Udongo::Configs::FlexibleContent::DEFAULT_BREAKPOINT %>
+    <%=
+      form.input(
+          "width_#{b}",
+          as: :select,
+          collection: options_for_column_widths,
+          include_blank: false,
+          label: t('simple_form.labels.defaults.width'),
+          wrapper_html: { data: { default_breakpoint: true }}
+      )
+    %>
+
+    <%= link_to icon(:cog, t('b.advanced')), '#', data: { show_all_breakpoints: true } %>
+
+  <% else %>
+    <%=
+      form.input(
+          "width_#{b}",
+          as: :select,
+          collection: options_for_column_widths,
+          include_blank: false,
+          wrapper_html: { style: 'display: none;', data: { advanced_breakpoint: true, "breakpoint_#{b}": true }}
+      )
+    %>
+  <% end %>
 <% end %>

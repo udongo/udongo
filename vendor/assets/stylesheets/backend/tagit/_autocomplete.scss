@@ -33,7 +33,7 @@
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;
-	background: #f2f5f7 url("/assets/ui-bg_highlight-hard_100_f2f5f7_1x100.png") 50% top repeat-x;
+	background: #f2f5f7 asset-url('ui-bg_highlight-soft_75_cccccc_1x100.png') 50% top repeat-x;
 	color: #362b36;
 }
 .ui-corner-all, .ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }

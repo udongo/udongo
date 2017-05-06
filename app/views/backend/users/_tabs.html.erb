@@ -1,0 +1,22 @@
+<div class="row subnav">
+  <div class="col-md-12">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <% klass = %w(nav-link) %>
+        <% klass << 'active' if active == :general %>
+
+        <%= link_to t('b.general'), edit_backend_user_path(@user), class: klass %>
+      </li>
+
+      <!-- Add extra subnav links here -->
+      <!--
+      <li class="nav-item">
+        <% klass = %w(nav-link) %>
+        <% klass << 'active' if active == :foo %>
+
+        <%= link_to t('b.general'), '#', class: klass %>
+      </li>
+      -->
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<% breadcrumb.add t('b.form_submissions') %>
+
+<%= render 'backend/breadcrumbs' %>
+
+<% if @submissions.any? %>
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <% if @form.email_present? %>
+          <th><%= t('b.email') %></th>
+        <% end %>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tfoot>
+      <tr>
+        <td colspan="2" class="text-xs-center">
+          <%= udongo_paginate @submissions %><br>
+        </td>
+      </tr>
+    </tfoot>
+
+    <tbody>
+      <% @submissions.each do |s| %>
+        <tr>
+          <% if @form.email_present? %>
+            <td><%= mail_to s.data_object.email %></td>
+          <% end %>
+          <td class="text-xs-right">
+            <%= link_to_show backend_form_submission_path(@form, s) %>
+            <%= link_to_delete backend_form_submission_path(@form, s) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p><%= t 'b.msg.form_submissions.explanation' %></p>
+<% end %>

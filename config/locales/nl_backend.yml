@@ -1,11 +1,16 @@
 nl:
   b:
     actions: Acties
+    active: Actief
     add: Toevoegen
     admin: Beheerder
     admins: Beheerders
     advanced: Geavanceerd
+    article: Artikel
+    articles: Artikels
+    author: Auteur
     cancel: Annuleren
+    choose_an_existing_image: Kies bestaande afbeelding
     content: Inhoud
     current_image: Huidige afbeelding
     custom_title: Aangepaste titel
@@ -14,20 +19,33 @@ nl:
     description: Beschrijving
     destination: Bestemming
     down: Omlaag
+    download: Download
     edit: Bewerk
+    edit_translation: Bewerk vertaling
     email: E-mail
     emails: E-mails
     email_template: E-mail template
     email_templates: E-mail templates
-    enabled?: Ingeschakeld?
+    enabled: Ingeschakeld
     extra: Extra
+    file: Bestand
+    files: Bestanden
     filter: Filter
     first_name: Voornaam
     flexible_content: Flexibele inhoud
+    form: Formulier
+    form_field: Invulveld
+    form_fields: Invulvelden
+    form_submission: Inzending
+    form_submissions: Inzendingen
+    forms: Formulieren
     from: Van
     general: Algemeen
     house_number: Huisnummer
     html_content: HTML inhoud
+    image: Afbeelding
+    images: Afbeeldingen
+    last_changed_at: Laatst gewijzigd op
     last_name: Achternaam
     locale: Taal
     login: Inloggen
@@ -38,33 +56,48 @@ nl:
     navigation_item: Navigatie-item
     new: Nieuw
     none: Geen
+    not_set: Niet ingesteld
     not_yet_sent: Nog niet verzonden
+    overview: Overzicht
     page: Pagina
     pages: Pagina's
     password: Wachtwoord
     plain_content: Tekst inhoud
+    press_release: Persbericht
+    published_at: Gepubliceerd op
     recipient: Bestemmeling
     redirect: Redirect
     redirects: Redirects
     save: Opslaan
     search: Zoeken
+    search_term: Zoekterm
+    search_synonym: Zoekterm synoniem
+    search_synonyms: Zoekterm synoniemen
     sender: Afzender
     sent_at: Verzonden op
     settings: Instellingen
+    size: Grootte
     snippet: Snippet
     snippets: Snippets
     source: Bron
     status: Status
     status_code: Statuscode
     subject: Onderwerp
+    synonyms: Synoniemen
     tags: Tags
     telephone: Telefoonnummer
     title: Titel
     to: Naar
+    type: Type
     up: Omhoog
+    upload_a_new_image: Upload nieuwe afbeelding
     used: Gebruikt
+    user: Gebruiker
+    users: Gebruikers
+    validations: Validaties
     variables: Variabelen
     view: Bekijk
+    visible: Zichtbaar
 
     msg:
       added: '%{actor} werd toegevoegd.'
@@ -74,9 +107,11 @@ nl:
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
       content_types:
-        image: Afbeelding
+        image: Afbeelding (niet meer gebruiken!)
+        picture: Foto
         text: Tekst
       deleted: '%{actor} werd verwijderd.'
+      dirty_inputs_warning: "Je gaat de pagina verlaten maar je aanpassingen zijn nog niet bewaard.\nWil je nog steeds de pagina verlaten?"
       edited: '%{actor} werd gewijzigd.'
       flexible_content:
         add_column: Kolom toevoegen
@@ -85,21 +120,46 @@ nl:
         delete_row: Rij verwijderen
         edit_column: Kolom bewerken
         edit_image: Afbeelding bewerken
+        edit_picture: Foto bewerken
         edit_text: Tekst bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
+        no_picture_present: Er werd nog geen foto geüpload of gelinkt.
+        width_explanation: Voor de flexibele inhoud wordt er gebruikt gemaakt van een grid layout. Deze werkt met rijen en kolommen. Iedere rij kan maximaal 12 kolommen bevatten. Daarom dat de breedte uitgedrukt is in een breuk op 12.
       forgot_password: Wachtwoord vergeten?
+      form_fields:
+        add: Invulveld toevoegen
+        add_first: Maak het eerste invulveld aan
+        edit: Bewerk invulveld
+        explanation: Er zijn nog geen invulvelden gedefiniëerd voor dit formulier.
+        index_header_html: 'Invulvelden voor formulier &ldquo;%{form}&rdquo;'
+      form_submissions:
+        back_html: '&larr; Terug naar de inzendingen'
+        explanation: Er zijn nog geen inzendingen binnengekomen voor dit formulier.
+        received_at: Ontvangen op
+      forms:
+        add_first: Maak het eerste formulier aan
+        back_html: '&larr; Terug naar het overzicht van formulieren'
+        explanation: Met deze module kan je formulieren beheren en hun inzendingen bekijken.
+        removal_warning: 'Dit formulier kan niet verwijderd worden omdat er %{submissions} inzending(en) aan gekoppeld zijn.'
+        view_submissions: Inzendingen voor dit formulier
       general_form_error: Er trad een fout op. Controleer de gemarkeerde velden.
       help_texts:
-        status_code: Meer info over het gebruik van status codes
+        status_code: Meer info over het gebruik van status codes.
       incorrect_login: Ongeldige login gegevens.
       navigation:
         custom: Op maat
       no_items: Er zijn geen items.
+      no_title_set: Dit item heeft nog geen titel.
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
+      please_select_a_valid_image: Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
       saved: '%{actor} werd bewaard.'
       seo: SEO
+      something_went_wrong: Er liep iets fout!
       status_codes:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
+      users:
+        account_details: Accountgegevens
+        personal_details: Persoonlijke gegevens

@@ -13,15 +13,19 @@ nl:
 
     labels:
       defaults:
+        active: Actief
+        author: Auteur
         bcc: BCC
         caption: Beschrijving
         category: Categorie
         cc: CC
         content: Inhoud
+        default_value: Standaardwaarde
         description: Beschrijving
         disabled: Uitgeschakeld
         email: E-mail
         extra: Extra
+        field_type: Veldtype
         first_name: Voornaam
         html_content: HTML inhoud
         identifier: Interne naam
@@ -34,6 +38,9 @@ nl:
         password_confirmation: Wachtwoord bevestiging
         phone: Telefoonnummer
         plain_content: Tekstuele inhoud
+        press_release: Persbericht?
+        presence: Verplicht veld
+        published_at: Gepubliceerd op
         seo_title: Paginatitel
         seo_slug: Aangepaste URL
         seo_description: Beschrijving
@@ -41,8 +48,11 @@ nl:
         seo_custom: Extra meta-tags
         subject: Onderwerp
         subtitle: Subtitel
+        success_message: Melding bij succesvolle verzending
         summary: Korte inhoud
+        synonyms: Synoniemen
         title: Titel
+        user_id: Gebruiker
         visible: Zichtbaar?
         width: Breedte
         url: URL
@@ -69,3 +79,6 @@ nl:
       redirect:
         destination_uri: Bestemming
         source_uri: Bron
+
+      search_synonym:
+        term: Zoekterm

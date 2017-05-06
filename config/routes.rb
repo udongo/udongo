@@ -14,14 +14,38 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'dashboard#show'
+    get 'search' => 'search#query'
+    get 'seo/slugify' => 'seo#slugify'
+
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins
+    resources :users
+    resources :redirects, except: :show
+    resources :search_synonyms, except: :show
 
     resources :pages, except: [:show] do
       concerns :translatable
+
       member do
         post :tree_drag_and_drop, :toggle_visibility
+      end
+    end
+
+    resources :forms do
+      concerns :translatable
+      resources :submissions, controller: 'forms/submissions', except: %w(new create)
+
+      resources :fields, controller: 'forms/fields', except: %w(show) do
+        concerns :translatable, :positionable
+      end
+    end
+
+    resources :articles, except: [:show] do
+      concerns :translatable
+
+      resources :images, only: [:index], controller: 'articles/images' do
+        concerns :positionable
       end
     end
 
@@ -55,8 +79,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :redirects, except: :show
-
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
         concerns :positionable
@@ -70,10 +92,24 @@ Rails.application.routes.draw do
 
       scope module: 'rows' do
         Udongo.config.flexible_content.types.each do |content_type|
+          next if content_type == 'picture'
           resources content_type.to_s.pluralize.to_sym, only: [:edit, :update]
+        end
+
+        resources :pictures, only: [:edit, :update] do
+          member do
+            get :link_or_upload, :link
+            post :upload
+          end
         end
       end
     end
+
+    resources :images, only: [:index, :new, :create] do
+      collection { get 'link', 'unlink' }
+    end
+
+    resources :assets
   end
 
   get 'go/:slug' => 'redirects#go'

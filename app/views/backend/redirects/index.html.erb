@@ -13,7 +13,7 @@
         <th><%= t 'b.source' %></th>
         <th><%= t 'b.destination' %></th>
         <th><%= t 'b.status_code' %></th>
-        <th><%= t 'b.enabled?' %></th>
+        <th><%= t 'b.enabled' %></th>
         <th><%= t 'b.used' %></th>
         <th>&nbsp;</th>
       </tr>
@@ -28,8 +28,8 @@
           <td><%= t r.enabled?.to_s %></td>
           <td><%= r.times_used.to_i %></td>
           <td class="text-xs-right">
-            <%= link_to icon(:pencil_square_o), edit_backend_redirect_path(r) %>
-            <%= link_to icon(:trash), backend_redirect_path(r), method: 'delete', data: { confirm: t('b.msg.confirm') } %>
+            <%= link_to_edit [:backend, r] %>
+            <%= link_to_delete [:backend, r] %>
           </td>
         </tr>
       <% end %>

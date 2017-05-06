@@ -1,0 +1,25 @@
+<% breadcrumb.add t('b.form_fields'), backend_form_fields_path(@form) %>
+<% breadcrumb.add t('b.edit_translation') %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= render 'backend/forms/fields/tabs', active: params[:translation_locale].to_sym %>
+<%= render 'backend/general_form_error', object: @translation %>
+
+<%= simple_form_for([:backend, @translation], url: edit_translation_backend_form_field_path) do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.content' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :label %>
+          <%= f.input :default_value %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_forms_path %>
+<% end %>

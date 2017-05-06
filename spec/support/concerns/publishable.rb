@@ -28,7 +28,7 @@ shared_examples_for :publishable do
   it '#unpublish!' do
     instance.published_at = Time.zone.now
     instance.unpublish!
-    expect(instance).not_to be_published
+    expect(instance).to be_unpublished
   end
 
   it '.respond_to?' do

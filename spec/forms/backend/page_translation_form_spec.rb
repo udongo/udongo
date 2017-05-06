@@ -1,55 +1,81 @@
 require 'rails_helper'
 
 describe Backend::PageTranslationForm do
-  let(:klass) { described_class }
   let(:valid_params) do
     {
-      title: 'foo',
-      seo_slug: 'bar'
+      title: 'Dit is een titel',
+      seo_slug: 'dit-is-een-titel'
     }
   end
   let(:page) { create(:page) }
-  let(:instance) { klass.new(page, page.translation, page.seo) }
+  let(:instance) { described_class.new(page, page.translation, page.seo) }
 
   describe 'validations' do
     describe 'presence' do
       it :title do
-        params = valid_params.merge(title: nil)
-        expect(instance.save(params)).to eq false
+        valid_params[:title] = nil
+        expect(instance.save(valid_params)).to eq false
       end
     end
   end
 
-  it '#save' do
-    page = create(:page)
+  describe '#save' do
+    let(:page) { create(:page) }
+    let(:instance) do
+      described_class.new(page, page.translation(:nl), page.seo(:nl))
+    end
 
-    expect(klass.new(page, page.translation(:nl), page.seo(:nl)).save(
-      title: 'foo',
-      subtitle: 'bar',
-      seo_title: 'baz',
-      seo_keywords: 'foo',
-      seo_description: 'bar',
-      seo_custom: 'baz',
-      seo_slug: 'foo'
-    )).to eq true
+    describe 'translations' do
+      before(:each) do
+        valid_params.reverse_merge!(subtitle: 'Dit is een subtitel')
+        instance.save(valid_params)
+        @translation = Page.first.translation(:nl)
+      end
 
-    translation = Page.first.translation(:nl)
-    expect(translation.title).to eq 'foo'
-    expect(translation.subtitle).to eq 'bar'
+      it 'title' do
+        expect(@translation.title).to eq 'Dit is een titel'
+      end
 
-    seo = Page.first.seo(:nl)
-    expect(seo.title).to eq 'baz'
-    expect(seo.keywords).to eq 'foo'
-    expect(seo.description).to eq 'bar'
-    expect(seo.custom).to eq 'baz'
-    expect(seo.slug).to eq 'foo'
+      it 'subtitle' do
+        expect(@translation.subtitle).to eq 'Dit is een subtitel'
+      end
+    end
+
+    describe 'seo' do
+      before(:each) do
+        valid_params.reverse_merge!(
+          seo_title: 'Dit is een titel',
+          seo_keywords: 'titels,taal,nederlands',
+          seo_description: 'Dit is een SEO beschrijving',
+          seo_custom: 'Dit is de inhoud v/e custom meta veld',
+        )
+        instance.save(valid_params)
+        @seo = Page.first.seo(:nl)
+      end
+
+      it 'seo_title' do
+        expect(@seo.title).to eq 'Dit is een titel'
+      end
+
+      it 'seo_keywords' do
+        expect(@seo.keywords).to eq 'titels,taal,nederlands'
+      end
+
+      it 'seo_description' do
+        expect(@seo.description).to eq 'Dit is een SEO beschrijving'
+      end
+
+      it 'seo_custom' do
+        expect(@seo.custom).to eq 'Dit is de inhoud v/e custom meta veld'
+      end
+
+      it 'seo_slug' do
+        expect(@seo.slug).to eq 'dit-is-een-titel'
+      end
+    end
   end
 
   it '#persisted?' do
     expect(instance).to be_persisted
-  end
-
-  it '#respond_to' do
-    expect(instance).to respond_to(:save, :persisted?, :page, :translation, :seo)
   end
 end

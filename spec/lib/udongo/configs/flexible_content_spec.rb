@@ -9,31 +9,14 @@ describe Udongo::Configs::FlexibleContent do
       expect(klass::BREAKPOINTS).to eq %w(xs sm md lg xl)
     end
 
-    it :allowed_breakpoints do
-      expect(instance.allowed_breakpoints).to eq %w(xs sm md lg xl)
-    end
-
     it :types do
-      expect(instance.types).to eq %w(text image)
-    end
-  end
-
-  describe '#allowed_breakpoint?' do
-    it 'true' do
-      allow(instance).to receive(:allowed_breakpoints) { %w(xs sm md lg xl) }
-      expect(instance.allowed_breakpoint?(:sm)).to be true
-    end
-
-    it 'false' do
-      allow(instance).to receive(:allowed_breakpoints) { %w(xs) }
-      expect(instance.allowed_breakpoint?(:sm)).to be false
+      expect(instance.types).to eq %w(text picture image)
     end
   end
 
   it '#respond_to?' do
     expect(instance).to respond_to(
-      :types, :types=, :allowed_breakpoints, :allowed_breakpoints=,
-      :allowed_breakpoint?
+      :types, :types=
     )
   end
 end

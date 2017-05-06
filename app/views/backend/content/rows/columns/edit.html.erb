@@ -1,6 +1,8 @@
 <%= render 'backend/general_form_error', object: @column %>
 
 <%= simple_form_for(@column, url: backend_content_row_column_path(@row, @column)) do |f| %>
+  <%= render 'column_width_explanation' %>
+
   <div class="card">
     <div class="card-header">
       <%= t 'b.msg.flexible_content.edit_column' %>

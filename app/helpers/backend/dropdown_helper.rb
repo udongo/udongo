@@ -8,7 +8,7 @@ module Backend
 
     def options_for_column_widths
       (1..12).to_a.reverse.map do |i|
-        ["#{(i.to_f / 12.0 * 100).to_i}%", i]
+        ["#{i}/12", i]
       end
     end
   end

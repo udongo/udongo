@@ -1,4 +1,10 @@
 # Upgrade guide
+## From 5.9.0 to 5.10.0
+### Flexible content
+There no longer are allowed/disallowed breakpoints.
+The setting ```Udongo.config.flexible_content.allowed_breakpoints``` has been
+removed.
+
 ## From 5.8.0 to 5.9.0
 ### LinkHelper
 The link helper methods have been refined so they can work with a string or an

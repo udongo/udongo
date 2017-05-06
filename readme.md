@@ -119,11 +119,6 @@ You can also override the default message with your own:
 Udongo.config.flexible_content.types = %w(text picture)
 ```
 
-### allowed_breakpoints
-```ruby
-Udongo.config.flexible_content.allowed_breakpoints = %w(xs sm md lg xl)
-```
-
 ## Assets
 ### image_white_list
 ```ruby

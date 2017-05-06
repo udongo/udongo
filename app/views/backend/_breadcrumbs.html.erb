@@ -6,7 +6,7 @@
       <% klass = (item == breadcrumb.all.last) ? 'active' : '' %>
       <li class="breadcrumb-item <%= klass %>">
 
-        <% if item[:link].present? %>
+        <% if item[:link].present? && !(item == breadcrumb.all.last) %>
           <%= link_to item[:name].to_s.html_safe, item[:link] %>
         <% else %>
           <%= item[:name].to_s.html_safe %>

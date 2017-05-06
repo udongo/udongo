@@ -3,6 +3,7 @@
 * When adding/editing flexible content columns, you now only see the medium
   breakpoint by default.
 * Upgrade bootstrap v4 from alpha 4 to alpha 6.
+* The last item in the list of breadcrumbs will never be a link.
 
 
 5.9.0 - 2017-05-04

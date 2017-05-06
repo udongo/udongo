@@ -6,8 +6,8 @@
   <title>Udongo</title>
 
   <%= stylesheet_link_tag 'backend/application', media: 'all' %>
+  <%= yield(:stylesheets) %>
   <%= javascript_include_tag 'modernizr' %>
-  <%= javascript_include_tag 'backend/application' %>
   <%= csrf_meta_tags %>
 </head>
 
@@ -17,5 +17,9 @@
       <%= yield %>
     </div>
   </div>
+
+  <%= yield(:javascripts_early) %>
+  <%= javascript_include_tag 'backend/application' %>
+  <%= yield(:javascripts) %>
 </body>
 </html>

@@ -18,7 +18,7 @@ var flexible_content_breakpoints = flexible_content_breakpoints || {
   },
 
   adjust_widths: function() {
-    // TODO make sure this method is not executed once the advanced button is clicked.
+    if($('a[data-show-all-breakpoints=true]').is(':hidden')) return;
 
     var value = parseInt($('[data-default-breakpoint=true] select').val());
 

@@ -1,3 +1,9 @@
+5.10.0 - xxxx-xx-xx
+--
+* When adding/editing flexible content columns, you now only see the medium
+  breakpoint by default.
+
+
 5.9.0 - 2017-05-04
 --
 * Fixes issue in pages module that prevented you from clicking the context

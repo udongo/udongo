@@ -1,9 +1,8 @@
-<% Udongo::Configs::FlexibleContent::BREAKPOINTS.each do |bp| %>
-
-  <% if bp == Udongo::Configs::FlexibleContent::DEFAULT_BREAKPOINT %>
+<% Udongo::Configs::FlexibleContent::BREAKPOINTS.each do |b| %>
+  <% if b == Udongo::Configs::FlexibleContent::DEFAULT_BREAKPOINT %>
     <%=
       form.input(
-          "width_#{bp}",
+          "width_#{b}",
           as: :select,
           collection: options_for_column_widths,
           include_blank: false,
@@ -17,11 +16,11 @@
   <% else %>
     <%=
       form.input(
-          "width_#{bp}",
+          "width_#{b}",
           as: :select,
           collection: options_for_column_widths,
           include_blank: false,
-          wrapper_html: { style: 'display: none;', data: { advanced_breakpoint: true, "breakpoint_#{bp}": true }}
+          wrapper_html: { style: 'display: none;', data: { advanced_breakpoint: true, "breakpoint_#{b}": true }}
       )
     %>
   <% end %>

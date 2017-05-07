@@ -1,4 +1,4 @@
-5.10.0 - xxxx-xx-xx
+6.0.0 - xxxx-xx-xx
 --
 * When adding/editing flexible content columns, you now only see the medium
   breakpoint by default.

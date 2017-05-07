@@ -4,6 +4,9 @@
   breakpoint by default.
 * Upgrade bootstrap v4 from alpha 4 to alpha 6.
 * The last item in the list of breadcrumbs will never be a link.
+* Flexible content now allows you to align columns within a row vertically or
+  horizontally. You can also define a row to be full width instead of the
+  default container.
 
 
 5.9.0 - 2017-05-04

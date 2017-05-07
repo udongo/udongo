@@ -21,8 +21,9 @@ class Backend::Content::RowsController < Backend::BaseController
     redirect_back_to_content
   end
 
-  def toggle_vertical_alignment
-    align = @row.vertical_alignment == 'center' ? nil : 'center'
+  def vertical_alignment
+    align = params[:align].to_s
+    align = 'top' unless %w(top center bottom).include?(align)
     @row.update_attribute :vertical_alignment, align
 
     redirect_back_to_content

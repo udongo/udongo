@@ -32,10 +32,21 @@
             <% klass = 'btn btn-secondary' %>
             <% klass << ' active' if row.horizontal_alignment == 'right' %>
             <%= link_to icon(:align_right), horizontal_alignment_backend_content_row_path(row, align: 'right'), class: klass, title: t('b.msg.flexible_content.align_right'), data: { toggle: 'tooltip' } %>
+          </div>
+
+          <!-- TODO add translations for the vertical assignment -->
+          <div class="btn-group" role="group">
+            <% klass = 'btn btn-secondary' %>
+            <% klass << ' active' if row.vertical_alignment == 'top' || row.vertical_alignment.blank? %>
+            <%= link_to icon(:long_arrow_up), vertical_alignment_backend_content_row_path(row, align: 'top') , class: klass, title: 'foo', data: { toggle: 'tooltip' } %>
 
             <% klass = 'btn btn-secondary' %>
             <% klass << ' active' if row.vertical_alignment == 'center' %>
-            <%= link_to icon(:arrows_v), toggle_vertical_alignment_backend_content_row_path(row), class: klass, title: t('b.msg.flexible_content.align_vertical'), data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:arrows_v), vertical_alignment_backend_content_row_path(row, align: 'center'), class: klass, title: t('b.msg.flexible_content.align_vertical'), data: { toggle: 'tooltip' } %>
+
+            <% klass = 'btn btn-secondary' %>
+            <% klass << ' active' if row.vertical_alignment == 'bottom' %>
+            <%= link_to icon(:long_arrow_down), vertical_alignment_backend_content_row_path(row, align: 'bottom'), class: klass, title: 'foo', data: { toggle: 'tooltip' } %>
           </div>
 
           <div class="btn-group" role="group">
@@ -49,6 +60,8 @@
           </div>
         </div>
 
+        <!-- TODO cleanup -->
+        <!-- TODO add the align-items-start/center/end classes -->
         <% extra_classes = '' %>
         <% if row.horizontal_alignment == 'left' %>
           <% extra_classes << 'justify-content-start' %>

@@ -38,7 +38,7 @@ describe 'content routes' do
   end
 
   it 'DELETE /backend/content/rows/1' do
-    expect(delete: '/backend/content/rows/1').to route_to('backend/content/rows#destroy', id: '1')
+    expect(delete: backend_content_row_path(1)).to route_to('backend/content/rows#destroy', id: '1')
   end
 
   it 'POST /backend/content/rows/1/update_position' do

@@ -8,6 +8,11 @@ removed.
 Since you can now define the width and the alignment options for each row, you
 will need to adjust the frontend rendering to actually use these features.
 
+### Youtube / vimeo content widget
+A new widget was added to easily insert a youtube/vimeo video by providing the
+full URL to the video. If you want to enable this widget you need to make sure
+it's enabled in the list of flexible content types.
+
 ### Bootstrap alpha v4 to v6
 We're now using the latest bootstrap alpha v6. Because of some changes you will
 need to check your _top_navigation.html.erb file.

@@ -7,6 +7,7 @@
 * Flexible content now allows you to align columns within a row vertically or
   horizontally. You can also define a row to be full width instead of the
   default container.
+* A new widget has been added to easily insert youtube/vimeo video's.
 
 
 5.9.0 - 2017-05-04

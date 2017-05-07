@@ -1,0 +1,14 @@
+<%= simple_form_for [:backend, @model] do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <%= t 'b.msg.flexible_content.edit_video' %>
+    </div>
+
+    <div class="card-block">
+      <%= f.input :url, as: :string %>
+      <%= f.input :aspect_ratio, collection: ContentVideo::ASPECT_RATIOS, include_blank: false %>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: content_path %>
+<% end %>

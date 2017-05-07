@@ -3,12 +3,6 @@
     <iframe class="embed-responsive-item" src="<%= object.embed_url %>" allowfullscreen></iframe>
   </div>
 
-<!--  Mogelijkheid om de aspect ratio te kiezen
-  21x9
-  16x9
-  4x3
-  1x1-->
-
 <% else %>
-  <p>Nog niet opgegeven.</p>
+  <p><%= t 'b.msg.flexible_content.no_video_present' %></p>
 <% end %>

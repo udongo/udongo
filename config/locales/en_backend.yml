@@ -110,6 +110,7 @@ en:
         image: Image (deprecated!)
         picture: Picture
         text: Text
+        video: Video
       deleted: '%{actor} was deleted.'
       dirty_inputs_warning: "You are about to leave the page but your changes aren't saved yet.\nDo you still want to leave the page?"
       edited: '%{actor} was edited.'
@@ -127,6 +128,7 @@ en:
         edit_image: Edit image
         edit_picture: Edit picture
         edit_text: Edit text
+        edit_video: Edit video
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
         full_width: Full width
         no_picture_present: No picture has been uploaded/linked yet.

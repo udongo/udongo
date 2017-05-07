@@ -1,0 +1,14 @@
+<% if object.url.present? && object.aspect_ratio.present? %>
+  <div class="embed-responsive embed-responsive-<%= object.aspect_ratio_class %>">
+    <iframe class="embed-responsive-item" src="<%= object.embed_url %>" allowfullscreen></iframe>
+  </div>
+
+<!--  Mogelijkheid om de aspect ratio te kiezen
+  21x9
+  16x9
+  4x3
+  1x1-->
+
+<% else %>
+  <p>Nog niet opgegeven.</p>
+<% end %>

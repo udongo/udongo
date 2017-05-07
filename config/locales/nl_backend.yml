@@ -110,6 +110,7 @@ nl:
         image: Afbeelding (niet meer gebruiken!)
         picture: Foto
         text: Tekst
+        video: Video
       deleted: '%{actor} werd verwijderd.'
       dirty_inputs_warning: "Je gaat de pagina verlaten maar je aanpassingen zijn nog niet bewaard.\nWil je nog steeds de pagina verlaten?"
       edited: '%{actor} werd gewijzigd.'
@@ -127,6 +128,7 @@ nl:
         edit_image: Afbeelding bewerken
         edit_picture: Foto bewerken
         edit_text: Tekst bewerken
+        edit_video: Video bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
         full_width: Volledige breedte
         no_picture_present: Er werd nog geen foto geüpload of gelinkt.

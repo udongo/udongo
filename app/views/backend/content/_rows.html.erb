@@ -49,7 +49,22 @@
           </div>
         </div>
 
-        <div class="row content-columns card-block">
+        <% extra_classes = '' %>
+        <% if row.horizontal_alignment == 'left' %>
+          <% extra_classes << 'justify-content-start' %>
+
+        <% elsif row.horizontal_alignment == 'center' %>
+          <% extra_classes << 'justify-content-center' %>
+
+        <% elsif row.horizontal_alignment == 'right' %>
+          <% extra_classes << 'justify-content-end' %>
+        <% end %>
+
+        <% if row.vertical_alignment == 'center' %>
+          <% extra_classes << ' align-items-center' %>
+        <% end %>
+
+        <div class="row content-columns card-block <%= extra_classes %>">
           <% row.columns.each do |column| %>
             <% content = column.content.decorate %>
 

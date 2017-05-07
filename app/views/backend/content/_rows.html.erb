@@ -33,8 +33,9 @@
             <% klass << ' active' if row.horizontal_alignment == 'right' %>
             <%= link_to icon(:align_right), horizontal_alignment_backend_content_row_path(row, align: 'right'), class: klass, title: t('b.msg.flexible_content.align_right'), data: { toggle: 'tooltip' } %>
 
-
-            <%= link_to icon(:arrows_v), vertical_alignment_backend_content_row_path(row, align: 'center'), class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_vertical'), data: { toggle: 'tooltip' } %>
+            <% klass = 'btn btn-secondary' %>
+            <% klass << ' active' if row.vertical_alignment == 'center' %>
+            <%= link_to icon(:arrows_v), toggle_vertical_alignment_backend_content_row_path(row), class: klass, title: t('b.msg.flexible_content.align_vertical'), data: { toggle: 'tooltip' } %>
           </div>
 
           <div class="btn-group" role="group">

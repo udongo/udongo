@@ -21,8 +21,11 @@ class Backend::Content::RowsController < Backend::BaseController
     redirect_back_to_content
   end
 
-  def vertical_alignment
-    raise 'foo'
+  def toggle_vertical_alignment
+    align = @row.vertical_alignment == 'center' ? nil : 'center'
+    @row.update_attribute :vertical_alignment, align
+
+    redirect_back_to_content
   end
 
   def toggle_full_width

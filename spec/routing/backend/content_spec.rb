@@ -29,8 +29,8 @@ describe 'content routes' do
     expect(get: horizontal_alignment_backend_content_row_path(1)).to route_to('backend/content/rows#horizontal_alignment', id: '1')
   end
 
-  it 'GET /backend/content/rows/1/vertical_alignment' do
-    expect(get: vertical_alignment_backend_content_row_path(1)).to route_to('backend/content/rows#vertical_alignment', id: '1')
+  it 'GET /backend/content/rows/1/toggle_vertical_alignment' do
+    expect(get: toggle_vertical_alignment_backend_content_row_path(1)).to route_to('backend/content/rows#toggle_vertical_alignment', id: '1')
   end
 
   it 'GET /backend/content/rows/1/toggle_full_width' do

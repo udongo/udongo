@@ -60,30 +60,7 @@
           </div>
         </div>
 
-        <!-- TODO cleanup -->
-        <!-- TODO add the align-items-start/center/end classes -->
-        <% extra_classes = [] %>
-        <% if row.horizontal_alignment == 'left' %>
-          <% extra_classes << 'justify-content-start' %>
-
-        <% elsif row.horizontal_alignment == 'center' %>
-          <% extra_classes << 'justify-content-center' %>
-
-        <% elsif row.horizontal_alignment == 'right' %>
-          <% extra_classes << 'justify-content-end' %>
-        <% end %>
-
-        <% if row.vertical_alignment == 'top' %>
-          <% extra_classes << 'align-items-start' %>
-
-        <% elsif row.vertical_alignment == 'center' %>
-          <% extra_classes << 'align-items-center' %>
-
-        <% elsif row.vertical_alignment == 'bottom' %>
-          <% extra_classes << 'align-items-end' %>
-        <% end %>
-
-        <div class="row content-columns card-block <%= extra_classes.join(' ') %>">
+        <div class="row content-columns card-block <%= row.classes.join(' ') %>">
           <% row.columns.each do |column| %>
             <% content = column.content.decorate %>
 

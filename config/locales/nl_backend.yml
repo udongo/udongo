@@ -127,7 +127,6 @@ nl:
         width_explanation: Voor de flexibele inhoud wordt er gebruikt gemaakt van een grid layout. Deze werkt met rijen en kolommen. Iedere rij kan maximaal 12 kolommen bevatten. Daarom dat de breedte uitgedrukt is in een breuk op 12.
       forgot_password: Wachtwoord vergeten?
       form_fields:
-        add: Invulveld toevoegen
         add_first: Maak het eerste invulveld aan
         edit: Bewerk invulveld
         explanation: Er zijn nog geen invulvelden gedefiniëerd voor dit formulier.

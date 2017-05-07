@@ -127,7 +127,6 @@ en:
         width_explanation: For the flexible content we use a grid layout. This works with rows and columns. Every row can contain at most 12 columns. That's why the column width is expressed as a fracture.
       forgot_password: Forgot password?
       form_fields:
-        add: Add input field
         add_first: Create the first input field.
         edit: Edit input field
         explanation: No input fields have been added yet.

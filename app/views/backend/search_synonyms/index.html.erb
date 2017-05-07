@@ -1,6 +1,6 @@
 <%= render 'backend/breadcrumbs' %>
 
-<p class="text-xs-right">
+<p class="text-right">
   <%= link_to icon(:plus, t('b.add')), new_backend_search_synonym_path, class: 'btn btn-primary btn-sm' %>
 </p>
 
@@ -21,7 +21,7 @@
           <td><%= s.locale %></td>
           <td><%= s.term %></td>
           <td><%= s.synonyms %></td>
-          <td class="text-xs-right">
+          <td class="text-right">
             <%= link_to_edit [:backend, s] %>
             <%= link_to_delete [:backend, s] %>
           </td>

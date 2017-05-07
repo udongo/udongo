@@ -1,6 +1,10 @@
 <%= render 'backend/breadcrumbs' %>
 
 <% if @forms.any? %>
+  <p class="text-right">
+    <%= link_to icon(:plus, t('b.add')), new_backend_form_path, class: 'btn btn-primary btn-sm' %>
+  </p>
+
   <table class="table table-striped table-hover">
     <thead class="thead-inverse">
       <tr>
@@ -14,15 +18,9 @@
     <tbody>
       <% @forms.each do |f| %>
         <tr>
+          <td><%= f.description %></td>
           <td>
-            <%= f.description %>
-          </td>
-          <td>
-            <% if f.fields.none? %>
-              0
-            <% else %>
-              <%= f.fields.size %> (<%= link_to t('b.overview').downcase, backend_form_fields_path(f) %>)
-            <% end %>
+            <%= f.fields.size %> (<%= link_to t('b.overview').downcase, backend_form_fields_path(f) %>)
           </td>
           <td>
             <% if f.submissions.none? %>
@@ -31,7 +29,7 @@
               <%= f.submissions.size %> (<%= link_to t('b.overview').downcase, backend_form_submissions_path(f) %>)
             <% end %>
           </td>
-          <td class="text-xs-right">
+          <td class="text-right">
             <%= link_to_edit [:backend, f] %>
 
             <% if f.submissions.any? %>

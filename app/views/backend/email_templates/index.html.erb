@@ -14,7 +14,7 @@
       <% @email_templates.each do |s| %>
         <tr data-update-position="<%= update_position_backend_email_template_path(s) %>">
           <td><%= s.description %></td>
-          <td class="text-xs-right">
+          <td class="text-right">
             <%= link_to_edit_translation [:backend, s] %>
           </td>
         </tr>

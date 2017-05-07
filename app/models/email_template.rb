@@ -4,7 +4,7 @@ class EmailTemplate < ApplicationRecord
 
   include Concerns::Sortable
 
-  validates :description, :from_name, presence: true
+  validates :description, :from_name, :from_email, presence: true
   validates :identifier, presence: true, uniqueness: { case_sensitive: false }
   validates :from_email, email: true
   validates :cc, :bcc, email: true, allow_blank: true

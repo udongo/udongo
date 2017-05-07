@@ -28,7 +28,9 @@
           </div>
 
           <div class="btn-group" role="group">
-            <%= link_to icon(:arrows_h), '#', class: 'btn btn-secondary', title: 'Volledige breedte', data: { toggle: 'tooltip' } %>
+            <% klass = 'btn btn-secondary' %>
+            <% klass << ' active' if row.full_width? %>
+            <%= link_to icon(:arrows_h), toggle_full_width_backend_content_row_path(row), class: klass, title: 'Volledige breedte', data: { toggle: 'tooltip' } %>
           </div>
 
           <div class="btn-group" role="group">

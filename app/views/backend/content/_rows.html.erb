@@ -21,16 +21,16 @@
       <div id="content-row-<%= row.id %>" class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
         <div class="card-header handle">
           <div class="btn-group" role="group">
-            <%= link_to icon(:align_left), '#', class: 'btn btn-secondary active', title: 'Links uitlijnen', data: { toggle: 'tooltip' } %>
-            <%= link_to icon(:align_center), '#', class: 'btn btn-secondary', title: 'Centreren', data: { toggle: 'tooltip' } %>
-            <%= link_to icon(:align_right), '#', class: 'btn btn-secondary', title: 'Rechts uitlijnen', data: { toggle: 'tooltip' } %>
-            <%= link_to icon(:arrows_v), '#', class: 'btn btn-secondary', title: 'Vertikaal centreren', data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:align_left), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_left'), data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:align_center), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_center'), data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:align_right), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_right'), data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:arrows_v), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_vertical'), data: { toggle: 'tooltip' } %>
           </div>
 
           <div class="btn-group" role="group">
             <% klass = 'btn btn-secondary' %>
             <% klass << ' active' if row.full_width? %>
-            <%= link_to icon(:arrows_h), toggle_full_width_backend_content_row_path(row), class: klass, title: 'Volledige breedte', data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:arrows_h), toggle_full_width_backend_content_row_path(row), class: klass, title: t('b.msg.flexible_content.full_width'), data: { toggle: 'tooltip' } %>
           </div>
 
           <div class="btn-group" role="group">

@@ -21,7 +21,18 @@
       <div id="content-row-<%= row.id %>" class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
         <div class="card-header handle">
           <div class="btn-group" role="group">
-            <%= link_to icon(:trash, t('b.msg.flexible_content.delete_row')), backend_content_row_path(row), class: 'btn btn-secondary', method: :delete, data: { confirm: t('b.msg.confirm') } %>
+            <%= link_to icon(:align_left), '#', class: 'btn btn-secondary active', title: 'Links uitlijnen', data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:align_center), '#', class: 'btn btn-secondary', title: 'Centreren', data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:align_right), '#', class: 'btn btn-secondary', title: 'Rechts uitlijnen', data: { toggle: 'tooltip' } %>
+            <%= link_to icon(:arrows_v), '#', class: 'btn btn-secondary', title: 'Vertikaal centreren', data: { toggle: 'tooltip' } %>
+          </div>
+
+          <div class="btn-group" role="group">
+            <%= link_to icon(:arrows_h), '#', class: 'btn btn-secondary', title: 'Volledige breedte', data: { toggle: 'tooltip' } %>
+          </div>
+
+          <div class="btn-group" role="group">
+            <%= link_to icon(:trash), backend_content_row_path(row), class: 'btn btn-secondary', title: t('b.delete'), method: :delete, data: { toggle: 'tooltip', confirm: t('b.msg.confirm') } %>
           </div>
         </div>
 
@@ -40,7 +51,10 @@
                 <div class="card-footer">
                   <div class="btn-group" role="group">
                     <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>
+                    <!-- TODO use link_to_edit -->
                     <%= link_to icon(:pencil_square_o), edit_link, class: 'btn btn-secondary btn-sm' %>
+
+                    <!-- TODO use link_to_delete -->
                     <%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm', method: :delete, data: { confirm: t('b.msg.confirm') } %>
                     <%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm' %>
                   </div>

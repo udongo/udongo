@@ -64,10 +64,7 @@
                 <div class="card-footer">
                   <div class="btn-group" role="group">
                     <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>
-                    <!-- TODO use link_to_edit -->
                     <%= link_to icon(:pencil_square_o), edit_link, class: 'btn btn-secondary btn-sm' %>
-
-                    <!-- TODO use link_to_delete -->
                     <%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm', method: :delete, data: { confirm: t('b.msg.confirm') } %>
                     <%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm' %>
                   </div>

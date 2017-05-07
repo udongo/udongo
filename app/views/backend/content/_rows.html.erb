@@ -21,10 +21,20 @@
       <div id="content-row-<%= row.id %>" class="card content-row" data-update-position="<%= update_position_backend_content_row_path(row) %>">
         <div class="card-header handle">
           <div class="btn-group" role="group">
-            <%= link_to icon(:align_left), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_left'), data: { toggle: 'tooltip' } %>
-            <%= link_to icon(:align_center), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_center'), data: { toggle: 'tooltip' } %>
-            <%= link_to icon(:align_right), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_right'), data: { toggle: 'tooltip' } %>
-            <%= link_to icon(:arrows_v), '#', class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_vertical'), data: { toggle: 'tooltip' } %>
+            <% klass = 'btn btn-secondary' %>
+            <% klass << ' active' if row.horizontal_alignment == 'left' || row.horizontal_alignment.blank? %>
+            <%= link_to icon(:align_left), horizontal_alignment_backend_content_row_path(row, align: 'left'), class: klass, title: t('b.msg.flexible_content.align_left'), data: { toggle: 'tooltip' } %>
+
+            <% klass = 'btn btn-secondary' %>
+            <% klass << ' active' if row.horizontal_alignment == 'center' %>
+            <%= link_to icon(:align_center), horizontal_alignment_backend_content_row_path(row, align: 'center'), class: klass, title: t('b.msg.flexible_content.align_center'), data: { toggle: 'tooltip' } %>
+
+            <% klass = 'btn btn-secondary' %>
+            <% klass << ' active' if row.horizontal_alignment == 'right' %>
+            <%= link_to icon(:align_right), horizontal_alignment_backend_content_row_path(row, align: 'right'), class: klass, title: t('b.msg.flexible_content.align_right'), data: { toggle: 'tooltip' } %>
+
+
+            <%= link_to icon(:arrows_v), vertical_alignment_backend_content_row_path(row, align: 'center'), class: 'btn btn-secondary', title: t('b.msg.flexible_content.align_vertical'), data: { toggle: 'tooltip' } %>
           </div>
 
           <div class="btn-group" role="group">

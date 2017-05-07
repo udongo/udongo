@@ -14,7 +14,11 @@ class Backend::Content::RowsController < Backend::BaseController
   end
 
   def horizontal_alignment
-    raise 'foo'
+    align = params[:align].to_s
+    align = 'left' unless %w(left center right).include?(align)
+    @row.update_attribute :horizontal_alignment, align
+
+    redirect_back_to_content
   end
 
   def vertical_alignment

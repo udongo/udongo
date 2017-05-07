@@ -1,9 +1,13 @@
 # Upgrade guide
-## From 5.9.0 to 5.10.0
+## From 5.9.0 to 6.0.0
 ### Flexible content
 There no longer are allowed/disallowed breakpoints.
 The setting ```Udongo.config.flexible_content.allowed_breakpoints``` has been
 removed.
+
+### Bootstrap alpha v4 to v6
+We're now using the latest bootstrap alpha v6. Because of some changes you will
+need to check your _top_navigation.html.erb file.
 
 ## From 5.8.0 to 5.9.0
 ### LinkHelper

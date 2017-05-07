@@ -1,6 +1,6 @@
 <%= render 'backend/breadcrumbs' %>
 
-<p class="text-xs-right">
+<p class="text-right">
   <%= link_to icon(:plus, t('b.add')), new_backend_article_path, class: 'btn btn-primary btn-sm' %>
 </p>
 
@@ -40,7 +40,7 @@
           <td><%= l a.published_at if a.published_at %></td>
           <td><%= t a.visible?.to_s %></td>
           <td><%= t a.press_release?.to_s %></td>
-          <td class="text-xs-right">
+          <td class="text-right">
             <%= link_to_edit_translation [:backend, a] %>
             <%= link_to_delete [:backend, a] %>
           </td>

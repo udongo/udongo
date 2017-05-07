@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <h2><%= n.description %></h2>
     </div>
-    <div class="col-md-6 text-xs-right">
+    <div class="col-md-6 text-right">
       <%= link_to t('b.add'), new_backend_navigation_item_path(n), class: 'btn btn-primary btn-sm' %>
     </div>
   </div>
@@ -32,7 +32,7 @@
             <td><%= i.translation.label %></td>
             <td><%= i.translation.path %></td>
             <td><%= i.extra %></td>
-            <td class="text-xs-right">
+            <td class="text-right">
               <%= link_to_edit edit_translation_backend_navigation_item_path(n, i, default_app_locale) %>
               <%= link_to_delete backend_navigation_item_path(n, i) %>
             </td>

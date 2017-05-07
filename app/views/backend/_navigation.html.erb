@@ -1,8 +1,11 @@
-<nav class="navbar navbar-dark bg-inverse">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#udongo-navbar" aria-controls="udongo-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
   <%= link_to backend_path, class: 'navbar-brand' do %>
     <%= Udongo.config.base.project_name %>
   <% end %>
 
   <%= render 'layouts/backend/top_navigation' %>
 </nav>
-

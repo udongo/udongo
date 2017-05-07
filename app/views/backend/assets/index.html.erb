@@ -1,7 +1,7 @@
 <%= render 'backend/breadcrumbs' %>
 <%= render 'filter' %>
 
-<p class="text-xs-right">
+<p class="text-right">
   <%= link_to icon(:plus, t('b.add')), new_backend_asset_path, class: 'btn btn-primary btn-sm' %>
 </p>
 
@@ -32,7 +32,7 @@
           <td><%= number_to_human_size a.filesize %></td>
           <td><%= simple_format a.description %></td>
           <td><%= l a.updated_at %></td>
-          <td class="text-xs-right">
+          <td class="text-right">
             <%= link_to_edit [:backend, a] %>
             <%= link_to_delete [:backend, a] if a.deletable? %>
           </td>

@@ -6,6 +6,6 @@ class ContentVideoDecorator < ApplicationDecorator
   end
 
   def aspect_ratio_class
-    '16by9'
+    aspect_ratio.to_s.split('x').join('by')
   end
 end

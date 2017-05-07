@@ -120,7 +120,9 @@ en:
         align_center: Center
         align_left: Align left
         align_right: Align right
-        align_vertical: Align vertically
+        align_vertical_bottom: Align vertical bottom
+        align_vertical_center: Align vertically
+        align_vertical_top: Align vertical top
         edit_column: Edit column
         edit_image: Edit image
         edit_picture: Edit picture

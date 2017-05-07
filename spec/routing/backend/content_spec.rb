@@ -25,6 +25,18 @@ describe 'content routes' do
     expect(put: '/backend/content/rows/1').not_to be_routable
   end
 
+  it 'GET /backend/content/rows/1/horizontal_alignment' do
+    expect(get: horizontal_alignment_backend_content_row_path(1)).to route_to('backend/content/rows#horizontal_alignment', id: '1')
+  end
+
+  it 'GET /backend/content/rows/1/vertical_alignment' do
+    expect(get: vertical_alignment_backend_content_row_path(1)).to route_to('backend/content/rows#vertical_alignment', id: '1')
+  end
+
+  it 'GET /backend/content/rows/1/toggle_full_width' do
+    expect(get: toggle_full_width_backend_content_row_path(1)).to route_to('backend/content/rows#toggle_full_width', id: '1')
+  end
+
   it 'DELETE /backend/content/rows/1' do
     expect(delete: '/backend/content/rows/1').to route_to('backend/content/rows#destroy', id: '1')
   end

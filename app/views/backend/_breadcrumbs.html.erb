@@ -3,10 +3,11 @@
     <li class="breadcrumb-item"><%= link_to icon(:home), backend_path %></li>
 
     <% breadcrumb.each do |item| %>
-      <% klass = (item == breadcrumb.all.last) ? 'active' : '' %>
+      <% last = (item == breadcrumb.all.last) %>
+      <% klass = last ? 'active' : '' %>
       <li class="breadcrumb-item <%= klass %>">
 
-        <% if item[:link].present? && !(item == breadcrumb.all.last) %>
+        <% if item[:link].present? && !last %>
           <%= link_to item[:name].to_s.html_safe, item[:link] %>
         <% else %>
           <%= item[:name].to_s.html_safe %>

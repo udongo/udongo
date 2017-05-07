@@ -5,6 +5,9 @@ There no longer are allowed/disallowed breakpoints.
 The setting ```Udongo.config.flexible_content.allowed_breakpoints``` has been
 removed.
 
+Since you can now define the width and the alignment options for each row, you
+will need to adjust the frontend rendering to actually use these features.
+
 ### Bootstrap alpha v4 to v6
 We're now using the latest bootstrap alpha v6. Because of some changes you will
 need to check your _top_navigation.html.erb file.

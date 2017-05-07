@@ -81,6 +81,10 @@ Rails.application.routes.draw do
 
     namespace :content do
       resources :rows, only: [:index, :new, :destroy] do
+        member do
+          get :horizontal_alignment, :vertical_alignment, :toggle_full_width
+        end
+
         concerns :positionable
 
         scope module: 'rows' do

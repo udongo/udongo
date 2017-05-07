@@ -6,4 +6,24 @@ class ContentRowDecorator < ApplicationDecorator
   def column_limit_reached?
     column_width_calculator.total(:width_xl) >= 12
   end
+
+  def classes
+    list = []
+
+    if horizontal_alignment.to_s == 'center'
+      list << 'justify-content-center'
+
+    elsif horizontal_alignment.to_s == 'right'
+      list << 'justify-content-end'
+    end
+
+    if vertical_alignment.to_s == 'center'
+      list << 'align-items-center'
+
+    elsif vertical_alignment.to_s == 'bottom'
+      list << 'align-items-end'
+    end
+
+    list
+  end
 end

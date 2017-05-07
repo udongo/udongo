@@ -117,12 +117,18 @@ en:
         add_column: Add column
         add_row: Add row
         add_text: Add text
-        delete_row: Delete row
+        align_center: Center
+        align_left: Align left
+        align_right: Align right
+        align_vertical_bottom: Align vertical bottom
+        align_vertical_center: Align vertically
+        align_vertical_top: Align vertical top
         edit_column: Edit column
         edit_image: Edit image
         edit_picture: Edit picture
         edit_text: Edit text
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
+        full_width: Full width
         no_picture_present: No picture has been uploaded/linked yet.
         width_explanation: For the flexible content we use a grid layout. This works with rows and columns. Every row can contain at most 12 columns. That's why the column width is expressed as a fracture.
       forgot_password: Forgot password?

@@ -6,7 +6,7 @@
 
     <div class="card-block">
       <%= f.input :url, as: :string %>
-      <%= f.input :aspect_ratio, as: :string %>
+      <%= f.input :aspect_ratio, collection: ContentVideo::ASPECT_RATIOS, include_blank: false %>
     </div>
   </div>
 

@@ -1,4 +1,3 @@
-<!-- TODO move this div to the top navigation partial -->
 <div class="collapse navbar-collapse" id="udongo-navbar">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item dropdown">
@@ -34,7 +33,7 @@
   </ul>
 
   <ul class="navbar-nav">
-    <li class="nav-item pull-xs-right">
+    <li class="nav-item">
       <%= form_tag backend_search_path, method: :get, id: 'search', class: 'form-inline my-2 my-lg-0' do %>
         <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2 no-focus', placeholder: t('b.search') %>
       <% end %>

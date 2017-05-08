@@ -1,3 +1,8 @@
+6.1.0 - xxxx-xx-xx
+--
+* The obsolete top navigation markup has been cleaned up.
+
+
 6.0.0 - 2017-05-08
 --
 * When adding/editing flexible content columns, you now only see the medium

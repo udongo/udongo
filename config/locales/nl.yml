@@ -207,7 +207,7 @@ nl:
     formats:
       default: ! '%-d %B %Y om %Hu%M'
       timeless: ! '%d %B %Y'
-      short: ! '%-d %b om %-Hu%M'
+      short: ! '%-d %b %Y om %-Hu%M'
       time_attr: ! '%FT%R%:z'
       full: ! '%a %d %b %Y %H:%M:%S %Z'
     pm: ! '''s middags'

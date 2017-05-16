@@ -59,7 +59,7 @@ class Backend::PagesController < Backend::BaseController
   end
 
   def allowed_params
-    params[:page].permit(:description, :parent_id, :visible)
+    params[:page].permit(:description, :parent_id, :visible, :sitemap)
   end
 
   def translation_form

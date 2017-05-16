@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507163532) do
+ActiveRecord::Schema.define(version: 20170516092845) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -317,6 +317,7 @@ ActiveRecord::Schema.define(version: 20170507163532) do
     t.boolean  "deletable"
     t.boolean  "draggable"
     t.boolean  "content_disabled"
+    t.boolean  "sitemap"
     t.text     "locales",          limit: 65535
     t.string   "route"
     t.datetime "created_at"
@@ -324,6 +325,7 @@ ActiveRecord::Schema.define(version: 20170507163532) do
     t.index ["identifier"], name: "index_pages_on_identifier", using: :btree
     t.index ["parent_id"], name: "index_page_parent_id", using: :btree
     t.index ["position"], name: "index_pages_on_position", using: :btree
+    t.index ["sitemap"], name: "index_pages_on_sitemap", using: :btree
     t.index ["visible"], name: "index_pages_on_visible", using: :btree
   end
 

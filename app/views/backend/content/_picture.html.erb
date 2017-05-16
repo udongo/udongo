@@ -3,9 +3,13 @@
   <%= image_tag object.asset.image.url(1100, 1100, quality: 65), alt: '', class: 'img-fluid' %>
 
   <% if object.caption.present? %>
-    <div class="text-xs-center">
+    <% if Udongo.config.flexible_content.picture_caption_editor? %>
       <%= object.caption.html_safe %>
-    </div>
+    <% else %>
+      <div class="text-center">
+        <%= object.caption%>
+      </div>
+    <% end %>
   <% end %>
 
 <% else %>

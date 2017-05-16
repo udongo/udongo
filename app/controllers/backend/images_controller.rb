@@ -5,7 +5,7 @@ class Backend::ImagesController < Backend::BaseController
 
   def index
     @search = Asset.ransack params[:q]
-    @assets = @search.result(distinct: true).image.where.not(id: @model.images.pluck(:asset_id)).order('id DESC')
+    @assets = @search.result(distinct: true).image.where.not(id: @model.images.pluck(:asset_id)).order('id DESC').limit(30)
   end
 
   def create

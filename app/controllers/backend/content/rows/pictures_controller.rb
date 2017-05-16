@@ -46,6 +46,6 @@ class Backend::Content::Rows::PicturesController < Backend::BaseController
   def prepare_upload
     @asset = Asset.new
     @search = Asset.ransack params[:q]
-    @assets = @search.result(distinct: true).image.where.not(id: @model.asset_id).order('id DESC')
+    @assets = @search.result(distinct: true).image.where.not(id: @model.asset_id).order('id DESC').limit(30)
   end
 end

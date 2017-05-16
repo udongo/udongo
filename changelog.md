@@ -8,6 +8,8 @@
   last name.
 * A new setting ```Udongo.config.flexible_content.picture_caption_editor``` was
   added. This allows you to use an editor for picture captions.
+* Tweaked some bottom margins related to the media module.
+* Linking an image via de media module now only suggests 30 pictures.
 
 
 6.0.0 - 2017-05-08

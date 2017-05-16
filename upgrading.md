@@ -4,6 +4,10 @@
 A new setting ```sitemap``` has been added to ```Page```. If you've manually
 constructed your sitemap, it might be a good idea to incorporate this setting.
 
+### Person#short_name
+A new method #short_name was added to the Person concern.
+```Davy Hellemans``` becomes ```Davy H.``` when you use it.
+
 ## From 5.9.0 to 6.0.0
 ### Flexible content
 There no longer are allowed/disallowed breakpoints.

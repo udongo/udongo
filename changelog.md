@@ -4,6 +4,8 @@
 * Add setting 'sitemap' to pages. These can be used to easily see which pages
   are to be included in the sitemap.
 * Rename Concerns::Addressable#configure_adress to configure_address
+* Add method Person#short_name which uses the first name and first letter of the
+  last name.
 
 
 6.0.0 - 2017-05-08

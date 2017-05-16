@@ -1,7 +1,7 @@
 <%= search_form_for @search, url: backend_images_path do |f| %>
   <%= hidden_field_tag :klass, @model.class.name %>
   <%= hidden_field_tag :id, @model.id %>
-  <div class="row m-b-2">
+  <div class="row mb-4">
     <div class="col-md-6">
       <%= f.search_field :description_cont, placeholder: t('b.description'), class: 'form-control' %>
     </div>

@@ -104,6 +104,9 @@ en:
       admins:
         account_details: Account details
         personal_details: Personal details
+      articles:
+        press_release_abbreviated: Press.
+        visible_abbreviated: Visi.
       changes_saved: The changes have been saved.
       confirm: Are you sure?
       content_types:

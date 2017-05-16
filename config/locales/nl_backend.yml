@@ -104,6 +104,9 @@ nl:
       admins:
         account_details: Accountgegevens
         personal_details: Persoonlijke gegevens
+      articles:
+        press_release_abbreviated: Pers.
+        visible_abbreviated: Zicht.
       changes_saved: De wijzigingen werden opgeslagen.
       confirm: Ben je zeker?
       content_types:

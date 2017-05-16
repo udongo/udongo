@@ -10,10 +10,10 @@
       <tr>
         <th><%= t 'b.title' %></th>
         <th><%= t 'b.author' %></th>
-        <th><%= t 'b.published_at' %></th>
-        <th><%= t 'b.visible' %></th>
-        <th><%= t 'b.press_release' %></th>
-        <th>&nbsp;</th>
+        <th width="160"><%= t 'b.published_at' %></th>
+        <th><span data-toggle="tooltip" title="<%= t 'b.visible' %>" class="abbreviated-tooltip"><%= t 'b.msg.articles.visible_abbreviated' %></span></th>
+        <th><span data-toggle="tooltip" title="<%= t 'b.press_release' %>" class="abbreviated-tooltip"><%= t 'b.msg.articles.press_release_abbreviated' %></span></th>
+        <th width="60">&nbsp;</th>
       </tr>
     </thead>
 

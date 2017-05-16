@@ -37,7 +37,7 @@
               <%= t 'b.not_set' %>
             <% end %>
           </td>
-          <td><%= l(a.published_at, format: :short) if a.published_at %></td>
+          <td class="text-right"><%= l(a.published_at, format: :short) if a.published_at %></td>
           <td><%= t a.visible?.to_s %></td>
           <td><%= t a.press_release?.to_s %></td>
           <td class="text-right">

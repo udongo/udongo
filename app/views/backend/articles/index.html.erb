@@ -32,7 +32,7 @@
           </td>
           <td>
             <% if a.user.present? %>
-              <%= link_to icon(:user, a.user.full_name), edit_backend_user_path(a.user) %>
+              <%= link_to icon(:user, a.user.short_name), edit_backend_user_path(a.user) %>
             <% else %>
               <%= t 'b.not_set' %>
             <% end %>

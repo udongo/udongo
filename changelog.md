@@ -1,4 +1,4 @@
-6.1.0 - xxxx-xx-xx
+6.1.0 - 2017-05-16
 --
 * The obsolete top navigation markup has been cleaned up.
 * Add setting 'sitemap' to pages. These can be used to easily see which pages

@@ -1,4 +1,9 @@
 # Upgrade guide
+## From 6.0.0 to 6.1.0
+### Pages
+A new setting ```sitemap``` has been added to ```Page```. If you've manually
+constructed your sitemap, it might be a good idea to incorporate this setting.
+
 ## From 5.9.0 to 6.0.0
 ### Flexible content
 There no longer are allowed/disallowed breakpoints.

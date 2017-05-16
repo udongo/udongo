@@ -201,7 +201,7 @@ en:
     formats:
       default: ! '%B %-d, %Y at %Hh%M'
       timeless: ! '%d %B %Y'
-      short: ! '%d %b at %Hh%M'
+      short: ! '%-d %b at %-Hh%M'
       time_attr: ! '%G-W%V-%uT%R%:z'
       full: ! '%a, %d %b %Y %H:%M:%S %z'
     pm: pm

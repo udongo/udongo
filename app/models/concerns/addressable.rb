@@ -7,7 +7,7 @@ module Concerns
     end
 
     module ClassMethods
-      def configure_adress(categories, default: nil)
+      def configure_address(categories, default: nil)
         address_config.update(categories, default: default)
       end
 

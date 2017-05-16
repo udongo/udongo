@@ -3,6 +3,7 @@
 * The obsolete top navigation markup has been cleaned up.
 * Add setting 'sitemap' to pages. These can be used to easily see which pages
   are to be included in the sitemap.
+* Rename Concerns::Addressable#configure_adress to configure_address
 
 
 6.0.0 - 2017-05-08

@@ -10,7 +10,10 @@
 
     <%= simple_form_for [:backend, @model] do |f| %>
       <%= f.input :url, as: :string %>
-      <%= f.input :caption, as: :text %>
+
+      <% content_type = Udongo.config.flexible_content.picture_caption_editor? ? :ckeditor : :text %>
+      <%= f.input :caption, as: content_type %>
+
       <%= render 'backend/form_actions', cancel_url: content_path %>
     <% end %>
   </div>

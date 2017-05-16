@@ -6,6 +6,8 @@
 * Rename Concerns::Addressable#configure_adress to configure_address
 * Add method Person#short_name which uses the first name and first letter of the
   last name.
+* A new setting ```Udongo.config.flexible_content.picture_caption_editor``` was
+  added. This allows you to use an editor for picture captions.
 
 
 6.0.0 - 2017-05-08

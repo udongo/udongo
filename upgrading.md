@@ -8,6 +8,12 @@ constructed your sitemap, it might be a good idea to incorporate this setting.
 A new method #short_name was added to the Person concern.
 ```Davy Hellemans``` becomes ```Davy H.``` when you use it.
 
+### Flexible content
+You can now determine whether or not the picture caption uses an editor. This 
+setting ```Udongo.config.flexible_content.picture_caption_editor``` is false by
+default. When using this, don't forgot to update your ```_picture.html.erb``` in
+the frontend of your application.
+
 ## From 5.9.0 to 6.0.0
 ### Flexible content
 There no longer are allowed/disallowed breakpoints.

@@ -1,0 +1,5 @@
+<% if object.present? && object.form.present? %>
+  <%= t 'b.form' %> &gt; <%= object.form.description %>
+<% else %>
+  <%= t 'b.msg.flexible_content.no_form_present' %>
+<% end %>

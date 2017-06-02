@@ -1,11 +1,18 @@
 # Upgrade guide
+## From 6.1.0 to 6.2.0
+### CollectionHelper
+You can now easily create collections to be used with SimpleForm by using
+```options_for_collection``` and placing your translations in ```[locale]_general.yml```
+If you've created this function yourself, use the Udongo one instead.
+
+
 ## From 6.0.0 to 6.1.0
 ### Pages
 A new setting ```sitemap``` has been added to ```Page```. If you've manually
 constructed your sitemap, it might be a good idea to incorporate this setting.
 
 ### Person#short_name
-A new method #short_name was added to the Person concern.
+A new method #short_name was added to the ```Person``` concern.
 ```Davy Hellemans``` becomes ```Davy H.``` when you use it.
 
 ### Flexible content

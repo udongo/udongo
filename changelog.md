@@ -1,3 +1,8 @@
+6.2.1 - 2017-06-02
+--
+* Added email and tel as valid form types for FormField.
+
+
 6.2.0 - 2017-06-02
 --
 * Removed the bootstrap source mapping reference in backend/bootstrap.scss.

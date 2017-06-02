@@ -3,8 +3,10 @@ nl:
     collections:
       form_field_type:
         collection: Collectie
+        email: E-mailadres
         integer: Getal
         string: Tekstregel
+        tel: Telefoonnummer
         text: Tekstvak
 
     type: Type

@@ -5,6 +5,9 @@ You can now easily create collections to be used with SimpleForm by using
 ```options_for_collection``` and placing your translations in ```[locale]_general.yml```
 If you've created this function yourself, use the Udongo one instead.
 
+### Form widget
+A new form widget has been added. Don't forget to add ```form``` to the list of
+widgets in case you override them in your project config.
 
 ## From 6.0.0 to 6.1.0
 ### Pages

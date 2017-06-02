@@ -110,6 +110,7 @@ en:
       changes_saved: The changes have been saved.
       confirm: Are you sure?
       content_types:
+        form: Form
         image: Image (deprecated!)
         picture: Picture
         text: Text
@@ -128,12 +129,14 @@ en:
         align_vertical_center: Align vertically
         align_vertical_top: Align vertical top
         edit_column: Edit column
+        edit_form: Edit form
         edit_image: Edit image
         edit_picture: Edit picture
         edit_text: Edit text
         edit_video: Edit video
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
         full_width: Full width
+        no_form_present: No form has been linked yet.
         no_picture_present: No picture has been uploaded/linked yet.
         no_video_present: No valid video URL was given.
         width_explanation: For the flexible content we use a grid layout. This works with rows and columns. Every row can contain at most 12 columns. That's why the column width is expressed as a fracture.

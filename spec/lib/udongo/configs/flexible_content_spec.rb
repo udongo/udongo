@@ -10,7 +10,7 @@ describe Udongo::Configs::FlexibleContent do
     end
 
     it :types do
-      expect(instance.types).to eq %w(text picture video image)
+      expect(instance.types).to eq %w(text picture video form image)
     end
 
     it :picture_caption_editor do

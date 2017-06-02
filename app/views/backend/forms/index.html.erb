@@ -35,7 +35,7 @@
             <% if f.submissions.any? %>
               <%= link_to icon(:trash), '#', data: { toggle: 'tooltip' }, title: t('b.msg.forms.removal_warning', submissions: f.submissions.size) %>
             <% else %>
-              <%= link_to_delete [:backend, f] %>
+              <%= link_to_delete [:backend, f] if f.deletable? %>
             <% end %>
           </td>
         </tr>

@@ -2,6 +2,7 @@
 --
 * Add the ```CollectionHelper``` which allows you to use ```options_for_collection```
   to easily create collections for simple form.
+* The form field types are now a dropdown instead of a text field.
 
 
 6.1.0 - 2017-05-16

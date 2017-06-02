@@ -9,7 +9,6 @@ If you've created this function yourself, use the Udongo one instead.
 A new form widget has been added. Don't forget to add ```form``` to the list of
 widgets in case you override them in your project config.
 
-
 ## From 6.0.0 to 6.1.0
 ### Pages
 A new setting ```sitemap``` has been added to ```Page```. If you've manually

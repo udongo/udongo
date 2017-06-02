@@ -35,7 +35,7 @@ class Backend::FormsController < Backend::BaseController
   end
 
   def destroy
-    @model.destroy
+    @model.destroy if @model.deletable?
     redirect_to backend_forms_path, notice: translate_notice(:deleted, :form)
   end
 

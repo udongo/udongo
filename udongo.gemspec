@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   # Javascript related
   s.add_dependency 'jquery-rails', '~> 4.0', '>= 4.0.5'
-  s.add_dependency 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+  s.add_dependency 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
   # Styling
   s.add_dependency 'sass-rails', '~> 5.0', '>= 5.0.3'

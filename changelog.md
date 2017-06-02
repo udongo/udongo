@@ -1,5 +1,7 @@
 6.2.0 - 2017-06-02
 --
+* Removed the bootstrap source mapping reference in backend/bootstrap.scss.
+* Upgraded jquery-ui-rails to 6.0.1 to fix autocomplete issues with jquery3.
 * Add the ```CollectionHelper``` which allows you to use ```options_for_collection```
   to easily create collections for simple form.
 * The form field types are now a dropdown instead of a text field.

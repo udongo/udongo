@@ -12,9 +12,9 @@
 //
 //= require jquery3
 //= require jquery_ujs
-//= require jquery-ui/autocomplete
+//= require jquery-ui/widgets/sortable
+//= require jquery-ui/widgets/autocomplete
 //= require jquery-ui.autocomplete.html.js
-//= require jquery-ui/sortable
 //= require backend/tether.min
 //= require backend/bootstrap
 //= require backend/jquery.throttle-debounce.min.js

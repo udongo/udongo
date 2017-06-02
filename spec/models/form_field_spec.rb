@@ -41,6 +41,10 @@ describe FormField do
     expect(described_class.translatable_fields_list).to eq [:label, :default_value]
   end
 
+  it 'FIELD_TYPES' do
+    expect(described_class::FIELD_TYPES).to eq %w(string text integer collection)
+  end
+
   it '#respond_to?' do
     expect(build(klass)).to respond_to(:form)
   end

@@ -1,3 +1,9 @@
+6.2.0 - 2017-06-02
+--
+* Add the ```CollectionHelper``` which allows you to use ```options_for_collection```
+  to easily create collections for simple form.
+
+
 6.1.0 - 2017-05-16
 --
 * The obsolete top navigation markup has been cleaned up.

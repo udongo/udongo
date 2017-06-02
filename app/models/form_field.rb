@@ -5,6 +5,8 @@ class FormField < ApplicationRecord
   include Concerns::Translatable
   translatable_fields :label, :default_value
 
+  FIELD_TYPES = %w(string text integer collection)
+
   belongs_to :form
 
   validates :form, :identifier, :field_type, presence: true

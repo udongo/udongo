@@ -10,8 +10,7 @@
 
         <div class="card-block">
           <%= f.input :identifier %>
-          <%# FIXME: This should be a dropdown once we know the exact types to use. %>
-          <%= f.input :field_type %>
+          <%= f.input :field_type, collection: options_for_collection(:form_field_type, FormField::FIELD_TYPES) %>
         </div>
       </div>
     </div>

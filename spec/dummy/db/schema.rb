@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516092845) do
+ActiveRecord::Schema.define(version: 20170602114411) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -114,6 +114,13 @@ ActiveRecord::Schema.define(version: 20170516092845) do
     t.index ["content_type"], name: "idx_content_columns_on_content_type", using: :btree
     t.index ["position"], name: "index_content_columns_on_position", using: :btree
     t.index ["row_id"], name: "index_content_columns_on_row_id", using: :btree
+  end
+
+  create_table "content_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_content_forms_on_form_id", using: :btree
   end
 
   create_table "content_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

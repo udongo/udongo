@@ -1,6 +1,7 @@
 6.1.1 - 2017-06-xx
 --
 * Removed the bootstrap source mapping reference in backend/bootstrap.scss.
+* Upgraded jquery-ui-rails to 6.0.1 to fix autocomplete issues with jquery3.
 
 
 6.1.0 - 2017-05-16

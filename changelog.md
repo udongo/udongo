@@ -1,3 +1,8 @@
+6.1.1 - 2017-06-xx
+--
+* Removed the bootstrap source mapping reference in backend/bootstrap.scss.
+
+
 6.1.0 - 2017-05-16
 --
 * The obsolete top navigation markup has been cleaned up.

@@ -28,46 +28,50 @@ ul.tagit li.tagit-new {
     padding: .25em 4px .25em 0;
 }
 
-ul.tagit li.tagit-choice a.tagit-label {
+ul.tagit li.tagit-choice {
+  a.tagit-label {
     cursor: pointer;
     text-decoration: none;
-}
-ul.tagit li.tagit-choice .tagit-close {
-    cursor: pointer;
-    position: absolute;
-    right: .1em;
-    top: 50%;
-    margin-top: -8px;
-    line-height: 17px;
-}
+  }
 
-/* used for some custom themes that don't need image icons */
-ul.tagit li.tagit-choice .tagit-close .text-icon {
-    display: inline;
-}
-
-ul.tagit li.tagit-choice .tagit-close .ui-icon-close {
-    display: none;
-}
-
-ul.tagit li.tagit-choice input {
+  input {
     display: block;
     float: left;
     margin: 2px 5px 2px 0;
+  }
+
+  .tagit-close {
+    cursor: pointer;
+    position: absolute;
+    right: .3rem;
+    top: 1rem;
+    margin-top: -8px;
+    line-height: 17px;
+
+    /* used for some custom themes that don't need image icons */
+    .text-icon {
+      display: inline;
+    }
+
+    .ui-icon-close {
+      display: none;
+    }
+  }
 }
+
 ul.tagit input[type="text"] {
-    -moz-box-sizing:    border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing:         border-box;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
 
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: inherit;
-    background-color: inherit;
-    outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: inherit;
+  background-color: inherit;
+  outline: none;
 }

@@ -1,3 +1,9 @@
+6.3.0 - 2017-06-04
+--
+* A general tag module was added. This allows you to see which tags have been
+  used throughout the system and add new ones.
+
+
 6.2.1 - 2017-06-04
 --
 * Added email and tel as valid form types for FormField.

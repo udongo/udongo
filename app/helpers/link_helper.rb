@@ -32,8 +32,6 @@ module LinkHelper
     )
   end
 
-  private
-
   def path_from_string_or_object(value, prefix = nil)
     return value if value.is_a?(String)
 

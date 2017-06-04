@@ -9,6 +9,10 @@ class Backend::TagsController < Backend::BaseController
     @tags = @search.result(distinct: true).order(:name).page(page_number).per_page(per_page)
   end
 
+  def show
+    redirect_to edit_backend_tag_path(@tag)
+  end
+
   def new
     @tag = Tag.new
   end

@@ -21,8 +21,17 @@
         <tr>
           <td><%= tag.name %></td>
           <td><%= tag.locale.to_s.upcase %></td>
-          <!-- TODO note if already used and show usages in a popup? -->
-          <td>gebruikt?</td>
+          <td>
+            <% if tag.tagged_items.any? %>
+              <% lbl = "#{t(true.to_s)} (#{tag.tagged_items.count})" %>
+              <%= link_to icon(:search, lbl), '#', data: { toggle: 'modal', target: "#tag-usages-#{tag.id}" }%>
+
+              <%= render 'tag_usages', tag: tag %>
+
+            <% else %>
+              <%= t false.to_s %>
+            <% end %>
+          </td>
           <td class="text-right">
             <%= link_to_edit [:backend, tag] %>
             <%= link_to_delete [:backend, tag] %>

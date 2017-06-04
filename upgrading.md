@@ -1,4 +1,10 @@
 # Upgrade guide
+## From 6.2.1 to 6.3
+### Tags module
+A new module was added that allows you see which tags are currently in the
+system. You can also add/edit/delete tags and see if they're being used.
+
+
 ## From 6.2.0 to 6.2.1
 ### Formbuilder
 You can now use the ```tel``` and ```email``` type for form fields.

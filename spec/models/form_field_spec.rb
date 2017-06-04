@@ -42,7 +42,7 @@ describe FormField do
   end
 
   it 'FIELD_TYPES' do
-    expect(described_class::FIELD_TYPES).to eq %w(string text integer collection)
+    expect(described_class::FIELD_TYPES).to eq %w(string text integer collection email tel)
   end
 
   it '#respond_to?' do

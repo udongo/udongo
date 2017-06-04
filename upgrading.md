@@ -1,4 +1,8 @@
 # Upgrade guide
+## From 6.2.0 to 6.2.1
+### Formbuilder
+You can now use the ```tel``` and ```email``` type for form fields.
+
 ## From 6.1.0 to 6.2.0
 ### CollectionHelper
 You can now easily create collections to be used with SimpleForm by using

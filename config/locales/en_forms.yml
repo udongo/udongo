@@ -46,6 +46,8 @@ en:
         seo_description: Description
         seo_keywords: Keywords
         seo_custom: Extra meta-tags
+        sitemap: Sitemap?
+        slug: Slug
         subject: Subject
         subtitle: Subtitle
         summary: Summary

@@ -1,4 +1,4 @@
-6.2.1 - 2017-06-02
+6.2.1 - 2017-06-04
 --
 * Added email and tel as valid form types for FormField.
 

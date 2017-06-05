@@ -25,25 +25,5 @@ module Concerns
     def taggable?
       true
     end
-
-    def label_for_tag_link(locale)
-      label = self.class.name
-
-      if respond_to?(:translatable?) && translatable?
-        if translation(locale).respond_to?(:name)
-          label = translation(locale).name
-        elsif translation(locale).respond_to?(:title)
-          label = translation(locale).title
-        end
-      else
-        if respond_to?(:name)
-          label = name
-        elsif respond_to?(:title)
-          label = title
-        end
-      end
-
-      label
-    end
   end
 end

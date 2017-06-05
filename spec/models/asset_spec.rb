@@ -103,44 +103,9 @@ describe Asset do
     end
   end
 
-  describe '#all_linked_objects and #count_linked_objects' do
-    let(:asset) { create(:asset) }
-    let(:image) { create(:image, asset: asset) }
-    let(:content_picture) { create(:content_picture, asset: asset) }
-
-    it 'none' do
-      expect(asset.all_linked_objects).to eq []
-      expect(asset.count_linked_objects).to eq 0
-    end
-
-    it 'only an image' do
-      image
-      expect(asset.all_linked_objects).to eq [image]
-      expect(asset.count_linked_objects).to eq 1
-    end
-
-    it 'only a content picture' do
-      content_picture
-      expect(asset.all_linked_objects).to eq [content_picture]
-      expect(asset.count_linked_objects).to eq 1
-    end
-
-    it 'both an image and a content picture' do
-      image
-      content_picture
-      expect(asset.all_linked_objects).to eq [image, content_picture]
-      expect(asset.count_linked_objects).to eq 2
-    end
-  end
-
-  describe '' do
-
-  end
-
   it '#responds_to?' do
     expect(build(klass)).to respond_to(
-      :image?, :image, :images, :actual_filename, :deletable?,
-      :content_pictures, :all_linked_objects
+      :image?, :image, :images, :actual_filename, :deletable?, :content_pictures
     )
   end
 end

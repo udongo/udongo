@@ -12,7 +12,7 @@
           <% tag.tagged_items.order(:taggable_type).each do |obj| %>
             <li>
               <%= t "b.#{obj.taggable.class.name.underscore}" %> &gt;
-              <%= some_crappy_name [:backend, obj.taggable], tag.locale %>
+              <%= link_to_edit_with_label [:backend, obj.taggable], tag.locale %>
             </li>
           <% end %>
         </ul>

@@ -7,7 +7,10 @@ module LinkHelper
     )
   end
 
-  def some_crappy_name(value, locale)
+  # Say you have a page with a title: 'Foo'. When calling this method with that
+  # page object, you would get a link to /backend/pages/edit/1 with the title
+  # as label.
+  def link_to_edit_with_label(value, locale)
     link_to(
       object_label(value, locale),
       path_from_string_or_object(value, 'edit_'),

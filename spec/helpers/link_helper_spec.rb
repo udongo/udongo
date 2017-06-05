@@ -114,7 +114,7 @@ describe LinkHelper do
 
   it '#respond_to?' do
     expect(self).to respond_to(
-      :link_to_show, :link_to_edit, :link_to_delete, :some_crappy_name
+      :link_to_show, :link_to_edit, :link_to_delete, :link_to_edit_with_label
     )
   end
 end

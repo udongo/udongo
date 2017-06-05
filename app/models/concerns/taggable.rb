@@ -3,7 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      has_many :tagged_items, as: :taggable
+      has_many :tagged_items, as: :taggable, dependent: :destroy
     end
 
     def related(locale = I18n.locale)

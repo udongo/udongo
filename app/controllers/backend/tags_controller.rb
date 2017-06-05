@@ -6,7 +6,7 @@ class Backend::TagsController < Backend::BaseController
 
   def index
     @search = Tag.ransack params[:q]
-    @tags = @search.result(distinct: true).order(:name).page(page_number).per_page(per_page)
+    @tags = @search.result(distinct: true).order(:name).page(page_number).per_page(15)
   end
 
   def show

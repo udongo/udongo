@@ -25,7 +25,15 @@ class Asset < ApplicationRecord
   end
 
   def deletable?
-    images.empty? && content_pictures.empty?
+    count_linked_objects.zero?
+  end
+
+  def all_linked_objects
+    images + content_pictures
+  end
+
+  def count_linked_objects
+    images.count + content_pictures.count
   end
 
   private

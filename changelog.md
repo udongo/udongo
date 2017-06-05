@@ -3,7 +3,9 @@
 * The tagbox autocomplete now orders its results alphabetically.
 * A general tag module was added. This allows you to see which tags have been
   used throughout the system and add new ones.
-* Bugfix: When a taggable item is deleted, it's tagged items are now destroyed.
+* Bugfix: when a taggable item is deleted, it's tagged items are now destroyed.
+* When checking the overview of files, you can now see if those assets are used.
+* Bugfix: the images relation was not dependent destroy.
 
 
 6.2.1 - 2017-06-04

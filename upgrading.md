@@ -8,6 +8,11 @@ A bug was fixed for the relation between an object and its tagged items. This
 is now dependent: destroy. If your project uses tags, check to see if the
 tagged_items table doesn't contain links to objects that no longer exist.
 
+### Assets module
+You can now see which models an asset is linked to. Because of a missing
+dependent: destroy, some imageable_types still remain. Check the Image model and
+spot non existing linked models.
+
 ## From 6.2.0 to 6.2.1
 ### Formbuilder
 You can now use the ```tel``` and ```email``` type for form fields.

@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="tag-usages-title"><%= tag.name %></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="<%= t 'b.close' %>">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -18,7 +18,7 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t 'b.close' %></button>
       </div>
     </div>
   </div>

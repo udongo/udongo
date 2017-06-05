@@ -3,7 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      has_many :images, as: :imageable
+      has_many :images, as: :imageable, dependent: :destroy
     end
 
     def imageable?

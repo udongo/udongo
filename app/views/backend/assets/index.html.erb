@@ -13,6 +13,7 @@
         <th><%= t 'b.type' %></th>
         <th><%= t 'b.size' %></th>
         <th><%= t 'b.description' %></th>
+        <th><%= t 'b.used' %></th>
         <th><%= t 'b.last_changed_at' %></th>
         <th>&nbsp;</th>
       </tr>
@@ -31,6 +32,13 @@
           <td><%= a.actual_filename.split('.').last.upcase %></td>
           <td><%= number_to_human_size a.filesize %></td>
           <td><%= simple_format a.description %></td>
+          <td>
+            <% if a.deletable? %>
+              <%= t false.to_s %>
+            <% else %>
+              <%= render 'asset_usages', asset: a %>
+            <% end %>
+          </td>
           <td><%= l a.updated_at, format: :short %></td>
           <td class="text-right">
             <%= link_to_edit [:backend, a] %>

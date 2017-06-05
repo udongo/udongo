@@ -47,6 +47,7 @@ nl:
         seo_keywords: Sleutelwoorden
         seo_custom: Extra meta-tags
         sitemap: Sitemap?
+        slug: Slug
         subject: Onderwerp
         subtitle: Subtitel
         success_message: Melding bij succesvolle verzending

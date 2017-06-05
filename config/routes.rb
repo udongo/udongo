@@ -17,12 +17,12 @@ Rails.application.routes.draw do
     get 'search' => 'search#query'
     get 'seo/slugify' => 'seo#slugify'
 
-
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins
     resources :users
     resources :redirects, except: :show
     resources :search_synonyms, except: :show
+    resources :tags
 
     resources :pages, except: [:show] do
       concerns :translatable

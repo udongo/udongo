@@ -8,6 +8,8 @@ en:
     advanced: Advanced
     article: Article
     articles: Articles
+    asset: Asset
+    assets: Assets
     author: Author
     cancel: Cancel
     choose_an_existing_image: Choose an existing image
@@ -27,6 +29,7 @@ en:
     email_template: E-mail template
     email_templates: E-mail templates
     enabled: Enabled
+    erase_filters: Erase filters
     extra: Extra
     file: File
     files: Files
@@ -84,6 +87,7 @@ en:
     status_code: Status code
     subject: Subject
     synonyms: Synonyms
+    tag: Tag
     tags: Tags
     telephone: Telephone
     title: Title

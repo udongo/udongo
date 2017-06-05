@@ -8,6 +8,8 @@ nl:
     advanced: Geavanceerd
     article: Artikel
     articles: Artikels
+    asset: Bestand
+    assets: Bestanden
     author: Auteur
     cancel: Annuleren
     choose_an_existing_image: Kies bestaande afbeelding
@@ -27,6 +29,7 @@ nl:
     email_template: E-mail template
     email_templates: E-mail templates
     enabled: Ingeschakeld
+    erase_filters: Wis filters
     extra: Extra
     file: Bestand
     files: Bestanden
@@ -84,6 +87,7 @@ nl:
     status_code: Statuscode
     subject: Onderwerp
     synonyms: Synoniemen
+    tag: Tag
     tags: Tags
     telephone: Telefoonnummer
     title: Titel

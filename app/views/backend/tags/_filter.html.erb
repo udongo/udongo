@@ -1,0 +1,24 @@
+<div class="card filter">
+  <div class="card-block">
+    <%= search_form_for [:backend, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-4 form-group">
+          <%= f.search_field :name_cont, placeholder: t('b.name'), class: 'form-control' %>
+        </div>
+
+        <div class="col-md-4 form-group">
+          <% selected_locale = params[:q] ? params[:q][:locale_eq] : nil %>
+          <% options = Udongo.config.i18n.app.locales %>
+          <%= f.select :locale_eq, options_for_select(options, selected_locale), { prompt: t('b.locale') }, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.submit class: 'btn btn-primary btn-sm' %>
+          <%= link_to t('b.erase_filters'), backend_tags_path, class: 'btn btn-link' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

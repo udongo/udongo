@@ -8,7 +8,6 @@ A bug was fixed for the relation between an object and its tagged items. This
 is now dependent: destroy. If your project uses tags, check to see if the
 tagged_items table doesn't contain links to objects that no longer exist.
 
-
 ## From 6.2.0 to 6.2.1
 ### Formbuilder
 You can now use the ```tel``` and ```email``` type for form fields.

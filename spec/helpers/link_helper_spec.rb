@@ -20,6 +20,24 @@ describe LinkHelper do
     end
   end
 
+  describe '#link_to_edit_with_label' do
+    it '[:backend, page]' do
+      page = create(:page, id: 37)
+      page.translation(:nl).title = 'Foo'
+      page.save!
+
+      expected = '<a title="Bewerk" href="/backend/pages/37/edit">Foo</a>'
+      expect(link_to_edit_with_label([:backend, page], :nl)).to eq expected
+    end
+
+    it '[:backend, admin]' do
+      admin = create(:admin, id: 101)
+
+      expected = '<a title="Bewerk" href="/backend/admins/101/edit">Beheerder: 101</a>'
+      expect(link_to_edit_with_label([:backend, admin], :nl)).to eq expected
+    end
+  end
+
   describe '#link_to_edit' do
     it 'object param' do
       expected = '<a title="Bewerk" href="/backend/admins/37/edit"><i class="fa fa-pencil-square-o"></i></a>'

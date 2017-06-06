@@ -83,7 +83,7 @@ describe Udongo::Search::ResultObjects::Base do
   it '#responds_to?' do
     expect(instance).to respond_to(
       :build_html, :locals, :partial, :partial_target, :hidden?, :unpublished?,
-      :partial_path
+      :partial_path, :url
     )
   end
 end

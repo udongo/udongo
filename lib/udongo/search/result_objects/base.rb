@@ -67,6 +67,9 @@ module Udongo
         def unpublished?
           searchable.respond_to?(:published?) && searchable.unpublished?
         end
+
+        def url
+        end
       end
     end
   end

@@ -1,6 +1,7 @@
-6.3.1 - 2017-06-xx
+6.3.1 - 2017-06-06
 --
-* Pass the page path along to the frontend search result object for pages.
+* Removes the Udongo::Search::ResultObjects::Frontend::Page class so projects
+  building Frontend search have an easier time doing so.
 
 
 6.3.0 - 2017-06-05

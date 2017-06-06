@@ -15,7 +15,7 @@ module Udongo::Search::ResultObjects
     # in the partial as well, but this way we have separation of concerns.
     class Page < Udongo::Search::ResultObjects::Base
       def url
-        # TODO: We don't have methods to build frontend URLs for pages yet?
+        searchable.decorate.path
       end
     end
   end

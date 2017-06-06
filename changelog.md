@@ -1,3 +1,8 @@
+6.3.1 - 2017-06-xx
+--
+* Pass the page path along to the frontend search result object for pages.
+
+
 6.3.0 - 2017-06-05
 --
 * The tagbox autocomplete now orders its results alphabetically.

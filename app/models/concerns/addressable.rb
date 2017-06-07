@@ -3,7 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      has_many :addresses, dependent: :destroy
+      has_many :addresses, as: :addressable, dependent: :destroy
     end
 
     module ClassMethods

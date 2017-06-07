@@ -1,3 +1,9 @@
+6.3.2 - 2017-06-07
+--
+* Bugfix: there was an issue with the has_many :addresses relation in the
+  addressable concern.
+
+
 6.3.1 - 2017-06-06
 --
 * Removes the Udongo::Search::ResultObjects::Frontend::Page class so projects

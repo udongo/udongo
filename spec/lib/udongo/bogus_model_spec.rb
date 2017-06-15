@@ -3,6 +3,10 @@ require 'rails_helper'
 describe Udongo::BogusModel do
   let(:instance) { described_class.new }
 
+  it '.base_class' do
+    expect(described_class.base_class).to eq Class
+  end
+
   describe '#id' do
     it 'gives a random int > 0' do
       expect(instance.id).to satisfy { |e| e > 0 }

@@ -118,6 +118,7 @@ en:
         form: Form
         image: Image (deprecated!)
         picture: Picture
+        slideshow: Slideshow
         text: Text
         video: Video
       deleted: '%{actor} was deleted.'
@@ -137,6 +138,7 @@ en:
         edit_form: Edit form
         edit_image: Edit image
         edit_picture: Edit picture
+        edit_slideshow: Edit slideshow
         edit_text: Edit text
         edit_video: Edit video
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.

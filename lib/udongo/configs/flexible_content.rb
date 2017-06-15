@@ -6,7 +6,7 @@ module Udongo
       BREAKPOINTS = %w(xs sm md lg xl)
       DEFAULT_BREAKPOINT = 'md'
 
-      attribute :types, Array, default: %w(text picture video form image)
+      attribute :types, Array, default: %w(text picture video slideshow form image)
       attribute :picture_caption_editor, Axiom::Types::Boolean, default: false
 
       def picture_caption_editor?

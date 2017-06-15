@@ -18,11 +18,11 @@ describe 'content routes' do
   end
 
   it 'GET /backend/content/rows/1/edit' do
-    expect(get: '/backend/content/rows/1/edit').to route_to('catch_all#resolve', path: 'backend/content/rows/1/edit')
+    expect(get: edit_backend_content_row_path(1)).to route_to('backend/content/rows#edit', id: '1')
   end
 
   it 'PUT /backend/content/rows/1' do
-    expect(put: '/backend/content/rows/1').not_to be_routable
+    expect(put: backend_content_row_path(1)).to route_to('backend/content/rows#update', id: '1')
   end
 
   it 'GET /backend/content/rows/1/horizontal_alignment' do

@@ -69,6 +69,7 @@ en:
 
       content_slideshow:
         autoplay: Autoplay
+        image_collection_id: Image collection
         slide_interval: Interval between slides
 
       email_template:

@@ -8,8 +8,14 @@
       <div class="row">
         <div class="col-md-4">
           <%= f.input :image_collection_id, collection: image_collections %>
-          <%= f.input :autoplay, as: :boolean %>
+        </div>
+
+        <div class="col-md-4">
           <%= f.input :slide_interval, as: :integer %>
+        </div>
+
+        <div class="col-md-4">
+          <%= f.input :autoplay, as: :boolean %>
         </div>
       </div>
     </div>

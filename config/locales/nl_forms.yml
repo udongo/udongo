@@ -69,6 +69,7 @@ nl:
 
       content_slideshow:
         autoplay: Automatisch afspelen
+        image_collection_id: Afbeeldingsgroep
         slide_interval: Interval tussen slides
 
       email_template:

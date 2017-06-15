@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602114411) do
+ActiveRecord::Schema.define(version: 20170615113617) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 20170602114411) do
     t.index ["published_at"], name: "index_articles_on_published_at", using: :btree
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
     t.index ["visible"], name: "index_articles_on_visible", using: :btree
+  end
+
+  create_table "asset_collections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "identifier"
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["identifier"], name: "index_asset_collections_on_identifier", using: :btree
   end
 
   create_table "assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

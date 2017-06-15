@@ -83,6 +83,7 @@ nl:
     sent_at: Verzonden op
     settings: Instellingen
     size: Grootte
+    slideshow: Slideshow
     snippet: Snippet
     snippets: Snippets
     source: Bron
@@ -120,6 +121,7 @@ nl:
         form: Formulier
         image: Afbeelding (niet meer gebruiken!)
         picture: Foto
+        slideshow: Slideshow
         text: Tekst
         video: Video
       deleted: '%{actor} werd verwijderd.'
@@ -139,12 +141,14 @@ nl:
         edit_form: Formulier bewerken
         edit_image: Afbeelding bewerken
         edit_picture: Foto bewerken
+        edit_slideshow: Slideshow bewerken
         edit_text: Tekst bewerken
         edit_video: Video bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
         full_width: Volledige breedte
         no_form_present: Er werd nog geen formulier gelinkt.
         no_picture_present: Er werd nog geen foto geüpload of gelinkt.
+        no_slideshow_present: Er werd nog geen slideshow geconfigureerd.
         no_video_present: Er werd nog geen geldige URL voor een video opgegeven.
         width_explanation: Voor de flexibele inhoud wordt er gebruikt gemaakt van een grid layout. Deze werkt met rijen en kolommen. Iedere rij kan maximaal 12 kolommen bevatten. Daarom dat de breedte uitgedrukt is in een breuk op 12.
       forgot_password: Wachtwoord vergeten?

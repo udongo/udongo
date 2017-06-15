@@ -67,6 +67,11 @@ nl:
         width_lg: Breedte (large)
         width_xl: Breedte (extra large)
 
+      content_slideshow:
+        autoplay: Automatisch afspelen
+        image_collection_id: Afbeeldingsgroep
+        slide_interval: Interval tussen slides
+
       email_template:
         from_email: E-mail adres afzender
         from_name: Naam afzender

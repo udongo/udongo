@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615120716) do
+ActiveRecord::Schema.define(version: 20170615131909) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -154,6 +154,15 @@ ActiveRecord::Schema.define(version: 20170615120716) do
     t.index ["position"], name: "index_content_rows_on_position", using: :btree
     t.index ["rowable_id"], name: "idx_content_rows_on_rowable_id", using: :btree
     t.index ["rowable_type"], name: "idx_content_rows_on_rowable_type", using: :btree
+  end
+
+  create_table "content_slideshows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "image_collection_id"
+    t.boolean  "autoplay"
+    t.integer  "slide_interval"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["image_collection_id"], name: "index_content_slideshows_on_image_collection_id", using: :btree
   end
 
   create_table "content_texts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

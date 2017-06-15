@@ -81,6 +81,7 @@ en:
     sent_at: Sent at
     settings: Settings
     size: Size
+    slideshow: Slideshow
     snippet: Snippet
     snippets: Snippets
     source: Source
@@ -118,6 +119,7 @@ en:
         form: Form
         image: Image (deprecated!)
         picture: Picture
+        slideshow: Slideshow
         text: Text
         video: Video
       deleted: '%{actor} was deleted.'
@@ -137,12 +139,14 @@ en:
         edit_form: Edit form
         edit_image: Edit image
         edit_picture: Edit picture
+        edit_slideshow: Edit slideshow
         edit_text: Edit text
         edit_video: Edit video
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
         full_width: Full width
         no_form_present: No form has been linked yet.
         no_picture_present: No picture has been uploaded/linked yet.
+        no_slideshow_present: No slideshow has been configured yet.
         no_video_present: No valid video URL was given.
         width_explanation: For the flexible content we use a grid layout. This works with rows and columns. Every row can contain at most 12 columns. That's why the column width is expressed as a fracture.
       forgot_password: Forgot password?

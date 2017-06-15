@@ -12,3 +12,6 @@ spec/dummy/public/uploads
 .idea
 todo
 config/environment.rb
+.DS_Store
+coverage
+tmp/restart.txt

@@ -15,7 +15,6 @@ group :test do
   gem 'database_cleaner', '~> 1.5.3'
   gem 'capybara', '~> 2.7.1'
   gem 'webmock', '~> 1.22.3'
-  gem 'capybara-webkit', '~> 1.11.1'
 end
 
 group :test, :development do
@@ -30,4 +29,5 @@ end
 group :development do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
+  gem 'rack-mini-profiler', '~> 0.10.1'
 end

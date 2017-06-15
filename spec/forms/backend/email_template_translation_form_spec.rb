@@ -9,8 +9,8 @@ describe Backend::EmailTemplateTranslationForm do
       html_content: 'baz'
     }
   end
-  let(:email_template) { create(:email_template) }
-  let(:instance) { klass.new(email_template, email_template.translation) }
+  let(:model) { create(:email_template) }
+  let(:instance) { klass.new(model, model.translation) }
 
   describe 'validations' do
     describe 'presence' do
@@ -32,9 +32,9 @@ describe Backend::EmailTemplateTranslationForm do
   end
 
   it '#save' do
-    email_template = create(:email_template)
+    model = create(:email_template)
 
-    expect(klass.new(email_template, email_template.translation(:nl)).save(
+    expect(klass.new(model, model.translation(:nl)).save(
       subject: 'foo',
       plain_content: 'bar',
       html_content: 'baz'
@@ -46,11 +46,7 @@ describe Backend::EmailTemplateTranslationForm do
     expect(translation.html_content).to eq 'baz'
   end
 
-  it '#persisted?' do
-    expect(instance).to be_persisted
-  end
-
-  it '#respond_to' do
-    expect(instance).to respond_to(:save, :persisted?, :email_template, :translation)
+  it '.respond_to?' do
+    expect(klass).to respond_to(:model_name)
   end
 end

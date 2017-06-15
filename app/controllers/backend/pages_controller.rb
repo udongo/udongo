@@ -1,7 +1,7 @@
-class Backend::PagesController < BackendController
+class Backend::PagesController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
-  before_action :find_model, only: [:edit, :update, :tree_drag_and_drop, :destroy]
+  before_action :find_model, except: [:index, :new, :create]
   before_action -> { breadcrumb.add t('b.pages'), backend_pages_path }
 
   def index
@@ -10,37 +10,36 @@ class Backend::PagesController < BackendController
     respond_to do |format|
       format.html
       format.json {
-        render json: page_tree_data.to_json
+        render json: Udongo::Pages::Tree.new(self).data
       }
     end
   end
 
   def new
-    @form = Backend::PageForm.new(Page.new.decorate)
+    @model = Page.new.decorate
   end
 
   def create
-    @form = Backend::PageForm.new(Page.new.decorate)
+    @model = Page.new(allowed_params).decorate
 
-    if @form.save params[:page]
-      redirect_to edit_backend_page_path(@form.page), notice: translate_notice(:added, :page)
+    if @model.save
+      redirect_to edit_backend_page_path(@model), notice: translate_notice(:added, :page)
     else
       render :new
     end
   end
 
-  def edit
-    @form = Backend::PageForm.new(@model)
-  end
-
   def update
-    @form = Backend::PageForm.new(@model)
-
-    if @form.save params[:page]
+    if @model.update_attributes allowed_params
       redirect_to edit_backend_page_path(@model), notice: translate_notice(:edited, :page)
     else
       render :edit
     end
+  end
+
+  def toggle_visibility
+    @model.visible? ? @model.hide! : @model.show!
+    render json: { toggled: @model }
   end
 
   def tree_drag_and_drop
@@ -53,18 +52,14 @@ class Backend::PagesController < BackendController
     render json: { trashed: @model.destroy }
   end
 
-  def page_tree_data(parent_id: nil)
-    Page.where(parent_id: parent_id).inject([]) do |data, p|
-      hash = node_data p
-      hash[:children] = page_tree_data(parent_id: p.id) if p.children.any?
-      data << hash
-    end
-  end
-
   private
 
   def find_model
     @model = Page.find(params[:id]).decorate
+  end
+
+  def allowed_params
+    params[:page].permit(:description, :parent_id, :visible, :sitemap)
   end
 
   def translation_form
@@ -73,22 +68,5 @@ class Backend::PagesController < BackendController
       @model.translation(params[:translation_locale]),
       @model.seo(params[:translation_locale])
     )
-  end
-
-  def node_data(page)
-    {
-      text: page.description,
-      type: :file,
-      state: { selected: false },
-      data: {
-        id: page.id,
-        url: edit_backend_page_path(page),
-        delete_url: backend_page_path(page, format: :json),
-        deletable: page.deletable?,
-        draggable: page.draggable?,
-        update_position_url: tree_drag_and_drop_backend_page_path(page)
-      },
-      children: []
-    }
   end
 end

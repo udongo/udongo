@@ -1,0 +1,25 @@
+<div class="modal fade" id="tag-usages-<%= tag.id %>" tabindex="-1" role="dialog" aria-labelledby="tag-usages-title" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tag-usages-title"><%= tag.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="<%= t 'b.close' %>">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <% tag.tagged_items.order(:taggable_type).each do |obj| %>
+            <li>
+              <%= t "b.#{obj.taggable.class.name.underscore}" %> &gt;
+              <%= link_to_edit_with_label [:backend, obj.taggable], tag.locale %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t 'b.close' %></button>
+      </div>
+    </div>
+  </div>
+</div>

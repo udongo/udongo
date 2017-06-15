@@ -1,0 +1,38 @@
+<%= render 'backend/breadcrumbs' %>
+<%= render 'filter' %>
+
+<p class="text-right">
+  <%= link_to icon(:plus, t('b.add')), new_backend_user_path, class: 'btn btn-primary btn-sm' %>
+</p>
+
+<% if @users.any? %>
+  <table class="table table-hover table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th><%= t 'b.name' %></th>
+        <th><%= t 'b.email' %></th>
+        <th><%= t 'b.active' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |u| %>
+        <tr class="<%= 'text-muted' unless u.active? %>">
+          <td><%= u.full_name %></td>
+          <td><%= mail_to u.email %></td>
+          <td><%= t u.active?.to_s %></td>
+          <td class="text-right">
+            <%= link_to_edit [:backend, u] %>
+            <%= link_to_delete [:backend, u] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= udongo_paginate @users %>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

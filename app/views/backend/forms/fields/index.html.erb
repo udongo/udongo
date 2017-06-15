@@ -1,0 +1,37 @@
+<% javascript 'backend/sortable' %>
+
+<% breadcrumb.add t('b.form_fields') %>
+<%= render 'backend/breadcrumbs' %>
+
+<% if @form.fields.any? %>
+  <p class="text-right">
+    <%= link_to icon(:plus, t('b.add')), new_backend_form_field_path(@form), class: 'btn btn-primary btn-sm' %>
+  </p>
+
+  <table class="table table-striped table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <th><%= t('b.name') %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @form.fields.each do |f| %>
+        <tr data-update-position="<%= update_position_backend_form_field_path(@form, f) %>">
+          <td><%= f.identifier %></td>
+          <td class="text-right">
+            <%= link_to_edit edit_backend_form_field_path(@form, f) %>
+            <%= link_to_delete backend_form_field_path(@form, f) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p><%= t('b.msg.form_fields.explanation') %></p>
+  <p>
+    <%= link_to t('b.msg.form_fields.add_first'), new_backend_form_field_path(@form), class: 'btn btn-primary' %>
+  </p>
+<% end %>

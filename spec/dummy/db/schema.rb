@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815100903) do
+ActiveRecord::Schema.define(version: 20170602114411) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
     t.string   "addressable_type"
+    t.string   "category"
     t.string   "street"
     t.string   "number"
     t.string   "box"
@@ -28,12 +29,38 @@ ActiveRecord::Schema.define(version: 20160815100903) do
   end
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "locale"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["locale"], name: "index_admins_on_locale", using: :btree
+  end
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.boolean  "press_release"
+    t.datetime "published_at"
+    t.text     "locales",       limit: 65535
+    t.boolean  "visible"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["press_release"], name: "index_articles_on_press_release", using: :btree
+    t.index ["published_at"], name: "index_articles_on_published_at", using: :btree
+    t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
+    t.index ["visible"], name: "index_articles_on_visible", using: :btree
+  end
+
+  create_table "assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "filename"
+    t.string   "content_type"
+    t.integer  "filesize"
+    t.text     "description",  limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["content_type"], name: "index_assets_on_content_type", using: :btree
   end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -89,6 +116,13 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.index ["row_id"], name: "index_content_columns_on_row_id", using: :btree
   end
 
+  create_table "content_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_content_forms_on_form_id", using: :btree
+  end
+
   create_table "content_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "file"
     t.text     "caption",    limit: 65535
@@ -97,10 +131,22 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.text     "url",        limit: 65535
   end
 
+  create_table "content_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "asset_id"
+    t.text     "caption",    limit: 65535
+    t.text     "url",        limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["asset_id"], name: "index_content_pictures_on_asset_id", using: :btree
+  end
+
   create_table "content_rows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "locale"
     t.string   "rowable_type"
     t.integer  "rowable_id"
+    t.boolean  "full_width"
+    t.string   "horizontal_alignment"
+    t.string   "vertical_alignment"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -116,12 +162,21 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.datetime "updated_at"
   end
 
+  create_table "content_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "url",          limit: 65535
+    t.string   "aspect_ratio"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "email_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "identifier"
     t.string   "description"
     t.text     "locales",     limit: 65535
     t.string   "from_name"
     t.string   "from_email"
+    t.string   "cc"
+    t.string   "bcc"
     t.boolean  "optional"
     t.text     "vars",        limit: 65535
     t.integer  "position"
@@ -135,6 +190,8 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.string   "from_email"
     t.string   "to_name"
     t.string   "to_email"
+    t.string   "cc"
+    t.string   "bcc"
     t.string   "subject"
     t.text     "plain_content", limit: 65535
     t.text     "html_content",  limit: 65535
@@ -142,6 +199,60 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.datetime "sent_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "form_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_id"
+    t.text     "locales",    limit: 65535
+    t.string   "identifier"
+    t.string   "field_type"
+    t.boolean  "presence"
+    t.boolean  "email"
+    t.integer  "position"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["form_id"], name: "index_form_fields_on_form_id", using: :btree
+  end
+
+  create_table "form_submission_data", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_submission_id"
+    t.string   "name"
+    t.text     "value",              limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["form_submission_id"], name: "index_form_submission_data_on_form_submission_id", using: :btree
+  end
+
+  create_table "form_submissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "form_id"
+    t.text     "extra_info", limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["form_id"], name: "index_form_submissions_on_form_id", using: :btree
+  end
+
+  create_table "forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "locales",     limit: 65535
+    t.string   "identifier"
+    t.string   "description"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["identifier"], name: "index_forms_on_identifier", using: :btree
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.integer  "asset_id"
+    t.integer  "position"
+    t.boolean  "visible"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["asset_id"], name: "index_images_on_asset_id", using: :btree
+    t.index ["imageable_id"], name: "index_images_on_imageable_id", using: :btree
+    t.index ["imageable_type"], name: "index_images_on_imageable_type", using: :btree
+    t.index ["position"], name: "index_images_on_position", using: :btree
+    t.index ["visible"], name: "index_images_on_visible", using: :btree
   end
 
   create_table "logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -213,6 +324,7 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.boolean  "deletable"
     t.boolean  "draggable"
     t.boolean  "content_disabled"
+    t.boolean  "sitemap"
     t.text     "locales",          limit: 65535
     t.string   "route"
     t.datetime "created_at"
@@ -220,6 +332,7 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.index ["identifier"], name: "index_pages_on_identifier", using: :btree
     t.index ["parent_id"], name: "index_page_parent_id", using: :btree
     t.index ["position"], name: "index_pages_on_position", using: :btree
+    t.index ["sitemap"], name: "index_pages_on_sitemap", using: :btree
     t.index ["visible"], name: "index_pages_on_visible", using: :btree
   end
 
@@ -243,6 +356,37 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.index ["source_uri"], name: "index_redirects_on_source_uri", using: :btree
   end
 
+  create_table "search_indices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "searchable_type"
+    t.integer  "searchable_id"
+    t.string   "locale"
+    t.string   "name"
+    t.text     "value",           limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["locale", "name"], name: "index_search_indices_on_locale_and_name", using: :btree
+    t.index ["searchable_type", "searchable_id"], name: "index_search_indices_on_searchable_type_and_searchable_id", using: :btree
+  end
+
+  create_table "search_modules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.boolean  "searchable"
+    t.integer  "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "searchable"], name: "index_search_modules_on_name_and_searchable", using: :btree
+  end
+
+  create_table "search_synonyms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "locale"
+    t.string   "term"
+    t.text     "synonyms",   limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["locale"], name: "index_search_synonyms_on_locale", using: :btree
+    t.index ["term"], name: "index_search_synonyms_on_term", using: :btree
+  end
+
   create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "value",       limit: 65535
@@ -255,7 +399,9 @@ ActiveRecord::Schema.define(version: 20160815100903) do
   create_table "snippets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "identifier"
     t.string   "description"
+    t.boolean  "title_disabled"
     t.boolean  "allow_html_in_title"
+    t.boolean  "content_disabled"
     t.boolean  "allow_html_in_content"
     t.boolean  "editor_for_content"
     t.text     "locales",               limit: 65535
@@ -300,6 +446,26 @@ ActiveRecord::Schema.define(version: 20160815100903) do
     t.index ["locale"], name: "index_tags_on_locale", using: :btree
     t.index ["name"], name: "index_tags_on_name", using: :btree
     t.index ["slug"], name: "index_tags_on_slug", using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.boolean  "active"
+    t.integer  "login_count"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string   "password_digest"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["active"], name: "index_users_on_active", using: :btree
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
   end
 
 end

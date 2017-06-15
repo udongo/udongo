@@ -1,3 +1,5 @@
+<%= render 'backend/general_form_error', object: @admin %>
+
 <%= simple_form_for [:backend, @admin] do |f| %>
   <div class="row">
     <div class="col-md-6">
@@ -7,6 +9,7 @@
         </div>
 
         <div class="card-block">
+          <%= f.input :locale, collection: Udongo.config.i18n.cms.interface_locales, include_blank: false %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :email, required: true %>

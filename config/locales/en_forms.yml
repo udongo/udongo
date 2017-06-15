@@ -13,33 +13,47 @@ en:
 
     labels:
       defaults:
+        active: Active
+        author: Author
+        bcc: BCC
         caption: Caption
         category: Category
+        cc: CC
         content: Content
+        default_value: Default value
         description: Description
         disabled: Disabled
         email: E-mail
         extra: Extra
+        field_type: Field type
         first_name: First name
         html_content: HTML content
         identifier: Internal name
         label: Label
         last_name: Last name
+        locale: Locale
         message: Message
         name: Name
         password: Password
         password_confirmation: Password confirmation
         phone: Phone
         plain_content: Plain content
+        press_release: Press release?
+        presence: Mandatory input
+        published_at: Published at
         seo_title: Page title
         seo_slug: Custom URL
         seo_description: Description
         seo_keywords: Keywords
         seo_custom: Extra meta-tags
+        sitemap: Sitemap?
+        slug: Slug
         subject: Subject
         subtitle: Subtitle
         summary: Summary
+        synonyms: Synonyms
         title: Title
+        user_id: User
         visible: Visible?
         width: Width
         url: URL
@@ -66,3 +80,6 @@ en:
       redirect:
         destination_uri: Destination
         source_uri: Source
+
+      search_synonym:
+        term: Search term

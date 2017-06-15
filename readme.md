@@ -28,31 +28,132 @@ Udongo.config.tags.allow_new = false
 ```
 
 ## I18n
-### default_locale
+### app
+#### default_locale
 ```ruby
-Udongo.config.i18n.default_locale = :nl
+Udongo.config.i18n.app.default_locale = :nl
 ```
 
 ### locales
 ```ruby
-Udongo.config.i18n.locales = %w(nl en fr de)
+Udongo.config.i18n.app.locales = %w(nl)
+```
+
+### cms
+#### default_interface_locale
+```ruby
+Udongo.config.i18n.app.default_interface_locale = 'nl'
+```
+
+#### interface_locales
+```ruby
+Udongo.config.i18n.app.interface_locales = %w(nl en)
+```
+
+## Forms
+### Adding SEO fields to your page.
+You can add SEO fields to your form by rendering a partial:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  ...
+  <%= render 'backend/seo_form', f: f %>
+  ...
+<% end %>
+```
+This partial has support to let you base its SEO slug on whatever is typed in 
+an input element of your choice. In Udongo, this field is called the 
+**sluggable field**.
+
+By default, the partial looks for a field called **title**. You can override 
+this name by passing ```sluggable_field``` to the partial, like so:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  ...
+  <%# This will look for #backend_your_model_name as its sluggable field. %>
+  <%= render 'backend/seo_form', f: f, sluggable_field: :name %>
+  ...
+<% end %>
+```
+
+### Dirty inputs
+Sometimes a user enters some data in a form and assumes that everything is
+magically saved without submitting said form.
+
+To warn a user that this is not default behaviour, you can trigger a warning
+to show up whenever a user has changed input contents and clicks on any
+```<a>``` element on the page.
+
+Simply call the following helper method within your form tags:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+	<%= trigger_dirty_inputs_warning %>
+  ...
+<% end %>
+```
+
+This renders the following HTML:
+
+```html
+<form class="simple_form" id="edit_your_model_1" action="/backend/your_models/1/edit" accept-charset="UTF-8" method="post">
+  ...
+  <span data-dirty="false"></span>
+  ...
+</form>
+```
+
+You can also override the default message with your own:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  <%= trigger_dirty_inputs_warning(message: 'Are you sure you want to leave the page?') %>
+  ...
+<% end %>
 ```
 
 ## Flexible content
 ### types
 ```ruby
-Udongo.config.flexible_content.types = %w(text image)
+Udongo.config.flexible_content.types = %w(text picture video)
 ```
 
-### allowed_breakpoints
+### picture_caption_editor
 ```ruby
-Udongo.config.flexible_content.allowed_breakpoints = %w(xs sm md lg xl)
+Udongo.config.flexible_content.picture_caption_editor = false
 ```
 
-## Routes
-### prefix_with_locale
+## Assets
+### image_white_list
 ```ruby
-Udongo.config.routes.prefix_with_locale = true
+Udongo.config.image_white_list = %w(gif jpeg jpg png)
+```
+
+### file_white_list
+```ruby
+Udongo.config.file_white_list = %w(doc docx pdf txt xls xlsx)
+```
+
+## Articles
+### allow_html_in_title
+```ruby
+Udongo.config.articles.allow_html_in_title = false
+```
+
+### allow_html_in_summary
+```ruby
+Udongo.config.articles.allow_html_in_summary = false
+```
+
+### editor_for_summary
+```ruby
+Udongo.config.articles.editor_for_summary = false
+```
+
+### images
+```ruby
+Udongo.config.articles.images = true
 ```
 
 # Concerns
@@ -66,7 +167,6 @@ Udongo.config.routes.prefix_with_locale = true
 * Array
 * Float
 
-### Setup
 ```ruby
 class User < ApplicationRecord
   include Concerns::Storable
@@ -105,12 +205,103 @@ u.gender = 'female'
 u.save
 
 u.store(:custom).gender = 'unknown'
-u.store(:custom).save
+u.save
 ```
 
-When you save the parent object (user), all the store collections will
-automatically be saved.
+When you save the parent object (user), all the store collections will automatically be saved.
 
+## Translatable concern
+This concern is actually the storable concern with some predefined settings. In order to use this concern your model needs to have a database text field named ```locales```.
+
+```ruby
+class Document < ApplicationRecord
+  include Concerns::Translatable
+  
+  # One field
+  translatable_field :name
+ 
+  # Multiple fields
+  translatable_fields :description, :summary 
+end
+```
+
+## Searchable concern
+Include this in your model if you want its records to appear in search autocompletes.
+
+```ruby
+class Document < ApplicationRecord
+  include Concerns::Searchable
+
+  # One field
+  searchable_field :title
+
+  # Multiple fields
+  searchable_fields :title, :description, :summary
+end
+```
+
+### Reading values
+When reading values the current ```I18n.locale``` is used. If you want to specify the locale, you need to use the longer syntax.
+
+```ruby
+d = Document.first
+d.name
+
+# Which is equal to
+d.translation(:nl).name
+```
+
+### Writing values
+```ruby
+d = Document.first
+d.name = 'foo'
+
+# Which is equal to
+d.translation(:nl).name = 'foo'
+```
+
+### Saving values
+Make sure to always call the ```#save``` method on your model. You can call the one on the translation, but this will not trigger an update for the ```locales``` field.
+```ruby
+d = Document.first
+d.name = 'foo'
+d.save
+
+d.translation(:nl).foo
+d.save
+```
+
+When you save the parent object (document), all the translations will automatically be saved.
+
+### .by_locale scope
+This concern adds a scope to your model which makes it easy to fetch the models that have translations within a certain locale.
+
+```ruby
+documents = Document.by_locale(:nl)
+```
+
+## Addressable concern
+This concern makes it easy to have multiple addresses with a category linked to a model.
+
+```ruby
+class User < ApplicationRecord
+  include Concerns::Addressable
+  configure_address %w(personal billing), default: 'personal'
+end
+```
+
+If you don't provide a default, we will use the first one in the list.
+
+### Usage
+If you request an address that's not initialized this will be done for you. So calling ```#address```, with or without category, will always return an address model.
+
+```ruby
+u = User.first
+u.address
+
+# Which is equal to
+u.address(:personal)
+```
 
 # Queue
 ## Add tasks to the queue
@@ -153,11 +344,81 @@ validates :email, email: true
 validates :url, url: true
 ```
 
+# Search engine
+4.0 introduced a rough structure to build a search autocomplete upon through ```Concerns::Searchable```. 
+
+## How does it work?
+Included in Udongo by default is the backend search, which makes Page records accessible through an autocomplete. In order to build search support for a model, we have to make it include the concern:
+
+```ruby
+# app/models/page.rb
+class Page
+  include Concerns::Searchable
+  searchable_fields :title, :subtitle, :flexible_content
+end
+```
+
+```Concerns::Searchable``` saves ```SearchIndex``` records to our database whenever a model gets saved. Support for both ```Concern::Translatable``` and ```Concern::FlexibleContent``` is built in, meaning that translatable fields can also be searchable fields.
+
+By including ```:flexible_content``` as a searchable field, we flag it to build search indices for all flexible content of the ```ContentText``` type.
+
+```Backend::SearchController#index``` contains a call to ```Udongo::Search::Backend```. That class is responsible for matching a search term against the available search indices:
+
+```ruby
+# app/controllers/backend/search_controller.rb
+class Backend::SearchController < Backend::BaseController
+  def query
+    @results = Udongo::Search::Backend.new(params[:term], controller: self).search
+    render json: @results
+  end
+end
+```
+
+```Udongo::Search::Backend#search``` in turn translates those indices in a format that jQueryUI's autocomplete understands: ```{ label: 'foo', value: 'bar' }```.
+```ruby
+# lib/udongo/search/backend.rb
+module Udongo::Search
+  class Backend < Udongo::Search::Base
+    def search
+      indices.map do |index|
+        result = result_object(index)
+        { label: result.build_html, value: result.url }
+      end
+    end
+  end
+end
+```
+
+By default the ```#result_object``` is an instance of ```Udongo::Search::ResultObjects::Base```. You can define your own result object class, which in this example is done for the ```Page``` model:
+```ruby
+# lib/udongo/search/result_objects/page.rb
+module Udongo::Search::ResultObjects
+  class Page < Udongo::Search::ResultObjects::Base
+    def url
+      if namespace == :backend
+        controller.edit_backend_page_path(index.searchable)
+      end
+    end
+  end
+end
+````
+This gives devs a way to extend the data for use in jQueryUI's autocomplete, or simply to mutate the index data. In the example above, we check what namespace we reside in in order to generate an edit link to the relevant page in the pages module. If one were to build a search for the frontend that includes pages, you could build the required URL for it here.
+
+### HTML labels in autocomplete
+Support for HTML labels is automatically included through ```vendor/assets/javascripts/jquery-ui.autocomplete.html.js`. The labels should reside in partial files and be rendered with ```Udongo::Search::ResultObjects::Base#build_html```. This provide support for funkier autocomplete result structures:
+
+```erb
+<!-- app/views/backend/search/_page.html.erb -->
+<%= t('b.page') %> — <%= page.title %><br />
+<small>
+  <%= truncate(page.description, length: 40) %>
+</small>
+```
 
 # Cryptography
 ```Udongo::Cryptography``` is a module you can include in any class to provide you with functionality to encrypt and decrypt values. It is a wrapper that currently uses ```ActiveSupport::MessageEncryptor```, which in turns uses the Rails secret key to encrypt keys.
 
-By default, it is included in ```BackendController```.
+By default, it is included in ```Backend::BaseController```.
 
 ## Configuration
 Include the Udongo::Cryptography module in the class where you wish to encrypt/decrypt:
@@ -276,12 +537,30 @@ irb(main):001:0> Udongo::Notification.new(:added).translate(name: 'Dave', pies: 
 ```
 
 ## Notifications in controllers
-```BackendController#translate_notice``` uses ```Udongo::Notification``` to output translated notices. Typically this is used in tandem with redirects. For example in the admins module:
+```Backend::BaseController#translate_notice``` uses ```Udongo::Notification``` to output translated notices. Typically this is used in tandem with redirects. For example in the admins module:
 
 ```ruby
-class Backend::AdminsController < BackendController
+class Backend::AdminsController < Backend::BaseController
   def create
     redirect_to backend_admins_path, notice: translate_notice(:added, :admin)
   end
 end
 ```
+
+# ERB Helpers
+## Snippet
+Find a snippet from cache by its identifier and decorate it.
+```snippet(:identifier)```
+
+## Page
+Find a page from cache by its identifier and decorate it.
+```page(:identifier)```
+
+## Navigation
+Find a navigation from cache by its identifier.
+```navigation(:identifier)```
+
+# Javascript libs
+## Select2
+This library is loaded by default in the backend.
+See https://select2.github.io

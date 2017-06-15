@@ -1,3 +1,3 @@
 module Udongo
-  VERSION = '3.0.0'
+  VERSION = '6.3.2'
 end

@@ -21,10 +21,8 @@ describe PageDecorator do
   end
 
   describe '#path' do
-    context 'without routes' do
+    describe 'without routes' do
       before(:each) do
-        allow(Udongo.config.routes).to receive(:prefix_with_locale?) { true }
-
         @team = create(:page)
         @team.seo(:nl).slug = 'team'
         @team.seo(:nl).save
@@ -38,15 +36,8 @@ describe PageDecorator do
         @foo.seo(:nl).save
       end
 
-      describe 'first level' do
-        it 'with locale prefix' do
-          expect(@team.decorate.path(locale: :nl)).to eq '/nl/team'
-        end
-
-        it 'without locale prefix' do
-          allow(Udongo.config.routes).to receive(:prefix_with_locale?) { false }
-          expect(@team.decorate.path(locale: :nl)).to eq '/team'
-        end
+      it 'first level' do
+        expect(@team.decorate.path(locale: :nl)).to eq '/nl/team'
       end
 
       it 'second level' do
@@ -58,7 +49,7 @@ describe PageDecorator do
       end
     end
 
-    context 'with routes' do
+    describe 'with routes' do
       it 'first level' do
         page = create(:page, route: 'backend_path')
         expect(page.decorate.path).to eq '/backend'
@@ -130,7 +121,37 @@ describe PageDecorator do
     end
   end
 
+  # This method is not as extensively tested as the #path one, because it
+  # actually uses #path. The things specific to this method have been tested.
+  describe '#url' do
+    it 'http://' do
+      page = create(:page, route: 'backend_path')
+      expect(page.decorate.url).to eq 'http://udongo.dev/backend'
+    end
+
+    it 'https://' do
+      expect(Rails.configuration).to receive(:force_ssl) { true }
+      page = create(:page, route: 'backend_path')
+      expect(page.decorate.url).to eq 'https://udongo.dev/backend'
+    end
+
+    it 'locale: fr' do
+      team = create(:page)
+      team.seo(:fr).slug = 'team'
+      team.seo(:fr).save
+
+      expect(team.decorate.url(locale: :fr)).to eq 'http://udongo.dev/fr/team'
+    end
+
+    it 'options: trailing_slash = true' do
+      page = create(:page, route: 'backend_path')
+      expect(page.decorate.url(options: { trailing_slash: true })).to eq 'http://udongo.dev/backend/'
+    end
+  end
+
   it '#respond_to?' do
-    expect(create(:page).decorate).to respond_to(:options_for_parents, :path)
+    expect(create(:page).decorate).to respond_to(
+      :options_for_parents, :path, :url
+    )
   end
 end

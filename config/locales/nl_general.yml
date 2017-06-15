@@ -1,16 +1,12 @@
 nl:
   g:
-    address: Adres
-    cancel: Annuleren
-    category: Categorie
-    close: Sluiten
-    first_name: Voornaam
-    last_name: Achternaam
-    description: Beschrijving
-    email: E-mail
-    house_number: Huisnummer
-    name: Naam
-    save: Opslaan
-    search: Zoeken
-    subject: Onderwerp
-    telephone: Telefoon
+    collections:
+      form_field_type:
+        collection: Collectie
+        email: E-mailadres
+        integer: Getal
+        string: Tekstregel
+        tel: Telefoonnummer
+        text: Tekstvak
+
+    type: Type

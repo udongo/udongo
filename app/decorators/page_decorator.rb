@@ -21,9 +21,14 @@ class PageDecorator < ApplicationDecorator
       end
     end
 
-    str = ''
-    str << "/#{locale}" if Udongo.config.routes.prefix_with_locale?
-    str << "/#{slugs.reverse.join('/')}"
-    str
+    "/#{locale}/#{slugs.reverse.join('/')}"
+  end
+
+  def url(locale: I18n.locale, options: {})
+    prefix = Rails.configuration.force_ssl ? 'https://' : 'http://'
+    host = Udongo.config.base.host
+    params = { locale: locale, options: options }
+
+    "#{prefix}#{host}#{path(params)}"
   end
 end

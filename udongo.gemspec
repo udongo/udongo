@@ -13,15 +13,14 @@ Gem::Specification.new do |s|
   s.summary     = 'Blimp CMS'
   s.description = 'Blimp CMS.'
   s.license     = 'MIT'
-
-  s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md']
+  s.files = Dir['{app,config,db,lib,vendor}/**/*', 'MIT-LICENSE', 'Rakefile', 'readme.md', 'changelog.md', 'spec/factories/*', 'spec/support/**/*']
 
   # General
   s.add_dependency 'rails', '5.0.0'
 
   # Javascript related
   s.add_dependency 'jquery-rails', '~> 4.0', '>= 4.0.5'
-  s.add_dependency 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+  s.add_dependency 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
   # Styling
   s.add_dependency 'sass-rails', '~> 5.0', '>= 5.0.3'

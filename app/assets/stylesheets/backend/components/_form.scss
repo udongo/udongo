@@ -1,5 +1,5 @@
 .form-actions {
-  margin-top: 10px;
+  margin-bottom: 1rem;
 }
 
 .help-block {
@@ -9,6 +9,11 @@
 .filter {
   background-color: #f9f9f9;
   margin-bottom: 2rem;
+}
+
+// To make sure collections rendered by SimpleForm show on multiple lines.
+label.collection_check_boxes {
+  display: block;
 }
 
 // Underscored because of SimpleForm

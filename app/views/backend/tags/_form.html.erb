@@ -1,0 +1,21 @@
+<%= render 'backend/general_form_error', object: model %>
+
+<%= simple_form_for [:backend, model] do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.general' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :locale, collection: Udongo.config.i18n.app.locales, include_blank: false %>
+          <%= f.input :name %>
+          <%= f.input :slug %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_tags_path %>
+<% end %>

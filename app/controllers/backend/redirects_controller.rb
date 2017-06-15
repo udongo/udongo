@@ -1,4 +1,4 @@
-class Backend::RedirectsController < BackendController
+class Backend::RedirectsController < Backend::BaseController
   include Concerns::PaginationController
 
   before_action -> { breadcrumb.add t('b.redirects'), backend_redirects_path }

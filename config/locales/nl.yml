@@ -112,6 +112,7 @@ nl:
       equal_to: moet gelijk zijn aan %{count}
       even: moet even zijn
       exclusion: is niet beschikbaar
+      extension_white_list_error: 'Bestanden met de extensie %{extension} zijn niet toegestaan. Wel toegestaan zijn: %{allowed_types}'
       greater_than: moet groter zijn dan %{count}
       greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
       inclusion: is niet in de lijst opgenomen
@@ -204,9 +205,9 @@ nl:
   time:
     am: ! '''s ochtends'
     formats:
-      default: ! '%d %B %Y om %Hu%M'
+      default: ! '%-d %B %Y om %Hu%M'
       timeless: ! '%d %B %Y'
-      short: ! '%d %b om %Hu%M'
+      short: ! '%-d %b %Y om %-Hu%M'
       time_attr: ! '%FT%R%:z'
       full: ! '%a %d %b %Y %H:%M:%S %Z'
     pm: ! '''s middags'

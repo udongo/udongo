@@ -1,27 +1,49 @@
-<%= simple_form_for [:backend, @form] do |f| %>
+<%= render 'backend/general_form_error', object: @model %>
+
+<%= simple_form_for [:backend, @model] do |f| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card">
         <div class="card-header">
           <%= t 'b.general' %>
         </div>
 
         <div class="card-block">
-          <%= f.input :identifier %>
-          <%= f.input :description, as: :string %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :identifier %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.input :description, as: :string %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-md-6">
+  <div class="row">
+    <div class="col-md-12">
       <div class="card">
         <div class="card-header">
           <%= t 'b.settings' %>
         </div>
 
         <div class="card-block">
-          <%= f.input :from_name %>
-          <%= f.input :from_email %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :from_name %>
+              <%= f.input :from_email %>
+            </div>
+
+            <div class="col-md-6">
+              <%= f.input :cc %>
+              <%= f.input :bcc %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

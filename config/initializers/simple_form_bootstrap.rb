@@ -25,31 +25,35 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'control-label'
 
-    b.use :input
+    b.use :input, class: 'form-control-file'
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
-  config.wrappers :vertical_boolean, tag: 'div', class: 'checkbox', error_class: 'has-danger' do |b|
+  config.wrappers :vertical_boolean, tag: 'div', class: 'form-check', error_class: 'has-danger' do |b|
     b.use :html5
     b.optional :readonly
 
-    b.wrapper tag: 'label' do |ba|
-      ba.use :input
+    b.wrapper tag: :label, class: 'form-check-label' do |ba|
+      ba.use :input, class: 'form-check-input'
       ba.use :label_text
     end
 
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+    b.use :error, wrap_with: { tag: 'div', class: 'form-control-feedback' }
+    b.use :hint,  wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
   config.wrappers :vertical_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-danger' do |b|
     b.use :html5
     b.optional :readonly
-    b.use :label, class: 'control-label'
-    b.use :input
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+
+    b.wrapper tag: :label, class: 'form-check-label' do |ba|
+      ba.use :input, class: 'form-check-input'
+      ba.use :label_text
+    end
+
+    b.use :error, wrap_with: { tag: 'div', class: 'form-control-feedback' }
+    b.use :hint,  wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
   config.wrappers :horizontal_form, tag: 'div', class: 'form-group', error_class: 'has-danger' do |b|

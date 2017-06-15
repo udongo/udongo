@@ -10,13 +10,18 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery3
 //= require jquery_ujs
-//= require jquery-ui/autocomplete
-//= require jquery-ui/sortable
+//= require jquery-ui/widgets/sortable
+//= require jquery-ui/widgets/autocomplete
+//= require jquery-ui.autocomplete.html.js
 //= require backend/tether.min
 //= require backend/bootstrap
+//= require backend/jquery.throttle-debounce.min.js
 //= require ckeditor/init
 //= require backend/general
+//= require backend/dirty-inputs
+//= require backend/search
 //= require backend/bootstrap-datepicker.min
 //= require backend/datepickers
+//= require backend/select2.min

@@ -1,11 +1,19 @@
 en:
   b:
     actions: Actions
+    active: Active
     add: Add
     admin: Admin
     admins: Admins
     advanced: Advanced
+    article: Article
+    articles: Articles
+    asset: Asset
+    assets: Assets
+    author: Author
     cancel: Cancel
+    choose_an_existing_image: Choose an existing image
+    close: Close
     content: Content
     current_image: Current image
     custom_title: Custom title
@@ -14,20 +22,34 @@ en:
     description: Description
     destination: Destination
     down: Down
+    download: Download
     edit: Edit
+    edit_translation: Edit translation
     email: E-mail
     emails: E-mails
     email_template: E-mail template
     email_templates: E-mail templates
-    enabled?: Enabled?
+    enabled: Enabled
+    erase_filters: Erase filters
     extra: Extra
+    file: File
+    files: Files
     filter: Filter
     first_name: First name
     flexible_content: Flexible content
+    form: Form
+    form_field: Input field
+    form_fields: Input fields
+    form_submission: Submission
+    form_submissions: Submissions
+    forms: Forms
     from: From
     general: General
     house_number: House number
     html_content: HTML content
+    image: Image
+    images: Images
+    last_changed_at: Last changed at
     last_name: Last name
     locale: Locale
     login: Login
@@ -38,68 +60,125 @@ en:
     navigation_item: Navigation item
     new: New
     none: None
+    not_set: Not set
     not_yet_sent: Not yet sent
+    overview: Overview
     page: Page
     pages: Pages
     password: Password
     plain_content: Plain content
+    press_release: Press release
+    published_at: Published at
     recipient: Recipient
     redirect: Redirect
     redirects: Redirects
-    restart_webserver: Restart webserver
     save: Save
     search: Search
+    search_term: Search term
+    search_synonym: Search synonym
+    search_synonyms: Search synonyms
     sender: Sender
     sent_at: Sent at
     settings: Settings
+    size: Size
     snippet: Snippet
     snippets: Snippets
     source: Source
     status: Status
     status_code: Status code
     subject: Subject
+    synonyms: Synonyms
+    tag: Tag
     tags: Tags
     telephone: Telephone
     title: Title
     to: To
+    type: Type
     up: Up
+    upload_a_new_image: Upload a new image
     used: Used
+    user: User
+    users: Users
+    validations: Validations
     variables: Variables
     view: View
+    visible: Visible
 
     msg:
-      added: '%s was added.'
+      added: '%{actor} was added.'
       admins:
         account_details: Account details
         personal_details: Personal details
+      articles:
+        press_release_abbreviated: Press.
+        visible_abbreviated: Visi.
       changes_saved: The changes have been saved.
       confirm: Are you sure?
       content_types:
-        image: Image
+        form: Form
+        image: Image (deprecated!)
+        picture: Picture
         text: Text
-      deleted: '%s was deleted.'
-      edited: '%s was edited.'
+        video: Video
+      deleted: '%{actor} was deleted.'
+      dirty_inputs_warning: "You are about to leave the page but your changes aren't saved yet.\nDo you still want to leave the page?"
+      edited: '%{actor} was edited.'
       flexible_content:
         add_column: Add column
         add_row: Add row
         add_text: Add text
-        delete_row: Delete row
+        align_center: Center
+        align_left: Align left
+        align_right: Align right
+        align_vertical_bottom: Align vertical bottom
+        align_vertical_center: Align vertically
+        align_vertical_top: Align vertical top
         edit_column: Edit column
+        edit_form: Edit form
         edit_image: Edit image
+        edit_picture: Edit picture
         edit_text: Edit text
+        edit_video: Edit video
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
+        full_width: Full width
+        no_form_present: No form has been linked yet.
+        no_picture_present: No picture has been uploaded/linked yet.
+        no_video_present: No valid video URL was given.
+        width_explanation: For the flexible content we use a grid layout. This works with rows and columns. Every row can contain at most 12 columns. That's why the column width is expressed as a fracture.
       forgot_password: Forgot password?
+      form_fields:
+        add_first: Create the first input field.
+        edit: Edit input field
+        explanation: No input fields have been added yet.
+        index_header_html: 'Input fields for form &ldquo;%{form}&rdquo;'
+      form_submissions:
+        back_html: '&larr; Back to the submissions overview'
+        explanation: There have been no submissions for this form yet.
+        received_at: Received at
+      forms:
+        add_first: Create your first form
+        back_html: '&larr; Back to the forms overview'
+        explanation: With this module you can manage forms and view their submissions.
+        removal_warning: "This form can't be removed because there are %{submissions} submission(s) linked to it."
+        view_submissions: Submissions for this form
+      general_form_error: Something went wrong. Please check the marked fields.
       help_texts:
         status_code: More info about the use of status codes.
       incorrect_login: Incorret login credentials.
       navigation:
         custom: Custom
       no_items: There are no items.
-      saved: '%s was saved.'
+      no_title_set: This item has not title.
+      pages:
+        invisible: Deze pagina is niet zichtbaar op de website.
+      please_select_a_valid_image: Please select a valid image and try again.
+      saved: '%{actor} was saved.'
       seo: SEO
+      something_went_wrong: Something went wrong!
       status_codes:
         '301': 301 (Moved Permanently)
         '303': 303 (See Other)
         '307': 307 (Temporary Redirect)
-      webserver:
-        restarted: The webserver was restarted.
+      users:
+        account_details: Account details
+        personal_details: Personal details

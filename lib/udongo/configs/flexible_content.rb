@@ -4,12 +4,13 @@ module Udongo
       include Virtus.model
 
       BREAKPOINTS = %w(xs sm md lg xl)
+      DEFAULT_BREAKPOINT = 'md'
 
-      attribute :types, Array, default: %w(text image)
-      attribute :allowed_breakpoints, Array, default: BREAKPOINTS
+      attribute :types, Array, default: %w(text picture video form image)
+      attribute :picture_caption_editor, Axiom::Types::Boolean, default: false
 
-      def allowed_breakpoint?(value)
-        allowed_breakpoints.include?(value.to_s)
+      def picture_caption_editor?
+        picture_caption_editor
       end
     end
   end

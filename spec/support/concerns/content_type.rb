@@ -15,6 +15,6 @@ shared_examples_for :content_type do
   end
 
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:column)
+    expect(build(klass)).to respond_to(:column, :parent, :content_type_is?)
   end
 end

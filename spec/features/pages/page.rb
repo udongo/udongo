@@ -7,6 +7,8 @@ module Features
       extend WebMock::API
       include WebMock::API
 
+      include FactoryGirl::Syntax::Methods
+
       def initialize
         setup
       end

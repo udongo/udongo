@@ -68,4 +68,41 @@ describe Concerns::PaginationController do
       expect(controller.page_number).to eq 1
     end
   end
+
+  describe '#per_page' do
+    it 'defaults to 10' do
+      allow(controller).to receive(:params) { {} }
+      expect(controller.per_page).to eq 10
+    end
+
+    it '5' do
+      allow(controller).to receive(:params) { { per_page: '5' }}
+      expect(controller.per_page).to eq 5
+    end
+
+    it '10' do
+      allow(controller).to receive(:params) { { per_page: '10' }}
+      expect(controller.per_page).to eq 10
+    end
+
+    it '25' do
+      allow(controller).to receive(:params) { { per_page: '25' }}
+      expect(controller.per_page).to eq 25
+    end
+
+    it '30' do
+      allow(controller).to receive(:params) { { per_page: '30' }}
+      expect(controller.per_page).to eq 30
+    end
+
+    it '50' do
+      allow(controller).to receive(:params) { { per_page: '50' }}
+      expect(controller.per_page).to eq 50
+    end
+
+    it '100' do
+      allow(controller).to receive(:params) { { per_page: '100' }}
+      expect(controller.per_page).to eq 100
+    end
+  end
 end

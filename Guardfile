@@ -41,8 +41,14 @@ guard :rspec, cmd: "spec/dummy/bin/rspec" do
   # RSpec files
   rspec = dsl.rspec
   watch(rspec.spec_helper) { rspec.spec_dir }
-  watch(rspec.spec_support) { rspec.spec_dir }
   watch(rspec.spec_files)
+  watch(rspec.spec_support) do |n|
+    support = n[1].split('/').last
+
+    Dir.glob("#{rspec.spec_dir}/models/*.rb").select do |file|
+      File.readlines(file).grep(/it_behaves_like :#{support}/).any?
+    end
+  end
 
   # Ruby files
   ruby = dsl.ruby

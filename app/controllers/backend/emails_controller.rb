@@ -1,10 +1,10 @@
-class Backend::EmailsController < BackendController
+class Backend::EmailsController < Backend::BaseController
   include Concerns::PaginationController
 
   before_action -> { breadcrumb.add t('b.emails'), backend_emails_path }
 
   def index
-    @emails = paginate Email.all.order('id DESC')
+    @emails = paginate Email.order('id DESC')
   end
 
   def show

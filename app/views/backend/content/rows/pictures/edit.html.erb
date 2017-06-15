@@ -1,0 +1,20 @@
+<%= render 'backend/general_form_error', object: @model %>
+
+<div class="card">
+  <div class="card-header">
+    <%= t 'b.msg.flexible_content.edit_picture' %>
+  </div>
+
+  <div class="card-block">
+    <%= image_tag @model.asset.image.url(1700, 1700, quality: 65), alt: '', class: 'img-fluid' %>
+
+    <%= simple_form_for [:backend, @model] do |f| %>
+      <%= f.input :url, as: :string %>
+
+      <% content_type = Udongo.config.flexible_content.picture_caption_editor? ? :ckeditor : :text %>
+      <%= f.input :caption, as: content_type %>
+
+      <%= render 'backend/form_actions', cancel_url: content_path %>
+    <% end %>
+  </div>
+</div>

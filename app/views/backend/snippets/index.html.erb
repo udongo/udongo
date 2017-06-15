@@ -10,11 +10,11 @@
     </thead>
 
     <tbody>
-      <% @snippets.each do |a| %>
+      <% @snippets.each do |s| %>
         <tr>
-          <td><%= a.description %></td>
-          <td class="text-xs-right">
-            <%= link_to_edit [:backend, a] %>
+          <td><%= s.description %></td>
+          <td class="text-right">
+            <%= link_to_edit_translation [:backend, s] %>
           </td>
         </tr>
       <% end %>

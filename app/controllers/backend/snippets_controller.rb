@@ -1,4 +1,4 @@
-class Backend::SnippetsController < BackendController
+class Backend::SnippetsController < Backend::BaseController
   include Concerns::Backend::TranslatableController
 
   before_action :find_model, only: [:edit, :update]
@@ -9,28 +9,22 @@ class Backend::SnippetsController < BackendController
   end
 
   def new
-    @form = Backend::SnippetForm.new(Snippet.new)
+    @model = Snippet.new
   end
 
   def create
-    @form = Backend::SnippetForm.new(Snippet.new)
+    @model = Snippet.new allowed_params
 
-    if @form.save params[:snippet]
-      redirect_to edit_translation_backend_snippet_path(@form.snippet, translation_locale: default_locale),
+    if @model.save
+      redirect_to edit_translation_backend_snippet_path(@model, translation_locale: default_app_locale),
                   notice: translate_notice(:added, :snippet)
     else
       render :new
     end
   end
 
-  def edit
-    @form = Backend::SnippetForm.new(@model)
-  end
-
   def update
-    @form = Backend::SnippetForm.new(@model)
-
-    if @form.save params[:snippet]
+    if @model.update_attributes allowed_params
       redirect_to edit_backend_snippet_path(@model),
                   notice: translate_notice(:edited, :snippet)
     else
@@ -44,7 +38,14 @@ class Backend::SnippetsController < BackendController
     @model = Snippet.find params[:id]
   end
 
+  def allowed_params
+    params[:snippet].permit(:identifier, :description)
+  end
+
   def translation_form
-    Backend::SnippetTranslationForm.new(@model, @model.translation(params[:translation_locale]))
+    Backend::SnippetTranslationForm.new(
+      @model,
+      @model.translation(params[:translation_locale])
+    )
   end
 end

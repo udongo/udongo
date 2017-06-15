@@ -1,0 +1,5 @@
+<% breadcrumb.add truncate(@model.description, length: 20), edit_backend_asset_path(@model) %>
+<% breadcrumb.add t('b.edit') %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= render 'form' %>

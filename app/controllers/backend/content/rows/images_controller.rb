@@ -1,4 +1,4 @@
-class Backend::Content::Rows::ImagesController < BackendController
+class Backend::Content::Rows::ImagesController < Backend::BaseController
   include Concerns::Backend::ContentTypeController
 
   model ContentImage

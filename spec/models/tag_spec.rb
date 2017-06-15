@@ -18,5 +18,9 @@ describe Tag do
       expect(build(klass, slug: 'FOO', locale: 'nl')).not_to be_valid
     end
   end
+
+  it '#respond_to?' do
+    expect(build(klass)).to respond_to(:tagged_items)
+  end
 end
 

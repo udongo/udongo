@@ -1,2 +1,2 @@
-class Backend::DashboardController < BackendController
+class Backend::DashboardController < Backend::BaseController
 end

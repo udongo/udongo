@@ -8,25 +8,89 @@ var tree = tree || {
     tree.grab_data();
   },
 
-  grab_data: function() {
+  calculate_new_parent_id: function(instance, moved_node) {
+    var parent_node = instance.get_node(moved_node.parent);
+
+    if(typeof parent_node.data !== 'undefined') {
+      return parent_node.data.id;
+    } else {
+      return null;
+    }
+  },
+
+  calculate_new_position: function(instance, moved_node) {
+    var result = [];
+
+    $(instance.get_children_dom(moved_node.parent)).each(function(){
+      result.push(instance.get_node($(this).attr('id')).data.id);
+    });
+
+    return result.indexOf(moved_node.data.id) + 1;
+  },
+
+  change_icon_color: function(jstree_node, color) {
+    $('#'+ jstree_node.id).find('.jstree-icon').css('color', color);
+  },
+
+  contextmenu_items: function(node) {
+    return {
+      make_invisible: {
+        separator_before: true,
+        separator_after: false,
+        label: 'Onzichtbaar maken',
+        icon: 'fa fa-eye-slash',
+        action: tree.contextmenu_toggle_visibility_listener,
+        _disabled: !node.data.visible
+      },
+      make_visible: {
+        separator_before: true,
+        separator_after: false,
+        label: 'Zichtbaar maken',
+        icon: 'fa fa-eye',
+        action: tree.contextmenu_toggle_visibility_listener,
+        _disabled: node.data.visible
+      },
+      remove: {
+        separator_before: true,
+        separator_after: false,
+        label: 'Verwijderen',
+        icon: 'fa fa-trash',
+        action: tree.contextmenu_remove_listener,
+        _disabled: !node.data.deletable
+      }
+    };
+  },
+
+  contextmenu_remove_listener: function(obj) {
+    var instance = tree.vars.container.jstree(true);
+    var node = instance.get_node(obj.reference);
+
     $.ajax({
-      url: tree.vars.container.data('source'),
-      type: 'GET'
+      data: { id: node.data.id },
+      url: node.data.delete_url,
+      type: 'DELETE'
     }).done(function(data){
-      tree.load(data);
+      if(data.trashed) {
+        obj.reference.prevObject.fadeOut(1000, function(){
+          instance.delete_node(node);
+        });
+      }
     });
   },
 
-  load: function(data) {
-    tree.vars.container.jstree({
-      core: tree.core_settings(data),
-      types: tree.types(),
-      plugins: ['contextmenu','dnd','json_data','types','ui','state','wholerow'],
-      contextmenu: { items: tree.contextmenu_items }
-    });
+  contextmenu_toggle_visibility_listener: function(obj) {
+    var instance = tree.vars.container.jstree(true);
+    var node = instance.get_node(obj.reference);
 
-    tree.vars.container.on('select_node.jstree', tree.select_node_listener);
-    $(document).on('dnd_stop.vakata', tree.dnd_stop_listener);
+    $.ajax({
+      data: { id: node.data.id },
+      url: node.data.toggle_visibility_url,
+      type: 'POST'
+    }).done(function(data){
+      if(data.toggled) {
+        tree.toggle_node_visibility(node, obj.reference.prevObject);
+      }
+    });
   },
 
   core_settings: function(data) {
@@ -40,60 +104,6 @@ var tree = tree || {
         variant: 'large'
       }
     };
-  },
-
-  types: function() {
-    return {
-      default: {
-        icon: 'fa fa-folder',
-        children: true,
-        valid_children: ['default', 'file']
-      },
-      file: {
-        icon: 'fa fa-file-o',
-        valid_children: ['file']
-      }
-    };
-  },
-
-  select_node_listener: function(e, result) {
-    if(typeof result.event !== 'undefined') {
-      if(result.event.which === 1) {
-        window.location = result.node.data.url;
-      }
-    } else {
-      result.instance.deselect_node(result.node);
-    }
-  },
-
-  contextmenu_items: function(node) {
-    return {
-      remove: {
-        separator_before: false,
-        separator_after: false,
-        label: 'Verwijderen',
-        icon: 'fa fa-trash',
-        action: tree.contextmenu_remove_listener,
-        _disabled: !node.data.deletable
-      }
-    };
-  },
-
-  contextmenu_remove_listener: function(obj) {
-    var instance = tree.vars.container.jstree(true);
-    var node = instance.get_node(obj.reference.prevObject.selector);
-
-    $.ajax({
-      data: { id: node.data.id },
-      url: node.data.delete_url,
-      type: 'DELETE'
-    }).done(function(data){
-      if(data.trashed) {
-        obj.reference.prevObject.fadeOut(1000, function(){
-          instance.delete_node(node);
-        });
-      }
-    });
   },
 
   dnd_check_callback: function(operation, node, node_parent, node_position, more) {
@@ -132,27 +142,58 @@ var tree = tree || {
     });
   },
 
-  calculate_new_parent_id: function(instance, moved_node) {
-    var parent_node = instance.get_node(moved_node.parent);
+  grab_data: function() {
+    $.ajax({
+      url: tree.vars.container.data('source'),
+      type: 'GET'
+    }).done(function(data){
+      tree.load(data);
+    });
+  },
 
-    if(typeof parent_node.data !== 'undefined') {
-      return parent_node.data.id;
+  load: function(data) {
+    tree.vars.container.jstree({
+      core: tree.core_settings(data),
+      types: tree.types(),
+      plugins: ['contextmenu','dnd','json_data','types','ui','state','wholerow'],
+      contextmenu: { items: tree.contextmenu_items }
+    });
+
+    tree.vars.container.on('select_node.jstree', tree.select_node_listener);
+    $(document).on('dnd_stop.vakata', tree.dnd_stop_listener);
+  },
+
+  select_node_listener: function(e, result) {
+    if(typeof result.event !== 'undefined') {
+      if(result.event.which === 1) {
+        window.location = result.node.data.url;
+      }
     } else {
-      return null;
+      result.instance.deselect_node(result.node);
     }
   },
 
-  calculate_new_position: function(instance, moved_node) {
-    var result = [];
+  toggle_node_visibility: function(node, obj) {
+    if(node.data.visible) {
+      obj.addClass('jstree-node-invisible');
+    } else {
+      obj.removeClass('jstree-node-invisible');
+    }
 
-    $(instance.get_children_dom(moved_node.parent)).each(function(){
-      result.push(instance.get_node($(this).attr('id')).data.id);
-    });
-
-    return result.indexOf(moved_node.data.id) + 1;
+    window.location.reload();
   },
 
-  change_icon_color: function(jstree_node, color) {
-    $('#'+ jstree_node.id).find('.jstree-icon').css('color', color);
+  types: function() {
+    return {
+      default: {
+        icon: 'fa fa-folder',
+        children: true,
+        valid_children: ['default', 'file']
+      },
+      file: {
+        icon: 'fa fa-file-o',
+        valid_children: ['file']
+      }
+    };
   }
 };

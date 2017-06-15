@@ -1,0 +1,28 @@
+<%= render 'backend/general_form_error', object: @model %>
+
+<%= simple_form_for [:backend, @model] do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.general' %>
+        </div>
+
+        <div class="card-block">
+          <%= f.input :filename, as: :file, label: false, required: @model.new_record? %>
+          <%= f.input :description, as: :string %>
+        </div>
+      </div>
+    </div>
+
+    <% unless @model.new_record? %>
+      <div class="col-md-6">
+        <!-- Tags -->
+        <%= render 'backend/tags', model: @model, locale: Udongo.config.i18n.app.default_locale %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <%= render 'backend/form_actions', cancel_url: backend_assets_path %>
+<% end %>

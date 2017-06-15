@@ -1,4 +1,4 @@
-class Backend::Navigation::ItemsController < BackendController
+class Backend::Navigation::ItemsController < Backend::BaseController
   include Concerns::Backend::TranslatableController
   include Concerns::Backend::PositionableController
 
@@ -7,27 +7,21 @@ class Backend::Navigation::ItemsController < BackendController
   before_action { breadcrumb.add t('b.navigation'), backend_navigations_path }
 
   def new
-    @form = Backend::NavigationItemForm.new(@navigation.items.new.decorate)
+    @model = @navigation.items.new.decorate
   end
 
   def create
-    @form = Backend::NavigationItemForm.new(@navigation.items.new.decorate)
+    @model = @navigation.items.new(allowed_params).decorate
 
-    if @form.save params[:navigation_item]
+    if @model.save
       redirect_to backend_navigations_path, notice: translate_notice(:added, :navigation_item)
     else
       render :new
     end
   end
 
-  def edit
-    @form = Backend::NavigationItemForm.new(@model)
-  end
-
   def update
-    @form = Backend::NavigationItemForm.new(@model)
-
-    if @form.save params[:navigation_item]
+    if @model.update_attributes allowed_params
       redirect_to backend_navigations_path, notice: translate_notice(:changes_saved)
     else
       render :edit
@@ -47,6 +41,10 @@ class Backend::Navigation::ItemsController < BackendController
 
   def find_model
     @model = NavigationItem.find(params[:id]).decorate
+  end
+
+  def allowed_params
+    params[:navigation_item].permit(:page_id, :extra)
   end
 
   def translation_form

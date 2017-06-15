@@ -1,6 +1,6 @@
-class Backend::Content::RowsController < BackendController
+class Backend::Content::RowsController < Backend::BaseController
   include Concerns::Backend::PositionableController
-  before_action :find_model, only: [:update_position, :destroy]
+  before_action :find_model, except: [:new]
 
   def new
     if params[:klass] && params[:id] && params[:locale]
@@ -11,6 +11,27 @@ class Backend::Content::RowsController < BackendController
     else
       render text: 'Insufficient params. Please provide klass, id and locale.'
     end
+  end
+
+  def horizontal_alignment
+    align = params[:align].to_s
+    align = 'left' unless %w(left center right).include?(align)
+    @row.update_attribute :horizontal_alignment, align
+
+    redirect_back_to_content
+  end
+
+  def vertical_alignment
+    align = params[:align].to_s
+    align = 'top' unless %w(top center bottom).include?(align)
+    @row.update_attribute :vertical_alignment, align
+
+    redirect_back_to_content
+  end
+
+  def toggle_full_width
+    @row.update_attribute :full_width, !@row.full_width?
+    redirect_back_to_content
   end
 
   def destroy

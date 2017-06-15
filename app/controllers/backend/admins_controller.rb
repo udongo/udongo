@@ -1,4 +1,4 @@
-class Backend::AdminsController < BackendController
+class Backend::AdminsController < Backend::BaseController
   before_action :find_admin, only: [:show, :edit, :update, :destroy]
   before_action -> { breadcrumb.add t('b.admins'), backend_admins_path }
 
@@ -45,7 +45,7 @@ class Backend::AdminsController < BackendController
 
   def allowed_params
     params[:admin].permit(
-      :first_name, :last_name, :email, :password, :password_confirmation
+      :locale, :first_name, :last_name, :email, :password, :password_confirmation
     )
   end
 

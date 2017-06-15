@@ -1,0 +1,10 @@
+<%= search_form_for @search, url: link_or_upload_backend_content_picture_path(@model) do |f| %>
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <%= f.search_field :description_cont, placeholder: t('b.description'), class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.submit class: 'btn btn-sn' %>
+    </div>
+  </div>
+<% end %>

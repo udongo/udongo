@@ -1,4 +1,4 @@
-class AssetCollection < ApplicationRecord
+class ImageCollection < ApplicationRecord
   include Concerns::Cacheable
   cache_by :identifier
 

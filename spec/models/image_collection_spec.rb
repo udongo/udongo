@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe AssetCollection do
+describe ImageCollection do
   let(:model) { described_class }
   let(:klass) { model.to_s.underscore.to_sym }
 

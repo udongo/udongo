@@ -36,7 +36,7 @@ module Udongo
         end
 
         def hidden?
-          searchable.respond_to?(:visible) && searchable.hidden?
+          searchable.respond_to?(:visible?) && searchable.hidden?
         end
 
         def label

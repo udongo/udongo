@@ -15,6 +15,7 @@ en:
       defaults:
         active: Active
         author: Author
+        autoplay: Autoplay
         bcc: BCC
         caption: Caption
         category: Category
@@ -65,6 +66,10 @@ en:
         width_md: Width (medium)
         width_lg: Width (large)
         width_xl: Width (extra large)
+
+      content_slideshow:
+        autoplay: Autoplay
+        slide_interval: Interval between slides
 
       email_template:
         from_email: Sender e-mail address

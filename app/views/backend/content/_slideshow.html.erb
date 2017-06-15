@@ -1,0 +1,6 @@
+<% if object.image_collection %>
+  <strong><%= t 'b.slideshow' %></strong>: <%= object.image_collection.description %>
+
+<% else %>
+  <p><%= t 'b.msg.flexible_content.no_slideshow_present' %></p>
+<% end %>

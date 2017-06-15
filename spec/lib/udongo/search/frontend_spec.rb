@@ -16,23 +16,68 @@ describe Udongo::Search::Frontend do
       expect(instance.search).to eq []
     end
 
-    it 'filters on visibility' do
-      create(:page, description: 'foobar', visible: false)
-      page = create(:page, description: 'foobar', visible: true)
-      index = create(:search_index, searchable: page, locale: 'nl', name: 'description', value: 'foobar')
-      allow(instance).to receive(:indices) { [index] }
+    context 'filters on visibility' do
+      it 'shows visible' do
+        foo = Udongo::BogusModel.new(
+          description: 'foobar',
+          visible?: true,
+          hidden?: false,
+          published?: true,
+          unpublished?: false
+        )
 
-      expect(instance.search).to eq [{ label: 'foobar', value: nil }]
+        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
+        allow(instance).to receive(:indices) { [index] }
+
+        expect(instance.search).to eq [{ label: 'foobar', value: nil }]
+      end
+
+      it 'skips hidden' do
+        foo = Udongo::BogusModel.new(
+          description: 'foobar',
+          visible?: false,
+          hidden?: true,
+          published?: true,
+          unpublished?: false
+        )
+
+        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
+        allow(instance).to receive(:indices) { [index] }
+
+        expect(instance.search).to eq []
+      end
     end
 
-    it 'filters on publishable state' do
-      create(:page, description: 'foobar', visible: true)
-      page = create(:page, description: 'foobar', visible: true)
-      allow(page).to receive(:unpublished?) { true }
-      index = create(:search_index, searchable: page, locale: 'nl', name: 'description', value: 'foobar')
-      allow(instance).to receive(:indices) { [index] }
+    context 'filters on publishable state' do
+      it 'shows published' do
+        foo = Udongo::BogusModel.new(
+          description: 'foobar',
+          visible?: true,
+          hidden?: false,
+          published?: true,
+          unpublished?: false
+        )
 
-      expect(instance.search).to eq [{ label: 'foobar', value: nil }]
+        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
+        allow(instance).to receive(:indices) { [index] }
+
+        expect(instance.search).to eq [{ label: 'foobar', value: nil }]
+      end
+
+      it 'skips unpublished' do
+        foo = Udongo::BogusModel.new(
+          description: 'foobar',
+          visible?: true,
+          hidden?: false,
+          published?: false,
+          unpublished?: true
+        )
+
+        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
+        allow(instance).to receive(:indices) { [index] }
+
+        expect(instance.search).to eq []
+      end
     end
   end
 

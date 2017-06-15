@@ -1,4 +1,6 @@
 class ImageCollection < ApplicationRecord
+  include Concerns::Imageable
+
   include Concerns::Cacheable
   cache_by :identifier
 

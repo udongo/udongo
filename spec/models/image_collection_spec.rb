@@ -5,6 +5,7 @@ describe ImageCollection do
   let(:klass) { model.to_s.underscore.to_sym }
 
   it_behaves_like :cacheable
+  it_behaves_like :imageable
 
   describe 'validations' do
     describe 'presence' do
@@ -17,9 +18,5 @@ describe ImageCollection do
         expect(build(klass, identifier: 'FOO')).not_to be_valid
       end
     end
-  end
-
-  it '#respond_to?' do
-    # expect(build(klass)).to respond_to(:assets)
   end
 end

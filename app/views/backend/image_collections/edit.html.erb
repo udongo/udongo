@@ -1,0 +1,6 @@
+<% breadcrumb.add @model.description, edit_backend_image_collection_path(@model) %>
+<% breadcrumb.add t('b.edit') %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= render 'tabs', model: @model, active: :general %>
+<%= render 'form', model: @model %>

@@ -1,3 +1,10 @@
+6.4.0 - xxxx-xx-xx
+--
+* Add the AssetCollection model with a module. This allows you to put certai
+  assets in one or more collections. These can then be used in the future to
+  create slideshows, photo albums and even file lists.
+
+
 6.3.2 - 2017-06-07
 --
 * Bugfix: there was an issue with the has_many :addresses relation in the

@@ -41,6 +41,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :image_collections do
+      resources :images, only: [:index], controller: 'image_collections/images' do
+        concerns :positionable
+      end
+    end
+
     resources :articles, except: [:show] do
       concerns :translatable
 

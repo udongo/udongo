@@ -5,10 +5,10 @@ describe Udongo::Search::Frontend do
   let(:instance) { described_class.new('foo') }
 
   before(:each) do
-    class Udongo::Search::ResultObjects::Foo < Udongo::Search::ResultObjects::Base
+    module Udongo::Search::ResultObjects::Frontend
+      class Class < Udongo::Search::ResultObjects::Base
+      end
     end
-
-    create(:search_module, name: 'Page', weight: 1)
   end
 
   describe '#search' do

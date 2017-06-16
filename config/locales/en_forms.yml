@@ -25,6 +25,7 @@ en:
         description: Description
         disabled: Disabled
         email: E-mail
+        external_reference: External reference
         extra: Extra
         field_type: Field type
         first_name: First name

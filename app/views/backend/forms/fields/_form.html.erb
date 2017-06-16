@@ -11,6 +11,7 @@
         <div class="card-block">
           <%= f.input :identifier %>
           <%= f.input :field_type, collection: options_for_collection(:form_field_type, FormField::FIELD_TYPES) %>
+          <%= f.input :external_reference %>
         </div>
       </div>
     </div>

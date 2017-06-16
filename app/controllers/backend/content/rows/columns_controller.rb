@@ -7,7 +7,6 @@ class Backend::Content::Rows::ColumnsController < Backend::BaseController
 
   def new
     @column = @row.columns.new(@row.column_width_calculator.hashed_values)
-    # cancel_url
   end
 
   def create

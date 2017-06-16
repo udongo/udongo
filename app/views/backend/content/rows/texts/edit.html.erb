@@ -1,5 +1,5 @@
 <%= simple_form_for [:backend, @model] do |f| %>
   <%= f.input :content, as: :ckeditor, label: false %>
 
-  <%= render 'backend/form_actions', cancel_url: content_path %>
+  <%= render 'backend/form_actions', cancel_url: '#lity-close' %>
 <% end %>

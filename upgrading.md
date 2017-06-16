@@ -1,6 +1,20 @@
 # Upgrade guide
 ## From 6.3 to 6.4
+### Flexible content
+When you have created your own flexible content types, you need to update the
+```edit.html.erb``` file. There you have to change this
+```ruby
+render 'backend/form_actions', cancel_url: cancel_url
+```
 
+to this
+```ruby
+render 'backend/form_actions', cancel_url: '#lity-close'
+```
+
+You've probably also added translations to ```nl_backend.yml``` for edit_[type].
+These may be removed, because they're no longer used. They can be found in the
+'nl.b.msg.flexible_content' namespace.
 
 
 ## From 6.2.1 to 6.3

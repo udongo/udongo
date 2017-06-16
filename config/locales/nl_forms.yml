@@ -67,6 +67,13 @@ nl:
         width_lg: Breedte (large)
         width_xl: Breedte (extra large)
 
+      content_row:
+        background_color: Achtergrondkleur
+        margin_bottom: Marge onderaan
+        margin_top: Marge bovenaan
+        padding_bottom: Padding onderaan
+        padding_top: Padding bovenaan
+
       content_slideshow:
         autoplay: Automatisch afspelen
         image_collection_id: Afbeeldingsgroep

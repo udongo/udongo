@@ -67,6 +67,13 @@ en:
         width_lg: Width (large)
         width_xl: Width (extra large)
 
+      content_row:
+        background_color: Background color
+        margin_bottom: Bottom margin
+        margin_top: Top margin
+        padding_bottom: Bottom padding
+        padding_top: Top padding
+
       content_slideshow:
         autoplay: Autoplay
         image_collection_id: Image collection

@@ -1,3 +1,8 @@
+6.4.1 - 2017-06-16
+--
+* Make it easier to fetch all the content row styles.
+
+
 6.4.0 - 2017-06-16
 --
 * Add the AssetCollection model with a module. This allows you to put certai

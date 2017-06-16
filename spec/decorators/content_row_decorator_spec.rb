@@ -69,6 +69,58 @@ describe ContentRowDecorator do
     end
   end
 
+  describe '#styles' do
+    it :none do
+      row = create(:content_row).decorate
+      expect(row.styles).to eq({})
+    end
+
+    it :background_color do
+      row = create(:content_row, background_color: '#336699').decorate
+      expect(row.styles).to eq({ 'background-color': '#336699' })
+    end
+
+    it :margin_top do
+      row = create(:content_row, margin_top: 1).decorate
+      expect(row.styles).to eq({ 'margin-top': 1 })
+    end
+
+    it :margin_bottom do
+      row = create(:content_row, margin_bottom: 1).decorate
+      expect(row.styles).to eq({ 'margin-bottom': 1 })
+    end
+
+    it :padding_top do
+      row = create(:content_row, padding_top: 1).decorate
+      expect(row.styles).to eq({ 'padding-top': 1 })
+    end
+
+    it :padding_bottom do
+      row = create(:content_row, padding_bottom: 1).decorate
+      expect(row.styles).to eq({ 'padding-bottom': 1 })
+    end
+
+    it 'all combined' do
+      row = create(
+        :content_row,
+        background_color: '#336699',
+        margin_top: 1,
+        margin_bottom: 1,
+        padding_top: 1,
+        padding_bottom: 1
+      ).decorate
+      expect(row.styles).to eq(
+                              {
+                                'background-color': '#336699',
+                                'margin-top': 1,
+                                'margin-bottom': 1,
+                                'padding-top': 1,
+                                'padding-bottom': 1
+                              }
+                            )
+    end
+  end
+
   it '#respond_to?' do
     expect(instance).to respond_to(:column_limit_reached?, :classes)
   end

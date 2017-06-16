@@ -3,23 +3,16 @@
 <%= simple_form_for(@column, url: backend_content_row_column_path(@row, @column)) do |f| %>
   <%= render 'column_width_explanation' %>
 
-  <div class="card">
-    <div class="card-header">
-      <%= t 'b.msg.flexible_content.edit_column' %>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= render 'backend/content/rows/columns/dimension_fields', form: f %>
     </div>
 
-    <div class="card-block">
-      <div class="row">
-        <div class="col-md-6">
-          <%= render 'backend/content/rows/columns/dimension_fields', form: f %>
-        </div>
-
-        <div class="col-md-6">
-          <%= f.input :content_type, collection: options_for_content_types, disabled: true, include_blank: false %>
-        </div>
-      </div>
+    <div class="col-md-6">
+      <%= f.input :content_type, collection: options_for_content_types, disabled: true, include_blank: false %>
     </div>
   </div>
 
+  <!-- TODO fix cancel url -->
   <%= render 'backend/form_actions', cancel_url: cancel_url %>
 <% end %>

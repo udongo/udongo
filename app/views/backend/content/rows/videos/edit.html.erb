@@ -1,11 +1,10 @@
 <%= simple_form_for [:backend, @model] do |f| %>
-  <div class="card">
-    <div class="card-header">
-      <%= t 'b.msg.flexible_content.edit_video' %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.input :url, as: :string %>
     </div>
 
-    <div class="card-block">
-      <%= f.input :url, as: :string %>
+    <div class="col-md-4">
       <%= f.input :aspect_ratio, collection: ContentVideo::ASPECT_RATIOS, include_blank: false %>
     </div>
   </div>

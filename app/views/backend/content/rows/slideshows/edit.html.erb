@@ -1,23 +1,15 @@
 <%= simple_form_for [:backend, @model] do |f| %>
-  <div class="card">
-    <div class="card-header">
-      <%= t 'b.msg.flexible_content.edit_slideshow' %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.input :image_collection_id, collection: image_collections %>
     </div>
 
-    <div class="card-block">
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.input :image_collection_id, collection: image_collections %>
-        </div>
+    <div class="col-md-4">
+      <%= f.input :slide_interval, as: :integer %>
+    </div>
 
-        <div class="col-md-4">
-          <%= f.input :slide_interval, as: :integer %>
-        </div>
-
-        <div class="col-md-4">
-          <%= f.input :autoplay, as: :boolean %>
-        </div>
-      </div>
+    <div class="col-md-4">
+      <%= f.input :autoplay, as: :boolean %>
     </div>
   </div>
 

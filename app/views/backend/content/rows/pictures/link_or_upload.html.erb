@@ -1,10 +1,8 @@
 <%= simple_form_for @asset, url: upload_backend_content_picture_path(@model) do |f| %>
-  <div class="card">
-    <div class="card-header">
-      <%= t 'b.upload_a_new_image' %>
-    </div>
+  <div class="row mb-5">
+    <div class="col-12">
+      <h4><%= t 'b.upload_a_new_image' %></h4>
 
-    <div class="card-block">
       <%= f.input :filename, as: :file, label: false, required: false %>
       <%= f.input :description, as: :text, required: false %>
 
@@ -13,22 +11,16 @@
   </div>
 <% end %>
 
-<div class="card">
-  <div class="card-header">
-    <%= t 'b.choose_an_existing_image' %>
-  </div>
 
-  <div class="card-block">
-    <%= render 'filter' %>
+<h4><%= t 'b.choose_an_existing_image' %></h4>
+<%= render 'filter' %>
 
-    <div class="row">
-      <% @assets.each do |a| %>
-        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-          <%= link_to link_backend_content_picture_path(@model, asset_id: a.id), style: '' do %>
-            <%= image_tag a.image.url(550, 550, action: :resize_and_pad, background: :white), alt: '', class: 'img-fluid' %>
-          <% end %>
-        </div>
+<div class="row">
+  <% @assets.each do |a| %>
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+      <%= link_to link_backend_content_picture_path(@model, asset_id: a.id), style: '' do %>
+        <%= image_tag a.image.url(550, 550, action: :resize_and_pad, background: :white), alt: '', class: 'img-fluid' %>
       <% end %>
     </div>
-  </div>
+  <% end %>
 </div>

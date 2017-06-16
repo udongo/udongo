@@ -78,7 +78,7 @@
                 <div class="card-footer">
                   <div class="btn-group" role="group">
                     <% edit_link = send("edit_backend_content_#{content.content_type}_path", content) %>
-                    <%= link_to icon(:pencil_square_o), edit_link, class: 'btn btn-secondary btn-sm', title: t('b.edit'), data: { toggle: 'tooltip', placement: 'bottom' } %>
+                    <%= link_to icon(:pencil_square_o), edit_link, class: 'btn btn-secondary btn-sm', title: t('b.edit'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
                     <%= link_to icon(:trash), backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm', title: t('b.delete'), method: :delete, data: { toggle: 'tooltip', placement: 'bottom', confirm: t('b.msg.confirm') } %>
                     <%= link_to icon(:wrench), edit_backend_content_row_column_path(row, column), class: 'btn btn-secondary btn-sm', title: t('b.settings'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
                   </div>
@@ -89,10 +89,10 @@
 
           <% unless row.column_limit_reached? %>
             <% if row.columns.blank? %>
-              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary btn-block' %>
+              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary btn-block', title: t('b.msg.flexible_content.add_column'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
             <% else %>
-              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-xl-up full-width' %>
-              <%= link_to icon(:plus), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-lg-down block' %>
+              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-xl-up full-width', title: t('b.msg.flexible_content.add_column'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
+              <%= link_to icon(:plus), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-lg-down block', title: t('b.msg.flexible_content.add_column'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
             <% end %>
           <% end %>
         </div>

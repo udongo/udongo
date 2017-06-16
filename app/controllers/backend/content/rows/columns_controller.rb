@@ -7,7 +7,7 @@ class Backend::Content::Rows::ColumnsController < Backend::BaseController
 
   def new
     @column = @row.columns.new(@row.column_width_calculator.hashed_values)
-    cancel_url
+    # cancel_url
   end
 
   def create
@@ -25,7 +25,7 @@ class Backend::Content::Rows::ColumnsController < Backend::BaseController
 
   def update
     if @column.update_attributes allowed_params
-      redirect_to cancel_url
+      render 'backend/lightbox_saved'
     else
       render :edit
     end

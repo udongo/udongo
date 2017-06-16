@@ -25,6 +25,7 @@ module Concerns
         @model = model.find(params[:id]).decorate
       end
 
+      # TODO we no longer need this
       def content_path
         column = @model.column
         path = "edit_translation_backend_#{column.row.rowable.class.to_s.downcase}_path"
@@ -35,7 +36,7 @@ module Concerns
 
       def update
         if @model.update_attributes allowed_params
-          redirect_to content_path
+          render 'backend/lightbox_saved'
         else
           render :edit
         end

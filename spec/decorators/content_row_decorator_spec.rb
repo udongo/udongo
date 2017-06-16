@@ -82,22 +82,22 @@ describe ContentRowDecorator do
 
     it :margin_top do
       row = create(:content_row, margin_top: 1).decorate
-      expect(row.styles).to eq({ 'margin-top': 1 })
+      expect(row.styles).to eq({ 'margin-top': '1rem' })
     end
 
     it :margin_bottom do
       row = create(:content_row, margin_bottom: 1).decorate
-      expect(row.styles).to eq({ 'margin-bottom': 1 })
+      expect(row.styles).to eq({ 'margin-bottom': '1rem' })
     end
 
     it :padding_top do
       row = create(:content_row, padding_top: 1).decorate
-      expect(row.styles).to eq({ 'padding-top': 1 })
+      expect(row.styles).to eq({ 'padding-top': '1rem' })
     end
 
     it :padding_bottom do
       row = create(:content_row, padding_bottom: 1).decorate
-      expect(row.styles).to eq({ 'padding-bottom': 1 })
+      expect(row.styles).to eq({ 'padding-bottom': '1rem' })
     end
 
     it 'all combined' do
@@ -112,10 +112,10 @@ describe ContentRowDecorator do
       expect(row.styles).to eq(
                               {
                                 'background-color': '#336699',
-                                'margin-top': 1,
-                                'margin-bottom': 1,
-                                'padding-top': 1,
-                                'padding-bottom': 1
+                                'margin-top': '1rem',
+                                'margin-bottom': '1rem',
+                                'padding-top': '1rem',
+                                'padding-bottom': '1rem'
                               }
                             )
     end

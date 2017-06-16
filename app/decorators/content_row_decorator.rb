@@ -29,10 +29,11 @@ class ContentRowDecorator < ApplicationDecorator
 
   def styles
     list = {}
+    list['background-color'.to_sym] = background_color if background_color.present?
 
-    %w(background_color margin_top margin_bottom padding_top padding_bottom).each do |s|
+    %w(margin_top margin_bottom padding_top padding_bottom).each do |s|
       str = s.split('_')
-      list["#{str.first}-#{str.last}".to_sym] = send(s) if send(s).present?
+      list["#{str.first}-#{str.last}".to_sym] = "#{send(s)}rem" if send(s).present?
     end
 
     list

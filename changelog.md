@@ -1,6 +1,6 @@
 6.4.1 - 2017-06-16
 --
-* Make it easier to fetch all the content row styles.
+* Make it easier to fetch all the content row styles as a hash.
 
 
 6.4.0 - 2017-06-16

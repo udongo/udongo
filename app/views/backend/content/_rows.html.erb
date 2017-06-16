@@ -89,9 +89,9 @@
 
           <% unless row.column_limit_reached? %>
             <% if row.columns.blank? %>
-              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary btn-block', title: t('b.msg.flexible_content.add_column'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
+              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary btn-block', data: { lity: '' } %>
             <% else %>
-              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-xl-up full-width', title: t('b.msg.flexible_content.add_column'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
+              <%= link_to icon(:plus, t('b.msg.flexible_content.add_column')), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-xl-up full-width', data: { lity: '' } %>
               <%= link_to icon(:plus), new_backend_content_row_column_path(row), class: 'btn btn-secondary hidden-lg-down block', title: t('b.msg.flexible_content.add_column'), data: { toggle: 'tooltip', placement: 'bottom', lity: '' } %>
             <% end %>
           <% end %>

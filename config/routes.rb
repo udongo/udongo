@@ -86,7 +86,7 @@ Rails.application.routes.draw do
     end
 
     namespace :content do
-      resources :rows, only: [:index, :new, :destroy] do
+      resources :rows, only: [:index, :new, :edit, :update, :destroy] do
         member do
           get :horizontal_alignment, :vertical_alignment, :toggle_full_width
         end

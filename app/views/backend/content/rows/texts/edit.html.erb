@@ -1,13 +1,5 @@
 <%= simple_form_for [:backend, @model] do |f| %>
-  <div class="card">
-    <div class="card-header">
-      <%= t 'b.msg.flexible_content.edit_text' %>
-    </div>
+  <%= f.input :content, as: :ckeditor, label: false %>
 
-    <div class="card-block">
-      <%= f.input :content, as: :ckeditor, label: false %>
-    </div>
-  </div>
-
-  <%= render 'backend/form_actions', cancel_url: content_path %>
+  <%= render 'backend/form_actions', cancel_url: '#lity-close' %>
 <% end %>

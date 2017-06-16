@@ -137,19 +137,14 @@ nl:
         align_vertical_bottom: Vertikaal onderaan uitlijnen
         align_vertical_center: Vertikaal centreren
         align_vertical_top: Vertikaal bovenaan uitlijnen
-        edit_column: Kolom bewerken
-        edit_form: Formulier bewerken
-        edit_image: Afbeelding bewerken
-        edit_picture: Foto bewerken
-        edit_slideshow: Slideshow bewerken
-        edit_text: Tekst bewerken
-        edit_video: Video bewerken
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
         full_width: Volledige breedte
+        margin_explanation: Marge is de witruimte boven en onder je rij.
         no_form_present: Er werd nog geen formulier gelinkt.
         no_picture_present: Er werd nog geen foto geüpload of gelinkt.
         no_slideshow_present: Er werd nog geen slideshow geconfigureerd.
         no_video_present: Er werd nog geen geldige URL voor een video opgegeven.
+        padding_explanation: Padding is de witruimte boven en onder binnenin je rij.
         width_explanation: Voor de flexibele inhoud wordt er gebruikt gemaakt van een grid layout. Deze werkt met rijen en kolommen. Iedere rij kan maximaal 12 kolommen bevatten. Daarom dat de breedte uitgedrukt is in een breuk op 12.
       forgot_password: Wachtwoord vergeten?
       form_fields:

@@ -1,0 +1,31 @@
+<%= simple_form_for [:backend, @row] do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.input :background_color, placeholder: 'eg #336699' %>
+    </div>
+  </div>
+
+  <% pixels = (1..10).map { |i| ["#{i * 16}px", i] } %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="alert alert-info">
+        <%= t 'b.msg.flexible_content.margin_explanation' %>
+      </div>
+
+      <%= f.input :margin_top, collection: pixels %>
+      <%= f.input :margin_bottom, collection: pixels %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="alert alert-info">
+        <%= t 'b.msg.flexible_content.padding_explanation' %>
+      </div>
+
+      <%= f.input :padding_top, collection: pixels %>
+      <%= f.input :padding_bottom, collection: pixels %>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: '#lity-close' %>
+<% end %>

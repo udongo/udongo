@@ -7,7 +7,6 @@ class Backend::Content::Rows::ColumnsController < Backend::BaseController
 
   def new
     @column = @row.columns.new(@row.column_width_calculator.hashed_values)
-    cancel_url
   end
 
   def create
@@ -25,7 +24,7 @@ class Backend::Content::Rows::ColumnsController < Backend::BaseController
 
   def update
     if @column.update_attributes allowed_params
-      redirect_to cancel_url
+      render 'backend/lightbox_saved'
     else
       render :edit
     end
@@ -57,11 +56,4 @@ class Backend::Content::Rows::ColumnsController < Backend::BaseController
   def redirect_to_edit(column)
     redirect_to send("edit_backend_content_#{column.content.decorate.content_type}_path", column.content)
   end
-
-  def cancel_url
-    instance = @row.rowable
-    path = "edit_translation_backend_#{instance.class.to_s.downcase}_path"
-    send(path, instance, @row.locale, anchor: "content-row-#{@row.id}")
-  end
-  helper_method :cancel_url
 end

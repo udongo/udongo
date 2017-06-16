@@ -1,6 +1,7 @@
 class Backend::Content::RowsController < Backend::BaseController
   include Concerns::Backend::PositionableController
   before_action :find_model, except: [:new]
+  layout 'backend/lightbox'
 
   def new
     if params[:klass] && params[:id] && params[:locale]
@@ -10,6 +11,14 @@ class Backend::Content::RowsController < Backend::BaseController
       redirect_to content_path(instance, params[:locale], "content-row-#{row.id}")
     else
       render text: 'Insufficient params. Please provide klass, id and locale.'
+    end
+  end
+
+  def update
+    if @row.update_attributes allowed_params
+      render 'backend/lightbox_saved'
+    else
+      render :edit
     end
   end
 
@@ -53,5 +62,12 @@ class Backend::Content::RowsController < Backend::BaseController
   def redirect_back_to_content(anchor = nil)
     anchor = "content-row-#{@row.id}" unless anchor.present?
     redirect_to content_path(@row.rowable, @row.locale, anchor)
+  end
+
+  def allowed_params
+    params.require(:content_row).permit(
+      :background_color, :margin_top, :margin_bottom, :padding_top,
+      :padding_bottom
+    )
   end
 end

@@ -25,3 +25,4 @@
 //= require backend/bootstrap-datepicker.min
 //= require backend/datepickers
 //= require backend/select2.min
+//= require backend/lity

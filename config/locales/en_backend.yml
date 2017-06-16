@@ -135,19 +135,14 @@ en:
         align_vertical_bottom: Align vertical bottom
         align_vertical_center: Align vertically
         align_vertical_top: Align vertical top
-        edit_column: Edit column
-        edit_form: Edit form
-        edit_image: Edit image
-        edit_picture: Edit picture
-        edit_slideshow: Edit slideshow
-        edit_text: Edit text
-        edit_video: Edit video
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
         full_width: Full width
+        margin_explanation: Margin is the whitespace above and below this row.
         no_form_present: No form has been linked yet.
         no_picture_present: No picture has been uploaded/linked yet.
         no_slideshow_present: No slideshow has been configured yet.
         no_video_present: No valid video URL was given.
+        padding_explanation: Padding is the top and bottom whitespace within this row.
         width_explanation: For the flexible content we use a grid layout. This works with rows and columns. Every row can contain at most 12 columns. That's why the column width is expressed as a fracture.
       forgot_password: Forgot password?
       form_fields:

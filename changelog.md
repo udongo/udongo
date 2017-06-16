@@ -5,6 +5,9 @@
   create slideshows, photo albums and even file lists.
 * Bugfix: reworked to Udongo::Search::Frontend visible/publishable check tests
   to help fix a test that failed Sometimes™.
+* Flexible content rows can now have a background color and padding/margin for
+  the bottom/top.
+* Alle flexible content actions are now shown in popups.
 
 
 6.3.2 - 2017-06-07

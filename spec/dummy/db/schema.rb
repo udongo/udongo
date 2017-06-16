@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615131909) do
+ActiveRecord::Schema.define(version: 20170615184855) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -147,6 +147,11 @@ ActiveRecord::Schema.define(version: 20170615131909) do
     t.boolean  "full_width"
     t.string   "horizontal_alignment"
     t.string   "vertical_alignment"
+    t.string   "background_color"
+    t.integer  "padding_top"
+    t.integer  "padding_bottom"
+    t.integer  "margin_top"
+    t.integer  "margin_bottom"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"

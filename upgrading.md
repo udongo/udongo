@@ -16,6 +16,10 @@ You've probably also added translations to ```nl_backend.yml``` for edit_[type].
 These may be removed, because they're no longer used. They can be found in the
 'nl.b.msg.flexible_content' namespace.
 
+It's now also possible to add margin/padding top/bottom and a background color
+to content rows. If your project has a whitespace widget, it can be removed by
+using these settings.
+
 
 ## From 6.2.1 to 6.3
 ### Tags module

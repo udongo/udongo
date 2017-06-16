@@ -1,4 +1,4 @@
-6.4.0 - xxxx-xx-xx
+6.4.0 - 2017-06-16
 --
 * Add the AssetCollection model with a module. This allows you to put certai
   assets in one or more collections. These can then be used in the future to

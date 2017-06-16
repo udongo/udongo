@@ -24,6 +24,7 @@ nl:
         description: Beschrijving
         disabled: Uitgeschakeld
         email: E-mail
+        external_reference: Externe referentie
         extra: Extra
         field_type: Veldtype
         first_name: Voornaam

@@ -7,7 +7,8 @@
   to help fix a test that failed Sometimes™.
 * Flexible content rows can now have a background color and padding/margin for
   the bottom/top.
-* Alle flexible content actions are now shown in popups.
+* All flexible content actions are now shown in popups.
+* Add field 'external_reference' to form fields.
 
 
 6.3.2 - 2017-06-07

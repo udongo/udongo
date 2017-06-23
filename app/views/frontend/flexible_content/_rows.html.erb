@@ -1,0 +1,22 @@
+<% cache [model, :flexible_content, I18n.locale] do %>
+  <div class="flexible-content">
+    <% model.content_rows.where(locale: I18n.locale).decorate.each do |row| %>
+      <div class="container<%= '-fluid' if row.full_width? %>">
+        <% styles = row.styles.map { |k,v| "#{k}: #{v};" }.join %>
+        <div class="row <%= row.classes.join(' ') %>" style="<%= styles %>">
+          <% row.columns.each do |column| %>
+            <div class="col-sm-<%= column.width_sm %> col-md-<%= column.width_md %> col-lg-<%= column.width_lg %> col-xl-<%= column.width_xl %>">
+              <% content = column.content.decorate %>
+
+              <% Udongo.config.flexible_content.types.each do |content_type| %>
+                <% if content.content_type_is?(content_type) %>
+                  <%= render "frontend/flexible_content/#{content_type}", object: content, column: column %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

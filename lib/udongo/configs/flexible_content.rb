@@ -8,9 +8,14 @@ module Udongo
 
       attribute :types, Array, default: %w(text picture video slideshow form image)
       attribute :picture_caption_editor, Axiom::Types::Boolean, default: false
+      attribute :video_caption_editor, Axiom::Types::Boolean, default: false
 
       def picture_caption_editor?
         picture_caption_editor
+      end
+
+      def video_caption_editor?
+        video_caption_editor
       end
     end
   end

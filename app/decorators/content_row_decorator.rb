@@ -9,6 +9,7 @@ class ContentRowDecorator < ApplicationDecorator
 
   def classes
     list = []
+    list << 'no-gutters' if no_gutters?
 
     if horizontal_alignment.to_s == 'center'
       list << 'justify-content-center'

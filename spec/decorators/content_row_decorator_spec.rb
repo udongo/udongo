@@ -19,6 +19,11 @@ describe ContentRowDecorator do
   end
 
   describe '#classes' do
+    it 'no_gutters: true' do
+      row = create(:content_row, no_gutters: true).decorate
+      expect(row.classes).to eq ['no-gutters']
+    end
+
     it 'horizontal: blank' do
       row = create(:content_row, horizontal_alignment: '').decorate
       expect(row.classes).to eq []

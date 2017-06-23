@@ -1,3 +1,8 @@
+6.5.0 - xxxx-xx-xx
+--
+* It's now possible to disable the flexible content row gutters.
+
+
 6.4.1 - 2017-06-16
 --
 * Make it easier to fetch all the content row styles as a hash.

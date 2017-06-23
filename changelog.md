@@ -5,7 +5,7 @@
 
 6.4.0 - 2017-06-16
 --
-* Add the AssetCollection model with a module. This allows you to put certai
+* Add the ImageCollection model with a module. This allows you to put certain
   assets in one or more collections. These can then be used in the future to
   create slideshows, photo albums and even file lists.
 * Bugfix: reworked to Udongo::Search::Frontend visible/publishable check tests

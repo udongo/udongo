@@ -4,11 +4,13 @@
   </div>
 
   <% if object.caption.present? %>
-    <div class="row">
-      <div class="col-12 mt-3 text-center">
+    <% if Udongo.config.flexible_content.video_caption_editor? %>
+      <%= object.caption.html_safe %>
+    <% else %>
+      <div class="text-center">
         <%= object.caption %>
       </div>
-    </div>
+    <% end %>
   <% end %>
 
 <% else %>

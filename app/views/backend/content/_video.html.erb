@@ -3,6 +3,16 @@
     <iframe class="embed-responsive-item" src="<%= object.embed_url %>" allowfullscreen></iframe>
   </div>
 
+  <% if object.caption.present? %>
+    <% if Udongo.config.flexible_content.video_caption_editor? %>
+      <%= object.caption.html_safe %>
+    <% else %>
+      <div class="text-center">
+        <%= object.caption %>
+      </div>
+    <% end %>
+  <% end %>
+
 <% else %>
   <p><%= t 'b.msg.flexible_content.no_video_present' %></p>
 <% end %>

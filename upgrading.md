@@ -6,6 +6,10 @@ There's a new setting ```no_gutters``` added to content rows. If enabled the
 frontend are set by using the ```ContentRowDecorator#classes``` method. If so,
 no need to do anything.
 
+Video's now can also have a caption. By default this caption has no editor, but
+you can enable this with the following setting
+```Udongo.config.flexible_content.video_caption_editor = true```
+
 
 ## From 6.3 to 6.4
 ### Flexible content

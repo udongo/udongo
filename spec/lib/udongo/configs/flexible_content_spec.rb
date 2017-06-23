@@ -16,6 +16,10 @@ describe Udongo::Configs::FlexibleContent do
     it :picture_caption_editor do
       expect(instance.picture_caption_editor).to eq false
     end
+
+    it :video_caption_editor do
+      expect(instance.video_caption_editor).to eq false
+    end
   end
 
   describe '#picture_caption_editor?' do
@@ -30,10 +34,23 @@ describe Udongo::Configs::FlexibleContent do
     end
   end
 
+  describe '#video_caption_editor?' do
+    it :true do
+      instance.video_caption_editor = true
+      expect(instance.video_caption_editor?).to eq true
+    end
+
+    it :false do
+      instance.video_caption_editor = false
+      expect(instance.video_caption_editor?).to eq false
+    end
+  end
+
   it '#respond_to?' do
     expect(instance).to respond_to(
       :types, :types=, :picture_caption_editor, :picture_caption_editor=,
-      :picture_caption_editor?
+      :picture_caption_editor?, :video_caption_editor, :video_caption_editor=,
+      :video_caption_editor?
     )
   end
 end

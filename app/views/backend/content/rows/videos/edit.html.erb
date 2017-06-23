@@ -9,5 +9,12 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-12">
+      <% content_type = Udongo.config.flexible_content.video_caption_editor? ? :ckeditor : :text %>
+      <%= f.input :caption, as: content_type %>
+    </div>
+  </div>
+
   <%= render 'backend/form_actions', cancel_url: '#lity-close' %>
 <% end %>

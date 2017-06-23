@@ -124,6 +124,11 @@ Udongo.config.flexible_content.types = %w(text picture video)
 Udongo.config.flexible_content.picture_caption_editor = false
 ```
 
+### video_caption_editor
+```ruby
+Udongo.config.flexible_content.video_caption_editor = false
+```
+
 ## Assets
 ### image_white_list
 ```ruby

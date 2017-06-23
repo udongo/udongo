@@ -21,6 +21,11 @@ to content rows. If your project has a whitespace widget, it can be removed by
 using these settings.
 
 
+### ImageCollection
+A new module 'image collections' has been added. You need to add this to your
+top_navigation.html.erb if you've overwritten the udongo one.
+
+
 ## From 6.2.1 to 6.3
 ### Tags module
 A new module was added that allows you see which tags are currently in the

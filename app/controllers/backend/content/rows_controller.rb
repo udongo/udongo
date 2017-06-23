@@ -67,7 +67,7 @@ class Backend::Content::RowsController < Backend::BaseController
   def allowed_params
     params.require(:content_row).permit(
       :background_color, :margin_top, :margin_bottom, :padding_top,
-      :padding_bottom
+      :padding_bottom, :no_gutters
     )
   end
 end

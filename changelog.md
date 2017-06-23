@@ -3,6 +3,9 @@
 * It's now possible to disable the flexible content row gutters.
 * Video's can now have a caption. You can configure whether or not this caption
   uses an editor.
+* For each flexible content type, we now provide a placeholder as default. In
+  most cases this will be ok. If you want something different, you can simply
+  override this partial.
 
 
 6.4.1 - 2017-06-16

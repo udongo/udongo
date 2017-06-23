@@ -72,6 +72,7 @@ en:
         background_color: Background color
         margin_bottom: Bottom margin
         margin_top: Top margin
+        no_gutters: No whitespace between columns
         padding_bottom: Bottom padding
         padding_top: Top padding
 

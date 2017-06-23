@@ -1,10 +1,4 @@
 <%= simple_form_for [:backend, @row] do |f| %>
-  <div class="row">
-    <div class="col-md-4">
-      <%= f.input :background_color, placeholder: 'eg #336699' %>
-    </div>
-  </div>
-
   <% pixels = (1..10).map { |i| ["#{i * 16}px", i] } %>
 
   <div class="row">
@@ -24,6 +18,16 @@
 
       <%= f.input :padding_top, collection: pixels %>
       <%= f.input :padding_bottom, collection: pixels %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :background_color, placeholder: 'eg #336699' %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.input :no_gutters, as: :boolean %>
     </div>
   </div>
 

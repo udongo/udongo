@@ -1,4 +1,12 @@
 # Upgrade guide
+## From 6.4.1 to 6.5
+### Flexible content
+There's a new setting ```no_gutters``` added to content rows. If enabled the
+```no-gutters``` class is added to the row. Make sure your row classes in the
+frontend are set by using the ```ContentRowDecorator#classes``` method. If so,
+no need to do anything.
+
+
 ## From 6.3 to 6.4
 ### Flexible content
 When you have created your own flexible content types, you need to update the

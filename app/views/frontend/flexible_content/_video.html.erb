@@ -1,0 +1,17 @@
+<% if object.url.present? && object.aspect_ratio.present? %>
+  <div class="embed-responsive embed-responsive-<%= object.aspect_ratio_class %>">
+    <iframe class="embed-responsive-item" src="<%= object.embed_url %>" allowfullscreen></iframe>
+  </div>
+
+  <% if object.caption.present? %>
+    <% if Udongo.config.flexible_content.video_caption_editor? %>
+      <div class="img-caption">
+        <%= object.caption.html_safe %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <%= object.caption %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

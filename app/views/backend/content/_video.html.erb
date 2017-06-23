@@ -3,6 +3,14 @@
     <iframe class="embed-responsive-item" src="<%= object.embed_url %>" allowfullscreen></iframe>
   </div>
 
+  <% if object.caption.present? %>
+    <div class="row">
+      <div class="col-12 mt-3 text-center">
+        <%= object.caption %>
+      </div>
+    </div>
+  <% end %>
+
 <% else %>
   <p><%= t 'b.msg.flexible_content.no_video_present' %></p>
 <% end %>

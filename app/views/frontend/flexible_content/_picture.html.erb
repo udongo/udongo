@@ -1,0 +1,24 @@
+<% if object.present? && object.asset.present? %>
+  <% max_img_size = object.max_image_size %>
+
+  <% if object.url.present? %>
+    <%= link_to object.url do %>
+      <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
+    <% end %>
+
+  <% else %>
+    <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
+  <% end %>
+
+  <% if object.caption.present? %>
+    <% if Udongo.config.flexible_content.picture_caption_editor? %>
+      <div class="img-caption">
+        <%= object.caption.html_safe %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <%= object.caption %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

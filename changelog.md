@@ -5,7 +5,8 @@
   uses an editor.
 * For each flexible content type, we now provide a placeholder as default. In
   most cases this will be ok. If you want something different, you can simply
-  override this partial.
+  override this partial. We don't provide a default for 'image' because that's
+  actually discontinued and you should stop using that.
 
 
 6.4.1 - 2017-06-16

@@ -1,4 +1,4 @@
-6.5.0 - xxxx-xx-xx
+6.5.0 - 2017-06-25
 --
 * It's now possible to disable the flexible content row gutters.
 * Video's can now have a caption. You can configure whether or not this caption

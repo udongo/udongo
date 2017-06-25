@@ -1,0 +1,18 @@
+<% if object.image_collection && object.slide_interval && object.image_collection.images.any? %>
+  <% interval = object.autoplay? ? object.slide_interval * 1000 : false %>
+  <div id="carousel-<%= column.id %>" class="carousel slide" data-ride="carousel" data-interval="<%= interval %>">
+    <ol class="carousel-indicators justify-content-end">
+      <% object.image_collection.images.each_with_index do |_img,i| %>
+        <li data-target="#carousel-<%= column.id %>" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+      <% end %>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <% object.image_collection.images.each_with_index do |img,i| %>
+        <div class="carousel-item <%= 'active' if i == 0 %>">
+          <%= image_tag img.asset.image.url(800, 800, quality: 65), alt: '' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

@@ -1,3 +1,5 @@
+<% javascript 'frontend/forms' %>
+
 <% cache [model, :flexible_content, I18n.locale] do %>
   <div class="flexible-content">
     <% model.content_rows.where(locale: I18n.locale).decorate.each do |row| %>

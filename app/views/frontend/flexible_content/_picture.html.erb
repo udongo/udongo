@@ -1,12 +1,13 @@
 <% if object.present? && object.asset.present? %>
+  <% max_img_size = object.max_image_size %>
 
   <% if object.url.present? %>
     <%= link_to object.url do %>
-      <%= image_tag object.asset.image.url(1600, 1600, quality: 65), alt: '', class: 'img-fluid' %>
+      <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
     <% end %>
 
   <% else %>
-    <%= image_tag object.asset.image.url(1600, 1600, quality: 65), alt: '', class: 'img-fluid' %>
+    <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
   <% end %>
 
   <% if object.caption.present? %>

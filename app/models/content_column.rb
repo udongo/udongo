@@ -20,7 +20,7 @@ class ContentColumn < ApplicationRecord
             numericality: { greater_than: 0, less_than_or_equal_to: 12,  only_integer: true }
 
   def linked_to_searchable_parent?
-    parent.present? && parent.searchable?
+    parent.present? && parent.respond_to?(:searchable?) && parent.searchable?
   end
 
   def parent

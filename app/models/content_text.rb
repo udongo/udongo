@@ -10,6 +10,6 @@ class ContentText < ApplicationRecord
   end
 
   def linked_to_searchable_parent?
-    column.present? && parent.present? && parent.searchable?
+    column.present? && parent.present? && parent.respond_to?(:searchable?) && parent.searchable?
   end
 end

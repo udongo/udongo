@@ -1,3 +1,8 @@
+6.5.1 - 2017-06-026
+--
+* Bugfix: don't assume #searchable? is a method that exists on every model.
+
+
 6.5.0 - 2017-06-25
 --
 * It's now possible to disable the flexible content row gutters.

@@ -1,4 +1,9 @@
-6.5.1 - 2017-06-026
+6.5.2 - 2016-06-26
+--
+* Bugfix: remove frontend/forms.js include in flexible content.
+
+
+6.5.1 - 2017-06-26
 --
 * Bugfix: don't assume #searchable? is a method that exists on every model.
 

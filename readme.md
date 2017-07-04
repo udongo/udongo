@@ -50,69 +50,6 @@ Udongo.config.i18n.app.default_interface_locale = 'nl'
 Udongo.config.i18n.app.interface_locales = %w(nl en)
 ```
 
-## Forms
-### Adding SEO fields to your page.
-You can add SEO fields to your form by rendering a partial:
-
-```erb
-<%= simple_form_for([:backend, @your_model]) do |f| %>
-  ...
-  <%= render 'backend/seo_form', f: f %>
-  ...
-<% end %>
-```
-This partial has support to let you base its SEO slug on whatever is typed in 
-an input element of your choice. In Udongo, this field is called the 
-**sluggable field**.
-
-By default, the partial looks for a field called **title**. You can override 
-this name by passing ```sluggable_field``` to the partial, like so:
-
-```erb
-<%= simple_form_for([:backend, @your_model]) do |f| %>
-  ...
-  <%# This will look for #backend_your_model_name as its sluggable field. %>
-  <%= render 'backend/seo_form', f: f, sluggable_field: :name %>
-  ...
-<% end %>
-```
-
-### Dirty inputs
-Sometimes a user enters some data in a form and assumes that everything is
-magically saved without submitting said form.
-
-To warn a user that this is not default behaviour, you can trigger a warning
-to show up whenever a user has changed input contents and clicks on any
-```<a>``` element on the page.
-
-Simply call the following helper method within your form tags:
-
-```erb
-<%= simple_form_for([:backend, @your_model]) do |f| %>
-	<%= trigger_dirty_inputs_warning %>
-  ...
-<% end %>
-```
-
-This renders the following HTML:
-
-```html
-<form class="simple_form" id="edit_your_model_1" action="/backend/your_models/1/edit" accept-charset="UTF-8" method="post">
-  ...
-  <span data-dirty="false"></span>
-  ...
-</form>
-```
-
-You can also override the default message with your own:
-
-```erb
-<%= simple_form_for([:backend, @your_model]) do |f| %>
-  <%= trigger_dirty_inputs_warning(message: 'Are you sure you want to leave the page?') %>
-  ...
-<% end %>
-```
-
 ## Flexible content
 ### types
 ```ruby
@@ -569,3 +506,66 @@ Find a navigation from cache by its identifier.
 ## Select2
 This library is loaded by default in the backend.
 See https://select2.github.io
+
+# Forms
+## Adding SEO fields to your page.
+You can add SEO fields to your form by rendering a partial:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  ...
+  <%= render 'backend/seo_form', f: f %>
+  ...
+<% end %>
+```
+This partial has support to let you base its SEO slug on whatever is typed in 
+an input element of your choice. In Udongo, this field is called the 
+**sluggable field**.
+
+By default, the partial looks for a field called **title**. You can override 
+this name by passing ```sluggable_field``` to the partial, like so:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  ...
+  <%# This will look for #backend_your_model_name as its sluggable field. %>
+  <%= render 'backend/seo_form', f: f, sluggable_field: :name %>
+  ...
+<% end %>
+```
+
+## Dirty inputs
+Sometimes a user enters some data in a form and assumes that everything is
+magically saved without submitting said form.
+
+To warn a user that this is not default behaviour, you can trigger a warning
+to show up whenever a user has changed input contents and clicks on any
+```<a>``` element on the page.
+
+Simply call the following helper method within your form tags:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+	<%= trigger_dirty_inputs_warning %>
+  ...
+<% end %>
+```
+
+This renders the following HTML:
+
+```html
+<form class="simple_form" id="edit_your_model_1" action="/backend/your_models/1/edit" accept-charset="UTF-8" method="post">
+  ...
+  <span data-dirty="false"></span>
+  ...
+</form>
+```
+
+You can also override the default message with your own:
+
+```erb
+<%= simple_form_for([:backend, @your_model]) do |f| %>
+  <%= trigger_dirty_inputs_warning(message: 'Are you sure you want to leave the page?') %>
+  ...
+<% end %>
+```

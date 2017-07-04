@@ -1,3 +1,8 @@
+6.6.0 - 2017-07-04
+--
+* When enabled, you can add images to pages from the assets module.
+
+
 6.5.2 - 2016-06-26
 --
 * Bugfix: remove frontend/forms.js include in flexible content.

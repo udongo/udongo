@@ -1,4 +1,12 @@
 # Upgrade guide
+## From 6.5 to 6.6
+### Pages
+There's a new setting for pages which makes it possible to add images to pages.
+By default this setting is disabled (```Udongo.config.pages.images```). If you've
+created something like this, you might want to consider using pages with images
+instead.
+
+
 ## From 6.4.1 to 6.5
 ### Flexible content
 There's a new setting ```no_gutters``` added to content rows. If enabled the

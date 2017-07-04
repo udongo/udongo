@@ -7,6 +7,7 @@ class Page < ApplicationRecord
   include Concerns::Draggable
   include Concerns::FlexibleContent
   include Concerns::Searchable
+  include Concerns::Imageable
 
   include Concerns::Sortable
   sortable scope: [:parent_id]

@@ -15,6 +15,7 @@ describe Page do
   it_behaves_like :flexible_content
   it_behaves_like :cacheable
   it_behaves_like :searchable
+  it_behaves_like :imageable
 
   describe 'validations' do
     describe 'presence' do

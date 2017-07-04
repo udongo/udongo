@@ -21,6 +21,12 @@ Udongo.config.base.project_name = 'Udongo'
 Udongo.config.base.time_zone = 'Brussels'
 ```
 
+## Pages
+### images
+```ruby
+Udongo.config.pages.images = false
+```
+
 ## Tags
 ### allow_new
 ```ruby

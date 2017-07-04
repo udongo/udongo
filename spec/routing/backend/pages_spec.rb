@@ -48,4 +48,12 @@ describe 'page routes' do
   it 'POST /backend/pages/1/toggle_visility' do
     expect(post: toggle_visibility_backend_page_path(1)).to route_to('backend/pages#toggle_visibility', id: '1')
   end
+
+  it 'GET /backend/pages/1/images' do
+    expect(get: backend_page_images_path(1)).to route_to('backend/pages/images#index', page_id: '1')
+  end
+
+  it 'POST /backend/pages/1/images/2/update_position' do
+    expect(post: update_position_backend_page_image_path(1, 2)).to route_to('backend/pages/images#update_position', page_id: '1', id: '2')
+  end
 end

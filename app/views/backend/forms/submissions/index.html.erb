@@ -9,6 +9,7 @@
         <% if @form.email_present? %>
           <th><%= t('b.email') %></th>
         <% end %>
+        <th><%= t 'b.submitted_at' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -19,6 +20,8 @@
           <% if @form.email_present? %>
             <td><%= mail_to s.data_object.email %></td>
           <% end %>
+
+          <td><%= l s.created_at %></td>
           <td class="text-right">
             <%= link_to_show backend_form_submission_path(@form, s) %>
             <%= link_to_delete backend_form_submission_path(@form, s) %>

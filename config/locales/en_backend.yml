@@ -88,6 +88,7 @@ en:
     status: Status
     status_code: Status code
     subject: Subject
+    submitted_at: Submitted at
     synonyms: Synonyms
     tag: Tag
     tags: Tags

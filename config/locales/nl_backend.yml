@@ -90,6 +90,7 @@ nl:
     status: Status
     status_code: Statuscode
     subject: Onderwerp
+    submitted_at: Ingezonden op
     synonyms: Synoniemen
     tag: Tag
     tags: Tags

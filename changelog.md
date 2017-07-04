@@ -1,3 +1,8 @@
+6.6.1 - 2017-07-04
+--
+* Enhancement: show the submission date in the overview of form submissions.
+
+
 6.6.0 - 2017-07-04
 --
 * When enabled, you can add images to pages from the assets module.

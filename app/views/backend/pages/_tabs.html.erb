@@ -5,7 +5,7 @@
         <% klass = %w(nav-link) %>
         <% klass << 'active' if active == :general %>
 
-        <%= link_to t('b.general'), edit_backend_page_path(@model), class: klass %>
+        <%= link_to t('b.general'), edit_backend_page_path(model), class: klass %>
       </li>
 
       <% Udongo.config.i18n.app.locales.each do |locale| %>
@@ -13,7 +13,15 @@
           <% klass = %w(nav-link) %>
           <% klass << 'active' if active == locale.to_sym %>
 
-          <%= link_to locale.upcase, edit_translation_backend_page_path(@model, locale), class: klass %>
+          <%= link_to locale.upcase, edit_translation_backend_page_path(model, locale), class: klass %>
+        </li>
+      <% end %>
+
+      <% if Udongo.config.pages.images? %>
+        <li class="nav-item">
+          <% klass = %w(nav-link) %>
+          <% klass << 'active' if active == :images %>
+          <%= link_to icon(:image, t('b.images')), backend_page_images_path(model), class: klass %>
         </li>
       <% end %>
     </ul>

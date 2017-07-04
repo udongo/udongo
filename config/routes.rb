@@ -30,6 +30,10 @@ Rails.application.routes.draw do
       member do
         post :tree_drag_and_drop, :toggle_visibility
       end
+
+      resources :images, only: [:index], controller: 'pages/images' do
+        concerns :positionable
+      end
     end
 
     resources :forms do

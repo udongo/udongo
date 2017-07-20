@@ -55,7 +55,7 @@ class Backend::Content::RowsController < Backend::BaseController
   end
 
   def content_path(instance, locale, anchor)
-    path = "edit_translation_backend_#{instance.class.to_s.downcase}_path"
+    path = "edit_translation_backend_#{instance.class.to_s.underscore}_path"
     send(path, instance, locale, anchor: anchor)
   end
 

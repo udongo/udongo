@@ -1,3 +1,9 @@
+6.6.2 - xxxx-xx-xx
+--
+* Bugfix: using models with multiple words like 'LandingPage' no longer break
+  the flexible content.
+
+
 6.6.1 - 2017-07-04
 --
 * Enhancement: show the submission date in the overview of form submissions.

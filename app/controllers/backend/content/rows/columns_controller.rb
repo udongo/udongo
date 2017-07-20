@@ -33,7 +33,7 @@ class Backend::Content::Rows::ColumnsController < Backend::BaseController
   def destroy
     @column.destroy
 
-    path = "edit_translation_backend_#{@column.row.rowable.class.to_s.downcase}_path"
+    path = "edit_translation_backend_#{@column.row.rowable.class.to_s.underscore}_path"
     redirect_to send(path, @column.row.rowable, @column.row.locale, anchor: "content-row-#{@column.row.id}")
   end
 

@@ -2,6 +2,7 @@
 --
 * Bugfix: using models with multiple words like 'LandingPage' no longer break
   the flexible content.
+* Ehancement: show the newest form submissions on top in the backend.
 
 
 6.6.1 - 2017-07-04

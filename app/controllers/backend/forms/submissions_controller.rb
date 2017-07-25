@@ -8,7 +8,7 @@ class Backend::Forms::SubmissionsController < Backend::Forms::BaseController
   end
 
   def index
-    @submissions = paginate(@form.submissions)
+    @submissions = paginate(@form.submissions.order('id DESC'))
   end
 
   def destroy

@@ -1,4 +1,4 @@
-6.6.2 - xxxx-xx-xx
+6.6.2 - 2017-07-25
 --
 * Bugfix: using models with multiple words like 'LandingPage' no longer break
   the flexible content.

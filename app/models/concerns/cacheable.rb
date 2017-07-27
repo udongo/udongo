@@ -7,7 +7,7 @@ module Concerns
       after_touch :flush_cache
 
       scope :find_in_cache, ->(value) {
-        Rails.cache.fetch [name, value] do
+        Rails.cache.fetch [name, value, Rails.env] do
           find_by!(@cache_field => value)
         end
       }
@@ -18,7 +18,7 @@ module Concerns
         @cache_field = field
 
         define_method(:flush_cache) do
-          Rails.cache.delete [self.class.name, self.send(field)]
+          Rails.cache.delete [self.class.name, self.send(field), Rails.env]
         end
       end
     end

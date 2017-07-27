@@ -1,3 +1,9 @@
+6.6.3 - 2017-07-27
+--
+* Bugfix: the cacheable concern #find_in_cache method has been tweaked to make
+  sure there are no rare instances where dev cache is used in test.
+
+
 6.6.2 - 2017-07-25
 --
 * Bugfix: using models with multiple words like 'LandingPage' no longer break

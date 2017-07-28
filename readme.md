@@ -173,6 +173,22 @@ class Document < ApplicationRecord
 end
 ```
 
+It also allows you to do something like this ```Page.with_locale(:nl)``` which
+will then fetch all pages that have the translatable fields in :nl avaialble.
+
+## Seo concern
+This concern is used if you want to attach (seo) meta details to your model. In
+order to use this, you need to add a text colun 'seo_locales' to your model.
+
+```ruby
+class Document < ApplicationRecord
+  include Concerns::Seo
+end
+```
+
+This will then allow you to fetch all documents that have seo (with slug!) in
+a certain locale. ```Document.with_seo(:nl)```
+
 ## Searchable concern
 Include this in your model if you want its records to appear in search autocompletes.
 

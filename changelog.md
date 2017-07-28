@@ -1,3 +1,10 @@
+7.0.0 - 2017-07-28
+--
+* It's now possible to use the scope .with_seo(:nl) to fetch models that actually
+  have a slug in that locale. You used to have to do some nasty manual things to
+  work around this issue, but no more!
+
+
 6.6.3 - 2017-07-27
 --
 * Bugfix: the cacheable concern #find_in_cache method has been tweaked to make

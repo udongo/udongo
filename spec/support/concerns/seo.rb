@@ -5,6 +5,28 @@ shared_examples_for :seo do
   let(:klass) { model.to_s.underscore.to_sym }
   let(:instance) { create(klass) }
 
+  describe '#seo_locales' do
+    it 'defaults to an empty array' do
+      expect(build(klass).seo_locales.class).to eq Array
+    end
+
+    it 'updates when a slug is present' do
+      object = create(klass)
+      object.seo(:nl).slug = 'foo'
+      object.save
+
+      expect(object.seo_locales).to include 'nl'
+    end
+
+    it 'does not update unless a slug is present' do
+      object = create(klass)
+      object.seo(:nl).slug = nil
+      object.save
+
+      expect(object.seo_locales).to eq []
+    end
+  end
+
   describe '#seo' do
     it 'always returns a meta object' do
       expect(instance.seo(:nl).class).to eq Meta

@@ -1,5 +1,14 @@
 # Upgrade guide
 ## From 6.6 to 7.0
+### So long ContentImage
+After being deprecated for a few versions, ContentImage has now been deleted. If
+you still have some code using this, switch these to the asset module before
+upgrading, because the data will be lost.
+
+Also remove this from your udongo.rb config file in the list of flexible content
+types.
+
+
 ### Seo
 In the past if you wanted to fetch an object that had an seo object in a specific
 locale, you would have to fetch all those objects and loop them to exclude the

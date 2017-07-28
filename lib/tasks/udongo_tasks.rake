@@ -13,18 +13,6 @@ namespace :udongo do
     end
   end
 
-  namespace :content_images do
-    desc 'Regenerate all the image versions.'
-    task regenerate: :environment do
-      ContentImage.find_each do |i|
-        if i.file?
-          i.file.recreate_versions!
-          i.save!
-        end
-      end
-    end
-  end
-
   namespace :queue do
     desc 'Checks the queue for tasks and executes at most 3 of them'
     task process: :environment do

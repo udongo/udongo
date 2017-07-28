@@ -120,7 +120,6 @@ nl:
       confirm: Ben je zeker?
       content_types:
         form: Formulier
-        image: Afbeelding (niet meer gebruiken!)
         picture: Foto
         slideshow: Slideshow
         text: Tekst

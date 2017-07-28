@@ -118,7 +118,6 @@ en:
       confirm: Are you sure?
       content_types:
         form: Form
-        image: Image (deprecated!)
         picture: Picture
         slideshow: Slideshow
         text: Text

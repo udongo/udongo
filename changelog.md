@@ -1,3 +1,8 @@
+7.0.1 - xxxx-xx-xx
+--
+* Removed some unused translations.
+
+
 7.0.0 - 2017-07-28
 --
 * It's now possible to use the scope .with_seo(:nl) to fetch models that actually

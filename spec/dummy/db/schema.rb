@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623124218) do
+ActiveRecord::Schema.define(version: 20170728094909) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170623124218) do
     t.boolean  "press_release"
     t.datetime "published_at"
     t.text     "locales",       limit: 65535
+    t.text     "seo_locales",   limit: 65535
     t.boolean  "visible"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -352,6 +353,7 @@ ActiveRecord::Schema.define(version: 20170623124218) do
     t.boolean  "content_disabled"
     t.boolean  "sitemap"
     t.text     "locales",          limit: 65535
+    t.text     "seo_locales",      limit: 65535
     t.string   "route"
     t.datetime "created_at"
     t.datetime "updated_at"

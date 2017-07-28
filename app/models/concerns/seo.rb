@@ -3,7 +3,19 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
+      serialize :seo_locales, Array
       has_many :meta, as: :sluggable, dependent: :destroy
+
+      after_save do
+        locales = Meta.where(
+          sluggable_type: self.class.to_s,
+          sluggable_id: self.id
+        ).where('slug IS NOT NULL OR slug != ""').pluck(:locale).uniq
+
+        update_column :seo_locales, locales
+      end
+
+      scope :with_seo, ->(locale) { where('seo_locales LIKE ?', "%#{locale}%")}
     end
 
     module ClassMethods

@@ -1,4 +1,23 @@
 # Upgrade guide
+## From 6.6 to 7.0
+### Seo
+In the past if you wanted to fetch an object that had an seo object in a specific
+locale, you would have to fetch all those objects and loop them to exclude the
+ones that didn't. I say no more of this rubbish!
+
+Now you can do something like ```Page.visible.with_seo(:nl)```
+This will then fetch all visible pages with seo in the specified locale. No more
+looping...
+
+However! You do need to add a column ```seo_locales``` to each model that uses
+the ```Concerns::Seo``` in order for this to work. You also have to resave every
+model that uses this concern.
+
+In short:
+* Add text field seo_locales to your SEO models
+* Run script to resave all SEO models
+
+
 ## From 6.5 to 6.6
 ### Pages
 There's a new setting for pages which makes it possible to add images to pages.

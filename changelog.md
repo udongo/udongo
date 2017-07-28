@@ -3,6 +3,8 @@
 * It's now possible to use the scope .with_seo(:nl) to fetch models that actually
   have a slug in that locale. You used to have to do some nasty manual things to
   work around this issue, but no more!
+* After being deprecated for some time, ```ContentImage``` has finally been
+  removed from the system.
 
 
 6.6.3 - 2017-07-27
@@ -147,7 +149,7 @@
   without flexible content without getting an unknown method error.
 * The column widths for flexible content are displayed in percentages.
 * An extra widget ```ContentPicture``` has been added. This is the replacement
-  for the ````ContentImage```` which has now been deprecated.
+  for the ```ContentImage``` which has now been deprecated.
 
 
 5.7.0 - 2017-03-22

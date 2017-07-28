@@ -14,6 +14,8 @@ module Concerns
 
         update_column :seo_locales, locales
       end
+
+      scope :with_seo, ->(locale) { where('seo_locales LIKE ?', "%#{locale}%")}
     end
 
     module ClassMethods

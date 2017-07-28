@@ -44,6 +44,31 @@ shared_examples_for :seo do
     end
   end
 
+  describe 'scopes' do
+    describe '.with_seo' do
+      it 'no results' do
+        expect(model.with_seo(:nl)).to eq []
+      end
+
+      it 'dutch only' do
+        object = create(klass)
+        object.seo(:nl).slug = 'foo'
+        object.save
+
+        expect(model.with_seo(:nl)).to eq [object]
+      end
+
+      it 'dutch and english' do
+        object = create(klass)
+        object.seo(:nl).slug = 'foo'
+        object.seo(:en).slug = 'foo'
+        object.save
+
+        expect(model.with_seo(:nl)).to eq [object]
+      end
+    end
+  end
+
   describe '.find_by_slug' do
     it :result do
       instance.meta.create!(locale: 'nl', slug: 'test')
@@ -71,6 +96,6 @@ shared_examples_for :seo do
   end
 
   it '.respond_to?' do
-    expect(model).to respond_to(:find_by_slug, :find_by_slug!)
+    expect(model).to respond_to(:find_by_slug, :find_by_slug!, :with_seo)
   end
 end

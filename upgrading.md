@@ -263,6 +263,11 @@ This form object was added and can be used to simplify your existing translation
 forms (except for those that use SEO). To stay up-to-date, you should check your
 translation form objects and if they can benefit from this new class.
 
+### Admin has a locale
+The ```Admin``` model now has a field ```locale```. You will have to set a value
+for all the admins in your database.
+
+
 ## From 2.0.1 to 2.0.4
 No actions required.
 

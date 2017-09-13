@@ -198,6 +198,11 @@ A user now has an 'active' (boolean) field. If you already have that, you need
 to remove it and let it be added by the Udongo migrations after which you
 migrate your data.
 
+### TranslationWithSeoForm
+If you've created your own ```Backend::TranslationWithSeoForm``` you can now
+start using the one from Udongo. Make sure to delete your own version.
+
+
 ## From 5.0.0 to 5.0.1
 No backwards incompatible changes.
 

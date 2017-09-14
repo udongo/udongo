@@ -1,6 +1,8 @@
 7.0.1 - xxxx-xx-xx
 --
 * Removed some unused translations.
+* The backend/seo_form partial now accepts a hard slug value so prefills are
+  possible on other locations.
 
 
 7.0.0 - 2017-07-28

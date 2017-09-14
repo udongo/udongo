@@ -8,7 +8,12 @@
   </div>
 
   <div class="card-block">
-    <%= f.input :seo_slug, as: :string %>
+    <% if slug.present? %>
+      <%= f.input :seo_slug, as: :string, input_html: { value: slug } %>
+    <% else %>
+      <%= f.input :seo_slug, as: :string %>
+    <% end %>
+
     <%= f.input :seo_title, as: :string %>
     <%= f.input :seo_description, as: :string %>
     <%= f.input :seo_keywords, as: :string %>

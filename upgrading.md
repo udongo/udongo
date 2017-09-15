@@ -5,6 +5,16 @@ The .flexible_content? method added by including that concern is no longer a
 class method, but now it's an instance method. If you happen to rely on this,
 you need to check this!
 
+### Manually saving SEo
+Before this update you would have to do
+
+```ruby
+object.seo(locale).save
+```
+
+But now this is no longer necessary. If you save the parent object, the
+underlying meta objects will also be saved.
+
 
 ## From 6.6 to 7.0
 ### So long ContentImage

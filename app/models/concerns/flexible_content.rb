@@ -6,10 +6,8 @@ module Concerns
       has_many :content_rows, as: :rowable, dependent: :destroy
     end
 
-    module ClassMethods
-      def flexible_content?
-        true
-      end
+    def flexible_content?
+      true
     end
   end
 end

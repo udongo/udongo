@@ -13,6 +13,12 @@ module Concerns
         ).where('slug IS NOT NULL OR slug != ""').pluck(:locale).uniq
 
         update_column :seo_locales, locales
+
+        # This is a bit of a long story. For some reason when you save the
+        # parent object, the SEO info is -not always- saved. At the moment I'm
+        # unable to reproduce it consistently. Therefor I've added some extra
+        # code to manually loop the seo collections and save them.
+        @seo_collections.keys.each { |l| seo(l).save } if @seo_collections
       end
 
       scope :with_seo, ->(locale) { where('seo_locales LIKE ?', "%#{locale}%")}

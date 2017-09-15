@@ -1,4 +1,11 @@
 # Upgrade guide
+## From 7.0 to 7.0.1
+### .flexible_content? check
+The .flexible_content? method added by including that concern is no longer a
+class method, but now it's an instance method. If you happen to rely on this,
+you need to check this!
+
+
 ## From 6.6 to 7.0
 ### So long ContentImage
 After being deprecated for a few versions, ContentImage has now been deleted. If

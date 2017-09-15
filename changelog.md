@@ -6,6 +6,7 @@
 * Cleanup the #flexible_content? check to be an instance method instead of a
   class method.
 * Make sure the SEO concern saves when you save its parent object.
+* You can import the flexible content from one locale to the other.
 
 
 7.0.0 - 2017-07-28

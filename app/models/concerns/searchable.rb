@@ -93,7 +93,7 @@ module Concerns
           translatable_fields_list.each { |f| result << f }
         end
 
-        result << :flexible_content if respond_to?(:flexible_content?)
+        result << :flexible_content if new.respond_to?(:flexible_content?)
         result
       end
     end

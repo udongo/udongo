@@ -1,6 +1,8 @@
 7.0.1 - xxxx-xx-xx
 --
 * Removed some unused translations.
+* Cleanup the #flexible_content? check to be an instance method instead of a
+  class method.
 
 
 7.0.0 - 2017-07-28

@@ -91,6 +91,13 @@ shared_examples_for :seo do
     end
   end
 
+  it 'autosave when the parent is saved' do
+    instance.seo(:en).title = 'some foo'
+    instance.save
+
+    expect(model.find(instance.id).seo(:en).title).to eq 'some foo'
+  end
+
   it '#respond_to?' do
     expect(build(klass)).to respond_to(:meta, :seo)
   end

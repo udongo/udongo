@@ -56,7 +56,6 @@ describe Udongo::FlexibleContent::DuplicateLocale do
         expect(first_row.position).to eq 1
 
         second_row = page.content_rows.by_locale(:en).last
-        puts second_row.inspect
         expect(second_row).to be_full_width
         expect(second_row.horizontal_alignment).to eq 'center'
         expect(second_row.vertical_alignment).to eq 'center'
@@ -70,7 +69,59 @@ describe Udongo::FlexibleContent::DuplicateLocale do
       end
 
       describe 'copies the columns' do
+        it 'check the column' do
+          widget = create(:content_text, content: 'foo')
+
+          page = create(:page)
+          page.content_rows << create(:content_row, locale: 'nl')
+
+          row = page.content_rows.by_locale(:nl).first
+          row.columns << create(
+            :content_column,
+            content_type: widget.class,
+            content_id: widget.id
+          )
+          original_column = row.columns.first
+
+          described_class.new(page, :nl, :en).execute!
+
+          column =  page.content_rows.by_locale(:en).first.columns.first
+          expect(column.width_md).to eq original_column.width_md
+          expect(column.width_lg).to eq original_column.width_lg
+          expect(column.width_xl).to eq original_column.width_xl
+          expect(column.width_sm).to eq original_column.width_sm
+          expect(column.width_xs).to eq original_column.width_xs
+          expect(column.position).to eq original_column.position
+          expect(column.content_type).to eq original_column.content_type
+          expect(column.content_id).not_to be_nil
+          expect(column.content_id).not_to eq nil
+        end
+
         it 'text widget' do
+          # widget = create(:content_text, content: 'foo')
+          #
+          # page = create(:page)
+          # page.content_rows << create(:content_row, locale: 'nl')
+          #
+          # row = page.content_rows.by_locale(:nl).first
+          # row.columns << create(:content_column, content_type: widget.class, content_id: widget.id)
+          #
+          # described_class.new(page, :nl, :en).execute!
+          #
+          # expect(page.content_rows.by_locale(:en).first.columns.count).to eq 1
+
+
+
+          # column = row.columns << create(:content_column, )
+          # puts page.content_rows.by_locale(:nl).first.inspect
+
+          # create column
+          # create text widget
+          # described_class.new(page, :nl, :en).execute!
+
+          # check first row for 1 column
+          # check this column for 1 widget
+          # check this actual widget...
         end
 
         it 'picture widget' do

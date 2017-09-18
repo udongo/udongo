@@ -10,9 +10,14 @@ class Udongo::FlexibleContent::DuplicateLocale
     check_for_different_locales!
     clear_destination_content!
 
+    # TODO add transaction...!
+
     @object.content_rows.by_locale(@source_locale).each do |source_row|
       new_row = duplicate_row(source_row)
 
+      source_row.columns.each do |source_column|
+        duplicate_column(new_row, source_column)
+      end
     end
   end
 
@@ -47,5 +52,23 @@ class Udongo::FlexibleContent::DuplicateLocale
       margin_bottom: source.margin_bottom,
       position: source.position
     )
+  end
+
+  def duplicate_column(new_row, source_column)
+    widget = duplicate_widget(source_column.content)
+
+    new_row.columns.create!(
+        width_xs: source_column.width_xs,
+        width_sm: source_column.width_sm,
+        width_md: source_column.width_md,
+        width_lg: source_column.width_lg,
+        width_xl: source_column.width_xl,
+        position: source_column.position,
+        content: widget
+    )
+  end
+
+  def duplicate_widget(source)
+    ContentText.create!(content: source.content)
   end
 end

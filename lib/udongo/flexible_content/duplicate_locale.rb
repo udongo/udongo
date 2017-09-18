@@ -58,17 +58,40 @@ class Udongo::FlexibleContent::DuplicateLocale
     widget = duplicate_widget(source_column.content)
 
     new_row.columns.create!(
-        width_xs: source_column.width_xs,
-        width_sm: source_column.width_sm,
-        width_md: source_column.width_md,
-        width_lg: source_column.width_lg,
-        width_xl: source_column.width_xl,
-        position: source_column.position,
-        content: widget
+      width_xs: source_column.width_xs,
+      width_sm: source_column.width_sm,
+      width_md: source_column.width_md,
+      width_lg: source_column.width_lg,
+      width_xl: source_column.width_xl,
+      position: source_column.position,
+      content: widget
     )
   end
 
   def duplicate_widget(source)
-    ContentText.create!(content: source.content)
+    if source.class == ContentText
+      ContentText.create!(content: source.content)
+
+    elsif source.class == ContentPicture
+      ContentPicture.create!(
+        asset_id: source.asset_id,
+        caption: source.caption,
+        url: source.url
+      )
+    elsif source.class == ContentVideo
+      ContentVideo.create!(
+        url: source.url,
+        caption: source.caption,
+        aspect_ratio: source.aspect_ratio
+      )
+    elsif source.class == ContentSlideshow
+      ContentSlideshow.create!(
+        image_collection_id: source.image_collection_id,
+        autoplay: source.autoplay,
+        slide_interval: source.slide_interval
+      )
+    elsif source.class == ContentForm
+      ContentForm.create!(form_id: source.form_id)
+    end
   end
 end

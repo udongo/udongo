@@ -22,8 +22,9 @@ describe Udongo::FlexibleContent::DuplicateLocale do
     end
 
     describe 'copies the content' do
+      let(:page) { create(:page) }
+
       it 'copies the rows' do
-        page = create(:page)
         page.content_rows << create(:content_row, locale: 'nl')
         page.content_rows << create(
           :content_row,
@@ -69,10 +70,7 @@ describe Udongo::FlexibleContent::DuplicateLocale do
       end
 
       describe 'copies the columns' do
-        it 'check the column' do
-          widget = create(:content_text, content: 'foo')
-
-          page = create(:page)
+        def add_widget(widget)
           page.content_rows << create(:content_row, locale: 'nl')
 
           row = page.content_rows.by_locale(:nl).first
@@ -81,7 +79,11 @@ describe Udongo::FlexibleContent::DuplicateLocale do
             content_type: widget.class,
             content_id: widget.id
           )
-          original_column = row.columns.first
+        end
+
+        it 'check the column' do
+          add_widget create(:content_text, content: 'foo')
+          original_column = page.content_rows.first.columns.first
 
           described_class.new(page, :nl, :en).execute!
 
@@ -99,13 +101,7 @@ describe Udongo::FlexibleContent::DuplicateLocale do
 
         it 'text widget' do
           widget = create(:content_text, content: 'foo')
-
-          page = create(:page)
-          page.content_rows << create(:content_row, locale: 'nl')
-
-          row = page.content_rows.by_locale(:nl).first
-          row.columns << create(:content_column, content_type: widget.class, content_id: widget.id)
-
+          add_widget(widget)
           described_class.new(page, :nl, :en).execute!
 
           column =  page.content_rows.by_locale(:en).first.columns.first
@@ -117,13 +113,7 @@ describe Udongo::FlexibleContent::DuplicateLocale do
 
         it 'picture widget' do
           widget = create(:content_picture, caption: 'foo', url: 'bar')
-
-          page = create(:page)
-          page.content_rows << create(:content_row, locale: 'nl')
-
-          row = page.content_rows.by_locale(:nl).first
-          row.columns << create(:content_column, content_type: widget.class, content_id: widget.id)
-
+          add_widget(widget)
           described_class.new(page, :nl, :en).execute!
 
           column =  page.content_rows.by_locale(:en).first.columns.first
@@ -137,13 +127,7 @@ describe Udongo::FlexibleContent::DuplicateLocale do
 
         it 'video widget' do
           widget = create(:content_video, url: 'foo', caption: 'bar', aspect_ratio: '16x9')
-
-          page = create(:page)
-          page.content_rows << create(:content_row, locale: 'nl')
-
-          row = page.content_rows.by_locale(:nl).first
-          row.columns << create(:content_column, content_type: widget.class, content_id: widget.id)
-
+          add_widget(widget)
           described_class.new(page, :nl, :en).execute!
 
           column =  page.content_rows.by_locale(:en).first.columns.first
@@ -157,13 +141,7 @@ describe Udongo::FlexibleContent::DuplicateLocale do
 
         it 'slideshow widget' do
           widget = create(:content_slideshow, autoplay: true, slide_interval: 4)
-
-          page = create(:page)
-          page.content_rows << create(:content_row, locale: 'nl')
-
-          row = page.content_rows.by_locale(:nl).first
-          row.columns << create(:content_column, content_type: widget.class, content_id: widget.id)
-
+          add_widget(widget)
           described_class.new(page, :nl, :en).execute!
 
           column =  page.content_rows.by_locale(:en).first.columns.first
@@ -177,13 +155,7 @@ describe Udongo::FlexibleContent::DuplicateLocale do
 
         it 'form widget' do
           widget = create(:content_form)
-
-          page = create(:page)
-          page.content_rows << create(:content_row, locale: 'nl')
-
-          row = page.content_rows.by_locale(:nl).first
-          row.columns << create(:content_column, content_type: widget.class, content_id: widget.id)
-
+          add_widget(widget)
           described_class.new(page, :nl, :en).execute!
 
           column =  page.content_rows.by_locale(:en).first.columns.first

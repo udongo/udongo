@@ -8,9 +8,10 @@ class Udongo::FlexibleContent::DuplicateLocale
   def execute!
     check_for_flexible_content!
     check_for_different_locales!
-    clear_destination_content!
 
     # TODO add transaction...!
+
+    clear_destination_content!
 
     @object.content_rows.by_locale(@source_locale).each do |source_row|
       new_row = duplicate_row(source_row)
@@ -54,6 +55,7 @@ class Udongo::FlexibleContent::DuplicateLocale
     )
   end
 
+  # TODO add the external reference
   def duplicate_column(new_row, source_column)
     widget = duplicate_widget(source_column.content)
 

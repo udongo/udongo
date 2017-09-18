@@ -24,8 +24,9 @@ describe Udongo::FlexibleContent::DuplicateLocale do
     describe 'copies the content' do
       it 'copies the rows' do
         page = create(:page)
-        page.content_rows.create!(locale: 'nl')
-        page.content_rows.create!(
+        page.content_rows << create(:content_row, locale: 'nl')
+        page.content_rows << create(
+          :content_row,
           locale: 'nl',
           full_width: true,
           horizontal_alignment: 'center',

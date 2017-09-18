@@ -69,29 +69,16 @@ class Udongo::FlexibleContent::DuplicateLocale
   end
 
   def duplicate_widget(source)
-    if source.class == ContentText
-      ContentText.create!(content: source.content)
+    source.class.create!(
+      widget_attributes(source)
+    )
+  end
 
-    elsif source.class == ContentPicture
-      ContentPicture.create!(
-        asset_id: source.asset_id,
-        caption: source.caption,
-        url: source.url
-      )
-    elsif source.class == ContentVideo
-      ContentVideo.create!(
-        url: source.url,
-        caption: source.caption,
-        aspect_ratio: source.aspect_ratio
-      )
-    elsif source.class == ContentSlideshow
-      ContentSlideshow.create!(
-        image_collection_id: source.image_collection_id,
-        autoplay: source.autoplay,
-        slide_interval: source.slide_interval
-      )
-    elsif source.class == ContentForm
-      ContentForm.create!(form_id: source.form_id)
-    end
+  def widget_attributes(widget)
+    attributes = widget.attributes
+    attributes.delete('id')
+    attributes.delete('created_at')
+    attributes.delete('updated_at')
+    attributes
   end
 end

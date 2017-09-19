@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728125838) do
+ActiveRecord::Schema.define(version: 20170919135942) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -109,10 +109,12 @@ ActiveRecord::Schema.define(version: 20170728125838) do
     t.integer  "position"
     t.string   "content_type"
     t.integer  "content_id"
+    t.string   "external_reference"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["content_id"], name: "idx_content_columns_on_content_id", using: :btree
     t.index ["content_type"], name: "idx_content_columns_on_content_type", using: :btree
+    t.index ["external_reference"], name: "index_content_columns_on_external_reference", using: :btree
     t.index ["position"], name: "index_content_columns_on_position", using: :btree
     t.index ["row_id"], name: "index_content_columns_on_row_id", using: :btree
   end

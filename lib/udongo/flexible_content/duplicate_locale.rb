@@ -55,7 +55,6 @@ class Udongo::FlexibleContent::DuplicateLocale
     )
   end
 
-  # TODO add the external reference
   def duplicate_column(new_row, source_column)
     widget = duplicate_widget(source_column.content)
 
@@ -66,7 +65,8 @@ class Udongo::FlexibleContent::DuplicateLocale
       width_lg: source_column.width_lg,
       width_xl: source_column.width_xl,
       position: source_column.position,
-      content: widget
+      content: widget,
+      external_reference: source_column.id
     )
   end
 

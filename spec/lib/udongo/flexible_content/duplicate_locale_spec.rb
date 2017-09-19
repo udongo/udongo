@@ -97,6 +97,7 @@ describe Udongo::FlexibleContent::DuplicateLocale do
           expect(column.content_type).to eq original_column.content_type
           expect(column.content_id).not_to be_nil
           expect(column.content_id).not_to eq nil
+          expect(column.external_reference).to eq original_column.id.to_s
         end
 
         it 'text widget' do

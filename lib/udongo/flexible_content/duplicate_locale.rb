@@ -9,15 +9,15 @@ class Udongo::FlexibleContent::DuplicateLocale
     check_for_flexible_content!
     check_for_different_locales!
 
-    # TODO add transaction...!
+    ActiveRecord::Base.transaction do
+      clear_destination_content!
 
-    clear_destination_content!
+      @object.content_rows.by_locale(@source_locale).each do |source_row|
+        new_row = duplicate_row(source_row)
 
-    @object.content_rows.by_locale(@source_locale).each do |source_row|
-      new_row = duplicate_row(source_row)
-
-      source_row.columns.each do |source_column|
-        duplicate_column(new_row, source_column)
+        source_row.columns.each do |source_column|
+          duplicate_column(new_row, source_column)
+        end
       end
     end
   end

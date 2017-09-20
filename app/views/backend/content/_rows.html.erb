@@ -11,8 +11,27 @@
           <%= t 'b.flexible_content' %>
         </div>
 
+        <!-- TODO check this entire thing... -->
         <div class="card-block">
-          <%= t 'b.msg.flexible_content.explanation' %>
+          <p>
+            <%= t 'b.msg.flexible_content.explanation' %><br>
+            <!-- TODO ook enkel tonen indien van toepassing -->
+            Of importeer de inhoud van een andere taal:
+          </p>
+          <p>
+            Wil je de inhoud liever overnemen van een andere taal?<br>
+            Klik op de gewenste taal en de inhoud wordt gedupliceerd.
+
+            <!-- TODO move to a separate method -->
+            <!--
+              available duplicate locales(destination)
+            -->
+            <% Udongo.config.i18n.app.locales.each do |lo| %>
+              <% next if lo == params[:translation_locale] %>
+              <% next if model.content_rows.by_locale(lo).count.zero? %>
+              <%= link_to lo, backend_content_duplicate_path(model.class.name.underscore.gsub('_decorator', ''), model.id, lo, params[:translation_locale]), data: { confirm: t('b.msg.confirm') } %>,
+            <% end %>
+          </p>
         </div>
       </div>
     <% end %>

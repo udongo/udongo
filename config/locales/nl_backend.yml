@@ -137,6 +137,7 @@ nl:
         align_vertical_bottom: Vertikaal onderaan uitlijnen
         align_vertical_center: Vertikaal centreren
         align_vertical_top: Vertikaal bovenaan uitlijnen
+        duplicated: De flexibele inhoud werd gedupliceerd.
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
         full_width: Volledige breedte
         margin_explanation: Marge is de witruimte boven en onder je rij.

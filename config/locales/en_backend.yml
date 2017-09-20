@@ -135,6 +135,7 @@ en:
         align_vertical_bottom: Align vertical bottom
         align_vertical_center: Align vertically
         align_vertical_top: Align vertical top
+        duplicated: The flexible content has been duplicated.
         explanation: With this module you can create flexible responsive content. Click the button below to create the first row.
         full_width: Full width
         margin_explanation: Margin is the whitespace above and below this row.

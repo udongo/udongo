@@ -90,6 +90,8 @@ Rails.application.routes.draw do
     end
 
     namespace :content do
+      get 'duplicate/:model/:id/:source_locale/:destination_locale' => 'duplicate#execute', as: :duplicate
+
       resources :rows, only: [:index, :new, :edit, :update, :destroy] do
         member do
           get :horizontal_alignment, :vertical_alignment, :toggle_full_width

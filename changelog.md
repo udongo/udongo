@@ -1,3 +1,8 @@
+7.0.2 - 2017-09-21
+--
+* Fix issue with the locale duplication class not being found.
+
+
 7.0.1 - 2017-09-21
 --
 * Removed some unused translations.

@@ -137,6 +137,7 @@ nl:
         align_vertical_bottom: Vertikaal onderaan uitlijnen
         align_vertical_center: Vertikaal centreren
         align_vertical_top: Vertikaal bovenaan uitlijnen
+        duplicate_from_other_locales: 'Wil je de inhoud liever overnemen van een andere taal?<br>Klik op de gewenste taal en de inhoud wordt gedupliceerd:'
         duplicated: De flexibele inhoud werd gedupliceerd.
         explanation: Met deze module kan je flexibele, responsive inhoud toevoegen. Klik op onderstaande knop om een eerste rij toe te voegen.
         full_width: Volledige breedte

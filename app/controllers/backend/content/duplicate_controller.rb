@@ -12,7 +12,7 @@ class Backend::Content::DuplicateController < Backend::BaseController
     begin
       @model = params[:model].to_s.camelcase.constantize.find(params[:id])
     rescue
-      redirect_to backend_path, notice: ""
+      redirect_to backend_path
     end
   end
 

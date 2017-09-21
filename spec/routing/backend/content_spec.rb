@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe 'content routes' do
-  # get 'duplicate/:model/:id/:source_locale/:destination_locale' => 'duplicate#execute', as: :duplicate
-
   it 'GET /backend/content/duplicate/article/1/nl/en' do
     expect(get: backend_content_duplicate_path('article', 1, 'nl', 'en')).to route_to('backend/content/duplicate#execute', model: 'article', id: '1', source_locale: 'nl', destination_locale: 'en')
   end

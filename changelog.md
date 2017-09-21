@@ -1,4 +1,4 @@
-7.0.1 - xxxx-xx-xx
+7.0.1 - 2017-09-21
 --
 * Removed some unused translations.
 * The backend/seo_form partial now accepts a hard slug value so prefills are

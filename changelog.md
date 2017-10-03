@@ -1,3 +1,9 @@
+7.0.3 - 2017-10-03
+--
+* Bugfix: the list of seo_locales now only contains locales that actually have
+  a slug.
+
+
 7.0.2 - 2017-09-21
 --
 * Fix issue with the locale duplication class not being found.

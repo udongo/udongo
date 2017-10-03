@@ -10,7 +10,7 @@ module Concerns
         locales = Meta.where(
           sluggable_type: self.class.to_s,
           sluggable_id: self.id
-        ).where('slug IS NOT NULL OR slug != ""').pluck(:locale).uniq
+        ).where('slug IS NOT NULL AND slug != ""').pluck(:locale).uniq
 
         update_column :seo_locales, locales
 

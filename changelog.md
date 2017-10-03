@@ -2,6 +2,8 @@
 --
 * Bugfix: the list of seo_locales now only contains locales that actually have
   a slug.
+* Bugfix: the list of locales now only contains locales that actually have some
+  sort of translation value.
 
 
 7.0.2 - 2017-09-21

@@ -13,7 +13,8 @@ module Concerns
           storable_type: self.class.to_s,
           storable_id: self.id,
           name: self.class.translatable_fields_list
-        ).pluck(:collection).uniq
+        ).where('value IS NOT NULL AND value != "---''\n" AND value != ""').
+          pluck(:collection).uniq
 
         update_column :locales, locales
       end

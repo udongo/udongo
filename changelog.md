@@ -1,3 +1,8 @@
+7.0.4 - 2017-10-04
+--
+* Bugfix: make sure the tag autocomplete is locale specific.
+
+
 7.0.3 - 2017-10-03
 --
 * Bugfix: the list of seo_locales now only contains locales that actually have

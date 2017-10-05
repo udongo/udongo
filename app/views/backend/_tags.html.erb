@@ -11,6 +11,6 @@
   </div>
 
   <div class="card-block">
-    <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tagbox_path, locale: locale, type: actual_model.class.name, id: model.id, base_path: backend_tagbox_path } %>
+    <%= text_field_tag :tags, model.tags_string(locale), data: { tagbox: true, items_path: backend_tagbox_path(locale: locale), locale: locale, type: actual_model.class.name, id: model.id, base_path: backend_tagbox_path } %>
   </div>
 </div>

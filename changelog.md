@@ -1,4 +1,4 @@
-7.0.4 - 2017-10-04
+7.0.4 - 2017-10-05
 --
 * Bugfix: make sure the tag autocomplete is locale specific.
 

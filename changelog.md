@@ -1,3 +1,8 @@
+7.0.5 - 2017-10-xx
+--
+* make the SEO title and description mandatory for Backend::TranslationWithSeoForm
+
+
 7.0.4 - 2017-10-05
 --
 * Bugfix: make sure the tag autocomplete is locale specific.

@@ -4,7 +4,8 @@ class Backend::EmailsController < Backend::BaseController
   before_action -> { breadcrumb.add t('b.emails'), backend_emails_path }
 
   def index
-    @emails = paginate Email.order('id DESC')
+    @filter = Email.search(params[:q])
+    @emails = paginate @filter.result(distinct: true).order('id DESC')
   end
 
   def show

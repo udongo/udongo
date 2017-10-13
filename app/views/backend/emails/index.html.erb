@@ -1,5 +1,7 @@
 <%= render 'backend/breadcrumbs' %>
 
+<%= render 'backend/emails/filter', subject: @filter %>
+
 <% if @emails.any? %>
   <table class="table table-striped table-hover">
     <thead class="thead-inverse">

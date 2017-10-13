@@ -4,7 +4,9 @@ describe Backend::PageTranslationForm do
   let(:valid_params) do
     {
       title: 'Dit is een titel',
-      seo_slug: 'dit-is-een-titel'
+      seo_slug: 'dit-is-een-titel',
+      seo_title: 'Dit is een titel',
+      seo_description: 'Dit is een SEO beschrijving'
     }
   end
   let(:page) { create(:page) }

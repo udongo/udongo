@@ -7,6 +7,8 @@ describe Backend::TranslationWithSeoForm do
   describe 'validations' do
     describe 'presence' do
       it(:seo_slug) { expect(build(factory_name, seo_slug: nil)).to_not be_valid }
+      it(:seo_title) { expect(build(factory_name, seo_title: nil)).to_not be_valid }
+      it(:seo_description) { expect(build(factory_name, seo_description: nil)).to_not be_valid }
     end
   end
 

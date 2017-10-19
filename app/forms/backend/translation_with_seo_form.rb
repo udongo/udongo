@@ -8,7 +8,7 @@ class Backend::TranslationWithSeoForm < Udongo::Form
   attribute :seo_custom, String
   attribute :seo_slug, String
 
-  validates :seo_slug, presence: true
+  validates :seo_slug, :seo_title, :seo_description, presence: true
 
   def initialize(model, translation, seo)
     @model = model

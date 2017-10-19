@@ -5,7 +5,7 @@ The .flexible_content? method added by including that concern is no longer a
 class method, but now it's an instance method. If you happen to rely on this,
 you need to check this!
 
-### Manually saving SEo
+### Manually saving SEO
 Before this update you would have to do
 
 ```ruby

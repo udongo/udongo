@@ -1,6 +1,7 @@
 7.1.0 - 2017-10-19
 --
 * Make the SEO title and description mandatory for Backend::TranslationWithSeoForm
+* Add e-mail filters for the most common fields.
 
 
 7.0.4 - 2017-10-05

@@ -1,6 +1,6 @@
 7.1.0 - 2017-10-19
 --
-* make the SEO title and description mandatory for Backend::TranslationWithSeoForm
+* Make the SEO title and description mandatory for Backend::TranslationWithSeoForm
 
 
 7.0.4 - 2017-10-05

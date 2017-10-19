@@ -1,4 +1,4 @@
-7.0.5 - 2017-10-xx
+7.1.0 - 2017-10-19
 --
 * make the SEO title and description mandatory for Backend::TranslationWithSeoForm
 

@@ -1,38 +1,40 @@
-<div class="filter">
-  <%= search_form_for([:backend, subject], class: 'p-4') do |f| %>
-    <div class="row">
-      <div class="form-group col-md-6 col-lg-3">
-        <%= f.search_field :to_name_cont, class: 'form-control', placeholder: 'Naam' %>
+<div class="card filter">
+  <div class="card-block">
+    <%= search_form_for [:backend, subject] do |f| %>
+      <div class="row">
+        <div class="form-group col-md-6 col-lg-3">
+          <%= f.search_field :to_name_cont, class: 'form-control', placeholder: 'Naam' %>
+        </div>
+
+        <div class="form-group col-md-6 col-lg-3">
+          <%= f.search_field :to_email_cont, class: 'form-control', placeholder: 'E-mailadres' %>
+        </div>
+
+        <div class="form-group col-md-6 col-lg-3">
+          <%= f.search_field :cc_cont, class: 'form-control', placeholder: 'CC' %>
+        </div>
+
+        <div class="form-group col-md-6 col-lg-3">
+          <%= f.search_field :bcc_cont, class: 'form-control mb-2', placeholder: 'BCC' %>
+        </div>
       </div>
 
-      <div class="form-group col-md-6 col-lg-3">
-        <%= f.search_field :to_email_cont, class: 'form-control', placeholder: 'E-mailadres' %>
+      <div class="row">
+        <div class="form-group col-md-5 col-lg-4">
+          <%= f.search_field :subject_cont, class: 'form-control', placeholder: 'Onderwerp' %>
+        </div>
+
+        <div class="form-group col-md-7 col-lg-8">
+          <%= f.search_field :html_content_cont, class: 'form-control', placeholder: 'Berichtinhoud' %>
+        </div>
       </div>
 
-      <div class="form-group col-md-6 col-lg-3">
-        <%= f.search_field :cc_cont, class: 'form-control', placeholder: 'CC' %>
+      <div class="form-inline mb-2">
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-primary mr-2' %>
+          <%= link_to t('b.cancel'), backend_emails_path, class: 'btn btn-secondary btn-sm' %>
+        </div>
       </div>
-
-      <div class="form-group col-md-6 col-lg-3">
-        <%= f.search_field :bcc_cont, class: 'form-control mb-2', placeholder: 'BCC' %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group col-md-5 col-lg-4">
-        <%= f.search_field :subject_cont, class: 'form-control', placeholder: 'Onderwerp' %>
-      </div>
-
-      <div class="form-group col-md-7 col-lg-8">
-        <%= f.search_field :html_content_cont, class: 'form-control', placeholder: 'Berichtinhoud' %>
-      </div>
-    </div>
-
-    <div class="form-inline mb-2">
-      <div class="form-group">
-        <input type="submit" value="<%= t('b.search') %>" class="btn btn-primary mr-2" />
-        <%= link_to t('b.cancel'), backend_emails_path, class: 'btn btn-secondary' %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

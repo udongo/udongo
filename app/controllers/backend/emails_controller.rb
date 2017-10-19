@@ -5,7 +5,7 @@ class Backend::EmailsController < Backend::BaseController
 
   def index
     @filter = Email.search(params[:q])
-    @emails = paginate @filter.result(distinct: true).order('id DESC')
+    @emails = paginate @filter.result(distinct: true).order('sent_at DESC')
   end
 
   def show

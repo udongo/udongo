@@ -1,3 +1,9 @@
+7.1.1 - 2017-11-10
+--
+* Upgraded the bootstrap-datepicker to 1.7.1.
+* Fix an issue with the bootstrap-datepicker gem that made its modal invisible.
+
+
 7.1.0 - 2017-10-19
 --
 * Make the SEO title and description mandatory for Backend::TranslationWithSeoForm

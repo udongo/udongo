@@ -1,3 +1,8 @@
+7.1.2 - 2017-11-19
+--
+* Make the plain/html content storage of the email model a lot bigger.
+
+
 7.1.1 - 2017-11-10
 --
 * Upgraded the bootstrap-datepicker to 1.7.1.

@@ -1,3 +1,9 @@
+7.1.3 - 2017-11-30
+--
+* Added a third parameter to IconHelper#icon that makes it possible to pass
+  additional HTML attributes, including additional classes.
+
+
 7.1.2 - 2017-11-19
 --
 * Make the plain/html content storage of the email model a lot bigger.

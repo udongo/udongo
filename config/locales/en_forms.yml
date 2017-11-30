@@ -85,6 +85,10 @@ en:
         from_email: Sender e-mail address
         from_name: Sender name
 
+      form:
+        redirect_url: Redirect to another page
+        success_message: Show a success message to the user
+
       navigation_item:
         page_id: Page
         path: URL

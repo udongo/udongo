@@ -35,5 +35,17 @@ describe IconHelper do
         expect(output).to be_a(ActiveSupport::SafeBuffer)
       end
     end
+
+    describe 'options param' do
+      it 'does not require a label' do
+        output = icon(:foo, nil, data: { testing: true })
+        expect(output).to eq '<i data-testing="true" class="fa fa-foo"></i>'
+      end
+
+      it 'adds classes without removing the pre-generated classes of "fa fa-name"' do
+        output = icon(:foo, nil, class: 'fa-border')
+        expect(output).to eq '<i class="fa fa-foo fa-border"></i>'
+      end
+    end
   end
 end

@@ -9,8 +9,12 @@ module IconHelper
   #
   #   ag 'icon\((:|")(\w+), '
   #
-  def icon(name, lbl = nil)
-    markup = content_tag :i, nil, class: "fa fa-#{name.to_s.tr('_', '-')}"
+  def icon(name, lbl = nil, options = {})
+    classes = "fa fa-#{name.to_s.tr('_', '-')}"
+    classes = classes.concat(" #{options[:class].to_s}") if options[:class]
+    options[:class] = classes
+
+    markup = content_tag :i, nil, options
     lbl ? "#{markup}&nbsp;#{lbl}".html_safe : markup
   end
 end

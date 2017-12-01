@@ -15,8 +15,8 @@
       <h5 class="card-title">Afhandeling na succesvol verzenden</h5>
       <%= f.input :toggle, as: :button_radios, collection: [:success_message, :redirect_url] %>
 
-      <%= f.input :success_message, as: :ckeditor, label: false, wrapper_html: { data: { 'button_radio_toggle': true } } %>
-      <%= f.input :redirect_url, label: false, placeholder: 'Geef de URL op van de pagina waarnaar je wil doorverwijzen', wrapper_html: { class: 'd-none', data: { 'button_radio-toggle': true } } %>
+      <%= f.input :success_message, as: :ckeditor, label: false, wrapper_html: { class: 'mt-3' } %>
+      <%= f.input :redirect_url, label: false, placeholder: 'Geef de URL op van de pagina waarnaar je wil doorverwijzen', wrapper_html: { class: 'mt-3' } %>
     </div>
   </div>
 

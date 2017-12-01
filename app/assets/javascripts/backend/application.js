@@ -19,6 +19,7 @@
 //= require backend/bootstrap
 //= require backend/jquery.throttle-debounce.min.js
 //= require ckeditor/init
+//= require backend/forms
 //= require backend/general
 //= require backend/dirty-inputs
 //= require backend/search

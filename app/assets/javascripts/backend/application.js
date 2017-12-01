@@ -20,6 +20,7 @@
 //= require backend/jquery.throttle-debounce.min.js
 //= require ckeditor/init
 //= require backend/forms
+//= require backend/forms/button_radios
 //= require backend/general
 //= require backend/dirty-inputs
 //= require backend/search

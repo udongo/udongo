@@ -34,3 +34,11 @@ label.collection_check_boxes {
 .button_radios label {
   cursor: pointer;
 }
+
+/*
+  This selector is used by ButtonRadiosInput, a custom simple_form input.
+  It hides all content that is togglable through the button-driven radio inputs.
+*/
+[data-br] {
+  display: none;
+}

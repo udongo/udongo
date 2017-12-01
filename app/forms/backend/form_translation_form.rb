@@ -1,6 +1,8 @@
 class Backend::FormTranslationForm < Backend::TranslationForm
-  attribute :redirect_url, String
+  attribute :summary, String
+
   attribute :toggle, String
+  attribute :redirect_url, String
   attribute :success_message, String
 
   def self.model_name

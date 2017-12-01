@@ -8,11 +8,10 @@
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_form_path) do |f| %>
   <div class="card">
     <div class="card-header">
-      <%= t 'b.content' %>
+      Afhandeling na succesvol verzenden
     </div>
 
     <div class="card-block">
-      <h5 class="card-title">Afhandeling na succesvol verzenden</h5>
       <%= f.input :toggle, as: :button_radios, collection: [:success_message, :redirect_url] %>
 
       <%= f.input :success_message, as: :ckeditor, label: false, wrapper_html: { class: 'mt-3' } %>

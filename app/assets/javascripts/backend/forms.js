@@ -20,8 +20,9 @@ var forms = forms || {
     $('.button_radios label').each(function(){
       var label = $(this);
       var target = $(label.data('target'));
-      // TODO: hide all except the active one
-      target.hide();
+      setTimeout(function(){
+        if(!label.hasClass('active')) target.hide();
+      }, 50);
     });
   },
 

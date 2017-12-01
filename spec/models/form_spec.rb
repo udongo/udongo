@@ -22,7 +22,7 @@ describe Form do
   end
 
   it 'translatable' do
-    expect(described_class.translatable_fields_list).to eq [:success_message, :redirect_url]
+    expect(described_class.translatable_fields_list).to eq [:redirect_url, :toggle, :success_message]
   end
 
   it '#respond_to?' do

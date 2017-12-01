@@ -13,14 +13,14 @@ forms.button_radios = forms.button_radios || {
   label_click_listener: function(e) {
     var target = forms.button_radios.data_target_for_label($(this));
 
-    forms.button_radios.hide_targets();
+    forms.button_radios.hide_content();
     target.show();
     setTimeout(function(){
       target.find('input').focus();
     }, 50);
   },
 
-  hide_targets: function() {
+  hide_content: function() {
     $('.button_radios label').each(function(){
       var label = $(this);
       var target = forms.button_radios.data_target_for_label(label);

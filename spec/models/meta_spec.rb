@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe Meta do
-  let(:model) { described_class }
-  let(:klass) { model.to_s.underscore.to_sym }
+  let(:klass) { described_class.to_s.underscore.to_sym }
 
   it_behaves_like :locale
 
@@ -13,9 +12,9 @@ describe Meta do
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(
-      :sluggable, :seo_title, :seo_keywords, :seo_description, :seo_custom,
-      :seo_slug
+    expect(described_class.new).to respond_to(
+      :sluggable, :seo_title, :seo_keywords, :seo_description, :seo_custom_head,
+      :seo_slug, :seo_custom
     )
   end
 end

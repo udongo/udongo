@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119182643) do
+ActiveRecord::Schema.define(version: 20171207131140) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -297,7 +297,7 @@ ActiveRecord::Schema.define(version: 20171119182643) do
     t.string   "title"
     t.string   "keywords"
     t.text     "description",    limit: 65535
-    t.text     "custom",         limit: 65535
+    t.text     "custom_head",    limit: 65535
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["locale"], name: "index_meta_on_locale", using: :btree

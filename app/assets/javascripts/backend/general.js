@@ -1,8 +1,8 @@
 var general = general || {
   init: function() {
-    $('form:not(.no-focus) input:visible:not(.no-focus):first').focus();
     $('[data-toggle="tooltip"]').tooltip();
     $('[href="#lity-close"]').on('click', this.lity_close_click_listener);
+    if(typeof forms != 'undefined') forms.bind_events();
   },
 
   lity_close_click_listener: function(e) {

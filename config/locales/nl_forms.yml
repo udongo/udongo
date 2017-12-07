@@ -86,6 +86,12 @@ nl:
         from_email: E-mail adres afzender
         from_name: Naam afzender
 
+      form:
+        code_snippet: In te laden code
+        redirect_url: Doorverwijzen naar een andere pagina
+        success_message: Een melding tonen aan de gebruiker
+        toggle_redirect_url: Ik wil doorverwijzen naar een andere pagina in plaats van een melding te tonen.
+
       navigation_item:
         page_id: Pagina
         path: URL

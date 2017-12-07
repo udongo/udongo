@@ -1,9 +1,14 @@
 .form-actions {
   margin-bottom: 1rem;
+
+  button.btn {
+    cursor: pointer;
+  }
 }
 
 .help-block {
-  color: #d9534f;
+  color: grey;
+  font-size: 0.9rem;
 }
 
 .filter {
@@ -25,4 +30,16 @@ label.collection_check_boxes {
   .input-group-addon {
     cursor: pointer;
   }
+}
+
+.button_radios label {
+  cursor: pointer;
+}
+
+/*
+  This selector is used by ButtonRadiosInput, a custom simple_form input.
+  It hides all content that is togglable through the button-driven radio inputs.
+*/
+[data-br] {
+  display: none;
 }

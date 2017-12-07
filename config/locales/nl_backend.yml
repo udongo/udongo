@@ -70,6 +70,7 @@ nl:
     password: Wachtwoord
     plain_content: Tekst inhoud
     press_release: Persbericht
+    processing_after_successful_send: Afhandeling na succesvol verzenden
     published_at: Gepubliceerd op
     recipient: Bestemmeling
     redirect: Redirect

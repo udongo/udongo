@@ -68,6 +68,7 @@ en:
     password: Password
     plain_content: Plain content
     press_release: Press release
+    processing_after_successful_send: Processing after successful send
     published_at: Published at
     recipient: Recipient
     redirect: Redirect

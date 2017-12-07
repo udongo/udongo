@@ -137,12 +137,21 @@ SimpleForm.setup do |config|
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end
+
+  config.wrappers :button_radios do |b|
+    b.use :html5
+    b.use :input
+    b.use :error, wrap_with: { tag: 'div', class: 'form-control-feedback' }
+    b.use :hint,  wrap_with: { tag: 'small', class: 'form-text text-muted' }
+  end
+
   # Wrappers for forms and inputs using the Bootstrap toolkit.
   # Check the Bootstrap docs (http://getbootstrap.com)
   # to learn about the different styles for forms and inputs,
   # buttons and other elements.
   config.default_wrapper = :vertical_form
   config.wrapper_mappings = {
+    button_radios: :button_radios,
     check_boxes: :vertical_radio_and_checkboxes,
     radio_buttons: :vertical_radio_and_checkboxes,
     file: :vertical_file_input,

@@ -8,11 +8,33 @@
 <%= simple_form_for([:backend, @translation], url: edit_translation_backend_form_path) do |f| %>
   <div class="card">
     <div class="card-header">
-      <%= t 'b.content' %>
+      <%= t('simple_form.labels.defaults.summary') %>
     </div>
 
     <div class="card-block">
-      <%= f.input :success_message, as: :ckeditor %>
+      <%= f.input :summary, as: :ckeditor, label: false %>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <%= t('b.processing_after_successful_send') %>
+    </div>
+
+    <div class="card-block">
+      <%= f.input :toggle, as: :button_radios, collection: [:success_message, :redirect_url] %>
+
+      <div data-br="form-toggle-success-message">
+        <%= f.input :success_message, as: :ckeditor, label: false, wrapper_html: { class: 'mt-3' } %>
+      </div>
+
+      <div data-br="form-toggle-redirect-url">
+        <%= f.input :redirect_url, label: false, placeholder: 'Geef de URL op van de pagina waarnaar je wil doorverwijzen', wrapper_html: { class: 'mt-3' } %>
+      </div>
+
+      <hr>
+
+      <%= f.input :code_snippet, as: :text, hint: 'Deze code moet door een browser gerenderd kunnen worden.<br>bv.: HTML, XML, JavaScript met &lt;script&gt; tags,...'.html_safe %>
     </div>
   </div>
 

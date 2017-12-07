@@ -18,7 +18,7 @@ describe Meta do
   it '#respond_to?' do
     expect(described_class.new).to respond_to(
       :sluggable, :seo_title, :seo_keywords, :seo_description, :seo_custom_head,
-      :seo_slug, :seo_custom
+      :seo_slug, :seo_custom, :custom
     )
   end
 end

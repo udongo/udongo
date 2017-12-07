@@ -1,6 +1,12 @@
-7.1.x - 2017-12-xx
+7.1.4 - 2017-12-xx
 --
 * Extends the possible Form data in b/forms#edit_translation.
+
+
+7.1.3 - 2017-11-30
+--
+* Added a third parameter to IconHelper#icon that makes it possible to pass
+  additional HTML attributes, including additional classes.
 
 
 7.1.2 - 2017-11-19

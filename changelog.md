@@ -1,3 +1,9 @@
+7.1.4 - 2017-11-xx
+--
+* Renamed Meta#seo_custom to Meta#seo_custom_head
+* Added a temporary alias for Meta#seo_custom to Meta#seo_custom_head
+
+
 7.1.3 - 2017-11-30
 --
 * Added a third parameter to IconHelper#icon that makes it possible to pass

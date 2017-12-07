@@ -5,7 +5,7 @@ class Backend::TranslationWithSeoForm < Udongo::Form
   attribute :seo_title, String
   attribute :seo_keywords, String
   attribute :seo_description, String
-  attribute :seo_custom, String
+  attribute :seo_custom_head, String
   attribute :seo_slug, String
 
   validates :seo_slug, :seo_title, :seo_description, presence: true
@@ -46,7 +46,7 @@ class Backend::TranslationWithSeoForm < Udongo::Form
   end
 
   def seo_attributes
-    %w(title keywords description custom slug)
+    Meta::SEO_ATTRIBUTES
   end
 
   def non_seo_attributes

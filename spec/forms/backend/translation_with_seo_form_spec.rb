@@ -13,7 +13,7 @@ describe Backend::TranslationWithSeoForm do
   end
 
   it '#seo_attributes' do
-    expect(subject.seo_attributes).to eq %w(title keywords description custom slug)
+    expect(subject.seo_attributes).to eq %w(title keywords description custom_head slug)
   end
 
   it '#non_seo_attributes' do

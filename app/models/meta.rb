@@ -5,7 +5,9 @@ class Meta < ApplicationRecord
 
   validates :locale, presence: true
 
-  %w(title keywords description custom_head slug).each do |field|
+  SEO_ATTRIBUTES = %w(title keywords description custom_head slug)
+
+  SEO_ATTRIBUTES.each do |field|
     alias_attribute "seo_#{field}".to_sym, field
   end
 

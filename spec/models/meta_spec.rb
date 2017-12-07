@@ -11,6 +11,10 @@ describe Meta do
     end
   end
 
+  it '::SEO_ATTRIBUTES' do
+    expect(described_class::SEO_ATTRIBUTES).to eq %w(title keywords description custom_head slug)
+  end
+
   it '#respond_to?' do
     expect(described_class.new).to respond_to(
       :sluggable, :seo_title, :seo_keywords, :seo_description, :seo_custom_head,

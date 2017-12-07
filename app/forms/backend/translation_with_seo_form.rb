@@ -46,7 +46,7 @@ class Backend::TranslationWithSeoForm < Udongo::Form
   end
 
   def seo_attributes
-    %w(title keywords description custom_head slug)
+    Meta::SEO_ATTRIBUTES
   end
 
   def non_seo_attributes

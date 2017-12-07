@@ -1,3 +1,8 @@
+7.1.x - 2017-12-xx
+--
+* Extends the possible Form data in b/forms#edit_translation.
+
+
 7.1.2 - 2017-11-19
 --
 * Make the plain/html content storage of the email model a lot bigger.

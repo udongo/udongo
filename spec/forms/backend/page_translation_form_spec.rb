@@ -49,7 +49,7 @@ describe Backend::PageTranslationForm do
           seo_title: 'Dit is een titel',
           seo_keywords: 'titels,taal,nederlands',
           seo_description: 'Dit is een SEO beschrijving',
-          seo_custom: 'Dit is de inhoud v/e custom meta veld',
+          seo_custom_head: 'Dit is de inhoud v/e custom meta veld',
         )
         instance.save(valid_params)
         @seo = Page.first.seo(:nl)
@@ -67,8 +67,8 @@ describe Backend::PageTranslationForm do
         expect(@seo.description).to eq 'Dit is een SEO beschrijving'
       end
 
-      it 'seo_custom' do
-        expect(@seo.custom).to eq 'Dit is de inhoud v/e custom meta veld'
+      it 'seo_custom_head' do
+        expect(@seo.custom_head).to eq 'Dit is de inhoud v/e custom meta veld'
       end
 
       it 'seo_slug' do

@@ -56,19 +56,6 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
-  config.wrappers :vertical_radio_buttons_as_buttons, tag: 'div', class: 'btn-group', data: { toggle: 'buttons' }, error_class: 'has-danger' do |b|
-    b.use :html5
-    b.optional :readonly
-
-    b.wrapper tag: :label, class: 'btn btn-primary' do |ba|
-      ba.use :input, class: ''
-      ba.use :label_text
-    end
-
-    b.use :error, wrap_with: { tag: 'div', class: 'form-control-feedback' }
-    b.use :hint,  wrap_with: { tag: 'small', class: 'form-text text-muted' }
-  end
-
   config.wrappers :horizontal_form, tag: 'div', class: 'form-group', error_class: 'has-danger' do |b|
     b.use :html5
     b.use :placeholder
@@ -151,7 +138,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :button_radios, tag: 'div', class: 'btn-group', data: { toggle: 'buttons' } do |b|
+  config.wrappers :button_radios do |b|
     b.use :html5
     b.use :input
     b.use :error, wrap_with: { tag: 'div', class: 'form-control-feedback' }

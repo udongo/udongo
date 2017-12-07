@@ -12,6 +12,8 @@ class ButtonRadiosInput < SimpleForm::Inputs::Base
   end
 
   def input(wrapper_options = nil)
+    wrapper_options.reverse_merge!(class: 'btn-group', data: { toggle: 'buttons' })
+
     template.content_tag :div, wrapper_options do
       input_options[:collection].inject('') do |stack, value|
         stack << collection_item_input_element(value)

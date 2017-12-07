@@ -22,7 +22,7 @@
     </div>
 
     <div class="card-block">
-      <%= f.input :toggle, as: :button_radios, collection: [:success_message, :redirect_url], wrapper_html: { data: { testing: true } } %>
+      <%= f.input :toggle, as: :button_radios, collection: [:success_message, :redirect_url] %>
 
       <div data-br="form-toggle-success-message">
         <%= f.input :success_message, as: :ckeditor, label: false, wrapper_html: { class: 'mt-3' } %>

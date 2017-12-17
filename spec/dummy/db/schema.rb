@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119182643) do
+ActiveRecord::Schema.define(version: 20171217163339) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -128,10 +128,11 @@ ActiveRecord::Schema.define(version: 20171119182643) do
 
   create_table "content_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "asset_id"
-    t.text     "caption",    limit: 65535
-    t.text     "url",        limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "caption",         limit: 65535
+    t.text     "url",             limit: 65535
+    t.boolean  "disallow_resize"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["asset_id"], name: "index_content_pictures_on_asset_id", using: :btree
   end
 

@@ -3,11 +3,19 @@
 
   <% if object.url.present? %>
     <%= link_to object.url do %>
-      <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
+      <% if object.disallow_resize? %>
+        <%= image_tag object.asset.image.url, alt: '', class: 'img-fluid' %>
+      <% else %>
+        <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
+      <% end %>
     <% end %>
 
   <% else %>
-    <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
+    <% if object.disallow_resize? %>
+      <%= image_tag object.asset.image.url, alt: '', class: 'img-fluid' %>
+    <% else %>
+      <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
+    <% end %>
   <% end %>
 
   <% if object.caption.present? %>

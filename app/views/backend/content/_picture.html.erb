@@ -1,6 +1,10 @@
 <% if object.present? && object.asset.present? %>
 
-  <%= image_tag object.asset.image.url(1100, 1100, quality: 65), alt: '', class: 'img-fluid' %>
+  <% if object.disallow_resize? %>
+    <%= image_tag object.asset.image.url, alt: '', class: 'img-fluid' %>
+  <% else %>
+    <%= image_tag object.asset.image.url(1100, 1100, quality: 65), alt: '', class: 'img-fluid' %>
+  <% end %>
 
   <% if object.caption.present? %>
     <% if Udongo.config.flexible_content.picture_caption_editor? %>

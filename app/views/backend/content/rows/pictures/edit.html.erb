@@ -3,6 +3,7 @@
 <%= image_tag @model.asset.image.url(900, 900, quality: 65), alt: '', class: 'img-fluid' %>
 
 <%= simple_form_for [:backend, @model] do |f| %>
+  <%= f.input :disallow_resize, as: :boolean %>
   <%= f.input :url, as: :string %>
 
   <% content_type = Udongo.config.flexible_content.picture_caption_editor? ? :ckeditor : :text %>

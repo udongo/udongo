@@ -82,6 +82,9 @@ nl:
         image_collection_id: Afbeeldingsgroep
         slide_interval: Interval tussen slides
 
+      content_picture:
+        disallow_resize: Niet automatisch bijschalen
+
       email_template:
         from_email: E-mail adres afzender
         from_name: Naam afzender

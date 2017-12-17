@@ -1,4 +1,14 @@
 # Upgrade guide
+## From 7.1 to 7.2
+### Content picture 'disallow resize'
+You now have the option to disable resizing pictures in the flexible content. We
+needed this because of clients using animated GIFs that were borked once they
+were resized.
+
+To make these changes work, checkout the code in
+`apps/views/frontend/flexible_content/_picture.html.erb`
+
+
 ## From 7.0 to 7.0.1
 ### .flexible_content? check
 The .flexible_content? method added by including that concern is no longer a

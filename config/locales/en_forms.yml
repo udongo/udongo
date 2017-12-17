@@ -81,6 +81,9 @@ en:
         image_collection_id: Image collection
         slide_interval: Interval between slides
 
+      content_picture:
+        disallow_resize: Disallow resize
+
       email_template:
         from_email: Sender e-mail address
         from_name: Sender name

@@ -1,3 +1,8 @@
+7.2.0 - 2017-12-17
+--
+* Make it possible to specify that a content picture may not be resized.
+
+
 7.1.3 - 2017-11-30
 --
 * Added a third parameter to IconHelper#icon that makes it possible to pass

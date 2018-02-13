@@ -197,6 +197,10 @@ use do something like ```navigation(:footer).items```
 The general translations no longer exists. If you use something like this
 ```I18n.t 'g.save'``` in your views, replace that with your own translations.
 
+### Snippets
+You can now mark snippets in the database as having content/title disabled.
+Apply where applicable.
+
 ## From 5.4.0 to 5.5.0
 No actions required.
 

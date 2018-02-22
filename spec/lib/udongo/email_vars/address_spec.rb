@@ -9,6 +9,7 @@ describe Udongo::EmailVars::Address do
         :address,
         street: nil,
         number: nil,
+        box: nil,
         postal: nil,
         city: nil,
         country: nil
@@ -17,6 +18,7 @@ describe Udongo::EmailVars::Address do
       expect(address.email_vars.to_hash).to eq({
         'address.street': nil,
         'address.number': nil,
+        'address.box': nil,
         'address.postal': nil,
         'address.city': nil,
         'address.country': nil
@@ -28,6 +30,7 @@ describe Udongo::EmailVars::Address do
         :address,
         street: 'Foostreet',
         number: 588,
+        box: 'A',
         postal: 9000,
         city: 'Gent',
         country: 'Belgium'
@@ -36,6 +39,7 @@ describe Udongo::EmailVars::Address do
       expect(address.email_vars.to_hash).to eq({
         'address.street': 'Foostreet',
         'address.number': '588',
+        'address.box': 'A',
         'address.postal': '9000',
         'address.city': 'Gent',
         'address.country': 'Belgium'
@@ -47,6 +51,7 @@ describe Udongo::EmailVars::Address do
         :address,
         street: 'Foostreet',
         number: 588,
+        box: 'A',
         postal: 9000,
         city: 'Gent',
         country: 'Belgium'
@@ -55,6 +60,7 @@ describe Udongo::EmailVars::Address do
       expect(address.email_vars.to_hash(prefix: 'foo')).to eq({
         'foo.street': 'Foostreet',
         'foo.number': '588',
+        'foo.box': 'A',
         'foo.postal': '9000',
         'foo.city': 'Gent',
         'foo.country': 'Belgium'

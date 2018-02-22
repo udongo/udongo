@@ -9,6 +9,7 @@ module Udongo
         {
           "#{prefix}.street": @address.street,
           "#{prefix}.number": @address.number,
+          "#{prefix}.box": @address.box,
           "#{prefix}.postal": @address.postal,
           "#{prefix}.city": @address.city,
           "#{prefix}.country": @address.country

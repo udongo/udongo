@@ -1,3 +1,8 @@
+7.2.1 - 2018-02-22
+--
+* Add the 'box' to the address email vars #to_hash method.
+
+
 7.2.0 - 2017-12-17
 --
 * Make it possible to specify that a content picture may not be resized.

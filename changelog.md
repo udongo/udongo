@@ -1,3 +1,8 @@
+7.3.1 - 2018-02-28
+--
+* Republish gem because of an issue with rubygems.
+
+
 7.3.0 - 2018-02-28
 --
 * Make it possible for emails to have attachments. You can also see the them in

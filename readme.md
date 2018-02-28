@@ -308,6 +308,20 @@ validates :email, email: true
 validates :url, url: true
 ```
 
+# E-mails
+## Attachments
+There's a serialized field ```attachments``` in the emails table. This expects
+the following format.
+
+```[{ name: 'foo.pdf', filename: '1..256/[random-id]-[name]-[current_time].[extension]' }]```
+
+The name is what will be shown in the e-mail, the filename is the location of the
+actual file that is attached to this e-mail. The file is assumed to be stored in
+the following dir.
+
+```public/uploads/mail_attachments/[filename]```
+
+
 # Search engine
 4.0 introduced a rough structure to build a search autocomplete upon through ```Concerns::Searchable```. 
 

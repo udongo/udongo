@@ -66,3 +66,28 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <%= t 'b.attachments' %>
+      </div>
+
+      <div class="card-block">
+        <% if @email.attachments.any? %>
+          <ul>
+            <% @email.attachments.each do |a| %>
+              <li>
+                <%= link_to a[:name], "/uploads/mail_attachments/#{a[:filename]}"%>
+              </li>
+            <% end %>
+          </ul>
+
+        <% else %>
+          <%= t 'b.msg.no_items' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

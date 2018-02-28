@@ -1,4 +1,8 @@
 class Email < ApplicationRecord
+  # Expected format
+  # [{ name: 'foo.pdf', filename: '1..256/[random-id]-[name]-[current_time].[extension]' }]
+  serialize :attachments, Array
+
   validates :from_name, :to_name, :subject, :plain_content, :html_content,
             presence: true
   validates :from_email, :to_email, email: true

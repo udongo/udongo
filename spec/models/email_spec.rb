@@ -48,6 +48,10 @@ describe Email do
     end
   end
 
+  it '#attachments' do
+    expect(build(klass).attachments).to eq []
+  end
+
   it '#mark_as_sent!' do
     email = create(klass, sent_at: nil)
     email.mark_as_sent!

@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     resources :users
     resources :redirects, except: :show
     resources :search_synonyms, except: :show
-    resources :tags
+    resources :tags do
+      concerns :translatable
+    end
 
     resources :pages, except: [:show] do
       concerns :translatable

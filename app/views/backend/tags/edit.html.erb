@@ -1,4 +1,6 @@
 <% breadcrumb.add @tag.name %>
 <% breadcrumb.add t('b.edit') %>
 <%= render 'backend/breadcrumbs' %>
+
+<%= render 'tabs', model: @tag, active: :general %>
 <%= render 'form', model: @tag %>

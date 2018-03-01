@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 describe Tag do
-  let(:model) { described_class }
-  let(:klass) { model.to_s.underscore.to_sym }
+  let(:klass) { described_class.to_s.underscore.to_sym }
 
   it_behaves_like :locale
+  it_behaves_like :seo
+  it_behaves_like :translatable
 
   describe 'validations' do
     describe 'presence' do
@@ -19,8 +20,12 @@ describe Tag do
     end
   end
 
+  it 'translatable' do
+    expect(described_class.translatable_fields_list).to eq [:summary]
+  end
+
   it '#respond_to?' do
-    expect(build(klass)).to respond_to(:tagged_items)
+    expect(subject).to respond_to(:tagged_items)
   end
 end
 

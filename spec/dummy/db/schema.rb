@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228071957) do
+ActiveRecord::Schema.define(version: 20180301101320) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -460,12 +460,14 @@ ActiveRecord::Schema.define(version: 20180228071957) do
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "locales",            limit: 65535
+    t.text     "seo_locales",        limit: 65535
     t.string   "locale"
     t.string   "name"
     t.string   "slug"
     t.string   "external_reference"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["external_reference"], name: "index_tags_on_external_reference", using: :btree
     t.index ["locale"], name: "index_tags_on_locale", using: :btree
     t.index ["name"], name: "index_tags_on_name", using: :btree

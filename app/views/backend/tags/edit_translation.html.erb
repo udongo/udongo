@@ -1,0 +1,31 @@
+<% breadcrumb.add truncate(@tag.name, length: 40), edit_backend_tag_path(@tag) %>
+<% breadcrumb.add t('b.edit') %>
+<%= render 'backend/breadcrumbs' %>
+
+<%= render 'tabs', model: @tag, active: params[:translation_locale].to_sym %>
+<%= render 'backend/general_form_error', object: @translation %>
+
+<%= simple_form_for([:backend, @translation], url: edit_translation_backend_tag_path, html: { class: 'no-focus' }) do |f| %>
+  <%= trigger_dirty_inputs_warning %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Content -->
+      <div class="card">
+        <div class="card-header">
+          <%= t 'b.content' %>
+        </div>
+
+        <div class="card-block">
+          <% summary_type = Udongo.config.tags.editor_for_summary? ? :ckeditor : :text %>
+          <%= f.input :summary, as: summary_type %>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <%= render 'backend/seo_form', f: f, slug: @tag.name %>
+    </div>
+  </div>
+
+  <%= render 'backend/form_actions', cancel_url: backend_tags_path %>
+<% end %>

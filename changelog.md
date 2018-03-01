@@ -1,3 +1,8 @@
+7.3.2 - 2018-03-01
+--
+* Made Tags translatable with SEO, to allow them to have a summary page in projects.
+
+
 7.3.1 - 2018-02-28
 --
 * Republish gem because of an issue with rubygems.

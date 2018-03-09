@@ -1,3 +1,8 @@
+7.3.3 - 2018-03-09
+--
+* Make the youtube embed URLs a bit more flexible.
+
+
 7.3.2 - 2018-03-01
 --
 * Made Tags translatable with SEO, to allow them to have a summary page in projects.

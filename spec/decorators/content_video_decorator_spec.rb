@@ -7,6 +7,11 @@ describe ContentVideoDecorator do
         video = create(:content_video, url: 'https://www.youtube.com/watch?v=kaTccjimkLw').decorate
         expect(video.embed_url).to eq 'https://www.youtube.com/embed/kaTccjimkLw?rel=0'
       end
+
+      it 'https://www.youtube.com/watch?v=8saeH-Lg1yM&feature=youtu.be' do
+        video = create(:content_video, url: 'https://www.youtube.com/watch?v=8saeH-Lg1yM&feature=youtu.be').decorate
+        expect(video.embed_url).to eq 'https://www.youtube.com/embed/8saeH-Lg1yM?rel=0'
+      end
     end
 
     describe 'vimeo' do

@@ -17,7 +17,7 @@ class ContentVideoDecorator < ApplicationDecorator
   end
 
   def youtube_embed_url
-    video_id = url.to_s.split('v=').last
+    video_id = url.to_s.split('v=').last.split('&').first
     "https://www.youtube.com/embed/#{video_id}?rel=0"
   end
 end

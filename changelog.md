@@ -1,3 +1,8 @@
+7.3.4 - 2018-03-15
+--
+* Allow for a "way out" when building result objects for the frontend search.
+
+
 7.3.3 - 2018-03-09
 --
 * Make the youtube embed URLs a bit more flexible.

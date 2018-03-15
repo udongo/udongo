@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Udongo::Search::Frontend do
   let(:klass) { described_class.to_s.underscore.to_sym }
-  let(:instance) { described_class.new('foo') }
+  subject { described_class.new('foo') }
 
   before(:each) do
     module Udongo::Search::ResultObjects::Frontend
@@ -12,77 +12,74 @@ describe Udongo::Search::Frontend do
   end
 
   describe '#search' do
+    let(:foo) { Udongo::BogusModel.new(description: 'foobar') }
+    let(:index) { create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar') }
+
+    before do
+      allow(subject).to receive(:indices) { [index] }
+    end
+
     it 'default' do
-      expect(instance.search).to eq []
+      expect(subject.search).to eq []
     end
 
     context 'filters on visibility' do
       it 'shows visible' do
-        foo = Udongo::BogusModel.new(
-          description: 'foobar',
-          visible?: true,
-          hidden?: false,
-          published?: true,
-          unpublished?: false
-        )
+        allow(subject).to receive(:result_object).with(index) do
+          double(:result_object, hidden?: false, unpublished?: false, url: 'bar', label: 'foobar')
+        end
 
-        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
-        allow(instance).to receive(:indices) { [index] }
-
-        expect(instance.search).to eq [{ label: 'foobar', value: nil }]
+        expect(subject.search).to eq [{ label: 'foobar', value: 'bar' }]
       end
 
       it 'skips hidden' do
-        foo = Udongo::BogusModel.new(
-          description: 'foobar',
-          visible?: false,
-          hidden?: true,
-          published?: true,
-          unpublished?: false
-        )
+        allow(subject).to receive(:result_object).with(index) do
+          double(:result_object, hidden?: true, unpublished?: false, url: 'bar', label: 'foobar')
+        end
 
-        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
-        allow(instance).to receive(:indices) { [index] }
-
-        expect(instance.search).to eq []
+        expect(subject.search).to eq []
       end
     end
 
     context 'filters on publishable state' do
       it 'shows published' do
-        foo = Udongo::BogusModel.new(
-          description: 'foobar',
-          visible?: true,
-          hidden?: false,
-          published?: true,
-          unpublished?: false
-        )
+        allow(subject).to receive(:result_object).with(index) do
+          double(:result_object, hidden?: false, unpublished?: false, url: 'bar', label: 'foobar')
+        end
 
-        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
-        allow(instance).to receive(:indices) { [index] }
-
-        expect(instance.search).to eq [{ label: 'foobar', value: nil }]
+        expect(subject.search).to eq [{ label: 'foobar', value: 'bar' }]
       end
 
       it 'skips unpublished' do
-        foo = Udongo::BogusModel.new(
-          description: 'foobar',
-          visible?: true,
-          hidden?: false,
-          published?: false,
-          unpublished?: true
-        )
+        allow(subject).to receive(:result_object).with(index) do
+          double(:result_object, hidden?: false, unpublished?: true, url: 'bar', label: 'foobar')
+        end
 
-        index = create(:search_index, searchable: foo, locale: 'nl', name: 'description', value: 'foobar')
-        allow(instance).to receive(:indices) { [index] }
+        expect(subject.search).to eq []
+      end
+    end
 
-        expect(instance.search).to eq []
+    context 'filters on presence URL method result' do
+      it 'shows published' do
+        allow(subject).to receive(:result_object).with(index) do
+          double(:result_object, hidden?: false, unpublished?: false, url: 'bar', label: 'foobar')
+        end
+
+        expect(subject.search).to eq [{ label: 'foobar', value: 'bar' }]
+      end
+
+      it 'skips unpublished' do
+        allow(subject).to receive(:result_object).with(index) do
+          double(:result_object, hidden?: false, unpublished?: true, url: 'bar', label: 'foobar')
+        end
+
+        expect(subject.search).to eq []
       end
     end
   end
 
   it '#responds_to?' do
-    expect(instance).to respond_to(
+    expect(subject).to respond_to(
       :search, :indices, :result_object
     )
   end

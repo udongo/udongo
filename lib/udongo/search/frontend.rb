@@ -12,10 +12,13 @@ module Udongo::Search
     #
     # Note that the result_object#url method is defined in
     # Udongo::Search::ResultObjects::Frontend::Page.
+    #
+    # If you return nil in the #url method of a result object, the item
+    # will get filtered out of the search results.
     def search
       indices.map do |index|
         result = result_object(index)
-        next if result.hidden? || result.unpublished?
+        next if result.hidden? || result.unpublished? || result.url.nil?
         { label: result.label, value: result.url }
       end.select(&:present?)
     end

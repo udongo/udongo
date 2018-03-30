@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'country_select', '~> 2.4', '>= 2.4.0'
   s.add_dependency 'rmagick', '~> 2.15', '>= 2.15.4'
   s.add_dependency 'mini_magick', '~> 4.3', '>= 4.3.6'
-  s.add_dependency 'carrierwave', '~> 0.10', '>= 0.10.0'
+  s.add_dependency 'carrierwave', '~> 1.2.2'
   s.add_dependency 'redcarpet', '~> 3.3', '>= 3.3.3'
   s.add_dependency 'draper', '3.0.1'
   s.add_dependency 'ransack', '~> 1.7', '>= 1.7.0'

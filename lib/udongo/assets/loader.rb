@@ -19,8 +19,8 @@ module Udongo
         @files.include?(file)
       end
 
-      def load_css(file, media = :screen)
-        load_file(file, :stylesheets) { @view.stylesheet_link_tag(file, media: media) }
+      def load_css(file, media: :screen, skip_pipeline: false)
+        load_file(file, :stylesheets) { @view.stylesheet_link_tag(file, media: media, skip_pipeline: skip_pipeline) }
       end
 
       def load_file(file, target, &block)
@@ -32,8 +32,8 @@ module Udongo
         false
       end
 
-      def load_js(file, target = :javascripts)
-        load_file(file, target) { @view.javascript_include_tag(file) }
+      def load_js(file, target: :javascripts, skip_pipeline: false)
+        load_file(file, target) { @view.javascript_include_tag(file, skip_pipeline: skip_pipeline) }
       end
     end
   end

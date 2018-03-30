@@ -46,7 +46,7 @@ describe Udongo::Assets::Loader do
     end
 
     it 'loads content' do
-      instance.load_css('frontend/test')
+      instance.load_css('frontend/test', skip_pipeline: true)
       expect(instance.view.content_for?(:stylesheets)).to be true
     end
   end
@@ -59,14 +59,14 @@ describe Udongo::Assets::Loader do
     end
 
     it 'loads content' do
-      instance.load_js('frontend/test', :blubber)
+      instance.load_js('frontend/test', target: :blubber, skip_pipeline: true)
       expect(instance.view.content_for?(:blubber)).to be true
     end
   end
 
   it '#responds_to?' do
     expect(described_class.new).to respond_to(
-      :files, :view, :view=, :add, :exists?, :load_css, :load_js, :load_file
+      :files, :view, :view=, :add, :exists?, :load_file
     )
   end
 end

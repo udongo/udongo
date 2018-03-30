@@ -1,3 +1,8 @@
+7.3.5 - 2018-03-30
+--
+* The tag summary is no longer a mandatory field.
+
+
 7.3.4 - 2018-03-15
 --
 * Allow for a "way out" when building result objects for the frontend search.

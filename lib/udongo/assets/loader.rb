@@ -19,12 +19,12 @@ module Udongo
         @files.include?(file)
       end
 
-      def load_css(file, media: :screen, skip_pipeline: false)
-        load_file(file, :stylesheets) { @view.stylesheet_link_tag(file, media: media, skip_pipeline: skip_pipeline) }
+      def load_css(file, media = :screen)
+        load_file(file, :stylesheets) { @view.stylesheet_link_tag(file, media: media) }
       end
 
       def load_file(file, target, &block)
-        if block_given? && !exists?(file)
+        if block_given? && File.exists?(file) && !exists?(file)
           add file
           @view.content_for(target) { yield file }
           return true
@@ -32,8 +32,8 @@ module Udongo
         false
       end
 
-      def load_js(file, target: :javascripts, skip_pipeline: false)
-        load_file(file, target) { @view.javascript_include_tag(file, skip_pipeline: skip_pipeline) }
+      def load_js(file, target = :javascripts)
+        load_file(file, target) { @view.javascript_include_tag(file) }
       end
     end
   end

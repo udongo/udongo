@@ -5,7 +5,7 @@ module Concerns
 
       def update_position
         find_model.set_list_position params[:position]
-        render nothing: true
+        head :ok
       end
     end
   end

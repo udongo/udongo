@@ -1,7 +1,3 @@
-<% javascript 'backend/tagit.min' %>
-<% javascript 'backend/plugins/tagbox' %>
-<% javascript 'backend/tags' %>
-
 <% locale = local_assigns.has_key?(:locale) ? local_assigns[:locale] : params[:translation_locale] %>
 <% actual_model = model.decorated? ? model.object : model %>
 

@@ -26,3 +26,16 @@
 //= require backend/datepickers
 //= require backend/select2.min
 //= require backend/lity
+//
+//= require backend/seo
+//= require backend/sortable
+//= require backend/flexible_content
+//= require backend/flexible_content_breakpoints
+//
+//= require backend/tagit.min
+//= require backend/plugins/tagbox
+//= require backend/tags
+//
+//= require backend/jstree/jstree.min
+//= require backend/tree
+//= require backend/pages

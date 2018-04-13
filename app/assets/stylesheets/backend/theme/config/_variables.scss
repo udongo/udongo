@@ -6,7 +6,7 @@
 //
 
 // Paths
-$img-path:                              asset-path('images/backend/theme') !default;
+$img-path:                              "backend/theme" !default;
 $fonts-path:                            "../lib" !default;
 $lib-path:                              "../lib" !default;
 $bootstrap-path:                        "../../bootstrap/scss" !default;
@@ -48,28 +48,28 @@ $grey:																	#cccccc !default;
 
 // Brand Scale
 $theme-colors: (
-  "primary": $primary,
-  "success": $success,
-  "info": $info,
-  "warning": $warning,
-  "danger": $danger,
-  "light": $light,
-  "dark": $dark,
-  "grey": $grey
+"primary": $primary,
+"success": $success,
+"info": $info,
+"warning": $warning,
+"danger": $danger,
+"light": $light,
+"dark": $dark,
+"grey": $grey
 ) !default;
 
 //Spacing
 $spacer: 																1rem !default; // 13px
 $spacers: (
-	0: 0,
-  1: ($spacer / 2.6),
-  2: ($spacer / 1.3),
-  3: ($spacer * 1.154),
-  4: ($spacer * 1.539),
-  5: ($spacer * 1.923),
-	6: ($spacer * 2.308),
-  7: ($spacer * 3.077),
-  8: ($spacer * 3.851)
+0: 0,
+1: ($spacer / 2.6),
+2: ($spacer / 1.3),
+3: ($spacer * 1.154),
+4: ($spacer * 1.539),
+5: ($spacer * 1.923),
+6: ($spacer * 2.308),
+7: ($spacer * 3.077),
+8: ($spacer * 3.851)
 ) !default;
 
 // Body

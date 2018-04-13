@@ -75,7 +75,7 @@
 	.error-container{
 
 		.error-number{
-			background: url("#{$img-path}/404-bg.png") no-repeat center center;
+			background: asset-url("#{$img-path}/404-bg.png") no-repeat center center;
 			background-size: contain;
 
 			@include phone {

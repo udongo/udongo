@@ -34,14 +34,14 @@
 .invoice-logo {
 	height: $invoice-logo-height;
 	min-width: $invoice-logo-width;
-	background-image: url("#{$img-path}/logo-xx.png");
+	background-image: asset-url("#{$img-path}/logo-xx.png");
 	background-repeat: no-repeat;
 	background-position: 0 ;
 
 	@include laptop {
 		height: $invoice-logo-small-height;
 		width: $invoice-logo-small-width;
-		background-image: url("#{$img-path}/logo.png");
+		background-image: asset-url("#{$img-path}/logo.png");
 	}	
 
 	@include phone {
@@ -53,7 +53,7 @@
 	@media #{$print} {
 		height: $invoice-logo-small-height !important;
 		width: $invoice-logo-small-width !important;
-		background-image: url("#{$img-path}/logo.png") !important;
+		background-image: asset-url("#{$img-path}/logo.png") !important;
 		display: block !important;
 		background-repeat: no-repeat !important;
 	}

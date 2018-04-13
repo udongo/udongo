@@ -9,16 +9,12 @@ describe Udongo::EmailVarsParser do
     end
 
     it 'basic var present' do
-      vars = {}
-      vars['name'] = 'Davy'
-
+      vars = { name: 'Davy' }
       expect(replace_vars('I am [name]', vars)).to eq 'I am Davy'
     end
 
     it 'must handle symbols' do
-      vars = {}
-      vars[:name] = 'Davy'
-
+      vars = { name: 'Davy' }
       expect(replace_vars('I am [name]', vars)).to eq 'I am Davy'
     end
 
@@ -49,10 +45,13 @@ describe Udongo::EmailVarsParser do
 
   describe 'single line ifs' do
     it 'must handle symbols' do
-      vars = {}
-      vars[:stupid] = true
-
+      vars = { stupid: true }
       expect(replace_ifs('I am [if:stupid]silly[/if]', vars)).to eq 'I am silly'
+    end
+
+    it 'must handle numbers in the var name' do
+      vars = { polycarbonate_32mm: true }
+      expect(replace_ifs('I am [if:polycarbonate_32mm]silly[/if]', vars)).to eq 'I am silly'
     end
 
     it 'basic if missing' do
@@ -60,25 +59,17 @@ describe Udongo::EmailVarsParser do
     end
 
     it 'basic if present and true' do
-      vars = {}
-      vars['stupid'] = true
-
+      vars = { stupid: true }
       expect(replace_ifs('I am [if:stupid]silly[/if]', vars)).to eq 'I am silly'
     end
 
     it 'basic if present and false' do
-      vars = {}
-      vars['stupid'] = false
-
+      vars = { stupid: false }
       expect(replace_ifs('I am [if:stupid]silly[/if]', vars)).to eq 'I am '
     end
 
     it 'multiple ifs' do
-      vars = {}
-      vars['street'] = 'Durmakker'
-      vars['number'] = '7'
-      vars['city'] = 'Evergem'
-
+      vars = { street: 'Durmakker', number: 7, city: 'Evergem' }
       content = 'Adres wijzigingen:
 [if:street]Straat: [street][/if]
 [if:number]Nummer: [number][/if]
@@ -91,11 +82,7 @@ Stad: Evergem'
     end
 
     it 'multiple ifs but only 2 of 3 are true' do
-      vars = {}
-      vars['street'] = false
-      vars['number'] = '7'
-      vars['city'] = 'Evergem'
-
+      vars = { street: false, number: 7, city: 'Evergem' }
       content = 'Adres wijzigingen:
 [if:street]Straat: [street][/if]
 [if:number]Nummer: [number][/if]
@@ -115,18 +102,14 @@ Stad: Evergem'
     end
 
     it 'basic if present and true' do
-      vars = {}
-      vars['co_seller'] = true
-
+      vars = { co_seller: true }
       content = "[if:co_seller]\nHi there![/if]"
 
       expect(replace_ifs(content, vars)).to eq "\nHi there!"
     end
 
     it 'basic if present and false' do
-      vars = {}
-      vars['co_seller'] = false
-
+      vars = { co_seller: false }
       content = "[if:co_seller]\nHi there![/if]"
 
       expect(replace_ifs(content, vars)).to eq ''

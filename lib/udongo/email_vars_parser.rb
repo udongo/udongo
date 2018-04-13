@@ -14,7 +14,7 @@ module Udongo::EmailVarsParser
   end
 
   def replace_ifs(content, vars)
-    content.to_s.scan(/\[if\:([a-z\._\-]+)\](.*?)\[\/if\]/mi).each do |match|
+    content.to_s.scan(/\[if\:([a-z0-9\._\-]+)\](.*?)\[\/if\]/mi).each do |match|
       if_var = match.first
       if_content = match.last
 

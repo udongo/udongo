@@ -1,3 +1,8 @@
+7.3.6 - 2018-04-13
+--
+* Email vars if-conditionals can now contain numbers in the var name.
+
+
 7.3.5 - 2018-03-30
 --
 * The tag summary is no longer a mandatory field.

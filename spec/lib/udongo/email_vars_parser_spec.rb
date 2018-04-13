@@ -55,6 +55,12 @@ describe Udongo::EmailVarsParser do
       expect(replace_ifs('I am [if:stupid]silly[/if]', vars)).to eq 'I am silly'
     end
 
+    it 'must handle numbers in the var name' do
+      vars = { polycarbonate_32mm: true }
+
+      expect(replace_ifs('I am [if:polycarbonate_32mm]silly[/if]', vars)).to eq 'I am silly'
+    end
+
     it 'basic if missing' do
       expect(replace_ifs('I am [if:stupid]silly[/if]', {})).to eq 'I am '
     end

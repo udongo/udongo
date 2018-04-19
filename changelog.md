@@ -3,6 +3,12 @@
 * Add target to content pictures (eg _blank).
 
 
+7.3.5 - 2018-03-30
+--
+* The tag summary is no longer a mandatory field.
+* Email vars if-conditionals can now contain numbers in the var name.
+
+
 7.3.4 - 2018-03-15
 --
 * Allow for a "way out" when building result objects for the frontend search.

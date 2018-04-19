@@ -10,7 +10,7 @@
       <%= f.input :url, as: :string %>
     </div>
     <div class="col-md-4">
-      <%= f.input :target, collection: ContentPicture::TARGETS %>
+      <%= f.input :target, collection: ContentPicture::TARGETS, include_blank: false %>
     </div>
   </div>
 

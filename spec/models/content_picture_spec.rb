@@ -7,7 +7,7 @@ describe ContentPicture do
   it_behaves_like :content_type
 
   it 'TARGETS' do
-    expect(model::TARGETS).to eq %w(_blank)
+    expect(model::TARGETS).to eq %w(_self _blank)
   end
 
   it '#content_type' do

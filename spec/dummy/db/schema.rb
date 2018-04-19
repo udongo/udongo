@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301101320) do
+ActiveRecord::Schema.define(version: 20180419115752) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20180301101320) do
     t.integer  "asset_id"
     t.text     "caption",         limit: 65535
     t.text     "url",             limit: 65535
+    t.string   "target"
     t.boolean  "disallow_resize"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false

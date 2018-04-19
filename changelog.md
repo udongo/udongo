@@ -1,3 +1,8 @@
+7.4.0 - 2018-04-19
+--
+* Add target to content pictures (eg _blank).
+
+
 7.3.4 - 2018-03-15
 --
 * Allow for a "way out" when building result objects for the frontend search.

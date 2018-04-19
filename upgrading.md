@@ -1,4 +1,16 @@
 # Upgrade guide
+## From 7.3 to 7.4
+### Content picture link target
+You can now mark the target for content picture url (eg _blank). 
+
+To make these changes work, checkout the code in
+`apps/views/frontend/flexible_content/_picture.html.erb`
+
+
+## From 7.2 to 7.3
+No actions are required.
+
+
 ## From 7.1 to 7.2
 ### Content picture 'disallow resize'
 You now have the option to disable resizing pictures in the flexible content. We

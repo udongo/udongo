@@ -83,6 +83,7 @@ en:
 
       content_picture:
         disallow_resize: Disallow resize
+        target: URL target
 
       email_template:
         from_email: Sender e-mail address

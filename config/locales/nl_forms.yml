@@ -84,6 +84,7 @@ nl:
 
       content_picture:
         disallow_resize: Niet automatisch bijschalen
+        target: Doel van de URL
 
       email_template:
         from_email: E-mail adres afzender

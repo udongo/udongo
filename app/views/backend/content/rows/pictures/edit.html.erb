@@ -4,7 +4,15 @@
 
 <%= simple_form_for [:backend, @model] do |f| %>
   <%= f.input :disallow_resize, as: :boolean %>
-  <%= f.input :url, as: :string %>
+
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.input :url, as: :string %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :target, collection: ContentPicture::TARGETS %>
+    </div>
+  </div>
 
   <% content_type = Udongo.config.flexible_content.picture_caption_editor? ? :ckeditor : :text %>
   <%= f.input :caption, as: content_type %>

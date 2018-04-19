@@ -5,7 +5,7 @@ class Backend::Content::Rows::PicturesController < Backend::BaseController
   before_action :prepare_upload, only: [:link_or_upload, :upload]
 
   model ContentPicture
-  allowed_params :caption, :url, :disallow_resize
+  allowed_params :caption, :url, :target, :disallow_resize
 
   def link
     @model.asset = Asset.find params[:asset_id]

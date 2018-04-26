@@ -10,14 +10,14 @@
 
 	&.login-tools {
 		padding: 15px 0 0;
-  	margin-bottom: 16px;	
+  	margin-bottom: 16px;
 	}
 }
 
 //Login forgot password link
 .login-forgot-password{
 	line-height: 2.3;
-	text-align: right;
+	text-align: center;
 }
 
 //Login submit
@@ -31,7 +31,7 @@
 
 	//Reduce bs col padding
 	> div{
-		
+
 		&:first-child{
 			padding-right: 10px;
 		}

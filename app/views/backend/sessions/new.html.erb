@@ -1,19 +1,29 @@
-<div class="col-xs-12 col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
-  <% if flash[:alert] %>
-    <div class="alert alert-danger">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
 
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title"><%= t 'b.login' %></h4>
-      <%= simple_form_for :session, url: backend_sessions_path do |f| %>
-        <%= f.input :email, placeholder: t('b.email'), label: false %>
-        <%= f.input :password, placeholder: t('b.password'), label: false %>
-        <%= f.button :submit, t('b.login'), class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+<div class="card card-border-color card-border-color-primary">
+  <div class="card-header">
+    <p class="text-center">Udongo</p>
+    <span class="splash-description">Please enter your user information.</span>
+  </div>
+
+  <div class="card-body">
+    <%= simple_form_for :session, url: backend_sessions_path do |f| %>
+      <%= f.input :email, placeholder: t('b.email'), label: false %>
+      <%= f.input :password, placeholder: t('b.password'), label: false %>
+
+      <div class="form-group login-tools">
+        <div class="login-forgot-password">
+          <a href="pages-forgot-password.html">Forgot Password?</a>
+        </div>
+      </div>
+
+      <div class="form-group login-submit">
+        <%= f.button :submit, t('b.login'), class: 'btn btn-primary btn-xl' %>
+      </div>
+    <% end %>
   </div>
 </div>
-

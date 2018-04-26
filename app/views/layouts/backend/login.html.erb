@@ -10,11 +10,14 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body class="login-page">
-  <div class="container">
-    <div class="row">
-
-      <%= yield %>
+<body class="be-splash-screen">
+  <div class="be-wrapper be-login">
+    <div class="be-content">
+      <div class="main-content container-fluid">
+        <div class="splash-container">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </div>
 </body>

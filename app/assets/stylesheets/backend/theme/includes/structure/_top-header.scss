@@ -58,7 +58,7 @@
       line-height: $top-header-height;
       height: $top-header-height;
       width: $logo-width + ($logo-padding * 2);
-      background-image: url("#{$img-path}/logo.png");
+      background-image: asset-url("#{$img-path}/logo.png");
       background-repeat: no-repeat;
       background-position: $logo-padding center;
       padding: 0 $logo-padding;

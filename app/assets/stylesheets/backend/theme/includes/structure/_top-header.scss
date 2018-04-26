@@ -58,7 +58,7 @@
       line-height: $top-header-height;
       height: $top-header-height;
       width: $logo-width + ($logo-padding * 2);
-      background-image: asset-url("#{$img-path}/logo.png");
+      //background-image: asset-url("#{$img-path}/logo.png");
       background-repeat: no-repeat;
       background-position: $logo-padding center;
       padding: 0 $logo-padding;
@@ -67,7 +67,7 @@
 
       //Retina logo
       @media #{$retina}{
-        background-image: asset-url("#{$img-path}/logo-xx.png");
+        //background-image: asset-url("#{$img-path}/logo-xx.png");
         background-size: $logo-width $logo-height;
       }
 
@@ -532,10 +532,10 @@
     .be-navbar-header{
 
       .navbar-brand{
-        background-image: url("#{$img-path}/logo-white.png");
+        //background-image: url("#{$img-path}/logo-white.png");
 
         @media #{$retina} {
-          background-image: url("#{$img-path}/logo-white-xx.png");
+          //background-image: url("#{$img-path}/logo-white-xx.png");
         }
       }
     }

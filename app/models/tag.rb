@@ -1,12 +1,10 @@
 class Tag < ApplicationRecord
   include Concerns::Locale
-  include Concerns::Seo
-
-  include Concerns::Translatable
-  translatable_fields :summary
 
   has_many :tagged_items, dependent: :destroy
 
-  validates :locale, :name, :slug, presence: true
-  validates :slug, uniqueness: { case_sensitive: false, scope: :locale }
+  validates :locale, :name, :seo_slug, presence: true
+  validates :seo_slug, uniqueness: { case_sensitive: false, scope: :locale }
+
+  alias_attribute :slug, :seo_slug
 end

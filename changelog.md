@@ -1,3 +1,9 @@
+7.4.1 - 2018-04-27
+--
+* Removed the translatable content from tags again.
+* Added the b/seo_form partial to b/tags#index.
+
+
 7.4.0 - 2018-04-19
 --
 * Add target to content pictures (eg _blank).

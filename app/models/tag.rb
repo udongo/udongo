@@ -5,4 +5,6 @@ class Tag < ApplicationRecord
 
   validates :locale, :name, :seo_slug, presence: true
   validates :seo_slug, uniqueness: { case_sensitive: false, scope: :locale }
+
+  alias_attribute :slug, :seo_slug
 end

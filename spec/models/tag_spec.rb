@@ -19,7 +19,7 @@ describe Tag do
   end
 
   it '#respond_to?' do
-    expect(subject).to respond_to(:tagged_items)
+    expect(subject).to respond_to(:tagged_items, :slug)
   end
 end
 

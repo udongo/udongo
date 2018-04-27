@@ -1,5 +1,4 @@
 class Backend::TagsController < Backend::BaseController
-  include Concerns::Backend::TranslatableController
   include Concerns::PaginationController
 
   before_action :find_model, only: [:show, :edit, :update, :destroy]
@@ -22,11 +21,7 @@ class Backend::TagsController < Backend::BaseController
     @tag = Tag.new(allowed_params)
 
     if @tag.save
-      redirect_to edit_translation_backend_tag_path(
-                    @tag,
-                    translation_locale: default_app_locale,
-                    notice: translate_notice(:added, :article)
-                  )
+      redirect_to backend_tags_path, notice: translate_notice(:added, :tag)
     else
       render :new
     end
@@ -53,13 +48,5 @@ class Backend::TagsController < Backend::BaseController
 
   def find_model
     @tag = Tag.find params[:id]
-  end
-
-  def translation_form
-    Backend::TagTranslationForm.new(
-      @model,
-      @model.translation(params[:translation_locale]),
-      @model.seo(params[:translation_locale])
-    )
   end
 end

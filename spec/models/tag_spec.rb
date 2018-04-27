@@ -5,7 +5,6 @@ describe Tag do
 
   it_behaves_like :locale
   it_behaves_like :seo
-  it_behaves_like :translatable
 
   describe 'validations' do
     describe 'presence' do
@@ -18,10 +17,6 @@ describe Tag do
       create(klass, slug: 'foo', locale: 'nl')
       expect(build(klass, slug: 'FOO', locale: 'nl')).not_to be_valid
     end
-  end
-
-  it 'translatable' do
-    expect(described_class.translatable_fields_list).to eq [:summary]
   end
 
   it '#respond_to?' do

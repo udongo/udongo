@@ -15,9 +15,9 @@
       <%= f.input :seo_slug, as: :string %>
     <% end %>
 
-    <%= f.input(:seo_title, as: :string) if f.respond_to?(:seo_title) %>
-    <%= f.input(:seo_description, as: :string) if f.respond_to?(:seo_description) %>
-    <%= f.input(:seo_keywords, as: :string) if f.respond_to?(:seo_keywords) %>
-    <%= f.input(:seo_custom, as: :string) if f.respond_to?(:seo_custom) %>
+    <%= f.input(:seo_title, as: :string) if f.object.respond_to?(:seo_title) %>
+    <%= f.input(:seo_description, as: :string) if f.object.respond_to?(:seo_description) %>
+    <%= f.input(:seo_keywords, as: :string) if f.object.respond_to?(:seo_keywords) %>
+    <%= f.input(:seo_custom, as: :string) if f.object.respond_to?(:seo_custom) %>
   </div>
 <% end %>

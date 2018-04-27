@@ -1,9 +1,8 @@
 class Tag < ApplicationRecord
   include Concerns::Locale
-  include Concerns::Seo
 
   has_many :tagged_items, dependent: :destroy
 
-  validates :locale, :name, :slug, presence: true
-  validates :slug, uniqueness: { case_sensitive: false, scope: :locale }
+  validates :locale, :name, :seo_slug, presence: true
+  validates :seo_slug, uniqueness: { case_sensitive: false, scope: :locale }
 end

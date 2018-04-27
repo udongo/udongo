@@ -43,7 +43,10 @@ class Backend::TagsController < Backend::BaseController
   private
 
   def allowed_params
-    params.require(:tag).permit(:locale, :name, :slug)
+    params.require(:tag).permit(
+      :locale, :name, :seo_slug, :seo_title, :seo_description, :seo_keywords,
+      :seo_custom
+    )
   end
 
   def find_model

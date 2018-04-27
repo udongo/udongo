@@ -1,51 +1,50 @@
 require 'rails_helper'
 
 shared_examples_for :taggable do
-  let(:model) { described_class }
-  let(:klass) { model.to_s.underscore.to_sym }
-  let(:instance) { create(klass) }
+  let(:klass) { described_class.to_s.underscore.to_sym }
+  subject { create(klass) }
 
   it '#tags' do
-    tag = create(:tag, locale: :nl, name: 'foo', slug: 'foo')
-    instance.tagged_items.create!(tag: tag)
-    expect(instance.tags(:nl)).to eq [tag]
+    tag = create(:tag, locale: :nl, name: 'foo', seo_slug: 'foo')
+    subject.tagged_items.create!(tag: tag)
+    expect(subject.tags(:nl)).to eq [tag]
   end
 
   it '#tags_string' do
-    tag1 = create(:tag, locale: :nl, name: 'foo', slug: 'foo')
-    tag2 = create(:tag, locale: :nl, name: 'bar', slug: 'bar')
-    instance.tagged_items.create!(tag: tag1)
-    instance.tagged_items.create!(tag: tag2)
-    expect(instance.tags_string(:nl)).to eq 'foo,bar'
+    tag1 = create(:tag, locale: :nl, name: 'foo', seo_slug: 'foo')
+    tag2 = create(:tag, locale: :nl, name: 'bar', seo_slug: 'bar')
+    subject.tagged_items.create!(tag: tag1)
+    subject.tagged_items.create!(tag: tag2)
+    expect(subject.tags_string(:nl)).to eq 'foo,bar'
   end
 
   describe '#related' do
-    let(:instance2) { create(klass) }
-    let(:tag1) { create(:tag, locale: :nl, name: 'foo', slug: 'foo') }
-    let(:tag2) { create(:tag, locale: :nl, name: 'bar', slug: 'bar') }
+    let(:second) { create(klass) }
+    let(:tag1) { create(:tag, locale: :nl, name: 'foo', seo_slug: 'foo') }
+    let(:tag2) { create(:tag, locale: :nl, name: 'bar', seo_slug: 'bar') }
 
     it :blank do
-      instance.tagged_items.create!(tag: tag1)
-      instance2.tagged_items.create!(tag: tag2)
-      expect(instance.related(:nl)).to eq []
+      subject.tagged_items.create!(tag: tag1)
+      second.tagged_items.create!(tag: tag2)
+      expect(subject.related(:nl)).to eq []
     end
 
     it :results do
-      instance.tagged_items.create!(tag: tag1)
-      instance.tagged_items.create!(tag: tag2)
-      instance2.tagged_items.create!(tag: tag1)
-      instance2.tagged_items.create!(tag: tag2)
-      expect(instance.related(:nl)).to eq [instance2]
-      expect(instance2.related(:nl)).to eq [instance]
+      subject.tagged_items.create!(tag: tag1)
+      subject.tagged_items.create!(tag: tag2)
+      second.tagged_items.create!(tag: tag1)
+      second.tagged_items.create!(tag: tag2)
+      expect(subject.related(:nl)).to eq [second]
+      expect(second.related(:nl)).to eq [subject]
     end
   end
 
   it '#taggable?' do
-    expect(instance).to be_taggable
+    expect(subject).to be_taggable
   end
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:tagged_items, :related, :tags, :tags_string, :taggable?)
+    expect(described_class.new).to respond_to(:tagged_items, :related, :tags, :tags_string, :taggable?)
   end
 end
 

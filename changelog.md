@@ -1,3 +1,8 @@
+7.4.2 - 2018-05-02
+--
+* Upgrades Rails from 5.0.0 to 5.0.1 to introduce fixes made for Ruby 2.4
+
+
 7.4.1 - 2018-04-27
 --
 * Removed the translatable content from tags again.

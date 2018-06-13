@@ -1,21 +1,41 @@
 <%= render 'backend/general_form_error', object: @model %>
 
-<%= image_tag @model.asset.image.url(900, 900, quality: 65), alt: '', class: 'img-fluid' %>
-
 <%= simple_form_for [:backend, @model] do |f| %>
-  <%= f.input :disallow_resize, as: :boolean %>
-
   <div class="row">
-    <div class="col-md-8">
-      <%= f.input :url, as: :string %>
+    <div class="col-md-5">
+      <%= image_tag @model.asset.image.url(900, 900, quality: 65), alt: '', class: 'img-fluid' %>
     </div>
-    <div class="col-md-4">
-      <%= f.input :target, collection: ContentPicture::TARGETS, include_blank: false %>
+
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :disallow_resize, as: :boolean %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :background_image, as: :boolean %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <% pixels = (50..1000).step(50).map { |i| ["#{i}px", i] } %>
+          <%= f.input :min_height, collection: pixels %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.input :url, as: :string %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :target, collection: ContentPicture::TARGETS, include_blank: false %>
+        </div>
+      </div>
+
+      <% content_type = Udongo.config.flexible_content.picture_caption_editor? ? :ckeditor : :text %>
+      <%= f.input :caption, as: content_type %>
+
+      <%= render 'backend/form_actions', cancel_url: '#lity-close' %>
     </div>
   </div>
-
-  <% content_type = Udongo.config.flexible_content.picture_caption_editor? ? :ckeditor : :text %>
-  <%= f.input :caption, as: content_type %>
-
-  <%= render 'backend/form_actions', cancel_url: '#lity-close' %>
 <% end %>

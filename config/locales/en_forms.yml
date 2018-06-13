@@ -82,7 +82,9 @@ en:
         slide_interval: Interval between slides
 
       content_picture:
+        background_image: Use in the background
         disallow_resize: Disallow resize
+        min_height: Min. height
         target: URL target
 
       email_template:

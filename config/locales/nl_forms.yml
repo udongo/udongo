@@ -83,7 +83,9 @@ nl:
         slide_interval: Interval tussen slides
 
       content_picture:
+        background_image: In de achtergrond gebruiken
         disallow_resize: Niet automatisch bijschalen
+        min_height: Min. hoogte
         target: Doel van de URL
 
       email_template:

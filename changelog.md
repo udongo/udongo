@@ -2,6 +2,7 @@
 --
 * Make it possible to mark a content picture to be used in the background with a
   certain min height.
+* Rework the frontend/flexible_content/_picture.html.erb file.
 
 
 7.4.2 - 2018-05-02

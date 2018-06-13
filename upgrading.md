@@ -1,4 +1,13 @@
 # Upgrade guide
+## From 7.4 to 7.5
+### Content picture background image
+It's now possible to mark an image as a background image. To use this you need
+to mark it as such and also set the min height property.
+
+To make these changes work, checkout the code in
+`apps/views/frontend/flexible_content/_picture.html.erb`
+
+
 ## From 7.3 to 7.4
 ### Content picture link target
 You can now mark the target for content picture url (eg _blank). 

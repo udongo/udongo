@@ -1,32 +1,37 @@
 <% if object.present? && object.asset.present? %>
   <% max_img_size = object.max_image_size %>
 
-  <% if object.url.present? %>
-    <%= link_to object.url, target: object.target do %>
-      <% if object.disallow_resize? %>
-        <%= image_tag object.asset.image.url, alt: '', class: 'img-fluid' %>
-      <% else %>
-        <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
-      <% end %>
-    <% end %>
+  <% if object.background_image? %>
+    <div style="background-image: url('<%= object.asset.image.url(max_img_size, max_img_size, quality: 65) %>'); height: 100%; min-height: <%= object.min_height %>px">
+      &nbsp;
+    </div>
 
   <% else %>
     <% if object.disallow_resize? %>
-      <%= image_tag object.asset.image.url, alt: '', class: 'img-fluid' %>
+      <% img_path = object.asset.image.url %>
     <% else %>
-      <%= image_tag object.asset.image.url(max_img_size, max_img_size, quality: 65), alt: '', class: 'img-fluid' %>
+      <% img_path = object.asset.image.url(max_img_size, max_img_size, quality: 65) %>
     <% end %>
-  <% end %>
 
-  <% if object.caption.present? %>
-    <% if Udongo.config.flexible_content.picture_caption_editor? %>
-      <div class="img-caption">
-        <%= object.caption.html_safe %>
-      </div>
+    <% if object.url.present? %>
+      <%= link_to object.url, target: object.target do %>
+        <%= image_tag img_path, alt: '', class: 'img-fluid' %>
+      <% end %>
+
     <% else %>
-      <div class="text-center">
-        <%= object.caption %>
-      </div>
+      <%= image_tag img_path, alt: '', class: 'img-fluid' %>
+    <% end %>
+
+    <% if object.caption.present? %>
+      <% if Udongo.config.flexible_content.picture_caption_editor? %>
+        <div class="img-caption">
+          <%= object.caption.html_safe %>
+        </div>
+      <% else %>
+        <div class="text-center">
+          <%= object.caption %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

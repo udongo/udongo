@@ -48,7 +48,7 @@
 
 7.3.0 - 2018-02-28
 --
-* Make it possible for emails to have attachments. You can also see the them in
+* Make it possible for emails to have attachments. You can also see them in
   the backend.
 
 

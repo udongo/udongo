@@ -1,3 +1,9 @@
+7.5.0 - 2018-06-13
+--
+* Make it possible to mark a content picture to be used in the background with a
+  certain min height.
+
+
 7.4.2 - 2018-05-02
 --
 * Upgrades Rails from 5.0.0 to 5.0.1 to introduce fixes made for Ruby 2.4

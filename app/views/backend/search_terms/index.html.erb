@@ -1,6 +1,13 @@
 <%= render 'backend/breadcrumbs' %>
 
 <% if @search_terms.any? %>
+  <p>
+    <%= link_to backend_search_terms_path, class: 'btn btn-danger', method: 'delete', data: { confirm: t('b.msg.confirm') } do %>
+      <%= icon :trash %>
+      <%= t('b.msg.search_terms.destroy_all') %>
+    <% end %>
+  </p>
+
   <table class="table table-hover table-striped">
     <thead class="thead-inverse">
       <tr>

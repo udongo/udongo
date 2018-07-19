@@ -1,0 +1,28 @@
+<%= render 'backend/breadcrumbs' %>
+
+<% if @searches.any? %>
+  <table class="table table-hover table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th><%= t 'b.locale' %></th>
+        <th><%= t 'b.search_term' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @searches.each do |s| %>
+        <tr>
+          <td><%= s.locale.upcase %></td>
+          <td><%= s.term %></td>
+          <td class="text-right">
+            <%= link_to_delete [:backend, s] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p><%= t 'b.msg.no_items' %></p>
+<% end %>

@@ -180,6 +180,7 @@ nl:
       please_select_a_valid_image: Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
       saved: '%{actor} werd bewaard.'
       search_terms:
+        deleted: De lijst met gebruikte zoektermen werd gewist
         destroy_all: Verwijder alle gebruikte zoektermen
       search_synonyms:
         create: Maak zoeksyniem aan op basis van deze term

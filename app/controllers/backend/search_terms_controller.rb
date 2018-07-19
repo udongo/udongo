@@ -9,6 +9,6 @@ class Backend::SearchTermsController < Backend::BaseController
 
   def destroy_all
     ::SearchTerm.destroy_all
-    redirect_to backend_search_terms_path, notice: translate_notice(:deleted, :search_terms)
+    redirect_to backend_search_terms_path, notice: t('b.msg.search_terms.deleted')
   end
 end

@@ -47,7 +47,7 @@ module Udongo::Search
         # a searchable result. Otherwise matches from both an indexed
         # Page#title and Page#description would be in the result set.
         stack << m.indices
-                  .where('search_indices.value REGEXP ?', term.value)
+                  .where('search_indices.value LIKE ?', "%#{term.value}%")
                   .group([:searchable_type, :searchable_id])
       end.flatten
     end

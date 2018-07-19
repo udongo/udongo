@@ -2,10 +2,11 @@ require 'rails_helper'
 
 describe Udongo::Search::Frontend do
   let(:klass) { described_class.to_s.underscore.to_sym }
-  subject { described_class.new('foo') }
+  let(:controller) { double(:controller, class_name: 'Frontend', locale: 'nl') }
+  subject { described_class.new('foo', controller: controller) }
 
   before(:each) do
-    module Udongo::Search::ResultObjects::Frontend
+    module Udongo::Search::ResultObjects::RSpec
       class Class < Udongo::Search::ResultObjects::Base
       end
     end

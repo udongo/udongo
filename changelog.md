@@ -1,3 +1,8 @@
+7.5.1 - 2018-07-19
+--
+* Let Udongo search ignore diacritics in search terms.
+
+
 7.5.0 - 2018-06-13
 --
 * Make it possible to mark a content picture to be used in the background with a

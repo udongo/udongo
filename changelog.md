@@ -1,6 +1,7 @@
 7.5.1 - 2018-07-19
 --
 * Let Udongo search ignore diacritics in search terms.
+* Adds an overview of used search terms to the backend.
 
 
 7.5.0 - 2018-06-13

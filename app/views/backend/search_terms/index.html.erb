@@ -6,6 +6,7 @@
       <tr>
         <th><%= t 'b.locale' %></th>
         <th><%= t 'b.search_term' %></th>
+        <th><%= t 'b.times_used' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -15,6 +16,7 @@
         <tr>
           <td><%= s.locale.upcase %></td>
           <td><%= s.term %></td>
+          <td><%= s.total %></td>
           <td class="text-right">
             <%= link_to icon(:clone), new_backend_search_synonym_path(search_locale: s.locale, term: s.term), title: t('b.msg.search_synonyms.create') %>
           </td>

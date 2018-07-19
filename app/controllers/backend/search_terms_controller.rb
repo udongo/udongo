@@ -2,7 +2,8 @@ class Backend::SearchTermsController < Backend::BaseController
   before_action -> { breadcrumb.add t('b.search_terms'), backend_search_terms_path }
 
   def index
-    @search_terms = ::SearchTerm.all
+    @search_terms = ::SearchTerm.select('*, COUNT(1) as total')
+                                .group('locale, term')
   end
 
   def destroy_all

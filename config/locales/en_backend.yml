@@ -176,6 +176,8 @@ en:
         invisible: Deze pagina is niet zichtbaar op de website.
       please_select_a_valid_image: Please select a valid image and try again.
       saved: '%{actor} was saved.'
+      search_synonyms:
+        create: Create a search synonym based on this search term
       seo: SEO
       something_went_wrong: Something went wrong!
       status_codes:

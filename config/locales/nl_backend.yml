@@ -77,8 +77,8 @@ nl:
     redirects: Redirects
     save: Opslaan
     search: Zoeken
-    searches: Zoekopdrachten
     search_term: Zoekterm
+    search_terms: Gebruikte zoektermen
     search_synonym: Zoekterm synoniem
     search_synonyms: Zoekterm synoniemen
     sender: Afzender

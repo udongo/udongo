@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-describe Search do
+describe SearchTerm do
 end

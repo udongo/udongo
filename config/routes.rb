@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :sessions, only: [:new, :create, :destroy]
     resources :admins
-    resources :searches, only: [:index] do
+    resources :search_terms, only: [:index] do
       collection { delete '/', action: 'destroy_all' }
     end
     resources :users

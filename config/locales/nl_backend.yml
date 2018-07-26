@@ -78,6 +78,7 @@ nl:
     save: Opslaan
     search: Zoeken
     search_term: Zoekterm
+    search_terms: Gebruikte zoektermen
     search_synonym: Zoekterm synoniem
     search_synonyms: Zoekterm synoniemen
     sender: Afzender
@@ -96,6 +97,7 @@ nl:
     tag: Tag
     tags: Tags
     telephone: Telefoonnummer
+    times_used: Aantal keer gebruikt
     title: Titel
     to: Naar
     type: Type
@@ -177,6 +179,11 @@ nl:
         invisible: Deze pagina is niet zichtbaar op de website.
       please_select_a_valid_image: Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
       saved: '%{actor} werd bewaard.'
+      search_terms:
+        deleted: De lijst met gebruikte zoektermen werd gewist
+        destroy_all: Verwijder alle gebruikte zoektermen
+      search_synonyms:
+        create: Maak zoeksyniem aan op basis van deze term
       seo: SEO
       something_went_wrong: Er liep iets fout!
       status_codes:

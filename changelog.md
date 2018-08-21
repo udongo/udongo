@@ -1,3 +1,9 @@
+7.6.0 - xxxx-xx-xx
+--
+* Add the 'Attachment' model that makes it easier to link your own models to
+  assets from the media module.
+
+
 7.5.1 - 2018-07-26
 --
 * Let Udongo search ignore diacritics in search terms.

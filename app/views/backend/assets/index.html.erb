@@ -24,9 +24,9 @@
         <tr>
           <td>
             <% if a.image? %>
-              <%= image_tag a.image.url(150, 150), alt: '', class: 'img-fluid' %>
+              <%= link_to image_tag(a.image.url(150, 150), alt: '', class: 'img-fluid'), backend_asset_path(a) %>
             <% else %>
-              <%= link_to icon(:download, t('b.download')), a.filename.url %>
+              <%= link_to icon(:download, t('b.download')), backend_asset_path(a) %>
             <% end %>
           </td>
           <td><%= a.actual_filename.split('.').last.upcase %></td>

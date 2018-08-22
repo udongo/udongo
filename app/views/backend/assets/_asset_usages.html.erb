@@ -1,4 +1,4 @@
-<% count = asset.images.count + asset.content_pictures.count %>
+<% count = asset.images.count + asset.content_pictures.count + asset.attachments.count %>
 <% lbl = "#{t(true.to_s)} (#{count})" %>
 <%= link_to icon(:search, lbl), '#', data: { toggle: 'modal', target: "#asset-usages-#{asset.id}" }%>
 
@@ -24,6 +24,13 @@
             <li>
               <%= t "b.#{picture.parent.class.name.underscore}" %> &gt; <%= t 'b.flexible_content' %> &gt;
               <%= link_to_edit_with_label [:backend, picture.parent], default_app_locale %>
+            </li>
+          <% end %>
+
+          <% asset.attachments.each do |attachment| %>
+            <li>
+              <%= t "b.#{attachment.attachable.class.name.underscore}" %> &gt;
+              <%= link_to_edit_with_label [:backend, attachment.attachable], attachment.locale %>
             </li>
           <% end %>
         </ul>

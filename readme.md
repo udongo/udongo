@@ -267,6 +267,9 @@ u.address
 u.address(:personal)
 ```
 
+# Attachments
+There's an ```Attachment``` model that links to the assets. If an asset is linked to an attachment it can't be deleted. You can use this feature to use files linked to the asset module that can't be deleted when in use.
+
 # Queue
 ## Add tasks to the queue
 You can add tasks to the queue by executing:

@@ -5,6 +5,7 @@ class Asset < ApplicationRecord
 
   has_many :images, dependent: :destroy
   has_many :content_pictures, dependent: :destroy
+  has_many :attachments, dependent: :destroy
 
   scope :image, -> { where(content_type: %w(image/gif image/jpeg image/png)) }
 
@@ -25,7 +26,7 @@ class Asset < ApplicationRecord
   end
 
   def deletable?
-    images.empty? && content_pictures.empty?
+    images.empty? && content_pictures.empty? && attachments.empty?
   end
 
   private

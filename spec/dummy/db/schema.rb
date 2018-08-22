@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719164016) do
+ActiveRecord::Schema.define(version: 20180821135446) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -62,6 +62,22 @@ ActiveRecord::Schema.define(version: 20180719164016) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["content_type"], name: "index_assets_on_content_type", using: :btree
+  end
+
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "attachable_type"
+    t.integer  "attachable_id"
+    t.integer  "asset_id"
+    t.integer  "position"
+    t.boolean  "visible"
+    t.string   "locale"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["asset_id"], name: "index_attachments_on_asset_id", using: :btree
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id", using: :btree
+    t.index ["locale"], name: "index_attachments_on_locale", using: :btree
+    t.index ["position"], name: "index_attachments_on_position", using: :btree
+    t.index ["visible"], name: "index_attachments_on_visible", using: :btree
   end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

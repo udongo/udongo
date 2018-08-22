@@ -96,16 +96,17 @@ describe Asset do
       expect(asset).not_to be_deletable
     end
 
-    it :false do
+    it 'has an attachment' do
       asset = create(klass)
-      create(:image, asset: asset, imageable: create(:page))
+      create(:attachment, asset: asset)
       expect(asset).not_to be_deletable
     end
   end
 
   it '#responds_to?' do
     expect(build(klass)).to respond_to(
-      :image?, :image, :images, :actual_filename, :deletable?, :content_pictures
+      :image?, :image, :images, :actual_filename, :deletable?,
+      :content_pictures, :attachments
     )
   end
 end

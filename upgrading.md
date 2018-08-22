@@ -1,4 +1,10 @@
 # Upgrade guide
+## From 7.5 to 7.6
+### Attachment model
+A new model ```Attachment``` has been added. If you have a model with this name,
+you need to rename it or get rid of it.
+
+
 ## From 7.4 to 7.5
 ### Content picture background image
 It's now possible to mark an image as a background image. To use this you need

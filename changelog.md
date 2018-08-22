@@ -1,3 +1,9 @@
+7.6.2 - 2018-08-22
+--
+* Bugfix: models that include the ```Attachable``` concern should respond to
+  ```#attachments``` and not ```#attachable```.
+
+
 7.6.1 - 2018-08-22
 --
 * Fix typo.

@@ -5,6 +5,6 @@ shared_examples_for :attachable do
   let(:klass) { model.to_s.underscore.to_sym }
 
   it '#respond_to?' do
-    expect(model.new).to respond_to(:attachable)
+    expect(model.new).to respond_to(:attachments)
   end
 end

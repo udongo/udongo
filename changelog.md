@@ -1,3 +1,8 @@
+7.6.1 - 2018-08-22
+--
+* Fix typo.
+
+
 7.6.0 - 2018-08-22
 --
 * Add the 'Attachment' model that makes it easier to link your own models to

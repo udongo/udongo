@@ -10,7 +10,11 @@ class Backend::AssetsController < Backend::BaseController
   end
 
   def show
-    redirect_to @model.filename.url
+    send_data(
+      File.open(@model.filename.path).read,
+      filename: @model.read_attribute(:filename),
+      type: @model.content_type
+    )
   end
 
   def new

@@ -1,4 +1,4 @@
-7.6.0 - xxxx-xx-xx
+7.6.0 - 2018-08-22
 --
 * Add the 'Attachment' model that makes it easier to link your own models to
   assets from the media module.

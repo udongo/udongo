@@ -11,9 +11,9 @@ class CreateAttachments < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :attachments, [:attachable_type, :attachable_id]
-    add_index :attachments, :position
-    add_index :attachments, :visible
-    add_index :attachments, :locale
+    add_index :attachments, [:attachable_type, :attachable_id], name: 'attachable_idx'
+    add_index :attachments, :position, name: 'attachable_position_idx'
+    add_index :attachments, :visible, name: 'attachable_visible_idx'
+    add_index :attachments, :locale, name: 'attachable_locale_idx'
   end
 end

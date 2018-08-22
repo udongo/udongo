@@ -183,7 +183,7 @@ nl:
         deleted: De lijst met gebruikte zoektermen werd gewist
         destroy_all: Verwijder alle gebruikte zoektermen
       search_synonyms:
-        create: Maak zoeksyniem aan op basis van deze term
+        create: Maak zoeksynoniem aan op basis van deze term
       seo: SEO
       something_went_wrong: Er liep iets fout!
       status_codes:

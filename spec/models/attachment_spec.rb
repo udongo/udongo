@@ -7,6 +7,6 @@ describe Attachment do
   it_behaves_like :sortable
 
   it '#responds_to?' do
-    expect(build(klass)).to respond_to(:asset)
+    expect(build(klass)).to respond_to(:asset, :attachable)
   end
 end

@@ -3,4 +3,5 @@ class Attachment < ApplicationRecord
   include Concerns::Visible
 
   belongs_to :asset
+  belongs_to :attachable, polymorphic: true
 end

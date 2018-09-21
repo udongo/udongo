@@ -1,6 +1,7 @@
 7.7.0 - xxxx-xx-xx
 --
 * Upgrade Rails from 5.0.1 to 5.0.7.
+* Upgrade Rails from 5.0.7 to 5.1.6.
 
 
 7.6.2 - 2018-08-22

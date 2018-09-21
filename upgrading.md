@@ -1,4 +1,10 @@
 # Upgrade guide
+## From 7.6 to 7.7
+### Asset
+You can now use the ```Asset#extension``` method instead of trying to determine
+the extension yourself.
+
+
 ## From 7.5 to 7.6
 ### Attachment model
 A new model ```Attachment``` has been added. If you have a model with this name,

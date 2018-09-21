@@ -25,6 +25,10 @@ class Asset < ApplicationRecord
     read_attribute(:filename)
   end
 
+  def extension
+    actual_filename.split('.').last.downcase
+  end
+
   def deletable?
     images.empty? && content_pictures.empty? && attachments.empty?
   end

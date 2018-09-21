@@ -79,6 +79,12 @@ describe Asset do
     expect(asset.actual_filename).to eq 'foo.pdf'
   end
 
+  it '#extension' do
+    asset = create(klass)
+    asset.write_attribute :filename, 'foo.pdf'
+    expect(asset.extension).to eq 'pdf'
+  end
+
   describe '#deletable?' do
     it :true do
       expect(create(klass)).to be_deletable

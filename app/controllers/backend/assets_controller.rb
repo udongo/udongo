@@ -12,7 +12,7 @@ class Backend::AssetsController < Backend::BaseController
   def show
     send_data(
       File.open(@model.filename.path).read,
-      filename: @model.read_attribute(:filename),
+      filename: @model.actual_filename,
       type: @model.content_type
     )
   end

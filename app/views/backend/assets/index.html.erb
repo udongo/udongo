@@ -29,7 +29,7 @@
               <%= link_to icon(:download, t('b.download')), backend_asset_path(a) %>
             <% end %>
           </td>
-          <td><%= a.actual_filename.split('.').last.upcase %></td>
+          <td><%= a.extension.upcase %></td>
           <td><%= number_to_human_size a.filesize %></td>
           <td><%= simple_format a.description %></td>
           <td>

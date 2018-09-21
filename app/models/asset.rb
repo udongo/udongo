@@ -26,7 +26,7 @@ class Asset < ApplicationRecord
   end
 
   def extension
-    actual_filename.split('.').last.downcase
+    actual_filename.to_s.split('.').last.downcase
   end
 
   def deletable?

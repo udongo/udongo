@@ -12,7 +12,7 @@ gemspec
 
 group :test do
   gem 'launchy', '~> 2.4.3'
-  gem 'database_cleaner', '~> 1.5.3'
+  gem 'database_cleaner', '~> 1.7.0'
   gem 'capybara', '~> 2.7.1'
   gem 'webmock', '~> 1.22.3'
 end

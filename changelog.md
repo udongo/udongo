@@ -1,6 +1,8 @@
 7.7.0 - xxxx-xx-xx
 --
 * Upgrade Rails from 5.0.1 to 5.0.7.
+* Don't assume every translatable field or even the flexible content
+  automatically needs to be searchable.
 
 
 7.6.2 - 2018-08-22

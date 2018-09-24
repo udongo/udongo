@@ -53,29 +53,6 @@ shared_examples_for :searchable do
           instance
         end
 
-        it 'creates search indices for every translation' do
-          instance = create_instance!
-          expect(instance.search_indices.find_by(locale: :nl, name: 'foo').value).to eq 'baz nl'
-          expect(instance.search_indices.find_by(locale: :fr, name: 'foo').value).to eq 'baz fr'
-          expect(instance.search_indices.find_by(locale: :en, name: 'foo').value).to eq 'baz en'
-        end
-
-        it 'saves existing search indices for every translation' do
-          instance = create_instance!
-
-          Udongo.config.i18n.app.locales.each do |l|
-            t = instance.translation(l.to_sym)
-            t.foo = "foobar #{l}"
-            t.bar = 'barfoo'
-          end
-
-          instance.save
-
-          expect(instance.search_indices.find_by(locale: :nl, name: 'foo').value).to eq 'foobar nl'
-          expect(instance.search_indices.find_by(locale: :fr, name: 'foo').value).to eq 'foobar fr'
-          expect(instance.search_indices.find_by(locale: :en, name: 'foo').value).to eq 'foobar en'
-        end
-
         it 'does not copy translatable fields that are not in searchable fields' do
           instance = create_instance!
           expect(instance.search_indices.find_by(locale: :nl, name: 'bar')).to be nil

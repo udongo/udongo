@@ -1,3 +1,9 @@
+7.7.1 - 2018-09-24
+--
+* Fixes issue with the searchable shared examples. They were still assuming the
+  old behaviour that had actual defaults.
+
+
 7.7.0 - 2018-08-24
 --
 * Upgrade Rails from 5.0.1 to 5.0.7.

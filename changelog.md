@@ -1,4 +1,4 @@
-7.7.0 - xxxx-xx-xx
+7.7.0 - 2018-08-24
 --
 * Upgrade Rails from 5.0.1 to 5.0.7.
 * Don't assume every translatable field or even the flexible content

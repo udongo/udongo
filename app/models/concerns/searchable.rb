@@ -51,9 +51,11 @@ module Concerns
         value = send(key)
         return if value.blank?
 
-        index = search_indices.find_or_create_by!(locale: Udongo.config.i18n.app.default_locale, name: key)
-        index.value = value
-        index.save!
+        Udongo.config.i18n.app.locales.each do |locale|
+          index = search_indices.find_or_create_by!(locale: locale, name: key)
+          index.value = value
+          index.save!
+        end
       end
 
       def save_translatable_search_index!(key)

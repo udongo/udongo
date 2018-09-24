@@ -4,6 +4,15 @@
 You can now use the ```Asset#extension``` method instead of trying to determine
 the extension yourself.
 
+### Searchable
+Before this version, if a model had flexible content and/or translatable fields
+they would all automatically be searchable. This default is now gone and you have
+to manually define which fields can be searched.
+
+If you want to make a column searchable that's on the model, we will now make
+sure the search index is saved for each app locale instead of only on the
+default.
+
 
 ## From 7.5 to 7.6
 ### Attachment model

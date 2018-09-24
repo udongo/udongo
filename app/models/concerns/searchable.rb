@@ -83,18 +83,7 @@ module Concerns
       end
 
       def searchable_fields_list
-        @searchable_fields_list ||= default_searchable_fields
-      end
-
-      def default_searchable_fields
-        result = []
-
-        if respond_to?(:translatable_fields_list)
-          translatable_fields_list.each { |f| result << f }
-        end
-
-        result << :flexible_content if new.respond_to?(:flexible_content?)
-        result
+        @searchable_fields_list ||= []
       end
     end
   end

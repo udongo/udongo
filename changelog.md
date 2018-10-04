@@ -1,3 +1,8 @@
+7.7.2 - 2018-10-04
+--
+* Fixes issue with blank search terms giving an unwanted AR exception.
+
+
 7.7.1 - 2018-09-24
 --
 * Fixes issue with the searchable shared examples. They were still assuming the

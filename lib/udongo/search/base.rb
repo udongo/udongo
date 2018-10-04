@@ -38,8 +38,6 @@ module Udongo::Search
     end
 
     def indices
-      return [] unless term.present?
-
       # Having the searchmodules sorted by weight returns indices in the
       # correct order.
       @indices ||= SearchModule.weighted.inject([]) do |stack, m|

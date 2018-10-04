@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Udongo::Search::Base do
   let(:klass) { described_class.to_s.underscore.to_sym }
-  let(:instance) { described_class.new('foo') }
+  subject { described_class.new('foo') }
 
   before(:each) do
     module Udongo::Search::ResultObjects
@@ -15,17 +15,17 @@ describe Udongo::Search::Base do
 
   describe '#class_exists?' do
     it 'true' do
-      expect(instance.class_exists?('Udongo::Search::ResultObjects::Frontend::Foo')).to be true
+      expect(subject.class_exists?('Udongo::Search::ResultObjects::Frontend::Foo')).to be true
     end
 
     it 'false' do
-      expect(instance.class_exists?('Udongo::Search::ResultObjects::Frontend::Bar')).to be false
+      expect(subject.class_exists?('Udongo::Search::ResultObjects::Frontend::Bar')).to be false
     end
   end
 
   describe '#indices' do
     it 'default' do
-      expect(instance.indices).to eq []
+      expect(subject.indices).to eq []
     end
 
     it 'term is an empty string' do
@@ -43,7 +43,7 @@ describe Udongo::Search::Base do
       d = create(:search_index, searchable_type: 'Foo', searchable_id: 8, value: 'foo')
       e = create(:search_index, searchable_type: 'Baz', searchable_id: 18, value: 'foo')
 
-      expect(instance.indices).to eq [a, b, e, c, d]
+      expect(subject.indices).to eq [a, b, e, c, d]
     end
 
     it 'returns results triggered by a SearchSynonym' do
@@ -57,8 +57,8 @@ describe Udongo::Search::Base do
       d = create(:search_index, searchable_type: 'Foo', searchable_id: 8, value: 'foo too')
       e = create(:search_index, searchable_type: 'Foo', searchable_id: 18, value: 'baz')
 
-      instance = described_class.new('bar')
-      expect(instance.indices).to eq [a, d]
+      subject = described_class.new('bar')
+      expect(subject.indices).to eq [a, d]
     end
   end
 
@@ -68,13 +68,13 @@ describe Udongo::Search::Base do
     end
 
     it 'index maps to Udongo::Search::ResultObject when a specific resource object was not found' do
-      allow(instance).to receive(:result_object_exists?) { false }
-      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Base)
+      allow(subject).to receive(:result_object_exists?) { false }
+      expect(subject.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Base)
     end
 
     it 'index maps to a specific ResultObjects resource class' do
-      allow(instance).to receive(:result_object_exists?) { true }
-      expect(instance.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Frontend::Foo)
+      allow(subject).to receive(:result_object_exists?) { true }
+      expect(subject.result_object(index)).to be_instance_of(Udongo::Search::ResultObjects::Frontend::Foo)
     end
   end
 
@@ -82,43 +82,43 @@ describe Udongo::Search::Base do
     it 'true' do
       # This gives true without more info because the class extends from
       # Udongo::Search::ResultObject
-      allow(instance).to receive(:result_object_exists?) { true }
-      expect(instance.result_object_exists?('Udongo::Search::ResultObjects::Foo')).to be true
+      allow(subject).to receive(:result_object_exists?) { true }
+      expect(subject.result_object_exists?('Udongo::Search::ResultObjects::Foo')).to be true
     end
 
     describe 'false' do
       it 'class does not exist' do
-        allow(instance).to receive(:class_exists?) { false }
-        expect(instance.result_object_exists?('')).to be false
+        allow(subject).to receive(:class_exists?) { false }
+        expect(subject.result_object_exists?('')).to be false
       end
 
       it 'class exists, no #build_html method defined' do
         class Udongo::Search::ResultObjects::Blub
         end
-        expect(instance.result_object_exists?('Udongo::Search::ResultObjects::Blub')).to be false
+        expect(subject.result_object_exists?('Udongo::Search::ResultObjects::Blub')).to be false
       end
     end
   end
 
   describe '#namespace' do
     it 'default' do
-      instance = described_class.new('foo')
-      expect(instance.namespace).to eq 'Frontend'
+      subject = described_class.new('foo')
+      expect(subject.namespace).to eq 'Frontend'
     end
 
     it 'backend' do
-      instance = described_class.new('foo', controller: Backend::SearchController.new)
-      expect(instance.namespace).to eq 'Backend'
+      subject = described_class.new('foo', controller: Backend::SearchController.new)
+      expect(subject.namespace).to eq 'Backend'
     end
 
     it 'uses override when passed in through the construct' do
-      instance = described_class.new('foo', controller: Backend::SearchController.new, namespace: 'Frontend')
-      expect(instance.namespace).to eq 'Frontend'
+      subject = described_class.new('foo', controller: Backend::SearchController.new, namespace: 'Frontend')
+      expect(subject.namespace).to eq 'Frontend'
     end
   end
 
   it '#responds_to?' do
-    expect(instance).to respond_to(
+    expect(subject).to respond_to(
       :indices
     )
   end

@@ -18,6 +18,10 @@ module Udongo::Search
         .take
     end
 
+    def valid?
+      @string.present?
+    end
+
     def value
       return synonym.term if synonym
       string

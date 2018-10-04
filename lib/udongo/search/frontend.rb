@@ -16,7 +16,9 @@ module Udongo::Search
     # If you return nil in the #url method of a result object, the item
     # will get filtered out of the search results.
     def search
-      ::SearchTerm.create!(locale: controller.locale, term: term.value) if term
+      return [] unless term.valid?
+
+      ::SearchTerm.create!(locale: controller.locale, term: term.value)
 
       indices.map do |index|
         result = result_object(index)

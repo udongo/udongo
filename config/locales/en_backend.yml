@@ -176,6 +176,10 @@ en:
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
       please_select_a_valid_image: Please select a valid image and try again.
+      redirects:
+        broken: The redirect from %{source} to %{destination} does not work.
+        title_tag: Test this redirect
+        works: The redirect from %{source} to %{destination} works.
       saved: '%{actor} was saved.'
       search_terms:
         deleted: The list with used search terms was cleared.

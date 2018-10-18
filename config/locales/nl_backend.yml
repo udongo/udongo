@@ -178,6 +178,10 @@ nl:
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
       please_select_a_valid_image: Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
+      redirects:
+        broken: De redirect van %{source} naar %{destination} werkt niet.
+        title_tag: Test deze redirect
+        works: De redirect van %{source} naar %{destination} werkt.
       saved: '%{actor} werd bewaard.'
       search_terms:
         deleted: De lijst met gebruikte zoektermen werd gewist

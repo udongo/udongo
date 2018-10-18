@@ -38,9 +38,17 @@ class Backend::RedirectsController < Backend::BaseController
 
   def test
     if @redirect.works?(base_url: request.base_url)
-      redirect_to backend_redirects_path, notice: 'tis in orde' # TODO: translation
+      notice = t('b.msg.redirects.works',
+                 source: @redirect.source_uri,
+                 destination: @redirect.destination_uri
+                )
+      redirect_to backend_redirects_path, notice: notice
     else
-      redirect_to backend_redirects_path, alert: 'tis kapot' # TODO: translation
+      alert = t('b.msg.redirects.broken',
+                 source: @redirect.source_uri,
+                 destination: @redirect.destination_uri
+                )
+      redirect_to backend_redirects_path, alert: alert
     end
   end
 

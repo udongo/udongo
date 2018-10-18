@@ -60,7 +60,11 @@ describe Redirect do
 
     it 'returns false when the curl response does not indicate a redirect' do
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
-        double(:response, last_effective_url: 'http://udongo.test/nl/foo')
+        raw_response = double(:response,
+                              status: '200 OK',
+                              last_effective_url: 'http://udongo.test/nl/foo'
+                             )
+        Udongo::Redirects::Response.new(raw_response)
       end
 
       expect(subject.works?(base_url: 'http://udongo.test')).to be false
@@ -68,7 +72,11 @@ describe Redirect do
 
     it 'returns true when the curl response indicates our redirect succeeded' do
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
-        double(:response, last_effective_url: 'http://udongo.test/nl/bar')
+        raw_response = double(:response,
+                              status: '200 OK',
+                              last_effective_url: 'http://udongo.test/nl/bar'
+                             )
+        Udongo::Redirects::Response.new(raw_response)
       end
 
       expect(subject.works?(base_url: 'http://udongo.test')).to be true
@@ -78,7 +86,25 @@ describe Redirect do
       create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bak')
 
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
-        double(:response, last_effective_url: 'http://udongo.test/nl/bak')
+        raw_response = double(:response,
+                              status: '200 OK',
+                              last_effective_url: 'http://udongo.test/nl/bak'
+                             )
+        Udongo::Redirects::Response.new(raw_response)
+      end
+
+      expect(subject.works?(base_url: 'http://udongo.test')).to be true
+    end
+
+    it 'filters out items after the hash (because Curb#last_effective_url does not return them)' do
+      create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bak#foo-bar-baz')
+
+      allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
+        raw_response = double(:response,
+                              status: '200 OK',
+                              last_effective_url: 'http://udongo.test/nl/bak'
+                             )
+        Udongo::Redirects::Response.new(raw_response)
       end
 
       expect(subject.works?(base_url: 'http://udongo.test')).to be true

@@ -21,6 +21,6 @@ class Redirect < ApplicationRecord
   def works?(base_url: Udongo.config.base.host)
     response = Udongo::Redirects::Test.new(self).perform!(base_url: base_url)
     return next_in_chain.works?(base_url: base_url) if next_in_chain.present?
-    (base_url + destination_uri) == response.last_effective_url
+    response.redirect_works?(base_url + destination_uri)
   end
 end

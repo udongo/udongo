@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'ckeditor', '4.1.6'
   s.add_dependency 'will_paginate', '~> 3.0', '>= 3.0.6'
   s.add_dependency 'virtus', '~> 1.0', '>= 1.0.5'
+  s.add_dependency 'curb', '~> 0.9', '>= 0.9.6'
 
   # Development dependencies
   s.add_development_dependency 'mysql2', '~> 0.3.20'

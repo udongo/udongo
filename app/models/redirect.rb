@@ -13,4 +13,9 @@ class Redirect < ApplicationRecord
     count = self.times_used.nil? ? 1 : times_used + 1
     update_attribute :times_used, count
   end
+
+  def works?(base_url: Udongo.config.base.host)
+    response = Udongo::Redirects::Test.new(self).perform!(base_url: base_url)
+    (base_url + destination_uri) == response.last_effective_url
+  end
 end

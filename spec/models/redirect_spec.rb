@@ -55,6 +55,25 @@ describe Redirect do
     end
   end
 
+  describe '#works?' do
+    subject { create(:redirect, source_uri: '/nl/foo', destination_uri: '/nl/bar') }
+
+    it 'returns false when the curl response does not indicate a redirect' do
+      allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
+        double(:response, last_effective_url: 'http://udongo.test/nl/foo')
+      end
+
+      expect(subject.works?(base_url: 'http://udongo.test')).to be false
+    end
+
+    it 'returns true when the curl response indicates our redirect succeeded' do
+      allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
+        double(:response, last_effective_url: 'http://udongo.test/nl/bar')
+      end
+      expect(subject.works?(base_url: 'http://udongo.test')).to be true
+    end
+  end
+
   it '.respond_to?' do
     expect(model).to respond_to(:disabled, :enabled)
   end

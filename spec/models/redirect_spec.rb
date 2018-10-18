@@ -70,7 +70,31 @@ describe Redirect do
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
         double(:response, last_effective_url: 'http://udongo.test/nl/bar')
       end
+
       expect(subject.works?(base_url: 'http://udongo.test')).to be true
+    end
+
+    it 'chains to the next redirect rule in order to determine a final result' do
+      create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bak')
+
+      allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
+        double(:response, last_effective_url: 'http://udongo.test/nl/bak')
+      end
+
+      expect(subject.works?(base_url: 'http://udongo.test')).to be true
+    end
+  end
+
+  describe '#next_in_chain' do
+    it 'returns nil when no redirect was found with the source of the current destination' do
+
+      expect(subject.next_in_chain).to eq nil
+    end
+
+    it 'returns a redirect record when one was found with the source of the current destination' do
+      subject.destination_uri = '/nl/bar'
+      redirect = create(:redirect, source_uri: subject.destination_uri)
+      expect(subject.next_in_chain).to eq redirect
     end
   end
 

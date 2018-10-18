@@ -23,7 +23,9 @@ Rails.application.routes.draw do
       collection { delete '/', action: 'destroy_all' }
     end
     resources :users
-    resources :redirects, except: :show
+    resources :redirects, except: :show do
+      member { post 'test' }
+    end
     resources :search_synonyms, except: :show
     resources :tags do
       concerns :translatable

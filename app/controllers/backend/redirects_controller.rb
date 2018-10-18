@@ -2,7 +2,7 @@ class Backend::RedirectsController < Backend::BaseController
   include Concerns::PaginationController
 
   before_action -> { breadcrumb.add t('b.redirects'), backend_redirects_path }
-  before_action :find_model, only: [:edit, :update, :destroy]
+  before_action :find_model, only: [:edit, :update, :destroy, :test]
 
   def index
     @search = Redirect.ransack params[:q]
@@ -33,6 +33,14 @@ class Backend::RedirectsController < Backend::BaseController
       redirect_to backend_redirects_path, notice: translate_notice(:edited, :redirect)
     else
       render :edit
+    end
+  end
+
+  def test
+    if @redirect.works?(base_url: request.base_url)
+      redirect_to backend_redirects_path, notice: 'tis in orde' # TODO: translation
+    else
+      redirect_to backend_redirects_path, alert: 'tis kapot' # TODO: translation
     end
   end
 

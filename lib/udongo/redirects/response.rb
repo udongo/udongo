@@ -4,16 +4,23 @@ module Udongo::Redirects
       @response = response
     end
 
+    def not_found?
+      @response.status == '404 Not Found'
+    end
+
     def ok?
       @response.status == '200 OK'
     end
 
     def redirect_works?(destination)
-      (destination.to_s.split('#').first == @response.last_effective_url) && ok?
+      (sanitize_destination(destination) == @response.last_effective_url) && ok?
     end
 
-    def not_found?
-      @response.status == '404 Not Found'
+    def sanitize_destination(destination)
+      destination.to_s
+                 .split('#').first
+                 .gsub('/?', '?')
+                 .chomp('/')
     end
   end
 end

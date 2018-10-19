@@ -56,9 +56,9 @@ describe Redirect do
   end
 
   describe '#works?' do
-    subject { create(:redirect, source_uri: '/nl/foo', destination_uri: '/nl/bar') }
-
     it 'returns false when the curl response does not indicate a redirect' do
+      subject = create(:redirect, source_uri: '/nl/foo', destination_uri: '/nl/bar')
+
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
         raw_response = double(:response,
                               status: '200 OK',
@@ -71,6 +71,8 @@ describe Redirect do
     end
 
     it 'returns true when the curl response indicates our redirect succeeded' do
+      subject = create(:redirect, source_uri: '/nl/foo', destination_uri: '/nl/bar')
+
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
         raw_response = double(:response,
                               status: '200 OK',
@@ -83,6 +85,7 @@ describe Redirect do
     end
 
     it 'chains to the next redirect rule in order to determine a final result' do
+      subject = create(:redirect, source_uri: '/nl/foo', destination_uri: '/nl/bar')
       create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bak')
 
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
@@ -97,7 +100,7 @@ describe Redirect do
     end
 
     it 'filters out items after the hash (because Curb#last_effective_url does not return them)' do
-      create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bak#foo-bar-baz')
+      subject = create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bak#foo-bar-baz')
 
       allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
         raw_response = double(:response,

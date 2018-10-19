@@ -38,8 +38,10 @@ class Backend::RedirectsController < Backend::BaseController
 
   def test
     if @redirect.works?(base_url: request.base_url)
+      @redirect.working!
       redirect_to backend_redirects_path, notice: test_notice(:works)
     else
+      @redirect.broken!
       redirect_to backend_redirects_path, alert: test_notice(:broken)
     end
   end

@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe Redirect do
-  let(:model) { described_class }
-  let(:klass) { model.to_s.underscore.to_sym }
+  let(:klass) { described_class.to_s.underscore.to_sym }
 
   describe 'validations' do
     describe 'presence' do
@@ -46,23 +45,23 @@ describe Redirect do
   describe 'scopes' do
     describe '.enabled' do
       it :default do
-        expect(model.enabled).to eq []
+        expect(described_class.enabled).to eq []
       end
 
       it :result do
         redirect = create(klass, disabled: false)
-        expect(model.enabled).to eq [redirect]
+        expect(described_class.enabled).to eq [redirect]
       end
     end
 
     describe '.disabled' do
       it :default do
-        expect(model.disabled).to eq []
+        expect(described_class.disabled).to eq []
       end
 
       it :result do
         redirect = create(klass, disabled: true)
-        expect(model.disabled).to eq [redirect]
+        expect(described_class.disabled).to eq [redirect]
       end
     end
   end
@@ -137,13 +136,5 @@ describe Redirect do
       redirect = create(:redirect, source_uri: subject.destination_uri)
       expect(subject.next_in_chain).to eq redirect
     end
-  end
-
-  it '.respond_to?' do
-    expect(model).to respond_to(:disabled, :enabled)
-  end
-
-  it '#respond_to?' do
-    expect(model.new).to respond_to(:enabled?, :used!)
   end
 end

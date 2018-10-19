@@ -8,8 +8,8 @@ class Redirect < ApplicationRecord
   before_validation do
     # Adding a leading slash at this point makes sure the uniqueness validation
     # keeps working.
-    self.source_uri = add_leading_slash(source_uri)
-    self.destination_uri = add_leading_slash(destination_uri)
+    self.source_uri = sanitize_slashes(source_uri)
+    self.destination_uri = sanitize_slashes(destination_uri)
   end
 
   def enabled?
@@ -33,7 +33,10 @@ class Redirect < ApplicationRecord
 
   private
 
-  def add_leading_slash(value)
-    value.to_s.gsub(/^(?!\/)/, '/') if value.present?
+  def sanitize_slashes(value)
+    return if value.blank?
+    value.gsub(/^(?!\/)/, '/')
+         .chomp('/')
+         .gsub('/?', '?').gsub('/#', '#')
   end
 end

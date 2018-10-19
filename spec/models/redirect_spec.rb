@@ -26,6 +26,20 @@ describe Redirect do
         it 'does not add a leading slash when it already has one' do
           expect(create(klass, source_uri: '/foo').source_uri).to eq '/foo'
         end
+
+        context 'when containing a trailing slash' do
+          it 'removes them' do
+            expect(create(klass, source_uri: 'foo/').source_uri).to eq '/foo'
+          end
+
+          it 'can handle GET params with a leading ?' do
+            expect(create(klass, source_uri: 'foo/?foo=bar').source_uri).to eq '/foo?foo=bar'
+          end
+
+          it 'can handle hashes' do
+            expect(create(klass, source_uri: 'foo/#search-results').source_uri).to eq '/foo#search-results'
+          end
+        end
       end
     end
   end

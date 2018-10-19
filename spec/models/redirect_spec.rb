@@ -17,6 +17,18 @@ describe Redirect do
         expect(build(klass, source_uri: 'FOo')).not_to be_valid
       end
     end
+
+    describe 'formatting' do
+      describe '#source_uri' do
+        it 'adds a leading slash when missing' do
+          expect(create(klass, source_uri: 'foo').source_uri).to eq '/foo'
+        end
+
+        it 'does not add a leading slash when it already has one' do
+          expect(create(klass, source_uri: '/foo').source_uri).to eq '/foo'
+        end
+      end
+    end
   end
 
   describe '#enabled?' do

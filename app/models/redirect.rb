@@ -5,6 +5,12 @@ class Redirect < ApplicationRecord
   validates :source_uri, :destination_uri, :status_code, presence: true
   validates :source_uri, uniqueness: { case_sensitive: false }
 
+  before_validation do
+    # Adding a leading slash at this point makes sure the uniqueness validation
+    # keeps working.
+    self.source_uri = source_uri.gsub(/^(?!\/)/, '/') if source_uri.present?
+  end
+
   def enabled?
     !disabled?
   end

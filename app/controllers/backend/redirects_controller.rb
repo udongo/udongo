@@ -38,17 +38,9 @@ class Backend::RedirectsController < Backend::BaseController
 
   def test
     if @redirect.works?(base_url: request.base_url)
-      notice = t('b.msg.redirects.works',
-                 source: @redirect.source_uri,
-                 destination: @redirect.destination_uri
-                )
-      redirect_to backend_redirects_path, notice: notice
+      redirect_to backend_redirects_path, notice: test_notice(:works)
     else
-      alert = t('b.msg.redirects.broken',
-                 source: @redirect.source_uri,
-                 destination: @redirect.destination_uri
-                )
-      redirect_to backend_redirects_path, alert: alert
+      redirect_to backend_redirects_path, alert: test_notice(:broken)
     end
   end
 
@@ -62,5 +54,12 @@ class Backend::RedirectsController < Backend::BaseController
 
   def find_model
     @redirect = Redirect.find(params[:id]).decorate
+  end
+
+  def test_notice(key)
+    t("b.msg.redirects.#{key}",
+      source: @redirect.source_uri,
+      destination: @redirect.destination_uri
+     )
   end
 end

@@ -1,4 +1,6 @@
 class Redirect < ApplicationRecord
+  scope :working, -> { where(working: true) }
+  scope :broken, -> { where('working IS NULL or working = 0') }
   scope :disabled, -> { where(disabled: true) }
   scope :enabled, -> { where('disabled IS NULL or disabled = 0') }
 
@@ -10,6 +12,14 @@ class Redirect < ApplicationRecord
     # keeps working.
     self.source_uri = sanitize_uri(source_uri)
     self.destination_uri = sanitize_uri(destination_uri)
+  end
+
+  def broken?
+    !working?
+  end
+
+  def broken!
+    update_attribute(:working, false)
   end
 
   def enabled?
@@ -29,6 +39,10 @@ class Redirect < ApplicationRecord
     response = Udongo::Redirects::Test.new(self).perform!(base_url: base_url)
     return next_in_chain.works?(base_url: base_url) if next_in_chain.present?
     response.redirect_works?(base_url + destination_uri)
+  end
+
+  def working!
+    update_attribute(:working, true)
   end
 
   private

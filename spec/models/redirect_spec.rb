@@ -82,6 +82,28 @@ describe Redirect do
         expect(described_class.disabled).to eq [redirect]
       end
     end
+
+    describe '.broken' do
+      it :default do
+        expect(described_class.broken).to eq []
+      end
+
+      it :result do
+        redirect = create(klass, working: false)
+        expect(described_class.broken).to eq [redirect]
+      end
+    end
+
+    describe '.working' do
+      it :default do
+        expect(described_class.working).to eq []
+      end
+
+      it :result do
+        redirect = create(klass, working: true)
+        expect(described_class.working).to eq [redirect]
+      end
+    end
   end
 
   describe '#works?' do
@@ -154,5 +176,17 @@ describe Redirect do
       redirect = create(:redirect, source_uri: subject.destination_uri)
       expect(subject.next_in_chain).to eq redirect
     end
+  end
+
+  it '#working!' do
+    subject = create(klass, working: false)
+    subject.working!
+    expect(subject.working?).to be true
+  end
+
+  it '#broken!' do
+    subject = create(klass, working: true)
+    subject.broken!
+    expect(subject.broken?).to be true
   end
 end

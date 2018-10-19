@@ -19,24 +19,28 @@ describe Redirect do
 
     describe 'formatting' do
       describe '#source_uri' do
-        it 'adds a leading slash when missing' do
-          expect(create(klass, source_uri: 'foo').source_uri).to eq '/foo'
+        it 'strips leading/trailing whitespace' do
+          expect(create(klass, source_uri: '  foo      ').source_uri).to eq '/foo'
         end
 
-        it 'does not add a leading slash when it already has one' do
-          expect(create(klass, source_uri: '/foo').source_uri).to eq '/foo'
-        end
+        context 'when handling leading/trailing slashes' do
+          it 'adds a leading slash when missing' do
+            expect(create(klass, source_uri: 'foo').source_uri).to eq '/foo'
+          end
 
-        context 'when containing a trailing slash' do
-          it 'removes them' do
+          it 'does not add a leading slash when it already has one' do
+            expect(create(klass, source_uri: '/foo').source_uri).to eq '/foo'
+          end
+
+          it 'strips basic trailing slashes' do
             expect(create(klass, source_uri: 'foo/').source_uri).to eq '/foo'
           end
 
-          it 'can handle GET params with a leading ?' do
+          it 'strips trailing slashes in conjunction with GET params and a trailing ?' do
             expect(create(klass, source_uri: 'foo/?foo=bar').source_uri).to eq '/foo?foo=bar'
           end
 
-          it 'can handle hashes' do
+          it 'strips trailing slashes in conjunction with a trailing #' do
             expect(create(klass, source_uri: 'foo/#search-results').source_uri).to eq '/foo#search-results'
           end
         end

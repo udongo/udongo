@@ -1,3 +1,10 @@
+7.8.0 - 2018-10-26
+--
+* Fixes issue with blank search terms giving an unwanted AR exception.
+* Redesigned the Redirects module, with a way to test and resolve redirects.
+* Adjusted ```LinkHelper#link_to_{edit,destroy}``` to use named parameters.
+
+
 7.7.2 - 2018-10-04
 --
 * Fixes issue with blank search terms giving an unwanted AR exception.

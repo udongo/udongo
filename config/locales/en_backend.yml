@@ -73,6 +73,7 @@ en:
     recipient: Recipient
     redirect: Redirect
     redirects: Redirects
+    reset_form: Reset form
     save: Save
     search: Search
     search_term: Search term

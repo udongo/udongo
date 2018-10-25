@@ -182,6 +182,10 @@ nl:
       redirects:
         broken: De redirect van %{source} naar %{destination} werkt niet.
         title_tag: Test deze redirect
+        tooltips:
+          untested: Deze redirect is nog niet getest.
+          broken: Deze redirect werkt niet.
+          working: Deze redirect werkt.
         works: De redirect van %{source} naar %{destination} werkt.
       saved: '%{actor} werd bewaard.'
       search_terms:

@@ -180,6 +180,10 @@ en:
       redirects:
         broken: The redirect from %{source} to %{destination} does not work.
         title_tag: Test this redirect
+        tooltips:
+          untested: This redirect is untested.
+          broken: This redirect does not work.
+          working: This redirect works.
         works: The redirect from %{source} to %{destination} works.
       saved: '%{actor} was saved.'
       search_terms:

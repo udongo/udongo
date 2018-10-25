@@ -25,7 +25,7 @@
 
     <tbody>
       <% @redirects.each do |r| %>
-        <tr data-id="<%= r.id %>">
+        <tr>
           <%= render 'backend/redirects/row_columns', r: r.decorate, search_params: search_params %>
         </tr>
       <% end %>

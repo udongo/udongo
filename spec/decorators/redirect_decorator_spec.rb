@@ -19,6 +19,22 @@ describe RedirectDecorator do
     end
   end
 
+  describe '#tooltip_identifier' do
+    it 'returns :working when the redirect works' do
+      subject.working = true
+      expect(subject.tooltip_identifier).to eq :working
+    end
+
+    it 'returns :broken when the redirect does not work' do
+      subject.working = false
+      expect(subject.tooltip_identifier).to eq :broken
+    end
+
+    it 'returns :untested when redirect#working is nil' do
+      expect(subject.tooltip_identifier).to eq :untested
+    end
+  end
+
   it '#status_badge' do
     expect(subject.status_badge).to be_instance_of Udongo::Redirects::StatusBadge
   end

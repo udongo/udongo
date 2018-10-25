@@ -6,7 +6,8 @@ class Backend::RedirectsController < Backend::BaseController
 
   def index
     @search = Redirect.ransack params[:q]
-    @redirects = paginate(@search.result(distinct: true).order('times_used DESC'))
+    results = @search.result(distinct: true).order('times_used DESC')
+    @redirects = paginate(results)
   end
 
   def new
@@ -38,10 +39,6 @@ class Backend::RedirectsController < Backend::BaseController
     else
       render :edit
     end
-  end
-
-  def show
-
   end
 
   def test

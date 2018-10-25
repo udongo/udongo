@@ -6,7 +6,12 @@
           <tr data-toggle="tooltip" title="<%= r.tooltip_text %>">
             <td>
               <strong>
-                <%= r.status_badge.icon %>
+                <span class="card-icon">
+                  <%= r.status_badge.icon %>
+                </span>
+                <span class="spinner-icon" hidden>
+                  <%= spinner_icon %>
+                </span>
                 <%= r.source_uri %> &rarr; <%= r.destination_uri %>
               </strong>
             </td>

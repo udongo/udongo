@@ -2,16 +2,25 @@ class Backend::Redirects::TestController < Backend::BaseController
   before_action :find_model
 
   def detail
-    # TODO:
+    # TODO: Provide another redirect test that does notn follow through to
+    # the location
   end
 
   def simple
     if @redirect.works?(base_url: request.base_url)
       @redirect.working!
-      redirect_to :back, notice: test_notice(:works)
+
+      respond_to do |format|
+        format.js
+        format.html { redirect_to :back, notice: test_notice(:works) }
+      end
     else
       @redirect.broken!
-      redirect_to :back, alert: test_notice(:broken)
+
+      respond_to do |format|
+        format.js
+        format.html { redirect_to :back, notice: test_notice(:broken) }
+      end
     end
   end
 

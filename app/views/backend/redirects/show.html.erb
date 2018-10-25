@@ -1,9 +1,19 @@
+<% javascript 'backend/redirects' %>
+
 <% breadcrumb.add @redirect.summary %>
 <%= render 'backend/breadcrumbs' %>
 
+<p>
+  <%= link_to '#', class: 'btn btn-primary', id: 'test-redirects' do %>
+    <%= icon :sitemap %>
+    Test dit redirect traject
+  <% end %>
+</p>
 
 <% if @redirect.progression.any? %>
   <% @redirect.progression.each do |r| %>
-    <%= render 'backend/redirects/card', r: r.decorate %>
+    <article class="redirect" data-id="<%= r.id %>" data-path="<%= simple_backend_test_redirect_path(r) %>">
+      <%= render 'backend/redirects/card', r: r.decorate %>
+    </article>
   <% end %>
 <% end %>

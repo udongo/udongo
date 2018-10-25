@@ -1,6 +1,9 @@
-nl:
+en:
   g:
     collections:
+      working:
+        'true': Working
+        'false': Broken
       form_field_type:
         collection: Collection
         email: E-mailaddress

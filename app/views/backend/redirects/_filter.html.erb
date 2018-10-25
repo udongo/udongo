@@ -2,12 +2,16 @@
   <div class="card-block">
     <%= search_form_for [:backend, @search] do |f| %>
       <div class="row">
-        <div class="col-md-6 form-group">
+        <div class="col-md-4 form-group">
           <%= f.search_field :source_uri_cont, placeholder: t('b.source'), class: 'form-control' %>
         </div>
 
-        <div class="col-md-6 form-group">
+        <div class="col-md-4 form-group">
           <%= f.search_field :destination_uri_cont, placeholder: t('b.destination'), class: 'form-control' %>
+        </div>
+
+        <div class="col-md-4 form-group">
+          <%= f.select :working_eq, options_for_collection(:working, [true, false]), { include_blank: t('b.status') }, class: 'form-control'  %>
         </div>
       </div>
 

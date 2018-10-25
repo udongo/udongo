@@ -1,6 +1,9 @@
 nl:
   g:
     collections:
+      working:
+        'true': Werkend
+        'false': Stuk
       form_field_type:
         collection: Collectie
         email: E-mailadres

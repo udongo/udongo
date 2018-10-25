@@ -13,7 +13,7 @@ module LinkHelper
   def link_to_edit_with_label(value, locale)
     link_to(
       object_label(value, locale),
-      path_from_string_or_object(value, 'edit_'),
+      path_from_string_or_object(value, prefix: 'edit_'),
       title: t('b.edit')
     )
   end

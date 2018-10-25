@@ -15,7 +15,7 @@ module Udongo::Redirects
     end
 
     def html
-      @view.content_tag(:span, @redirect.status_code, class: "badge badge-#{css_class}").html_safe
+      @view.content_tag(:span, @redirect.status_code, class: "badge badge-#{css_class}")
     end
   end
 end

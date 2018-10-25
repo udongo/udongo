@@ -23,4 +23,24 @@ describe Udongo::Redirects::StatusBadge do
     expect(subject.view).to receive(:content_tag).with(:span, 400, class: 'badge badge-info')
     subject.html
   end
+
+  describe '#icon' do
+    it 'returns an OK icon when the redirect is working' do
+      subject = described_class.new(view, double(:redirect, working: 1, working?: true, broken?: false))
+      expect(subject.view).to receive(:icon).with(:check_circle)
+      subject.icon
+    end
+
+    it 'returns an OK icon when the redirect is working' do
+      subject = described_class.new(view, double(:redirect, working: 0, working?: false, broken?: true))
+      expect(subject.view).to receive(:icon).with(:times_circle)
+      subject.icon
+    end
+
+    it 'returns nothing when the redirect is untested' do
+      subject = described_class.new(view, double(:redirect, working: nil, working?: false, broken?: true))
+      expect(subject.view).to receive(:icon).with(:question_circle)
+      subject.icon
+    end
+  end
 end

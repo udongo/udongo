@@ -1,0 +1,33 @@
+<div class="card p-3 alert-<%= r.status_badge.css_class %>">
+  <div class="card-body">
+    <div class="card-text">
+      <table style="width: 100%;">
+        <tbody>
+          <tr data-toggle="tooltip" title="<%= r.tooltip_text %>">
+            <td>
+              <strong>
+                <%= r.status_badge.icon %>
+                <%= r.source_uri %> &rarr; <%= r.destination_uri %>
+              </strong>
+            </td>
+            <td class="text-right">
+              <ul class="list-unstyled m-0">
+                <li>
+                  <%= link_to backend_redirect_path(r), class: 'btn btn-secondary btn-sm', method: 'DELETE', data: { confirm: t('b.msg.confirm') } do %>
+                    <%= icon(:trash) %>
+                    <%= t('b.delete') %>
+                  <% end %>
+
+                  <%= link_to edit_backend_redirect_path(r), class: 'btn btn-primary btn-sm' do %>
+                    <%= icon(:edit) %>
+                    <%= t('b.edit') %>
+                  <% end %>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

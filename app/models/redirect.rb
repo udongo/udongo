@@ -35,6 +35,15 @@ class Redirect < ApplicationRecord
     update_attribute :times_used, count
   end
 
+  # This builds a list of all redirects following the current one in its
+  # progression path. Includes the current redirect as the first item.
+  def progression(stack = [])
+    stack << self
+    return next_in_chain.progression(stack) if next_in_chain.present?
+    stack
+  end
+
+  # Tests the redirect including any redirects following this one.
   def works?(base_url: Udongo.config.base.host)
     response = Udongo::Redirects::Test.new(self).perform!(base_url: base_url)
     return next_in_chain.works?(base_url: base_url) if next_in_chain.present?

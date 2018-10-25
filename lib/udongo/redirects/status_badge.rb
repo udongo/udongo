@@ -14,8 +14,20 @@ module Udongo::Redirects
       'danger'
     end
 
-    def html
-      @view.content_tag(:span, @redirect.status_code, class: "badge badge-#{css_class}")
+    def html(attributes = {})
+      attributes.reverse_merge!(class: "badge badge-#{css_class}")
+      @view.content_tag(:span, @redirect.status_code, attributes)
+    end
+
+    def icon
+      return '' unless icon_identifier
+      @view.icon(icon_identifier)
+    end
+
+    def icon_identifier
+      return :question_circle if @redirect.working.nil?
+      return :check_circle if @redirect.working?
+      :times_circle
     end
   end
 end

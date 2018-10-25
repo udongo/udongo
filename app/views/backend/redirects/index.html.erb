@@ -10,7 +10,13 @@
     <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.source' %></th>
-        <th><%= t 'b.destination' %></th>
+        <th><%= t 'b.destination' %>
+        (
+          <span class="badge badge-success">Werkend</span>
+          <span class="badge badge-danger">Stuk</span>
+          <span class="badge badge-info">Ongetest</span>
+        )
+      </th>
         <th><%= t 'b.active' %></th>
         <th><%= t 'b.used' %></th>
         <th>&nbsp;</th>

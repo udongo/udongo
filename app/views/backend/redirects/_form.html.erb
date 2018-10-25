@@ -36,7 +36,9 @@
 
   <div class="form-actions">
     <button type="submit" class="btn btn-primary"><%= t 'b.save' %></button>
-    <%= link_to t('b.delete'), backend_redirect_path(model), class: 'btn btn-secondary', method: 'DELETE', data: { confirm: t('b.msg.confirm') } %>
+    <% if model.id %>
+      <%= link_to t('b.delete'), backend_redirect_path(model), class: 'btn btn-secondary', method: 'DELETE', data: { confirm: t('b.msg.confirm') } %>
+    <% end %>
     <%= link_to t('b.cancel'), backend_redirects_path, class: 'btn btn-link' %>
   </div>
 <% end %>

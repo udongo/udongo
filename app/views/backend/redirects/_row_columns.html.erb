@@ -1,5 +1,5 @@
 <td><%= r.source_uri %></td>
-<td><%= r.status_badge %> <%= r.destination_uri %></td>
+<td><%= r.status_badge.html %> <%= r.destination_uri %></td>
 <td><%= t r.enabled?.to_s %></td>
 <td><%= r.times_used.to_i %></td>
 <td class="text-right">

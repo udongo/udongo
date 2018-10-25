@@ -12,14 +12,14 @@ describe RedirectDecorator do
   end
 
   it '#summary' do
-    redirect = create(:redirect, source_uri: 'foo', destination_uri: 'bar').decorate
+    subject = create(:redirect, source_uri: 'foo', destination_uri: 'bar').decorate
 
     I18n.with_locale :nl do
-      expect(redirect.summary).to eq 'Van /foo naar /bar'
+      expect(subject.summary).to eq 'Van /foo naar /bar'
     end
   end
 
-  it '#respond_to?' do
-    expect(subject).to respond_to(:status_code_collection, :summary)
+  it '#status_badge' do
+    expect(subject.status_badge).to be_instance_of Udongo::Redirects::StatusBadge
   end
 end

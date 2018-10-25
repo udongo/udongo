@@ -2,7 +2,7 @@ class RedirectDecorator < ApplicationDecorator
   delegate_all
 
   def status_badge
-    Udongo::Redirects::StatusBadge.new(h, object).html
+    @status_badge ||= Udongo::Redirects::StatusBadge.new(h, object)
   end
 
   def status_code_collection

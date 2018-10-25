@@ -2,7 +2,7 @@
 <%= render 'backend/breadcrumbs' %>
 
 
-<% if @redirect.progression.many? %>
+<% if @redirect.progression.any? %>
   <% @redirect.progression.each do |r| %>
     <%= render 'backend/redirects/card', r: r.decorate %>
   <% end %>

@@ -24,7 +24,11 @@ Rails.application.routes.draw do
     end
     resources :users
     resources :redirects do
-      member { post 'test' }
+      member do
+        scope 'test', controller: 'redirects/test', as: :test do
+          post 'simple', 'detail'
+        end
+      end
     end
     resources :search_synonyms, except: :show
     resources :tags do

@@ -9,16 +9,6 @@ describe Udongo::Redirects::Response do
     end
   end
 
-  describe '#not_found?' do
-    it 'returns true when response result equals "200 OK"' do
-      expect(described_class.new(double(:response, status: '404 Not Found')).not_found?).to be true
-    end
-
-    it 'returns false when response result does not equal "200 OK"' do
-      expect(described_class.new(double(:response, status: '200 OK')).not_found?).to be false
-    end
-  end
-
   describe '#redirect_works?' do
     context 'when the status code equals 200 OK' do
       it 'returns true when the sanitized destination string matches the endpoint' do

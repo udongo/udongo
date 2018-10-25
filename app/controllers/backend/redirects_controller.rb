@@ -7,7 +7,7 @@ class Backend::RedirectsController < Backend::BaseController
   def index
     @search = Redirect.ransack params[:q]
     results = @search.result(distinct: true).order('times_used DESC')
-    @redirects = paginate(results)
+    @redirects = paginate(results).decorate
   end
 
   def new
@@ -41,16 +41,6 @@ class Backend::RedirectsController < Backend::BaseController
     end
   end
 
-  def test
-    if @redirect.works?(base_url: request.base_url)
-      @redirect.working!
-      redirect_to :back, notice: test_notice(:works)
-    else
-      @redirect.broken!
-      redirect_to :back, alert: test_notice(:broken)
-    end
-  end
-
   def search_params
     hash = { q: nil }
     hash[:q] = params[:q].to_hash if params[:q]
@@ -68,13 +58,6 @@ class Backend::RedirectsController < Backend::BaseController
   end
 
   def find_model
-    @redirect = Redirect.find(params[:id]).decorate
-  end
-
-  def test_notice(key)
-    t("b.msg.redirects.#{key}",
-      source: @redirect.source_uri,
-      destination: @redirect.destination_uri
-     )
+    @redirect ||= Redirect.find(params[:id]).decorate
   end
 end

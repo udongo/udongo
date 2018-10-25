@@ -4,10 +4,6 @@ module Udongo::Redirects
       @response = response
     end
 
-    def not_found?
-      @response.status == '404 Not Found'
-    end
-
     def ok?
       @response.status == '200 OK'
     end

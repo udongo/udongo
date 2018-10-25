@@ -26,7 +26,18 @@
     <tbody>
       <% @redirects.each do |r| %>
         <tr>
-          <%= render 'backend/redirects/row_columns', r: r.decorate, search_params: search_params %>
+          <td><%= r.source_uri %></td>
+          <td>
+            <%= r.status_badge.html(data: { toggle: 'tooltip' }, title: r.tooltip_text) %>
+            <%= r.destination_uri %>
+          </td>
+          <td><%= t r.enabled?.to_s %></td>
+          <td><%= r.times_used.to_i %></td>
+          <td class="text-right">
+            <%= link_to icon(:wrench), simple_backend_test_redirect_path(r, request.query_parameters), title: t('b.msg.redirects.title_tag'), method: 'POST' %>
+            <%= link_to_edit [:backend, r], request.query_parameters %>
+            <%= link_to_delete [:backend, r], request.query_parameters %>
+          </td>
         </tr>
       <% end %>
     </tbody>

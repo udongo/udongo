@@ -25,7 +25,7 @@ class Backend::RedirectsController < Backend::BaseController
 
   def destroy
     @redirect.destroy
-    redirect_to backend_redirects_path, notice: translate_notice(:deleted, :redirect)
+    redirect_to :back, notice: translate_notice(:deleted, :redirect)
   end
 
   def update

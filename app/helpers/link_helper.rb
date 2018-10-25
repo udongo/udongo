@@ -33,21 +33,21 @@ module LinkHelper
     link_to_edit(url)
   end
 
-  def link_to_delete(value)
+  def link_to_delete(value, parameters = {})
     link_to(
       icon(:trash),
-      path_from_string_or_object(value),
+      path_from_string_or_object(value, parameters: parameters),
       method: :delete,
       data: { confirm: t('b.msg.confirm') },
       title: t('b.delete')
     )
   end
 
-  def path_from_string_or_object(value, prefix = nil)
+  def path_from_string_or_object(value, prefix: nil, parameters: {})
     return value if value.is_a?(String)
 
     str = "#{prefix}#{Udongo::ObjectPath.find(value)}"
-    send(str, *Udongo::ObjectPath.remove_symbols(value))
+    send(str, *Udongo::ObjectPath.remove_symbols(value), parameters)
   end
 
   def object_label(value, locale)

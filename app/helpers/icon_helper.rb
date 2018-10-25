@@ -17,4 +17,8 @@ module IconHelper
     markup = content_tag :i, nil, options
     lbl ? "#{markup}&nbsp;#{lbl}".html_safe : markup
   end
+
+  def spinner_icon
+    icon :spinner, '', class: 'fa-spin'
+  end
 end

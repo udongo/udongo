@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :redirects do
       member do
         scope 'test', controller: 'redirects/test', as: :test do
-          post 'simple', 'detail'
+          post 'resolve'
         end
       end
     end

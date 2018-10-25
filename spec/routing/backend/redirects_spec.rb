@@ -17,12 +17,8 @@ describe 'redirect routes' do
     expect(post: backend_redirects_path).to route_to('backend/redirects#create')
   end
 
-  it 'POST /backend/redirects/test/simple' do
-    expect(post: simple_backend_test_redirect_path(1)).to route_to('backend/redirects/test#simple', id: '1')
-  end
-
-  it 'POST /backend/redirects/test/detail' do
-    expect(post: detail_backend_test_redirect_path(1)).to route_to('backend/redirects/test#detail', id: '1')
+  it 'POST /backend/redirects/test/resolve' do
+    expect(post: resolve_backend_test_redirect_path(1)).to route_to('backend/redirects/test#resolve', id: '1')
   end
 
   it 'GET /backend/redirects/1/edit' do

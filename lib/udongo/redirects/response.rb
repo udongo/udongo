@@ -4,12 +4,18 @@ module Udongo::Redirects
       @response = response
     end
 
-    def ok?
-      @response.status == '200 OK'
+    def endpoint_matches?(destination)
+      sanitize_destination(destination) == headers['Location']
     end
 
-    def redirect_works?(destination)
-      (sanitize_destination(destination) == @response.last_effective_url) && ok?
+    # Apparently Curb does not provide parsed headers... A bit sad.
+    def headers
+      list = @response.header_str.split(/[\r\n]+/).map(&:strip)
+      Hash[list.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
+    end
+
+    def raw
+      @response
     end
 
     def sanitize_destination(destination)
@@ -17,6 +23,10 @@ module Udongo::Redirects
                  .split('#').first
                  .gsub('/?', '?')
                  .chomp('/')
+    end
+
+    def success?
+      ['200 OK', '301 Moved Permanently'].include?(@response.status)
     end
   end
 end

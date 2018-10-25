@@ -180,6 +180,8 @@ nl:
         invisible: Deze pagina is niet zichtbaar op de website.
       please_select_a_valid_image: Gelieve een geldige afbeelding te selecteren en opnieuw te proberen.
       redirects:
+        test: Test deze redirects
+        test_header: Alle redirects vertrekkende van %{source}
         broken: De redirect van %{source} naar %{destination} werkt niet.
         title_tag: Test deze redirect
         tooltips:

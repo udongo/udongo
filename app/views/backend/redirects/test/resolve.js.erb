@@ -1,2 +1,3 @@
 var container = $('[data-id=<%= @redirect.id %>]');
 container.html('<%= j render('backend/redirects/card', r: @redirect) %>');
+if(redirects.containers.length == 0) redirects.prepare_containers();

@@ -1,0 +1,12 @@
+nl:
+  g:
+    collections:
+      form_field_type:
+        collection: Collection
+        email: E-mailaddress
+        integer: Number
+        string: String
+        tel: Telephone
+        text: Text
+
+    type: Type

@@ -11,8 +11,7 @@
       <tr>
         <th><%= t 'b.source' %></th>
         <th><%= t 'b.destination' %></th>
-        <th><%= t 'b.status_code' %></th>
-        <th><%= t 'b.enabled' %></th>
+        <th><%= t 'b.active' %></th>
         <th><%= t 'b.used' %></th>
         <th>&nbsp;</th>
       </tr>
@@ -20,17 +19,8 @@
 
     <tbody>
       <% @redirects.each do |r| %>
-        <tr class="<%= 'alert-danger' if r.broken? %>">
-          <td><%= r.source_uri %></td>
-          <td><%= r.destination_uri %></td>
-          <td><%= r.status_code %></td>
-          <td><%= t r.enabled?.to_s %></td>
-          <td><%= r.times_used.to_i %></td>
-          <td class="text-right">
-            <%= link_to icon(:wrench), test_backend_redirect_path(r, request.query_parameters), title: t('b.msg.redirects.title_tag'), method: 'POST' %>
-            <%= link_to_edit [:backend, r] %>
-            <%= link_to_delete [:backend, r] %>
-          </td>
+        <tr data-id="<%= r.id %>">
+          <%= render 'backend/redirects/row_columns', r: r.decorate %>
         </tr>
       <% end %>
     </tbody>

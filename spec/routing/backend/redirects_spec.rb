@@ -6,7 +6,7 @@ describe 'redirect routes' do
   end
 
   it 'GET /backend/redirects/1' do
-    expect(get: '/backend/redirects/1').to route_to('catch_all#resolve', path: 'backend/redirects/1')
+    expect(get: '/backend/redirects/1').to route_to('backend/redirects#show', id: '1')
   end
 
   it 'GET /backend/redirects/new' do

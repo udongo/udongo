@@ -2,7 +2,7 @@ class Backend::RedirectsController < Backend::BaseController
   include Concerns::PaginationController
 
   before_action -> { breadcrumb.add t('b.redirects'), backend_redirects_path }
-  before_action :find_model, only: [:edit, :update, :destroy, :test]
+  before_action :find_model, except: [:index, :new, :create]
 
   def index
     @search = Redirect.ransack params[:q]
@@ -38,6 +38,10 @@ class Backend::RedirectsController < Backend::BaseController
     else
       render :edit
     end
+  end
+
+  def show
+
   end
 
   def test

@@ -28,9 +28,13 @@ class Backend::RedirectsController < Backend::BaseController
     redirect_to :back, notice: translate_notice(:deleted, :redirect)
   end
 
+  def edit
+    session['redirect_search_params'] = search_params
+  end
+
   def update
     if @redirect.update_attributes allowed_params
-      redirect_to backend_redirects_path, notice: translate_notice(:edited, :redirect)
+      redirect_to backend_redirects_path(session[:redirect_search_params]), notice: translate_notice(:edited, :redirect)
     else
       render :edit
     end
@@ -45,6 +49,14 @@ class Backend::RedirectsController < Backend::BaseController
       redirect_to :back, alert: test_notice(:broken)
     end
   end
+
+  def search_params
+    hash = { q: nil }
+    hash[:q] = params[:q].to_hash if params[:q]
+    hash[:page] = params[:page] if params[:page]
+    hash
+  end
+  helper_method :search_params
 
   private
 

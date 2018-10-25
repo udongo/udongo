@@ -18,10 +18,10 @@ module LinkHelper
     )
   end
 
-  def link_to_edit(value)
+  def link_to_edit(value, parameters = {})
     link_to(
       icon(:pencil_square_o),
-      path_from_string_or_object(value, 'edit_'),
+      path_from_string_or_object(value, prefix: 'edit_', parameters: parameters),
       title: t('b.edit')
     )
   end

@@ -5,5 +5,5 @@
 <td class="text-right">
   <%= link_to icon(:wrench), test_backend_redirect_path(r, request.query_parameters), title: t('b.msg.redirects.title_tag'), method: 'POST' %>
   <%= link_to_edit [:backend, r], request.query_parameters %>
-  <%= link_to_delete [:backend, r] %> <%# TODO: insert request.query_parameters %>
+  <%= link_to_delete [:backend, r], request.query_parameters %>
 </td>

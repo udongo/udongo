@@ -22,7 +22,7 @@ module Udongo::Redirects
 
     def sanitize_destination(destination)
       destination.to_s
-                 .split('#').first
+                 .gsub('/#', '#')
                  .gsub('/?', '?')
                  .chomp('/')
     end

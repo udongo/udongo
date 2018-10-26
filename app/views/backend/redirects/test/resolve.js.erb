@@ -1,3 +1,9 @@
 var container = $('[data-id=<%= @redirect.id %>]');
 container.html('<%= j render('backend/redirects/card', r: @redirect) %>');
-if(redirects.containers.length == 0) redirects.prepare_containers();
+if(redirects.containers.length == 0) {
+  // Using plenty of timeout or the JS will refill the containers too quick,
+  // causing an infinite loop of redirect tests.
+  setTimeout(function(){
+    redirects.prepare_containers();
+  }, 2000);
+}

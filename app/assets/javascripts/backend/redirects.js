@@ -1,11 +1,13 @@
-var redirects = {
-  test_all_button: null,
+var redirects = redirects || {
+  trigger_button: null,
   containers: null,
 
   init: function() {
-    this.test_all_button = $('#test-redirects');
-    this.prepare_containers();
-    this.test_all_button.on('click', this.test_all_click_listener);
+    $('#test-redirect-modal').on('shown.bs.modal', function() {
+      redirects.trigger_button = $('#test-redirects');
+      redirects.prepare_containers();
+      redirects.trigger_button.off('click').on('click', redirects.trigger_button_click_listener);
+    });
   },
 
   mark_card_as_processing: function(card) {
@@ -18,27 +20,17 @@ var redirects = {
   },
 
   prepare_containers: function() {
-    setTimeout(function(){
-      redirects.containers = $('article.redirect').toArray();
-      redirects.test_all_button.removeClass('disabled');
-      $('[data-toggle="tooltip"]').tooltip();
-    }, 1000);
-  },
-
-  test_all_click_listener: function(e) {
-    e.preventDefault();
-    var anchor = $(this);
-    anchor.addClass('disabled');
-
-    redirects.process_next_container();
+    redirects.containers = $('article.redirect').toArray();
+    redirects.trigger_button.removeClass('disabled');
+    $('[data-toggle="tooltip"]').tooltip();
   },
 
   process_next_container: function() {
     var container = redirects.containers.shift();
-    redirects.trigger_test_from_container($(container));
+    redirects.run_for_container($(container));
   },
 
-  trigger_test_from_container: function(container) {
+  run_for_container: function(container) {
     var card = container.find('.card');
     redirects.mark_card_as_processing(card);
 
@@ -52,6 +44,14 @@ var redirects = {
     }).done(function(data){
       redirects.process_next_container(container);
     });
+  },
+
+  trigger_button_click_listener: function(e) {
+    e.preventDefault();
+    var anchor = $(this);
+    anchor.addClass('disabled');
+
+    redirects.process_next_container();
   }
 };
 

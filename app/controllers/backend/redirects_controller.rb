@@ -29,6 +29,10 @@ class Backend::RedirectsController < Backend::BaseController
     redirect_to backend_redirects_path(search_params), notice: translate_notice(:deleted, :redirect)
   end
 
+  def show
+    render layout: false
+  end
+
   def edit
     session['redirect_search_params'] = search_params
   end

@@ -166,20 +166,6 @@ describe Redirect do
 
       expect(subject.resolves?(base_url: 'http://udongo.test')).to be true
     end
-
-    it 'filters out items after the hash (because Curb#last_effective_url does not return them)' do
-      subject = create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bak#foo-bar-baz')
-
-      allow_any_instance_of(Udongo::Redirects::Test).to receive(:perform!) do
-        raw_response = double(:response,
-                              status: '200 OK',
-                              header_str: "Location: http://udongo.test/nl/bak\r\n\r\n"
-                             )
-        Udongo::Redirects::Response.new(raw_response)
-      end
-
-      expect(subject.resolves?(base_url: 'http://udongo.test')).to be true
-    end
   end
 
   describe '#next_in_chain' do

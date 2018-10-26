@@ -38,7 +38,9 @@
           <td><%= r.truncated_uri(:source_uri) %></td>
           <td><%= r.truncated_uri(:destination_uri) %></td>
           <td><%= t r.enabled?.to_s %></td>
-          <td><%= r.times_used.to_i %></td>
+          <td data-toggle="tooltip" title="<%= t('b.last_used_at', timestamp: l(r.updated_at, format: :short)) %>">
+            <%= r.times_used.to_i %>
+          </td>
           <td class="text-right">
             <%= link_to icon(:sitemap), '#', data: { toggle: 'modal', backdrop: 'static', target: '#test-redirect-modal', remote: backend_redirect_path(r) }, title: t('b.msg.redirects.title_tag') %>
             <%= link_to_edit [:backend, r], request.query_parameters %>

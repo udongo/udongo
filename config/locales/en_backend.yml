@@ -51,6 +51,7 @@ en:
     image: Image
     images: Images
     last_changed_at: Last changed at
+    last_used_at: Last used at %{timestamp}
     last_name: Last name
     locale: Locale
     login: Login

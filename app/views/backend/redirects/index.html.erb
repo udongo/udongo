@@ -11,28 +11,32 @@
   <table class="table table-hover">
     <thead class="thead-inverse">
       <tr>
+        <th><%= t 'b.status' %></th>
         <th><%= t 'b.source' %></th>
-        <th><%= t 'b.destination' %>
-        (
-          <span class="badge badge-success">Werkend</span>
-          <span class="badge badge-danger">Stuk</span>
-          <span class="badge badge-info">Ongetest</span>
-        )
-      </th>
+        <th><%= t 'b.destination' %></th>
         <th><%= t 'b.active' %></th>
         <th><%= t 'b.used' %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
 
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <%= t('b.msg.possible_statuses') %>:
+          <span class="badge badge-success">Werkend</span>
+          <span class="badge badge-danger">Stuk</span>
+          <span class="badge badge-info">Ongetest</span>
+        </td>
+      </tr>
+    </tfoot>
+
     <tbody>
       <% @redirects.each do |r| %>
         <tr>
+          <td><%= r.status_badge.html(data: { toggle: 'tooltip' }, title: r.tooltip_text) %></td>
           <td><%= r.source_uri %></td>
-          <td>
-            <%= r.status_badge.html(data: { toggle: 'tooltip' }, title: r.tooltip_text) %>
-            <%= r.destination_uri %>
-          </td>
+          <td><%= r.destination_uri %></td>
           <td><%= t r.enabled?.to_s %></td>
           <td><%= r.times_used.to_i %></td>
           <td class="text-right">

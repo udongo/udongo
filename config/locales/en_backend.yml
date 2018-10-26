@@ -178,6 +178,7 @@ en:
       pages:
         invisible: Deze pagina is niet zichtbaar op de website.
       please_select_a_valid_image: Please select a valid image and try again.
+      possible_statuses: Possible statuses
       redirects:
         test: Test these redirects
         test_header: All redirects starting from %{source}

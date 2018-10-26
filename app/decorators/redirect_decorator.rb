@@ -24,4 +24,13 @@ class RedirectDecorator < ApplicationDecorator
   def tooltip_text
     h.t("b.msg.redirects.tooltips.#{tooltip_identifier}")
   end
+
+  def truncated_uri(type, length: 50)
+    value = object.send(type)
+
+    return value if value.length <= length
+    h.content_tag :span, data: { toggle: 'tooltip' }, title: value do
+      h.truncate(value, length: length)
+    end
+  end
 end

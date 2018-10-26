@@ -35,8 +35,8 @@
       <% @redirects.each do |r| %>
         <tr>
           <td><%= r.status_badge.html(data: { toggle: 'tooltip' }, title: r.tooltip_text) %></td>
-          <td><%= r.source_uri %></td>
-          <td><%= r.destination_uri %></td>
+          <td><%= r.truncated_uri(:source_uri) %></td>
+          <td><%= r.truncated_uri(:destination_uri) %></td>
           <td><%= t r.enabled?.to_s %></td>
           <td><%= r.times_used.to_i %></td>
           <td class="text-right">

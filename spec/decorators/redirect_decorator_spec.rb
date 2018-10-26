@@ -35,6 +35,18 @@ describe RedirectDecorator do
     end
   end
 
+  describe '#truncated_uri' do
+    it 'returns just the value if the length is below the specified amount' do
+      subject.redirect.source_uri =  'foo'
+      expect(subject.truncated_uri(:source_uri, length: 4)).to eq 'foo'
+    end
+
+    it 'returns a truncate string in a span element with a tooltip when the length is above the specified amount' do
+      subject.redirect.source_uri = 'foobarbaz'
+      expect(subject.truncated_uri(:source_uri, length: 6)).to eq '<span data-toggle="tooltip" title="foobarbaz">foo...</span>'
+    end
+  end
+
   it '#status_badge' do
     expect(subject.status_badge).to be_instance_of Udongo::Redirects::StatusBadge
   end

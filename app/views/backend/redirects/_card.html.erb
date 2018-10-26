@@ -1,37 +1,41 @@
 <div class="card p-3 alert-<%= r.status_badge.css_class %>">
   <div class="card-body">
     <div class="card-text">
-      <table style="width: 100%;">
-        <tbody>
-          <tr data-toggle="tooltip" title="<%= r.tooltip_text %>">
-            <td>
-              <span class="card-icon">
-                <%= r.status_badge.icon %>
-              </span>
-              <span class="spinner-icon" hidden>
-                <%= spinner_icon %>
-              </span>
 
-              <strong><%= r.source_uri %></strong> &rarr; <strong><%= r.destination_uri %></strong>
-            </td>
-            <td class="text-right">
-              <ul class="list-unstyled m-0">
-                <li>
-                  <%= link_to backend_redirect_path(r), class: 'btn btn-secondary btn-sm', method: 'DELETE', data: { confirm: t('b.msg.confirm') } do %>
-                    <%= icon(:trash) %>
-                    <%= t('b.delete') %>
-                  <% end %>
+      <div class="row">
+        <div class="col-1">
+          <span class="card-icon">
+            <%= r.status_badge.icon %>
+          </span>
+          <span class="spinner-icon" hidden>
+            <%= spinner_icon %>
+          </span>
+        </div>
 
-                  <%= link_to edit_backend_redirect_path(r), class: 'btn btn-primary btn-sm' do %>
-                    <%= icon(:edit) %>
-                    <%= t('b.edit') %>
-                  <% end %>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="col-md-7 col-sm-11">
+          <p class="text-center">
+            <strong><%= r.source_uri %></strong><br>
+            <large><%= icon :long_arrow_down %></large><br>
+            <strong><%= r.destination_uri %></strong>
+          </p>
+        </div>
+
+        <div class="col-md-4 col-sm-11">
+          <ul class="list-unstyled m-0 text-sm-left text-md-right">
+            <li>
+              <%= link_to backend_redirect_path(r), class: 'btn btn-secondary btn-sm', method: 'DELETE', data: { confirm: t('b.msg.confirm') } do %>
+                <%= icon(:trash) %>
+                <%= t('b.delete') %>
+              <% end %>
+
+              <%= link_to edit_backend_redirect_path(r), class: 'btn btn-primary btn-sm' do %>
+                <%= icon(:edit) %>
+                <%= t('b.edit') %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

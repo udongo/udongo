@@ -9,7 +9,7 @@ class Redirect < ApplicationRecord
 
   # Sanitizing at this point makes sure the uniqueness validation keeps working.
   before_validation do
-    self.source_uri = sanitize_uri(source_uri)
+    self.source_uri = convert_to_uri_path(sanitize_uri(source_uri))
     self.destination_uri = sanitize_uri(destination_uri)
   end
 
@@ -61,8 +61,10 @@ class Redirect < ApplicationRecord
 
   def sanitize_uri(value)
     return if value.blank?
-    value.strip # Leading/trailing Whitespace
-         .gsub(/^(?!\/)/, '/') # Leading slashes
-         .chomp('/').gsub('/?', '?').gsub('/#', '#') # Forward slashes
+    Udongo::Redirects::UriSanitizer.new(value).sanitize!
+  end
+
+  def convert_to_uri_path(value)
+    URI::parse(value.to_s).path
   end
 end

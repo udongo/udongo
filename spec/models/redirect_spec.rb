@@ -36,12 +36,44 @@ describe Redirect do
             expect(create(klass, source_uri: 'foo/').source_uri).to eq '/foo'
           end
 
+          it 'strips hash anchors' do
+            expect(create(klass, source_uri: 'foo/#search-results').source_uri).to eq '/foo'
+          end
+
+          it 'strips GET params' do
+            expect(create(klass, source_uri: 'nl/foo/?config=345').source_uri).to eq '/nl/foo'
+          end
+        end
+      end
+
+      describe '#destination_uri' do
+        it 'strips leading/trailing whitespace' do
+          expect(create(klass, destination_uri: '  foo      ').destination_uri).to eq '/foo'
+        end
+
+        context 'when handling leading/trailing slashes' do
+          it 'adds a leading slash when missing' do
+            expect(create(klass, destination_uri: 'foo').destination_uri).to eq '/foo'
+          end
+
+          it 'does not add a leading slash when it already has one' do
+            expect(create(klass, destination_uri: '/foo').destination_uri).to eq '/foo'
+          end
+
+          it 'strips basic trailing slashes' do
+            expect(create(klass, destination_uri: 'foo/').destination_uri).to eq '/foo'
+          end
+
           it 'strips trailing slashes in conjunction with GET params and a trailing ?' do
-            expect(create(klass, source_uri: 'foo/?foo=bar').source_uri).to eq '/foo?foo=bar'
+            expect(create(klass, destination_uri: 'foo/?foo=bar').destination_uri).to eq '/foo?foo=bar'
           end
 
           it 'strips trailing slashes in conjunction with a trailing #' do
-            expect(create(klass, source_uri: 'foo/#search-results').source_uri).to eq '/foo#search-results'
+            expect(create(klass, destination_uri: 'foo/#search-results').destination_uri).to eq '/foo#search-results'
+          end
+
+          it 'does not strip GET params' do
+            expect(create(klass, destination_uri: 'nl/foo/?config=345').destination_uri).to eq '/nl/foo?config=345'
           end
         end
       end

@@ -20,16 +20,6 @@ class Backend::Redirects::TestController < Backend::BaseController
           @redirect.broken!
         end
       end
-
-      format.html do
-        if @redirect.resolves?(base_url: request.base_url, follow_location: true)
-          @redirect.working!
-          redirect_to :back, notice: test_notice(:works)
-        else
-          @redirect.broken!
-          redirect_to :back, alert: test_notice(:broken)
-        end
-      end
     end
   end
 

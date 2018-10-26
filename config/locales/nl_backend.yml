@@ -76,7 +76,7 @@ nl:
     recipient: Bestemmeling
     redirect: Redirect
     redirects: Redirects
-    reset_form: Formulier resetten
+    reset: Resetten
     save: Opslaan
     search: Zoeken
     search_term: Zoekterm

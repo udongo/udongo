@@ -20,6 +20,7 @@ nl:
     custom_title: Aangepaste titel
     custom_url: Aangepaste URL
     delete: Verwijder
+    depth: Diepte
     description: Beschrijving
     destination: Bestemming
     down: Omlaag

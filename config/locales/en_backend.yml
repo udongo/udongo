@@ -20,6 +20,7 @@ en:
     custom_title: Custom title
     custom_url: Custom URL
     delete: Delete
+    depth: Depth
     description: Description
     destination: Destination
     down: Down

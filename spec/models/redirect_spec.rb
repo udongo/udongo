@@ -181,6 +181,25 @@ describe Redirect do
     end
   end
 
+  describe '#calculate_depth' do
+    it 'has a depth of 0 by default' do
+      expect(subject.calculate_depth).to eq 1
+    end
+
+    it 'accounts for one additional redirect' do
+      subject = create(:redirect, source_uri: '/nl/foo', destination_uri: '/nl/foo/new')
+      create(:redirect, source_uri: subject.destination_uri)
+      expect(subject.calculate_depth).to eq 2
+    end
+
+    it 'accounts for two additional redirects' do
+      subject = create(:redirect, source_uri: '/nl/foo', destination_uri: '/nl/foo/new')
+      create(:redirect, source_uri: '/nl/foo/new', destination_uri: '/nl/bar')
+      create(:redirect, source_uri: '/nl/bar', destination_uri: '/nl/bar/new')
+      expect(subject.calculate_depth).to eq 3
+    end
+  end
+
   it '#working!' do
     subject = create(klass, working: false)
     subject.working!

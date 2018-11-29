@@ -21,6 +21,12 @@ class Redirect < ApplicationRecord
     update_attribute(:working, false)
   end
 
+  def calculate_depth(total = 0)
+    total += 1
+    return next_in_chain.calculate_depth(total) if next_in_chain.present?
+    total
+  end
+
   def enabled?
     !disabled?
   end

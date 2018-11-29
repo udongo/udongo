@@ -15,7 +15,7 @@
         <% end %>
       </p>
 
-      <% @redirect.trace.each do |r| %>
+      <% @redirect.trace_down.each do |r| %>
         <article class="redirect" data-id="<%= r.id %>" data-path="<%= resolve_backend_test_redirect_path(r) %>">
           <%= render 'backend/redirects/card', r: r.decorate %>
         </article>

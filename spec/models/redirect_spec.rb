@@ -200,6 +200,33 @@ describe Redirect do
     end
   end
 
+  describe '#trace_down' do
+    it 'returns the passed redirect when no previous redirects were found' do
+      subject = create(:redirect, source_uri: 'foo', destination_uri: 'bar')
+      expect(subject.trace_down).to eq [subject]
+    end
+
+    it 'returns the stack of redirects starting with the first one when multiple redirects were found' do
+      subject = create(:redirect, source_uri: 'foo', destination_uri: 'bar')
+      third = create(:redirect, source_uri: 'baz', destination_uri: 'boo')
+      second = create(:redirect, source_uri: 'bar', destination_uri: 'baz')
+      expect(subject.trace_down).to eq [subject, second, third]
+    end
+  end
+
+  describe '#trace_up' do
+    it 'returns the passed redirect when no previous redirects were found' do
+      subject = create(:redirect, source_uri: 'foo', destination_uri: 'bar')
+      expect(subject.trace_up).to eq [subject]
+    end
+
+    it 'returns the stack of redirects starting with the first one when multiple redirects were found' do
+      first = create(:redirect, source_uri: 'foo', destination_uri: 'bar')
+      subject = create(:redirect, source_uri: 'bar', destination_uri: 'baz')
+      expect(subject.trace_up).to eq [first, subject]
+    end
+  end
+
   it '#working!' do
     subject = create(klass, working: false)
     subject.working!

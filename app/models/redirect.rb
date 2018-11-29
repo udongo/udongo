@@ -21,10 +21,18 @@ class Redirect < ApplicationRecord
     update_attribute(:working, false)
   end
 
+  def cache_depth!
+    update_attribute(:depth, calculate_depth)
+  end
+
   def calculate_depth(total = 0)
     total += 1
     return next_in_chain.calculate_depth(total) if next_in_chain.present?
     total
+  end
+
+  def depth_cacher
+    @depth_cacher ||= Udongo::Redirects::DepthCacher.new(self)
   end
 
   def enabled?
@@ -33,6 +41,10 @@ class Redirect < ApplicationRecord
 
   def next_in_chain
     self.class.enabled.find_by(source_uri: destination_uri)
+  end
+
+  def previous_in_chain
+    self.class.enabled.find_by(destination_uri: source_uri)
   end
 
   # Tests the redirect including any redirects following this one.
@@ -48,10 +60,19 @@ class Redirect < ApplicationRecord
   # This builds a list of all redirects following the current one in its
   # progression path. Includes the current redirect as the first item.
   # See #next_in_chain for the trace conditions.
-  def trace(stack = [])
+  def trace_down(stack = [])
     stack << self
-    return next_in_chain.trace(stack) if next_in_chain.present?
+    return next_in_chain.trace_down(stack) if next_in_chain.present?
     stack
+  end
+
+  # This builds a list of all redirects prior to the current one in its
+  # progression path. Includes the current redirect as the first item.
+  # See #previous_in_chain for the trace conditions.
+  def trace_up(stack = [])
+    stack << self
+    return previous_in_chain.trace_up(stack) if previous_in_chain.present?
+    stack.reverse # Reversing because the top most one will be at the end.
   end
 
   def used!
@@ -65,12 +86,12 @@ class Redirect < ApplicationRecord
 
   private
 
+  def convert_to_uri_path(value)
+    URI::parse(value.to_s).path
+  end
+
   def sanitize_uri(value)
     return if value.blank?
     Udongo::Redirects::UriSanitizer.new(value).sanitize!
-  end
-
-  def convert_to_uri_path(value)
-    URI::parse(value.to_s).path
   end
 end

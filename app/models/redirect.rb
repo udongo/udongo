@@ -32,7 +32,7 @@ class Redirect < ApplicationRecord
   end
 
   def next_in_chain
-    self.class.find_by(source_uri: destination_uri)
+    self.class.enabled.find_by(source_uri: destination_uri)
   end
 
   # Tests the redirect including any redirects following this one.

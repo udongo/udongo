@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181019161330) do
+ActiveRecord::Schema.define(version: 20181129141539) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "addressable_id"
@@ -394,6 +394,7 @@ ActiveRecord::Schema.define(version: 20181019161330) do
     t.integer  "status_code"
     t.boolean  "disabled"
     t.integer  "times_used"
+    t.integer  "depth"
     t.boolean  "working"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

@@ -3,11 +3,14 @@ var redirects = redirects || {
   containers: null,
 
   init: function() {
-    $('#test-redirect-modal').on('shown.bs.modal', function() {
-      redirects.trigger_button = $('#test-redirects');
-      redirects.prepare_containers();
-      redirects.trigger_button.off('click').on('click', redirects.trigger_button_click_listener);
-    });
+    redirects.bind_test_button();
+    $('#test-redirect-modal').on('shown.bs.modal', redirects.bind_test_button);
+  },
+
+  bind_test_button: function() {
+    redirects.trigger_button = $('#test-redirects');
+    redirects.prepare_containers();
+    redirects.trigger_button.off('click').on('click', redirects.trigger_button_click_listener);
   },
 
   mark_card_as_processing: function(card) {

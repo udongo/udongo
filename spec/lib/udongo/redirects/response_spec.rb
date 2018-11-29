@@ -38,7 +38,7 @@ describe Udongo::Redirects::Response do
       end
 
       it 'can handle hashes' do
-        expect(subject.sanitize_destination('http://udongo.test/nl/foo/#search-results')).to eq 'http://udongo.test/nl/foo#search-results'
+        expect(subject.sanitize_destination('http://udongo.test/nl/foo/#search-results')).to eq 'http://udongo.test/nl/foo/#search-results'
       end
     end
   end

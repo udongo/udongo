@@ -27,7 +27,7 @@ class Backend::RedirectsController < Backend::BaseController
 
   def destroy
     @redirect.destroy
-    @redirect.jumps_cacher.cache!
+    @redirect.jumps_cacher.cache! unless @redirect.jumps_cacher.already_on_top?
     redirect_to backend_redirects_path(search_params), notice: translate_notice(:deleted, :redirect)
   end
 

@@ -10,4 +10,8 @@ class Udongo::Redirects::JumpsCacher
   def top_most_redirect
     @redirect.trace_up.first
   end
+
+  def already_on_top?
+    @redirect == top_most_redirect
+  end
 end

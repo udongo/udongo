@@ -25,4 +25,19 @@ describe Udongo::Redirects::JumpsCacher do
       expect(subject.top_most_redirect).to eq first
     end
   end
+
+  describe '#already_on_top?' do
+    it 'returns true when the top redirect matches the one passed to this class' do
+      redirect = create(:redirect, source_uri: 'foo', destination_uri: 'bar')
+      subject = described_class.new(redirect)
+      expect(subject.already_on_top?).to be true
+    end
+
+    it 'returns false when the top redirect does not match the one passed to this class' do
+      redirect = create(:redirect, source_uri: 'foo', destination_uri: 'bar')
+      create(:redirect, source_uri: 'boo', destination_uri: 'foo')
+      subject = described_class.new(redirect)
+      expect(subject.already_on_top?).to be false
+    end
+  end
 end

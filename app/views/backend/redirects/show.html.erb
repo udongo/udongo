@@ -1,7 +1,16 @@
 <% javascript 'backend/redirects' %>
 
-<% @redirect.trace_down.each do |r| %>
-  <article class="redirect" data-id="<%= r.id %>" data-path="<%= resolve_backend_test_redirect_path(r) %>">
-    <%= render 'backend/redirects/card', r: r.decorate %>
-  </article>
+<h5 class="mb-3"><%= t('b.msg.redirects.test_header', source: @redirect.source_uri) %>:</h5>
+
+<% @redirect.trace_down.each_with_index do |r, index| %>
+  <div class="row">
+    <div class="col-1">
+      <%= index + 1 %>.
+    </div>
+    <div class="col-11">
+      <article class="redirect" data-id="<%= r.id %>" data-path="<%= resolve_backend_test_redirect_path(r) %>">
+        <%= render 'backend/redirects/card', r: r.decorate %>
+      </article>
+    </div>
+  </div>
 <% end %>

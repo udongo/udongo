@@ -1,4 +1,8 @@
 # Upgrade guide
+## From 7.7 to 7.8
+No actions are required.
+
+
 ## From 7.6 to 7.7
 ### Asset
 You can now use the ```Asset#extension``` method instead of trying to determine

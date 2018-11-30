@@ -18,7 +18,7 @@ class Backend::RedirectsController < Backend::BaseController
     @redirect = Redirect.new(allowed_params).decorate
 
     if @redirect.save
-      @redirect.depth_cacher.cache!
+      @redirect.jumps_cacher.cache!
       redirect_to backend_redirects_path, notice: translate_notice(:added, :redirect)
     else
       render :new
@@ -27,7 +27,7 @@ class Backend::RedirectsController < Backend::BaseController
 
   def destroy
     @redirect.destroy
-    @redirect.depth_cacher.cache!
+    @redirect.jumps_cacher.cache!
     redirect_to backend_redirects_path(search_params), notice: translate_notice(:deleted, :redirect)
   end
 
@@ -41,7 +41,7 @@ class Backend::RedirectsController < Backend::BaseController
 
   def update
     if @redirect.update_attributes allowed_params
-      @redirect.depth_cacher.cache!
+      @redirect.jumps_cacher.cache!
       redirect_to backend_redirects_path(session[:redirect_search_params]), notice: translate_notice(:edited, :redirect)
     else
       render :edit

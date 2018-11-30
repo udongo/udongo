@@ -51,6 +51,7 @@ en:
     html_content: HTML content
     image: Image
     images: Images
+    jumps: Jumps
     last_changed_at: Last changed at
     last_used_at: Last used at %{timestamp}
     last_name: Last name

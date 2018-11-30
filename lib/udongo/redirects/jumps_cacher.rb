@@ -1,10 +1,10 @@
-class Udongo::Redirects::DepthCacher
+class Udongo::Redirects::JumpsCacher
   def initialize(redirect)
     @redirect = redirect
   end
 
   def cache!
-    top_most_redirect.trace_down.each(&:cache_depth!)
+    top_most_redirect.trace_down.each(&:cache_jumps!)
   end
 
   def top_most_redirect

@@ -53,6 +53,7 @@ nl:
     image_collections: Afbeeldingsgroepen
     image: Afbeelding
     images: Afbeeldingen
+    jumps: Sprongen
     last_changed_at: Laatst gewijzigd op
     last_used_at: Laatst gebruikt op %{timestamp}
     last_name: Achternaam
@@ -185,7 +186,7 @@ nl:
       possible_statuses: Mogelijke statussen
       redirects:
         test: Test deze redirects
-        test_header: Alle redirects vertrekkende van %{source}
+        test_header: Alle redirect sprongen vertrekkende van %{source}
         broken: De redirect van %{source} naar %{destination} werkt niet.
         title_tag: Test deze redirect
         tooltips:

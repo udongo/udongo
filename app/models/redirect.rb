@@ -21,18 +21,18 @@ class Redirect < ApplicationRecord
     update_attribute(:working, false)
   end
 
-  def cache_depth!
-    update_attribute(:depth, calculate_depth)
+  def cache_jumps!
+    update_attribute(:jumps, calculate_jumps)
   end
 
-  def calculate_depth(total = 0)
+  def calculate_jumps(total = 0)
     total += 1
-    return next_in_chain.calculate_depth(total) if next_in_chain.present?
+    return next_in_chain.calculate_jumps(total) if next_in_chain.present?
     total
   end
 
-  def depth_cacher
-    @depth_cacher ||= Udongo::Redirects::DepthCacher.new(self)
+  def jumps_cacher
+    @jumps_cacher ||= Udongo::Redirects::JumpsCacher.new(self)
   end
 
   def enabled?

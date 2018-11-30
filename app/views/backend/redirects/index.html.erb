@@ -12,7 +12,7 @@
     <thead class="thead-inverse">
       <tr>
         <th><%= t 'b.status' %></th>
-        <th><%= t 'b.depth' %></th>
+        <th><%= t 'b.jumps' %></th>
         <th><%= t 'b.source' %></th>
         <th><%= t 'b.destination' %></th>
         <th><%= t 'b.active' %></th>
@@ -36,7 +36,7 @@
       <% @redirects.each do |r| %>
         <tr>
           <td><%= r.status_badge.html(data: { toggle: 'tooltip' }, title: r.tooltip_text) %></td>
-          <td><%= r.depth %></td>
+          <td><%= r.jumps %></td>
           <td><%= r.truncated_uri(:source_uri) %></td>
           <td><%= r.truncated_uri(:destination_uri) %></td>
           <td><%= t r.enabled?.to_s %></td>

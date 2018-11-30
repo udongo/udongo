@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe Udongo::Redirects::DepthCacher do
+describe Udongo::Redirects::JumpsCacher do
 
   it '#cache!' do
     redirect = create(:redirect, source_uri: 'foo', destination_uri: 'bar')
     subject = described_class.new(redirect)
-    expect(redirect).to receive(:cache_depth!)
+    expect(redirect).to receive(:cache_jumps!)
     subject.cache!
   end
 

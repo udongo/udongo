@@ -13,7 +13,9 @@ module Udongo::Redirects
     # For now, the last location header is returned as a value.
     def headers
       list = @response.header_str.split(/[\r\n]+/).map(&:strip)
-      Hash[list.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
+      Hash[list.flat_map{ |s| s.scan(/^(\S+): (.+)/) }.map { |pair|
+        [pair.first.to_s.camelcase, pair.second]
+      }]
     end
 
     def raw

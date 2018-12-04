@@ -1,3 +1,9 @@
+7.8.1 - 2018-12-04
+--
+* Adds a hotfix to deal with badly formatted HTTP headers in 
+  Udongo::Redirects::Response#headers.
+
+
 7.8.0 - 2018-10-26
 --
 * Fixes issue with blank search terms giving an unwanted AR exception.

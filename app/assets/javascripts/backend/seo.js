@@ -1,5 +1,6 @@
 var seo = {
   init: function() {
+    if(!seo.data('empty-slug')) return;
     this.sluggable_input().on('keydown', this.keydown_listener);
     this.sluggable_input().on('keyup', $.debounce(250, this.keyup_listener));
   },

@@ -1,4 +1,7 @@
 # Upgrade guide
+## From 7.8 to 7.9
+No actions are required.
+
 ## From 7.7 to 7.8
 No actions are required.
 

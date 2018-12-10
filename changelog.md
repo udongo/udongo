@@ -1,3 +1,8 @@
+7.9.0 - 2018-12-10
+--
+* Don't override the slug when editing existing SEO info.
+
+
 7.8.1 - 2018-12-04
 --
 * Adds a hotfix to deal with badly formatted HTTP headers in 

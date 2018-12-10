@@ -2,8 +2,9 @@
 
 <% sluggable_field ||= 'title' %>
 <% slug ||= nil %>
+<% empty_slug = f.object.seo_slug.blank? %>
 
-<%= content_tag :div, class: 'card', data: { seo: true, path: backend_seo_slugify_path, sluggable_input: "##{f.object_name}_#{sluggable_field}" } do %>
+<%= content_tag :div, class: 'card', data: { seo: true, empty_slug: empty_slug, path: backend_seo_slugify_path, sluggable_input: "##{f.object_name}_#{sluggable_field}" } do %>
   <div class="card-header">
     <%= t 'b.msg.seo' %>
   </div>
@@ -15,9 +16,9 @@
       <%= f.input :seo_slug, as: :string %>
     <% end %>
 
-    <%= f.input(:seo_title, as: :string) if f.object.respond_to?(:seo_title) %>
-    <%= f.input(:seo_description, as: :string) if f.object.respond_to?(:seo_description) %>
-    <%= f.input(:seo_keywords, as: :string) if f.object.respond_to?(:seo_keywords) %>
-    <%= f.input(:seo_custom, as: :string) if f.object.respond_to?(:seo_custom) %>
+    <%= f.input :seo_title, as: :string %>
+    <%= f.input :seo_description, as: :string %>
+    <%= f.input :seo_keywords, as: :string %>
+    <%= f.input :seo_custom, as: :string %>
   </div>
 <% end %>

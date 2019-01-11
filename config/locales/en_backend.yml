@@ -123,6 +123,7 @@ en:
         press_release_abbreviated: Press.
         visible_abbreviated: Visi.
       changes_saved: The changes have been saved.
+      characters_remaining: '%count% remaining characters'
       confirm: Are you sure?
       content_types:
         form: Form

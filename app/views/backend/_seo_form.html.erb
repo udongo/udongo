@@ -1,8 +1,13 @@
+<% javascript 'backend/character_countdown' %>
 <% javascript 'backend/seo' %>
 
 <% sluggable_field ||= 'title' %>
 <% slug ||= nil %>
 <% empty_slug = f.object.seo_slug.blank? %>
+
+<script type="text/javascript">
+  var character_countdown_label = "<%= t('b.msg.characters_remaining') %>";
+</script>
 
 <%= content_tag :div, class: 'card', data: { seo: true, empty_slug: empty_slug, path: backend_seo_slugify_path, sluggable_input: "##{f.object_name}_#{sluggable_field}" } do %>
   <div class="card-header">
@@ -16,8 +21,8 @@
       <%= f.input :seo_slug, as: :string %>
     <% end %>
 
-    <%= f.input :seo_title, as: :string %>
-    <%= f.input :seo_description, as: :string %>
+    <%= f.input :seo_title, as: :string, input_html: { data: { char_limit: 20 } } %>
+    <%= f.input :seo_description, as: :string, input_html: { data: { char_limit: 60 } } %>
     <%= f.input :seo_keywords, as: :string %>
     <%= f.input :seo_custom, as: :string %>
   </div>

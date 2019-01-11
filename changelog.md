@@ -1,3 +1,8 @@
+7.9.1 - 2019-01-11
+--
+* Add a character limit countdown to b/seo_form.
+
+
 7.9.0 - 2018-12-10
 --
 * Don't override the slug when editing existing SEO info.

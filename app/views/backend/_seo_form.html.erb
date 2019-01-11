@@ -21,8 +21,8 @@
       <%= f.input :seo_slug, as: :string %>
     <% end %>
 
-    <%= f.input :seo_title, as: :string, input_html: { data: { char_limit: 20 } } %>
-    <%= f.input :seo_description, as: :string, input_html: { data: { char_limit: 60 } } %>
+    <%= f.input :seo_title, as: :string, input_html: { data: { char_limit: Udongo.config.input_limits.seo_title } } %>
+    <%= f.input :seo_description, as: :string, input_html: { data: { char_limit: Udongo.config.input_limits.seo_description } } %>
     <%= f.input :seo_keywords, as: :string %>
     <%= f.input :seo_custom, as: :string %>
   </div>

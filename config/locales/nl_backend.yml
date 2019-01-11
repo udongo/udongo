@@ -125,6 +125,7 @@ nl:
         press_release_abbreviated: Pers.
         visible_abbreviated: Zicht.
       changes_saved: De wijzigingen werden opgeslagen.
+      characters_remaining: '%count% resterende karakters'
       confirm: Ben je zeker?
       content_types:
         form: Formulier

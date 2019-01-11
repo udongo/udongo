@@ -56,6 +56,13 @@ Udongo.config.i18n.app.default_interface_locale = 'nl'
 Udongo.config.i18n.app.interface_locales = %w(nl en)
 ```
 
+## Input limits
+### SEO
+```ruby
+Udongo.config.input_limits.seo_title = 40
+Udongo.config.input_limits.seo_description = 75
+```
+
 ## Flexible content
 ### types
 ```ruby
